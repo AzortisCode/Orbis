@@ -24,6 +24,8 @@
 
 package com.azortis.orbis.generator;
 
+import com.azortis.orbis.generator.terrain.BaseTerrain;
+import com.azortis.orbis.generator.terrain.defaults.TestTerrain;
 import com.azortis.orbis.noise.NoiseGenerator;
 import com.azortis.orbis.noise.OpenSimplexNoise;
 import net.minestom.server.instance.Chunk;
@@ -37,51 +39,53 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 public class OrbisChunkProvider implements ChunkGenerator {
 
     private final NoiseGenerator noise = new OpenSimplexNoise(1188179420);
+    private final Random random;
+    private final BaseTerrain terrain;
     private final int seaLevel = 130;
-    private final int baseHeight = 100;
     private final int stoneHeight = 120;
 
-    private float getHeight(int x, int z){
-        float height = noise.noise2(x / 800f, z / 800f) * 80;
-        height += noise.noise2(x / 100f, z / 100f) * 10;
-        height += noise.noise2(x / 20f, z / 20f) * 0.5f;
-        return baseHeight + height;
+    public OrbisChunkProvider(){
+        terrain = new TestTerrain();
+        random = new Random(343576321);
     }
 
     @Override
     public void generateChunkData(@NotNull ChunkBatch chunkBatch, int chunkX, int chunkZ) {
-        for (int x = 0; x < Chunk.CHUNK_SIZE_X; x++){
-            for (int z = 0; z < Chunk.CHUNK_SIZE_Z; z++) {
-                final int height = Math.round(getHeight(x + chunkX>>4, z + chunkZ>>4));
+        for (int cx = 0; cx < Chunk.CHUNK_SIZE_X; cx++){
+            for (int cz = 0; cz < Chunk.CHUNK_SIZE_Z; cz++) {
+                final int x = cx + (chunkX << 4);
+                final int z = cz + (chunkZ << 4);
+                final int height = Math.round(terrain.getTerrainHeight(x, z, noise));
 
                 if(height >= seaLevel) {
                     for (int y = 0; y <= height; y++) {
                         if (y == 0) {
-                            chunkBatch.setBlock(x, y, z, Block.BEDROCK);
+                            chunkBatch.setBlock(cx, y, cz, Block.BEDROCK);
                         }else if (y <= stoneHeight){
-                            chunkBatch.setBlock(x, y , z, Block.STONE);
+                            chunkBatch.setBlock(cx, y , cz, Block.STONE);
                         } else if (y < height){
-                            chunkBatch.setBlock(x, y, z, Block.DIRT);
+                            chunkBatch.setBlock(cx, y, cz, Block.DIRT);
                         } else {
-                            chunkBatch.setBlock(x, y, z, Block.GRASS_BLOCK);
+                            chunkBatch.setBlock(cx, y, cz, Block.GRASS_BLOCK);
                         }
                     }
                 }else {
                     for (int y = 0; y <= seaLevel; y++){
                         if(y == 0){
-                            chunkBatch.setBlock(x, y, z, Block.BEDROCK);
+                            chunkBatch.setBlock(cx, y, cz, Block.BEDROCK);
                         } else if(y <= height){
                             if(y <= stoneHeight){
-                                chunkBatch.setBlock(x, y, z, Block.STONE);
+                                chunkBatch.setBlock(cx, y, cz, Block.STONE);
                             }else{
-                                chunkBatch.setBlock(x, y, z, Block.DIRT);
+                                chunkBatch.setBlock(cx, y, cz, Block.DIRT);
                             }
                         } else {
-                            chunkBatch.setBlock(x, y, z, Block.WATER);
+                            chunkBatch.setBlock(cx, y, cz, Block.WATER);
                         }
                     }
                 }

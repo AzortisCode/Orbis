@@ -45,6 +45,7 @@ public class OrbisBootstrap {
 
     public static void main(String[] args){
         MinecraftServer minecraftServer = MinecraftServer.init();
+
         MinecraftServer.setBrandName("Orbis Development");
 
         StorageManager storageManager = MinecraftServer.getStorageManager();

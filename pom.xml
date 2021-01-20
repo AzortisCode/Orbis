@@ -65,6 +65,12 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.16</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -97,6 +103,12 @@
                 <configuration>
                     <minimizeJar>false</minimizeJar>
                     <outputDirectory>./target</outputDirectory>
+                    <relocations>
+                        <relocation>
+                            <pattern>lombok</pattern>
+                            <shadedPattern>com.azortis.orbis.lib.lombok</shadedPattern>
+                        </relocation>
+                    </relocations>
                     <filters>
                         <filter>
                             <artifact>*:*</artifact>
