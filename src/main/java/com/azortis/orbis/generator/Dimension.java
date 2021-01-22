@@ -22,12 +22,22 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.settings;
+package com.azortis.orbis.generator;
 
-public class Biome {
+import com.azortis.orbis.settings.DimensionSettings;
+import net.minestom.server.instance.InstanceContainer;
+import net.minestom.server.world.DimensionType;
+
+public class Dimension {
 
     private String name;
+    private long seed;
+    private InstanceContainer instance;
+    private DimensionType environment;
+    private ChunkProvider chunkProvider;
 
+    public Dimension(DimensionSettings dimensionSettings){
 
+    }
 
 }

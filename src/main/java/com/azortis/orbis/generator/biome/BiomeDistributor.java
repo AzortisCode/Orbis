@@ -22,17 +22,10 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.generator.terrain;
+package com.azortis.orbis.generator.biome;
 
-import java.util.HashMap;
-import java.util.Map;
+public class BiomeDistributor {
 
-public class TerrainManager {
 
-    private final Map<String, BaseTerrain> terrainRegistry = new HashMap<>();
-
-    private TerrainManager(){
-
-    }
 
 }

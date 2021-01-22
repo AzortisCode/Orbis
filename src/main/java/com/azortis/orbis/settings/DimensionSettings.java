@@ -22,17 +22,10 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.generator.terrain;
+package com.azortis.orbis.settings;
 
-import java.util.HashMap;
-import java.util.Map;
+public class DimensionSettings {
 
-public class TerrainManager {
 
-    private final Map<String, BaseTerrain> terrainRegistry = new HashMap<>();
-
-    private TerrainManager(){
-
-    }
 
 }

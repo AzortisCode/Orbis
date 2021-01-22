@@ -22,17 +22,19 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.generator.terrain;
+package com.azortis.orbis.extension;
 
-import java.util.HashMap;
-import java.util.Map;
+import net.minestom.server.extensions.Extension;
 
-public class TerrainManager {
+public class OrbisExtension extends Extension {
 
-    private final Map<String, BaseTerrain> terrainRegistry = new HashMap<>();
-
-    private TerrainManager(){
+    @Override
+    public void initialize() {
 
     }
 
+    @Override
+    public void terminate() {
+
+    }
 }

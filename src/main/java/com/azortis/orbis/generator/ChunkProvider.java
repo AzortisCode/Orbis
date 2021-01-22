@@ -41,7 +41,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-public class OrbisChunkProvider implements ChunkGenerator {
+public class ChunkProvider implements ChunkGenerator {
 
     private final NoiseGenerator noise = new OpenSimplexNoise(1188179420);
     private final Random random;
@@ -49,7 +49,7 @@ public class OrbisChunkProvider implements ChunkGenerator {
     private final int seaLevel = 130;
     private final int stoneHeight = 120;
 
-    public OrbisChunkProvider(){
+    public ChunkProvider(){
         terrain = new TestTerrain();
         random = new Random(343576321);
     }

@@ -24,15 +24,22 @@
 
 package com.azortis.orbis.generator.terrain;
 
-import java.util.HashMap;
-import java.util.Map;
+import com.azortis.orbis.noise.NoiseGenerator;
 
-public class TerrainManager {
+public class CustomTerrain implements BaseTerrain {
 
-    private final Map<String, BaseTerrain> terrainRegistry = new HashMap<>();
-
-    private TerrainManager(){
-
+    @Override
+    public String getName() {
+        return null;
     }
 
+    @Override
+    public TerrainProvider getTerrainProvider() {
+        return TerrainProvider.CUSTOM;
+    }
+
+    @Override
+    public float getTerrainHeight(int x, int z, NoiseGenerator noiseGenerator) {
+        return 0;
+    }
 }

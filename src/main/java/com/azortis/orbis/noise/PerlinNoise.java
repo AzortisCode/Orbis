@@ -22,10 +22,17 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.generator;
+package com.azortis.orbis.noise;
 
-public class BiomeDistributor {
+public class PerlinNoise implements NoiseGenerator{
 
+    @Override
+    public float noise2(float x, float z) {
+        return 0;
+    }
 
-
+    @Override
+    public float noise3(float x, float y, float z) {
+        return 0;
+    }
 }

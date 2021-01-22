@@ -22,7 +22,12 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.settings;
+package com.azortis.orbis.generator.biome;
 
-public class Dimension {
+public class Biome {
+
+    private String name;
+
+
+
 }
