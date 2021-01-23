@@ -22,24 +22,7 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.generator.terrain;
+package com.azortis.orbis.settings;
 
-public enum TerrainProvider {
-    ORBIS("orbis"),
-    CUSTOM("custom");
-
-    private final String namespace;
-
-    TerrainProvider(String namespace){
-        this.namespace = namespace;
-    }
-
-    public String getNamespace(){
-        return namespace;
-    }
-
-    public String getId(String terrainName){
-        return namespace + ":" + terrainName;
-    }
-
+public class TerrainSettings {
 }

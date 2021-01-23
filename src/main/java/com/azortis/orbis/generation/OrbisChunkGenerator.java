@@ -22,10 +22,10 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.generator;
+package com.azortis.orbis.generation;
 
-import com.azortis.orbis.generator.terrain.BaseTerrain;
-import com.azortis.orbis.generator.terrain.defaults.TestTerrain;
+import com.azortis.orbis.generation.terrain.OIdTerrain;
+import com.azortis.orbis.generation.terrain.defaults.TestOIdTerrain;
 import com.azortis.orbis.noise.NoiseGenerator;
 import com.azortis.orbis.noise.OpenSimplexNoise;
 import net.minestom.server.instance.Chunk;
@@ -41,16 +41,16 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-public class ChunkProvider implements ChunkGenerator {
+public class OrbisChunkGenerator implements ChunkGenerator {
 
     private final NoiseGenerator noise = new OpenSimplexNoise(1188179420);
     private final Random random;
-    private final BaseTerrain terrain;
+    private final OIdTerrain OIdTerrain;
     private final int seaLevel = 130;
     private final int stoneHeight = 120;
 
-    public ChunkProvider(){
-        terrain = new TestTerrain();
+    public OrbisChunkGenerator(){
+        OIdTerrain = new TestOIdTerrain();
         random = new Random(343576321);
     }
 
@@ -60,7 +60,7 @@ public class ChunkProvider implements ChunkGenerator {
             for (int cz = 0; cz < Chunk.CHUNK_SIZE_Z; cz++) {
                 final int x = cx + (chunkX << 4);
                 final int z = cz + (chunkZ << 4);
-                final int height = Math.round(terrain.getTerrainHeight(x, z, noise));
+                final int height = Math.round(OIdTerrain.getTerrainHeight(x, z, noise));
 
                 if(height >= seaLevel) {
                     for (int y = 0; y <= height; y++) {

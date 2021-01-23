@@ -22,24 +22,12 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.generator.terrain;
+package com.azortis.orbis.biome;
 
-import com.azortis.orbis.noise.NoiseGenerator;
+public class Biome {
 
-public class CustomTerrain implements BaseTerrain {
+    private String name;
 
-    @Override
-    public String getName() {
-        return null;
-    }
 
-    @Override
-    public TerrainProvider getTerrainProvider() {
-        return TerrainProvider.CUSTOM;
-    }
 
-    @Override
-    public float getTerrainHeight(int x, int z, NoiseGenerator noiseGenerator) {
-        return 0;
-    }
 }

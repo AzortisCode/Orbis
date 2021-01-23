@@ -22,9 +22,10 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.generator.biome;
+package com.azortis.orbis.generation;
 
-public class BiomeDistributor {
+
+public class Terrain {
 
 
 

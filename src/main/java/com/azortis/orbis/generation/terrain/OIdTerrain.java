@@ -22,22 +22,14 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.generator;
+package com.azortis.orbis.generation.terrain;
 
-import com.azortis.orbis.settings.DimensionSettings;
-import net.minestom.server.instance.InstanceContainer;
-import net.minestom.server.world.DimensionType;
+import com.azortis.orbis.noise.NoiseGenerator;
 
-public class Dimension {
+public interface OIdTerrain {
 
-    private String name;
-    private long seed;
-    private InstanceContainer instance;
-    private DimensionType environment;
-    private ChunkProvider chunkProvider;
+    String getName();
 
-    public Dimension(DimensionSettings dimensionSettings){
-
-    }
+    float getTerrainHeight(int x, int z, NoiseGenerator noiseGenerator);
 
 }

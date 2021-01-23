@@ -22,12 +22,7 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.generator.biome;
+package com.azortis.orbis.settings;
 
-public class Biome {
-
-    private String name;
-
-
-
+public class BiomeSettings {
 }

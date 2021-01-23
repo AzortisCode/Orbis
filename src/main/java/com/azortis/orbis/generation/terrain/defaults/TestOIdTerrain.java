@@ -22,16 +22,26 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.generator.terrain;
+package com.azortis.orbis.generation.terrain.defaults;
 
+import com.azortis.orbis.generation.terrain.OIdTerrain;
 import com.azortis.orbis.noise.NoiseGenerator;
 
-public interface BaseTerrain {
+public class TestOIdTerrain implements OIdTerrain {
 
-    String getName();
+    private final int baseHeight = 100;
 
-    TerrainProvider getTerrainProvider();
+    @Override
+    public String getName() {
+        return "test";
+    }
 
-    float getTerrainHeight(int x, int z, NoiseGenerator noiseGenerator);
+    @Override
+    public float getTerrainHeight(int x, int z, NoiseGenerator noise) {
+        float height = noise.noise2(x / 800f, z / 800f) * 80;
+        height += noise.noise2(x / 100f, z / 100f) * 10;
+        height += noise.noise2(x / 20f, z / 20f) * 0.5f;
+        return baseHeight + height;
+    }
 
 }

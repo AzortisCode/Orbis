@@ -24,7 +24,7 @@
 
 package com.azortis.orbis;
 
-import com.azortis.orbis.generator.ChunkProvider;
+import com.azortis.orbis.generation.OrbisChunkGenerator;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.entity.GameMode;
 import net.minestom.server.entity.Player;
@@ -52,7 +52,7 @@ public class OrbisBootstrap {
         storageManager.defineDefaultStorageSystem(FileStorageSystem::new);
 
         InstanceContainer instanceContainer = MinecraftServer.getInstanceManager().createInstanceContainer(DimensionType.OVERWORLD);
-        instanceContainer.setChunkGenerator(new ChunkProvider());
+        instanceContainer.setChunkGenerator(new OrbisChunkGenerator());
         instanceContainer.enableAutoChunkLoad(true);
         for (int x = -16; x <= 16; x++){
             for (int z = -16; z <= 16; z++){

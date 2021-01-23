@@ -22,31 +22,23 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.generator.terrain.defaults;
+package com.azortis.orbis;
 
-import com.azortis.orbis.generator.terrain.BaseTerrain;
-import com.azortis.orbis.generator.terrain.TerrainProvider;
-import com.azortis.orbis.noise.NoiseGenerator;
+import com.azortis.orbis.generation.OrbisChunkGenerator;
+import com.azortis.orbis.settings.DimensionSettings;
+import net.minestom.server.instance.InstanceContainer;
+import net.minestom.server.world.DimensionType;
 
-public class TestTerrain implements BaseTerrain {
+public class OrbisDimension {
 
-    private final int baseHeight = 100;
+    private String name;
+    private long seed;
+    private InstanceContainer instance;
+    private DimensionType environment;
+    private OrbisChunkGenerator chunkGenerator;
 
-    @Override
-    public String getName() {
-        return "test";
+    public OrbisDimension(DimensionSettings dimensionSettings){
+
     }
 
-    @Override
-    public TerrainProvider getTerrainProvider() {
-        return TerrainProvider.ORBIS;
-    }
-
-    @Override
-    public float getTerrainHeight(int x, int z, NoiseGenerator noise) {
-        float height = noise.noise2(x / 800f, z / 800f) * 80;
-        height += noise.noise2(x / 100f, z / 100f) * 10;
-        height += noise.noise2(x / 20f, z / 20f) * 0.5f;
-        return baseHeight + height;
-    }
 }
