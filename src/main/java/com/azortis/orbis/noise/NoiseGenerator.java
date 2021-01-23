@@ -26,8 +26,10 @@ package com.azortis.orbis.noise;
 
 public interface NoiseGenerator {
 
-    float noise2(float x, float z);
+    double noise(double x);
 
-    float noise3(float x, float y, float z);
+    double noise(double x, double y);
+
+    double noise(double x, double y, double z);
 
 }

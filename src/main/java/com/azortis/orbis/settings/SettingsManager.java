@@ -22,38 +22,31 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.noise;
+package com.azortis.orbis.settings;
 
-public class PerlinNoise implements NoiseGenerator, OctaveNoise{
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
-    private final FastNoise noise;
+import java.io.File;
 
-    public PerlinNoise(int seed){
-        noise = new FastNoise(seed);
-        noise.setNoiseType(FastNoise.NoiseType.Perlin);
-        noise.setRotationType3D(FastNoise.RotationType3D.ImproveXZPlanes);
-        noise.setFractalOctaves(5);
-        noise.setFrequency(2);
+public class SettingsManager {
+
+    private final Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
+
+    // Root data folder
+    private final File dataFolder;
+
+    // Generation config folders
+
+    public SettingsManager(File dataFolder){
+        this.dataFolder = dataFolder;
+        
     }
 
-    @Override
-    public double noise(double x) {
-        return noise.getNoise(x, 0);
+    public File getDataFolder() {
+        return dataFolder;
     }
 
-    @Override
-    public double noise(double x, double y) {
-        return noise.getNoise(x, 0, y);
-    }
 
-    @Override
-    public double noise(double x, double y, double z) {
-        return noise.getNoise(x, y, z);
-    }
-
-    @Override
-    public void setOctaves(int octaves) {
-        noise.setFractalOctaves(octaves);
-    }
 
 }

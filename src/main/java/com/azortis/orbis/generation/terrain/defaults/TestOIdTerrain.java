@@ -37,10 +37,10 @@ public class TestOIdTerrain implements OIdTerrain {
     }
 
     @Override
-    public float getTerrainHeight(int x, int z, NoiseGenerator noise) {
-        float height = noise.noise2(x / 800f, z / 800f) * 80;
-        height += noise.noise2(x / 100f, z / 100f) * 10;
-        height += noise.noise2(x / 20f, z / 20f) * 0.5f;
+    public double getTerrainHeight(int x, int z, NoiseGenerator noise) {
+        double height = noise.noise(x / 800f, z / 800f) * 80;
+        height += noise.noise(x / 100f, z / 100f) * 10;
+        height += noise.noise(x / 20f, z / 20f) * 0.5f;
         return baseHeight + height;
     }
 

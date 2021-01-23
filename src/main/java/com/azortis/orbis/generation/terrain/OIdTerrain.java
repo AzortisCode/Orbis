@@ -30,6 +30,6 @@ public interface OIdTerrain {
 
     String getName();
 
-    float getTerrainHeight(int x, int z, NoiseGenerator noiseGenerator);
+    double getTerrainHeight(int x, int z, NoiseGenerator noiseGenerator);
 
 }

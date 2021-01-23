@@ -32,6 +32,12 @@
         <configuration>
           <minimizeJar>false</minimizeJar>
           <outputDirectory>./target</outputDirectory>
+          <relocations>
+            <relocation>
+              <pattern>lombok</pattern>
+              <shadedPattern>com.azortis.orbis.lib.lombok</shadedPattern>
+            </relocation>
+          </relocations>
           <filters>
             <filter>
               <artifact>*:*</artifact>

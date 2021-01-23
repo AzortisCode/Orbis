@@ -24,9 +24,12 @@
 
 package com.azortis.orbis.extension;
 
+import com.azortis.orbis.settings.SettingsManager;
 import net.minestom.server.extensions.Extension;
 
 public class OrbisExtension extends Extension {
+
+    private SettingsManager settingsManager;
 
     @Override
     public void initialize() {

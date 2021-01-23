@@ -22,38 +22,14 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.noise;
+package com.azortis.orbis.settings;
 
-public class PerlinNoise implements NoiseGenerator, OctaveNoise{
+/**
+ * A class for packaging dimension configurations into one *.orbis file.
+ * For a better means of distributing data.
+ */
+public class SettingsPackager {
 
-    private final FastNoise noise;
 
-    public PerlinNoise(int seed){
-        noise = new FastNoise(seed);
-        noise.setNoiseType(FastNoise.NoiseType.Perlin);
-        noise.setRotationType3D(FastNoise.RotationType3D.ImproveXZPlanes);
-        noise.setFractalOctaves(5);
-        noise.setFrequency(2);
-    }
-
-    @Override
-    public double noise(double x) {
-        return noise.getNoise(x, 0);
-    }
-
-    @Override
-    public double noise(double x, double y) {
-        return noise.getNoise(x, 0, y);
-    }
-
-    @Override
-    public double noise(double x, double y, double z) {
-        return noise.getNoise(x, y, z);
-    }
-
-    @Override
-    public void setOctaves(int octaves) {
-        noise.setFractalOctaves(octaves);
-    }
 
 }
