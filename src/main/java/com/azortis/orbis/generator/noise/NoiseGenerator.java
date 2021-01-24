@@ -22,14 +22,14 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.generation.terrain;
+package com.azortis.orbis.generator.noise;
 
-import com.azortis.orbis.noise.NoiseGenerator;
+public interface NoiseGenerator {
 
-public interface OIdTerrain {
+    double noise(double x);
 
-    String getName();
+    double noise(double x, double y);
 
-    double getTerrainHeight(int x, int z, NoiseGenerator noiseGenerator);
+    double noise(double x, double y, double z);
 
 }

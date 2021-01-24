@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.biome;
+package com.azortis.orbis.settings.generator;
 
-public class BiomeGrid {
+public class GeneratorSettings {
 }

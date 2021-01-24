@@ -22,38 +22,27 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.noise;
+package com.azortis.orbis.object;
 
-public class PerlinNoise implements NoiseGenerator, OctaveNoise{
+import com.azortis.orbis.generator.terrain.Terrain;
 
-    private final FastNoise noise;
+public class OrbisTerrain {
 
-    public PerlinNoise(int seed){
-        noise = new FastNoise(seed);
-        noise.setNoiseType(FastNoise.NoiseType.Perlin);
-        noise.setRotationType3D(FastNoise.RotationType3D.ImproveXZPlanes);
-        noise.setFractalOctaves(7);
-        noise.setFrequency(1);
+
+
+    public enum TerrainType {
+        /**
+         * Terrain code that is provided using Java classes implementing {@link Terrain}
+         */
+        JAVA,
+        /**
+         * TODO Add javascript terrain parser
+         * Terrain code that is provided using JavaScripts parsed by {@link }
+         */
+        JAVASCRIPT,
+        /**
+         * Terrain provided by configuration files.
+         */
+        CONFIG
     }
-
-    @Override
-    public double noise(double x) {
-        return noise.getNoise(x, 0);
-    }
-
-    @Override
-    public double noise(double x, double y) {
-        return noise.getNoise(x, 0, y);
-    }
-
-    @Override
-    public double noise(double x, double y, double z) {
-        return noise.getNoise(x, y, z);
-    }
-
-    @Override
-    public void setOctaves(int octaves) {
-        noise.setFractalOctaves(octaves);
-    }
-
 }

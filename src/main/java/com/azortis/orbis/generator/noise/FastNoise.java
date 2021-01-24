@@ -26,7 +26,7 @@ https://github.com/Auburn/FastNoise
 
 THIS USES A MODIFIED VERSION THAT USES DOUBLES INSTEAD OF FLOATS & USED A LONG SEED INSTEAD OF INT*/
 
-package com.azortis.orbis.noise;
+package com.azortis.orbis.generator.noise;
 
 @SuppressWarnings("all")
 public class FastNoise
@@ -92,7 +92,7 @@ public class FastNoise
         DefaultOpenSimplex2
     };
 
-    private int mSeed = 1337;
+    private long mSeed = 1337;
     private double mFrequency = 0.01f;
     private NoiseType mNoiseType = NoiseType.OpenSimplex2;
     private RotationType3D mRotationType3D = RotationType3D.None;
@@ -123,7 +123,7 @@ public class FastNoise
     /// <summary>
     /// Create new FastNoise object with specified seed
     /// </summary>
-    public FastNoise(int seed)
+    public FastNoise(long seed)
     {
         setSeed(seed);
     }
@@ -134,7 +134,7 @@ public class FastNoise
     /// <remarks>
     /// Default: 1337
     /// </remarks>
-    public void setSeed(int seed) { mSeed = seed; }
+    public void setSeed(long seed) { mSeed = seed; }
 
     /// <summary>
     /// Sets frequency for all noise types
@@ -600,23 +600,25 @@ public class FastNoise
     private static final int PrimeY = 1136930381;
     private static final int PrimeZ = 1720413743;
 
-    private static int hash(int seed, int xPrimed, int yPrimed)
+    private static int hash(long seed, int xPrimed, int yPrimed)
     {
-        int hash = seed ^ xPrimed ^ yPrimed;
-
-        hash *= 0x27d4eb2d;
+        int seedA = (int)(seed & 0xFFFFFFFFL);
+        int seedB = (int)(seed >> 32);
+        int hash = xPrimed ^ yPrimed;
+        hash = ((seedA ^ hash) * 668908897) ^ ((seedB ^ hash) * 35311);
         return hash;
     }
 
-    private static int hash(int seed, int xPrimed, int yPrimed, int zPrimed)
+    private static int hash(long seed, int xPrimed, int yPrimed, int zPrimed)
     {
-        int hash = seed ^ xPrimed ^ yPrimed ^ zPrimed;
-
-        hash *= 0x27d4eb2d;
+        int seedA = (int)(seed & 0xFFFFFFFFL);
+        int seedB = (int)(seed >> 32);
+        int hash = xPrimed ^ yPrimed ^ zPrimed;
+        hash = ((seedA ^ hash) * 668908897) ^ ((seedB ^ hash) * 35311);
         return hash;
     }
 
-    private static double valCoord(int seed, int xPrimed, int yPrimed)
+    private static double valCoord(long seed, int xPrimed, int yPrimed)
     {
         int hash = hash(seed, xPrimed, yPrimed);
 
@@ -625,7 +627,7 @@ public class FastNoise
         return hash * (1 / 2147483648.0f);
     }
 
-    private static double valCoord(int seed, int xPrimed, int yPrimed, int zPrimed)
+    private static double valCoord(long seed, int xPrimed, int yPrimed, int zPrimed)
     {
         int hash = hash(seed, xPrimed, yPrimed, zPrimed);
 
@@ -634,7 +636,7 @@ public class FastNoise
         return hash * (1 / 2147483648.0f);
     }
 
-    private static double gradCoord(int seed, int xPrimed, int yPrimed, double xd, double yd)
+    private static double gradCoord(long seed, int xPrimed, int yPrimed, double xd, double yd)
     {
         int hash = hash(seed, xPrimed, yPrimed);
         hash ^= hash >> 15;
@@ -646,7 +648,7 @@ public class FastNoise
         return xd * xg + yd * yg;
     }
 
-    private static double gradCoord(int seed, int xPrimed, int yPrimed, int zPrimed, double xd, double yd, double zd)
+    private static double gradCoord(long seed, int xPrimed, int yPrimed, int zPrimed, double xd, double yd, double zd)
     {
         int hash = hash(seed, xPrimed, yPrimed, zPrimed);
         hash ^= hash >> 15;
@@ -662,7 +664,7 @@ public class FastNoise
 
     // Generic noise gen
 
-    private double genNoiseSingle(int seed, double x, double y)
+    private double genNoiseSingle(long seed, double x, double y)
     {
         switch (mNoiseType)
         {
@@ -683,7 +685,7 @@ public class FastNoise
         }
     }
 
-    private double genNoiseSingle(int seed, double x, double y, double z)
+    private double genNoiseSingle(long seed, double x, double y, double z)
     {
         switch (mNoiseType)
         {
@@ -762,7 +764,7 @@ public class FastNoise
 
     private double genFractalFBm(double x, double y)
     {
-        int seed = mSeed;
+        long seed = mSeed;
         double sum = 0;
         double amp = mFractalBounding;
 
@@ -782,7 +784,7 @@ public class FastNoise
 
     private double genFractalFBm(double x, double y, double z)
     {
-        int seed = mSeed;
+        long seed = mSeed;
         double sum = 0;
         double amp = mFractalBounding;
 
@@ -806,7 +808,7 @@ public class FastNoise
 
     private double genFractalRidged(double x, double y)
     {
-        int seed = mSeed;
+        long seed = mSeed;
         double sum = 0;
         double amp = mFractalBounding;
 
@@ -826,7 +828,7 @@ public class FastNoise
 
     private double genFractalRidged(double x, double y, double z)
     {
-        int seed = mSeed;
+        long seed = mSeed;
         double sum = 0;
         double amp = mFractalBounding;
 
@@ -850,7 +852,7 @@ public class FastNoise
 
     private double genFractalPingPong(double x, double y)
     {
-        int seed = mSeed;
+        long seed = mSeed;
         double sum = 0;
         double amp = mFractalBounding;
 
@@ -870,7 +872,7 @@ public class FastNoise
 
     private double genFractalPingPong(double x, double y, double z)
     {
-        int seed = mSeed;
+        long seed = mSeed;
         double sum = 0;
         double amp = mFractalBounding;
 
@@ -892,7 +894,7 @@ public class FastNoise
 
     // Simplex/OpenSimplex2 Noise
 
-    private double singleSimplex(int seed, double x, double y)
+    private double singleSimplex(long seed, double x, double y)
     {
         // 2D OpenSimplex2 case uses the same algorithm as ordinary Simplex.
 
@@ -962,7 +964,7 @@ public class FastNoise
         return (n0 + n1 + n2) * 99.83685446303647f;
     }
 
-    private double singleOpenSimplex2(int seed, double x, double y, double z)
+    private double singleOpenSimplex2(long seed, double x, double y, double z)
     {
         // 3D OpenSimplex2 case uses two offset rotated cube grids.
 
@@ -1059,7 +1061,7 @@ public class FastNoise
 
     // OpenSimplex2S Noise
 
-    private double singleOpenSimplex2S(int seed, double x, double y)
+    private double singleOpenSimplex2S(long seed, double x, double y)
     {
         // 2D OpenSimplex2S case is a modified 2D simplex noise.
 
@@ -1189,7 +1191,7 @@ public class FastNoise
         return value * 18.24196194486065f;
     }
 
-    private double singleOpenSimplex2S(int seed, double x, double y, double z)
+    private double singleOpenSimplex2S(long seed, double x, double y, double z)
     {
         // 3D OpenSimplex2S case uses two offset rotated cube grids.
 
@@ -1210,7 +1212,7 @@ public class FastNoise
         i *= PrimeX;
         j *= PrimeY;
         k *= PrimeZ;
-        int seed2 = seed + 1293373;
+        long seed2 = seed + 1293373;
 
         int xNMask = (int)(-0.5f - xi);
         int yNMask = (int)(-0.5f - yi);
@@ -1384,7 +1386,7 @@ public class FastNoise
 
     // Cellular Noise
 
-    private double singleCellular(int seed, double x, double y)
+    private double singleCellular(long seed, double x, double y)
     {
         int xr = fastRound(x);
         int yr = fastRound(y);
@@ -1513,7 +1515,7 @@ public class FastNoise
         }
     }
 
-    private double singleCellular(int seed, double x, double y, double z)
+    private double singleCellular(long seed, double x, double y, double z)
     {
         int xr = fastRound(x);
         int yr = fastRound(y);
@@ -1669,7 +1671,7 @@ public class FastNoise
 
     // Perlin Noise
 
-    private double singlePerlin(int seed, double x, double y)
+    private double singlePerlin(long seed, double x, double y)
     {
         int x0 = fastFloor(x);
         int y0 = fastFloor(y);
@@ -1693,7 +1695,7 @@ public class FastNoise
         return lerp(xf0, xf1, ys) * 1.4247691104677813f;
     }
 
-    private double singlePerlin(int seed, double x, double y, double z)
+    private double singlePerlin(long seed, double x, double y, double z)
     {
         int x0 = fastFloor(x);
         int y0 = fastFloor(y);
@@ -1731,7 +1733,7 @@ public class FastNoise
 
     // Value Cubic Noise
 
-    private double singleValueCubic(int seed, double x, double y)
+    private double singleValueCubic(long seed, double x, double y)
     {
         int x1 = fastFloor(x);
         int y1 = fastFloor(y);
@@ -1760,7 +1762,7 @@ public class FastNoise
                 ys) * (1 / (1.5f * 1.5f));
     }
 
-    private double singleValueCubic(int seed, double x, double y, double z)
+    private double singleValueCubic(long seed, double x, double y, double z)
     {
         int x1 = fastFloor(x);
         int y1 = fastFloor(y);
@@ -1816,7 +1818,7 @@ public class FastNoise
 
     // Value Noise
 
-    private double singleValue(int seed, double x, double y)
+    private double singleValue(long seed, double x, double y)
     {
         int x0 = fastFloor(x);
         int y0 = fastFloor(y);
@@ -1835,7 +1837,7 @@ public class FastNoise
         return lerp(xf0, xf1, ys);
     }
 
-    private double singleValue(int seed, double x, double y, double z)
+    private double singleValue(long seed, double x, double y, double z)
     {
         int x0 = fastFloor(x);
         int y0 = fastFloor(y);
@@ -1866,7 +1868,7 @@ public class FastNoise
 
     // Domain Warp
 
-    private void doSingleDomainWarp(int seed, double amp, double freq, double x, double y, Vector2 coord)
+    private void doSingleDomainWarp(long seed, double amp, double freq, double x, double y, Vector2 coord)
     {
         switch (mDomainWarpType)
         {
@@ -1882,7 +1884,7 @@ public class FastNoise
         }
     }
 
-    private void doSingleDomainWarp(int seed, double amp, double freq, double x, double y, double z, Vector3 coord)
+    private void doSingleDomainWarp(long seed, double amp, double freq, double x, double y, double z, Vector3 coord)
     {
         switch (mDomainWarpType)
         {
@@ -1903,7 +1905,7 @@ public class FastNoise
 
     private void domainWarpSingle(Vector2 coord)
     {
-        int seed = mSeed;
+        long seed = mSeed;
         double amp = mDomainWarpAmp * mFractalBounding;
         double freq = mFrequency;
 
@@ -1929,7 +1931,7 @@ public class FastNoise
 
     private void domainWarpSingle(Vector3 coord)
     {
-        int seed = mSeed;
+        long seed = mSeed;
         double amp = mDomainWarpAmp * mFractalBounding;
         double freq = mFrequency;
 
@@ -1978,7 +1980,7 @@ public class FastNoise
 
     private void domainWarpFractalProgressive(Vector2 coord)
     {
-        int seed = mSeed;
+        long seed = mSeed;
         double amp = mDomainWarpAmp * mFractalBounding;
         double freq = mFrequency;
 
@@ -2011,7 +2013,7 @@ public class FastNoise
 
     private void domainWarpFractalProgressive(Vector3 coord)
     {
-        int seed = mSeed;
+        long seed = mSeed;
         double amp = mDomainWarpAmp * mFractalBounding;
         double freq = mFrequency;
 
@@ -2083,7 +2085,7 @@ public class FastNoise
                 break;
         }
 
-        int seed = mSeed;
+        long seed = mSeed;
         double amp = mDomainWarpAmp * mFractalBounding;
         double freq = mFrequency;
 
@@ -2136,7 +2138,7 @@ public class FastNoise
                 break;
         }
 
-        int seed = mSeed;
+        long seed = mSeed;
         double amp = mDomainWarpAmp * mFractalBounding;
         double freq = mFrequency;
 
@@ -2153,7 +2155,7 @@ public class FastNoise
 
     // Domain Warp Basic Grid
 
-    private void singleDomainWarpBasicGrid(int seed, double warpAmp, double frequency, double x, double y, Vector2 coord)
+    private void singleDomainWarpBasicGrid(long seed, double warpAmp, double frequency, double x, double y, Vector2 coord)
     {
         double xf = x * frequency;
         double yf = y * frequency;
@@ -2185,7 +2187,7 @@ public class FastNoise
         coord.y += lerp(ly0x, ly1x, ys) * warpAmp;
     }
 
-    private void singleDomainWarpBasicGrid(int seed, double warpAmp, double frequency, double x, double y, double z, Vector3 coord)
+    private void singleDomainWarpBasicGrid(long seed, double warpAmp, double frequency, double x, double y, double z, Vector3 coord)
     {
         double xf = x * frequency;
         double yf = y * frequency;
@@ -2245,7 +2247,7 @@ public class FastNoise
 
 
     // Domain Warp Simplex/OpenSimplex2
-    private void singleDomainWarpSimplexGradient(int seed, double warpAmp, double frequency, double x, double y, Vector2 coord, boolean outGradOnly)
+    private void singleDomainWarpSimplexGradient(long seed, double warpAmp, double frequency, double x, double y, Vector2 coord, boolean outGradOnly)
     {
         final double SQRT3 = 1.7320508075688772935274463415059f;
         final double G2 = (3 - SQRT3) / 6;
@@ -2402,7 +2404,7 @@ public class FastNoise
         coord.y += vy * warpAmp;
     }
 
-    private void singleDomainWarpOpenSimplex2Gradient(int seed, double warpAmp, double frequency, double x, double y, double z, Vector3 coord, boolean outGradOnly)
+    private void singleDomainWarpOpenSimplex2Gradient(long seed, double warpAmp, double frequency, double x, double y, double z, Vector3 coord, boolean outGradOnly)
     {
         x *= frequency;
         y *= frequency;

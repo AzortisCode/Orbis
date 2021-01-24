@@ -22,14 +22,23 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.noise;
+package com.azortis.orbis.object;
 
-public interface NoiseGenerator {
+import com.azortis.orbis.generator.OrbisChunkGenerator;
+import com.azortis.orbis.settings.DimensionSettings;
+import net.minestom.server.instance.InstanceContainer;
+import net.minestom.server.world.DimensionType;
 
-    double noise(double x);
+public class OrbisDimension {
 
-    double noise(double x, double y);
+    private String name;
+    private long seed;
+    private InstanceContainer instance;
+    private DimensionType environment;
+    private OrbisChunkGenerator chunkGenerator;
 
-    double noise(double x, double y, double z);
+    public OrbisDimension(DimensionSettings dimensionSettings){
+
+    }
 
 }

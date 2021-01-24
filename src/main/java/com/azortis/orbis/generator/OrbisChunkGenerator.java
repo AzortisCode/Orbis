@@ -22,12 +22,12 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.generation;
+package com.azortis.orbis.generator;
 
-import com.azortis.orbis.generation.terrain.OIdTerrain;
-import com.azortis.orbis.generation.terrain.defaults.TestOIdTerrain;
-import com.azortis.orbis.noise.NoiseGenerator;
-import com.azortis.orbis.noise.PerlinNoise;
+import com.azortis.orbis.old.terrain.OIdTerrain;
+import com.azortis.orbis.old.terrain.defaults.TestOIdTerrain;
+import com.azortis.orbis.generator.noise.NoiseGenerator;
+import com.azortis.orbis.generator.noise.PerlinNoise;
 import net.minestom.server.instance.Chunk;
 import net.minestom.server.instance.ChunkGenerator;
 import net.minestom.server.instance.ChunkPopulator;

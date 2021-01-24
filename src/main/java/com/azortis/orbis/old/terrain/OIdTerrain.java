@@ -22,10 +22,14 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.noise;
+package com.azortis.orbis.old.terrain;
 
-public interface OctaveNoise {
+import com.azortis.orbis.generator.noise.NoiseGenerator;
 
-    void setOctaves(int octaves);
+public interface OIdTerrain {
+
+    String getName();
+
+    double getTerrainHeight(int x, int z, NoiseGenerator noiseGenerator);
 
 }

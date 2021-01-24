@@ -22,9 +22,9 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.biome;
+package com.azortis.orbis.object;
 
-public class Biome {
+public class OrbisBiome {
 
     private String name;
 
