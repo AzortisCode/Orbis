@@ -35,6 +35,10 @@ public abstract class Terrain {
         this.biome = biome;
     }
 
+    public final Biome getBiome() {
+        return biome;
+    }
+
     public abstract String getName();
 
     public abstract TerrainType getType();

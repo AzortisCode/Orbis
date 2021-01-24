@@ -32,7 +32,8 @@ import java.util.List;
 public class Biome {
 
     private String name;
-    private Dimension dimension;
-    private List<Terrain> terrainLayers;
+
+    private transient Dimension dimension;
+    private transient List<Terrain> terrainLayers;
 
 }

@@ -24,8 +24,6 @@
 
 package com.azortis.orbis.registry;
 
-public abstract class Registry<T> {
-
-    
+public interface Registry<T> {
 
 }

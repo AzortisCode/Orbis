@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.settings.generator;
+package com.azortis.orbis;
 
-public class TerrainSettings {
+public class OrbisBuilder {
 }

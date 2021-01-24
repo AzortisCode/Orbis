@@ -22,22 +22,31 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis;
+package com.azortis.orbis.generator.terrain.defaults;
 
-public final class Orbis {
+import com.azortis.orbis.generator.biome.Biome;
+import com.azortis.orbis.generator.noise.NoiseGenerator;
+import com.azortis.orbis.generator.terrain.Terrain;
+import com.azortis.orbis.generator.terrain.TerrainType;
 
-    private static boolean initialised = false;
+public class PlainsTerrain extends Terrain {
 
-    private Orbis(){}
-
-    public static void initialise(OrbisSettings settings){
-        initialised = true;
+    public PlainsTerrain(Biome biome) {
+        super(biome);
     }
 
-    public static boolean isInitialised() {
-        return initialised;
+    @Override
+    public String getName() {
+        return "plains";
     }
 
+    @Override
+    public TerrainType getType() {
+        return TerrainType.JAVA;
+    }
 
-
+    @Override
+    public double getTerrainHeight(int x, int z, int min, int max, NoiseGenerator noise) {
+        return 0;
+    }
 }

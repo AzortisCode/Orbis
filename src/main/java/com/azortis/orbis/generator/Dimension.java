@@ -24,10 +24,10 @@
 
 package com.azortis.orbis.generator;
 
-public abstract class Dimension {
+public class Dimension {
 
     protected String name;
-    protected Engine engine;
+    protected transient Engine engine;
 
     public Dimension(String name){
         this.name = name;

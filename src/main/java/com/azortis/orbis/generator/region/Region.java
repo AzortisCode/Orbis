@@ -22,10 +22,7 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.settings;
+package com.azortis.orbis.generator.region;
 
-public class DimensionSettings {
-
-
-
+public class Region {
 }

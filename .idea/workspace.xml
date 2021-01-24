@@ -4,18 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7678a92e-b5f5-4d91-a874-bb8b5cc07377" name="Default Changelist" comment="Jonah you will mess arround with it now I ain't doing it alone anymore I'm confused AF">
+    <list default="true" id="7678a92e-b5f5-4d91-a874-bb8b5cc07377" name="Default Changelist" comment="More stuff">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/Orbis.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/Orbis.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/OrbisBootstrap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/OrbisBootstrap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/extension/OrbisExtension.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/BiomeGrid.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/OrbisChunkGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/old/terrain/OrbisChunkGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/Dimension.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/Dimension.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/biome/Biome.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/biome/Biome.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/terrain/ConfigTerrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/terrain/ConfigTerrain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/terrain/JavaScriptTerrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/terrain/JavaScriptTerrain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/terrain/Terrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/terrain/Terrain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/terrain/defaults/OrbisPlainsTerrain.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/object/OrbisBiome.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/biome/grid/BiomeGrid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/object/OrbisDimension.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/object/OrbisGenerator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/object/OrbisTerrain.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/registry/Registry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/registry/Registry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/settings/BiomeSettings.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/settings/DimensionSettings.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/settings/SettingsManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/settings/SettingsPackager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/settings/generator/GeneratorSettings.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/settings/generator/TerrainSettings.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,8 +29,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -78,7 +82,7 @@
       <workItem from="1611437921223" duration="8116000" />
       <workItem from="1611447070257" duration="1035000" />
       <workItem from="1611498871612" duration="5777000" />
-      <workItem from="1611514914501" duration="3313000" />
+      <workItem from="1611514914501" duration="8399000" />
     </task>
     <task id="LOCAL-00001" summary="Implemented license">
       <created>1611103122133</created>
@@ -136,7 +140,21 @@
       <option name="project" value="LOCAL" />
       <updated>1611506055528</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="More stuff">
+      <created>1611518269482</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1611518269482</updated>
+    </task>
+    <task id="LOCAL-00010" summary="More stuff">
+      <created>1611518276666</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1611518276666</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -162,6 +180,7 @@
     <MESSAGE value="Added FastNoise,&#10;TODO make it accept a long seed &amp; improve terrain smoothing and test it out more" />
     <MESSAGE value="More" />
     <MESSAGE value="Jonah you will mess arround with it now I ain't doing it alone anymore I'm confused AF" />
-    <option name="LAST_COMMIT_MESSAGE" value="Jonah you will mess arround with it now I ain't doing it alone anymore I'm confused AF" />
+    <MESSAGE value="More stuff" />
+    <option name="LAST_COMMIT_MESSAGE" value="More stuff" />
   </component>
 </project>

@@ -79,11 +79,11 @@ public class OrbisBootstrap {
         MinecraftServer.getCommandManager().register(new StopCommand());
 
         minecraftServer.start("127.0.0.1", 25565, (playerConnection, responseData) -> {
-            responseData.setMaxPlayer(0);
+            responseData.setMaxPlayer(5);
             responseData.setOnline(MinecraftServer.getConnectionManager().getOnlinePlayers().size());
             responseData.addPlayer("A name", UUID.randomUUID());
             responseData.addPlayer("Could be some message", UUID.randomUUID());
-            responseData.setDescription("IP test: " + playerConnection.getRemoteAddress());
+            responseData.setDescription("Orbis Test Server");
         });
     }
 

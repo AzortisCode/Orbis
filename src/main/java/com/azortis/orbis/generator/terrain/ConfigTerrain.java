@@ -24,5 +24,27 @@
 
 package com.azortis.orbis.generator.terrain;
 
-public class ConfigTerrain {
+import com.azortis.orbis.generator.biome.Biome;
+import com.azortis.orbis.generator.noise.NoiseGenerator;
+
+public class ConfigTerrain extends Terrain{
+
+    public ConfigTerrain(Biome biome) {
+        super(biome);
+    }
+
+    @Override
+    public String getName() {
+        return null;
+    }
+
+    @Override
+    public TerrainType getType() {
+        return TerrainType.CONFIG;
+    }
+
+    @Override
+    public double getTerrainHeight(int x, int z, int min, int max, NoiseGenerator noise) {
+        return 0;
+    }
 }

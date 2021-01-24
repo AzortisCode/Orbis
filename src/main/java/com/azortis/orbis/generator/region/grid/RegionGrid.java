@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.settings;
+package com.azortis.orbis.generator.region.grid;
 
-public class BiomeSettings {
+public interface RegionGrid {
 }
