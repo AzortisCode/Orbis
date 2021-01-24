@@ -22,7 +22,10 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.generator.terrain.defaults;
+package com.azortis.orbis.registry;
 
-public class OrbisPlainsTerrain {
+public abstract class Registry<T> {
+
+    
+
 }

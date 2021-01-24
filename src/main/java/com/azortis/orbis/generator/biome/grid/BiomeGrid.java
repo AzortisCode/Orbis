@@ -22,12 +22,16 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.object;
+package com.azortis.orbis.generator.biome.grid;
 
-public class OrbisBiome {
+import com.azortis.orbis.generator.biome.Biome;
 
-    private String name;
+public interface BiomeGrid {
 
+    Biome[] getBiomeArray();
 
+    Biome getBiomeAt(int x, int z);
+
+    Biome getBiomeAt(int x, int y, int z);
 
 }

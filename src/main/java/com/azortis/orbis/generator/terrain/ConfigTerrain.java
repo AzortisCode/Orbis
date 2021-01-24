@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.generator;
+package com.azortis.orbis.generator.terrain;
 
-public class BiomeGrid {
+public class ConfigTerrain {
 }
