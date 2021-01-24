@@ -38,9 +38,9 @@ public class TestOIdTerrain implements OIdTerrain {
 
     @Override
     public double getTerrainHeight(int x, int z, NoiseGenerator noise) {
-        double height = noise.noise(x / 800f, z / 800f) * 80;
-        height += noise.noise(x / 100f, z / 100f) * 10;
-        height += noise.noise(x / 20f, z / 20f) * 0.5f;
+        double height = noise.noise(x / 400f, z / 400f) * 100;
+        height += noise.noise(x / 50f, z / 50f) * 10;
+        height += Math.abs(noise.noise(x / 12f, z / 12f) * 1);
         return baseHeight + height;
     }
 

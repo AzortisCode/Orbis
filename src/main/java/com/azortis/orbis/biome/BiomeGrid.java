@@ -24,8 +24,5 @@
 
 package com.azortis.orbis.biome;
 
-public class BiomeDistributor {
-
-
-
+public class BiomeGrid {
 }

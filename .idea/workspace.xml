@@ -4,17 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7678a92e-b5f5-4d91-a874-bb8b5cc07377" name="Default Changelist" comment="More structured mess">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+    <list default="true" id="7678a92e-b5f5-4d91-a874-bb8b5cc07377" name="Default Changelist" comment="Added FastNoise,&#10;TODO make it accept a long seed &amp; improve terrain smoothing and test it out more">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dependency-reduced-pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/biome/BiomeDistributor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/extension/OrbisExtension.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/extension/OrbisExtension.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generation/OrbisChunkGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generation/OrbisChunkGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generation/terrain/OIdTerrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generation/terrain/OIdTerrain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/biome/BiomeDistributor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/biome/BiomeGrid.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generation/terrain/defaults/TestOIdTerrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generation/terrain/defaults/TestOIdTerrain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/noise/NoiseGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/noise/NoiseGeneratorOld.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/noise/OpenSimplexNoise.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/noise/OpenSimplexNoiseOld.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/noise/PerlinNoise.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/noise/PerlinNoise.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -75,7 +68,8 @@
       <workItem from="1611164393223" duration="16773000" />
       <workItem from="1611348136591" duration="9345000" />
       <workItem from="1611365443277" duration="1112000" />
-      <workItem from="1611437921223" duration="7856000" />
+      <workItem from="1611437921223" duration="8116000" />
+      <workItem from="1611447070257" duration="364000" />
     </task>
     <task id="LOCAL-00001" summary="Implemented license">
       <created>1611103122133</created>
@@ -105,7 +99,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611360646243</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Added FastNoise,&#10;TODO make it accept a long seed &amp; improve terrain smoothing and test it out more">
+      <created>1611446035078</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1611446035078</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -128,6 +129,7 @@
     <MESSAGE value="Some stuff idk still conceptializing most of it" />
     <MESSAGE value="More mess" />
     <MESSAGE value="More structured mess" />
-    <option name="LAST_COMMIT_MESSAGE" value="More structured mess" />
+    <MESSAGE value="Added FastNoise,&#10;TODO make it accept a long seed &amp; improve terrain smoothing and test it out more" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added FastNoise,&#10;TODO make it accept a long seed &amp; improve terrain smoothing and test it out more" />
   </component>
 </project>

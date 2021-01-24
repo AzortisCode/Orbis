@@ -32,8 +32,8 @@ public class PerlinNoise implements NoiseGenerator, OctaveNoise{
         noise = new FastNoise(seed);
         noise.setNoiseType(FastNoise.NoiseType.Perlin);
         noise.setRotationType3D(FastNoise.RotationType3D.ImproveXZPlanes);
-        noise.setFractalOctaves(5);
-        noise.setFrequency(2);
+        noise.setFractalOctaves(7);
+        noise.setFrequency(1);
     }
 
     @Override
