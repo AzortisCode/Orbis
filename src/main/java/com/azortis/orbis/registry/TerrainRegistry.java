@@ -24,12 +24,26 @@
 
 package com.azortis.orbis.registry;
 
+import com.azortis.orbis.generator.terrain.ConfigTerrain;
+import com.azortis.orbis.generator.terrain.JavaScriptTerrain;
 import com.azortis.orbis.generator.terrain.Terrain;
+import com.azortis.orbis.generator.terrain.defaults.PlainsTerrain;
 
-import java.util.HashMap;
+import java.util.*;
 
-public class TerrainRegistry implements Registry<Terrain> {
+public class TerrainRegistry {
 
-    //private HashMap<String, String>
+    private final Map<String, Class<? extends Terrain>> providerIdTerrainMap = new HashMap<>();
+
+    public TerrainRegistry(){
+        // Register default terrain classes.
+        providerIdTerrainMap.put("orbis:config", ConfigTerrain.class);
+        providerIdTerrainMap.put("orbis:javascript", JavaScriptTerrain.class);
+        providerIdTerrainMap.put("orbis:plains", PlainsTerrain.class);
+    }
+
+    public void registerTerrainClass(String providerId, Class<? extends Terrain> terrainClass){
+
+    }
 
 }

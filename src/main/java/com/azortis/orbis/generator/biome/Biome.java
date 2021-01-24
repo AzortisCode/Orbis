@@ -25,15 +25,15 @@
 package com.azortis.orbis.generator.biome;
 
 import com.azortis.orbis.generator.Dimension;
-import com.azortis.orbis.generator.terrain.Terrain;
+import com.azortis.orbis.generator.terrain.TerrainLayer;
 
 import java.util.List;
 
 public class Biome {
 
     private String name;
+    private List<TerrainLayer> terrainLayers;
 
     private transient Dimension dimension;
-    private transient List<Terrain> terrainLayers;
 
 }

@@ -29,17 +29,31 @@ import com.azortis.orbis.generator.noise.NoiseGenerator;
 
 public abstract class Terrain {
 
-    protected transient Biome biome;
+    protected String name;
+    protected String providerId;
+    private transient Biome biome;
 
-    public Terrain(Biome biome){
-        this.biome = biome;
+    public Terrain(){}
+
+    public Terrain(String name){
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getProviderId() {
+        return providerId;
+    }
+
+    public void setBiome(Biome biome){
+        if (biome != null)this.biome = biome;
     }
 
     public final Biome getBiome() {
         return biome;
     }
-
-    public abstract String getName();
 
     public abstract TerrainType getType();
 

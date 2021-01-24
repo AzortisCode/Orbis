@@ -22,8 +22,23 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.registry;
+package com.azortis.orbis.generator.terrain;
 
-public interface Registry<T> {
+public class TerrainLayer {
 
+    private Terrain terrain;
+    private int max;
+    private int min;
+
+    public Terrain getTerrain() {
+        return terrain;
+    }
+
+    public int getMax() {
+        return max;
+    }
+
+    public int getMin() {
+        return min;
+    }
 }

@@ -24,18 +24,12 @@
 
 package com.azortis.orbis.generator.terrain;
 
-import com.azortis.orbis.generator.biome.Biome;
 import com.azortis.orbis.generator.noise.NoiseGenerator;
 
 public class JavaScriptTerrain extends Terrain{
 
-    public JavaScriptTerrain(Biome biome) {
-        super(biome);
-    }
-
-    @Override
-    public String getName() {
-        return null;
+    public JavaScriptTerrain(String name) {
+        super(name);
     }
 
     @Override

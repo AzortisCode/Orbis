@@ -24,18 +24,12 @@
 
 package com.azortis.orbis.generator.terrain;
 
-import com.azortis.orbis.generator.biome.Biome;
 import com.azortis.orbis.generator.noise.NoiseGenerator;
 
 public class ConfigTerrain extends Terrain{
 
-    public ConfigTerrain(Biome biome) {
-        super(biome);
-    }
-
-    @Override
-    public String getName() {
-        return null;
+    public ConfigTerrain(String name) {
+        super(name);
     }
 
     @Override

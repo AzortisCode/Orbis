@@ -24,20 +24,14 @@
 
 package com.azortis.orbis.generator.terrain.defaults;
 
-import com.azortis.orbis.generator.biome.Biome;
 import com.azortis.orbis.generator.noise.NoiseGenerator;
 import com.azortis.orbis.generator.terrain.Terrain;
 import com.azortis.orbis.generator.terrain.TerrainType;
 
 public class PlainsTerrain extends Terrain {
 
-    public PlainsTerrain(Biome biome) {
-        super(biome);
-    }
-
-    @Override
-    public String getName() {
-        return "plains";
+    public PlainsTerrain(String name) {
+        super(name);
     }
 
     @Override

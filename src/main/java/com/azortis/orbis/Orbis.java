@@ -24,8 +24,11 @@
 
 package com.azortis.orbis;
 
+import com.google.gson.Gson;
+
 public final class Orbis {
 
+    private static Gson gson;
     private static boolean initialised = false;
 
     private Orbis(){}
