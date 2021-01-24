@@ -22,31 +22,20 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.settings;
+package com.azortis.orbis.registry.adapter;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.azortis.orbis.generator.terrain.Terrain;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
 
-import java.io.File;
+import java.lang.reflect.Type;
 
-public class SettingsManager {
+public class TerrainAdapter implements JsonDeserializer<Terrain> {
 
-    private final Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
-
-    // Root data folder
-    private final File dataFolder;
-
-    // Generation config folders
-
-    public SettingsManager(File dataFolder){
-        this.dataFolder = dataFolder;
-        
+    @Override
+    public Terrain deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
+        return null;
     }
-
-    public File getDataFolder() {
-        return dataFolder;
-    }
-
-
-
 }

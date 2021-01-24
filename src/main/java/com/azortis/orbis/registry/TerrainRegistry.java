@@ -22,14 +22,14 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.settings;
+package com.azortis.orbis.registry;
 
-/**
- * A class for packaging dimension configurations into one *.orbis file.
- * For a better means of distributing data.
- */
-public class SettingsPackager {
+import com.azortis.orbis.generator.terrain.Terrain;
 
+import java.util.HashMap;
 
+public class TerrainRegistry implements Registry<Terrain> {
+
+    //private HashMap<String, String>
 
 }
