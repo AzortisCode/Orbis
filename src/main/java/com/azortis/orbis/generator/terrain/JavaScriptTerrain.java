@@ -24,21 +24,5 @@
 
 package com.azortis.orbis.generator.terrain;
 
-import com.azortis.orbis.generator.biome.Biome;
-import com.azortis.orbis.generator.noise.NoiseGenerator;
-
-public abstract class Terrain {
-
-    protected transient Biome biome;
-
-    public Terrain(Biome biome){
-        this.biome = biome;
-    }
-
-    public abstract String getName();
-
-    public abstract TerrainType getType();
-
-    public abstract double getTerrainHeight(final int x, final int z, final int min, final int max, NoiseGenerator noise);
-
+public class JavaScriptTerrain {
 }

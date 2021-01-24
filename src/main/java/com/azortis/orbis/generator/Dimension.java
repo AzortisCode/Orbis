@@ -22,23 +22,15 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.generator.terrain;
+package com.azortis.orbis.generator;
 
-import com.azortis.orbis.generator.biome.Biome;
-import com.azortis.orbis.generator.noise.NoiseGenerator;
+public abstract class Dimension {
 
-public abstract class Terrain {
+    protected String name;
+    protected Engine engine;
 
-    protected transient Biome biome;
-
-    public Terrain(Biome biome){
-        this.biome = biome;
+    public Dimension(String name){
+        this.name = name;
     }
-
-    public abstract String getName();
-
-    public abstract TerrainType getType();
-
-    public abstract double getTerrainHeight(final int x, final int z, final int min, final int max, NoiseGenerator noise);
 
 }

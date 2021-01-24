@@ -22,27 +22,17 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.object;
+package com.azortis.orbis.generator.biome;
 
+import com.azortis.orbis.generator.Dimension;
 import com.azortis.orbis.generator.terrain.Terrain;
 
-public class OrbisTerrain {
+import java.util.List;
 
+public class Biome {
 
+    private String name;
+    private Dimension dimension;
+    private List<Terrain> terrainLayers;
 
-    public enum TerrainType {
-        /**
-         * Terrain code that is provided using Java classes implementing {@link Terrain}
-         */
-        JAVA,
-        /**
-         * TODO Add javascript terrain parser
-         * Terrain code that is provided using JavaScripts parsed by {@link }
-         */
-        JAVASCRIPT,
-        /**
-         * Terrain provided by configuration files.
-         */
-        CONFIG
-    }
 }

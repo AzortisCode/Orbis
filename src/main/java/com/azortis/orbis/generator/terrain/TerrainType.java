@@ -22,23 +22,22 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.object;
+package com.azortis.orbis.generator.terrain;
 
-import com.azortis.orbis.generator.OrbisChunkGenerator;
-import com.azortis.orbis.settings.DimensionSettings;
-import net.minestom.server.instance.InstanceContainer;
-import net.minestom.server.world.DimensionType;
-
-public class OrbisDimension {
-
-    private String name;
-    private long seed;
-    private InstanceContainer instance;
-    private DimensionType environment;
-    private OrbisChunkGenerator chunkGenerator;
-
-    public OrbisDimension(DimensionSettings dimensionSettings){
-
-    }
-
+public enum TerrainType {
+    /**
+     * Represents a terrain generation algorithm provided a java class.
+     * Has the functionality to be configured.
+     */
+    JAVA,
+    /**
+     * Represents a terrain generation algorithm provided by a JavaScript script.
+     * Provided by {@link JavaScriptTerrain}
+     */
+    JAVASCRIPT,
+    /**
+     * Represents a terrain generation algorithm provided by {@link ConfigTerrain}.
+     * Uses same settings parameter.
+     */
+    CONFIG
 }

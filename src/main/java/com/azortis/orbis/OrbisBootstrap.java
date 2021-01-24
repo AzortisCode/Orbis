@@ -24,7 +24,7 @@
 
 package com.azortis.orbis;
 
-import com.azortis.orbis.generator.OrbisChunkGenerator;
+import com.azortis.orbis.old.terrain.OrbisChunkGenerator;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.entity.GameMode;
 import net.minestom.server.entity.Player;

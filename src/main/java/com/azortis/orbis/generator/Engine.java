@@ -22,22 +22,15 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.extension;
+package com.azortis.orbis.generator;
 
-import com.azortis.orbis.settings.SettingsManager;
-import net.minestom.server.extensions.Extension;
+import com.azortis.orbis.generator.biome.grid.BiomeGrid;
+import net.minestom.server.instance.ChunkGenerator;
 
-public class OrbisExtension extends Extension {
+public abstract class Engine implements ChunkGenerator {
 
-    private SettingsManager settingsManager;
+    protected Engine engine;
+    protected BiomeGrid biomeGrid;
 
-    @Override
-    public void initialize() {
 
-    }
-
-    @Override
-    public void terminate() {
-
-    }
 }

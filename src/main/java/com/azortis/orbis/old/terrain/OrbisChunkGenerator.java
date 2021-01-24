@@ -22,9 +22,8 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.generator;
+package com.azortis.orbis.old.terrain;
 
-import com.azortis.orbis.old.terrain.OIdTerrain;
 import com.azortis.orbis.old.terrain.defaults.TestOIdTerrain;
 import com.azortis.orbis.generator.noise.NoiseGenerator;
 import com.azortis.orbis.generator.noise.PerlinNoise;

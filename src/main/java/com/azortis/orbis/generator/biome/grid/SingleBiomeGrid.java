@@ -22,7 +22,30 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.object;
+package com.azortis.orbis.generator.biome.grid;
 
-public class OrbisGenerator {
+import com.azortis.orbis.generator.biome.Biome;
+
+public class SingleBiomeGrid implements BiomeGrid {
+
+    private final Biome biome;
+
+    public SingleBiomeGrid(Biome biome){
+        this.biome = biome;
+    }
+
+    @Override
+    public Biome[] getBiomeArray() {
+        return new Biome[]{biome};
+    }
+
+    @Override
+    public Biome getBiomeAt(int x, int z) {
+        return biome;
+    }
+
+    @Override
+    public Biome getBiomeAt(int x, int y, int z) {
+        return biome;
+    }
 }
