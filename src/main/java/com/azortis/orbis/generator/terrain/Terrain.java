@@ -22,10 +22,14 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.generation;
+package com.azortis.orbis.generator.terrain;
 
 
-public class Terrain {
+import com.azortis.orbis.object.OrbisTerrain;
+
+public interface Terrain {
+
+    OrbisTerrain.TerrainType getTerrainType();
 
 
 
