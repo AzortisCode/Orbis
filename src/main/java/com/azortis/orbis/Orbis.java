@@ -25,7 +25,7 @@
 package com.azortis.orbis;
 
 import com.azortis.orbis.generator.terrain.Terrain;
-import com.azortis.orbis.registry.TerrainRegistry;
+import com.azortis.orbis.registry.*;
 import com.azortis.orbis.registry.adapter.TerrainAdapter;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -43,6 +43,7 @@ public final class Orbis {
     private static File directory;
 
     // Registries
+    private static DimensionRegistry dimensionRegistry;
     private static TerrainRegistry terrainRegistry;
 
     private Orbis() {
@@ -53,6 +54,7 @@ public final class Orbis {
             initialised = true;
 
             // Load registries
+            dimensionRegistry = new DimensionRegistry();
             terrainRegistry = new TerrainRegistry();
 
             // GsonBuilder
@@ -80,6 +82,10 @@ public final class Orbis {
     }
 
     // Registries
+
+    public static DimensionRegistry getDimensionRegistry() {
+        return dimensionRegistry;
+    }
 
     public static TerrainRegistry getTerrainRegistry() {
         return terrainRegistry;

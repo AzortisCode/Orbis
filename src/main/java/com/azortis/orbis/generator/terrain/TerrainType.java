@@ -26,7 +26,7 @@ package com.azortis.orbis.generator.terrain;
 
 public enum TerrainType {
     /**
-     * Represents a terrain generation algorithm provided a java class.
+     * Represents a terrain generation algorithm provided a java class extending {@link Terrain}.
      * Has the functionality to be configured.
      */
     JAVA,
@@ -37,7 +37,7 @@ public enum TerrainType {
     JAVASCRIPT,
     /**
      * Represents a terrain generation algorithm provided by {@link ConfigTerrain}.
-     * Uses same settings parameter.
+     * Uses same settings parameters.
      */
     CONFIG
 }

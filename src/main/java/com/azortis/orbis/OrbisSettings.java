@@ -29,6 +29,7 @@ import java.io.File;
 public class OrbisSettings {
 
     private File orbisFolder;
+    private boolean studioMode = false;
 
 
     public OrbisSettings setOrbisFolder(File folder){
@@ -40,6 +41,13 @@ public class OrbisSettings {
         return orbisFolder;
     }
 
-    
+    public OrbisSettings setStudioMode(boolean studioMode){
+        this.studioMode = studioMode;
+        return this;
+    }
+
+    public boolean isStudioMode() {
+        return studioMode;
+    }
 
 }

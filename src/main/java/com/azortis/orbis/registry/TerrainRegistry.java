@@ -42,6 +42,7 @@ import java.util.*;
 
 public class TerrainRegistry {
 
+    public static final String NAME_REGEX = "^([a-z]+)$";
     public static final String NAMESPACE_ID_REGEX = "^([a-z]+):([a-z]+)$";
     private final File terrainFolder;
     private final Map<String, Class<? extends Terrain>> namespaceIdTerrainMap = new HashMap<>();
@@ -68,38 +69,50 @@ public class TerrainRegistry {
      * @return A terrain instance with the necessary context for generation.
      */
     public Terrain loadTerrain(String terrainName, Biome context) {
-        final File terrainFile = new File(terrainFolder, terrainName + ".json");
-        try {
-            final Terrain terrain = Orbis.getGson().fromJson(new FileReader(terrainFile), Terrain.class);
-            terrain.setBiome(context);
-            return terrain;
-        } catch (FileNotFoundException ex) {
-            Orbis.getLogger().error("No terrain file by the name: " + terrainName + " exists!");
+        if (terrainName.matches(NAME_REGEX)) {
+            final File terrainFile = new File(terrainFolder, terrainName + ".json");
+            try {
+                final Terrain terrain = Orbis.getGson().fromJson(new FileReader(terrainFile), Terrain.class);
+                terrain.setBiome(context);
+                return terrain;
+            } catch (FileNotFoundException ex) {
+                Orbis.getLogger().error("No terrain file by the name: " + terrainName + " exists!");
+            }
+        } else {
+            Orbis.getLogger().error(terrainName + " is an invalid terrain name!");
         }
         return null;
     }
 
     public boolean createTerrainFile(String namespaceId, String terrainName) {
-        final File terrainFile = new File(terrainFolder, terrainName + ".json");
-        if (!namespaceIdTerrainMap.containsKey(namespaceId)) {
-            Orbis.getLogger().error("Terrain namespaceId: " + namespaceId + " doesn't exist, file creation aborted!");
-        } else if (terrainFile.exists()) {
-            Orbis.getLogger().error("Terrain by name: " + terrainName + " already exists!");
-        } else {
-            try {
-                if (terrainFile.createNewFile()) {
-                    final Terrain terrain = namespaceIdTerrainMap.get(namespaceId).getConstructor(String.class, String.class).newInstance(terrainName, namespaceId);
-                    final String json = Orbis.getGson().toJson(terrain, namespaceIdTerrainMap.get(namespaceId));
-                    Files.write(terrainFile.toPath(), json.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.WRITE);
-                    return true;
+        if (namespaceId.matches(NAMESPACE_ID_REGEX)) {
+            if (terrainName.matches(NAME_REGEX)) {
+                final File terrainFile = new File(terrainFolder, terrainName + ".json");
+                if (!namespaceIdTerrainMap.containsKey(namespaceId)) {
+                    Orbis.getLogger().error("Terrain namespaceId: " + namespaceId + " doesn't exist, file creation aborted!");
+                } else if (terrainFile.exists()) {
+                    Orbis.getLogger().error("Terrain by name: " + terrainName + " already exists!");
+                } else {
+                    try {
+                        if (terrainFile.createNewFile()) {
+                            final Terrain terrain = namespaceIdTerrainMap.get(namespaceId).getConstructor(String.class, String.class).newInstance(terrainName, namespaceId);
+                            final String json = Orbis.getGson().toJson(terrain, namespaceIdTerrainMap.get(namespaceId));
+                            Files.write(terrainFile.toPath(), json.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.WRITE);
+                            return true;
+                        }
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                        Orbis.getLogger().error("Unable to create terrain file: " + terrainName + ".json!");
+                    } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException ex) {
+                        ex.printStackTrace();
+                        Orbis.getLogger().error("Something went wrong with Terrain type registry!");
+                    }
                 }
-            } catch (IOException ex) {
-                ex.printStackTrace();
-                Orbis.getLogger().error("Unable to create terrain file: " + terrainName + ".json!");
-            } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException ex) {
-                ex.printStackTrace();
-                Orbis.getLogger().error("Something went wrong with Terrain type registry!");
+            } else {
+                Orbis.getLogger().error(terrainName + " is an invalid terrain name!");
             }
+        } else {
+            Orbis.getLogger().error(namespaceId + " is an invalid namespaceId!");
         }
         return false;
     }
@@ -113,7 +126,7 @@ public class TerrainRegistry {
                     Orbis.getLogger().error("Namespace \"orbis\" cannot be used in external code.");
                 }
             } else {
-                Orbis.getLogger().error("NamespaceId: " + namespaceId + " doesn't comply to the naming scheme.");
+                Orbis.getLogger().error(namespaceId + " is an invalid namespaceId!");
             }
         }
         return false;
