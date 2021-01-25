@@ -42,9 +42,9 @@ import java.util.*;
 
 public class TerrainRegistry {
 
-    public static final String PROVIDER_ID_REGEX = "^([a-z]+):([a-z]+)$";
+    public static final String NAMESPACE_ID_REGEX = "^([a-z]+):([a-z]+)$";
     private final File terrainFolder;
-    private final Map<String, Class<? extends Terrain>> providerIdTerrainMap = new HashMap<>();
+    private final Map<String, Class<? extends Terrain>> namespaceIdTerrainMap = new HashMap<>();
 
     public TerrainRegistry() {
         this.terrainFolder = new File(Orbis.getDirectory(), "/settings/generator/terrain/");
@@ -54,9 +54,9 @@ public class TerrainRegistry {
             }
         }
         // Register default terrain classes.
-        providerIdTerrainMap.put("orbis:config", ConfigTerrain.class);
-        providerIdTerrainMap.put("orbis:javascript", JavaScriptTerrain.class);
-        providerIdTerrainMap.put("orbis:plains", PlainsTerrain.class);
+        namespaceIdTerrainMap.put("orbis:config", ConfigTerrain.class);
+        namespaceIdTerrainMap.put("orbis:javascript", JavaScriptTerrain.class);
+        namespaceIdTerrainMap.put("orbis:plains", PlainsTerrain.class);
     }
 
     /**
@@ -79,17 +79,17 @@ public class TerrainRegistry {
         return null;
     }
 
-    public boolean createTerrainFile(String providerId, String terrainName) {
+    public boolean createTerrainFile(String namespaceId, String terrainName) {
         final File terrainFile = new File(terrainFolder, terrainName + ".json");
-        if (!providerIdTerrainMap.containsKey(providerId)) {
-            Orbis.getLogger().error("Terrain providerId: " + providerId + " doesn't exist, file creation aborted!");
+        if (!namespaceIdTerrainMap.containsKey(namespaceId)) {
+            Orbis.getLogger().error("Terrain namespaceId: " + namespaceId + " doesn't exist, file creation aborted!");
         } else if (terrainFile.exists()) {
             Orbis.getLogger().error("Terrain by name: " + terrainName + " already exists!");
         } else {
             try {
                 if (terrainFile.createNewFile()) {
-                    final Terrain terrain = providerIdTerrainMap.get(providerId).getConstructor(String.class, String.class).newInstance(terrainName, providerId);
-                    final String json = Orbis.getGson().toJson(terrain, providerIdTerrainMap.get(providerId));
+                    final Terrain terrain = namespaceIdTerrainMap.get(namespaceId).getConstructor(String.class, String.class).newInstance(terrainName, namespaceId);
+                    final String json = Orbis.getGson().toJson(terrain, namespaceIdTerrainMap.get(namespaceId));
                     Files.write(terrainFile.toPath(), json.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.WRITE);
                     return true;
                 }
@@ -104,35 +104,35 @@ public class TerrainRegistry {
         return false;
     }
 
-    public boolean registerTerrainClass(String providerId, Class<? extends Terrain> terrainClass) {
-        if (!providerIdTerrainMap.containsKey(providerId)) {
-            if (providerId.matches(PROVIDER_ID_REGEX)) {
-                if (!providerId.split(":")[0].equals("orbis")) { // Prevent the default namespace being used by external code.
-                    providerIdTerrainMap.put(providerId, terrainClass);
+    public boolean registerTerrainClass(String namespaceId, Class<? extends Terrain> terrainClass) {
+        if (!namespaceIdTerrainMap.containsKey(namespaceId)) {
+            if (namespaceId.matches(NAMESPACE_ID_REGEX)) {
+                if (!namespaceId.split(":")[0].equals("orbis")) { // Prevent the default namespace being used by external code.
+                    namespaceIdTerrainMap.put(namespaceId, terrainClass);
                 } else {
                     Orbis.getLogger().error("Namespace \"orbis\" cannot be used in external code.");
                 }
             } else {
-                Orbis.getLogger().error("ProviderId: " + providerId + " doesn't comply to the naming scheme.");
+                Orbis.getLogger().error("NamespaceId: " + namespaceId + " doesn't comply to the naming scheme.");
             }
         }
         return false;
     }
 
-    public boolean hasProviderId(String providerId) {
-        return providerIdTerrainMap.containsKey(providerId);
+    public boolean hasNamespaceId(String providerId) {
+        return namespaceIdTerrainMap.containsKey(providerId);
     }
 
     public Class<? extends Terrain> getTerrainClass(String providerId) {
-        return providerIdTerrainMap.get(providerId);
+        return namespaceIdTerrainMap.get(providerId);
     }
 
-    public Collection<String> getRegisteredProviderIds() {
-        return providerIdTerrainMap.keySet();
+    public Collection<String> getRegisteredNamespaceIds() {
+        return namespaceIdTerrainMap.keySet();
     }
 
     public Collection<Class<? extends Terrain>> getRegisteredTerrainClasses() {
-        return providerIdTerrainMap.values();
+        return namespaceIdTerrainMap.values();
     }
 
 }

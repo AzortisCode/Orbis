@@ -22,17 +22,7 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.generator;
+package com.azortis.orbis.registry;
 
-public class Dimension {
-
-    protected String name;
-    
-
-    protected transient Engine engine;
-
-    public Dimension(String name){
-        this.name = name;
-    }
-
+public class DimensionRegistry {
 }

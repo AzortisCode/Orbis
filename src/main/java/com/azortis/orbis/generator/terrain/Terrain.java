@@ -30,23 +30,23 @@ import com.azortis.orbis.generator.noise.NoiseGenerator;
 public abstract class Terrain {
 
     protected String name;
-    protected String providerId;
+    protected String namespaceId;
     private transient Biome biome;
 
     // Used for deserialization for gson, more stable.
     private Terrain(){}
 
-    public Terrain(String name, String providerId){
+    public Terrain(String name, String namespaceId){
         this.name = name;
-        this.providerId = providerId;
+        this.namespaceId = namespaceId;
     }
 
     public final String getName() {
         return name;
     }
 
-    public final String getProviderId() {
-        return providerId;
+    public final String getNamespaceId() {
+        return namespaceId;
     }
 
     public final void setBiome(Biome biome){

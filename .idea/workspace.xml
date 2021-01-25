@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7678a92e-b5f5-4d91-a874-bb8b5cc07377" name="Default Changelist" comment="Finished TerrainRegistry &amp; TerrainAdapter">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/terrain/ConfigTerrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/terrain/ConfigTerrain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/terrain/JavaScriptTerrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/terrain/JavaScriptTerrain.java" afterDir="false" />
+    <list default="true" id="7678a92e-b5f5-4d91-a874-bb8b5cc07377" name="Default Changelist" comment="Made changes to prevent unsafe instantiation of Terrain.java, also made providerId a required value for the constructor, to make sure it gets loaded correctly in TerrainRegistry.java">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/OrbisBootstrap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/OrbisBootstrap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/Dimension.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/Dimension.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/noise/FastNoise.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/noise/FastNoise.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/terrain/Terrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/terrain/Terrain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/terrain/defaults/PlainsTerrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/terrain/defaults/PlainsTerrain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/old/terrain/OrbisChunkGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/old/terrain/OldChunkGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/registry/TerrainRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/registry/TerrainRegistry.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -19,9 +21,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -74,7 +76,7 @@
       <workItem from="1611447070257" duration="1035000" />
       <workItem from="1611498871612" duration="5777000" />
       <workItem from="1611514914501" duration="14237000" />
-      <workItem from="1611603949498" duration="3965000" />
+      <workItem from="1611603949498" duration="7219000" />
     </task>
     <task id="LOCAL-00001" summary="Implemented license">
       <created>1611103122133</created>
@@ -174,7 +176,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611607762855</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Made changes to prevent unsafe instantiation of Terrain.java, also made providerId a required value for the constructor, to make sure it gets loaded correctly in TerrainRegistry.java">
+      <created>1611608119475</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1611608119475</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -204,6 +213,7 @@
     <MESSAGE value="Finally taking some shape huh" />
     <MESSAGE value="Working on terrain registry" />
     <MESSAGE value="Finished TerrainRegistry &amp; TerrainAdapter" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished TerrainRegistry &amp; TerrainAdapter" />
+    <MESSAGE value="Made changes to prevent unsafe instantiation of Terrain.java, also made providerId a required value for the constructor, to make sure it gets loaded correctly in TerrainRegistry.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="Made changes to prevent unsafe instantiation of Terrain.java, also made providerId a required value for the constructor, to make sure it gets loaded correctly in TerrainRegistry.java" />
   </component>
 </project>

@@ -40,7 +40,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-public class OrbisChunkGenerator implements ChunkGenerator {
+public class OldChunkGenerator implements ChunkGenerator {
 
     private final NoiseGenerator noise = new PerlinNoise(174871285);
     private final Random random;
@@ -48,7 +48,7 @@ public class OrbisChunkGenerator implements ChunkGenerator {
     private final int seaLevel = 130;
     private final int stoneHeight = 120;
 
-    public OrbisChunkGenerator(){
+    public OldChunkGenerator(){
         OIdTerrain = new TestOIdTerrain();
         random = new Random(343576321);
     }
