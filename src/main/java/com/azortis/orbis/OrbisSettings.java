@@ -24,5 +24,22 @@
 
 package com.azortis.orbis;
 
+import java.io.File;
+
 public class OrbisSettings {
+
+    private File orbisFolder;
+
+
+    public OrbisSettings setOrbisFolder(File folder){
+        this.orbisFolder = folder;
+        return this;
+    }
+
+    public File getOrbisFolder() {
+        return orbisFolder;
+    }
+
+    
+
 }
