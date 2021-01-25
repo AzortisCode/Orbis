@@ -30,8 +30,8 @@ import com.azortis.orbis.generator.terrain.TerrainType;
 
 public class PlainsTerrain extends Terrain {
 
-    public PlainsTerrain(String name) {
-        super(name);
+    public PlainsTerrain(String name, String providerId) {
+        super(name, providerId);
     }
 
     @Override

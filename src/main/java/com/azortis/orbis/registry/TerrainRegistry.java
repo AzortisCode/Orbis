@@ -88,7 +88,7 @@ public class TerrainRegistry {
         } else {
             try {
                 if (terrainFile.createNewFile()) {
-                    final Terrain terrain = providerIdTerrainMap.get(providerId).getConstructor().newInstance();
+                    final Terrain terrain = providerIdTerrainMap.get(providerId).getConstructor(String.class, String.class).newInstance(terrainName, providerId);
                     final String json = Orbis.getGson().toJson(terrain, providerIdTerrainMap.get(providerId));
                     Files.write(terrainFile.toPath(), json.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.WRITE);
                     return true;

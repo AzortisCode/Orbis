@@ -28,8 +28,8 @@ import com.azortis.orbis.generator.noise.NoiseGenerator;
 
 public class ConfigTerrain extends Terrain{
 
-    public ConfigTerrain(String name) {
-        super(name);
+    public ConfigTerrain(String name, String providerId) {
+        super(name, providerId);
     }
 
     @Override

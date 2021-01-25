@@ -28,8 +28,8 @@ import com.azortis.orbis.generator.noise.NoiseGenerator;
 
 public class JavaScriptTerrain extends Terrain{
 
-    public JavaScriptTerrain(String name) {
-        super(name);
+    public JavaScriptTerrain(String name, String providerId) {
+        super(name, providerId);
     }
 
     @Override

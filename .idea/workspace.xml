@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7678a92e-b5f5-4d91-a874-bb8b5cc07377" name="Default Changelist" comment="Working on terrain registry">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/Orbis.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/Orbis.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/OrbisSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/OrbisSettings.java" afterDir="false" />
+    <list default="true" id="7678a92e-b5f5-4d91-a874-bb8b5cc07377" name="Default Changelist" comment="Finished TerrainRegistry &amp; TerrainAdapter">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/terrain/ConfigTerrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/terrain/ConfigTerrain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/terrain/JavaScriptTerrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/terrain/JavaScriptTerrain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/terrain/Terrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/terrain/Terrain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/terrain/defaults/PlainsTerrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/terrain/defaults/PlainsTerrain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/registry/TerrainRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/registry/TerrainRegistry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/registry/adapter/TerrainAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/registry/adapter/TerrainAdapter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +74,7 @@
       <workItem from="1611447070257" duration="1035000" />
       <workItem from="1611498871612" duration="5777000" />
       <workItem from="1611514914501" duration="14237000" />
-      <workItem from="1611603949498" duration="3522000" />
+      <workItem from="1611603949498" duration="3965000" />
     </task>
     <task id="LOCAL-00001" summary="Implemented license">
       <created>1611103122133</created>
@@ -167,7 +167,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611529103133</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Finished TerrainRegistry &amp; TerrainAdapter">
+      <created>1611607762855</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1611607762855</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -196,6 +203,7 @@
     <MESSAGE value="More stuff" />
     <MESSAGE value="Finally taking some shape huh" />
     <MESSAGE value="Working on terrain registry" />
-    <option name="LAST_COMMIT_MESSAGE" value="Working on terrain registry" />
+    <MESSAGE value="Finished TerrainRegistry &amp; TerrainAdapter" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished TerrainRegistry &amp; TerrainAdapter" />
   </component>
 </project>

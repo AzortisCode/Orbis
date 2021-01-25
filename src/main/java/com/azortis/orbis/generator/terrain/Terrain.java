@@ -33,21 +33,23 @@ public abstract class Terrain {
     protected String providerId;
     private transient Biome biome;
 
-    public Terrain(){}
+    // Used for deserialization for gson, more stable.
+    private Terrain(){}
 
-    public Terrain(String name){
+    public Terrain(String name, String providerId){
         this.name = name;
+        this.providerId = providerId;
     }
 
-    public String getName() {
+    public final String getName() {
         return name;
     }
 
-    public String getProviderId() {
+    public final String getProviderId() {
         return providerId;
     }
 
-    public void setBiome(Biome biome){
+    public final void setBiome(Biome biome){
         if (biome != null)this.biome = biome;
     }
 
