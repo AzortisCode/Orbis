@@ -24,13 +24,10 @@
 
 package com.azortis.orbis.generator;
 
-import com.azortis.orbis.generator.biome.grid.BiomeGrid;
 import net.minestom.server.instance.ChunkGenerator;
 
 public abstract class Engine implements ChunkGenerator {
 
-    protected Engine engine;
-    protected BiomeGrid biomeGrid;
-
+    protected Dimension dimension;
 
 }

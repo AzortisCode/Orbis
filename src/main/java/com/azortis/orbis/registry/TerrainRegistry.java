@@ -42,22 +42,22 @@ import java.util.*;
 
 public class TerrainRegistry {
 
-    public static final String NAME_REGEX = "^([a-z]+)$";
+    public static final String NAME_REGEX = "^([a-zA-Z]+)$";
     public static final String NAMESPACE_ID_REGEX = "^([a-z]+):([a-z]+)$";
     private final File terrainFolder;
-    private final Map<String, Class<? extends Terrain>> namespaceIdTerrainMap = new HashMap<>();
+    private final Map<String, Class<? extends Terrain>> namespaceIdTerrainClassMap = new HashMap<>();
 
     public TerrainRegistry() {
-        this.terrainFolder = new File(Orbis.getDirectory(), "/settings/generator/terrain/");
+        this.terrainFolder = new File(Orbis.getDirectory(), "/settings/generators/terrain/");
         if (!this.terrainFolder.exists()) {
             if (!this.terrainFolder.mkdirs()) {
                 Orbis.getLogger().error("Couldn't create terrain folder.");
             }
         }
         // Register default terrain classes.
-        namespaceIdTerrainMap.put("orbis:config", ConfigTerrain.class);
-        namespaceIdTerrainMap.put("orbis:javascript", JavaScriptTerrain.class);
-        namespaceIdTerrainMap.put("orbis:plains", PlainsTerrain.class);
+        namespaceIdTerrainClassMap.put("orbis:config", ConfigTerrain.class);
+        namespaceIdTerrainClassMap.put("orbis:javascript", JavaScriptTerrain.class);
+        namespaceIdTerrainClassMap.put("orbis:plains", PlainsTerrain.class);
     }
 
     /**
@@ -88,15 +88,15 @@ public class TerrainRegistry {
         if (namespaceId.matches(NAMESPACE_ID_REGEX)) {
             if (terrainName.matches(NAME_REGEX)) {
                 final File terrainFile = new File(terrainFolder, terrainName + ".json");
-                if (!namespaceIdTerrainMap.containsKey(namespaceId)) {
+                if (!namespaceIdTerrainClassMap.containsKey(namespaceId)) {
                     Orbis.getLogger().error("Terrain namespaceId: " + namespaceId + " doesn't exist, file creation aborted!");
                 } else if (terrainFile.exists()) {
                     Orbis.getLogger().error("Terrain by name: " + terrainName + " already exists!");
                 } else {
                     try {
                         if (terrainFile.createNewFile()) {
-                            final Terrain terrain = namespaceIdTerrainMap.get(namespaceId).getConstructor(String.class, String.class).newInstance(terrainName, namespaceId);
-                            final String json = Orbis.getGson().toJson(terrain, namespaceIdTerrainMap.get(namespaceId));
+                            final Terrain terrain = namespaceIdTerrainClassMap.get(namespaceId).getConstructor(String.class, String.class).newInstance(terrainName, namespaceId);
+                            final String json = Orbis.getGson().toJson(terrain, namespaceIdTerrainClassMap.get(namespaceId));
                             Files.write(terrainFile.toPath(), json.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.WRITE);
                             return true;
                         }
@@ -118,10 +118,10 @@ public class TerrainRegistry {
     }
 
     public boolean registerTerrainClass(String namespaceId, Class<? extends Terrain> terrainClass) {
-        if (!namespaceIdTerrainMap.containsKey(namespaceId)) {
+        if (!namespaceIdTerrainClassMap.containsKey(namespaceId)) {
             if (namespaceId.matches(NAMESPACE_ID_REGEX)) {
                 if (!namespaceId.split(":")[0].equals("orbis")) { // Prevent the default namespace being used by external code.
-                    namespaceIdTerrainMap.put(namespaceId, terrainClass);
+                    namespaceIdTerrainClassMap.put(namespaceId, terrainClass);
                 } else {
                     Orbis.getLogger().error("Namespace \"orbis\" cannot be used in external code.");
                 }
@@ -133,19 +133,22 @@ public class TerrainRegistry {
     }
 
     public boolean hasNamespaceId(String providerId) {
-        return namespaceIdTerrainMap.containsKey(providerId);
+        return namespaceIdTerrainClassMap.containsKey(providerId);
     }
 
     public Class<? extends Terrain> getTerrainClass(String providerId) {
-        return namespaceIdTerrainMap.get(providerId);
+        return namespaceIdTerrainClassMap.get(providerId);
     }
 
     public Collection<String> getRegisteredNamespaceIds() {
-        return namespaceIdTerrainMap.keySet();
+        return namespaceIdTerrainClassMap.keySet();
     }
 
     public Collection<Class<? extends Terrain>> getRegisteredTerrainClasses() {
-        return namespaceIdTerrainMap.values();
+        return namespaceIdTerrainClassMap.values();
     }
 
+    public File getTerrainFolder() {
+        return terrainFolder;
+    }
 }

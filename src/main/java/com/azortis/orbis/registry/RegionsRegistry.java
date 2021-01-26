@@ -22,32 +22,7 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis;
+package com.azortis.orbis.registry;
 
-import java.io.File;
-
-public class OrbisSettings {
-
-    private File orbisFolder;
-    private boolean studioMode = false;
-
-
-    public OrbisSettings setOrbisFolder(File folder){
-        this.orbisFolder = folder;
-        return this;
-    }
-
-    public File getOrbisFolder() {
-        return orbisFolder;
-    }
-
-    public OrbisSettings setStudioMode(boolean studioMode){
-        this.studioMode = studioMode;
-        return this;
-    }
-
-    public boolean isStudioMode() {
-        return studioMode;
-    }
-
+public class RegionsRegistry {
 }

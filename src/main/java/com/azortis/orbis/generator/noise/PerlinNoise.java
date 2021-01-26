@@ -24,16 +24,15 @@
 
 package com.azortis.orbis.generator.noise;
 
-public class PerlinNoise implements NoiseGenerator, OctaveNoise{
+public class PerlinNoise implements NoiseGenerator {
 
     private final FastNoise noise;
 
-    public PerlinNoise(int seed){
+    public PerlinNoise(long seed){
         noise = new FastNoise(seed);
         noise.setNoiseType(FastNoise.NoiseType.Perlin);
         noise.setRotationType3D(FastNoise.RotationType3D.ImproveXZPlanes);
-        noise.setFractalOctaves(7);
-        noise.setFrequency(1);
+        noise.setFrequency(1); // Multiply the axis yourself. For async reasons.
     }
 
     @Override
@@ -49,11 +48,6 @@ public class PerlinNoise implements NoiseGenerator, OctaveNoise{
     @Override
     public double noise(double x, double y, double z) {
         return noise.getNoise(x, y, z);
-    }
-
-    @Override
-    public void setOctaves(int octaves) {
-        noise.setFractalOctaves(octaves);
     }
 
 }

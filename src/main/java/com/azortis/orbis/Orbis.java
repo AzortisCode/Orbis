@@ -49,7 +49,7 @@ public final class Orbis {
     private Orbis() {
     }
 
-    public static void initialise(OrbisSettings settings) {
+    public static void initialise(OrbisArguments settings) {
         if (!initialised) {
             initialised = true;
 
@@ -60,6 +60,7 @@ public final class Orbis {
             // GsonBuilder
             GsonBuilder gsonBuilder = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping();
             gsonBuilder.registerTypeAdapter(Terrain.class, new TerrainAdapter(terrainRegistry));
+            gson = gsonBuilder.create();
 
             directory = settings.getOrbisFolder();
         }

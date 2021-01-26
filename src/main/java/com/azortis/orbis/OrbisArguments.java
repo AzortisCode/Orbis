@@ -22,42 +22,32 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.registry;
-
-import com.azortis.orbis.Orbis;
-import com.azortis.orbis.generator.Dimension;
+package com.azortis.orbis;
 
 import java.io.File;
 
-public class DimensionRegistry {
+public class OrbisArguments {
 
-    public static final String NAME_REGEX = "^([a-zA-Z]+)$";
-    private final File dimensionsFolder;
+    private File orbisFolder;
+    private boolean studioMode = false;
 
-    public DimensionRegistry() {
-        this.dimensionsFolder = new File(Orbis.getDirectory(), "/settings/dimensions/");
-        if (!this.dimensionsFolder.exists()) {
-            if (!this.dimensionsFolder.mkdirs()) {
-                Orbis.getLogger().error("Couldn't create dimensions folder.");
-            }
-        }
+
+    public OrbisArguments setOrbisFolder(File folder){
+        this.orbisFolder = folder;
+        return this;
     }
 
-    public Dimension loadDimension(String dimensionName){
-        if(dimensionName.matches(NAME_REGEX)){
-
-        }
-        return null;
+    public File getOrbisFolder() {
+        return orbisFolder;
     }
 
-    public boolean createDimensionFile(String dimensionName){
-        if(dimensionName.matches(NAME_REGEX)){
-
-        }
-        return false;
+    public OrbisArguments setStudioMode(boolean studioMode){
+        this.studioMode = studioMode;
+        return this;
     }
 
-    public File getDimensionsFolder() {
-        return dimensionsFolder;
+    public boolean isStudioMode() {
+        return studioMode;
     }
+
 }

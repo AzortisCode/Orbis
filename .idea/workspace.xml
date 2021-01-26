@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7678a92e-b5f5-4d91-a874-bb8b5cc07377" name="Default Changelist" comment="Renamed ProviderId to NamespaceId">
+    <list default="true" id="7678a92e-b5f5-4d91-a874-bb8b5cc07377" name="Default Changelist" comment="Added terrain naming rules">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/Orbis.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/Orbis.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/OrbisSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/OrbisSettings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/terrain/TerrainType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/terrain/TerrainType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/OrbisSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/OrbisArguments.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/Engine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/Engine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/noise/OctaveNoise.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/noise/PerlinNoise.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/noise/PerlinNoise.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/registry/DimensionRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/registry/DimensionRegistry.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/registry/TerrainRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/registry/TerrainRegistry.java" afterDir="false" />
     </list>
@@ -20,9 +22,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="Interface" />
         <option value="Class" />
-        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -75,7 +77,7 @@
       <workItem from="1611447070257" duration="1035000" />
       <workItem from="1611498871612" duration="5777000" />
       <workItem from="1611514914501" duration="14237000" />
-      <workItem from="1611603949498" duration="9608000" />
+      <workItem from="1611603949498" duration="14480000" />
     </task>
     <task id="LOCAL-00001" summary="Implemented license">
       <created>1611103122133</created>
@@ -189,7 +191,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611611705892</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Added terrain naming rules">
+      <created>1611614326857</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1611614326857</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -221,6 +230,7 @@
     <MESSAGE value="Finished TerrainRegistry &amp; TerrainAdapter" />
     <MESSAGE value="Made changes to prevent unsafe instantiation of Terrain.java, also made providerId a required value for the constructor, to make sure it gets loaded correctly in TerrainRegistry.java" />
     <MESSAGE value="Renamed ProviderId to NamespaceId" />
-    <option name="LAST_COMMIT_MESSAGE" value="Renamed ProviderId to NamespaceId" />
+    <MESSAGE value="Added terrain naming rules" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added terrain naming rules" />
   </component>
 </project>

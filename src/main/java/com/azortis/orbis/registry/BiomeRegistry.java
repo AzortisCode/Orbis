@@ -22,10 +22,33 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.generator.noise;
+package com.azortis.orbis.registry;
 
-public interface OctaveNoise {
+import com.azortis.orbis.Orbis;
+import com.azortis.orbis.generator.biome.Biome;
+import com.azortis.orbis.generator.region.Region;
 
-    void setOctaves(int octaves);
+import java.io.File;
 
+public class BiomeRegistry {
+
+    public static final String NAME_REGEX = "^([a-zA-Z]+)$";
+    private final File biomesFolder;
+
+    public BiomeRegistry(){
+        this.biomesFolder = new File(Orbis.getDirectory(), "/settings/biomes/");
+        if (!this.biomesFolder.exists()) {
+            if (!this.biomesFolder.mkdirs()) {
+                Orbis.getLogger().error("Couldn't create biomes folder.");
+            }
+        }
+    }
+
+    public Biome loadBiome(String biomeName, Region context){
+        return null;
+    }
+
+    public File getBiomesFolder() {
+        return biomesFolder;
+    }
 }
