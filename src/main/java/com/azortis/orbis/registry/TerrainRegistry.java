@@ -26,8 +26,8 @@ package com.azortis.orbis.registry;
 
 import com.azortis.orbis.Orbis;
 import com.azortis.orbis.generator.biome.Biome;
-import com.azortis.orbis.generator.terrain.ConfigTerrain;
-import com.azortis.orbis.generator.terrain.JavaScriptTerrain;
+import com.azortis.orbis.generator.terrain.defaults.ConfigTerrain;
+import com.azortis.orbis.generator.terrain.defaults.JavaScriptTerrain;
 import com.azortis.orbis.generator.terrain.Terrain;
 import com.azortis.orbis.generator.terrain.defaults.PlainsTerrain;
 
@@ -79,7 +79,7 @@ public class TerrainRegistry {
                 Orbis.getLogger().error("No terrain file by the name: " + terrainName + " exists!");
             }
         } else {
-            Orbis.getLogger().error(terrainName + " is an invalid terrain name!");
+            Orbis.getLogger().error("Invalid terrain name: " + terrainName);
         }
         return null;
     }

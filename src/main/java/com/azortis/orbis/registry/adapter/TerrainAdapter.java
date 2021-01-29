@@ -24,7 +24,6 @@
 
 package com.azortis.orbis.registry.adapter;
 
-import com.azortis.orbis.Orbis;
 import com.azortis.orbis.generator.terrain.Terrain;
 import com.azortis.orbis.registry.TerrainRegistry;
 import com.google.gson.*;
@@ -42,9 +41,9 @@ public class TerrainAdapter implements JsonDeserializer<Terrain> {
     @Override
     public Terrain deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context) throws JsonParseException {
         final JsonObject object = jsonElement.getAsJsonObject();
-        final String terrainProviderId = object.get("providerId").getAsString();
+        final String terrainProviderId = object.get("namespaceId").getAsString();
         final Class<? extends Terrain> terrainType = terrainRegistry.getTerrainClass(terrainProviderId);
-        return Orbis.getGson().fromJson(jsonElement, terrainType);
+        return context.deserialize(jsonElement, terrainType);
     }
 
 }

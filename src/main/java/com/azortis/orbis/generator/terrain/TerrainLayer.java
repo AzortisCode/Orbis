@@ -26,12 +26,23 @@ package com.azortis.orbis.generator.terrain;
 
 public class TerrainLayer {
 
-    private Terrain terrain;
+    private String terrainName;
+    private transient Terrain terrain;
     private int max;
     private int min;
 
+    private TerrainLayer(){}
+
+    public String getTerrainName() {
+        return terrainName;
+    }
+
     public Terrain getTerrain() {
         return terrain;
+    }
+
+    public void setTerrain(Terrain terrain) {
+        if(this.terrain == null)this.terrain = terrain;
     }
 
     public int getMax() {

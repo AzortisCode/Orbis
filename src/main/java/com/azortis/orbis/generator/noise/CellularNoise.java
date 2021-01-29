@@ -22,33 +22,32 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.generator.biome;
+package com.azortis.orbis.generator.noise;
 
-import com.azortis.orbis.generator.region.Region;
-import com.azortis.orbis.generator.terrain.TerrainLayer;
+public class CellularNoise implements NoiseGenerator{
 
-import java.util.List;
+    private final FastNoise noise;
 
-public class Biome {
+    public CellularNoise(long seed) {
+        noise = new FastNoise(seed);
+        noise.setNoiseType(FastNoise.NoiseType.Cellular);
+        noise.setCellularReturnType(FastNoise.CellularReturnType.CellValue);
+        noise.setCellularDistanceFunction(FastNoise.CellularDistanceFunction.Hybrid);
 
-    private String name;
-    private List<TerrainLayer> terrainLayers;
-
-    private transient Region region;
-
-    public String getName() {
-        return name;
     }
 
-    public List<TerrainLayer> getTerrainLayers() {
-        return terrainLayers;
+    @Override
+    public double noise(double x) {
+        return 0;
     }
 
-    public Region getRegion() {
-        return region;
+    @Override
+    public double noise(double x, double y) {
+        return 0;
     }
 
-    public void setRegion(Region region) {
-        if(this.region == null)this.region = region;
+    @Override
+    public double noise(double x, double y, double z) {
+        return 0;
     }
 }

@@ -22,24 +22,25 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.generator.terrain;
+package com.azortis.orbis.generator.terrain.defaults;
 
 import com.azortis.orbis.generator.noise.NoiseGenerator;
+import com.azortis.orbis.generator.terrain.Terrain;
+import com.azortis.orbis.generator.terrain.TerrainType;
 
-public class JavaScriptTerrain extends Terrain{
+public class ConfigTerrain extends Terrain {
 
-    public JavaScriptTerrain(String name, String providerId) {
+    public ConfigTerrain(String name, String providerId) {
         super(name, providerId);
     }
 
     @Override
     public TerrainType getType() {
-        return TerrainType.JAVASCRIPT;
+        return TerrainType.CONFIG;
     }
 
     @Override
     public double getTerrainHeight(int x, int z, int min, int max, NoiseGenerator noise) {
         return 0;
     }
-
 }

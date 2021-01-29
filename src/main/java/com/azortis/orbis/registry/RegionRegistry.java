@@ -24,5 +24,5 @@
 
 package com.azortis.orbis.registry;
 
-public class RegionsRegistry {
+public class RegionRegistry {
 }

@@ -44,6 +44,7 @@ public final class Orbis {
 
     // Registries
     private static DimensionRegistry dimensionRegistry;
+    private static BiomeRegistry biomeRegistry;
     private static TerrainRegistry terrainRegistry;
 
     private Orbis() {
@@ -55,6 +56,7 @@ public final class Orbis {
 
             // Load registries
             dimensionRegistry = new DimensionRegistry();
+            biomeRegistry = new BiomeRegistry();
             terrainRegistry = new TerrainRegistry();
 
             // GsonBuilder
@@ -86,6 +88,10 @@ public final class Orbis {
 
     public static DimensionRegistry getDimensionRegistry() {
         return dimensionRegistry;
+    }
+
+    public static RegionRegistry getRegionRegistry() {
+        return null;
     }
 
     public static TerrainRegistry getTerrainRegistry() {

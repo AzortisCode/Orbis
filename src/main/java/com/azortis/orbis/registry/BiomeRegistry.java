@@ -29,6 +29,8 @@ import com.azortis.orbis.generator.biome.Biome;
 import com.azortis.orbis.generator.region.Region;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 
 public class BiomeRegistry {
 
@@ -45,6 +47,20 @@ public class BiomeRegistry {
     }
 
     public Biome loadBiome(String biomeName, Region context){
+        if(biomeName.matches(NAME_REGEX)){
+            final File biomeFile = new File(biomesFolder, biomeName + ".json");
+            try{
+                final Biome biome = Orbis.getGson().fromJson(new FileReader(biomeFile), Biome.class);
+                biome.setRegion(context);
+                biome.getTerrainLayers().forEach(terrainLayer -> terrainLayer.setTerrain(Orbis.getTerrainRegistry()
+                        .loadTerrain(terrainLayer.getTerrainName(), biome)));
+                return biome;
+            }catch (FileNotFoundException ex){
+                Orbis.getLogger().error("No biome file by the name: " + biomeName + " exists!");
+            }
+        } else {
+            Orbis.getLogger().error("Invalid biome name: " + biomeName);
+        }
         return null;
     }
 
