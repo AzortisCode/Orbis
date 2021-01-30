@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.generator.region.grid;
+package com.azortis.orbis.generator.biome;
 
-public interface RegionGrid {
+public class Region {
 }

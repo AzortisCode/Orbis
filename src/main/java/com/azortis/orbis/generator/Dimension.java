@@ -26,13 +26,17 @@ package com.azortis.orbis.generator;
 
 public class Dimension {
 
-    protected String name;
-    
+    private String name;
 
-    protected transient Engine engine;
+    // Used for the GSON deserializer
+    private Dimension(){}
 
     public Dimension(String name){
         this.name = name;
+    }
+
+    public String getName() {
+        return name;
     }
 
 }

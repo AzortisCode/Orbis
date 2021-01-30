@@ -22,7 +22,33 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis;
+package com.azortis.orbis.instance;
 
-public class OrbisBuilder {
+import com.azortis.orbis.OrbisSettings;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class InstanceManager {
+
+    private final Map<String, OrbisInstance> loadedInstances = new HashMap<>();
+
+    public InstanceManager(OrbisSettings settings){
+
+    }
+
+    public OrbisInstance getInstance(String name){
+        return loadedInstances.get(name);
+    }
+
+    public List<OrbisInstance> getInstances(){
+        return new ArrayList<>(loadedInstances.values());
+    }
+
+    public OrbisInstance createInstance(InstanceSettings settings){
+        return null;
+    }
+
 }

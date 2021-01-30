@@ -24,7 +24,6 @@
 
 package com.azortis.orbis.generator.biome;
 
-import com.azortis.orbis.generator.region.Region;
 import com.azortis.orbis.generator.terrain.TerrainLayer;
 
 import java.util.List;

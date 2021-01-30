@@ -22,7 +22,29 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.generator.region;
+package com.azortis.orbis.instance;
 
-public class Region {
+public class InstanceBuilder {
+    private final String name;
+    private String dimensionName;
+    private String storageLocation;
+
+    public InstanceBuilder(String name) {
+        this.name = name;
+    }
+
+    public InstanceBuilder setDimensionName(String dimensionName) {
+        this.dimensionName = dimensionName;
+        return this;
+    }
+
+    public InstanceBuilder setStorageLocation(String storageLocation){
+        this.storageLocation = storageLocation;
+        return this;
+    }
+
+    public InstanceSettings build(){
+        return new InstanceSettings(name, dimensionName, storageLocation);
+    }
+
 }

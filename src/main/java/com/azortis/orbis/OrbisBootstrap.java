@@ -24,6 +24,7 @@
 
 package com.azortis.orbis;
 
+import com.azortis.orbis.command.StopCommand;
 import com.azortis.orbis.old.terrain.OldChunkGenerator;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.entity.GameMode;
@@ -54,8 +55,8 @@ public class OrbisBootstrap {
         InstanceContainer instanceContainer = MinecraftServer.getInstanceManager().createInstanceContainer(DimensionType.OVERWORLD);
         instanceContainer.setChunkGenerator(new OldChunkGenerator());
         instanceContainer.enableAutoChunkLoad(true);
-        for (int x = -16; x <= 16; x++){
-            for (int z = -16; z <= 16; z++){
+        for (int x = -32; x <= 32; x++){
+            for (int z = -32; z <= 32; z++){
                 instanceContainer.loadChunk(x, z);
             }
         }

@@ -35,7 +35,7 @@ public class DimensionRegistry {
     private final File dimensionsFolder;
 
     public DimensionRegistry() {
-        this.dimensionsFolder = new File(Orbis.getDirectory(), "/settings/dimensions/");
+        this.dimensionsFolder = new File(Orbis.getDirectory(), "/data/dimensions/");
         if (!this.dimensionsFolder.exists()) {
             if (!this.dimensionsFolder.mkdirs()) {
                 Orbis.getLogger().error("Couldn't create dimensions folder.");

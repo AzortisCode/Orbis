@@ -48,4 +48,5 @@ public class SingleBiomeGrid implements BiomeGrid {
     public Biome getBiomeAt(int x, int y, int z) {
         return biome;
     }
+
 }

@@ -25,9 +25,36 @@
 package com.azortis.orbis.generator;
 
 import net.minestom.server.instance.ChunkGenerator;
+import net.minestom.server.instance.ChunkPopulator;
+import net.minestom.server.instance.batch.ChunkBatch;
+import net.minestom.server.world.biomes.Biome;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public abstract class Engine implements ChunkGenerator {
 
     protected Dimension dimension;
+
+    public Engine(Dimension dimension){
+        this.dimension = dimension;
+    }
+
+    @Override
+    public void generateChunkData(@NotNull ChunkBatch chunkBatch, int chunkX, int chunkZ) {
+
+    }
+
+    @Override
+    public void fillBiomes(@NotNull Biome[] biomes, int x, int z) {
+
+    }
+
+    @Nullable
+    @Override
+    public List<ChunkPopulator> getPopulators() {
+        return null;
+    }
 
 }

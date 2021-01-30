@@ -1,0 +1,9 @@
+{
+  "defaultInstances": [
+    {
+      "name": "Overworld",
+      "dimensionName": "overworld",
+      "storageLocation": "/overworld/"
+    }
+  ]
+}

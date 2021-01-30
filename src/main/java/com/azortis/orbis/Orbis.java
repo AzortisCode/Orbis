@@ -41,6 +41,7 @@ public final class Orbis {
     private static final Logger logger = LoggerFactory.getLogger(Orbis.class);
     private static Gson gson;
     private static File directory;
+    private static OrbisSettings settings;
 
     // Registries
     private static DimensionRegistry dimensionRegistry;
@@ -50,9 +51,13 @@ public final class Orbis {
     private Orbis() {
     }
 
-    public static void initialise(OrbisArguments settings) {
+    public static void initialise(File directory) {
         if (!initialised) {
             initialised = true;
+            Orbis.directory = directory;
+
+            // Load settings file
+
 
             // Load registries
             dimensionRegistry = new DimensionRegistry();
@@ -63,8 +68,6 @@ public final class Orbis {
             GsonBuilder gsonBuilder = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping();
             gsonBuilder.registerTypeAdapter(Terrain.class, new TerrainAdapter(terrainRegistry));
             gson = gsonBuilder.create();
-
-            directory = settings.getOrbisFolder();
         }
     }
 
@@ -84,6 +87,10 @@ public final class Orbis {
         return directory;
     }
 
+    public static OrbisSettings getSettings() {
+        return settings;
+    }
+
     // Registries
 
     public static DimensionRegistry getDimensionRegistry() {
@@ -92,6 +99,10 @@ public final class Orbis {
 
     public static RegionRegistry getRegionRegistry() {
         return null;
+    }
+
+    public static BiomeRegistry getBiomeRegistry() {
+        return biomeRegistry;
     }
 
     public static TerrainRegistry getTerrainRegistry() {

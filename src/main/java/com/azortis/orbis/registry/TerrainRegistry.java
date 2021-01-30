@@ -27,7 +27,6 @@ package com.azortis.orbis.registry;
 import com.azortis.orbis.Orbis;
 import com.azortis.orbis.generator.biome.Biome;
 import com.azortis.orbis.generator.terrain.defaults.ConfigTerrain;
-import com.azortis.orbis.generator.terrain.defaults.JavaScriptTerrain;
 import com.azortis.orbis.generator.terrain.Terrain;
 import com.azortis.orbis.generator.terrain.defaults.PlainsTerrain;
 
@@ -48,7 +47,7 @@ public class TerrainRegistry {
     private final Map<String, Class<? extends Terrain>> namespaceIdTerrainClassMap = new HashMap<>();
 
     public TerrainRegistry() {
-        this.terrainFolder = new File(Orbis.getDirectory(), "/settings/generators/terrain/");
+        this.terrainFolder = new File(Orbis.getDirectory(), "/data/generators/terrain/");
         if (!this.terrainFolder.exists()) {
             if (!this.terrainFolder.mkdirs()) {
                 Orbis.getLogger().error("Couldn't create terrain folder.");
@@ -56,7 +55,6 @@ public class TerrainRegistry {
         }
         // Register default terrain classes.
         namespaceIdTerrainClassMap.put("orbis:config", ConfigTerrain.class);
-        namespaceIdTerrainClassMap.put("orbis:javascript", JavaScriptTerrain.class);
         namespaceIdTerrainClassMap.put("orbis:plains", PlainsTerrain.class);
     }
 

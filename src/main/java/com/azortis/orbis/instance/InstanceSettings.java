@@ -22,32 +22,31 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis;
+package com.azortis.orbis.instance;
 
-import java.io.File;
+public class InstanceSettings {
+    private final String name;
+    private final String dimensionName;
+    private final String storageLocation;
 
-public class OrbisArguments {
+    //TODO add multiple Engines based on the complexity of the instance
 
-    private File orbisFolder;
-    private boolean studioMode = false;
-
-
-    public OrbisArguments setOrbisFolder(File folder){
-        this.orbisFolder = folder;
-        return this;
+    public InstanceSettings(String name, String dimensionName, String storageLocation) {
+        this.name = name;
+        this.dimensionName = dimensionName;
+        this.storageLocation = storageLocation;
     }
 
-    public File getOrbisFolder() {
-        return orbisFolder;
+    public String getName() {
+        return name;
     }
 
-    public OrbisArguments setStudioMode(boolean studioMode){
-        this.studioMode = studioMode;
-        return this;
+    public String getDimensionName() {
+        return dimensionName;
     }
 
-    public boolean isStudioMode() {
-        return studioMode;
+    public String getStorageLocation() {
+        return storageLocation;
     }
 
 }

@@ -26,7 +26,7 @@ package com.azortis.orbis.registry;
 
 import com.azortis.orbis.Orbis;
 import com.azortis.orbis.generator.biome.Biome;
-import com.azortis.orbis.generator.region.Region;
+import com.azortis.orbis.generator.biome.Region;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -38,7 +38,7 @@ public class BiomeRegistry {
     private final File biomesFolder;
 
     public BiomeRegistry(){
-        this.biomesFolder = new File(Orbis.getDirectory(), "/settings/biomes/");
+        this.biomesFolder = new File(Orbis.getDirectory(), "/data/biomes/");
         if (!this.biomesFolder.exists()) {
             if (!this.biomesFolder.mkdirs()) {
                 Orbis.getLogger().error("Couldn't create biomes folder.");
