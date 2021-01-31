@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7678a92e-b5f5-4d91-a874-bb8b5cc07377" name="Default Changelist" comment="Stuff for coco">
+    <list default="true" id="7678a92e-b5f5-4d91-a874-bb8b5cc07377" name="Default Changelist" comment="Update .gitignore and remove dependency-reduced-pom.xml">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/terrain/TerrainType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/terrain/TerrainType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/registry/DimensionRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/registry/DimensionRegistry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +77,7 @@
       <workItem from="1611953020124" duration="2273000" />
       <workItem from="1612032968269" duration="1549000" />
       <workItem from="1612036000815" duration="857000" />
-      <workItem from="1612038599851" duration="13065000" />
+      <workItem from="1612038599851" duration="15147000" />
     </task>
     <task id="LOCAL-00001" summary="Implemented license">
       <created>1611103122133</created>
@@ -227,7 +226,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612051566139</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Update .gitignore and remove dependency-reduced-pom.xml">
+      <created>1612054891108</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1612054891108</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -264,6 +270,7 @@
     <MESSAGE value="More lol" />
     <MESSAGE value="Made the Generation engine instance based, so Dimensions can be reused" />
     <MESSAGE value="Stuff for coco" />
-    <option name="LAST_COMMIT_MESSAGE" value="Stuff for coco" />
+    <MESSAGE value="Update .gitignore and remove dependency-reduced-pom.xml" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update .gitignore and remove dependency-reduced-pom.xml" />
   </component>
 </project>
