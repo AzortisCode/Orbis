@@ -24,10 +24,13 @@
 
 package com.azortis.orbis.generator;
 
+import com.azortis.orbis.generator.terrain.Terrain;
+
 public class Dimension {
 
     private String name;
-
+    private String terrainName;
+    private transient Terrain terrain;
 
     // Used for the GSON deserializer
     private Dimension(){}
@@ -40,4 +43,15 @@ public class Dimension {
         return name;
     }
 
+    public String getTerrainName() {
+        return terrainName;
+    }
+
+    public void setTerrain(Terrain terrain) {
+        this.terrain = terrain;
+    }
+
+    public Terrain getTerrain() {
+        return terrain;
+    }
 }

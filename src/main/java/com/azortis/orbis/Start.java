@@ -22,26 +22,14 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.old.terrain.defaults;
+package com.azortis.orbis;
 
-import com.azortis.orbis.old.terrain.OIdTerrain;
-import com.azortis.orbis.generator.noise.NoiseGenerator;
+import net.minestom.server.Bootstrap;
 
-public class TestOIdTerrain implements OIdTerrain {
+public class Start {
 
-    private final int baseHeight = 100;
-
-    @Override
-    public String getName() {
-        return "test";
-    }
-
-    @Override
-    public double getTerrainHeight(int x, int z, NoiseGenerator noise) {
-        double height = noise.noise(x / 400f, z / 400f) * 100;
-        height += noise.noise(x / 50f, z / 50f) * 10;
-        height += Math.abs(noise.noise(x / 12f, z / 12f) * 1);
-        return baseHeight + height;
+    public static void main(String[] args){
+        Bootstrap.bootstrap("com.azortis.orbis.OrbisBootstrap", new String[0]);
     }
 
 }

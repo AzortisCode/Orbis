@@ -25,7 +25,6 @@
 package com.azortis.orbis;
 
 import com.azortis.orbis.command.StopCommand;
-import com.azortis.orbis.old.terrain.OldChunkGenerator;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.entity.GameMode;
 import net.minestom.server.entity.Player;
@@ -35,11 +34,9 @@ import net.minestom.server.event.player.PlayerLoginEvent;
 import net.minestom.server.event.player.PlayerSpawnEvent;
 import net.minestom.server.extras.optifine.OptifineSupport;
 import net.minestom.server.instance.InstanceContainer;
-import net.minestom.server.storage.StorageManager;
-import net.minestom.server.storage.systems.FileStorageSystem;
 import net.minestom.server.utils.Position;
-import net.minestom.server.world.DimensionType;
 
+import java.io.File;
 import java.util.UUID;
 
 public class OrbisBootstrap {
@@ -49,7 +46,7 @@ public class OrbisBootstrap {
 
         MinecraftServer.setBrandName("Orbis Development");
 
-        StorageManager storageManager = MinecraftServer.getStorageManager();
+        /*StorageManager storageManager = MinecraftServer.getStorageManager();
         storageManager.defineDefaultStorageSystem(FileStorageSystem::new);
 
         InstanceContainer instanceContainer = MinecraftServer.getInstanceManager().createInstanceContainer(DimensionType.OVERWORLD);
@@ -59,7 +56,12 @@ public class OrbisBootstrap {
             for (int z = -32; z <= 32; z++){
                 instanceContainer.loadChunk(x, z);
             }
-        }
+        }*/
+
+        Orbis.initialise(new File(System.getProperty("user.dir"), "/orbis/"));
+
+        InstanceContainer instanceContainer = Orbis.getInstanceManager().getInstance("Overworld").getInstanceContainer();
+
         OptifineSupport.enable();
 
         GlobalEventHandler globalEventHandler = MinecraftServer.getGlobalEventHandler();

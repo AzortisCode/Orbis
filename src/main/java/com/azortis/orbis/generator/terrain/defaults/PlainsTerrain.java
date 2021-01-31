@@ -41,6 +41,9 @@ public class PlainsTerrain extends Terrain {
 
     @Override
     public double getTerrainHeight(int x, int z, int min, int max, NoiseGenerator noise) {
-        return 0;
+        double height = noise.noise(x / 400f, z / 400f) * 100;
+        height += noise.noise(x / 50f, z / 50f) * 10;
+        height += Math.abs(noise.noise(x / 12f, z / 12f) * 1);
+        return height;
     }
 }

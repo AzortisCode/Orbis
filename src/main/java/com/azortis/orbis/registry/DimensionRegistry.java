@@ -26,6 +26,7 @@ package com.azortis.orbis.registry;
 
 import com.azortis.orbis.Orbis;
 import com.azortis.orbis.generator.Dimension;
+import com.azortis.orbis.generator.biome.Biome;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -49,8 +50,9 @@ public class DimensionRegistry {
         if(dimensionName.matches(NAME_REGEX)){
             final File dimensionFile = new File(dimensionsFolder, dimensionName + ".json");
             try{
-                // TODO load regions in here from RegionRegistry
-                return Orbis.getGson().fromJson(new FileReader(dimensionFile), Dimension.class);
+                final Dimension dimension = Orbis.getGson().fromJson(new FileReader(dimensionFile), Dimension.class);
+                dimension.setTerrain(Orbis.getTerrainRegistry().loadTerrain(dimension.getTerrainName(), new Biome()));
+                return dimension;
             } catch (FileNotFoundException ex){
                 Orbis.getLogger().error("No dimension file by the name: " + dimensionName + " exists!");
             }

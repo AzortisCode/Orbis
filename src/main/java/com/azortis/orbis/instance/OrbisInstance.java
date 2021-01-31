@@ -24,6 +24,7 @@
 
 package com.azortis.orbis.instance;
 
+import com.azortis.orbis.Orbis;
 import com.azortis.orbis.generator.Dimension;
 import com.azortis.orbis.generator.Engine;
 import com.azortis.orbis.generator.OrbisEngine;
@@ -47,7 +48,8 @@ public class OrbisInstance {
     protected OrbisInstance(String name, Dimension dimension, String storageLocation){
         this.name = name;
         this.dimension = dimension;
-        directory = new File("", storageLocation);
+        directory = new File(System.getProperty("user.dir"), storageLocation);
+        if(!directory.exists())directory.mkdirs();
         engine = new OrbisEngine(dimension);
 
         // This will get an overhaul in the future, its just temporary

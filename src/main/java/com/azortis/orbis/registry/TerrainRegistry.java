@@ -134,8 +134,9 @@ public class TerrainRegistry {
         return namespaceIdTerrainClassMap.containsKey(providerId);
     }
 
-    public Class<? extends Terrain> getTerrainClass(String providerId) {
-        return namespaceIdTerrainClassMap.get(providerId);
+    public Class<? extends Terrain> getTerrainClass(String namespaceId) {
+        Orbis.getLogger().info(namespaceId);
+        return namespaceIdTerrainClassMap.get(namespaceId);
     }
 
     public Collection<String> getRegisteredNamespaceIds() {
