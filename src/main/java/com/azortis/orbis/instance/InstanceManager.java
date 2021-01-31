@@ -24,7 +24,10 @@
 
 package com.azortis.orbis.instance;
 
+import com.azortis.orbis.Orbis;
 import com.azortis.orbis.OrbisSettings;
+import com.azortis.orbis.generator.Dimension;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,20 +38,24 @@ public class InstanceManager {
 
     private final Map<String, OrbisInstance> loadedInstances = new HashMap<>();
 
-    public InstanceManager(OrbisSettings settings){
-
+    public InstanceManager(OrbisSettings settings) {
+        settings.getDefaultInstances().forEach(this::createInstance);
     }
 
-    public OrbisInstance getInstance(String name){
+    public OrbisInstance getInstance(@NotNull String name) {
         return loadedInstances.get(name);
     }
 
-    public List<OrbisInstance> getInstances(){
+    public List<OrbisInstance> getInstances() {
         return new ArrayList<>(loadedInstances.values());
     }
 
-    public OrbisInstance createInstance(InstanceSettings settings){
-        return null;
+    @SuppressWarnings("UnusedReturnValue")
+    public OrbisInstance createInstance(@NotNull InstanceSettings settings) {
+        final Dimension dimension = Orbis.getDimensionRegistry().loadDimension(settings.getDimensionName());
+        final OrbisInstance instance = new OrbisInstance(settings.getName(), dimension, settings.getStorageLocation());
+        loadedInstances.put(settings.getName(), instance);
+        return instance;
     }
 
 }

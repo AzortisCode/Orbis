@@ -45,16 +45,10 @@ public class DimensionRegistry {
 
     public Dimension loadDimension(String dimensionName){
         if(dimensionName.matches(NAME_REGEX)){
+            final File dimensionFile = new File(dimensionsFolder, dimensionName + ".json");
 
         }
         return null;
-    }
-
-    public boolean createDimensionFile(String dimensionName){
-        if(dimensionName.matches(NAME_REGEX)){
-
-        }
-        return false;
     }
 
     public File getDimensionsFolder() {

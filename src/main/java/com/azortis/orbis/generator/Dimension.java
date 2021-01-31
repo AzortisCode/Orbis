@@ -28,6 +28,7 @@ public class Dimension {
 
     private String name;
 
+
     // Used for the GSON deserializer
     private Dimension(){}
 

@@ -44,7 +44,7 @@ public class OrbisInstance {
     private final Engine engine;
     private final InstanceContainer instanceContainer;
 
-    public OrbisInstance(String name, Dimension dimension, String storageLocation){
+    protected OrbisInstance(String name, Dimension dimension, String storageLocation){
         this.name = name;
         this.dimension = dimension;
         directory = new File("", storageLocation);

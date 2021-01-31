@@ -25,6 +25,7 @@
 package com.azortis.orbis;
 
 import com.azortis.orbis.generator.terrain.Terrain;
+import com.azortis.orbis.instance.InstanceManager;
 import com.azortis.orbis.registry.*;
 import com.azortis.orbis.registry.adapter.TerrainAdapter;
 import com.google.gson.Gson;
@@ -32,8 +33,9 @@ import com.google.gson.GsonBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.File;
+import java.io.*;
 
+@SuppressWarnings("unused")
 public final class Orbis {
 
     // Generic fields
@@ -41,7 +43,11 @@ public final class Orbis {
     private static final Logger logger = LoggerFactory.getLogger(Orbis.class);
     private static Gson gson;
     private static File directory;
+    private static File settingsFile;
     private static OrbisSettings settings;
+
+    // Managers
+    private static InstanceManager instanceManager;
 
     // Registries
     private static DimensionRegistry dimensionRegistry;
@@ -55,19 +61,32 @@ public final class Orbis {
         if (!initialised) {
             initialised = true;
             Orbis.directory = directory;
+            if(!directory.exists()){
+                if(!directory.mkdirs())logger.error("Couldn't create orbis directory!");
+            }
+
+            // Gson
+            GsonBuilder gsonBuilder = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping();
+            gsonBuilder.registerTypeAdapter(Terrain.class, new TerrainAdapter(terrainRegistry));
+            gson = gsonBuilder.create();
 
             // Load settings file
-
+            settingsFile = new File(directory, "settings.json");
+            if(!settingsFile.exists())copy(Orbis.class.getResourceAsStream("settings.json"), settingsFile);
+            try{
+                settings = gson.fromJson(new FileReader(settingsFile), OrbisSettings.class);
+            } catch (FileNotFoundException ex){
+                logger.error("Something went wrong with loading the settings file.");
+            }
 
             // Load registries
             dimensionRegistry = new DimensionRegistry();
             biomeRegistry = new BiomeRegistry();
             terrainRegistry = new TerrainRegistry();
 
-            // GsonBuilder
-            GsonBuilder gsonBuilder = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping();
-            gsonBuilder.registerTypeAdapter(Terrain.class, new TerrainAdapter(terrainRegistry));
-            gson = gsonBuilder.create();
+            // Load managers
+            instanceManager = new InstanceManager(settings);
+
         }
     }
 
@@ -87,9 +106,20 @@ public final class Orbis {
         return directory;
     }
 
+    public static File getSettingsFile() {
+        return settingsFile;
+    }
+
     public static OrbisSettings getSettings() {
         return settings;
     }
+
+    // Managers
+
+    public static InstanceManager getInstanceManager() {
+        return instanceManager;
+    }
+
 
     // Registries
 
@@ -108,4 +138,20 @@ public final class Orbis {
     public static TerrainRegistry getTerrainRegistry() {
         return terrainRegistry;
     }
+
+    private static void copy(InputStream in, File file) {
+        try {
+            OutputStream out = new FileOutputStream(file);
+            byte[] buf = new byte[1024];
+            int len;
+            while((len=in.read(buf))>0){
+                out.write(buf,0,len);
+            }
+            out.close();
+            in.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

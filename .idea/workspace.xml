@@ -4,25 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7678a92e-b5f5-4d91-a874-bb8b5cc07377" name="Default Changelist" comment="More lol">
+    <list default="true" id="7678a92e-b5f5-4d91-a874-bb8b5cc07377" name="Default Changelist" comment="Made the Generation engine instance based, so Dimensions can be reused">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/Orbis.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/Orbis.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/OrbisArguments.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/OrbisBootstrap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/OrbisBootstrap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/OrbisBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/StopCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/command/StopCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/Dimension.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/Dimension.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/Engine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/Engine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/OrbisEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/OrbisEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/biome/Biome.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/biome/Biome.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/biome/grid/SingleBiomeGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/biome/grid/SingleBiomeGrid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/region/Region.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/biome/Region.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/region/grid/RegionGrid.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/terrain/defaults/JavaScriptTerrain.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/registry/BiomeRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/registry/BiomeRegistry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/instance/InstanceManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/instance/InstanceManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/instance/OrbisInstance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/instance/OrbisInstance.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/registry/DimensionRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/registry/DimensionRegistry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/registry/TerrainRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/registry/TerrainRegistry.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +81,7 @@
       <workItem from="1611953020124" duration="2273000" />
       <workItem from="1612032968269" duration="1549000" />
       <workItem from="1612036000815" duration="857000" />
-      <workItem from="1612038599851" duration="7884000" />
+      <workItem from="1612038599851" duration="10598000" />
     </task>
     <task id="LOCAL-00001" summary="Implemented license">
       <created>1611103122133</created>
@@ -228,7 +216,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611954695612</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Made the Generation engine instance based, so Dimensions can be reused">
+      <created>1612046667656</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1612046667656</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -263,6 +258,7 @@
     <MESSAGE value="Added terrain naming rules" />
     <MESSAGE value="Done for the day" />
     <MESSAGE value="More lol" />
-    <option name="LAST_COMMIT_MESSAGE" value="More lol" />
+    <MESSAGE value="Made the Generation engine instance based, so Dimensions can be reused" />
+    <option name="LAST_COMMIT_MESSAGE" value="Made the Generation engine instance based, so Dimensions can be reused" />
   </component>
 </project>
