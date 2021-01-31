@@ -28,6 +28,8 @@ import com.azortis.orbis.Orbis;
 import com.azortis.orbis.generator.Dimension;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 
 public class DimensionRegistry {
 
@@ -46,7 +48,14 @@ public class DimensionRegistry {
     public Dimension loadDimension(String dimensionName){
         if(dimensionName.matches(NAME_REGEX)){
             final File dimensionFile = new File(dimensionsFolder, dimensionName + ".json");
-
+            try{
+                // TODO load regions in here from RegionRegistry
+                return Orbis.getGson().fromJson(new FileReader(dimensionFile), Dimension.class);
+            } catch (FileNotFoundException ex){
+                Orbis.getLogger().error("No dimension file by the name: " + dimensionName + " exists!");
+            }
+        } else {
+            Orbis.getLogger().error("Invalid dimension name: " + dimensionName);
         }
         return null;
     }

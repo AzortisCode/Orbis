@@ -25,7 +25,6 @@
 package com.azortis.orbis.generator.terrain;
 
 import com.azortis.orbis.generator.terrain.defaults.ConfigTerrain;
-import com.azortis.orbis.generator.terrain.defaults.JavaScriptTerrain;
 
 public enum TerrainType {
     /**
@@ -33,11 +32,6 @@ public enum TerrainType {
      * Has the functionality to be configured.
      */
     JAVA,
-    /**
-     * Represents a terrain generation algorithm provided by a JavaScript script.
-     * Provided by {@link JavaScriptTerrain}
-     */
-    JAVASCRIPT,
     /**
      * Represents a terrain generation algorithm provided by {@link ConfigTerrain}.
      * Uses same settings parameters.
