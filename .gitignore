@@ -16,6 +16,7 @@ auto-import.
 .idea/compiler.xml
 .idea/modules.xml
 idea/*.iml
+.idea/workspace.xml
 .idea/modules
 *.iml
 *.ipr
