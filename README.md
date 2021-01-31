@@ -1,2 +1,2 @@
 # Orbis
-An work in progress opensource minecraft world generator for Minestom
+A work-in-progress open-source minecraft world generator for Minestom
