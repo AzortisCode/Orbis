@@ -84,7 +84,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.azortis.orbis.OrbisBootstrap</mainClass>
+                            <mainClass>com.azortis.orbis.Start</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
