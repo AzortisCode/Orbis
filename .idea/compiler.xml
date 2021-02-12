@@ -7,8 +7,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Orbis" />
+        <module name="orbis-core" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Orbis" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>

@@ -4,22 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7678a92e-b5f5-4d91-a874-bb8b5cc07377" name="Default Changelist" comment="Added Start to use mixin bootstrap">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+    <list default="true" id="7678a92e-b5f5-4d91-a874-bb8b5cc07377" name="Default Changelist" comment="Added workspace to gitignore">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/Orbis.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/Orbis.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/OrbisBootstrap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/OrbisBootstrap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/Dimension.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/Dimension.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/Engine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/Engine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/terrain/defaults/PlainsTerrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/terrain/defaults/PlainsTerrain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/instance/OrbisInstance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/instance/OrbisInstance.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/old/terrain/OIdTerrain.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/old/terrain/OldChunkGenerator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/old/terrain/defaults/TestOIdTerrain.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/registry/DimensionRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/registry/DimensionRegistry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/registry/TerrainRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/registry/TerrainRegistry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/registry/adapter/TerrainAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/registry/adapter/TerrainAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/biome/grid/BiomeGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/biome/grid/BiomeGrid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/biome/grid/SingleBiomeGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/biome/grid/SingleBiomeGrid.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,6 +54,55 @@
       <recent name="C:\Users\Jake Nijssen\Documents\Azortis\Minecraft\Workshop\Orbis\.idea" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="Orbis" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="Orbis" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -91,7 +128,8 @@
       <workItem from="1612032968269" duration="1549000" />
       <workItem from="1612036000815" duration="857000" />
       <workItem from="1612038599851" duration="15825000" />
-      <workItem from="1612118361957" duration="4022000" />
+      <workItem from="1612118361957" duration="8201000" />
+      <workItem from="1613163735979" duration="643000" />
     </task>
     <task id="LOCAL-00001" summary="Implemented license">
       <created>1611103122133</created>
@@ -254,7 +292,21 @@
       <option name="project" value="LOCAL" />
       <updated>1612057656242</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="IT finally works!! although not fully polished and clean yet!">
+      <created>1612122938038</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1612122938038</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Added workspace to gitignore">
+      <created>1612123050971</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1612123050971</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -293,6 +345,8 @@
     <MESSAGE value="Stuff for coco" />
     <MESSAGE value="Update .gitignore and remove dependency-reduced-pom.xml" />
     <MESSAGE value="Added Start to use mixin bootstrap" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Start to use mixin bootstrap" />
+    <MESSAGE value="IT finally works!! although not fully polished and clean yet!" />
+    <MESSAGE value="Added workspace to gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added workspace to gitignore" />
   </component>
 </project>

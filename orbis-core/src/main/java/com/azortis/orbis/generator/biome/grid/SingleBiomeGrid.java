@@ -26,12 +26,17 @@ package com.azortis.orbis.generator.biome.grid;
 
 import com.azortis.orbis.generator.biome.Biome;
 
-public interface BiomeGrid {
+public class SingleBiomeGrid implements BiomeGrid {
 
-    Biome[] getBiomeArray();
+    private final Biome biome;
 
-    Biome getBiomeAt(int x, int z);
+    public SingleBiomeGrid(Biome biome){
+        this.biome = biome;
+    }
 
-    Biome getBiomeAt(int x, int y, int z);
+    @Override
+    public Biome getBiomeAt(int x, int z) {
+        return biome;
+    }
 
 }

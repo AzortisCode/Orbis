@@ -22,6 +22,5 @@ idea/*.iml
 *.ipr
 *.iws
 out/
-/target
-**/target
+*/target
 dependency-reduced-pom.xml
