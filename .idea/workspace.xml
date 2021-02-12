@@ -3,11 +3,53 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
+  <component name="AutomaticModuleUnloader">
+    <loaded-modules>
+      <module name="Orbis" />
+    </loaded-modules>
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="7678a92e-b5f5-4d91-a874-bb8b5cc07377" name="Default Changelist" comment="Added workspace to gitignore">
+    <list default="true" id="7678a92e-b5f5-4d91-a874-bb8b5cc07377" name="Default Changelist" comment="Introducing module system">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/biome/grid/BiomeGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/biome/grid/BiomeGrid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/biome/grid/SingleBiomeGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/biome/grid/SingleBiomeGrid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orbis-core/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/orbis-core/src/main/java/com/azortis/orbis/Orbis.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/Orbis.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orbis-core/src/main/java/com/azortis/orbis/OrbisBootstrap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/OrbisBootstrap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orbis-core/src/main/java/com/azortis/orbis/OrbisSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/OrbisSettings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orbis-core/src/main/java/com/azortis/orbis/Start.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/Start.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orbis-core/src/main/java/com/azortis/orbis/command/StopCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/command/StopCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orbis-core/src/main/java/com/azortis/orbis/generator/Dimension.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/Dimension.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orbis-core/src/main/java/com/azortis/orbis/generator/Engine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/Engine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orbis-core/src/main/java/com/azortis/orbis/generator/OrbisEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/OrbisEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orbis-core/src/main/java/com/azortis/orbis/generator/biome/Biome.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/biome/Biome.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orbis-core/src/main/java/com/azortis/orbis/generator/biome/Region.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/biome/Region.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orbis-core/src/main/java/com/azortis/orbis/generator/biome/grid/BiomeGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/biome/grid/BiomeGrid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orbis-core/src/main/java/com/azortis/orbis/generator/biome/grid/SingleBiomeGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/biome/grid/SingleBiomeGrid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orbis-core/src/main/java/com/azortis/orbis/generator/biome/grid/complex/ComplexGrid.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/orbis-core/src/main/java/com/azortis/orbis/generator/noise/CellularNoise.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/noise/CellularNoise.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orbis-core/src/main/java/com/azortis/orbis/generator/noise/FastNoise.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/noise/FastNoise.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orbis-core/src/main/java/com/azortis/orbis/generator/noise/NoiseGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/noise/NoiseGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orbis-core/src/main/java/com/azortis/orbis/generator/noise/OpenSimplex2S.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/orbis-core/src/main/java/com/azortis/orbis/generator/noise/PerlinNoise.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/noise/PerlinNoise.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orbis-core/src/main/java/com/azortis/orbis/generator/terrain/Terrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/terrain/Terrain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orbis-core/src/main/java/com/azortis/orbis/generator/terrain/TerrainLayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/terrain/TerrainLayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orbis-core/src/main/java/com/azortis/orbis/generator/terrain/TerrainType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/terrain/TerrainType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orbis-core/src/main/java/com/azortis/orbis/generator/terrain/defaults/ConfigTerrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/terrain/defaults/ConfigTerrain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orbis-core/src/main/java/com/azortis/orbis/generator/terrain/defaults/PlainsTerrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/generator/terrain/defaults/PlainsTerrain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orbis-core/src/main/java/com/azortis/orbis/instance/InstanceBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/instance/InstanceBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orbis-core/src/main/java/com/azortis/orbis/instance/InstanceManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/instance/InstanceManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orbis-core/src/main/java/com/azortis/orbis/instance/InstanceSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/instance/InstanceSettings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orbis-core/src/main/java/com/azortis/orbis/instance/OrbisInstance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/instance/OrbisInstance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orbis-core/src/main/java/com/azortis/orbis/registry/BiomeRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/registry/BiomeRegistry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orbis-core/src/main/java/com/azortis/orbis/registry/DimensionRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/registry/DimensionRegistry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orbis-core/src/main/java/com/azortis/orbis/registry/RegionRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/registry/RegionRegistry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orbis-core/src/main/java/com/azortis/orbis/registry/TerrainRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/registry/TerrainRegistry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orbis-core/src/main/java/com/azortis/orbis/registry/adapter/TerrainAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/azortis/orbis/registry/adapter/TerrainAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orbis-core/src/main/resources/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +67,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="ProjectId" id="1nISfnE6bAFG1hTwLj3S4RiIYnP" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -45,6 +88,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="project.propCompiler" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -128,8 +172,7 @@
       <workItem from="1612032968269" duration="1549000" />
       <workItem from="1612036000815" duration="857000" />
       <workItem from="1612038599851" duration="15825000" />
-      <workItem from="1612118361957" duration="8201000" />
-      <workItem from="1613163735979" duration="643000" />
+      <workItem from="1612118361957" duration="4022000" />
     </task>
     <task id="LOCAL-00001" summary="Implemented license">
       <created>1611103122133</created>
@@ -292,25 +335,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612057656242</updated>
     </task>
-    <task id="LOCAL-00024" summary="IT finally works!! although not fully polished and clean yet!">
-      <created>1612122938038</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1612122938038</updated>
-    </task>
-    <task id="LOCAL-00025" summary="Added workspace to gitignore">
-      <created>1612123050971</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1612123050971</updated>
-    </task>
-    <option name="localTasksCounter" value="26" />
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnloadedModulesList">
+    <module name="orbis-bukkit (1)" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -345,8 +377,6 @@
     <MESSAGE value="Stuff for coco" />
     <MESSAGE value="Update .gitignore and remove dependency-reduced-pom.xml" />
     <MESSAGE value="Added Start to use mixin bootstrap" />
-    <MESSAGE value="IT finally works!! although not fully polished and clean yet!" />
-    <MESSAGE value="Added workspace to gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added workspace to gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Start to use mixin bootstrap" />
   </component>
 </project>

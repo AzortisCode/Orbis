@@ -22,30 +22,31 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.generator.noise;
+package com.azortis.orbis.generator.biome.grid;
 
-public class OpenSimplex2S implements NoiseGenerator{
+import com.azortis.orbis.generator.biome.Biome;
 
-    private final FastNoise noise;
+public class SingleBiomeGrid implements BiomeGrid {
 
-    public OpenSimplex2S(long seed) {
-        noise = new FastNoise(seed);
-        noise.setNoiseType(FastNoise.NoiseType.OpenSimplex2S);
-        noise.setFrequency(1);
+    private final Biome biome;
+
+    public SingleBiomeGrid(Biome biome){
+        this.biome = biome;
     }
 
     @Override
-    public double noise(double x) {
-        return noise.getNoise(x, 0);
+    public Biome[] getBiomeArray() {
+        return new Biome[]{biome};
     }
 
     @Override
-    public double noise(double x, double y) {
-        return noise.getNoise(x, y);
+    public Biome getBiomeAt(int x, int z) {
+        return biome;
     }
 
     @Override
-    public double noise(double x, double y, double z) {
-        return noise.getNoise(x, y, z);
+    public Biome getBiomeAt(int x, int y, int z) {
+        return biome;
     }
+
 }
