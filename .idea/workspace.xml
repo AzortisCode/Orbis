@@ -12,15 +12,7 @@
     </loaded-modules>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7678a92e-b5f5-4d91-a874-bb8b5cc07377" name="Default Changelist" comment="Remove system">
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/kotlinScripting.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="7678a92e-b5f5-4d91-a874-bb8b5cc07377" name="Default Changelist" comment="Migrated to gradle" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -104,7 +96,7 @@
       <recent name="C:\Users\Jake Nijssen\Documents\Azortis\Minecraft\Workshop\Orbis\.idea" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.Orbis [build]">
+  <component name="RunManager" selected="Gradle.Orbis [clean]">
     <configuration name="Orbis [assemble]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -170,9 +162,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.Orbis [clean]" />
         <item itemvalue="Gradle.Orbis [build]" />
         <item itemvalue="Gradle.Orbis [assemble]" />
-        <item itemvalue="Gradle.Orbis [clean]" />
       </list>
     </recent_temporary>
   </component>
@@ -205,7 +197,7 @@
       <workItem from="1613483294335" duration="10000" />
       <workItem from="1614537157118" duration="17000" />
       <workItem from="1614537198568" duration="509000" />
-      <workItem from="1614620632089" duration="1031000" />
+      <workItem from="1614620632089" duration="1393000" />
     </task>
     <task id="LOCAL-00001" summary="Implemented license">
       <created>1611103122133</created>
@@ -375,7 +367,14 @@
       <option name="project" value="LOCAL" />
       <updated>1613173028110</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Migrated to gradle">
+      <created>1614625695907</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1614625695907</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -418,7 +417,8 @@
     <MESSAGE value="Update .gitignore and remove dependency-reduced-pom.xml" />
     <MESSAGE value="Added Start to use mixin bootstrap" />
     <MESSAGE value="Remove system" />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove system" />
+    <MESSAGE value="Migrated to gradle" />
+    <option name="LAST_COMMIT_MESSAGE" value="Migrated to gradle" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
