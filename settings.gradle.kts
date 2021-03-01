@@ -3,3 +3,6 @@
  */
 
 rootProject.name = "Orbis"
+include("orbis-core")
+include("orbis-bukkit")
+include("orbis-minestom")
