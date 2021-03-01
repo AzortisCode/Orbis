@@ -22,11 +22,7 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.structure;
+package com.azortis.orbis.bukkit;
 
-import java.io.Serializable;
-
-public class StructureBlock implements Serializable {
-
-    private static final long serialVersionUID = 4120847109633217403L;
+public class OrbisWorld {
 }

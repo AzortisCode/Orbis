@@ -22,13 +22,23 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.structure;
+package com.azortis.orbis.bukkit;
 
-import java.io.Serializable;
+import com.azortis.orbis.Orbis;
+import org.bukkit.generator.ChunkGenerator;
+import org.bukkit.plugin.java.JavaPlugin;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class StructureObject implements Serializable {
+public class OrbisPlugin extends JavaPlugin {
 
-    private static final long serialVersionUID = 5881754609616527716L;
+    public void onLoad() {
+        Orbis.initialise(getDataFolder());
 
+    }
 
+    @Override
+    public @Nullable ChunkGenerator getDefaultWorldGenerator(@NotNull String worldName, @Nullable String id) {
+        return super.getDefaultWorldGenerator(worldName, id);
+    }
 }
