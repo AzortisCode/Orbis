@@ -22,10 +22,13 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.minestom;
+package com.azortis.orbis.generator.biome;
 
 /**
- * Class used for translating core objects to minestom ones.
+ * Interface for filling biomes for native adaptation
  */
-public class MinestomAdapter{
+public interface BiomeGrid {
+
+    void setBiome(int x, int y, int z, Biome biome);
+
 }

@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.bukkit;
+package com.azortis.orbis.block;
 
-public class BukkitAdapter {
+public interface BlockData {
 }

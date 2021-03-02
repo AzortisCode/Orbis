@@ -22,38 +22,27 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.generator.biome;
+package com.azortis.orbis.bukkit;
 
-import com.azortis.orbis.generator.terrain.TerrainLayer;
-import com.azortis.orbis.util.NamespaceID;
+import org.bukkit.World;
+import org.bukkit.generator.ChunkGenerator;
+import org.jetbrains.annotations.NotNull;
 
-import java.util.List;
+import java.util.Random;
 
-public class Biome {
+public class BukkitChunkGenerator extends ChunkGenerator {
 
-    private String name;
-    private NamespaceID derivative;
-    private List<TerrainLayer> terrainLayers;
+    @Override
+    public @NotNull ChunkData generateChunkData(@NotNull World world, @NotNull Random random, int chunkX, int chunkZ, @NotNull BiomeGrid biome) {
+        ChunkData chunk = createChunkData(world);
 
-    private transient Region region;
-
-    public String getName() {
-        return name;
+        return super.generateChunkData(world, random, chunkX, chunkZ, biome);
     }
 
-    public NamespaceID getDerivative() {
-        return derivative;
+    @Override
+    public boolean isParallelCapable() {
+        return true;
     }
 
-    public List<TerrainLayer> getTerrainLayers() {
-        return terrainLayers;
-    }
 
-    public Region getRegion() {
-        return region;
-    }
-
-    public void setRegion(Region region) {
-        if(this.region == null)this.region = region;
-    }
 }

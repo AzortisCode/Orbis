@@ -24,36 +24,5 @@
 
 package com.azortis.orbis.generator.biome;
 
-import com.azortis.orbis.generator.terrain.TerrainLayer;
-import com.azortis.orbis.util.NamespaceID;
-
-import java.util.List;
-
-public class Biome {
-
-    private String name;
-    private NamespaceID derivative;
-    private List<TerrainLayer> terrainLayers;
-
-    private transient Region region;
-
-    public String getName() {
-        return name;
-    }
-
-    public NamespaceID getDerivative() {
-        return derivative;
-    }
-
-    public List<TerrainLayer> getTerrainLayers() {
-        return terrainLayers;
-    }
-
-    public Region getRegion() {
-        return region;
-    }
-
-    public void setRegion(Region region) {
-        if(this.region == null)this.region = region;
-    }
+public interface BiomeDistributor {
 }

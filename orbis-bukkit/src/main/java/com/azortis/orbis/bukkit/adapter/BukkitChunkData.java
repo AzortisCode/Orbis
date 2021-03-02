@@ -22,25 +22,30 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.bukkit.generator;
+package com.azortis.orbis.bukkit.adapter;
 
-import org.bukkit.World;
+import com.azortis.orbis.generator.ChunkData;
+import com.azortis.orbis.generator.Dimension;
+import org.bukkit.Material;
 import org.bukkit.generator.ChunkGenerator;
-import org.jetbrains.annotations.NotNull;
 
-import java.util.Random;
+import java.util.Locale;
 
-public class BukkitChunkGenerator extends ChunkGenerator {
+public class BukkitChunkData extends ChunkData {
 
-    @Override
-    public @NotNull ChunkData generateChunkData(@NotNull World world, @NotNull Random random, int x, int z, @NotNull BiomeGrid biome) {
+    private final ChunkGenerator.ChunkData handle;
 
-        return super.generateChunkData(world, random, x, z, biome);
+    public BukkitChunkData(Dimension dimension, ChunkGenerator.ChunkData handle) {
+        super(dimension);
+        this.handle = handle;
     }
 
-    @Override
-    public boolean isParallelCapable() {
-        return true;
+    public void setBlock(int x, int y, int z, String blockId) {
+        handle.setBlock(x, y, z, Material.valueOf(blockId.toUpperCase(Locale.ENGLISH)));
+    }
+
+    public ChunkGenerator.ChunkData getHandle(){
+        return handle;
     }
 
 }

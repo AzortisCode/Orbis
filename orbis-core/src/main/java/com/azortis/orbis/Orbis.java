@@ -27,7 +27,9 @@ package com.azortis.orbis;
 import com.azortis.orbis.generator.terrain.Terrain;
 import com.azortis.orbis.instance.InstanceManager;
 import com.azortis.orbis.registry.*;
+import com.azortis.orbis.registry.adapter.NamespaceIdAdapter;
 import com.azortis.orbis.registry.adapter.TerrainAdapter;
+import com.azortis.orbis.util.NamespaceID;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.apache.commons.io.FileUtils;
@@ -74,6 +76,7 @@ public final class Orbis {
 
             // Gson
             GsonBuilder gsonBuilder = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping();
+            gsonBuilder.registerTypeAdapter(NamespaceID.class, new NamespaceIdAdapter());
             gsonBuilder.registerTypeAdapter(Terrain.class, new TerrainAdapter(terrainRegistry));
             gson = gsonBuilder.create();
 

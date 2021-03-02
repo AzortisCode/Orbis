@@ -22,38 +22,30 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.generator.biome;
+package com.azortis.orbis.minestom.adapter;
 
-import com.azortis.orbis.generator.terrain.TerrainLayer;
-import com.azortis.orbis.util.NamespaceID;
+import com.azortis.orbis.generator.ChunkData;
+import com.azortis.orbis.generator.Dimension;
+import net.minestom.server.instance.batch.ChunkBatch;
+import net.minestom.server.instance.block.Block;
 
-import java.util.List;
+import java.util.Locale;
 
-public class Biome {
+public class MinestomChunkData extends ChunkData {
 
-    private String name;
-    private NamespaceID derivative;
-    private List<TerrainLayer> terrainLayers;
+    private final ChunkBatch handle;
 
-    private transient Region region;
-
-    public String getName() {
-        return name;
+    public MinestomChunkData(Dimension dimension, ChunkBatch handle) {
+        super(dimension);
+        this.handle = handle;
     }
 
-    public NamespaceID getDerivative() {
-        return derivative;
+    @Override
+    public void setBlock(int x, int y, int z, String blockId) {
+        handle.setBlock(x,y,z, Block.valueOf(blockId.toUpperCase(Locale.ENGLISH)));
     }
 
-    public List<TerrainLayer> getTerrainLayers() {
-        return terrainLayers;
-    }
-
-    public Region getRegion() {
-        return region;
-    }
-
-    public void setRegion(Region region) {
-        if(this.region == null)this.region = region;
+    public ChunkBatch getHandle() {
+        return handle;
     }
 }

@@ -22,38 +22,20 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.generator.biome;
+package com.azortis.orbis.block;
 
-import com.azortis.orbis.generator.terrain.TerrainLayer;
 import com.azortis.orbis.util.NamespaceID;
 
-import java.util.List;
+public class Block {
 
-public class Biome {
+    private final NamespaceID block;
 
-    private String name;
-    private NamespaceID derivative;
-    private List<TerrainLayer> terrainLayers;
-
-    private transient Region region;
-
-    public String getName() {
-        return name;
+    public Block(NamespaceID block) {
+        this.block = block;
     }
 
-    public NamespaceID getDerivative() {
-        return derivative;
+    public NamespaceID getBlock() {
+        return block;
     }
 
-    public List<TerrainLayer> getTerrainLayers() {
-        return terrainLayers;
-    }
-
-    public Region getRegion() {
-        return region;
-    }
-
-    public void setRegion(Region region) {
-        if(this.region == null)this.region = region;
-    }
 }

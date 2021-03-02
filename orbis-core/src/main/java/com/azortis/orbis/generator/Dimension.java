@@ -29,6 +29,8 @@ import com.azortis.orbis.generator.terrain.Terrain;
 public class Dimension {
 
     private String name;
+    private int minHeight;
+    private int maxHeight;
     private String terrainName;
     private transient Terrain terrain;
 
@@ -41,6 +43,14 @@ public class Dimension {
 
     public String getName() {
         return name;
+    }
+
+    public int getMinHeight() {
+        return minHeight;
+    }
+
+    public int getMaxHeight() {
+        return maxHeight;
     }
 
     public String getTerrainName() {

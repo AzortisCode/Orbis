@@ -22,16 +22,7 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.generator.biome.grid;
+package com.azortis.orbis.bukkit.adapter;
 
-import com.azortis.orbis.generator.biome.Biome;
-
-public interface BiomeGrid {
-
-    Biome[] getBiomeArray();
-
-    Biome getBiomeAt(int x, int z);
-
-    Biome getBiomeAt(int x, int y, int z);
-
+public class BukkitAdapter {
 }

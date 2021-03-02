@@ -29,16 +29,7 @@ repositories {
 
 dependencies {
     implementation("com.github.Minestom:Minestom:3026e46220")
-}
-
-tasks {
-    named<com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar>("shadowJar") {
-        archiveBaseName.set("Orbis")
-        mergeServiceFiles()
-        manifest {
-            attributes(mapOf("Main-Class" to "com.azortis.orbis.Start"))
-        }
-    }
+    implementation("net.sf.trove4j:trove4j:3.0.3")
 }
 
 tasks {

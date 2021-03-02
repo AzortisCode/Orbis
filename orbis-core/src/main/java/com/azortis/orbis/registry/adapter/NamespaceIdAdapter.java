@@ -22,38 +22,23 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.generator.biome;
+package com.azortis.orbis.registry.adapter;
 
-import com.azortis.orbis.generator.terrain.TerrainLayer;
 import com.azortis.orbis.util.NamespaceID;
+import com.google.gson.*;
 
-import java.util.List;
+import java.lang.reflect.Type;
 
-public class Biome {
+public class NamespaceIdAdapter implements JsonSerializer<NamespaceID>, JsonDeserializer<NamespaceID> {
 
-    private String name;
-    private NamespaceID derivative;
-    private List<TerrainLayer> terrainLayers;
-
-    private transient Region region;
-
-    public String getName() {
-        return name;
+    @Override
+    public JsonElement serialize(NamespaceID namespaceID, Type type, JsonSerializationContext context) {
+        return context.serialize(namespaceID.getNamespaceId(), String.class);
     }
 
-    public NamespaceID getDerivative() {
-        return derivative;
-    }
-
-    public List<TerrainLayer> getTerrainLayers() {
-        return terrainLayers;
-    }
-
-    public Region getRegion() {
-        return region;
-    }
-
-    public void setRegion(Region region) {
-        if(this.region == null)this.region = region;
+    @Override
+    public NamespaceID deserialize(JsonElement element, Type type, JsonDeserializationContext context) throws JsonParseException {
+        String namespacedId = element.getAsJsonObject().getAsJsonObject("namespaceId").getAsString();
+        return new NamespaceID(namespacedId);
     }
 }

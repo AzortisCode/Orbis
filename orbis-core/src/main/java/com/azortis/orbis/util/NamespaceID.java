@@ -22,38 +22,38 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.generator.biome;
+package com.azortis.orbis.util;
 
-import com.azortis.orbis.generator.terrain.TerrainLayer;
-import com.azortis.orbis.util.NamespaceID;
+import com.google.common.base.Preconditions;
 
-import java.util.List;
+public class NamespaceID {
 
-public class Biome {
+    public static final String NAMESPACE_ID_REGEX = "^([a-z0-9._-]+):([a-z0-9._-]+)$";
+    public static final String NAMESPACE_REGEX = "^[a-z0-9._-]+$";
+    public static final String ID_REGEX = "^[a-z0-9._-]+$";
 
-    private String name;
-    private NamespaceID derivative;
-    private List<TerrainLayer> terrainLayers;
+    private final String namespaceId;
 
-    private transient Region region;
-
-    public String getName() {
-        return name;
+    public NamespaceID(String namespaceId) {
+        Preconditions.checkArgument(namespaceId.matches(NAMESPACE_ID_REGEX));
+        this.namespaceId = namespaceId;
     }
 
-    public NamespaceID getDerivative() {
-        return derivative;
+    public NamespaceID(String namespace, String id) {
+        Preconditions.checkArgument(namespace.matches(NAMESPACE_REGEX));
+        Preconditions.checkArgument(namespace.matches(ID_REGEX));
+        this.namespaceId = namespace + ":" + id;
     }
 
-    public List<TerrainLayer> getTerrainLayers() {
-        return terrainLayers;
+    public String getNamespaceId() {
+        return namespaceId;
     }
 
-    public Region getRegion() {
-        return region;
+    public String getNamespace() {
+        return namespaceId.split(":")[0];
     }
 
-    public void setRegion(Region region) {
-        if(this.region == null)this.region = region;
+    public String getId() {
+        return namespaceId.split(":")[1];
     }
 }
