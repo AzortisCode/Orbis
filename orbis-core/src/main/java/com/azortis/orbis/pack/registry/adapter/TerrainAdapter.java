@@ -22,29 +22,28 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.instance;
+package com.azortis.orbis.pack.registry.adapter;
 
-public class InstanceBuilder {
-    private final String name;
-    private String dimensionName;
-    private String storageLocation;
+import com.azortis.orbis.generator.terrain.Terrain;
+import com.azortis.orbis.pack.registry.TerrainRegistry;
+import com.google.gson.*;
 
-    public InstanceBuilder(String name) {
-        this.name = name;
+import java.lang.reflect.Type;
+
+public class TerrainAdapter implements JsonDeserializer<Terrain> {
+
+    private final TerrainRegistry terrainRegistry;
+
+    public TerrainAdapter(TerrainRegistry terrainRegistry) {
+        this.terrainRegistry = terrainRegistry;
     }
 
-    public InstanceBuilder setDimensionName(String dimensionName) {
-        this.dimensionName = dimensionName;
-        return this;
-    }
-
-    public InstanceBuilder setStorageLocation(String storageLocation){
-        this.storageLocation = storageLocation;
-        return this;
-    }
-
-    public InstanceSettings build(){
-        return new InstanceSettings(name, dimensionName, storageLocation);
+    @Override
+    public Terrain deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context) throws JsonParseException {
+        final JsonObject object = jsonElement.getAsJsonObject();
+        final String terrainNamespaceId = object.get("namespaceId").getAsString();
+        final Class<? extends Terrain> terrainType = terrainRegistry.getTerrainClass(terrainNamespaceId);
+        return context.deserialize(jsonElement, terrainType);
     }
 
 }

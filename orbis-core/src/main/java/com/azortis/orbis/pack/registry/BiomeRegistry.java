@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.registry;
+package com.azortis.orbis.pack.registry;
 
 import com.azortis.orbis.OrbisMine;
 import com.azortis.orbis.generator.biome.Biome;

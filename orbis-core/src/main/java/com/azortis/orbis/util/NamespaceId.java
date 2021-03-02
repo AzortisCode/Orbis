@@ -22,37 +22,38 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.command;
+package com.azortis.orbis.util;
 
-import net.minestom.server.MinecraftServer;
-import net.minestom.server.command.CommandProcessor;
-import net.minestom.server.command.CommandSender;
-import net.minestom.server.entity.Player;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import com.google.common.base.Preconditions;
 
-public class StopCommand implements CommandProcessor {
+public class NamespaceId {
 
-    @NotNull
-    @Override
-    public String getCommandName() {
-        return "stop";
+    public static final String NAMESPACE_ID_REGEX = "^([a-z0-9._-]+):([a-z0-9._-]+)$";
+    public static final String NAMESPACE_REGEX = "^[a-z0-9._-]+$";
+    public static final String ID_REGEX = "^[a-z0-9._-]+$";
+
+    private final String namespaceId;
+
+    public NamespaceId(String namespaceId) {
+        Preconditions.checkArgument(namespaceId.matches(NAMESPACE_ID_REGEX));
+        this.namespaceId = namespaceId;
     }
 
-    @Nullable
-    @Override
-    public String[] getAliases() {
-        return new String[0];
+    public NamespaceId(String namespace, String id) {
+        Preconditions.checkArgument(namespace.matches(NAMESPACE_REGEX));
+        Preconditions.checkArgument(namespace.matches(ID_REGEX));
+        this.namespaceId = namespace + ":" + id;
     }
 
-    @Override
-    public boolean process(@NotNull CommandSender commandSender, @NotNull String s, @NotNull String[] strings) {
-        MinecraftServer.stopCleanly();
-        return true;
+    public String getNamespaceId() {
+        return namespaceId;
     }
 
-    @Override
-    public boolean hasAccess(@NotNull Player player) {
-        return true;
+    public String getNamespace() {
+        return namespaceId.split(":")[0];
+    }
+
+    public String getId() {
+        return namespaceId.split(":")[1];
     }
 }

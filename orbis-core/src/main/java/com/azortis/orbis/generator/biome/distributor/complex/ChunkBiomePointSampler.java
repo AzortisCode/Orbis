@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.generator.biome;
+package com.azortis.orbis.generator.biome.distributor.complex;
 
-public interface BiomeDistributor {
+public class ChunkBiomePointSampler {
 }

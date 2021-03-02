@@ -25,19 +25,19 @@
 package com.azortis.orbis;
 
 import com.azortis.orbis.generator.terrain.Terrain;
-import com.azortis.orbis.instance.InstanceManager;
-import com.azortis.orbis.registry.*;
-import com.azortis.orbis.registry.adapter.NamespaceIdAdapter;
-import com.azortis.orbis.registry.adapter.TerrainAdapter;
-import com.azortis.orbis.util.NamespaceID;
+import com.azortis.orbis.pack.registry.BiomeRegistry;
+import com.azortis.orbis.pack.registry.DimensionRegistry;
+import com.azortis.orbis.pack.registry.RegionRegistry;
+import com.azortis.orbis.pack.registry.TerrainRegistry;
+import com.azortis.orbis.pack.registry.adapter.NamespaceIdAdapter;
+import com.azortis.orbis.pack.registry.adapter.TerrainAdapter;
+import com.azortis.orbis.util.NamespaceId;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.*;
-import java.util.Objects;
 
 @SuppressWarnings("unused")
 public final class OrbisMine {
@@ -48,10 +48,6 @@ public final class OrbisMine {
     private static Gson gson;
     private static File directory;
     private static File settingsFile;
-    private static OrbisSettings settings;
-
-    // Managers
-    private static InstanceManager instanceManager;
 
     // Registries
     private static DimensionRegistry dimensionRegistry;
@@ -76,21 +72,20 @@ public final class OrbisMine {
 
             // Gson
             GsonBuilder gsonBuilder = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping();
-            gsonBuilder.registerTypeAdapter(NamespaceID.class, new NamespaceIdAdapter());
+            gsonBuilder.registerTypeAdapter(NamespaceId.class, new NamespaceIdAdapter());
             gsonBuilder.registerTypeAdapter(Terrain.class, new TerrainAdapter(terrainRegistry));
             gson = gsonBuilder.create();
 
             // Load settings file
-            settingsFile = new File(directory, "settings.json");
+            /*settingsFile = new File(directory, "settings.json");
             try{
                 if(!settingsFile.exists())FileUtils.copyURLToFile(Objects.requireNonNull(OrbisMine.class.getClassLoader().getResource("settings.json")), settingsFile);
                 settings = gson.fromJson(new FileReader(settingsFile), OrbisSettings.class);
             } catch (IOException ex){
                 logger.error("Something went wrong with loading the settings file.");
-            }
+            }*/
 
             // Load managers
-            instanceManager = new InstanceManager(settings);
         }
     }
 
@@ -114,15 +109,8 @@ public final class OrbisMine {
         return settingsFile;
     }
 
-    public static OrbisSettings getSettings() {
-        return settings;
-    }
-
     // Managers
 
-    public static InstanceManager getInstanceManager() {
-        return instanceManager;
-    }
 
 
     // Registries

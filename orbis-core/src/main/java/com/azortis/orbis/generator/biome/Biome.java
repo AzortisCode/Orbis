@@ -25,14 +25,14 @@
 package com.azortis.orbis.generator.biome;
 
 import com.azortis.orbis.generator.terrain.TerrainLayer;
-import com.azortis.orbis.util.NamespaceID;
+import com.azortis.orbis.util.NamespaceId;
 
 import java.util.List;
 
 public class Biome {
 
     private String name;
-    private NamespaceID derivative;
+    private NamespaceId derivative;
     private List<TerrainLayer> terrainLayers;
 
     private transient Region region;
@@ -41,7 +41,7 @@ public class Biome {
         return name;
     }
 
-    public NamespaceID getDerivative() {
+    public NamespaceId getDerivative() {
         return derivative;
     }
 

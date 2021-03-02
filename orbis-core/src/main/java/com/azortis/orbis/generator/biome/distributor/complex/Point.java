@@ -22,7 +22,36 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.registry;
+package com.azortis.orbis.generator.biome.distributor.complex;
 
-public class RegionRegistry {
+public class Point<T> {
+    private final double x,z;
+    private final int hash;
+    private T tag;
+
+    public Point(double x, double z, int hash) {
+        this.x = x;
+        this.z = z;
+        this.hash = hash;
+    }
+
+    public double getX() {
+        return x;
+    }
+
+    public double getZ() {
+        return z;
+    }
+
+    public int getHash() {
+        return hash;
+    }
+
+    public T getTag() {
+        return tag;
+    }
+
+    public void setTag(T tag) {
+        this.tag = tag;
+    }
 }

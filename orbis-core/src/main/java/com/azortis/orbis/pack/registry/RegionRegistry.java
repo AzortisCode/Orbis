@@ -22,23 +22,7 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.registry.adapter;
+package com.azortis.orbis.pack.registry;
 
-import com.azortis.orbis.util.NamespaceID;
-import com.google.gson.*;
-
-import java.lang.reflect.Type;
-
-public class NamespaceIdAdapter implements JsonSerializer<NamespaceID>, JsonDeserializer<NamespaceID> {
-
-    @Override
-    public JsonElement serialize(NamespaceID namespaceID, Type type, JsonSerializationContext context) {
-        return context.serialize(namespaceID.getNamespaceId(), String.class);
-    }
-
-    @Override
-    public NamespaceID deserialize(JsonElement element, Type type, JsonDeserializationContext context) throws JsonParseException {
-        String namespacedId = element.getAsJsonObject().getAsJsonObject("namespaceId").getAsString();
-        return new NamespaceID(namespacedId);
-    }
+public class RegionRegistry {
 }

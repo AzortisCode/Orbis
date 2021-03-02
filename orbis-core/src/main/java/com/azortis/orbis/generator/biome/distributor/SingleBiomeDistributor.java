@@ -22,20 +22,40 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.block;
+package com.azortis.orbis.generator.biome.distributor;
 
-import com.azortis.orbis.util.NamespaceId;
+import com.azortis.orbis.generator.biome.Biome;
 
-public class Block {
+public class SingleBiomeDistributor implements BiomeDistributor {
 
-    private final NamespaceId block;
+    private final Biome biome;
 
-    public Block(NamespaceId block) {
-        this.block = block;
+    public SingleBiomeDistributor(Biome biome) {
+        this.biome = biome;
     }
 
-    public NamespaceId getBlock() {
-        return block;
+    @Override
+    public void loadChunk(int chunkX, int chunkZ) {
+        // Ignore
     }
 
+    @Override
+    public boolean isChunkLoaded(int chunkX, int chunkZ) {
+        return true;
+    }
+
+    @Override
+    public Biome getBiomeAt(int x, int y, int z) {
+        return biome;
+    }
+
+    @Override
+    public Biome[] getBiomesAt(int x, int y, int z) {
+        return new Biome[]{biome};
+    }
+
+    @Override
+    public double getBiomeWeightAt(int x, int y, int z, Biome biome) {
+        return 1.0d;
+    }
 }

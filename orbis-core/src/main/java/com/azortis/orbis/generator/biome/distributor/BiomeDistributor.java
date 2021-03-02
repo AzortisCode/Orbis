@@ -22,38 +22,20 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.util;
+package com.azortis.orbis.generator.biome.distributor;
 
-import com.google.common.base.Preconditions;
+import com.azortis.orbis.generator.biome.Biome;
 
-public class NamespaceID {
+public interface BiomeDistributor {
 
-    public static final String NAMESPACE_ID_REGEX = "^([a-z0-9._-]+):([a-z0-9._-]+)$";
-    public static final String NAMESPACE_REGEX = "^[a-z0-9._-]+$";
-    public static final String ID_REGEX = "^[a-z0-9._-]+$";
+    void loadChunk(int chunkX, int chunkZ);
 
-    private final String namespaceId;
+    boolean isChunkLoaded(int chunkX, int chunkZ);
 
-    public NamespaceID(String namespaceId) {
-        Preconditions.checkArgument(namespaceId.matches(NAMESPACE_ID_REGEX));
-        this.namespaceId = namespaceId;
-    }
+    Biome getBiomeAt(int x, int y, int z);
 
-    public NamespaceID(String namespace, String id) {
-        Preconditions.checkArgument(namespace.matches(NAMESPACE_REGEX));
-        Preconditions.checkArgument(namespace.matches(ID_REGEX));
-        this.namespaceId = namespace + ":" + id;
-    }
+    Biome[] getBiomesAt(int x, int y, int z);
 
-    public String getNamespaceId() {
-        return namespaceId;
-    }
+    double getBiomeWeightAt(int x, int y, int z, Biome biome);
 
-    public String getNamespace() {
-        return namespaceId.split(":")[0];
-    }
-
-    public String getId() {
-        return namespaceId.split(":")[1];
-    }
 }

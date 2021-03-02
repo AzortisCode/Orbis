@@ -22,40 +22,54 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.instance;
+package com.azortis.orbis.pack;
 
-import com.azortis.orbis.OrbisMine;
-import com.azortis.orbis.OrbisSettings;
-import com.azortis.orbis.generator.Dimension;
-import org.jetbrains.annotations.NotNull;
-
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-public class InstanceManager {
+public class Pack {
 
-    private final Map<String, OrbisInstance> loadedInstances = new HashMap<>();
+    // Required
+    private String name;
+    private String author;
+    private String dimensionFile;
+    private String packVersion;
 
-    public InstanceManager(OrbisSettings settings) {
-        settings.getDefaultInstances().forEach(this::createInstance);
+    // Optional
+    private List<PackContributor> contributors;
+    private String description;
+
+    // Used for gson deserialization
+    private Pack(){
     }
 
-    public OrbisInstance getInstance(@NotNull String name) {
-        return loadedInstances.get(name);
+    public Pack(String name, String author, String dimensionFile, String packVersion) {
+        this.name = name;
+        this.author = author;
+        this.dimensionFile = dimensionFile;
+        this.packVersion = packVersion;
     }
 
-    public List<OrbisInstance> getInstances() {
-        return new ArrayList<>(loadedInstances.values());
+    public String getName() {
+        return name;
     }
 
-    @SuppressWarnings("UnusedReturnValue")
-    public OrbisInstance createInstance(@NotNull InstanceSettings settings) {
-        final Dimension dimension = OrbisMine.getDimensionRegistry().loadDimension(settings.getDimensionName());
-        final OrbisInstance instance = new OrbisInstance(settings.getName(), dimension, settings.getStorageLocation());
-        loadedInstances.put(settings.getName(), instance);
-        return instance;
+    public String getAuthor() {
+        return author;
     }
 
+    public String getDimensionFile() {
+        return dimensionFile;
+    }
+
+    public String getPackVersion() {
+        return packVersion;
+    }
+
+    public List<PackContributor> getContributors() {
+        return contributors;
+    }
+
+    public String getDescription() {
+        return description;
+    }
 }

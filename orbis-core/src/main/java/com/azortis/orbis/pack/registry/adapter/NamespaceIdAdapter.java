@@ -22,31 +22,23 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.instance;
+package com.azortis.orbis.pack.registry.adapter;
 
-public class InstanceSettings {
-    private final String name;
-    private final String dimensionName;
-    private final String storageLocation;
+import com.azortis.orbis.util.NamespaceId;
+import com.google.gson.*;
 
-    //TODO add multiple Engines based on the complexity of the instance
+import java.lang.reflect.Type;
 
-    public InstanceSettings(String name, String dimensionName, String storageLocation) {
-        this.name = name;
-        this.dimensionName = dimensionName;
-        this.storageLocation = storageLocation;
+public class NamespaceIdAdapter implements JsonSerializer<NamespaceId>, JsonDeserializer<NamespaceId> {
+
+    @Override
+    public JsonElement serialize(NamespaceId namespaceID, Type type, JsonSerializationContext context) {
+        return context.serialize(namespaceID.getNamespaceId(), String.class);
     }
 
-    public String getName() {
-        return name;
+    @Override
+    public NamespaceId deserialize(JsonElement element, Type type, JsonDeserializationContext context) throws JsonParseException {
+        String namespacedId = element.getAsJsonObject().getAsJsonObject("namespaceId").getAsString();
+        return new NamespaceId(namespacedId);
     }
-
-    public String getDimensionName() {
-        return dimensionName;
-    }
-
-    public String getStorageLocation() {
-        return storageLocation;
-    }
-
 }

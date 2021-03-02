@@ -22,20 +22,27 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.block;
+package com.azortis.orbis.pack;
 
-import com.azortis.orbis.util.NamespaceId;
+public class PackContributor {
 
-public class Block {
+    private String name;
+    private String contribution;
 
-    private final NamespaceId block;
-
-    public Block(NamespaceId block) {
-        this.block = block;
+    // Used for GSON deserialization
+    private PackContributor(){
     }
 
-    public NamespaceId getBlock() {
-        return block;
+    public PackContributor(String name, String contribution) {
+        this.name = name;
+        this.contribution = contribution;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getContribution() {
+        return contribution;
+    }
 }

@@ -22,28 +22,7 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.registry.adapter;
+package com.azortis.orbis.generator.biome.distributor.complex;
 
-import com.azortis.orbis.generator.terrain.Terrain;
-import com.azortis.orbis.registry.TerrainRegistry;
-import com.google.gson.*;
-
-import java.lang.reflect.Type;
-
-public class TerrainAdapter implements JsonDeserializer<Terrain> {
-
-    private final TerrainRegistry terrainRegistry;
-
-    public TerrainAdapter(TerrainRegistry terrainRegistry) {
-        this.terrainRegistry = terrainRegistry;
-    }
-
-    @Override
-    public Terrain deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context) throws JsonParseException {
-        final JsonObject object = jsonElement.getAsJsonObject();
-        final String terrainNamespaceId = object.get("namespaceId").getAsString();
-        final Class<? extends Terrain> terrainType = terrainRegistry.getTerrainClass(terrainNamespaceId);
-        return context.deserialize(jsonElement, terrainType);
-    }
-
+public class ScatteredBiomeBlender {
 }

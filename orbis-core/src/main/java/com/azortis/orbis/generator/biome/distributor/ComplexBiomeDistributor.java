@@ -22,17 +22,41 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis;
+package com.azortis.orbis.generator.biome.distributor;
 
-import com.azortis.orbis.instance.InstanceSettings;
+import com.azortis.orbis.generator.Dimension;
+import com.azortis.orbis.generator.biome.Biome;
 
-import java.util.List;
+public class ComplexBiomeDistributor implements BiomeDistributor{
 
-public class OrbisSettings {
+    private final Dimension dimension;
 
-    private List<InstanceSettings> defaultInstances;
+    public ComplexBiomeDistributor(Dimension dimension) {
+        this.dimension = dimension;
+    }
 
-    public List<InstanceSettings> getDefaultInstances() {
-        return defaultInstances;
+    @Override
+    public void loadChunk(int chunkX, int chunkZ) {
+
+    }
+
+    @Override
+    public boolean isChunkLoaded(int chunkX, int chunkZ) {
+        return false;
+    }
+
+    @Override
+    public Biome getBiomeAt(int x, int y, int z) {
+        return null;
+    }
+
+    @Override
+    public Biome[] getBiomesAt(int x, int y, int z) {
+        return new Biome[0];
+    }
+
+    @Override
+    public double getBiomeWeightAt(int x, int y, int z, Biome biome) {
+        return 0;
     }
 }
