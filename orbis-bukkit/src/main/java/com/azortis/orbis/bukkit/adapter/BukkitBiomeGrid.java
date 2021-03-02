@@ -22,31 +22,24 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.generator.biome.grid;
+package com.azortis.orbis.bukkit.adapter;
 
 import com.azortis.orbis.generator.biome.Biome;
+import com.azortis.orbis.generator.biome.BiomeGrid;
+import org.bukkit.generator.ChunkGenerator;
 
-public class SingleBiomeGrid implements BiomeGrid {
+import java.util.Locale;
 
-    private final Biome biome;
+public class BukkitBiomeGrid implements BiomeGrid {
 
-    public SingleBiomeGrid(Biome biome){
-        this.biome = biome;
+    private final ChunkGenerator.BiomeGrid handle;
+
+    public BukkitBiomeGrid(ChunkGenerator.BiomeGrid handle) {
+        this.handle = handle;
     }
 
     @Override
-    public Biome[] getBiomeArray() {
-        return new Biome[]{biome};
+    public void setBiome(int x, int y, int z, Biome biome) {
+        handle.setBiome(x, y, z, org.bukkit.block.Biome.valueOf(biome.getDerivative().getId().toUpperCase(Locale.ROOT)));
     }
-
-    @Override
-    public Biome getBiomeAt(int x, int z) {
-        return biome;
-    }
-
-    @Override
-    public Biome getBiomeAt(int x, int y, int z) {
-        return biome;
-    }
-
 }
