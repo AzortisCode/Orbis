@@ -58,9 +58,9 @@ public class OrbisBootstrap {
             }
         }*/
 
-        Orbis.initialise(new File(System.getProperty("user.dir"), "/orbis/"));
+        OrbisMine.initialise(new File(System.getProperty("user.dir"), "/orbis/"));
 
-        InstanceContainer instanceContainer = Orbis.getInstanceManager().getInstance("Overworld").getInstanceContainer();
+        InstanceContainer instanceContainer = OrbisMine.getInstanceManager().getInstance("Overworld").getInstanceContainer();
 
         OptifineSupport.enable();
 

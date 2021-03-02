@@ -24,5 +24,17 @@
 
 package com.azortis.orbis.bukkit;
 
+import org.bukkit.World;
+
 public class OrbisWorld {
+
+    private final World bukkitWorld;
+
+    public OrbisWorld(World bukkitWorld) {
+        this.bukkitWorld = bukkitWorld;
+    }
+
+    public World getBukkitWorld() {
+        return bukkitWorld;
+    }
 }

@@ -24,7 +24,7 @@
 
 package com.azortis.orbis.registry;
 
-import com.azortis.orbis.Orbis;
+import com.azortis.orbis.OrbisMine;
 import com.azortis.orbis.generator.Dimension;
 import com.azortis.orbis.generator.biome.Biome;
 
@@ -38,10 +38,10 @@ public class DimensionRegistry {
     private final File dimensionsFolder;
 
     public DimensionRegistry() {
-        this.dimensionsFolder = new File(Orbis.getDirectory(), "/data/dimensions/");
+        this.dimensionsFolder = new File(OrbisMine.getDirectory(), "/data/dimensions/");
         if (!this.dimensionsFolder.exists()) {
             if (!this.dimensionsFolder.mkdirs()) {
-                Orbis.getLogger().error("Couldn't create dimensions folder.");
+                OrbisMine.getLogger().error("Couldn't create dimensions folder.");
             }
         }
     }
@@ -50,14 +50,14 @@ public class DimensionRegistry {
         if(dimensionName.matches(NAME_REGEX)){
             final File dimensionFile = new File(dimensionsFolder, dimensionName + ".json");
             try{
-                final Dimension dimension = Orbis.getGson().fromJson(new FileReader(dimensionFile), Dimension.class);
-                dimension.setTerrain(Orbis.getTerrainRegistry().loadTerrain(dimension.getTerrainName(), new Biome()));
+                final Dimension dimension = OrbisMine.getGson().fromJson(new FileReader(dimensionFile), Dimension.class);
+                dimension.setTerrain(OrbisMine.getTerrainRegistry().loadTerrain(dimension.getTerrainName(), new Biome()));
                 return dimension;
             } catch (FileNotFoundException ex){
-                Orbis.getLogger().error("No dimension file by the name: " + dimensionName + " exists!");
+                OrbisMine.getLogger().error("No dimension file by the name: " + dimensionName + " exists!");
             }
         } else {
-            Orbis.getLogger().error("Invalid dimension name: " + dimensionName);
+            OrbisMine.getLogger().error("Invalid dimension name: " + dimensionName);
         }
         return null;
     }

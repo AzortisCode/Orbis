@@ -24,5 +24,32 @@
 
 package com.azortis.orbis.bukkit.adapter;
 
-public class BukkitAdapter {
+import com.azortis.orbis.Adapter;
+import com.azortis.orbis.bukkit.OrbisPlugin;
+import org.slf4j.Logger;
+
+import java.io.File;
+
+public class BukkitAdapter implements Adapter {
+
+    private final OrbisPlugin plugin;
+
+    public BukkitAdapter(OrbisPlugin plugin){
+        this.plugin = plugin;
+    }
+
+    @Override
+    public String getAdaptation() {
+        return "Bukkit";
+    }
+
+    @Override
+    public Logger getLogger() {
+        return plugin.getSLF4JLogger();
+    }
+
+    @Override
+    public File getDirectory() {
+        return plugin.getDataFolder();
+    }
 }

@@ -24,7 +24,6 @@
 
 package com.azortis.orbis.bukkit;
 
-import com.azortis.orbis.Orbis;
 import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
@@ -33,7 +32,6 @@ import org.jetbrains.annotations.Nullable;
 public class OrbisPlugin extends JavaPlugin {
 
     public void onLoad() {
-        Orbis.initialise(getDataFolder());
 
     }
 

@@ -24,7 +24,7 @@
 
 package com.azortis.orbis.instance;
 
-import com.azortis.orbis.Orbis;
+import com.azortis.orbis.OrbisMine;
 import com.azortis.orbis.OrbisSettings;
 import com.azortis.orbis.generator.Dimension;
 import org.jetbrains.annotations.NotNull;
@@ -52,7 +52,7 @@ public class InstanceManager {
 
     @SuppressWarnings("UnusedReturnValue")
     public OrbisInstance createInstance(@NotNull InstanceSettings settings) {
-        final Dimension dimension = Orbis.getDimensionRegistry().loadDimension(settings.getDimensionName());
+        final Dimension dimension = OrbisMine.getDimensionRegistry().loadDimension(settings.getDimensionName());
         final OrbisInstance instance = new OrbisInstance(settings.getName(), dimension, settings.getStorageLocation());
         loadedInstances.put(settings.getName(), instance);
         return instance;

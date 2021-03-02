@@ -24,7 +24,6 @@
 
 package com.azortis.orbis.instance;
 
-import com.azortis.orbis.Orbis;
 import com.azortis.orbis.generator.Dimension;
 import com.azortis.orbis.generator.Engine;
 import com.azortis.orbis.generator.OrbisEngine;

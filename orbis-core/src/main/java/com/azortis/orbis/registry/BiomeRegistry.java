@@ -24,7 +24,7 @@
 
 package com.azortis.orbis.registry;
 
-import com.azortis.orbis.Orbis;
+import com.azortis.orbis.OrbisMine;
 import com.azortis.orbis.generator.biome.Biome;
 import com.azortis.orbis.generator.biome.Region;
 
@@ -38,10 +38,10 @@ public class BiomeRegistry {
     private final File biomesFolder;
 
     public BiomeRegistry(){
-        this.biomesFolder = new File(Orbis.getDirectory(), "/data/biomes/");
+        this.biomesFolder = new File(OrbisMine.getDirectory(), "/data/biomes/");
         if (!this.biomesFolder.exists()) {
             if (!this.biomesFolder.mkdirs()) {
-                Orbis.getLogger().error("Couldn't create biomes folder.");
+                OrbisMine.getLogger().error("Couldn't create biomes folder.");
             }
         }
     }
@@ -50,16 +50,16 @@ public class BiomeRegistry {
         if(biomeName.matches(NAME_REGEX)){
             final File biomeFile = new File(biomesFolder, biomeName + ".json");
             try{
-                final Biome biome = Orbis.getGson().fromJson(new FileReader(biomeFile), Biome.class);
+                final Biome biome = OrbisMine.getGson().fromJson(new FileReader(biomeFile), Biome.class);
                 biome.setRegion(context);
-                biome.getTerrainLayers().forEach(terrainLayer -> terrainLayer.setTerrain(Orbis.getTerrainRegistry()
+                biome.getTerrainLayers().forEach(terrainLayer -> terrainLayer.setTerrain(OrbisMine.getTerrainRegistry()
                         .loadTerrain(terrainLayer.getTerrainName(), biome)));
                 return biome;
             }catch (FileNotFoundException ex){
-                Orbis.getLogger().error("No biome file by the name: " + biomeName + " exists!");
+                OrbisMine.getLogger().error("No biome file by the name: " + biomeName + " exists!");
             }
         } else {
-            Orbis.getLogger().error("Invalid biome name: " + biomeName);
+            OrbisMine.getLogger().error("Invalid biome name: " + biomeName);
         }
         return null;
     }

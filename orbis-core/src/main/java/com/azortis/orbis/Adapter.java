@@ -22,31 +22,18 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.bukkit.adapter;
+package com.azortis.orbis;
 
-import com.azortis.orbis.generator.ChunkData;
-import com.azortis.orbis.generator.Dimension;
-import org.bukkit.Material;
-import org.bukkit.generator.ChunkGenerator;
+import org.slf4j.Logger;
 
-import java.util.Locale;
+import java.io.File;
 
-public class BukkitChunkData extends ChunkData {
+public interface Adapter {
 
-    private final ChunkGenerator.ChunkData handle;
+    String getAdaptation();
 
-    public BukkitChunkData(Dimension dimension, ChunkGenerator.ChunkData handle) {
-        super(dimension);
-        this.handle = handle;
-    }
+    Logger getLogger();
 
-    @Override
-    protected void setBlock(int x, int y, int z, String blockId) {
-        handle.setBlock(x, y, z, Material.valueOf(blockId.toUpperCase(Locale.ENGLISH)));
-    }
-
-    public ChunkGenerator.ChunkData getHandle(){
-        return handle;
-    }
+    File getDirectory();
 
 }

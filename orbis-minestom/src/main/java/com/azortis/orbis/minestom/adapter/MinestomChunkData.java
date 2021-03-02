@@ -41,7 +41,7 @@ public class MinestomChunkData extends ChunkData {
     }
 
     @Override
-    public void setBlock(int x, int y, int z, String blockId) {
+    protected void setBlock(int x, int y, int z, String blockId) {
         handle.setBlock(x,y,z, Block.valueOf(blockId.toUpperCase(Locale.ENGLISH)));
     }
 

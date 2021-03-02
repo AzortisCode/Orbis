@@ -60,6 +60,6 @@ public abstract class ChunkData {
         return blockMap.get(blocks[x * yIndex * z]);
     }
 
-    public abstract void setBlock(int x, int y, int z, String blockId);
+    protected abstract void setBlock(int x, int y, int z, String blockId);
 
 }
