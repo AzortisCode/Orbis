@@ -22,23 +22,38 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.pack.registry.adapter;
+package com.azortis.orbis.registry;
 
-import com.azortis.orbis.util.NamespaceId;
-import com.google.gson.*;
+import com.azortis.orbis.container.Container;
+import com.azortis.orbis.generator.biome.Biome;
 
-import java.lang.reflect.Type;
+import java.io.File;
+import java.util.List;
 
-public class NamespaceIdAdapter implements JsonSerializer<NamespaceId>, JsonDeserializer<NamespaceId> {
+public class BiomeRegistry implements Registry<Biome>{
 
     @Override
-    public JsonElement serialize(NamespaceId namespaceID, Type type, JsonSerializationContext context) {
-        return context.serialize(namespaceID.getNamespaceId(), String.class);
+    public Biome loadType(Container container, String name, Object... context) {
+        return null;
     }
 
     @Override
-    public NamespaceId deserialize(JsonElement element, Type type, JsonDeserializationContext context) throws JsonParseException {
-        String namespacedId = element.getAsJsonObject().getAsJsonObject("namespaceId").getAsString();
-        return new NamespaceId(namespacedId);
+    public List<Biome> getTypeEntries(Container container) {
+        return null;
+    }
+
+    @Override
+    public List<String> getEntries(Container container) {
+        return null;
+    }
+
+    @Override
+    public void createFolders(Container container) {
+
+    }
+
+    @Override
+    public File getFolder(Container container) {
+        return null;
     }
 }

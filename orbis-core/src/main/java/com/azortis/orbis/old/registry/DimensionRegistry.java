@@ -22,49 +22,47 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.pack.registry;
+package com.azortis.orbis.old.registry;
 
 import com.azortis.orbis.OrbisMine;
+import com.azortis.orbis.generator.Dimension;
 import com.azortis.orbis.generator.biome.Biome;
-import com.azortis.orbis.generator.biome.Region;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 
-public class BiomeRegistry {
+public class DimensionRegistry {
 
     public static final String NAME_REGEX = "^([a-zA-Z]+)$";
-    private final File biomesFolder;
+    private final File dimensionsFolder;
 
-    public BiomeRegistry(){
-        this.biomesFolder = new File(OrbisMine.getDirectory(), "/data/biomes/");
-        if (!this.biomesFolder.exists()) {
-            if (!this.biomesFolder.mkdirs()) {
-                OrbisMine.getLogger().error("Couldn't create biomes folder.");
+    public DimensionRegistry() {
+        this.dimensionsFolder = new File(OrbisMine.getDirectory(), "/data/dimensions/");
+        if (!this.dimensionsFolder.exists()) {
+            if (!this.dimensionsFolder.mkdirs()) {
+                OrbisMine.getLogger().error("Couldn't create dimensions folder.");
             }
         }
     }
 
-    public Biome loadBiome(String biomeName, Region context){
-        if(biomeName.matches(NAME_REGEX)){
-            final File biomeFile = new File(biomesFolder, biomeName + ".json");
+    public Dimension loadDimension(String dimensionName){
+        if(dimensionName.matches(NAME_REGEX)){
+            final File dimensionFile = new File(dimensionsFolder, dimensionName + ".json");
             try{
-                final Biome biome = OrbisMine.getGson().fromJson(new FileReader(biomeFile), Biome.class);
-                biome.setRegion(context);
-                biome.getTerrainLayers().forEach(terrainLayer -> terrainLayer.setTerrain(OrbisMine.getTerrainRegistry()
-                        .loadTerrain(terrainLayer.getTerrainName(), biome)));
-                return biome;
-            }catch (FileNotFoundException ex){
-                OrbisMine.getLogger().error("No biome file by the name: " + biomeName + " exists!");
+                final Dimension dimension = OrbisMine.getGson().fromJson(new FileReader(dimensionFile), Dimension.class);
+                dimension.setTerrain(OrbisMine.getTerrainRegistry().loadTerrain(dimension.getTerrainName(), new Biome()));
+                return dimension;
+            } catch (FileNotFoundException ex){
+                OrbisMine.getLogger().error("No dimension file by the name: " + dimensionName + " exists!");
             }
         } else {
-            OrbisMine.getLogger().error("Invalid biome name: " + biomeName);
+            OrbisMine.getLogger().error("Invalid dimension name: " + dimensionName);
         }
         return null;
     }
 
-    public File getBiomesFolder() {
-        return biomesFolder;
+    public File getDimensionsFolder() {
+        return dimensionsFolder;
     }
 }

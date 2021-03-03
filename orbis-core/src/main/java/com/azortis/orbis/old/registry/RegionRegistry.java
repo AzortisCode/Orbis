@@ -22,8 +22,7 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.generator;
+package com.azortis.orbis.old.registry;
 
-public class OrbisEngine extends Engine{
-
+public class RegionRegistry {
 }

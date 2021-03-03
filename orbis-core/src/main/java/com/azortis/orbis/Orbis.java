@@ -24,16 +24,22 @@
 
 package com.azortis.orbis;
 
+import com.azortis.orbis.generator.Dimension;
+import com.azortis.orbis.generator.biome.Biome;
+import com.azortis.orbis.generator.biome.Region;
+import com.azortis.orbis.generator.terrain.Terrain;
+import com.azortis.orbis.registry.*;
 import org.slf4j.Logger;
 
-import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 public final class Orbis {
 
     private static Adapter adapter = null;
     private static Logger logger;
-
-    private static File packDirectory;
+    private static Map<Class<?>, Registry<?>> registries;
+    private static Map<Class<?>, GeneratorRegistry<?>> generatorRegistries;
 
     private Orbis(){
     }
@@ -44,12 +50,13 @@ public final class Orbis {
             logger = adaptation.getLogger();
             logger.info("Initializing {} adaptation of Orbis", adaptation.getAdaptation());
 
-            // Load all packs
-            logger.info("Loading all packs...");
-            packDirectory = new File(adapter.getDirectory(), "/packs/");
-            if(!packDirectory.exists()){
-
-            }
+            // Load registries
+            registries = new HashMap<>();
+            registries.put(Dimension.class, new DimensionRegistry());
+            registries.put(Region.class, new RegionRegistry());
+            registries.put(Biome.class, new BiomeRegistry());
+            generatorRegistries = new HashMap<>();
+            generatorRegistries.put(Terrain.class, new TerrainRegistry());
         }
     }
 
@@ -59,6 +66,20 @@ public final class Orbis {
 
     public static Logger getLogger() {
         return logger;
+    }
+
+    @SuppressWarnings("unchecked")
+    public static <T> Registry<T> getRegistry(Class<? extends T> typeClass){
+        Registry<?> registry = registries.get(typeClass);
+        if(registry != null)return (Registry<T>) registry;
+        return null;
+    }
+
+    @SuppressWarnings("unchecked")
+    public static <T> GeneratorRegistry<T> getGeneratorRegistry(Class<T> typeClass){
+        GeneratorRegistry<?> registry = generatorRegistries.get(typeClass);
+        if(registry != null)return (GeneratorRegistry<T>) registry;
+        return null;
     }
 
 }

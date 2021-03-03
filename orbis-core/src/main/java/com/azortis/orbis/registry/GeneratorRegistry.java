@@ -22,8 +22,18 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.generator;
+package com.azortis.orbis.registry;
 
-public class OrbisEngine extends Engine{
+import com.azortis.orbis.util.NamespaceId;
+
+import java.util.List;
+
+public interface GeneratorRegistry<T> extends Registry<T> {
+
+    void registerTypeClass(NamespaceId namespaceId, Class<? extends T> typeClass);
+
+    Class<? extends T> getTypeClass(NamespaceId namespaceId);
+
+    List<NamespaceId> getTypeNamespaceIds();
 
 }

@@ -56,4 +56,19 @@ public class NamespaceId {
     public String getId() {
         return namespaceId.split(":")[1];
     }
+
+    @Override
+    public int hashCode() {
+        return namespaceId.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof String){
+            return namespaceId.equalsIgnoreCase((String) obj);
+        } else if(obj instanceof NamespaceId){
+            return ((NamespaceId) obj).getNamespaceId().equalsIgnoreCase(namespaceId);
+        }
+        return false;
+    }
 }

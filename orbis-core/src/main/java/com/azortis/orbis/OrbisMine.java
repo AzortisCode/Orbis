@@ -25,12 +25,12 @@
 package com.azortis.orbis;
 
 import com.azortis.orbis.generator.terrain.Terrain;
-import com.azortis.orbis.pack.registry.BiomeRegistry;
-import com.azortis.orbis.pack.registry.DimensionRegistry;
-import com.azortis.orbis.pack.registry.RegionRegistry;
-import com.azortis.orbis.pack.registry.TerrainRegistry;
-import com.azortis.orbis.pack.registry.adapter.NamespaceIdAdapter;
-import com.azortis.orbis.pack.registry.adapter.TerrainAdapter;
+import com.azortis.orbis.old.registry.BiomeRegistry;
+import com.azortis.orbis.old.registry.DimensionRegistry;
+import com.azortis.orbis.old.registry.RegionRegistry;
+import com.azortis.orbis.old.registry.TerrainRegistry;
+import com.azortis.orbis.registry.adapter.NamespaceIdAdapter;
+import com.azortis.orbis.registry.adapter.TerrainAdapter;
 import com.azortis.orbis.util.NamespaceId;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -73,7 +73,7 @@ public final class OrbisMine {
             // Gson
             GsonBuilder gsonBuilder = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping();
             gsonBuilder.registerTypeAdapter(NamespaceId.class, new NamespaceIdAdapter());
-            gsonBuilder.registerTypeAdapter(Terrain.class, new TerrainAdapter(terrainRegistry));
+            //gsonBuilder.registerTypeAdapter(Terrain.class, new TerrainAdapter(terrainRegistry));
             gson = gsonBuilder.create();
 
             // Load settings file

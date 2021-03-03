@@ -22,8 +22,38 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.generator;
+package com.azortis.orbis.registry;
 
-public class OrbisEngine extends Engine{
+import com.azortis.orbis.container.Container;
+import com.azortis.orbis.generator.Dimension;
 
+import java.io.File;
+import java.util.List;
+
+public class DimensionRegistry implements Registry<Dimension> {
+
+    @Override
+    public Dimension loadType(Container container, String name, Object... context) {
+        return null;
+    }
+
+    @Override
+    public List<Dimension> getTypeEntries(Container container) {
+        return null;
+    }
+
+    @Override
+    public List<String> getEntries(Container container) {
+        return null;
+    }
+
+    @Override
+    public void createFolders(Container container) {
+
+    }
+
+    @Override
+    public File getFolder(Container container) {
+        return null;
+    }
 }
