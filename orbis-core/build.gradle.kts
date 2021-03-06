@@ -31,6 +31,7 @@ dependencies {
     // No adapter contains this by default
     implementation("net.sf.trove4j:trove4j:3.0.3")
     implementation("com.google.guava:guava:30.1-jre")
+    implementation("net.lingala.zip4j:zip4j:2.7.0")
 
     // Adapters should determine if it should be added to a shadow jar
     compileOnly("com.google.code.gson:gson:2.8.6")

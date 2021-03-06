@@ -52,4 +52,5 @@ public class BukkitAdapter implements Adapter {
     public File getDirectory() {
         return plugin.getDataFolder();
     }
+
 }

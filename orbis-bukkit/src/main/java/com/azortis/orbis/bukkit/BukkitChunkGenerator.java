@@ -24,6 +24,7 @@
 
 package com.azortis.orbis.bukkit;
 
+import com.azortis.orbis.pack.Pack;
 import org.bukkit.World;
 import org.bukkit.generator.ChunkGenerator;
 import org.jetbrains.annotations.NotNull;
@@ -32,17 +33,36 @@ import java.util.Random;
 
 public class BukkitChunkGenerator extends ChunkGenerator {
 
+    private final OrbisPlugin plugin;
+    private final String worldName;
+    private final Pack pack;
+
+    private boolean loaded = false;
+    private OrbisWorld orbisWorld;
+
+    public BukkitChunkGenerator(OrbisPlugin plugin, String worldName, Pack pack) {
+        this.plugin = plugin;
+        this.worldName = worldName;
+        this.pack = pack;
+    }
+
+    // If the world got initialized through the normal Bukkit configs then the ChunkGenerator gets made before the world
+    // can be registered with orbis, so this is our bypass
+    private void load(World world){
+        if(plugin.getWorld(worldName) != null){
+            orbisWorld = plugin.getWorld(worldName);
+            if(orbisWorld.isLoaded())orbisWorld.load();
+        } else {
+            orbisWorld = plugin.loadWorld(world, pack);
+        }
+        loaded = true;
+    }
+
     @Override
     public @NotNull ChunkData generateChunkData(@NotNull World world, @NotNull Random random, int chunkX, int chunkZ, @NotNull BiomeGrid biome) {
-        ChunkData chunk = createChunkData(world);
+        if(!loaded) load(world);
 
         return super.generateChunkData(world, random, chunkX, chunkZ, biome);
     }
-
-    @Override
-    public boolean isParallelCapable() {
-        return true;
-    }
-
 
 }

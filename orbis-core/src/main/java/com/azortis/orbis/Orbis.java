@@ -24,22 +24,39 @@
 
 package com.azortis.orbis;
 
+import com.azortis.orbis.container.Container;
 import com.azortis.orbis.generator.Dimension;
 import com.azortis.orbis.generator.biome.Biome;
 import com.azortis.orbis.generator.biome.Region;
 import com.azortis.orbis.generator.terrain.Terrain;
+import com.azortis.orbis.pack.PackManager;
 import com.azortis.orbis.registry.*;
+import com.azortis.orbis.registry.adapter.NamespaceIdAdapter;
+import com.azortis.orbis.registry.adapter.TerrainAdapter;
+import com.azortis.orbis.util.NamespaceId;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class Orbis {
 
+    public static final String SETTINGS_VERSION = "1";
+
     private static Adapter adapter = null;
     private static Logger logger;
+    private static Gson gson;
     private static Map<Class<?>, Registry<?>> registries;
     private static Map<Class<?>, GeneratorRegistry<?>> generatorRegistries;
+    private static Map<String, Container> containerMap;
+
+    // Managers
+    private static PackManager packManager;
 
     private Orbis(){
     }
@@ -57,6 +74,16 @@ public final class Orbis {
             registries.put(Biome.class, new BiomeRegistry());
             generatorRegistries = new HashMap<>();
             generatorRegistries.put(Terrain.class, new TerrainRegistry());
+
+            GsonBuilder gsonBuilder = new GsonBuilder().disableHtmlEscaping().setPrettyPrinting();
+            gsonBuilder.registerTypeAdapter(NamespaceId.class, new NamespaceIdAdapter());
+            gsonBuilder.registerTypeAdapter(Terrain.class, new TerrainAdapter());
+            gson = gsonBuilder.create();
+
+            // Load managers
+            packManager = new PackManager(adaptation.getDirectory());
+
+            containerMap = new HashMap<>();
         }
     }
 
@@ -66,6 +93,10 @@ public final class Orbis {
 
     public static Logger getLogger() {
         return logger;
+    }
+
+    public static Gson getGson() {
+        return gson;
     }
 
     @SuppressWarnings("unchecked")
@@ -82,4 +113,34 @@ public final class Orbis {
         return null;
     }
 
+    //
+    // Container
+    //
+
+    /**
+     * FOR INTERNAL USE ONLY!
+     *
+     * @param container The container to be registered.
+     */
+    public static void registerContainer(@NotNull Container container){
+        containerMap.putIfAbsent(container.getName(), container);
+    }
+
+    @Nullable
+    public static Container getContainer(String name){
+        return containerMap.get(name);
+    }
+
+    @NotNull
+    public static Collection<Container> getContainers(){
+        return containerMap.values();
+    }
+
+    //
+    // Managers
+    //
+
+    public static PackManager getPackManager() {
+        return packManager;
+    }
 }

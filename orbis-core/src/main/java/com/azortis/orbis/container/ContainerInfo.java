@@ -22,10 +22,31 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.generator;
+package com.azortis.orbis.container;
 
-public abstract class Engine {
+public class ContainerInfo {
+
+    private String settingsVersion;
+    private String packName;
+
+    // Used for gson deserialization
+    private ContainerInfo() {
+    }
 
 
+    public ContainerInfo(String settingsVersion) {
+        this.settingsVersion = settingsVersion;
+    }
 
+    public String getSettingsVersion() {
+        return settingsVersion;
+    }
+
+    public String getPackName() {
+        return packName;
+    }
+
+    public void setPackName(String packName) {
+        this.packName = packName;
+    }
 }

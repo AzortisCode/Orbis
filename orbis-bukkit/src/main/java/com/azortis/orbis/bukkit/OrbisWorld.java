@@ -24,13 +24,15 @@
 
 package com.azortis.orbis.bukkit;
 
+import com.azortis.orbis.container.Container;
 import org.bukkit.World;
 
-public class OrbisWorld {
+public class OrbisWorld extends Container {
 
     private final World bukkitWorld;
 
     public OrbisWorld(World bukkitWorld) {
+        super(bukkitWorld.getName(), bukkitWorld.getWorldFolder());
         this.bukkitWorld = bukkitWorld;
     }
 

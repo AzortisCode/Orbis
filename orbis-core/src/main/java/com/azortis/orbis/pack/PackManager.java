@@ -25,50 +25,31 @@
 package com.azortis.orbis.pack;
 
 import com.azortis.orbis.Orbis;
-import com.azortis.orbis.generator.Dimension;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.google.common.io.ByteStreams;
+import com.google.common.io.CharSource;
+import net.lingala.zip4j.ZipFile;
 import org.jetbrains.annotations.Nullable;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 
 public class PackManager {
 
-    private final File packsDirectory;
-    private final Gson gson;
     private final Map<Pack, File> loadedPacks = new HashMap<>();
 
     public PackManager(File rootDirectory){
-        this.packsDirectory = new File(rootDirectory, "/packs/");
+        File packsDirectory = new File(rootDirectory, "/packs/");
         if(!packsDirectory.exists()){
             if(!packsDirectory.mkdirs()) Orbis.getLogger().error("Couldn't create packs folder!");
         }
 
-        this.gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
-
         // Iterate through all folders and files(*.orbis).
         for (File entry : packsDirectory.listFiles()){
-            if(entry.isDirectory()){
-                File packFile = new File(entry, "pack.json");
-                try {
-                    Pack pack = gson.fromJson(new FileReader(packFile), Pack.class);
-                    loadedPacks.put(pack, entry);
-                } catch (FileNotFoundException e) {
-                    Orbis.getLogger().error("No pack.json found in: " + entry.getName());
-                }
-
-            } else {
-                Orbis.getLogger().error("*.orbis Files are not yet supported!");
+            if(!entry.isDirectory()) {
+                loadPack(entry);
             }
         }
-    }
-
-    public File getPacksDirectory() {
-        return packsDirectory;
     }
 
     @Nullable
@@ -79,9 +60,27 @@ public class PackManager {
         return null;
     }
 
-    public Dimension loadDimension(Pack pack){
+    public void extractPack(File destinationFolder, Pack pack){
+        try {
+            new ZipFile(loadedPacks.get(pack)).extractAll(destinationFolder.getPath());
+        } catch (IOException ex) {
+            Orbis.getLogger().error("Failed to extract pack.");
+        }
+    }
 
-        return null;
+    private void loadPack(File packFile){
+        try {
+            ZipFile zipFile = new ZipFile(packFile);
+            if(zipFile.isValidZipFile()) {
+                InputStream inputStream = zipFile.getInputStream(zipFile.getFileHeader("pack.json"));
+                byte[] buffer = ByteStreams.toByteArray(inputStream);
+                Reader reader = CharSource.wrap(new String(buffer)).openStream();
+                Pack pack = Orbis.getGson().fromJson(reader, Pack.class);
+                loadedPacks.put(pack, packFile);
+            }
+        }catch (IOException ex){
+            Orbis.getLogger().error("Couldn't load pack: {}", packFile.getName());
+        }
     }
 
 }

@@ -22,9 +22,9 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.container;
+package com.azortis.orbis.generator;
 
-public class ContainerManager {
+public class ChunkGenerator {
 
 
 

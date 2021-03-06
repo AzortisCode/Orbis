@@ -24,19 +24,58 @@
 
 package com.azortis.orbis.bukkit;
 
+import com.azortis.orbis.Orbis;
+import com.azortis.orbis.bukkit.adapter.BukkitAdapter;
+import com.azortis.orbis.pack.Pack;
+import org.bukkit.World;
 import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class OrbisPlugin extends JavaPlugin {
+    private final Map<String, OrbisWorld> worldMap = new HashMap<>();
 
+    @Override
     public void onLoad() {
-
+        Orbis.initialize(new BukkitAdapter(this));
     }
 
     @Override
-    public @Nullable ChunkGenerator getDefaultWorldGenerator(@NotNull String worldName, @Nullable String id) {
-        return super.getDefaultWorldGenerator(worldName, id);
+    public @Nullable ChunkGenerator getDefaultWorldGenerator(@NotNull String worldName, @Nullable String packName) {
+        if(packName != null){
+            Pack pack = Orbis.getPackManager().getPack(packName);
+            if(pack != null){
+                return new BukkitChunkGenerator(this, worldName, pack);
+            } else {
+                Orbis.getLogger().error("No pack by the name {} exists!", packName);
+                return super.getDefaultWorldGenerator(worldName, packName);
+            }
+        }
+        Orbis.getLogger().error("No pack name specified for world {}", worldName);
+        return super.getDefaultWorldGenerator(worldName, null);
     }
+
+    public OrbisWorld loadWorld(@NotNull World world, @NotNull Pack pack){
+        OrbisWorld orbisWorld = new OrbisWorld(world);
+        orbisWorld.installPack(pack, false);
+        if(!orbisWorld.isLoaded())orbisWorld.load();
+        worldMap.put(world.getName(), orbisWorld);
+        Orbis.registerContainer(orbisWorld);
+        return orbisWorld;
+    }
+
+    @Nullable
+    public OrbisWorld getWorld(World world){
+        return worldMap.get(world.getName());
+    }
+
+    @Nullable
+    public OrbisWorld getWorld(String worldName){
+        return worldMap.get(worldName);
+    }
+
 }
