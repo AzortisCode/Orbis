@@ -71,4 +71,9 @@ public class NamespaceId {
         }
         return false;
     }
+
+    @Override
+    public String toString() {
+        return namespaceId;
+    }
 }

@@ -28,10 +28,6 @@ import com.azortis.orbis.generator.biome.Biome;
 
 public interface BiomeDistributor {
 
-    void loadChunk(int chunkX, int chunkZ);
-
-    boolean isChunkLoaded(int chunkX, int chunkZ);
-
     Biome getBiomeAt(int x, int y, int z);
 
     Biome[] getBiomesAt(int x, int y, int z);

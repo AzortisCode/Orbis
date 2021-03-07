@@ -59,6 +59,7 @@ public class OrbisPlugin extends JavaPlugin {
         return super.getDefaultWorldGenerator(worldName, null);
     }
 
+    @NotNull
     public OrbisWorld loadWorld(@NotNull World world, @NotNull Pack pack){
         OrbisWorld orbisWorld = new OrbisWorld(world);
         orbisWorld.installPack(pack, false);
