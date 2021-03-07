@@ -26,7 +26,7 @@ package com.azortis.orbis.container;
 
 import com.azortis.orbis.Orbis;
 import com.azortis.orbis.generator.Dimension;
-import com.azortis.orbis.generator.ChunkGenerator;
+import com.azortis.orbis.generator.Engine;
 import com.azortis.orbis.pack.Pack;
 
 import java.io.File;
@@ -49,7 +49,7 @@ public abstract class Container {
     private boolean loaded = false;
     private boolean installed = false;
     private Dimension dimension;
-    private ChunkGenerator chunkGenerator;
+    private Engine engine;
 
     public Container(String name, File folder) {
         this.name = name;
@@ -127,8 +127,8 @@ public abstract class Container {
         return dimension;
     }
 
-    public ChunkGenerator getEngine() {
-        return chunkGenerator;
+    public Engine getEngine() {
+        return engine;
     }
 
 

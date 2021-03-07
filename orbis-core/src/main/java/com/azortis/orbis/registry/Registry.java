@@ -31,9 +31,7 @@ import java.util.List;
 
 public interface Registry<T> {
 
-    T loadType(Container container, String name, Object... context);
-
-    List<T> getTypeEntries(Container container);
+    T loadType(Container container, String name, Object context);
 
     List<String> getEntries(Container container);
 

@@ -26,23 +26,16 @@ package com.azortis.orbis.generator.biome.distributor;
 
 import com.azortis.orbis.generator.Dimension;
 import com.azortis.orbis.generator.biome.Biome;
+import com.azortis.orbis.generator.biome.distributor.complex.BiomeCache;
+import com.google.common.cache.LoadingCache;
 
 public class ComplexBiomeDistributor implements BiomeDistributor{
 
     private final Dimension dimension;
+    private LoadingCache<Double[], BiomeCache> cache;
 
     public ComplexBiomeDistributor(Dimension dimension) {
         this.dimension = dimension;
-    }
-
-    @Override
-    public void loadChunk(int chunkX, int chunkZ) {
-
-    }
-
-    @Override
-    public boolean isChunkLoaded(int chunkX, int chunkZ) {
-        return false;
     }
 
     @Override
@@ -59,4 +52,5 @@ public class ComplexBiomeDistributor implements BiomeDistributor{
     public double getBiomeWeightAt(int x, int y, int z, Biome biome) {
         return 0;
     }
+
 }

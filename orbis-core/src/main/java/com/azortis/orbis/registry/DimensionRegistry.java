@@ -35,12 +35,7 @@ public class DimensionRegistry implements Registry<Dimension> {
 
 
     @Override
-    public Dimension loadType(Container container, String name, Object... context) {
-        return null;
-    }
-
-    @Override
-    public List<Dimension> getTypeEntries(Container container) {
+    public Dimension loadType(Container container, String name, Object context) {
         return null;
     }
 

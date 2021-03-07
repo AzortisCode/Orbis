@@ -49,8 +49,8 @@ public class BukkitChunkGenerator extends ChunkGenerator {
     // If the world got initialized through the normal Bukkit configs then the ChunkGenerator gets made before the world
     // can be registered with orbis, so this is our bypass
     private void load(World world){
-        if(plugin.getWorld(worldName) != null){
-            orbisWorld = plugin.getWorld(worldName);
+        orbisWorld = plugin.getWorld(worldName);
+        if(orbisWorld != null){
             if(orbisWorld.isLoaded())orbisWorld.load();
         } else {
             orbisWorld = plugin.loadWorld(world, pack);

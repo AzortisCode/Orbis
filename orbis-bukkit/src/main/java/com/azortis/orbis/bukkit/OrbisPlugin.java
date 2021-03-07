@@ -33,6 +33,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -59,12 +60,12 @@ public class OrbisPlugin extends JavaPlugin {
         return super.getDefaultWorldGenerator(worldName, null);
     }
 
+    @NotNull
     public OrbisWorld loadWorld(@NotNull World world, @NotNull Pack pack){
         OrbisWorld orbisWorld = new OrbisWorld(world);
         orbisWorld.installPack(pack, false);
         if(!orbisWorld.isLoaded())orbisWorld.load();
         worldMap.put(world.getName(), orbisWorld);
-        Orbis.registerContainer(orbisWorld);
         return orbisWorld;
     }
 
@@ -76,6 +77,10 @@ public class OrbisPlugin extends JavaPlugin {
     @Nullable
     public OrbisWorld getWorld(String worldName){
         return worldMap.get(worldName);
+    }
+
+    public Collection<OrbisWorld> getWorlds(){
+        return worldMap.values();
     }
 
 }

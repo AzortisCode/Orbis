@@ -26,11 +26,14 @@ package com.azortis.orbis.registry;
 
 import com.azortis.orbis.Orbis;
 import com.azortis.orbis.container.Container;
+import com.azortis.orbis.generator.biome.Biome;
 import com.azortis.orbis.generator.terrain.Terrain;
 import com.azortis.orbis.generator.terrain.defaults.*;
 import com.azortis.orbis.util.NamespaceId;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -48,18 +51,31 @@ public class TerrainRegistry implements GeneratorRegistry<Terrain> {
     }
 
     @Override
-    public Terrain loadType(Container container, String name, Object... context) {
-        return null;
-    }
-
-    @Override
-    public List<Terrain> getTypeEntries(Container container) {
+    public Terrain loadType(Container container, String name, Object context) {
+        if(context instanceof Biome){
+            Biome biome = (Biome) context;
+            File terrainFile = new File(container.getSettingsFolder(), TERRAIN_DIRECTORY + name + ".json");
+            try {
+                Terrain terrain = Orbis.getGson().fromJson(new FileReader(terrainFile), Terrain.class);
+                terrain.setBiome(biome);
+                return terrain;
+            } catch (FileNotFoundException ex){
+                Orbis.getLogger().error("Terrain file {} not found!", name);
+            }
+        }
         return null;
     }
 
     @Override
     public List<String> getEntries(Container container) {
-        return null;
+        File terrainFolder = new File(container.getSettingsFolder(), TERRAIN_DIRECTORY);
+        List<String> entries = new ArrayList<>();
+        for (File terrainFile : terrainFolder.listFiles()){
+            if(terrainFile.getName().endsWith(".json")){
+                entries.add(terrainFile.getName().replace(".json", ""));
+            }
+        }
+        return entries;
     }
 
     @Override

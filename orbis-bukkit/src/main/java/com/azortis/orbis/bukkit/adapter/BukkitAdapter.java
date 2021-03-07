@@ -26,9 +26,13 @@ package com.azortis.orbis.bukkit.adapter;
 
 import com.azortis.orbis.Adapter;
 import com.azortis.orbis.bukkit.OrbisPlugin;
+import com.azortis.orbis.container.Container;
+import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Collection;
 
 public class BukkitAdapter implements Adapter {
 
@@ -53,4 +57,14 @@ public class BukkitAdapter implements Adapter {
         return plugin.getDataFolder();
     }
 
+    @Nullable
+    @Override
+    public Container getContainer(String name) {
+        return plugin.getWorld(name);
+    }
+
+    @Override
+    public Collection<Container> getContainers() {
+        return new ArrayList<>(plugin.getWorlds());
+    }
 }

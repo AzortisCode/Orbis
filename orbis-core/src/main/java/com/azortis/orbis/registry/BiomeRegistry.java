@@ -33,12 +33,7 @@ import java.util.List;
 public class BiomeRegistry implements Registry<Biome>{
 
     @Override
-    public Biome loadType(Container container, String name, Object... context) {
-        return null;
-    }
-
-    @Override
-    public List<Biome> getTypeEntries(Container container) {
+    public Biome loadType(Container container, String name, Object context) {
         return null;
     }
 

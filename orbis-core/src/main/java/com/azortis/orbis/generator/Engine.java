@@ -22,14 +22,27 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis;
+package com.azortis.orbis.generator;
 
-import net.minestom.server.Bootstrap;
+import com.azortis.orbis.container.Container;
+import com.azortis.orbis.generator.biome.BiomeGrid;
 
-public class Start {
+public class Engine {
 
-    public static void main(String[] args){
-        Bootstrap.bootstrap("com.azortis.orbis.OrbisBootstrap", new String[0]);
+    private final Container container;
+    private final Dimension dimension;
+
+    public Engine(Container container) {
+        this.container = container;
+        this.dimension = container.getDimension();
+    }
+
+    public void calculateBiomes(BiomeGrid biomeGrid, int chunkX, int chunkZ){
+
+    }
+
+    public void generateChunkData(ChunkData chunkData, int chunkX, int chunkZ){
+
     }
 
 }

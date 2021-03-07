@@ -35,16 +35,6 @@ public class SingleBiomeDistributor implements BiomeDistributor {
     }
 
     @Override
-    public void loadChunk(int chunkX, int chunkZ) {
-        // Ignore
-    }
-
-    @Override
-    public boolean isChunkLoaded(int chunkX, int chunkZ) {
-        return true;
-    }
-
-    @Override
     public Biome getBiomeAt(int x, int y, int z) {
         return biome;
     }

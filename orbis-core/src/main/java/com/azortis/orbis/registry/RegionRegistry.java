@@ -33,12 +33,7 @@ import java.util.List;
 public class RegionRegistry implements Registry<Region>{
 
     @Override
-    public Region loadType(Container container, String name, Object... context) {
-        return null;
-    }
-
-    @Override
-    public List<Region> getTypeEntries(Container container) {
+    public Region loadType(Container container, String name, Object context) {
         return null;
     }
 

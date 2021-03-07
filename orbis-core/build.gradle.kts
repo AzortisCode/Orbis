@@ -40,6 +40,18 @@ dependencies {
     compileOnly("org.jetbrains:annotations:16.0.1")
 }
 
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = "com.azortis"
+            artifactId = "orbis"
+            version = version
+
+            from(components["java"])
+        }
+    }
+}
+
 tasks {
     build {
         dependsOn(shadowJar)
