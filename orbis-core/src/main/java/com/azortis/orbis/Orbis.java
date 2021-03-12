@@ -26,12 +26,14 @@ package com.azortis.orbis;
 
 import com.azortis.orbis.generator.Dimension;
 import com.azortis.orbis.generator.biome.Biome;
+import com.azortis.orbis.generator.biome.Distributor;
 import com.azortis.orbis.generator.biome.Region;
 import com.azortis.orbis.generator.terrain.Terrain;
 import com.azortis.orbis.pack.PackManager;
-import com.azortis.orbis.registry.*;
-import com.azortis.orbis.registry.adapter.NamespaceIdAdapter;
-import com.azortis.orbis.registry.adapter.TerrainAdapter;
+import com.azortis.orbis.settings.adapter.DistributorAdapter;
+import com.azortis.orbis.settings.registry.*;
+import com.azortis.orbis.settings.adapter.NamespaceIdAdapter;
+import com.azortis.orbis.settings.adapter.TerrainAdapter;
 import com.azortis.orbis.util.NamespaceId;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -70,10 +72,10 @@ public final class Orbis {
             generatorRegistries = new HashMap<>();
             generatorRegistries.put(Terrain.class, new TerrainRegistry());
 
-            GsonBuilder gsonBuilder = new GsonBuilder().disableHtmlEscaping().setPrettyPrinting();
-            gsonBuilder.registerTypeAdapter(NamespaceId.class, new NamespaceIdAdapter());
-            gsonBuilder.registerTypeAdapter(Terrain.class, new TerrainAdapter());
-            gson = gsonBuilder.create();
+            gson = new GsonBuilder().disableHtmlEscaping().setPrettyPrinting()
+                    .registerTypeAdapter(NamespaceId.class, new NamespaceIdAdapter())
+                    .registerTypeAdapter(Terrain.class, new TerrainAdapter())
+                    .registerTypeAdapter(Distributor.class, new DistributorAdapter()).create();
 
             // Load managers
             packManager = new PackManager(adaptation.getDirectory());

@@ -27,22 +27,22 @@ package com.azortis.orbis.generator;
 import com.azortis.orbis.container.Container;
 import com.azortis.orbis.generator.biome.BiomeGrid;
 
-public class Engine {
+public abstract class Engine {
 
     private final Container container;
-    private final Dimension dimension;
 
     public Engine(Container container) {
         this.container = container;
-        this.dimension = container.getDimension();
     }
 
-    public void calculateBiomes(BiomeGrid biomeGrid, int chunkX, int chunkZ){
+    public abstract void calculateBiomes(BiomeGrid biomeGrid, int chunkX, int chunkZ);
 
+    public abstract void generateChunkData(ChunkData chunkData, int chunkX, int chunkZ);
+
+    public Container getContainer() {
+        return container;
     }
 
-    public void generateChunkData(ChunkData chunkData, int chunkX, int chunkZ){
 
-    }
 
 }

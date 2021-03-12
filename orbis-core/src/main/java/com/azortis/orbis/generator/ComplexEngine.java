@@ -22,7 +22,24 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.block;
+package com.azortis.orbis.generator;
 
-public interface BlockData {
+import com.azortis.orbis.container.Container;
+import com.azortis.orbis.generator.biome.BiomeGrid;
+
+public class ComplexEngine extends Engine{
+
+    public ComplexEngine(Container container) {
+        super(container);
+    }
+
+    @Override
+    public void calculateBiomes(BiomeGrid biomeGrid, int chunkX, int chunkZ) {
+
+    }
+
+    @Override
+    public void generateChunkData(ChunkData chunkData, int chunkX, int chunkZ) {
+
+    }
 }

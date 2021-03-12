@@ -22,7 +22,18 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.generator.biome.distributor.complex;
+package com.azortis.orbis.settings.registry;
 
-public class ScatteredBiomeBlender {
+import com.azortis.orbis.util.NamespaceId;
+
+import java.util.List;
+
+public interface GeneratorRegistry<T> extends Registry<T> {
+
+    void registerTypeClass(NamespaceId namespaceId, Class<? extends T> typeClass);
+
+    Class<? extends T> getTypeClass(NamespaceId namespaceId);
+
+    List<NamespaceId> getTypeNamespaceIds();
+
 }

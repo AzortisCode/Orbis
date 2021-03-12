@@ -22,32 +22,33 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.minestom;
+package com.azortis.orbis.settings.registry;
 
-import net.minestom.server.instance.ChunkGenerator;
-import net.minestom.server.instance.ChunkPopulator;
-import net.minestom.server.instance.batch.ChunkBatch;
-import net.minestom.server.world.biomes.Biome;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import com.azortis.orbis.container.Container;
+import com.azortis.orbis.generator.biome.Biome;
 
+import java.io.File;
 import java.util.List;
 
-public class MinestomChunkGenerator implements ChunkGenerator {
+public class BiomeRegistry implements Registry<Biome>{
 
     @Override
-    public void generateChunkData(@NotNull ChunkBatch chunkBatch, int chunkX, int chunkZ) {
+    public Biome loadType(Container container, String name, Object context) {
+        return null;
+    }
+
+    @Override
+    public List<String> getEntries(Container container) {
+        return null;
+    }
+
+    @Override
+    public void createFolders(Container container) {
 
     }
 
     @Override
-    public void fillBiomes(@NotNull Biome[] biomes, int chunkX, int chunkZ) {
-
-    }
-
-    @Nullable
-    @Override
-    public List<ChunkPopulator> getPopulators() {
+    public File getFolder(Container container) {
         return null;
     }
 }

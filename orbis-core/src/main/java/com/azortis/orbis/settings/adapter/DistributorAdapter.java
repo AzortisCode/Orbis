@@ -22,21 +22,29 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.registry;
+package com.azortis.orbis.settings.adapter;
 
-import com.azortis.orbis.container.Container;
+import com.azortis.orbis.Orbis;
+import com.azortis.orbis.generator.biome.Distributor;
+import com.azortis.orbis.settings.registry.GeneratorRegistry;
+import com.azortis.orbis.util.NamespaceId;
+import com.google.gson.*;
 
-import java.io.File;
-import java.util.List;
+import java.lang.reflect.Type;
 
-public interface Registry<T> {
+public class DistributorAdapter implements JsonDeserializer<Distributor> {
 
-    T loadType(Container container, String name, Object context);
+    private final GeneratorRegistry<Distributor> distributorRegistry;
 
-    List<String> getEntries(Container container);
+    public DistributorAdapter() {
+        this.distributorRegistry = Orbis.getGeneratorRegistry(Distributor.class);
+    }
 
-    void createFolders(Container container);
-
-    File getFolder(Container container);
-
+    @Override
+    public Distributor deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context) throws JsonParseException {
+        final JsonObject object = jsonElement.getAsJsonObject();
+        final String distributorNamespaceId = object.getAsJsonObject("distributor").getAsString();
+        final Class<? extends Distributor> distributorClass = distributorRegistry.getTypeClass(new NamespaceId(distributorNamespaceId));
+        return context.deserialize(jsonElement, distributorClass);
+    }
 }

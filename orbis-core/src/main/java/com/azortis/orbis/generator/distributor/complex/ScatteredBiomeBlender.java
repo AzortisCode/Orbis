@@ -22,32 +22,7 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.minestom;
+package com.azortis.orbis.generator.distributor.complex;
 
-import net.minestom.server.instance.ChunkGenerator;
-import net.minestom.server.instance.ChunkPopulator;
-import net.minestom.server.instance.batch.ChunkBatch;
-import net.minestom.server.world.biomes.Biome;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import java.util.List;
-
-public class MinestomChunkGenerator implements ChunkGenerator {
-
-    @Override
-    public void generateChunkData(@NotNull ChunkBatch chunkBatch, int chunkX, int chunkZ) {
-
-    }
-
-    @Override
-    public void fillBiomes(@NotNull Biome[] biomes, int chunkX, int chunkZ) {
-
-    }
-
-    @Nullable
-    @Override
-    public List<ChunkPopulator> getPopulators() {
-        return null;
-    }
+public class ScatteredBiomeBlender {
 }

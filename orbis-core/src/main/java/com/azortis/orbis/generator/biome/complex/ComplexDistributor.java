@@ -22,30 +22,23 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.generator.biome.distributor;
+package com.azortis.orbis.generator.biome.complex;
 
-import com.azortis.orbis.generator.biome.Biome;
+import com.azortis.orbis.generator.biome.Distributor;
+import com.azortis.orbis.util.NamespaceId;
 
-public class SingleBiomeDistributor implements BiomeDistributor {
+public class ComplexDistributor extends Distributor {
 
-    private final Biome biome;
+    private ComplexDistributor(){
+        super();
+    }
 
-    public SingleBiomeDistributor(Biome biome) {
-        this.biome = biome;
+    public ComplexDistributor(String name, NamespaceId distributor) {
+        super(name, distributor);
     }
 
     @Override
-    public Biome getBiomeAt(int x, int y, int z) {
-        return biome;
-    }
+    public void load() {
 
-    @Override
-    public Biome[] getBiomesAt(int x, int y, int z) {
-        return new Biome[]{biome};
-    }
-
-    @Override
-    public double getBiomeWeightAt(int x, int y, int z, Biome biome) {
-        return 1.0d;
     }
 }

@@ -22,35 +22,23 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.generator.biome.distributor;
+package com.azortis.orbis.settings.adapter;
 
-import com.azortis.orbis.generator.Dimension;
-import com.azortis.orbis.generator.biome.Biome;
-import com.azortis.orbis.generator.biome.distributor.complex.BiomeCache;
-import com.google.common.cache.LoadingCache;
+import com.azortis.orbis.util.NamespaceId;
+import com.google.gson.*;
 
-public class ComplexBiomeDistributor implements BiomeDistributor{
+import java.lang.reflect.Type;
 
-    private final Dimension dimension;
-    private LoadingCache<Double[], BiomeCache> cache;
+public class NamespaceIdAdapter implements JsonSerializer<NamespaceId>, JsonDeserializer<NamespaceId> {
 
-    public ComplexBiomeDistributor(Dimension dimension) {
-        this.dimension = dimension;
+    @Override
+    public JsonElement serialize(NamespaceId namespaceID, Type type, JsonSerializationContext context) {
+        return context.serialize(namespaceID.getNamespaceId(), String.class);
     }
 
     @Override
-    public Biome getBiomeAt(int x, int y, int z) {
-        return null;
+    public NamespaceId deserialize(JsonElement element, Type type, JsonDeserializationContext context) throws JsonParseException {
+        String namespacedId = element.getAsJsonObject().getAsJsonObject("namespaceId").getAsString();
+        return new NamespaceId(namespacedId);
     }
-
-    @Override
-    public Biome[] getBiomesAt(int x, int y, int z) {
-        return new Biome[0];
-    }
-
-    @Override
-    public double getBiomeWeightAt(int x, int y, int z, Biome biome) {
-        return 0;
-    }
-
 }

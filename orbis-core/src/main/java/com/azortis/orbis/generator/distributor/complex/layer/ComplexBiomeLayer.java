@@ -22,16 +22,14 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.generator.biome.distributor;
+package com.azortis.orbis.generator.distributor.complex.layer;
 
 import com.azortis.orbis.generator.biome.Biome;
 
-public interface BiomeDistributor {
+public class ComplexBiomeLayer {
 
-    Biome getBiomeAt(int x, int y, int z);
-
-    Biome[] getBiomesAt(int x, int y, int z);
-
-    double getBiomeWeightAt(int x, int y, int z, Biome biome);
+    public Biome getObject(){
+        return null;
+    }
 
 }

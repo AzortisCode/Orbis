@@ -22,18 +22,31 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.registry;
+package com.azortis.orbis.settings.registry;
 
+import com.azortis.orbis.Orbis;
 import com.azortis.orbis.container.Container;
-import com.azortis.orbis.generator.biome.Biome;
+import com.azortis.orbis.generator.biome.Distributor;
+import com.azortis.orbis.generator.biome.complex.ComplexDistributor;
+import com.azortis.orbis.util.NamespaceId;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-public class BiomeRegistry implements Registry<Biome>{
+public class DistributorRegistry implements GeneratorRegistry<Distributor> {
+
+    private static final String DISTRIBUTOR_DIRECTORY = "/generators/distributor/";
+    private final Map<NamespaceId, Class<? extends Distributor>> distributorClasses = new HashMap<>();
+
+    public DistributorRegistry(){
+        distributorClasses.put(new NamespaceId("orbis:complex"), ComplexDistributor.class);
+    }
 
     @Override
-    public Biome loadType(Container container, String name, Object context) {
+    public Distributor loadType(Container container, String name, Object context) {
         return null;
     }
 
@@ -44,11 +57,28 @@ public class BiomeRegistry implements Registry<Biome>{
 
     @Override
     public void createFolders(Container container) {
-
+        if(!new File(container.getSettingsFolder(), DISTRIBUTOR_DIRECTORY).mkdirs()){
+            Orbis.getLogger().error("Unable to create distributor directory for container {}", container.getName());
+        }
     }
 
     @Override
     public File getFolder(Container container) {
         return null;
+    }
+
+    @Override
+    public void registerTypeClass(NamespaceId namespaceId, Class<? extends Distributor> typeClass) {
+
+    }
+
+    @Override
+    public Class<? extends Distributor> getTypeClass(NamespaceId namespaceId) {
+        return distributorClasses.get(namespaceId);
+    }
+
+    @Override
+    public List<NamespaceId> getTypeNamespaceIds() {
+        return new ArrayList<>(distributorClasses.keySet());
     }
 }

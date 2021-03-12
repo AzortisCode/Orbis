@@ -22,18 +22,7 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.registry;
+package com.azortis.orbis.generator.distributor.complex.layer;
 
-import com.azortis.orbis.util.NamespaceId;
-
-import java.util.List;
-
-public interface GeneratorRegistry<T> extends Registry<T> {
-
-    void registerTypeClass(NamespaceId namespaceId, Class<? extends T> typeClass);
-
-    Class<? extends T> getTypeClass(NamespaceId namespaceId);
-
-    List<NamespaceId> getTypeNamespaceIds();
-
+public class ComplexRegionLayer {
 }

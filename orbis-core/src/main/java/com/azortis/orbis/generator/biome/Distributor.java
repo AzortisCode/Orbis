@@ -22,7 +22,52 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.generator.biome.distributor.complex;
+package com.azortis.orbis.generator.biome;
 
-public class ChunkBiomePointSampler {
+import com.azortis.orbis.generator.Dimension;
+import com.azortis.orbis.util.NamespaceId;
+
+import java.io.File;
+
+public abstract class Distributor {
+
+    private String name;
+    private NamespaceId distributor;
+    private transient Dimension dimension;
+    private transient File settingsFolder;
+
+    protected Distributor(){
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public NamespaceId getDistributor() {
+        return distributor;
+    }
+
+    public Distributor(String name, NamespaceId distributor){
+        this.name = name;
+        this.distributor = distributor;
+    }
+
+    public void setDimension(Dimension dimension) {
+        if(this.dimension == null)this.dimension = dimension;
+    }
+
+    public Dimension getDimension() {
+        return dimension;
+    }
+
+    public void setSettingsFolder(File settingsFolder) {
+        if(this.settingsFolder == null)this.settingsFolder = settingsFolder;
+    }
+
+    public File getSettingsFolder() {
+        return settingsFolder;
+    }
+
+    public abstract void load();
+
 }

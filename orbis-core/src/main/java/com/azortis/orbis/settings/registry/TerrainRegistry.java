@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.registry;
+package com.azortis.orbis.settings.registry;
 
 import com.azortis.orbis.Orbis;
 import com.azortis.orbis.container.Container;

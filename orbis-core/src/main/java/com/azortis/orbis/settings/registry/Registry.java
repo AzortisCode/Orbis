@@ -22,30 +22,21 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.registry.adapter;
+package com.azortis.orbis.settings.registry;
 
-import com.azortis.orbis.Orbis;
-import com.azortis.orbis.generator.terrain.Terrain;
-import com.azortis.orbis.registry.GeneratorRegistry;
-import com.azortis.orbis.util.NamespaceId;
-import com.google.gson.*;
+import com.azortis.orbis.container.Container;
 
-import java.lang.reflect.Type;
+import java.io.File;
+import java.util.List;
 
-public class TerrainAdapter implements JsonDeserializer<Terrain> {
+public interface Registry<T> {
 
-    private final GeneratorRegistry<Terrain> terrainRegistry;
+    T loadType(Container container, String name, Object context);
 
-    public TerrainAdapter() {
-        this.terrainRegistry = Orbis.getGeneratorRegistry(Terrain.class);
-    }
+    List<String> getEntries(Container container);
 
-    @Override
-    public Terrain deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context) throws JsonParseException {
-        final JsonObject object = jsonElement.getAsJsonObject();
-        final String terrainNamespaceId = object.get("namespaceId").getAsString();
-        final Class<? extends Terrain> terrainType = terrainRegistry.getTypeClass(new NamespaceId(terrainNamespaceId));
-        return context.deserialize(jsonElement, terrainType);
-    }
+    void createFolders(Container container);
+
+    File getFolder(Container container);
 
 }

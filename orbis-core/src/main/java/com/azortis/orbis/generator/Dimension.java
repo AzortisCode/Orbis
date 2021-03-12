@@ -31,6 +31,9 @@ public class Dimension {
     private String name;
     private int minHeight;
     private int maxHeight;
+
+    // Distribution
+
     private String terrainName;
     private transient Terrain terrain;
 

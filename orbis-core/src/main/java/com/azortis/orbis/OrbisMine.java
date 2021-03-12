@@ -24,13 +24,11 @@
 
 package com.azortis.orbis;
 
-import com.azortis.orbis.generator.terrain.Terrain;
 import com.azortis.orbis.old.registry.BiomeRegistry;
 import com.azortis.orbis.old.registry.DimensionRegistry;
 import com.azortis.orbis.old.registry.RegionRegistry;
 import com.azortis.orbis.old.registry.TerrainRegistry;
-import com.azortis.orbis.registry.adapter.NamespaceIdAdapter;
-import com.azortis.orbis.registry.adapter.TerrainAdapter;
+import com.azortis.orbis.settings.adapter.NamespaceIdAdapter;
 import com.azortis.orbis.util.NamespaceId;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

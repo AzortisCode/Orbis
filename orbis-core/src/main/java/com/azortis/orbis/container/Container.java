@@ -74,7 +74,9 @@ public abstract class Container {
     }
 
     public void load() {
+        if(!loaded){
 
+        }
     }
 
     /**
@@ -92,7 +94,7 @@ public abstract class Container {
                 }
             }
             Orbis.getPackManager().extractPack(settingsFolder, pack);
-            if(containerInfo.getPackName() != pack.getName()) {
+            if(!containerInfo.getPackName().equals(pack.getName())) {
                 containerInfo.setPackName(pack.getName());
                 try {
                     if (containerInfoFile.delete()) {

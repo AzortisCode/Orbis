@@ -22,34 +22,7 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.registry;
+package com.azortis.orbis.editor;
 
-import com.azortis.orbis.container.Container;
-import com.azortis.orbis.generator.biome.Region;
-
-import java.io.File;
-import java.util.List;
-
-public class RegionRegistry implements Registry<Region>{
-
-    @Override
-    public Region loadType(Container container, String name, Object context) {
-        return null;
-    }
-
-    @Override
-    public List<String> getEntries(Container container) {
-        return null;
-    }
-
-    @Override
-    public void createFolders(Container container) {
-
-    }
-
-    @Override
-    public File getFolder(Container container) {
-        return null;
-    }
-
+public class DistributionEditor {
 }

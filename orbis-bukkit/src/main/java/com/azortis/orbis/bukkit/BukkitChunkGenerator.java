@@ -24,6 +24,8 @@
 
 package com.azortis.orbis.bukkit;
 
+import com.azortis.orbis.bukkit.adapter.BukkitBiomeGrid;
+import com.azortis.orbis.bukkit.adapter.BukkitChunkData;
 import com.azortis.orbis.pack.Pack;
 import org.bukkit.World;
 import org.bukkit.generator.ChunkGenerator;
@@ -59,10 +61,12 @@ public class BukkitChunkGenerator extends ChunkGenerator {
     }
 
     @Override
-    public @NotNull ChunkData generateChunkData(@NotNull World world, @NotNull Random random, int chunkX, int chunkZ, @NotNull BiomeGrid biome) {
+    public @NotNull ChunkData generateChunkData(@NotNull World world, @NotNull Random random, int chunkX, int chunkZ, @NotNull BiomeGrid biomeGrid) {
         if(!loaded) load(world);
-
-        return super.generateChunkData(world, random, chunkX, chunkZ, biome);
+        orbisWorld.getEngine().calculateBiomes(new BukkitBiomeGrid(biomeGrid), chunkX, chunkZ);
+        BukkitChunkData chunkData = new BukkitChunkData(orbisWorld.getDimension(), createChunkData(world));
+        orbisWorld.getEngine().generateChunkData(chunkData, chunkX, chunkZ);
+        return chunkData.getHandle();
     }
 
 }
