@@ -30,10 +30,10 @@ import com.azortis.orbis.generator.biome.Distributor;
 import com.azortis.orbis.generator.biome.Region;
 import com.azortis.orbis.generator.terrain.Terrain;
 import com.azortis.orbis.pack.PackManager;
-import com.azortis.orbis.settings.adapter.DistributorAdapter;
-import com.azortis.orbis.settings.registry.*;
-import com.azortis.orbis.settings.adapter.NamespaceIdAdapter;
-import com.azortis.orbis.settings.adapter.TerrainAdapter;
+import com.azortis.orbis.registry.adapter.DistributorAdapter;
+import com.azortis.orbis.registry.*;
+import com.azortis.orbis.registry.adapter.NamespaceIdAdapter;
+import com.azortis.orbis.registry.adapter.TerrainAdapter;
 import com.azortis.orbis.util.NamespaceId;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -55,11 +55,11 @@ public final class Orbis {
     // Managers
     private static PackManager packManager;
 
-    private Orbis(){
+    private Orbis() {
     }
 
-    public static void initialize(Adapter adaptation){
-        if(adapter == null){
+    public static void initialize(Adapter adaptation) {
+        if (adapter == null) {
             adapter = adaptation;
             logger = adaptation.getLogger();
             logger.info("Initializing {} adaptation of Orbis", adaptation.getAdaptation());
@@ -71,6 +71,7 @@ public final class Orbis {
             registries.put(Biome.class, new BiomeRegistry());
             generatorRegistries = new HashMap<>();
             generatorRegistries.put(Terrain.class, new TerrainRegistry());
+            generatorRegistries.put(Distributor.class, new DistributorRegistry());
 
             gson = new GsonBuilder().disableHtmlEscaping().setPrettyPrinting()
                     .registerTypeAdapter(NamespaceId.class, new NamespaceIdAdapter())
@@ -96,16 +97,16 @@ public final class Orbis {
     }
 
     @SuppressWarnings("unchecked")
-    public static <T> Registry<T> getRegistry(Class<? extends T> typeClass){
+    public static <T> Registry<T> getRegistry(Class<? extends T> typeClass) {
         Registry<?> registry = registries.get(typeClass);
-        if(registry != null)return (Registry<T>) registry;
+        if (registry != null) return (Registry<T>) registry;
         return null;
     }
 
     @SuppressWarnings("unchecked")
-    public static <T> GeneratorRegistry<T> getGeneratorRegistry(Class<T> typeClass){
+    public static <T> GeneratorRegistry<T> getGeneratorRegistry(Class<T> typeClass) {
         GeneratorRegistry<?> registry = generatorRegistries.get(typeClass);
-        if(registry != null)return (GeneratorRegistry<T>) registry;
+        if (registry != null) return (GeneratorRegistry<T>) registry;
         return null;
     }
 

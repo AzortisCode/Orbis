@@ -63,9 +63,8 @@ public class BukkitChunkGenerator extends ChunkGenerator {
     @Override
     public @NotNull ChunkData generateChunkData(@NotNull World world, @NotNull Random random, int chunkX, int chunkZ, @NotNull BiomeGrid biomeGrid) {
         if(!loaded) load(world);
-        orbisWorld.getEngine().calculateBiomes(new BukkitBiomeGrid(biomeGrid), chunkX, chunkZ);
         BukkitChunkData chunkData = new BukkitChunkData(orbisWorld.getDimension(), createChunkData(world));
-        orbisWorld.getEngine().generateChunkData(chunkData, chunkX, chunkZ);
+        orbisWorld.getEngine().generateChunkData(chunkData, new BukkitBiomeGrid(biomeGrid), chunkX, chunkZ);
         return chunkData.getHandle();
     }
 

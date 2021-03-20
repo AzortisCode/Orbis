@@ -22,21 +22,7 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.settings.registry;
+package com.azortis.orbis.generator.biome.complex.layer;
 
-import com.azortis.orbis.container.Container;
-
-import java.io.File;
-import java.util.List;
-
-public interface Registry<T> {
-
-    T loadType(Container container, String name, Object context);
-
-    List<String> getEntries(Container container);
-
-    void createFolders(Container container);
-
-    File getFolder(Container container);
-
+public class RegionLayer {
 }

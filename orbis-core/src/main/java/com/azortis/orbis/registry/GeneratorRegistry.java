@@ -22,36 +22,18 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.settings.registry;
+package com.azortis.orbis.registry;
 
-import com.azortis.orbis.container.Container;
-import com.azortis.orbis.generator.Dimension;
+import com.azortis.orbis.util.NamespaceId;
 
-import java.io.File;
 import java.util.List;
 
-public class DimensionRegistry implements Registry<Dimension> {
+public interface GeneratorRegistry<T> extends Registry<T> {
 
-    @Override
-    public Dimension loadType(Container container, String name, Object context) {
-        File dimensionFile = new File(container.getSettingsFolder(), name);
+    void registerTypeClass(NamespaceId namespaceId, Class<? extends T> typeClass);
 
+    Class<? extends T> getTypeClass(NamespaceId namespaceId);
 
-        return null;
-    }
+    List<NamespaceId> getTypeNamespaceIds();
 
-    @Override
-    public List<String> getEntries(Container container) {
-        return null;
-    }
-
-    @Override
-    public void createFolders(Container container) {
-
-    }
-
-    @Override
-    public File getFolder(Container container) {
-        return null;
-    }
 }

@@ -35,14 +35,10 @@ public abstract class Engine {
         this.container = container;
     }
 
-    public abstract void calculateBiomes(BiomeGrid biomeGrid, int chunkX, int chunkZ);
-
-    public abstract void generateChunkData(ChunkData chunkData, int chunkX, int chunkZ);
+    public abstract void generateChunkData(ChunkData chunkData, BiomeGrid biomeGrid,  int chunkX, int chunkZ);
 
     public Container getContainer() {
         return container;
     }
-
-
 
 }

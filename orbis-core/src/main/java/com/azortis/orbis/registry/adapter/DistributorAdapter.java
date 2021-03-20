@@ -22,11 +22,11 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.settings.adapter;
+package com.azortis.orbis.registry.adapter;
 
 import com.azortis.orbis.Orbis;
 import com.azortis.orbis.generator.biome.Distributor;
-import com.azortis.orbis.settings.registry.GeneratorRegistry;
+import com.azortis.orbis.registry.GeneratorRegistry;
 import com.azortis.orbis.util.NamespaceId;
 import com.google.gson.*;
 

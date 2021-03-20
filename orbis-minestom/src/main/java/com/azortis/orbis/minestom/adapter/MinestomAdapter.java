@@ -24,8 +24,38 @@
 
 package com.azortis.orbis.minestom.adapter;
 
-/**
- * Class used for translating core objects to minestom ones.
- */
-public class MinestomAdapter{
+import com.azortis.orbis.Adapter;
+import com.azortis.orbis.container.Container;
+import org.jetbrains.annotations.Nullable;
+import org.slf4j.Logger;
+
+import java.io.File;
+import java.util.Collection;
+
+public class MinestomAdapter implements Adapter {
+
+    @Override
+    public String getAdaptation() {
+        return null;
+    }
+
+    @Override
+    public Logger getLogger() {
+        return null;
+    }
+
+    @Override
+    public File getDirectory() {
+        return null;
+    }
+
+    @Override
+    public @Nullable Container getContainer(String name) {
+        return null;
+    }
+
+    @Override
+    public Collection<Container> getContainers() {
+        return null;
+    }
 }

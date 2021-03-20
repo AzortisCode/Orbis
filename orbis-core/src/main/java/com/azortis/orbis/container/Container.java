@@ -59,12 +59,12 @@ public abstract class Container {
 
         this.containerInfoFile = new File(folder, "container-info.json");
         try {
-            if(!containerInfoFile.exists() && containerInfoFile.createNewFile()){
+            if (!containerInfoFile.exists() && containerInfoFile.createNewFile()) {
                 containerInfo = new ContainerInfo(Orbis.SETTINGS_VERSION);
                 String containerJson = Orbis.getGson().toJson(containerInfo);
                 Files.write(containerInfoFile.toPath(), containerJson.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.WRITE);
             }
-        } catch (IOException ex){
+        } catch (IOException ex) {
             Orbis.getLogger().error("Failed to create container-info.json file for container {}", name);
         }
     }
@@ -74,7 +74,7 @@ public abstract class Container {
     }
 
     public void load() {
-        if(!loaded){
+        if (!loaded) {
 
         }
     }
@@ -87,14 +87,14 @@ public abstract class Container {
      */
     public void installPack(Pack pack, boolean override) {
         if (!installed || override) {
-            if(override){
-                if(!settingsFolder.delete()){
+            if (override) {
+                if (!settingsFolder.delete()) {
                     Orbis.getLogger().error("Couldn't reinstall pack: {}, for container: {}", pack.getName(), this.name);
                     return;
                 }
             }
             Orbis.getPackManager().extractPack(settingsFolder, pack);
-            if(!containerInfo.getPackName().equals(pack.getName())) {
+            if (!containerInfo.getPackName().equals(pack.getName())) {
                 containerInfo.setPackName(pack.getName());
                 try {
                     if (containerInfoFile.delete()) {

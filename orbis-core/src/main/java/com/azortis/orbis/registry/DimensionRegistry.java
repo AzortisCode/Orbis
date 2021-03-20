@@ -22,7 +22,36 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.old.registry;
+package com.azortis.orbis.registry;
 
-public class RegionRegistry {
+import com.azortis.orbis.container.Container;
+import com.azortis.orbis.generator.Dimension;
+
+import java.io.File;
+import java.util.List;
+
+public class DimensionRegistry implements Registry<Dimension> {
+
+    @Override
+    public Dimension loadType(Container container, String name, Object context) {
+        File dimensionFile = new File(container.getSettingsFolder(), name);
+
+
+        return null;
+    }
+
+    @Override
+    public List<String> getEntries(Container container) {
+        return null;
+    }
+
+    @Override
+    public void createFolders(Container container) {
+
+    }
+
+    @Override
+    public File getFolder(Container container) {
+        return null;
+    }
 }

@@ -36,7 +36,8 @@ public abstract class Distributor {
     private transient Dimension dimension;
     private transient File settingsFolder;
 
-    protected Distributor(){
+    // Used for GSON deserialization
+    protected Distributor() {
     }
 
     public String getName() {
@@ -47,27 +48,41 @@ public abstract class Distributor {
         return distributor;
     }
 
-    public Distributor(String name, NamespaceId distributor){
+    public Distributor(String name, NamespaceId distributor) {
         this.name = name;
         this.distributor = distributor;
     }
 
+    //
+    // Dimension
+    //
+
     public void setDimension(Dimension dimension) {
-        if(this.dimension == null)this.dimension = dimension;
+        if (this.dimension == null) this.dimension = dimension;
     }
 
     public Dimension getDimension() {
         return dimension;
     }
 
+    //
+    // SettingsFolder
+    //
+
     public void setSettingsFolder(File settingsFolder) {
-        if(this.settingsFolder == null)this.settingsFolder = settingsFolder;
+        if (this.settingsFolder == null) this.settingsFolder = settingsFolder;
     }
 
     public File getSettingsFolder() {
         return settingsFolder;
     }
 
+    //
+    // Abstracted methods
+    //
+
     public abstract void load();
+
+    public abstract ChunkGrid getChunkGrid(int chunkX, int chunkZ);
 
 }

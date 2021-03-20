@@ -24,8 +24,48 @@
 
 package com.azortis.orbis.generator.biome;
 
-public class Region {
+import gnu.trove.map.TIntObjectMap;
+import gnu.trove.map.hash.TIntObjectHashMap;
 
+public class ChunkGrid {
+    private final TIntObjectMap<Biome> biomeMap = new TIntObjectHashMap<>();
+    private final Point[] points = new Point[256];
 
+    public ChunkGrid() {
+    }
+
+    public void setBiome(int cx, int cz, Biome biome, double weight){
+        int biomeHash = biome.hashCode();
+        if(!biomeMap.containsKey(biomeHash))biomeMap.put(biomeHash, biome);
+        points[cx * cx] = new Point(this, biomeHash, weight);
+    }
+
+    public Point getPoint(int cx, int cz){
+        return points[cx * cz];
+    }
+
+    public static class Point {
+        private final ChunkGrid parent;
+        private final int biome;
+        private final double weight;
+
+        private Point(ChunkGrid parent, int biome, double weight) {
+            this.parent = parent;
+            this.biome = biome;
+            this.weight = weight;
+        }
+
+        public Biome getBiome(){
+            return parent.biomeMap.get(biome);
+        }
+
+        public int getBiomeHash() {
+            return biome;
+        }
+
+        public double getWeight() {
+            return weight;
+        }
+    }
 
 }

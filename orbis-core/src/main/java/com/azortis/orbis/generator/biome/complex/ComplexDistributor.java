@@ -24,6 +24,7 @@
 
 package com.azortis.orbis.generator.biome.complex;
 
+import com.azortis.orbis.generator.biome.ChunkGrid;
 import com.azortis.orbis.generator.biome.Distributor;
 import com.azortis.orbis.util.NamespaceId;
 
@@ -40,5 +41,10 @@ public class ComplexDistributor extends Distributor {
     @Override
     public void load() {
 
+    }
+
+    @Override
+    public ChunkGrid getChunkGrid(int chunkX, int chunkZ) {
+        return null;
     }
 }

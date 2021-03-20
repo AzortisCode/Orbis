@@ -22,18 +22,34 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.settings.registry;
+package com.azortis.orbis.registry;
 
-import com.azortis.orbis.util.NamespaceId;
+import com.azortis.orbis.container.Container;
+import com.azortis.orbis.generator.biome.Region;
 
+import java.io.File;
 import java.util.List;
 
-public interface GeneratorRegistry<T> extends Registry<T> {
+public class RegionRegistry implements Registry<Region>{
 
-    void registerTypeClass(NamespaceId namespaceId, Class<? extends T> typeClass);
+    @Override
+    public Region loadType(Container container, String name, Object context) {
+        return null;
+    }
 
-    Class<? extends T> getTypeClass(NamespaceId namespaceId);
+    @Override
+    public List<String> getEntries(Container container) {
+        return null;
+    }
 
-    List<NamespaceId> getTypeNamespaceIds();
+    @Override
+    public void createFolders(Container container) {
+
+    }
+
+    @Override
+    public File getFolder(Container container) {
+        return null;
+    }
 
 }

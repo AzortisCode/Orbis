@@ -22,30 +22,7 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.settings.adapter;
+package com.azortis.orbis.generator.biome.complex.layer;
 
-import com.azortis.orbis.Orbis;
-import com.azortis.orbis.generator.terrain.Terrain;
-import com.azortis.orbis.settings.registry.GeneratorRegistry;
-import com.azortis.orbis.util.NamespaceId;
-import com.google.gson.*;
-
-import java.lang.reflect.Type;
-
-public class TerrainAdapter implements JsonDeserializer<Terrain> {
-
-    private final GeneratorRegistry<Terrain> terrainRegistry;
-
-    public TerrainAdapter() {
-        this.terrainRegistry = Orbis.getGeneratorRegistry(Terrain.class);
-    }
-
-    @Override
-    public Terrain deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context) throws JsonParseException {
-        final JsonObject object = jsonElement.getAsJsonObject();
-        final String terrainNamespaceId = object.get("namespaceId").getAsString();
-        final Class<? extends Terrain> terrainType = terrainRegistry.getTypeClass(new NamespaceId(terrainNamespaceId));
-        return context.deserialize(jsonElement, terrainType);
-    }
-
+public class BiomeLayer {
 }

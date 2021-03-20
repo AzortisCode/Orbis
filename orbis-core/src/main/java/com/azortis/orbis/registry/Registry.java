@@ -22,19 +22,21 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.generator;
+package com.azortis.orbis.registry;
 
 import com.azortis.orbis.container.Container;
-import com.azortis.orbis.generator.biome.BiomeGrid;
 
-public class ComplexEngine extends Engine{
+import java.io.File;
+import java.util.List;
 
-    public ComplexEngine(Container container) {
-        super(container);
-    }
+public interface Registry<T> {
 
-    @Override
-    public void generateChunkData(ChunkData chunkData, BiomeGrid biomeGrid, int chunkX, int chunkZ) {
+    T loadType(Container container, String name, Object context);
 
-    }
+    List<String> getEntries(Container container);
+
+    void createFolders(Container container);
+
+    File getFolder(Container container);
+
 }

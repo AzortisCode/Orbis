@@ -22,18 +22,18 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.settings.registry;
+package com.azortis.orbis.registry;
 
 import com.azortis.orbis.container.Container;
-import com.azortis.orbis.generator.biome.Region;
+import com.azortis.orbis.generator.biome.Biome;
 
 import java.io.File;
 import java.util.List;
 
-public class RegionRegistry implements Registry<Region>{
+public class BiomeRegistry implements Registry<Biome>{
 
     @Override
-    public Region loadType(Container container, String name, Object context) {
+    public Biome loadType(Container container, String name, Object context) {
         return null;
     }
 
@@ -51,5 +51,4 @@ public class RegionRegistry implements Registry<Region>{
     public File getFolder(Container container) {
         return null;
     }
-
 }

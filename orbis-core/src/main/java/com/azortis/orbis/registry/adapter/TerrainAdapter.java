@@ -22,33 +22,30 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.settings.registry;
+package com.azortis.orbis.registry.adapter;
 
-import com.azortis.orbis.container.Container;
-import com.azortis.orbis.generator.biome.Biome;
+import com.azortis.orbis.Orbis;
+import com.azortis.orbis.generator.terrain.Terrain;
+import com.azortis.orbis.registry.GeneratorRegistry;
+import com.azortis.orbis.util.NamespaceId;
+import com.google.gson.*;
 
-import java.io.File;
-import java.util.List;
+import java.lang.reflect.Type;
 
-public class BiomeRegistry implements Registry<Biome>{
+public class TerrainAdapter implements JsonDeserializer<Terrain> {
 
-    @Override
-    public Biome loadType(Container container, String name, Object context) {
-        return null;
+    private final GeneratorRegistry<Terrain> terrainRegistry;
+
+    public TerrainAdapter() {
+        this.terrainRegistry = Orbis.getGeneratorRegistry(Terrain.class);
     }
 
     @Override
-    public List<String> getEntries(Container container) {
-        return null;
+    public Terrain deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context) throws JsonParseException {
+        final JsonObject object = jsonElement.getAsJsonObject();
+        final String terrainNamespaceId = object.get("namespaceId").getAsString();
+        final Class<? extends Terrain> terrainType = terrainRegistry.getTypeClass(new NamespaceId(terrainNamespaceId));
+        return context.deserialize(jsonElement, terrainType);
     }
 
-    @Override
-    public void createFolders(Container container) {
-
-    }
-
-    @Override
-    public File getFolder(Container container) {
-        return null;
-    }
 }

@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.settings.adapter;
+package com.azortis.orbis.registry.adapter;
 
 import com.azortis.orbis.util.NamespaceId;
 import com.google.gson.*;

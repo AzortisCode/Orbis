@@ -35,8 +35,6 @@ public class Biome {
     private NamespaceId derivative;
     private List<TerrainLayer> terrainLayers;
 
-    private transient Region region;
-
     public String getName() {
         return name;
     }
@@ -49,11 +47,4 @@ public class Biome {
         return terrainLayers;
     }
 
-    public Region getRegion() {
-        return region;
-    }
-
-    public void setRegion(Region region) {
-        if(this.region == null)this.region = region;
-    }
 }
