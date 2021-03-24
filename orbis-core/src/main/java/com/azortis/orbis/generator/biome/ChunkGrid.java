@@ -24,8 +24,12 @@
 
 package com.azortis.orbis.generator.biome;
 
+import gnu.trove.map.TIntDoubleMap;
 import gnu.trove.map.TIntObjectMap;
 import gnu.trove.map.hash.TIntObjectHashMap;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class ChunkGrid {
     private final TIntObjectMap<Biome> biomeMap = new TIntObjectHashMap<>();
@@ -37,7 +41,7 @@ public class ChunkGrid {
     public void setBiome(int cx, int cz, Biome biome, double weight){
         int biomeHash = biome.hashCode();
         if(!biomeMap.containsKey(biomeHash))biomeMap.put(biomeHash, biome);
-        points[cx * cx] = new Point(this, biomeHash, weight);
+        //points[cx * cx] = new Point(this, biomeHash, weight);
     }
 
     public Point getPoint(int cx, int cz){
@@ -46,26 +50,31 @@ public class ChunkGrid {
 
     public static class Point {
         private final ChunkGrid parent;
-        private final int biome;
-        private final double weight;
+        private final int[] biomeArray;
+        private final double[] weightArray;
 
-        private Point(ChunkGrid parent, int biome, double weight) {
+        private Point(ChunkGrid parent, int[] biomeArray, double[] weightArray) {
             this.parent = parent;
-            this.biome = biome;
-            this.weight = weight;
+            this.biomeArray = biomeArray;
+            this.weightArray = weightArray;
         }
 
         public Biome getBiome(){
-            return parent.biomeMap.get(biome);
+            return parent.biomeMap.get(biomeArray[0]);
         }
 
-        public int getBiomeHash() {
-            return biome;
+        public double getWeight(){
+            return weightArray[0];
         }
 
-        public double getWeight() {
-            return weight;
+        public Map<Biome, Double> getBiomes(){
+            Map<Biome, Double> biomeMap = new HashMap<>();
+            for (int i = 0; i < biomeArray.length; i++) {
+                biomeMap.put(parent.biomeMap.get(biomeArray[i]), weightArray[i]);
+            }
+            return biomeMap;
         }
+
     }
 
 }

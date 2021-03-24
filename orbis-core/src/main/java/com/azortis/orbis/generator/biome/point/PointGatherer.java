@@ -1,40 +1,15 @@
-/*
- * MIT License
- *
- * Copyright (c) 2021 Azortis
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- */
+package com.azortis.orbis.generator.biome.point;
 
-package com.azortis.orbis.generator.distributor.complex.point;
-
-import com.azortis.orbis.generator.distributor.complex.point.Point;
-
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Credits to k.jpg from FastNoise for making this class.
- * @param <T> The type tag of the point gatherer.
+ *
+ * @param <TTag> The type tag of the point gatherer.
  */
 @SuppressWarnings("all")
-public class PointGatherer<T> {
+public class PointGatherer<TTag> {
     // For handling a (jittered) hex grid
     private static final double SQRT_HALF = Math.sqrt(1.0 / 2.0);
     private static final double TRIANGLE_EDGE_LENGTH = Math.sqrt(2.0 / 3.0);
@@ -58,6 +33,7 @@ public class PointGatherer<T> {
     private static final int N_VECTORS = JITTER_VECTOR_COUNT_MULTIPLIER * 12;
     private static final int N_VECTORS_WITH_REPETITION = N_VECTORS * 4 / 3;
     private static final int VECTOR_INDEX_MASK = N_VECTORS_WITH_REPETITION - 1;
+    private static final int JITTER_SINCOS_OFFSET = JITTER_VECTOR_COUNT_MULTIPLIER * 4;
     private static double[] JITTER_SINCOS;
 
     static {
@@ -157,7 +133,7 @@ public class PointGatherer<T> {
         pointsToSearch = pointsToSearchList.toArray(new LatticePoint[0]);
     }
 
-    public List<Point<T>> getPoints(long seed, double x, double z) {
+    public List<GatheredPoint<TTag>> getPoints(long seed, double x, double z) {
         x *= frequency;
         z *= frequency;
 
@@ -203,7 +179,7 @@ public class PointGatherer<T> {
         double xb = xsb + bt, zb = zsb + bt;
 
         // Loop through pregenerated array of all points which could be in range, relative to the closest.
-        ArrayList<Point<T>> worldPointsList = new ArrayList<>(pointsToSearch.length);
+        ArrayList<GatheredPoint<TTag>> worldPointsList = new ArrayList<>(pointsToSearch.length);
         for (int i = 0; i < pointsToSearch.length; i++) {
             LatticePoint point = pointsToSearch[i];
 
@@ -223,7 +199,7 @@ public class PointGatherer<T> {
 
             // Jittered point, not yet unscaled for frequency
             double scaledX = xb + point.xv + JITTER_SINCOS[index];
-            double scaledZ = zb + point.zv + JITTER_SINCOS[index + 8];
+            double scaledZ = zb + point.zv + JITTER_SINCOS[index + JITTER_SINCOS_OFFSET];
 
             // Unscale the coordinate and add it to the list.
             // "Unfiltered" means that, even if the jitter took it out of range, we don't check for that.
@@ -232,7 +208,7 @@ public class PointGatherer<T> {
             // without the added overhead of this less limiting check.
             // A possible alternate implementation of this could employ a callback function,
             // to avoid adding the points to the list in the first place.
-            Point<T> worldPoint = new Point<T>(scaledX * inverseFrequency, scaledZ * inverseFrequency, remainingHash);
+            GatheredPoint<TTag> worldPoint = new GatheredPoint<TTag>(scaledX * inverseFrequency, scaledZ * inverseFrequency, remainingHash);
             worldPointsList.add(worldPoint);
         }
 
