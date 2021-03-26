@@ -24,7 +24,7 @@
 
 package com.azortis.orbis.generator.biome;
 
-import com.azortis.orbis.generator.Dimension;
+import com.azortis.orbis.container.Container;
 import com.azortis.orbis.util.NamespaceId;
 
 import java.io.File;
@@ -32,8 +32,8 @@ import java.io.File;
 public abstract class Distributor {
 
     private String name;
-    private NamespaceId distributor;
-    private transient Dimension dimension;
+    private NamespaceId namespaceId;
+    private transient Container container;
     private transient File settingsFolder;
 
     // Used for GSON deserialization
@@ -44,26 +44,27 @@ public abstract class Distributor {
         return name;
     }
 
-    public NamespaceId getDistributor() {
-        return distributor;
+    public NamespaceId getNamespaceId() {
+        return namespaceId;
     }
 
-    public Distributor(String name, NamespaceId distributor) {
+    public Distributor(String name, NamespaceId namespaceId) {
         this.name = name;
-        this.distributor = distributor;
+        this.namespaceId = namespaceId;
     }
 
     //
-    // Dimension
+    // Container
     //
 
-    public void setDimension(Dimension dimension) {
-        if (this.dimension == null) this.dimension = dimension;
+    public void setContainer(Container container) {
+        if(this.container == null)this.container = container;
     }
 
-    public Dimension getDimension() {
-        return dimension;
+    public Container getContainer() {
+        return container;
     }
+
 
     //
     // SettingsFolder
@@ -83,6 +84,6 @@ public abstract class Distributor {
 
     public abstract void load();
 
-    public abstract ChunkGrid getChunkGrid(int chunkX, int chunkZ);
+    public abstract Biome getBiomeAt(double x, double z);
 
 }

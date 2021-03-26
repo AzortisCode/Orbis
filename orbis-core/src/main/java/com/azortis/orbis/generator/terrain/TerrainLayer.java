@@ -24,14 +24,19 @@
 
 package com.azortis.orbis.generator.terrain;
 
+import com.google.gson.annotations.SerializedName;
+
 public class TerrainLayer {
 
+    @SerializedName("terrain")
     private String terrainName;
-    private transient Terrain terrain;
     private int max;
     private int min;
 
-    private TerrainLayer(){}
+    private transient Terrain terrain;
+
+    private TerrainLayer() {
+    }
 
     public String getTerrainName() {
         return terrainName;
@@ -42,7 +47,7 @@ public class TerrainLayer {
     }
 
     public void setTerrain(Terrain terrain) {
-        if(this.terrain == null)this.terrain = terrain;
+        if (this.terrain == null) this.terrain = terrain;
     }
 
     public int getMax() {
@@ -52,4 +57,5 @@ public class TerrainLayer {
     public int getMin() {
         return min;
     }
+
 }

@@ -27,10 +27,12 @@ package com.azortis.orbis.registry;
 import com.azortis.orbis.Orbis;
 import com.azortis.orbis.container.Container;
 import com.azortis.orbis.generator.biome.Distributor;
-import com.azortis.orbis.generator.biome.complex.ComplexDistributor;
+import com.azortis.orbis.generator.biome.SimpleDistributor;
 import com.azortis.orbis.util.NamespaceId;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -42,11 +44,21 @@ public class DistributorRegistry implements GeneratorRegistry<Distributor> {
     private final Map<NamespaceId, Class<? extends Distributor>> distributorClasses = new HashMap<>();
 
     public DistributorRegistry(){
-        distributorClasses.put(new NamespaceId("orbis:complex"), ComplexDistributor.class);
+        distributorClasses.put(new NamespaceId("orbis:simple"), SimpleDistributor.class);
     }
 
     @Override
-    public Distributor loadType(Container container, String name, Object context) {
+    public Distributor loadType(Container container, String name, Object... context) {
+        File distributorFile = new File(container.getSettingsFolder(), DISTRIBUTOR_DIRECTORY + name + ".json");
+        try {
+            Distributor distributor = Orbis.getGson().fromJson(new FileReader(distributorFile), Distributor.class);
+            distributor.setContainer(container);
+            distributor.setSettingsFolder(new File(container.getSettingsFolder(), DISTRIBUTOR_DIRECTORY + name + "/"));
+            distributor.load();
+            return distributor;
+        }catch (FileNotFoundException ex){
+            Orbis.getLogger().error("Distributor file {} not found", name);
+        }
         return null;
     }
 
@@ -64,12 +76,12 @@ public class DistributorRegistry implements GeneratorRegistry<Distributor> {
 
     @Override
     public File getFolder(Container container) {
-        return null;
+        return new File(container.getSettingsFolder(), DISTRIBUTOR_DIRECTORY);
     }
 
     @Override
     public void registerTypeClass(NamespaceId namespaceId, Class<? extends Distributor> typeClass) {
-
+        //TODO do this I'm too lazy
     }
 
     @Override

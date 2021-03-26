@@ -22,7 +22,32 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.editor;
+package com.azortis.orbis.generator;
 
-public class DistributionEditor {
+import com.azortis.orbis.Orbis;
+import com.azortis.orbis.container.Container;
+import com.azortis.orbis.generator.biome.BiomeGrid;
+import com.azortis.orbis.generator.biome.Distributor;
+import com.azortis.orbis.generator.noise.NoiseGenerator;
+import com.azortis.orbis.generator.noise.PerlinNoise;
+
+import java.util.Objects;
+
+public class SimpleEngine extends Engine {
+
+    private final Distributor distributor;
+    private final NoiseGenerator noiseGenerator;
+
+    public SimpleEngine(Container container) {
+        super(container);
+        this.distributor = Objects.requireNonNull(Orbis.getGeneratorRegistry(Distributor.class))
+                .loadType(super.getContainer(), container.getDimension().getDistributor());
+        this.noiseGenerator = new PerlinNoise(container.getDimension().getSeed());
+    }
+
+    @Override
+    public void generateChunkData(ChunkData chunkData, BiomeGrid biomeGrid, int chunkX, int chunkZ) {
+
+    }
+
 }

@@ -24,6 +24,8 @@
 
 package com.azortis.orbis.pack;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 public class Pack {
@@ -31,6 +33,7 @@ public class Pack {
     // Required
     private String name;
     private String author;
+    @SerializedName("dimension")
     private String dimensionFile;
     private String packVersion;
 

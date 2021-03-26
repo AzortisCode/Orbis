@@ -27,7 +27,6 @@ package com.azortis.orbis;
 import com.azortis.orbis.generator.Dimension;
 import com.azortis.orbis.generator.biome.Biome;
 import com.azortis.orbis.generator.biome.Distributor;
-import com.azortis.orbis.generator.biome.Region;
 import com.azortis.orbis.generator.terrain.Terrain;
 import com.azortis.orbis.pack.PackManager;
 import com.azortis.orbis.registry.adapter.DistributorAdapter;
@@ -67,7 +66,6 @@ public final class Orbis {
             // Load registries
             registries = new HashMap<>();
             registries.put(Dimension.class, new DimensionRegistry());
-            registries.put(Region.class, new RegionRegistry());
             registries.put(Biome.class, new BiomeRegistry());
             generatorRegistries = new HashMap<>();
             generatorRegistries.put(Terrain.class, new TerrainRegistry());

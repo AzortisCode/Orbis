@@ -24,19 +24,28 @@
 
 package com.azortis.orbis.registry;
 
+import com.azortis.orbis.Orbis;
 import com.azortis.orbis.container.Container;
 import com.azortis.orbis.generator.Dimension;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.List;
 
 public class DimensionRegistry implements Registry<Dimension> {
 
+    public DimensionRegistry() {
+    }
+
     @Override
-    public Dimension loadType(Container container, String name, Object context) {
-        File dimensionFile = new File(container.getSettingsFolder(), name);
-
-
+    public Dimension loadType(Container container, String name, Object... context) {
+        File dimensionFile = new File(container.getSettingsFolder(), name + ".json");
+        try {
+            return Orbis.getGson().fromJson(new FileReader(dimensionFile), Dimension.class);
+        }catch (FileNotFoundException ex){
+            Orbis.getLogger().error("Dimension file {} not found!", name);
+        }
         return null;
     }
 
@@ -47,11 +56,12 @@ public class DimensionRegistry implements Registry<Dimension> {
 
     @Override
     public void createFolders(Container container) {
-
+        //Do nothing, dimensions are root
     }
 
     @Override
     public File getFolder(Container container) {
-        return null;
+        return container.getSettingsFolder();
     }
+
 }

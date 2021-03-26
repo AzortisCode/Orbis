@@ -1,5 +1,5 @@
 name: Orbis
 author: YourPalJake
-version: 0.1
+version: 0.1-ALPHA
 api-version: 1.16
 main: com.azortis.orbis.bukkit.OrbisPlugin

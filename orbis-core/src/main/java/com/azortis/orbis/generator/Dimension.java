@@ -24,18 +24,16 @@
 
 package com.azortis.orbis.generator;
 
-import com.azortis.orbis.generator.terrain.Terrain;
-
 public class Dimension {
 
     private String name;
+    private long seed;
     private int minHeight;
     private int maxHeight;
+    private int fluidHeight;
 
     // Distribution
-
-    private String terrainName;
-    private transient Terrain terrain;
+    private String distributor;
 
     // Used for the GSON deserializer
     private Dimension(){}
@@ -48,6 +46,10 @@ public class Dimension {
         return name;
     }
 
+    public long getSeed() {
+        return seed;
+    }
+
     public int getMinHeight() {
         return minHeight;
     }
@@ -56,15 +58,11 @@ public class Dimension {
         return maxHeight;
     }
 
-    public String getTerrainName() {
-        return terrainName;
+    public int getFluidHeight() {
+        return fluidHeight;
     }
 
-    public void setTerrain(Terrain terrain) {
-        this.terrain = terrain;
-    }
-
-    public Terrain getTerrain() {
-        return terrain;
+    public String getDistributor() {
+        return distributor;
     }
 }

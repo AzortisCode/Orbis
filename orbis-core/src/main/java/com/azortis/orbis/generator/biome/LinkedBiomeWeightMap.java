@@ -22,34 +22,38 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.registry;
+package com.azortis.orbis.generator.biome;
 
-import com.azortis.orbis.container.Container;
-import com.azortis.orbis.generator.biome.Region;
+public class LinkedBiomeWeightMap {
+    private final int biome;
+    private double[] weights;
+    private final LinkedBiomeWeightMap next;
 
-import java.io.File;
-import java.util.List;
-
-public class RegionRegistry implements Registry<Region>{
-
-    @Override
-    public Region loadType(Container container, String name, Object context) {
-        return null;
+    public LinkedBiomeWeightMap(int biome, LinkedBiomeWeightMap next) {
+        this.biome = biome;
+        this.next = next;
     }
 
-    @Override
-    public List<String> getEntries(Container container) {
-        return null;
+    public LinkedBiomeWeightMap(int biome, int chunkColumnCount, LinkedBiomeWeightMap next) {
+        this.biome = biome;
+        this.weights = new double[chunkColumnCount];
+        this.next = next;
     }
 
-    @Override
-    public void createFolders(Container container) {
-
+    public int getBiome() {
+        return biome;
     }
 
-    @Override
-    public File getFolder(Container container) {
-        return null;
+    public double[] getWeights() {
+        return weights;
+    }
+
+    public void setWeights(double[] weights) {
+        this.weights = weights;
+    }
+
+    public LinkedBiomeWeightMap getNext() {
+        return next;
     }
 
 }

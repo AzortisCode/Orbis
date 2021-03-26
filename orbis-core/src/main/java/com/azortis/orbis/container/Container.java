@@ -27,12 +27,14 @@ package com.azortis.orbis.container;
 import com.azortis.orbis.Orbis;
 import com.azortis.orbis.generator.Dimension;
 import com.azortis.orbis.generator.Engine;
+import com.azortis.orbis.generator.SimpleEngine;
 import com.azortis.orbis.pack.Pack;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardOpenOption;
+import java.util.Objects;
 
 /**
  * An representation of a world/instance for core package
@@ -75,7 +77,9 @@ public abstract class Container {
 
     public void load() {
         if (!loaded) {
-
+            this.dimension = Objects.requireNonNull(Orbis.getRegistry(Dimension.class)).loadType(this, "overworld");
+            this.engine = new SimpleEngine(this);
+            this.loaded = true;
         }
     }
 

@@ -46,17 +46,18 @@ public class TerrainRegistry implements GeneratorRegistry<Terrain> {
 
     public TerrainRegistry(){
         // Initialize Orbis default terrains
-        terrainClasses.put(new NamespaceId("orbis:config"), ConfigTerrain.class);
+        //terrainClasses.put(new NamespaceId("orbis:config"), ConfigTerrain.class);
         terrainClasses.put(new NamespaceId("orbis:plains"), PlainsTerrain.class);
     }
 
     @Override
-    public Terrain loadType(Container container, String name, Object context) {
-        if(context instanceof Biome){
-            Biome biome = (Biome) context;
+    public Terrain loadType(Container container, String name, Object... context) {
+        if(context[0] instanceof Biome){
+            Biome biome = (Biome) context[0];
             File terrainFile = new File(container.getSettingsFolder(), TERRAIN_DIRECTORY + name + ".json");
             try {
                 Terrain terrain = Orbis.getGson().fromJson(new FileReader(terrainFile), Terrain.class);
+                terrain.setContainer(container);
                 terrain.setBiome(biome);
                 return terrain;
             } catch (FileNotFoundException ex){

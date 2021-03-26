@@ -24,29 +24,39 @@
 
 package com.azortis.orbis.generator.terrain;
 
+import com.azortis.orbis.container.Container;
 import com.azortis.orbis.generator.biome.Biome;
 import com.azortis.orbis.generator.noise.NoiseGenerator;
 
 public abstract class Terrain {
 
     protected String name;
-    protected String namespaceId;
+    protected String providerId;
+    private transient Container container;
     private transient Biome biome;
 
     // Used for deserialization for gson, more stable.
     private Terrain(){}
 
-    public Terrain(String name, String namespaceId){
+    public Terrain(String name, String providerId){
         this.name = name;
-        this.namespaceId = namespaceId;
+        this.providerId = providerId;
     }
 
     public final String getName() {
         return name;
     }
 
-    public final String getNamespaceId() {
-        return namespaceId;
+    public final String getProviderId() {
+        return providerId;
+    }
+
+    public void setContainer(Container container) {
+        if(this.container == null)this.container = container;
+    }
+
+    public Container getContainer() {
+        return container;
     }
 
     public final void setBiome(Biome biome){
@@ -59,6 +69,6 @@ public abstract class Terrain {
 
     public abstract TerrainType getType();
 
-    public abstract double getTerrainHeight(final int x, final int z, final int min, final int max, NoiseGenerator noise);
+    public abstract double getTerrainHeight(final int x, final int z, final int min, double biomeWeight, NoiseGenerator noise);
 
 }
