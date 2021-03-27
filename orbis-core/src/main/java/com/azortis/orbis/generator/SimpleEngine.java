@@ -68,16 +68,17 @@ public class SimpleEngine extends Engine {
                     if(pBiome == null)pBiome = biome;
                     height += biome.getTerrain().getTerrainHeight(x, z, weight, noiseGenerator) * weight;
                 }
+                int finalHeight = (int)Math.round(height);
                 assert pBiome != null;
                 for (int y = 0; y <= getContainer().getDimension().getMaxHeight(); y++) {
                     biomeGrid.setBiome(cx, y, cz, pBiome);
-                    if(height < fluidHeight && y > height && y <= fluidHeight){
+                    if(y > finalHeight && y <= fluidHeight){
                         chunkData.setBlock(x, y, z, water);
                     } else if(y==0){
                         chunkData.setBlock(cx, y, cz, bedrock);
-                    } else if(y <= (height - 7)){
+                    } else if(y <= (finalHeight - 7)){
                         chunkData.setBlock(cx, y, cz, stone);
-                    } else if(y <= height) {
+                    } else if(y <= finalHeight) {
                         chunkData.setBlock(cx, y, cz, new Block(pBiome.getSurfaceBlock()));
                     }
                 }

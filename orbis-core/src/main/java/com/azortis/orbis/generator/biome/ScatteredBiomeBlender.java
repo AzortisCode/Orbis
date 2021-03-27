@@ -51,8 +51,8 @@ public class ScatteredBiomeBlender {
     }
 
     public LinkedBiomeWeightMap getBlendForChunk(long seed, int chunkBaseWorldX, int chunkBaseWorldZ, BiomeEvaluationCallback callback) {// Get the list of data points in range.
-        chunkBaseWorldX = chunkBaseWorldX << 4;
-        chunkBaseWorldZ = chunkBaseWorldZ << 4;
+        chunkBaseWorldX = chunkBaseWorldX * 16;
+        chunkBaseWorldZ = chunkBaseWorldZ * 16;
         List<GatheredPoint<BiomeEvaluation>> points = gatherer.getPointsFromChunkBase(seed, chunkBaseWorldX, chunkBaseWorldZ);
 
         // Evaluate and aggregate all the biomes to be blended in this chunk.
