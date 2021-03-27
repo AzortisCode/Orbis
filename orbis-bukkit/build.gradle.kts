@@ -1,5 +1,8 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+
 plugins {
     java
+    id("com.github.johnrengelman.shadow") version "6.1.0"
 }
 
 group = "com.azortis"
@@ -25,3 +28,15 @@ dependencies {
     compileOnly("com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT")
 }
 
+tasks {
+    named<ShadowJar>("shadowJar") {
+        archiveBaseName.set("orbis")
+        mergeServiceFiles()
+    }
+}
+
+tasks {
+    build {
+        dependsOn(shadowJar)
+    }
+}

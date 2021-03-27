@@ -32,7 +32,7 @@ import java.io.File;
 public abstract class Distributor {
 
     private String name;
-    private NamespaceId namespaceId;
+    private NamespaceId providerId;
     private transient Container container;
     private transient File settingsFolder;
 
@@ -44,13 +44,13 @@ public abstract class Distributor {
         return name;
     }
 
-    public NamespaceId getNamespaceId() {
-        return namespaceId;
+    public NamespaceId getProviderId() {
+        return providerId;
     }
 
-    public Distributor(String name, NamespaceId namespaceId) {
+    public Distributor(String name, NamespaceId providerId) {
         this.name = name;
-        this.namespaceId = namespaceId;
+        this.providerId = providerId;
     }
 
     //
@@ -85,5 +85,7 @@ public abstract class Distributor {
     public abstract void load();
 
     public abstract Biome getBiomeAt(double x, double z);
+
+    public abstract Biome getBiome(int biomeHash);
 
 }

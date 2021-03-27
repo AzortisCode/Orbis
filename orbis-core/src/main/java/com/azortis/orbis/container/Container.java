@@ -29,8 +29,11 @@ import com.azortis.orbis.generator.Dimension;
 import com.azortis.orbis.generator.Engine;
 import com.azortis.orbis.generator.SimpleEngine;
 import com.azortis.orbis.pack.Pack;
+import com.azortis.orbis.registry.Registry;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardOpenOption;
@@ -65,6 +68,8 @@ public abstract class Container {
                 containerInfo = new ContainerInfo(Orbis.SETTINGS_VERSION);
                 String containerJson = Orbis.getGson().toJson(containerInfo);
                 Files.write(containerInfoFile.toPath(), containerJson.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.WRITE);
+            } else {
+                reloadContainerInfo();
             }
         } catch (IOException ex) {
             Orbis.getLogger().error("Failed to create container-info.json file for container {}", name);
@@ -77,9 +82,30 @@ public abstract class Container {
 
     public void load() {
         if (!loaded) {
-            this.dimension = Objects.requireNonNull(Orbis.getRegistry(Dimension.class)).loadType(this, "overworld");
+            Registry<Dimension> dimensionRegistry = Orbis.getRegistry(Dimension.class);
+            assert dimensionRegistry != null;
+            this.dimension = dimensionRegistry.loadType(this, containerInfo.getDimensionFile());
             this.engine = new SimpleEngine(this);
             this.loaded = true;
+        }
+    }
+
+    public void saveContainerInfo(){
+        try {
+            if(containerInfoFile.delete()) {
+                final String containerJson = Orbis.getGson().toJson(containerInfo);
+                Files.write(containerInfoFile.toPath(), containerJson.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.WRITE);
+            }
+        } catch (IOException ex) {
+            Orbis.getLogger().error("Failed to save container-info.json file for container {}", name);
+        }
+    }
+
+    public void reloadContainerInfo(){
+        try {
+            this.containerInfo = Orbis.getGson().fromJson(new FileReader(containerInfoFile), ContainerInfo.class);
+        }catch (FileNotFoundException ex){
+            Orbis.getLogger().error("container-info file not found for container: {}", name);
         }
     }
 
@@ -98,16 +124,10 @@ public abstract class Container {
                 }
             }
             Orbis.getPackManager().extractPack(settingsFolder, pack);
-            if (!containerInfo.getPackName().equals(pack.getName())) {
+            if (containerInfo.getPackName() == null) {
                 containerInfo.setPackName(pack.getName());
-                try {
-                    if (containerInfoFile.delete()) {
-                        final String json = Orbis.getGson().toJson(containerInfo);
-                        Files.write(containerInfoFile.toPath(), json.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.WRITE);
-                    }
-                } catch (IOException ioException) {
-                    Orbis.getLogger().error("Failed to write new pack name to container {}", this.name);
-                }
+                containerInfo.setDimensionFile(pack.getDimensionFile());
+                saveContainerInfo();
             }
             installed = true;
         }

@@ -30,6 +30,8 @@ import com.azortis.orbis.generator.noise.OpenSimplex2S;
 import com.azortis.orbis.registry.Registry;
 import com.azortis.orbis.util.NamespaceId;
 import com.google.gson.annotations.SerializedName;
+import gnu.trove.map.TIntObjectMap;
+import gnu.trove.map.hash.TIntObjectHashMap;
 
 import java.util.HashMap;
 import java.util.List;
@@ -37,6 +39,7 @@ import java.util.Map;
 
 public class SimpleDistributor extends Distributor{
 
+    private final transient TIntObjectMap<Biome> biomeMap = new TIntObjectHashMap<>();
     private List<BiomeLayer> biomeLayers;
     private transient Map<Biome, NoiseGenerator> noiseGenMap;
 
@@ -53,8 +56,9 @@ public class SimpleDistributor extends Distributor{
         Registry<Biome> biomeRegistry = Orbis.getRegistry(Biome.class);
         assert biomeRegistry != null;
         for (BiomeLayer layer : biomeLayers){
-            layer.setBiome(biomeRegistry.loadType(super.getContainer(), layer.getBiomeName()));
+            layer.setBiome(biomeRegistry.loadType(getContainer(), layer.getBiomeName()));
             noiseGenMap.put(layer.getBiome(), new OpenSimplex2S(layer.getSeed()));
+            biomeMap.put(layer.getBiome().hashCode(), layer.getBiome());
         }
     }
 
@@ -70,6 +74,11 @@ public class SimpleDistributor extends Distributor{
             }
         }
         return biome;
+    }
+
+    @Override
+    public Biome getBiome(int biomeHash) {
+        return biomeMap.get(biomeHash);
     }
 
     public static class BiomeLayer {

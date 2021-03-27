@@ -42,9 +42,9 @@ public class TerrainAdapter implements JsonDeserializer<Terrain> {
 
     @Override
     public Terrain deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context) throws JsonParseException {
-        final JsonObject object = jsonElement.getAsJsonObject();
-        final String terrainNamespaceId = object.get("namespaceId").getAsString();
-        final Class<? extends Terrain> terrainType = terrainRegistry.getTypeClass(new NamespaceId(terrainNamespaceId));
+        final JsonPrimitive object = jsonElement.getAsJsonObject().getAsJsonPrimitive("providerId");
+        final NamespaceId terrainProviderId = context.deserialize(object, NamespaceId.class);
+        final Class<? extends Terrain> terrainType = terrainRegistry.getTypeClass(terrainProviderId);
         return context.deserialize(jsonElement, terrainType);
     }
 

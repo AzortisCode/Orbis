@@ -39,7 +39,7 @@ public class BukkitChunkGenerator extends ChunkGenerator {
     private final String worldName;
     private final Pack pack;
 
-    private boolean loaded = false;
+    private volatile boolean loaded = false;
     private OrbisWorld orbisWorld;
 
     public BukkitChunkGenerator(OrbisPlugin plugin, String worldName, Pack pack) {
@@ -50,14 +50,16 @@ public class BukkitChunkGenerator extends ChunkGenerator {
 
     // If the world got initialized through the normal Bukkit configs then the ChunkGenerator gets made before the world
     // can be registered with orbis, so this is our bypass
-    private void load(World world){
-        orbisWorld = plugin.getWorld(worldName);
-        if(orbisWorld != null){
-            if(orbisWorld.isLoaded())orbisWorld.load();
-        } else {
-            orbisWorld = plugin.loadWorld(world, pack);
+    private synchronized void load(World world){
+        if(!loaded) {
+            orbisWorld = plugin.getWorld(worldName);
+            if (orbisWorld != null) {
+                if (orbisWorld.isLoaded()) orbisWorld.load();
+            } else {
+                orbisWorld = plugin.loadWorld(world, pack);
+            }
+            loaded = true;
         }
-        loaded = true;
     }
 
     @Override
@@ -68,4 +70,8 @@ public class BukkitChunkGenerator extends ChunkGenerator {
         return chunkData.getHandle();
     }
 
+    @Override
+    public boolean isParallelCapable() {
+        return true;
+    }
 }

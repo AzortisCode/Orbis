@@ -28,7 +28,6 @@ import com.azortis.orbis.Orbis;
 import com.azortis.orbis.container.Container;
 import com.azortis.orbis.generator.biome.Biome;
 import com.azortis.orbis.generator.terrain.Terrain;
-import com.azortis.orbis.generator.terrain.TerrainLayer;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -49,11 +48,9 @@ public class BiomeRegistry implements Registry<Biome>{
         File biomeFile = new File(container.getSettingsFolder(), BIOME_DIRECTORY + name + ".json");
         try {
             Biome biome = Orbis.getGson().fromJson(new FileReader(biomeFile), Biome.class);
-            Registry<Terrain> terrainRegistry = Orbis.getRegistry(Terrain.class);
+            GeneratorRegistry<Terrain> terrainRegistry = Orbis.getGeneratorRegistry(Terrain.class);
             assert terrainRegistry != null;
-            for (TerrainLayer layer : biome.getTerrainLayers()){
-                layer.setTerrain(terrainRegistry.loadType(container, layer.getTerrainName(), biome));
-            }
+            biome.setTerrain(terrainRegistry.loadType(container, biome.getTerrainName(), biome));
             return biome;
         } catch (FileNotFoundException e) {
             Orbis.getLogger().error("Biome file {} not found", name);

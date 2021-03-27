@@ -42,9 +42,9 @@ public class DistributorAdapter implements JsonDeserializer<Distributor> {
 
     @Override
     public Distributor deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context) throws JsonParseException {
-        final JsonObject object = jsonElement.getAsJsonObject();
-        final String distributorNamespaceId = object.getAsJsonObject("distributor").getAsString();
-        final Class<? extends Distributor> distributorClass = distributorRegistry.getTypeClass(new NamespaceId(distributorNamespaceId));
+        final JsonPrimitive object = jsonElement.getAsJsonObject().getAsJsonPrimitive("providerId");
+        final NamespaceId distributorProviderId = context.deserialize(object, NamespaceId.class);
+        final Class<? extends Distributor> distributorClass = distributorRegistry.getTypeClass(distributorProviderId);
         return context.deserialize(jsonElement, distributorClass);
     }
 }

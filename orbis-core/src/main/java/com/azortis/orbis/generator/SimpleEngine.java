@@ -25,29 +25,64 @@
 package com.azortis.orbis.generator;
 
 import com.azortis.orbis.Orbis;
+import com.azortis.orbis.block.Block;
 import com.azortis.orbis.container.Container;
-import com.azortis.orbis.generator.biome.BiomeGrid;
-import com.azortis.orbis.generator.biome.Distributor;
+import com.azortis.orbis.generator.biome.*;
 import com.azortis.orbis.generator.noise.NoiseGenerator;
 import com.azortis.orbis.generator.noise.PerlinNoise;
+import com.azortis.orbis.util.NamespaceId;
 
 import java.util.Objects;
 
 public class SimpleEngine extends Engine {
 
     private final Distributor distributor;
+    private final ScatteredBiomeBlender biomeBlender;
     private final NoiseGenerator noiseGenerator;
 
     public SimpleEngine(Container container) {
         super(container);
         this.distributor = Objects.requireNonNull(Orbis.getGeneratorRegistry(Distributor.class))
                 .loadType(super.getContainer(), container.getDimension().getDistributor());
+        this.biomeBlender = new ScatteredBiomeBlender(0.04, 32);
         this.noiseGenerator = new PerlinNoise(container.getDimension().getSeed());
     }
 
     @Override
     public void generateChunkData(ChunkData chunkData, BiomeGrid biomeGrid, int chunkX, int chunkZ) {
-
+        LinkedBiomeWeightMap biomeWeightMap = biomeBlender.getBlendForChunk(super.getContainer().getDimension().getSeed(),
+                chunkX, chunkZ, distributor::getBiomeAt);
+        Block bedrock = new Block(new NamespaceId("minecraft:bedrock"));
+        Block stone = new Block(new NamespaceId("minecraft:stone"));
+        Block water = new Block(new NamespaceId("minecraft:water"));
+        int fluidHeight = getContainer().getDimension().getFluidHeight();
+        for (int cx = 0; cx < 16; cx++) {
+            for (int cz = 0; cz < 16; cz++) {
+                final int x = cx + (chunkX << 4);
+                final int z = cz + (chunkZ << 4);
+                Biome pBiome = null;
+                double height = 0;
+                for (LinkedBiomeWeightMap entry = biomeWeightMap; entry.getNext() != null; entry = entry.getNext()){
+                    double weight = entry.getWeights()[cz * 16 + cx];
+                    Biome biome = distributor.getBiome(entry.getBiome());
+                    if(pBiome == null)pBiome = biome;
+                    height += biome.getTerrain().getTerrainHeight(x, z, weight, noiseGenerator) * weight;
+                }
+                assert pBiome != null;
+                for (int y = 0; y <= getContainer().getDimension().getMaxHeight(); y++) {
+                    biomeGrid.setBiome(cx, y, cz, pBiome);
+                    if(height < fluidHeight && y > height && y <= fluidHeight){
+                        chunkData.setBlock(x, y, z, water);
+                    } else if(y==0){
+                        chunkData.setBlock(cx, y, cz, bedrock);
+                    } else if(y <= (height - 7)){
+                        chunkData.setBlock(cx, y, cz, stone);
+                    } else if(y <= height) {
+                        chunkData.setBlock(cx, y, cz, new Block(pBiome.getSurfaceBlock()));
+                    }
+                }
+            }
+        }
     }
 
 }

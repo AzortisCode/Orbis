@@ -38,105 +38,96 @@ import java.util.List;
 public class ScatteredBiomeBlender {
 
     private static final int CHUNK_WIDTH = 16;
-    private static final int CHUNK_WIDTH_MIN_ONE = CHUNK_WIDTH - 1;
     private static final int CHUNK_COLLUM_COUNT = CHUNK_WIDTH * CHUNK_WIDTH;
 
-    private final int blendRadiusBoundArrayCenter;
-    private final double blendRadius, blendRadiusSq;
-    private final double[] blendRadiusBound;
-    private final ChunkPointGatherer<LinkedBiomeWeightMap> gatherer;
+    private final double blendKernelRadiusSq;
+    private final ChunkPointGatherer<BiomeEvaluation> gatherer;
 
-    public ScatteredBiomeBlender(double samplingFrequency, double blendRadiusPadding){
-        blendRadius = blendRadiusPadding + PointGatherer.MAX_GRIDSCALE_DISTANCE_TO_CLOSEST_POINT / samplingFrequency;
-        blendRadiusSq = blendRadius * blendRadius;
-        gatherer = new ChunkPointGatherer<>(samplingFrequency, blendRadius);
-
-        blendRadiusBoundArrayCenter = (int)Math.ceil(blendRadius) - 1;
-        blendRadiusBound = new double[blendRadiusBoundArrayCenter * 2 + 1];
-        for (int i = 0; i < blendRadiusBound.length; i++){
-            int dx = i - blendRadiusBoundArrayCenter;
-            int maxDxBeforeTruncate = Math.abs(dx) + 1;
-            blendRadiusBound[i] = Math.sqrt(blendRadiusSq - maxDxBeforeTruncate);
-        }
-
+    public ScatteredBiomeBlender(double samplingFrequency, double minBlendRadius){
+        double blendKernelRadius = minBlendRadius
+                + PointGatherer.MAX_GRIDSCALE_DISTANCE_TO_CLOSEST_POINT / samplingFrequency;
+        this.blendKernelRadiusSq = blendKernelRadius * blendKernelRadius;
+        this.gatherer = new ChunkPointGatherer<>(samplingFrequency, blendKernelRadius);
     }
 
-    public LinkedBiomeWeightMap getBlendForChunk(long seed, int chunkBaseWorldX, int chunkBaseWorldZ, BiomeEvaluationCallback callback) {
+    public LinkedBiomeWeightMap getBlendForChunk(long seed, int chunkBaseWorldX, int chunkBaseWorldZ, BiomeEvaluationCallback callback) {// Get the list of data points in range.
+        chunkBaseWorldX = chunkBaseWorldX << 4;
+        chunkBaseWorldZ = chunkBaseWorldZ << 4;
+        List<GatheredPoint<BiomeEvaluation>> points = gatherer.getPointsFromChunkBase(seed, chunkBaseWorldX, chunkBaseWorldZ);
 
-        // Get the list of data points in range.
-        List<GatheredPoint<LinkedBiomeWeightMap>> points = gatherer.getPointsFromChunkBase(seed, chunkBaseWorldX, chunkBaseWorldZ);
-
-        // Evaluate and aggregate all biomes to be blended in this chunk.
+        // Evaluate and aggregate all the biomes to be blended in this chunk.
         LinkedBiomeWeightMap linkedBiomeMapStartEntry = null;
-        for (GatheredPoint<LinkedBiomeWeightMap> point : points) {
+        for (GatheredPoint<BiomeEvaluation> point : points) {
+            int biome = callback.getBiomeAt(point.getX(), point.getZ()).hashCode();
+            point.setTag(new BiomeEvaluation(biome));
 
-            // Get the biome for this data point from the callback.
-            int biome = callback.getBiomeAt(point.getX(), point.getZ());
-
-            // Find or create the chunk biome blend weight layer entry for this biome.
+            // Find or create chunk biome blend weight layer entry for this biome.
             LinkedBiomeWeightMap entry = linkedBiomeMapStartEntry;
             while (entry != null) {
                 if (entry.getBiome() == biome) break;
                 entry = entry.getNext();
             }
             if (entry == null) {
-                entry = linkedBiomeMapStartEntry =
-                        new LinkedBiomeWeightMap(biome, linkedBiomeMapStartEntry);
+                linkedBiomeMapStartEntry =
+                        new LinkedBiomeWeightMap(point.getTag().biome, CHUNK_COLLUM_COUNT, linkedBiomeMapStartEntry);
             }
-
-            point.setTag(entry);
         }
 
-        // If there is only one biome in range here, we can skip the actual blending step.
+        // If there is only one biome type in range here, we can skip the actual blending step.
         if (linkedBiomeMapStartEntry != null && linkedBiomeMapStartEntry.getNext() == null) {
-            /*double[] weights = new double[chunkColumnCount];
-            linkedBiomeMapStartEntry.setWeights(weights);
-            for (int i = 0; i < chunkColumnCount; i++) {
+            double[] weights = linkedBiomeMapStartEntry.getWeights();
+            for (int i = 0; i < CHUNK_COLLUM_COUNT; i++) {
                 weights[i] = 1.0;
-            }*/
+            }
             return linkedBiomeMapStartEntry;
         }
 
-        for (LinkedBiomeWeightMap entry = linkedBiomeMapStartEntry; entry != null; entry = entry.getNext()) {
-            entry.setWeights(new double[CHUNK_COLLUM_COUNT]);
-        }
+        // Along the Z axis of the chunk...
+        for (int zi = 0; zi < CHUNK_WIDTH; zi++) {
+            int z = chunkBaseWorldZ + zi;
 
-        double z = chunkBaseWorldZ, x = chunkBaseWorldX;
-        double xStart = x;
-        double xEnd = xStart + CHUNK_WIDTH_MIN_ONE;
-        for (int i = 0; i < CHUNK_COLLUM_COUNT; i++) {
+            // Calculate dz^2 for each point since it will be the same across x.
+            for (GatheredPoint<BiomeEvaluation> point : points) {
+                double dz = point.getZ() - z;
+                point.getTag().tempDzSquared = dz * dz;
+            }
 
-            // Consider each data point to see if it's inside the radius for this column.
-            double columnTotalWeight = 0.0;
-            for (GatheredPoint<LinkedBiomeWeightMap> point : points) {
-                double dx = x - point.getX();
-                double dz = z - point.getZ();
+            // Now along the X axis...
+            for (int xi = 0; xi < CHUNK_WIDTH; xi++) {
+                int x = chunkBaseWorldX + xi;
 
-                double distSq = dx * dx + dz * dz;
+                // Go over each point to see if it's inside the radius for this column.
+                double columnTotalWeight = 0.0;
+                for (GatheredPoint<BiomeEvaluation> point : points) {
+                    double dx = point.getX() - x;
+                    double distSq = dx * dx + point.getTag().tempDzSquared;
 
-                // If it's inside the radius...
-                if (distSq < blendRadiusSq) {
+                    // If it's inside the radius...
+                    if (distSq < blendKernelRadiusSq) {
 
-                    // Relative weight = [r^2 - (x^2 + z^2)]^2
-                    double weight = blendRadiusSq - distSq;
-                    weight *= weight;
+                        // Relative weight = [r^2 - (x^2 + z^2)]^2
+                        double weight = blendKernelRadiusSq - distSq;
+                        weight *= weight;
 
-                    point.getTag().getWeights()[i] += weight;
-                    columnTotalWeight += weight;
+                        // Find or create chunk biome blend weight layer entry for this biome.
+                        LinkedBiomeWeightMap entry = linkedBiomeMapStartEntry;
+                        while (entry != null) {
+                            if (entry.getBiome() == point.getTag().biome) break;
+                            entry = entry.getNext();
+                        }
+
+                        assert entry != null;
+                        entry.getWeights()[zi * CHUNK_WIDTH + xi] += weight;
+                        columnTotalWeight += weight;
+                    }
+                }
+
+                // Normalize so all weights for a column to 1.
+                double inverseTotalWeight = 1.0 / columnTotalWeight;
+                for (LinkedBiomeWeightMap entry = linkedBiomeMapStartEntry; entry != null; entry = entry.getNext()) {
+                    entry.getWeights()[zi * CHUNK_WIDTH + xi] *= inverseTotalWeight;
                 }
             }
-
-            // Normalize so all weights in a column add up to 1.
-            double inverseTotalWeight = 1.0 / columnTotalWeight;
-            for (LinkedBiomeWeightMap entry = linkedBiomeMapStartEntry; entry != null; entry = entry.getNext()) {
-                entry.getWeights()[i] *= inverseTotalWeight;
-            }
-
-            // A double can fully represent an int, so no precision loss to worry about here.
-            if (x == xEnd) {
-                x = xStart;
-                z++;
-            } else x++;
         }
 
         return linkedBiomeMapStartEntry;
@@ -144,7 +135,16 @@ public class ScatteredBiomeBlender {
 
     @FunctionalInterface
     public interface BiomeEvaluationCallback {
-        int getBiomeAt(double x, double z);
+        Biome getBiomeAt(double x, double z);
+    }
+
+    private static class BiomeEvaluation {
+        int biome;
+        double tempDzSquared;
+
+        public BiomeEvaluation(int biome) {
+            this.biome = biome;
+        }
     }
 
 }

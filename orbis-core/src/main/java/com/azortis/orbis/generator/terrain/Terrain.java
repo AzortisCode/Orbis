@@ -27,6 +27,7 @@ package com.azortis.orbis.generator.terrain;
 import com.azortis.orbis.container.Container;
 import com.azortis.orbis.generator.biome.Biome;
 import com.azortis.orbis.generator.noise.NoiseGenerator;
+import com.google.gson.annotations.SerializedName;
 
 public abstract class Terrain {
 
@@ -69,6 +70,6 @@ public abstract class Terrain {
 
     public abstract TerrainType getType();
 
-    public abstract double getTerrainHeight(final int x, final int z, final int min, double biomeWeight, NoiseGenerator noise);
+    public abstract double getTerrainHeight(final int x, final int z, double biomeWeight, NoiseGenerator noise);
 
 }

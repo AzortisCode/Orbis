@@ -28,6 +28,7 @@ public class ContainerInfo {
 
     private String settingsVersion;
     private String packName;
+    private String dimensionFile;
 
     // Used for gson deserialization
     private ContainerInfo() {
@@ -50,4 +51,11 @@ public class ContainerInfo {
         this.packName = packName;
     }
 
+    public String getDimensionFile() {
+        return dimensionFile;
+    }
+
+    public void setDimensionFile(String dimensionFile) {
+        this.dimensionFile = dimensionFile;
+    }
 }

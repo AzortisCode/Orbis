@@ -38,7 +38,6 @@ public class NamespaceIdAdapter implements JsonSerializer<NamespaceId>, JsonDese
 
     @Override
     public NamespaceId deserialize(JsonElement element, Type type, JsonDeserializationContext context) throws JsonParseException {
-        String namespacedId = element.getAsJsonObject().getAsJsonObject("namespaceId").getAsString();
-        return new NamespaceId(namespacedId);
+        return new NamespaceId(context.deserialize(element, String.class));
     }
 }
