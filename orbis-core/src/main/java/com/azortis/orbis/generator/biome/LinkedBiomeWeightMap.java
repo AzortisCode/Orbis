@@ -25,9 +25,14 @@
 package com.azortis.orbis.generator.biome;
 
 public class LinkedBiomeWeightMap {
-    private final int biome;
-    private final double[] weights;
-    private final LinkedBiomeWeightMap next;
+    private int biome;
+    private double[] weights;
+    private LinkedBiomeWeightMap next;
+
+    public LinkedBiomeWeightMap(int biome, LinkedBiomeWeightMap next) {
+        this.biome = biome;
+        this.next = next;
+    }
 
     public LinkedBiomeWeightMap(int biome, int chunkColumnCount, LinkedBiomeWeightMap next) {
         this.biome = biome;
@@ -41,6 +46,10 @@ public class LinkedBiomeWeightMap {
 
     public double[] getWeights() {
         return weights;
+    }
+
+    public void setWeights(double[] weights) {
+        this.weights = weights;
     }
 
     public LinkedBiomeWeightMap getNext() {

@@ -64,7 +64,7 @@ public class SimpleDistributor extends Distributor{
 
     @Override
     public Biome getBiomeAt(double x, double z) {
-        double maxValue = Double.MIN_VALUE;
+        double maxValue = Double.NEGATIVE_INFINITY;
         Biome biome = null;
         for (BiomeLayer layer : biomeLayers){
             double noiseValue = noiseGenMap.get(layer.getBiome()).noise(x / layer.getZoom(), z / layer.getZoom());

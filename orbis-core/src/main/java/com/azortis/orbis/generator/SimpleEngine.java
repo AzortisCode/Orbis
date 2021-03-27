@@ -44,12 +44,13 @@ public class SimpleEngine extends Engine {
         super(container);
         this.distributor = Objects.requireNonNull(Orbis.getGeneratorRegistry(Distributor.class))
                 .loadType(super.getContainer(), container.getDimension().getDistributor());
-        this.biomeBlender = new ScatteredBiomeBlender(0.04, 32);
+        this.biomeBlender = new ScatteredBiomeBlender(0.04, 24);
         this.noiseGenerator = new PerlinNoise(container.getDimension().getSeed());
     }
 
     @Override
     public void generateChunkData(ChunkData chunkData, BiomeGrid biomeGrid, int chunkX, int chunkZ) {
+        //Orbis.getLogger().info("Generating chunk at x={} z={}", chunkX, chunkZ);
         LinkedBiomeWeightMap biomeWeightMap = biomeBlender.getBlendForChunk(super.getContainer().getDimension().getSeed(),
                 chunkX, chunkZ, distributor::getBiomeAt);
         Block bedrock = new Block(new NamespaceId("minecraft:bedrock"));
@@ -61,12 +62,22 @@ public class SimpleEngine extends Engine {
                 final int x = cx + (chunkX << 4);
                 final int z = cz + (chunkZ << 4);
                 Biome pBiome = null;
+                double pWeight = 0.0d;
                 double height = 0;
                 for (LinkedBiomeWeightMap entry = biomeWeightMap; entry.getNext() != null; entry = entry.getNext()){
                     double weight = entry.getWeights()[cz * 16 + cx];
                     Biome biome = distributor.getBiome(entry.getBiome());
-                    if(pBiome == null)pBiome = biome;
+                    if(pBiome == null){
+                        pBiome = biome;
+                        pWeight = weight;
+                    } else if(weight > pWeight){
+                        pBiome = biome;
+                        pWeight = weight;
+                    }
                     height += biome.getTerrain().getTerrainHeight(x, z, weight, noiseGenerator) * weight;
+                }
+                if(pBiome == null){
+                    Orbis.getLogger().error("Biome is null fuuuuck {} {}", chunkX, chunkZ);
                 }
                 int finalHeight = (int)Math.round(height);
                 assert pBiome != null;
