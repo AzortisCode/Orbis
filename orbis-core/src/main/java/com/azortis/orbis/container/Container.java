@@ -84,10 +84,6 @@ public abstract class Container {
         }
     }
 
-    public boolean isLoaded() {
-        return loaded;
-    }
-
     public void load() {
         if (!loaded) {
             Registry<Dimension> dimensionRegistry = Orbis.getRegistry(Dimension.class);
@@ -99,6 +95,7 @@ public abstract class Container {
     }
 
     public void saveContainerInfo(){
+        Orbis.getLogger().info("Saving container-info for {}", name);
         try {
             if(containerInfoFile.delete()) {
                 final String containerJson = Orbis.getGson().toJson(containerInfo);
@@ -110,6 +107,7 @@ public abstract class Container {
     }
 
     public void reloadContainerInfo(){
+        Orbis.getLogger().info("Loading container-info for {}", name);
         try {
             this.containerInfo = Orbis.getGson().fromJson(new FileReader(containerInfoFile), ContainerInfo.class);
         }catch (FileNotFoundException ex){
@@ -131,6 +129,7 @@ public abstract class Container {
                     return;
                 }
             }
+            Orbis.getLogger().info("Installing pack {} for {}", pack.getName(), name);
             Orbis.getPackManager().extractPack(settingsFolder, pack);
             if (containerInfo.getPackName() == null) {
                 containerInfo.setPackName(pack.getName());

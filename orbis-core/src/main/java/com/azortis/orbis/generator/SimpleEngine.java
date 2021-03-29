@@ -52,7 +52,6 @@ public class SimpleEngine extends Engine {
         this.noise = new PerlinNoise(getDimension().getSeed());
         this.distributor = Objects.requireNonNull(Orbis.getGeneratorRegistry(Distributor.class))
                 .loadType(container, getDimension().getDistributor());
-        Orbis.getLogger().info("Fluid height is set to: {}", getDimension().getFluidHeight());
     }
 
     @Override
