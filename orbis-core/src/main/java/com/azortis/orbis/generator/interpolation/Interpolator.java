@@ -25,7 +25,7 @@
 package com.azortis.orbis.generator.interpolation;
 
 /**
- * This class uses Iris their starcast algorithm, and the idea of using a HeightProvider also comes from them.
+ * This class uses Cyberpwn his starcast algorithm, and the idea of using a HeightProvider also comes from them.
  */
 public class Interpolator {
 
