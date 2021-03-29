@@ -22,17 +22,33 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.generator.terrain;
+package com.azortis.orbis.generator.terrain.defaults;
 
-public enum TerrainType {
-    /**
-     * Represents a terrain generation algorithm provided a java class extending {@link Terrain}.
-     * Has the functionality to be configured.
-     */
-    JAVA,
-    /**
-     * Represents a terrain generation algorithm provided by {@link ConfigTerrain}.
-     * Uses same settings parameters.
-     */
-    CONFIG
+import com.azortis.orbis.generator.noise.NoiseGenerator;
+import com.azortis.orbis.generator.terrain.Terrain;
+
+import java.util.List;
+
+public class ConfigTerrain extends Terrain {
+
+    private List<NoiseLayer> layers;
+
+    public ConfigTerrain(String name, String providerId) {
+        super(name, providerId);
+    }
+
+    @Override
+    public double getTerrainHeight(int x, int z, double biomeWeight, NoiseGenerator noise) {
+        double height = 0;
+        for (NoiseLayer layer : layers){
+            height += (noise.noise(x / layer.zoom, z / layer.zoom) * layer.coefficient);
+        }
+        return super.getBiome().getBaseHeight() + height;
+    }
+
+    private static class NoiseLayer {
+        double coefficient;
+        double zoom;
+    }
+
 }
