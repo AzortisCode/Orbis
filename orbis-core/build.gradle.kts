@@ -34,7 +34,7 @@ dependencies {
     implementation("net.lingala.zip4j:zip4j:2.7.0")
     implementation("org.projectlombok:lombok:1.18.18")
 
-    annotationProcessor("org.projectlombok:lombok")
+    annotationProcessor("org.projectlombok:lombok:1.18.18")
 
     // Adapters should determine if it should be added to a shadow jar
     compileOnly("com.google.code.gson:gson:2.8.6")
