@@ -78,7 +78,7 @@ public class PackManager {
                 Pack pack = Orbis.getGson().fromJson(reader, Pack.class);
                 loadedPacks.put(pack, packFile);
             }
-        }catch (IOException ex){
+        } catch (IOException ex){
             Orbis.getLogger().error("Couldn't load pack: {}", packFile.getName());
         }
     }

@@ -27,6 +27,7 @@ package com.azortis.orbis.generator;
 import com.azortis.orbis.block.Block;
 import gnu.trove.map.hash.TIntObjectHashMap;
 
+
 public abstract class ChunkData {
     private final Dimension dimension;
     private final TIntObjectHashMap<Block> blockMap = new TIntObjectHashMap<>();

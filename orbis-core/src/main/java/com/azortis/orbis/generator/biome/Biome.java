@@ -27,13 +27,16 @@ package com.azortis.orbis.generator.biome;
 import com.azortis.orbis.generator.terrain.Terrain;
 import com.azortis.orbis.util.NamespaceId;
 import com.google.gson.annotations.SerializedName;
+import lombok.Getter;
 
 import java.util.List;
 
+@Getter
 public class Biome {
 
     private String name;
     private NamespaceId derivative;
+
     @SerializedName("terrain")
     private String terrainName;
     private int baseHeight;
@@ -41,31 +44,7 @@ public class Biome {
 
     private transient Terrain terrain;
 
-    public String getName() {
-        return name;
-    }
-
-    public NamespaceId getDerivative() {
-        return derivative;
-    }
-
-    public String getTerrainName() {
-        return terrainName;
-    }
-
-    public void setTerrain(Terrain terrain){
-        if(this.terrain == null)this.terrain = terrain;
-    }
-
-    public Terrain getTerrain() {
-        return terrain;
-    }
-
-    public int getBaseHeight() {
-        return baseHeight;
-    }
-
-    public NamespaceId getSurfaceBlock() {
-        return surfaceBlock;
+    public void setTerrain(Terrain terrain) {
+        if (this.terrain == null) this.terrain = terrain;
     }
 }

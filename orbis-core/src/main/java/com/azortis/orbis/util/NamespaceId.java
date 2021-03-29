@@ -25,6 +25,7 @@
 package com.azortis.orbis.util;
 
 import com.google.common.base.Preconditions;
+import lombok.Getter;
 
 public class NamespaceId {
 
@@ -32,6 +33,7 @@ public class NamespaceId {
     public static final String NAMESPACE_REGEX = "^[a-z0-9._-]+$";
     public static final String ID_REGEX = "^[a-z0-9._-]+$";
 
+    @Getter
     private final String namespaceId;
 
     public NamespaceId(String namespaceId) {
@@ -43,10 +45,6 @@ public class NamespaceId {
         Preconditions.checkArgument(namespace.matches(NAMESPACE_REGEX));
         Preconditions.checkArgument(namespace.matches(ID_REGEX));
         this.namespaceId = namespace + ":" + id;
-    }
-
-    public String getNamespaceId() {
-        return namespaceId;
     }
 
     public String getNamespace() {

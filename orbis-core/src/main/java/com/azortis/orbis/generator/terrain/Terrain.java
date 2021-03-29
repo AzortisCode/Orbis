@@ -28,7 +28,9 @@ import com.azortis.orbis.container.Container;
 import com.azortis.orbis.generator.biome.Biome;
 import com.azortis.orbis.generator.noise.NoiseGenerator;
 import com.google.gson.annotations.SerializedName;
+import lombok.Getter;
 
+@Getter
 public abstract class Terrain {
 
     protected String name;
@@ -44,28 +46,12 @@ public abstract class Terrain {
         this.providerId = providerId;
     }
 
-    public final String getName() {
-        return name;
-    }
-
-    public final String getProviderId() {
-        return providerId;
-    }
-
     public void setContainer(Container container) {
-        if(this.container == null)this.container = container;
-    }
-
-    public Container getContainer() {
-        return container;
+        if(this.container == null) this.container = container;
     }
 
     public final void setBiome(Biome biome){
-        if (biome != null)this.biome = biome;
-    }
-
-    public final Biome getBiome() {
-        return biome;
+        if (biome != null) this.biome = biome;
     }
 
     public abstract double getTerrainHeight(final int x, final int z, double biomeWeight, NoiseGenerator noise);

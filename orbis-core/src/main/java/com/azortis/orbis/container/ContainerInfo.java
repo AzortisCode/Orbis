@@ -24,38 +24,24 @@
 
 package com.azortis.orbis.container;
 
+import lombok.Getter;
+import lombok.Setter;
+
 public class ContainerInfo {
 
+    @Getter
     private String settingsVersion;
+    @Getter
+    @Setter
     private String packName;
+    @Getter
+    @Setter
     private String dimensionFile;
 
     // Used for gson deserialization
-    private ContainerInfo() {
-    }
-
+    private ContainerInfo() {}
 
     public ContainerInfo(String settingsVersion) {
         this.settingsVersion = settingsVersion;
-    }
-
-    public String getSettingsVersion() {
-        return settingsVersion;
-    }
-
-    public String getPackName() {
-        return packName;
-    }
-
-    public void setPackName(String packName) {
-        this.packName = packName;
-    }
-
-    public String getDimensionFile() {
-        return dimensionFile;
-    }
-
-    public void setDimensionFile(String dimensionFile) {
-        this.dimensionFile = dimensionFile;
     }
 }

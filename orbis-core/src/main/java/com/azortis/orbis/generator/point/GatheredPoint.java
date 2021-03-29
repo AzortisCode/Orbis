@@ -24,38 +24,23 @@
 
 package com.azortis.orbis.generator.point;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * Credits to k.jpg from FastNoise for making this class.
  * @param <TTag> The type tag of the point gatherer.
  */
+@Getter
 public class GatheredPoint<TTag> {
     private final double x, z;
     private final int hash;
+    @Setter
     private TTag tag;
 
     public GatheredPoint(double x, double z, int hash) {
         this.x = x;
         this.z = z;
         this.hash = hash;
-    }
-
-    public double getX() {
-        return x;
-    }
-
-    public double getZ() {
-        return z;
-    }
-
-    public double getHash() {
-        return hash;
-    }
-
-    public TTag getTag() {
-        return tag;
-    }
-
-    public void setTag(TTag tag) {
-        this.tag = tag;
     }
 }

@@ -36,6 +36,7 @@ import com.azortis.orbis.registry.adapter.TerrainAdapter;
 import com.azortis.orbis.util.NamespaceId;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import lombok.Getter;
 import org.slf4j.Logger;
 
 import java.util.HashMap;
@@ -45,13 +46,17 @@ public final class Orbis {
 
     public static final String SETTINGS_VERSION = "1";
 
+    @Getter
     private static Adapter adapter = null;
+    @Getter
     private static Logger logger;
+    @Getter
     private static Gson gson;
     private static Map<Class<?>, Registry<?>> registries;
     private static Map<Class<?>, GeneratorRegistry<?>> generatorRegistries;
 
     // Managers
+    @Getter
     private static PackManager packManager;
 
     private Orbis() {
@@ -82,18 +87,6 @@ public final class Orbis {
         }
     }
 
-    public static Adapter getAdapter() {
-        return adapter;
-    }
-
-    public static Logger getLogger() {
-        return logger;
-    }
-
-    public static Gson getGson() {
-        return gson;
-    }
-
     @SuppressWarnings("unchecked")
     public static <T> Registry<T> getRegistry(Class<? extends T> typeClass) {
         Registry<?> registry = registries.get(typeClass);
@@ -106,13 +99,5 @@ public final class Orbis {
         GeneratorRegistry<?> registry = generatorRegistries.get(typeClass);
         if (registry != null) return (GeneratorRegistry<T>) registry;
         return null;
-    }
-
-    //
-    // Managers
-    //
-
-    public static PackManager getPackManager() {
-        return packManager;
     }
 }

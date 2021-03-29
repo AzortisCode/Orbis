@@ -26,4 +26,5 @@ repositories {
 dependencies {
     implementation(project(":orbis-core"))
     implementation("com.github.Minestom:Minestom:3026e46220")
+    implementation("org.projectlombok:lombok:1.18.16")
 }

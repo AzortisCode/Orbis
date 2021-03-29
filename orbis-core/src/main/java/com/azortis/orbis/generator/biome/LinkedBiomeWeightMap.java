@@ -24,8 +24,13 @@
 
 package com.azortis.orbis.generator.biome;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
 public class LinkedBiomeWeightMap {
     private int biome;
+    @Setter
     private double[] weights;
     private LinkedBiomeWeightMap next;
 
@@ -39,21 +44,4 @@ public class LinkedBiomeWeightMap {
         this.weights = new double[chunkColumnCount];
         this.next = next;
     }
-
-    public int getBiome() {
-        return biome;
-    }
-
-    public double[] getWeights() {
-        return weights;
-    }
-
-    public void setWeights(double[] weights) {
-        this.weights = weights;
-    }
-
-    public LinkedBiomeWeightMap getNext() {
-        return next;
-    }
-
 }

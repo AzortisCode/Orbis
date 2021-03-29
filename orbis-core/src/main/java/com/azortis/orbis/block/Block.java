@@ -25,17 +25,15 @@
 package com.azortis.orbis.block;
 
 import com.azortis.orbis.util.NamespaceId;
+import lombok.Getter;
 
 public class Block {
 
+    @Getter
     private final NamespaceId block;
 
     public Block(NamespaceId block) {
         this.block = block;
-    }
-
-    public NamespaceId getBlock() {
-        return block;
     }
 
 }

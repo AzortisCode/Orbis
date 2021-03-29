@@ -24,6 +24,9 @@
 
 package com.azortis.orbis.pack;
 
+import lombok.Getter;
+
+@Getter
 public class PackContributor {
 
     private String name;
@@ -36,13 +39,5 @@ public class PackContributor {
     public PackContributor(String name, String contribution) {
         this.name = name;
         this.contribution = contribution;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getContribution() {
-        return contribution;
     }
 }

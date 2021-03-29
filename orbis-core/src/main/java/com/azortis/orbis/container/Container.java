@@ -30,6 +30,7 @@ import com.azortis.orbis.generator.Engine;
 import com.azortis.orbis.generator.SimpleEngine;
 import com.azortis.orbis.pack.Pack;
 import com.azortis.orbis.registry.Registry;
+import lombok.Getter;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -42,17 +43,25 @@ import java.nio.file.StandardOpenOption;
  * An representation of a world/instance for core package
  */
 public abstract class Container {
+    //name, folder, installed, settingsfolder, dimension, engine
 
+    @Getter
     private final String name;
+    @Getter
     private final File folder;
+    @Getter
     private final File settingsFolder;
 
     private final File containerInfoFile;
     private ContainerInfo containerInfo;
 
+    @Getter
     private boolean loaded = false;
+    @Getter
     private boolean installed = false;
+    @Getter
     private Dimension dimension;
+    @Getter
     private Engine engine;
 
     public Container(String name, File folder) {
@@ -131,30 +140,4 @@ public abstract class Container {
             installed = true;
         }
     }
-
-    public String getName() {
-        return name;
-    }
-
-    public File getFolder() {
-        return folder;
-    }
-
-    public boolean isInstalled() {
-        return installed;
-    }
-
-    public File getSettingsFolder() {
-        return settingsFolder;
-    }
-
-    public Dimension getDimension() {
-        return dimension;
-    }
-
-    public Engine getEngine() {
-        return engine;
-    }
-
-
 }

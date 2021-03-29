@@ -25,9 +25,11 @@
 package com.azortis.orbis.pack;
 
 import com.google.gson.annotations.SerializedName;
+import lombok.Getter;
 
 import java.util.List;
 
+@Getter
 public class Pack {
 
     // Required
@@ -50,29 +52,5 @@ public class Pack {
         this.author = author;
         this.dimensionFile = dimensionFile;
         this.packVersion = packVersion;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public String getDimensionFile() {
-        return dimensionFile;
-    }
-
-    public String getPackVersion() {
-        return packVersion;
-    }
-
-    public List<PackContributor> getContributors() {
-        return contributors;
-    }
-
-    public String getDescription() {
-        return description;
     }
 }
