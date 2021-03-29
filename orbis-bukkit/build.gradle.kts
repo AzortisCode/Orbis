@@ -30,7 +30,7 @@ dependencies {
 
 tasks {
     named<ShadowJar>("shadowJar") {
-        archiveBaseName.set("orbis")
+        archiveBaseName.set("Orbis")
         mergeServiceFiles()
     }
 }

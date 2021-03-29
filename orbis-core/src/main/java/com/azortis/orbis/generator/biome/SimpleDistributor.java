@@ -30,8 +30,7 @@ import com.azortis.orbis.generator.noise.OpenSimplex2S;
 import com.azortis.orbis.registry.Registry;
 import com.azortis.orbis.util.NamespaceId;
 import com.google.gson.annotations.SerializedName;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
@@ -83,6 +82,9 @@ public class SimpleDistributor extends Distributor{
         assert biome != null;
         return biome;
     }
+
+    @NoArgsConstructor(access = AccessLevel.PRIVATE)
+    @AllArgsConstructor
     @Getter
     public static class BiomeLayer {
         @SerializedName("biome")
@@ -91,16 +93,6 @@ public class SimpleDistributor extends Distributor{
         private int zoom;
         @Setter
         private transient Biome biome;
-
-        private BiomeLayer(){
-        }
-
-        public BiomeLayer(String biomeName, long seed, int zoom, Biome biome) {
-            this.biomeName = biomeName;
-            this.seed = seed;
-            this.zoom = zoom;
-            this.biome = biome;
-        }
     }
 
 }
