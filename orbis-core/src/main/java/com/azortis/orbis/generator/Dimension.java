@@ -24,6 +24,9 @@
 
 package com.azortis.orbis.generator;
 
+import lombok.Getter;
+
+@Getter
 public class Dimension {
 
     private String name;
@@ -31,6 +34,7 @@ public class Dimension {
     private int minHeight;
     private int maxHeight;
     private int fluidHeight;
+    private int interpolationRadius;
 
     // Distribution
     private String distributor;
@@ -42,27 +46,4 @@ public class Dimension {
         this.name = name;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public long getSeed() {
-        return seed;
-    }
-
-    public int getMinHeight() {
-        return minHeight;
-    }
-
-    public int getMaxHeight() {
-        return maxHeight;
-    }
-
-    public int getFluidHeight() {
-        return fluidHeight;
-    }
-
-    public String getDistributor() {
-        return distributor;
-    }
 }

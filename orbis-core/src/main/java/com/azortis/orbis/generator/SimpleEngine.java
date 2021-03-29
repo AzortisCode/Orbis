@@ -65,7 +65,7 @@ public class SimpleEngine extends Engine {
                 final int z = cz + (chunkZ << 4);
 
                 Biome biome = distributor.getBiomeAt(x, z);
-                int height = interpolator.getFinalHeight(x, z, 16, this::getHeight);
+                int height = interpolator.getFinalHeight(x, z, getDimension().getInterpolationRadius(), this::getHeight);
                 //int height = (int) getHeight(x, z);
 
                 for (int y = 0; y < getDimension().getMaxHeight(); y++) {

@@ -32,6 +32,9 @@ dependencies {
     implementation("net.sf.trove4j:trove4j:3.0.3")
     implementation("com.google.guava:guava:30.1-jre")
     implementation("net.lingala.zip4j:zip4j:2.7.0")
+    implementation("org.projectlombok:lombok:1.18.18")
+
+    annotationProcessor("org.projectlombok:lombok")
 
     // Adapters should determine if it should be added to a shadow jar
     compileOnly("com.google.code.gson:gson:2.8.6")
