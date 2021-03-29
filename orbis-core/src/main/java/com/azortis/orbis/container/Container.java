@@ -37,7 +37,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardOpenOption;
-import java.util.Objects;
 
 /**
  * An representation of a world/instance for core package

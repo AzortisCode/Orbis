@@ -24,9 +24,9 @@
 
 package com.azortis.orbis.generator.biome;
 
-import com.azortis.orbis.generator.biome.point.ChunkPointGatherer;
-import com.azortis.orbis.generator.biome.point.GatheredPoint;
-import com.azortis.orbis.generator.biome.point.PointGatherer;
+import com.azortis.orbis.generator.point.ChunkPointGatherer;
+import com.azortis.orbis.generator.point.GatheredPoint;
+import com.azortis.orbis.generator.point.PointGatherer;
 
 import java.util.List;
 
@@ -61,8 +61,8 @@ public class ScatteredBiomeBlender {
     }
 
     public LinkedBiomeWeightMap getBlendForChunk(long seed, int chunkBaseWorldX, int chunkBaseWorldZ, BiomeEvaluationCallback callback) {
-        chunkBaseWorldX = (chunkBaseWorldX << 4);
-        chunkBaseWorldZ = (chunkBaseWorldZ << 4);
+        chunkBaseWorldX = chunkBaseWorldX << 4;
+        chunkBaseWorldZ = chunkBaseWorldZ << 4;
 
         // Get the list of data points in range.
         List<GatheredPoint<LinkedBiomeWeightMap>> points = gatherer.getPointsFromChunkBase(seed, chunkBaseWorldX, chunkBaseWorldZ);

@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.generator.biome.point;
+package com.azortis.orbis.generator.point;
 
 /**
  * Credits to k.jpg from FastNoise for making this class.

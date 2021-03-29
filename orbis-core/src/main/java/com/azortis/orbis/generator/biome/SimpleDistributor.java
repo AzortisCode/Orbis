@@ -30,16 +30,13 @@ import com.azortis.orbis.generator.noise.OpenSimplex2S;
 import com.azortis.orbis.registry.Registry;
 import com.azortis.orbis.util.NamespaceId;
 import com.google.gson.annotations.SerializedName;
-import gnu.trove.map.TIntObjectMap;
-import gnu.trove.map.hash.TIntObjectHashMap;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class SimpleDistributor extends Distributor{
 
-    private final transient TIntObjectMap<Biome> biomeMap = new TIntObjectHashMap<>();
     private List<BiomeLayer> biomeLayers;
     private transient Map<Biome, NoiseGenerator> noiseGenMap;
 
@@ -58,12 +55,21 @@ public class SimpleDistributor extends Distributor{
         for (BiomeLayer layer : biomeLayers){
             layer.setBiome(biomeRegistry.loadType(getContainer(), layer.getBiomeName()));
             noiseGenMap.put(layer.getBiome(), new OpenSimplex2S(layer.getSeed()));
-            biomeMap.put(layer.getBiome().hashCode(), layer.getBiome());
         }
     }
 
     @Override
+    public Biome getBiomeAt(int x, int z) {
+        return getBiome(x, z);
+    }
+
+    @Override
     public Biome getBiomeAt(double x, double z) {
+        return getBiome(x, z);
+    }
+
+    @NotNull
+    private Biome getBiome(double x, double z) {
         double maxValue = Double.NEGATIVE_INFINITY;
         Biome biome = null;
         for (BiomeLayer layer : biomeLayers){
@@ -73,12 +79,8 @@ public class SimpleDistributor extends Distributor{
                 maxValue = noiseValue;
             }
         }
+        assert biome != null;
         return biome;
-    }
-
-    @Override
-    public Biome getBiome(int biomeHash) {
-        return biomeMap.get(biomeHash);
     }
 
     public static class BiomeLayer {

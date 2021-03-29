@@ -28,6 +28,7 @@ import com.azortis.orbis.container.Container;
 import com.azortis.orbis.util.NamespaceId;
 
 import java.io.File;
+import java.util.List;
 
 public abstract class Distributor {
 
@@ -84,8 +85,8 @@ public abstract class Distributor {
 
     public abstract void load();
 
-    public abstract Biome getBiomeAt(double x, double z);
+    public abstract Biome getBiomeAt(int x, int z);
 
-    public abstract Biome getBiome(int biomeHash);
+    public abstract Biome getBiomeAt(double x, double z);
 
 }

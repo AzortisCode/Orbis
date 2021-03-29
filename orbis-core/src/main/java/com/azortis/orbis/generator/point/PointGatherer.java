@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.generator.biome.point;
+package com.azortis.orbis.generator.point;
 
 import java.util.ArrayList;
 import java.util.List;

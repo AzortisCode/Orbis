@@ -22,35 +22,9 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis.bukkit.adapter;
+package com.azortis.orbis.generator.interpolation;
 
-import com.azortis.orbis.generator.ChunkData;
-import com.azortis.orbis.generator.Dimension;
-import org.bukkit.Material;
-import org.bukkit.generator.ChunkGenerator;
-
-import java.util.Locale;
-
-public class BukkitChunkData extends ChunkData {
-
-    private final ChunkGenerator.ChunkData handle;
-
-    public BukkitChunkData(Dimension dimension, ChunkGenerator.ChunkData handle) {
-        super(dimension);
-        this.handle = handle;
-    }
-
-    @Override
-    protected void setBlock(int x, int y, int z, String blockId) {
-        if(blockId.equals("water")){
-            handle.setBlock(x, y, z, Material.WATER);
-            return;
-        }
-        handle.setBlock(x, y, z, Material.valueOf(blockId.toUpperCase(Locale.ENGLISH)));
-    }
-
-    public ChunkGenerator.ChunkData getHandle(){
-        return handle;
-    }
-
+@FunctionalInterface
+public interface HeightProvider {
+    double getHeight(double x, double z);
 }

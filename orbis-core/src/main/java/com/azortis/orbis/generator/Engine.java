@@ -41,4 +41,8 @@ public abstract class Engine {
         return container;
     }
 
+    public Dimension getDimension(){
+        return container.getDimension();
+    }
+
 }
