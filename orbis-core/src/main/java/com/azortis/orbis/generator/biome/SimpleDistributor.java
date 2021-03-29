@@ -31,7 +31,6 @@ import com.azortis.orbis.registry.Registry;
 import com.azortis.orbis.util.NamespaceId;
 import com.google.gson.annotations.SerializedName;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
 

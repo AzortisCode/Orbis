@@ -68,8 +68,6 @@ public abstract class Terrain {
         return biome;
     }
 
-    public abstract TerrainType getType();
-
     public abstract double getTerrainHeight(final int x, final int z, double biomeWeight, NoiseGenerator noise);
 
 }

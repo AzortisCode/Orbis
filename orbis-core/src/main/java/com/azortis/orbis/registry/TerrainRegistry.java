@@ -46,7 +46,7 @@ public class TerrainRegistry implements GeneratorRegistry<Terrain> {
 
     public TerrainRegistry(){
         // Initialize Orbis default terrains
-        //terrainClasses.put(new NamespaceId("orbis:config"), ConfigTerrain.class);
+        terrainClasses.put(new NamespaceId("orbis:config"), ConfigTerrain.class);
         terrainClasses.put(new NamespaceId("orbis:plains"), PlainsTerrain.class);
     }
 

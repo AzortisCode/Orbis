@@ -26,17 +26,11 @@ package com.azortis.orbis.generator.terrain.defaults;
 
 import com.azortis.orbis.generator.noise.NoiseGenerator;
 import com.azortis.orbis.generator.terrain.Terrain;
-import com.azortis.orbis.generator.terrain.TerrainType;
 
 public class PlainsTerrain extends Terrain {
 
     public PlainsTerrain(String name, String providerId) {
         super(name, providerId);
-    }
-
-    @Override
-    public TerrainType getType() {
-        return TerrainType.JAVA;
     }
 
     @Override

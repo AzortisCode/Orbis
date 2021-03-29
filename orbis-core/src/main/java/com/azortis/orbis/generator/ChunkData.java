@@ -51,13 +51,13 @@ public abstract class ChunkData {
         int blockHash = block.hashCode();
         if(!blockMap.containsKey(blockHash))blockMap.put(blockHash, block);
         int yIndex = y + Math.abs(dimension.getMinHeight());
-        blocks[x * yIndex * z] = block.hashCode();
+        blocks[x + z * 16 + yIndex * 256] = block.hashCode();
         setBlock(x, y, z, block.getBlock().getId());
     }
 
     public Block getBlock(int x, int y, int z){
         int yIndex = y + Math.abs(dimension.getMinHeight());
-        return blockMap.get(blocks[x * yIndex * z]);
+        return blockMap.get(blocks[x + z * 16 + yIndex * 256]);
     }
 
     protected abstract void setBlock(int x, int y, int z, String blockId);
