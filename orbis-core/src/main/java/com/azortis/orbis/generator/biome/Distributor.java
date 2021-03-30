@@ -28,7 +28,6 @@ import com.azortis.orbis.container.Container;
 import com.azortis.orbis.util.NamespaceId;
 
 import java.io.File;
-import java.util.List;
 
 public abstract class Distributor {
 

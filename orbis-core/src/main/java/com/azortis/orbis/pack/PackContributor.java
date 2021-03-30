@@ -24,20 +24,15 @@
 
 package com.azortis.orbis.pack;
 
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@AllArgsConstructor
 public class PackContributor {
-
     private String name;
     private String contribution;
-
-    // Used for GSON deserialization
-    private PackContributor(){
-    }
-
-    public PackContributor(String name, String contribution) {
-        this.name = name;
-        this.contribution = contribution;
-    }
 }
