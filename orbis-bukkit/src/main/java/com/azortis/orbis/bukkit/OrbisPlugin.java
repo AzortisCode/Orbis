@@ -38,10 +38,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class OrbisPlugin extends JavaPlugin {
+
     private final Map<String, OrbisWorld> worldMap = new HashMap<>();
+    private Metrics metrics;
 
     @Override
     public void onLoad() {
+        this.metrics = new Metrics(this, 10874);
         Orbis.initialize(new BukkitAdapter(this));
     }
 

@@ -129,7 +129,7 @@ public abstract class Container {
                     return;
                 }
             }
-            Orbis.getLogger().info("Installing pack {} for {}", pack.getName(), name);
+            Orbis.getLogger().info("Installing pack {} version {} for {}", pack.getName(), pack.getPackVersion(), name);
             Orbis.getPackManager().extractPack(settingsFolder, pack);
             if (containerInfo.getPackName() == null) {
                 containerInfo.setPackName(pack.getName());
