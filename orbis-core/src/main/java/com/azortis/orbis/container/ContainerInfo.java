@@ -27,14 +27,12 @@ package com.azortis.orbis.container;
 import lombok.Getter;
 import lombok.Setter;
 
+@Getter
 public class ContainerInfo {
 
-    @Getter
     private String settingsVersion;
-    @Getter
     @Setter
     private String packName;
-    @Getter
     @Setter
     private String dimensionFile;
 
