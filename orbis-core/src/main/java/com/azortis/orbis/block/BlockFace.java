@@ -22,34 +22,7 @@
  * SOFTWARE.
  */
 
-package com.azortis.orbis;
+package com.azortis.orbis.block;
 
-import com.azortis.orbis.block.data.BlockData;
-import com.azortis.orbis.container.Container;
-import com.azortis.orbis.util.NamespaceId;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonSerializer;
-import org.jetbrains.annotations.Nullable;
-import org.slf4j.Logger;
-
-import java.io.File;
-import java.util.Collection;
-
-public interface Adapter {
-
-    String getAdaptation();
-
-    Logger getLogger();
-
-    File getDirectory();
-
-    @Nullable
-    Container getContainer(String name);
-
-    Collection<Container> getContainers();
-
-    Object getBlockTypeAdapter();
-
-    BlockData createBlockData(NamespaceId material);
-
+public enum BlockFace {
 }
