@@ -7,8 +7,8 @@
 
 
   This version of the GNU Lesser General Public License incorporates
-the terms and conditions of version 3 of the GNU General Public
-License, supplemented by the additional permissions listed below.
+the terms and conditions of version 3 of the [GNU General Public
+License](GPL3.md), supplemented by the additional permissions listed below.
 
   0. Additional Definitions.
 
