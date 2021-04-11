@@ -16,35 +16,19 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.bukkit.adapter;
+package com.azortis.orbis.bukkit.block.data;
 
-import com.azortis.orbis.generator.ChunkData;
-import com.azortis.orbis.generator.Dimension;
-import org.bukkit.Material;
-import org.bukkit.generator.ChunkGenerator;
+import com.azortis.orbis.block.data.Waterlogged;
 
-import java.util.Locale;
+public class BukkitWaterlogged extends BukkitBlockData implements Waterlogged {
 
-public class BukkitChunkData extends ChunkData {
-
-    private final ChunkGenerator.ChunkData handle;
-
-    public BukkitChunkData(Dimension dimension, ChunkGenerator.ChunkData handle) {
-        super(dimension);
-        this.handle = handle;
+    @Override
+    public boolean isWaterLogged() {
+        return false;
     }
 
     @Override
-    protected void setBlock(int x, int y, int z, String blockId) {
-        if(blockId.equals("water")){
-            handle.setBlock(x, y, z, Material.WATER);
-            return;
-        }
-        handle.setBlock(x, y, z, Material.valueOf(blockId.toUpperCase(Locale.ENGLISH)));
-    }
+    public void setWaterLogged(boolean waterLogged) {
 
-    public ChunkGenerator.ChunkData getHandle(){
-        return handle;
     }
-
 }

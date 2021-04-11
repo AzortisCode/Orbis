@@ -16,10 +16,10 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.bukkit;
+package com.azortis.orbis.bukkit.generator;
 
-import com.azortis.orbis.bukkit.adapter.BukkitBiomeGrid;
-import com.azortis.orbis.bukkit.adapter.BukkitChunkData;
+import com.azortis.orbis.bukkit.OrbisPlugin;
+import com.azortis.orbis.bukkit.OrbisWorld;
 import com.azortis.orbis.pack.Pack;
 import org.bukkit.World;
 import org.bukkit.generator.ChunkGenerator;

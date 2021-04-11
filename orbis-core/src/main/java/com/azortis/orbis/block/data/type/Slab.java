@@ -18,5 +18,19 @@
 
 package com.azortis.orbis.block.data.type;
 
+import org.jetbrains.annotations.NotNull;
+
 public interface Slab {
+
+    @NotNull
+    Type getType();
+
+    void setType(@NotNull Type type);
+
+    enum Type {
+        TOP,
+        BOTTOM,
+        DOUBLE;
+    }
+
 }

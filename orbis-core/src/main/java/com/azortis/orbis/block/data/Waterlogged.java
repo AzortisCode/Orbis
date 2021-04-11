@@ -22,6 +22,6 @@ public interface Waterlogged extends BlockData{
 
     boolean isWaterLogged();
 
-    void setWaterLogger(boolean waterLogged);
+    void setWaterLogged(boolean waterLogged);
 
 }

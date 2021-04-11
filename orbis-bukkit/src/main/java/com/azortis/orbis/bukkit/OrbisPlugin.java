@@ -19,7 +19,7 @@
 package com.azortis.orbis.bukkit;
 
 import com.azortis.orbis.Orbis;
-import com.azortis.orbis.bukkit.adapter.BukkitAdapter;
+import com.azortis.orbis.bukkit.generator.BukkitChunkGenerator;
 import com.azortis.orbis.pack.Pack;
 import org.bukkit.World;
 import org.bukkit.generator.ChunkGenerator;

@@ -74,7 +74,6 @@ public final class Orbis {
 
             // Register the type adapters to use in the serialization/deserialization of settings in packs.
             gson = new GsonBuilder().disableHtmlEscaping().setPrettyPrinting()
-                    .registerTypeAdapter(BlockData.class, adapter.getBlockTypeAdapter())
                     .registerTypeAdapter(NamespaceId.class, new NamespaceIdAdapter())
                     .registerTypeAdapter(Terrain.class, new TerrainAdapter())
                     .registerTypeAdapter(Distributor.class, new DistributorAdapter()).create();

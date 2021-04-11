@@ -16,24 +16,35 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.bukkit.adapter;
+package com.azortis.orbis.bukkit.generator;
 
-import com.azortis.orbis.generator.biome.Biome;
-import com.azortis.orbis.generator.biome.BiomeGrid;
+import com.azortis.orbis.generator.ChunkData;
+import com.azortis.orbis.generator.Dimension;
+import org.bukkit.Material;
 import org.bukkit.generator.ChunkGenerator;
 
 import java.util.Locale;
 
-public class BukkitBiomeGrid implements BiomeGrid {
+public class BukkitChunkData extends ChunkData {
 
-    private final ChunkGenerator.BiomeGrid handle;
+    private final ChunkGenerator.ChunkData handle;
 
-    public BukkitBiomeGrid(ChunkGenerator.BiomeGrid handle) {
+    public BukkitChunkData(Dimension dimension, ChunkGenerator.ChunkData handle) {
+        super(dimension);
         this.handle = handle;
     }
 
     @Override
-    public void setBiome(int x, int y, int z, Biome biome) {
-        handle.setBiome(x, y, z, org.bukkit.block.Biome.valueOf(biome.getDerivative().getId().toUpperCase(Locale.ROOT)));
+    protected void setBlock(int x, int y, int z, String blockId) {
+        if(blockId.equals("water")){
+            handle.setBlock(x, y, z, Material.WATER);
+            return;
+        }
+        handle.setBlock(x, y, z, Material.valueOf(blockId.toUpperCase(Locale.ENGLISH)));
     }
+
+    public ChunkGenerator.ChunkData getHandle(){
+        return handle;
+    }
+
 }

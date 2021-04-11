@@ -18,18 +18,10 @@
 
 package com.azortis.orbis.block.data;
 
-import org.jetbrains.annotations.NotNull;
+public interface Openable extends BlockData{
 
-public interface Bisected extends BlockData{
+    boolean isOpen();
 
-    @NotNull
-    Half getHalf();
-
-    void setHalf(@NotNull Half half);
-
-    enum Half {
-        TOP,
-        BOTTOM
-    }
+    void setOpen(boolean open);
 
 }

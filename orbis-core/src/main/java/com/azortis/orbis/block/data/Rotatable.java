@@ -20,7 +20,7 @@ package com.azortis.orbis.block.data;
 
 import com.azortis.orbis.block.BlockFace;
 
-public interface Rotatable {
+public interface Rotatable extends BlockData{
 
     BlockFace getRotation();
 

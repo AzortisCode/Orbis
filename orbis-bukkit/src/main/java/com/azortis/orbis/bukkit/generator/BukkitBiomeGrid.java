@@ -16,20 +16,24 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.block.data;
+package com.azortis.orbis.bukkit.generator;
 
-import org.jetbrains.annotations.NotNull;
+import com.azortis.orbis.generator.biome.Biome;
+import com.azortis.orbis.generator.biome.BiomeGrid;
+import org.bukkit.generator.ChunkGenerator;
 
-public interface Bisected extends BlockData{
+import java.util.Locale;
 
-    @NotNull
-    Half getHalf();
+public class BukkitBiomeGrid implements BiomeGrid {
 
-    void setHalf(@NotNull Half half);
+    private final ChunkGenerator.BiomeGrid handle;
 
-    enum Half {
-        TOP,
-        BOTTOM
+    public BukkitBiomeGrid(ChunkGenerator.BiomeGrid handle) {
+        this.handle = handle;
     }
 
+    @Override
+    public void setBiome(int x, int y, int z, Biome biome) {
+        handle.setBiome(x, y, z, org.bukkit.block.Biome.valueOf(biome.getDerivative().getId().toUpperCase(Locale.ROOT)));
+    }
 }

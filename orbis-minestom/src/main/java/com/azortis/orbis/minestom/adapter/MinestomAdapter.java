@@ -58,11 +58,6 @@ public class MinestomAdapter implements Adapter {
     }
 
     @Override
-    public Object getBlockTypeAdapter() {
-        return null;
-    }
-
-    @Override
     public BlockData createBlockData(NamespaceId material) {
         return null;
     }

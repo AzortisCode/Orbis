@@ -42,8 +42,6 @@ public interface Adapter {
 
     Collection<Container> getContainers();
 
-    Object getBlockTypeAdapter();
-
     BlockData createBlockData(NamespaceId material);
 
 }

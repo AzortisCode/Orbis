@@ -16,20 +16,18 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.block.data;
+package com.azortis.orbis.bukkit.block.data;
 
-import org.jetbrains.annotations.NotNull;
+import com.azortis.orbis.block.data.BlockData;
+import com.azortis.orbis.util.NamespaceId;
 
-public interface Bisected extends BlockData{
+public class BukkitBlockData implements BlockData {
 
-    @NotNull
-    Half getHalf();
-
-    void setHalf(@NotNull Half half);
-
-    enum Half {
-        TOP,
-        BOTTOM
+    @Override
+    public NamespaceId getMaterial() {
+        return null;
     }
+
+
 
 }

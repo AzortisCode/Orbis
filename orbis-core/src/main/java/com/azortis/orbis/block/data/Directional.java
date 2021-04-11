@@ -18,18 +18,19 @@
 
 package com.azortis.orbis.block.data;
 
+import com.azortis.orbis.block.BlockFace;
 import org.jetbrains.annotations.NotNull;
 
-public interface Bisected extends BlockData{
+import java.util.Set;
+
+public interface Directional {
 
     @NotNull
-    Half getHalf();
+    BlockFace getFacing();
 
-    void setHalf(@NotNull Half half);
+    void setFacing(@NotNull BlockFace facing);
 
-    enum Half {
-        TOP,
-        BOTTOM
-    }
+    @NotNull
+    Set<BlockFace> getFaces();
 
 }

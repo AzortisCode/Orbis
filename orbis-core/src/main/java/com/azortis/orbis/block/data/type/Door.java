@@ -16,20 +16,7 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.block.data;
+package com.azortis.orbis.block.data.type;
 
-import org.jetbrains.annotations.NotNull;
-
-public interface Bisected extends BlockData{
-
-    @NotNull
-    Half getHalf();
-
-    void setHalf(@NotNull Half half);
-
-    enum Half {
-        TOP,
-        BOTTOM
-    }
-
+public interface Door {
 }

@@ -18,7 +18,7 @@
 
 package com.azortis.orbis.block.data;
 
-public interface Levelled {
+public interface Levelled extends BlockData{
 
     int getLevel();
 

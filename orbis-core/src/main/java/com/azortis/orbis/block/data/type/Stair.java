@@ -18,5 +18,20 @@
 
 package com.azortis.orbis.block.data.type;
 
+import org.jetbrains.annotations.NotNull;
+
 public interface Stair {
+
+    @NotNull
+    Shape getShape();
+
+    void setShape(@NotNull Shape shape);
+
+    enum Shape {
+        STRAIGHT,
+        INNER_LEFT,
+        INNER_RIGHT,
+        OUTER_LEFT,
+        OUTER_RIGHT;
+    }
 }
