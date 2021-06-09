@@ -16,32 +16,20 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis;
+package com.azortis.orbis.block.data;
 
-import com.azortis.orbis.block.data.BlockData;
-import com.azortis.orbis.container.Container;
-import com.azortis.orbis.util.NamespaceId;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonSerializer;
-import org.jetbrains.annotations.Nullable;
-import org.slf4j.Logger;
+import org.jetbrains.annotations.NotNull;
 
-import java.io.File;
-import java.util.Collection;
+public interface Bisected extends BlockData{
 
-public interface Adapter {
+    @NotNull
+    Half getHalf();
 
-    String getAdaptation();
+    void setHalf(@NotNull Half half);
 
-    Logger getLogger();
-
-    File getDirectory();
-
-    @Nullable
-    Container getContainer(String name);
-
-    Collection<Container> getContainers();
-
-    BlockData createBlockData(NamespaceId material);
+    enum Half {
+        TOP,
+        BOTTOM
+    }
 
 }

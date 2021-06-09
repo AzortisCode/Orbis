@@ -16,32 +16,21 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis;
+package com.azortis.orbis.block.data;
 
-import com.azortis.orbis.block.data.BlockData;
-import com.azortis.orbis.container.Container;
-import com.azortis.orbis.util.NamespaceId;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonSerializer;
-import org.jetbrains.annotations.Nullable;
-import org.slf4j.Logger;
+import com.azortis.orbis.block.BlockFace;
+import org.jetbrains.annotations.NotNull;
 
-import java.io.File;
-import java.util.Collection;
+import java.util.Set;
 
-public interface Adapter {
+public interface Directional {
 
-    String getAdaptation();
+    @NotNull
+    BlockFace getFacing();
 
-    Logger getLogger();
+    void setFacing(@NotNull BlockFace facing);
 
-    File getDirectory();
-
-    @Nullable
-    Container getContainer(String name);
-
-    Collection<Container> getContainers();
-
-    BlockData createBlockData(NamespaceId material);
+    @NotNull
+    Set<BlockFace> getFaces();
 
 }

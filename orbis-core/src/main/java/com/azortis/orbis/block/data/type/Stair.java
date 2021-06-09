@@ -16,24 +16,22 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.bukkit.adapter;
+package com.azortis.orbis.block.data.type;
 
-import com.azortis.orbis.generator.biome.Biome;
-import com.azortis.orbis.generator.biome.BiomeGrid;
-import org.bukkit.generator.ChunkGenerator;
+import org.jetbrains.annotations.NotNull;
 
-import java.util.Locale;
+public interface Stair {
 
-public class BukkitBiomeGrid implements BiomeGrid {
+    @NotNull
+    Shape getShape();
 
-    private final ChunkGenerator.BiomeGrid handle;
+    void setShape(@NotNull Shape shape);
 
-    public BukkitBiomeGrid(ChunkGenerator.BiomeGrid handle) {
-        this.handle = handle;
-    }
-
-    @Override
-    public void setBiome(int x, int y, int z, Biome biome) {
-        handle.setBiome(x, y, z, org.bukkit.block.Biome.valueOf(biome.getDerivative().getId().toUpperCase(Locale.ROOT)));
+    enum Shape {
+        STRAIGHT,
+        INNER_LEFT,
+        INNER_RIGHT,
+        OUTER_LEFT,
+        OUTER_RIGHT
     }
 }

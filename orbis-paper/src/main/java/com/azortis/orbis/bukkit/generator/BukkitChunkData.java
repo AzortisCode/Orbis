@@ -16,7 +16,7 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.bukkit.adapter;
+package com.azortis.orbis.bukkit.generator;
 
 import com.azortis.orbis.generator.ChunkData;
 import com.azortis.orbis.generator.Dimension;

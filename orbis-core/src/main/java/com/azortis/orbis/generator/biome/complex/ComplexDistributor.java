@@ -16,32 +16,31 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis;
+package com.azortis.orbis.generator.biome.complex;
 
-import com.azortis.orbis.block.data.BlockData;
-import com.azortis.orbis.container.Container;
-import com.azortis.orbis.util.NamespaceId;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonSerializer;
-import org.jetbrains.annotations.Nullable;
-import org.slf4j.Logger;
+import com.azortis.orbis.generator.biome.Biome;
+import com.azortis.orbis.generator.biome.Distributor;
 
-import java.io.File;
-import java.util.Collection;
+import java.util.List;
 
-public interface Adapter {
+public class ComplexDistributor extends Distributor {
 
-    String getAdaptation();
+    private List<ComplexNoiseLayer> globalNoiseLayers;
 
-    Logger getLogger();
 
-    File getDirectory();
+    @Override
+    public void load() {
 
-    @Nullable
-    Container getContainer(String name);
+    }
 
-    Collection<Container> getContainers();
+    @Override
+    public Biome getBiomeAt(int x, int z) {
+        return null;
+    }
 
-    BlockData createBlockData(NamespaceId material);
+    @Override
+    public Biome getBiomeAt(double x, double z) {
+        return null;
+    }
 
 }

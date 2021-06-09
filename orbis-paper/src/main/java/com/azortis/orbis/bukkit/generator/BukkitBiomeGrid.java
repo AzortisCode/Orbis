@@ -16,32 +16,24 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis;
+package com.azortis.orbis.bukkit.generator;
 
-import com.azortis.orbis.block.data.BlockData;
-import com.azortis.orbis.container.Container;
-import com.azortis.orbis.util.NamespaceId;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonSerializer;
-import org.jetbrains.annotations.Nullable;
-import org.slf4j.Logger;
+import com.azortis.orbis.generator.biome.Biome;
+import com.azortis.orbis.generator.biome.BiomeGrid;
+import org.bukkit.generator.ChunkGenerator;
 
-import java.io.File;
-import java.util.Collection;
+import java.util.Locale;
 
-public interface Adapter {
+public class BukkitBiomeGrid implements BiomeGrid {
 
-    String getAdaptation();
+    private final ChunkGenerator.BiomeGrid handle;
 
-    Logger getLogger();
+    public BukkitBiomeGrid(ChunkGenerator.BiomeGrid handle) {
+        this.handle = handle;
+    }
 
-    File getDirectory();
-
-    @Nullable
-    Container getContainer(String name);
-
-    Collection<Container> getContainers();
-
-    BlockData createBlockData(NamespaceId material);
-
+    @Override
+    public void setBiome(int x, int y, int z, Biome biome) {
+        handle.setBiome(x, y, z, org.bukkit.block.Biome.valueOf(biome.getDerivative().getId().toUpperCase(Locale.ROOT)));
+    }
 }

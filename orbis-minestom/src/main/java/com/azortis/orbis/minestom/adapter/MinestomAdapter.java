@@ -19,7 +19,11 @@
 package com.azortis.orbis.minestom.adapter;
 
 import com.azortis.orbis.Adapter;
+import com.azortis.orbis.block.data.BlockData;
 import com.azortis.orbis.container.Container;
+import com.azortis.orbis.util.NamespaceId;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonSerializer;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 
@@ -50,6 +54,11 @@ public class MinestomAdapter implements Adapter {
 
     @Override
     public Collection<Container> getContainers() {
+        return null;
+    }
+
+    @Override
+    public BlockData createBlockData(NamespaceId material) {
         return null;
     }
 }

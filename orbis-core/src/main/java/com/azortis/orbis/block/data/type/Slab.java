@@ -16,32 +16,21 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis;
+package com.azortis.orbis.block.data.type;
 
-import com.azortis.orbis.block.data.BlockData;
-import com.azortis.orbis.container.Container;
-import com.azortis.orbis.util.NamespaceId;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonSerializer;
-import org.jetbrains.annotations.Nullable;
-import org.slf4j.Logger;
+import org.jetbrains.annotations.NotNull;
 
-import java.io.File;
-import java.util.Collection;
+public interface Slab {
 
-public interface Adapter {
+    @NotNull
+    Type getType();
 
-    String getAdaptation();
+    void setType(@NotNull Type type);
 
-    Logger getLogger();
-
-    File getDirectory();
-
-    @Nullable
-    Container getContainer(String name);
-
-    Collection<Container> getContainers();
-
-    BlockData createBlockData(NamespaceId material);
+    enum Type {
+        TOP,
+        BOTTOM,
+        DOUBLE
+    }
 
 }

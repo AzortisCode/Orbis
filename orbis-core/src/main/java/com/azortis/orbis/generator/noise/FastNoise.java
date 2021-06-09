@@ -298,16 +298,12 @@ public class FastNoise {
                 break;
         }
 
-        switch (mFractalType) {
-            default:
-                return genNoiseSingle(mSeed, x, y);
-            case FBm:
-                return genFractalFBm(x, y);
-            case Ridged:
-                return genFractalRidged(x, y);
-            case PingPong:
-                return genFractalPingPong(x, y);
-        }
+        return switch (mFractalType) {
+            default -> genNoiseSingle(mSeed, x, y);
+            case FBm -> genFractalFBm(x, y);
+            case Ridged -> genFractalRidged(x, y);
+            case PingPong -> genFractalPingPong(x, y);
+        };
     }
 
     /// <summary>
@@ -352,16 +348,12 @@ public class FastNoise {
                 break;
         }
 
-        switch (mFractalType) {
-            default:
-                return genNoiseSingle(mSeed, x, y, z);
-            case FBm:
-                return genFractalFBm(x, y, z);
-            case Ridged:
-                return genFractalRidged(x, y, z);
-            case PingPong:
-                return genFractalPingPong(x, y, z);
-        }
+        return switch (mFractalType) {
+            default -> genNoiseSingle(mSeed, x, y, z);
+            case FBm -> genFractalFBm(x, y, z);
+            case Ridged -> genFractalRidged(x, y, z);
+            case PingPong -> genFractalPingPong(x, y, z);
+        };
     }
 
 
@@ -375,15 +367,9 @@ public class FastNoise {
     /// </example>
     public void domainWarp(Vector2 coord) {
         switch (mFractalType) {
-            default:
-                domainWarpSingle(coord);
-                break;
-            case DomainWarpProgressive:
-                domainWarpFractalProgressive(coord);
-                break;
-            case DomainWarpIndependent:
-                domainWarpFractalIndependent(coord);
-                break;
+            default -> domainWarpSingle(coord);
+            case DomainWarpProgressive -> domainWarpFractalProgressive(coord);
+            case DomainWarpIndependent -> domainWarpFractalIndependent(coord);
         }
     }
 
@@ -397,15 +383,9 @@ public class FastNoise {
     /// </example>
     public void domainWarp(Vector3 coord) {
         switch (mFractalType) {
-            default:
-                domainWarpSingle(coord);
-                break;
-            case DomainWarpProgressive:
-                domainWarpFractalProgressive(coord);
-                break;
-            case DomainWarpIndependent:
-                domainWarpFractalIndependent(coord);
-                break;
+            default -> domainWarpSingle(coord);
+            case DomainWarpProgressive -> domainWarpFractalProgressive(coord);
+            case DomainWarpIndependent -> domainWarpFractalIndependent(coord);
         }
     }
 
@@ -656,41 +636,25 @@ public class FastNoise {
     // Generic noise gen
 
     private double genNoiseSingle(long seed, double x, double y) {
-        switch (mNoiseType) {
-            case OpenSimplex2:
-                return singleSimplex(seed, x, y);
-            case OpenSimplex2S:
-                return singleOpenSimplex2S(seed, x, y);
-            case Cellular:
-                return singleCellular(seed, x, y);
-            case Perlin:
-                return singlePerlin(seed, x, y);
-            case ValueCubic:
-                return singleValueCubic(seed, x, y);
-            case Value:
-                return singleValue(seed, x, y);
-            default:
-                return 0;
-        }
+        return switch (mNoiseType) {
+            case OpenSimplex2 -> singleSimplex(seed, x, y);
+            case OpenSimplex2S -> singleOpenSimplex2S(seed, x, y);
+            case Cellular -> singleCellular(seed, x, y);
+            case Perlin -> singlePerlin(seed, x, y);
+            case ValueCubic -> singleValueCubic(seed, x, y);
+            case Value -> singleValue(seed, x, y);
+        };
     }
 
     private double genNoiseSingle(long seed, double x, double y, double z) {
-        switch (mNoiseType) {
-            case OpenSimplex2:
-                return singleOpenSimplex2(seed, x, y, z);
-            case OpenSimplex2S:
-                return singleOpenSimplex2S(seed, x, y, z);
-            case Cellular:
-                return singleCellular(seed, x, y, z);
-            case Perlin:
-                return singlePerlin(seed, x, y, z);
-            case ValueCubic:
-                return singleValueCubic(seed, x, y, z);
-            case Value:
-                return singleValue(seed, x, y, z);
-            default:
-                return 0;
-        }
+        return switch (mNoiseType) {
+            case OpenSimplex2 -> singleOpenSimplex2(seed, x, y, z);
+            case OpenSimplex2S -> singleOpenSimplex2S(seed, x, y, z);
+            case Cellular -> singleCellular(seed, x, y, z);
+            case Perlin -> singlePerlin(seed, x, y, z);
+            case ValueCubic -> singleValueCubic(seed, x, y, z);
+            case Value -> singleValue(seed, x, y, z);
+        };
     }
 
 
@@ -706,13 +670,8 @@ public class FastNoise {
                 break;
             default:
                 switch (mNoiseType) {
-                    case OpenSimplex2:
-                    case OpenSimplex2S:
-                        mTransformType3D = TransformType3D.DefaultOpenSimplex2;
-                        break;
-                    default:
-                        mTransformType3D = TransformType3D.None;
-                        break;
+                    case OpenSimplex2, OpenSimplex2S -> mTransformType3D = TransformType3D.DefaultOpenSimplex2;
+                    default -> mTransformType3D = TransformType3D.None;
                 }
                 break;
         }
@@ -728,13 +687,8 @@ public class FastNoise {
                 break;
             default:
                 switch (mDomainWarpType) {
-                    case OpenSimplex2:
-                    case OpenSimplex2Reduced:
-                        mWarpTransformType3D = TransformType3D.DefaultOpenSimplex2;
-                        break;
-                    default:
-                        mWarpTransformType3D = TransformType3D.None;
-                        break;
+                    case OpenSimplex2, OpenSimplex2Reduced -> mWarpTransformType3D = TransformType3D.DefaultOpenSimplex2;
+                    default -> mWarpTransformType3D = TransformType3D.None;
                 }
                 break;
         }
@@ -1385,24 +1339,15 @@ public class FastNoise {
             }
         }
 
-        switch (mCellularReturnType) {
-            case CellValue:
-                return closestHash * (1 / 2147483648.0f);
-            case Distance:
-                return distance0 - 1;
-            case Distance2:
-                return distance1 - 1;
-            case Distance2Add:
-                return (distance1 + distance0) * 0.5f - 1;
-            case Distance2Sub:
-                return distance1 - distance0 - 1;
-            case Distance2Mul:
-                return distance1 * distance0 * 0.5f - 1;
-            case Distance2Div:
-                return distance0 / distance1 - 1;
-            default:
-                return 0;
-        }
+        return switch (mCellularReturnType) {
+            case CellValue -> closestHash * (1 / 2147483648.0f);
+            case Distance -> distance0 - 1;
+            case Distance2 -> distance1 - 1;
+            case Distance2Add -> (distance1 + distance0) * 0.5f - 1;
+            case Distance2Sub -> distance1 - distance0 - 1;
+            case Distance2Mul -> distance1 * distance0 * 0.5f - 1;
+            case Distance2Div -> distance0 / distance1 - 1;
+        };
     }
 
     private double singleCellular(long seed, double x, double y, double z) {
@@ -1521,24 +1466,15 @@ public class FastNoise {
             }
         }
 
-        switch (mCellularReturnType) {
-            case CellValue:
-                return closestHash * (1 / 2147483648.0f);
-            case Distance:
-                return distance0 - 1;
-            case Distance2:
-                return distance1 - 1;
-            case Distance2Add:
-                return (distance1 + distance0) * 0.5f - 1;
-            case Distance2Sub:
-                return distance1 - distance0 - 1;
-            case Distance2Mul:
-                return distance1 * distance0 * 0.5f - 1;
-            case Distance2Div:
-                return distance0 / distance1 - 1;
-            default:
-                return 0;
-        }
+        return switch (mCellularReturnType) {
+            case CellValue -> closestHash * (1 / 2147483648.0f);
+            case Distance -> distance0 - 1;
+            case Distance2 -> distance1 - 1;
+            case Distance2Add -> (distance1 + distance0) * 0.5f - 1;
+            case Distance2Sub -> distance1 - distance0 - 1;
+            case Distance2Mul -> distance1 * distance0 * 0.5f - 1;
+            case Distance2Div -> distance0 / distance1 - 1;
+        };
     }
 
 

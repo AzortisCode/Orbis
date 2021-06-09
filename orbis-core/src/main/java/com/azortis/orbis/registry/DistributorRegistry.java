@@ -22,6 +22,7 @@ import com.azortis.orbis.Orbis;
 import com.azortis.orbis.container.Container;
 import com.azortis.orbis.generator.biome.Distributor;
 import com.azortis.orbis.generator.biome.SimpleDistributor;
+import com.azortis.orbis.generator.biome.complex.ComplexDistributor;
 import com.azortis.orbis.util.NamespaceId;
 
 import java.io.File;
@@ -35,10 +36,14 @@ import java.util.Map;
 public class DistributorRegistry implements GeneratorRegistry<Distributor> {
 
     private static final String DISTRIBUTOR_DIRECTORY = "/generators/distributor/";
-    private final Map<NamespaceId, Class<? extends Distributor>> distributorClasses = new HashMap<>();
+    private static final Map<NamespaceId, Class<? extends Distributor>> distributorClasses = new HashMap<>();
+
+    static {
+        distributorClasses.put(new NamespaceId("orbis:complex"), ComplexDistributor.class);
+        distributorClasses.put(new NamespaceId("orbis:simple"), SimpleDistributor.class);
+    }
 
     public DistributorRegistry(){
-        distributorClasses.put(new NamespaceId("orbis:simple"), SimpleDistributor.class);
     }
 
     @Override

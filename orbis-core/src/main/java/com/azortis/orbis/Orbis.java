@@ -57,12 +57,13 @@ public final class Orbis {
     }
 
     public static void initialize(Adapter adaptation) {
+        // Only initialize once.
         if (adapter == null) {
             adapter = adaptation;
             logger = adaptation.getLogger();
             logger.info("Initializing {} adaptation of Orbis", adaptation.getAdaptation());
 
-            // Load registries
+            // Load registries for loading certain objects of packs dynamically
             registries = new HashMap<>();
             registries.put(Dimension.class, new DimensionRegistry());
             registries.put(Biome.class, new BiomeRegistry());
@@ -70,6 +71,7 @@ public final class Orbis {
             generatorRegistries.put(Terrain.class, new TerrainRegistry());
             generatorRegistries.put(Distributor.class, new DistributorRegistry());
 
+            // Register the type adapters to use in the serialization/deserialization of settings in packs.
             gson = new GsonBuilder().disableHtmlEscaping().setPrettyPrinting()
                     .registerTypeAdapter(NamespaceId.class, new NamespaceIdAdapter())
                     .registerTypeAdapter(Terrain.class, new TerrainAdapter())

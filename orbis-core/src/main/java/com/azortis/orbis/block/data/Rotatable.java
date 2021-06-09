@@ -16,32 +16,14 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis;
+package com.azortis.orbis.block.data;
 
-import com.azortis.orbis.block.data.BlockData;
-import com.azortis.orbis.container.Container;
-import com.azortis.orbis.util.NamespaceId;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonSerializer;
-import org.jetbrains.annotations.Nullable;
-import org.slf4j.Logger;
+import com.azortis.orbis.block.BlockFace;
 
-import java.io.File;
-import java.util.Collection;
+public interface Rotatable extends BlockData{
 
-public interface Adapter {
+    BlockFace getRotation();
 
-    String getAdaptation();
-
-    Logger getLogger();
-
-    File getDirectory();
-
-    @Nullable
-    Container getContainer(String name);
-
-    Collection<Container> getContainers();
-
-    BlockData createBlockData(NamespaceId material);
+    void setRotation(BlockFace blockFace);
 
 }
