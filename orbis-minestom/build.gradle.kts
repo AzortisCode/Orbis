@@ -28,3 +28,10 @@ dependencies {
     implementation("com.github.Minestom:Minestom:3026e46220")
     implementation("org.projectlombok:lombok:1.18.16")
 }
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(16))
+    }
+}
+

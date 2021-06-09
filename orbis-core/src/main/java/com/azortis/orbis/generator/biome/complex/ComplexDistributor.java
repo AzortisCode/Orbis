@@ -16,22 +16,31 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.block.data.type;
+package com.azortis.orbis.generator.biome.complex;
 
-import org.jetbrains.annotations.NotNull;
+import com.azortis.orbis.generator.biome.Biome;
+import com.azortis.orbis.generator.biome.Distributor;
 
-public interface Stair {
+import java.util.List;
 
-    @NotNull
-    Shape getShape();
+public class ComplexDistributor extends Distributor {
 
-    void setShape(@NotNull Shape shape);
+    private List<ComplexNoiseLayer> globalNoiseLayers;
 
-    enum Shape {
-        STRAIGHT,
-        INNER_LEFT,
-        INNER_RIGHT,
-        OUTER_LEFT,
-        OUTER_RIGHT
+
+    @Override
+    public void load() {
+
     }
+
+    @Override
+    public Biome getBiomeAt(int x, int z) {
+        return null;
+    }
+
+    @Override
+    public Biome getBiomeAt(double x, double z) {
+        return null;
+    }
+
 }

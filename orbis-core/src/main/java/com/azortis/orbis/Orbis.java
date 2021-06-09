@@ -18,7 +18,6 @@
 
 package com.azortis.orbis;
 
-import com.azortis.orbis.block.data.BlockData;
 import com.azortis.orbis.generator.Dimension;
 import com.azortis.orbis.generator.biome.Biome;
 import com.azortis.orbis.generator.biome.Distributor;

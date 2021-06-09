@@ -30,7 +30,7 @@ public interface Slab {
     enum Type {
         TOP,
         BOTTOM,
-        DOUBLE;
+        DOUBLE
     }
 
 }

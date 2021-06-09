@@ -4,5 +4,5 @@
 
 rootProject.name = "Orbis"
 include("orbis-core")
-include("orbis-bukkit")
+include("orbis-paper")
 include("orbis-minestom")

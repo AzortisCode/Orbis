@@ -28,6 +28,12 @@ dependencies {
     compileOnly("com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT")
 }
 
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(16))
+    }
+}
+
 tasks {
     named<ShadowJar>("shadowJar") {
         archiveBaseName.set("Orbis")

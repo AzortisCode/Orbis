@@ -43,6 +43,12 @@ dependencies {
     compileOnly("org.jetbrains:annotations:16.0.1")
 }
 
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(16))
+    }
+}
+
 publishing {
     publications {
         create<MavenPublication>("maven") {

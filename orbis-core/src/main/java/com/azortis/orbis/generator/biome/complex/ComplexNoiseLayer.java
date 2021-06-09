@@ -16,22 +16,13 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.block.data.type;
+package com.azortis.orbis.generator.biome.complex;
 
-import org.jetbrains.annotations.NotNull;
+public class ComplexNoiseLayer {
 
-public interface Stair {
+    private String tag;
+    private long seed;
+    private int zoom;
+    private int precision;
 
-    @NotNull
-    Shape getShape();
-
-    void setShape(@NotNull Shape shape);
-
-    enum Shape {
-        STRAIGHT,
-        INNER_LEFT,
-        INNER_RIGHT,
-        OUTER_LEFT,
-        OUTER_RIGHT
-    }
 }
