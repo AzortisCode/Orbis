@@ -16,10 +16,10 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.bukkit.generator;
+package com.azortis.orbis.paper.generator;
 
-import com.azortis.orbis.bukkit.OrbisPlugin;
-import com.azortis.orbis.bukkit.OrbisWorld;
+import com.azortis.orbis.paper.OrbisPlugin;
+import com.azortis.orbis.paper.OrbisWorld;
 import com.azortis.orbis.pack.Pack;
 import org.bukkit.World;
 import org.bukkit.generator.ChunkGenerator;
@@ -27,7 +27,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Random;
 
-public class BukkitChunkGenerator extends ChunkGenerator {
+public class PaperChunkGenerator extends ChunkGenerator {
 
     private final OrbisPlugin plugin;
     private final String worldName;
@@ -36,7 +36,7 @@ public class BukkitChunkGenerator extends ChunkGenerator {
     private volatile boolean loaded = false;
     private OrbisWorld orbisWorld;
 
-    public BukkitChunkGenerator(OrbisPlugin plugin, String worldName, Pack pack) {
+    public PaperChunkGenerator(OrbisPlugin plugin, String worldName, Pack pack) {
         this.plugin = plugin;
         this.worldName = worldName;
         this.pack = pack;
@@ -59,8 +59,8 @@ public class BukkitChunkGenerator extends ChunkGenerator {
     @Override
     public @NotNull ChunkData generateChunkData(@NotNull World world, @NotNull Random random, int chunkX, int chunkZ, @NotNull BiomeGrid biomeGrid) {
         if(!loaded) load(world);
-        BukkitChunkData chunkData = new BukkitChunkData(orbisWorld.getDimension(), createChunkData(world));
-        orbisWorld.getEngine().generateChunkData(chunkData, new BukkitBiomeGrid(biomeGrid), chunkX, chunkZ);
+        PaperChunkData chunkData = new PaperChunkData(orbisWorld.getDimension(), createChunkData(world));
+        orbisWorld.getEngine().generateChunkData(chunkData, new PaperBiomeGrid(biomeGrid), chunkX, chunkZ);
         return chunkData.getHandle();
     }
 

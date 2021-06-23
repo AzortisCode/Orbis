@@ -16,10 +16,10 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.bukkit;
+package com.azortis.orbis.paper;
 
 import com.azortis.orbis.Orbis;
-import com.azortis.orbis.bukkit.generator.BukkitChunkGenerator;
+import com.azortis.orbis.paper.generator.PaperChunkGenerator;
 import com.azortis.orbis.pack.Pack;
 import org.bukkit.World;
 import org.bukkit.generator.ChunkGenerator;
@@ -39,7 +39,7 @@ public class OrbisPlugin extends JavaPlugin {
     @Override
     public void onLoad() {
         this.metrics = new Metrics(this, 10874);
-        Orbis.initialize(new BukkitAdapter(this));
+        Orbis.initialize(new PaperAdapter(this));
     }
 
     @Override
@@ -47,7 +47,7 @@ public class OrbisPlugin extends JavaPlugin {
         if(packName != null){
             Pack pack = Orbis.getPackManager().getPack(packName);
             if(pack != null){
-                return new BukkitChunkGenerator(this, worldName, pack);
+                return new PaperChunkGenerator(this, worldName, pack);
             } else {
                 Orbis.getLogger().error("No pack by the name {} exists!", packName);
                 return super.getDefaultWorldGenerator(worldName, packName);

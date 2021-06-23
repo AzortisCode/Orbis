@@ -16,24 +16,21 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.bukkit.generator;
+package com.azortis.orbis.paper;
 
-import com.azortis.orbis.generator.biome.Biome;
-import com.azortis.orbis.generator.biome.BiomeGrid;
-import org.bukkit.generator.ChunkGenerator;
+import com.azortis.orbis.container.Container;
+import org.bukkit.World;
 
-import java.util.Locale;
+public class OrbisWorld extends Container {
 
-public class BukkitBiomeGrid implements BiomeGrid {
+    private final World bukkitWorld;
 
-    private final ChunkGenerator.BiomeGrid handle;
-
-    public BukkitBiomeGrid(ChunkGenerator.BiomeGrid handle) {
-        this.handle = handle;
+    public OrbisWorld(World bukkitWorld) {
+        super(bukkitWorld.getName(), bukkitWorld.getWorldFolder());
+        this.bukkitWorld = bukkitWorld;
     }
 
-    @Override
-    public void setBiome(int x, int y, int z, Biome biome) {
-        handle.setBiome(x, y, z, org.bukkit.block.Biome.valueOf(biome.getDerivative().getId().toUpperCase(Locale.ROOT)));
+    public World getBukkitWorld() {
+        return bukkitWorld;
     }
 }
