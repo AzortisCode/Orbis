@@ -16,19 +16,18 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.bukkit.block.data;
+package com.azortis.orbis.paper.block.data;
 
-import com.azortis.orbis.block.data.Waterlogged;
+import com.azortis.orbis.block.data.BlockData;
+import com.azortis.orbis.util.NamespaceId;
 
-public class BukkitWaterlogged extends BukkitBlockData implements Waterlogged {
-
-    @Override
-    public boolean isWaterLogged() {
-        return false;
-    }
+public class PaperBlockData implements BlockData {
 
     @Override
-    public void setWaterLogged(boolean waterLogged) {
-
+    public NamespaceId getMaterial() {
+        return null;
     }
+
+
+
 }

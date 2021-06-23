@@ -27,7 +27,6 @@ public class CellularNoise implements NoiseGenerator{
         noise.setNoiseType(FastNoise.NoiseType.Cellular);
         noise.setCellularReturnType(FastNoise.CellularReturnType.CellValue);
         noise.setCellularDistanceFunction(FastNoise.CellularDistanceFunction.Hybrid);
-
     }
 
     @Override

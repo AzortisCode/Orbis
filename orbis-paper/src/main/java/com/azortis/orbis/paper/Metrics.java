@@ -16,7 +16,7 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.bukkit;
+package com.azortis.orbis.paper;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;

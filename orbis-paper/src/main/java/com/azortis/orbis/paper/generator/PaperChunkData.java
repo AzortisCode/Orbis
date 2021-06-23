@@ -16,7 +16,7 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.bukkit.generator;
+package com.azortis.orbis.paper.generator;
 
 import com.azortis.orbis.generator.ChunkData;
 import com.azortis.orbis.generator.Dimension;
@@ -25,11 +25,11 @@ import org.bukkit.generator.ChunkGenerator;
 
 import java.util.Locale;
 
-public class BukkitChunkData extends ChunkData {
+public class PaperChunkData extends ChunkData {
 
     private final ChunkGenerator.ChunkData handle;
 
-    public BukkitChunkData(Dimension dimension, ChunkGenerator.ChunkData handle) {
+    public PaperChunkData(Dimension dimension, ChunkGenerator.ChunkData handle) {
         super(dimension);
         this.handle = handle;
     }
