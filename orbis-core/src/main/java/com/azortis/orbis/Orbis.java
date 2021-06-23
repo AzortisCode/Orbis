@@ -85,15 +85,11 @@ public final class Orbis {
 
     @SuppressWarnings("unchecked")
     public static <T> Registry<T> getRegistry(Class<? extends T> typeClass) {
-        Registry<?> registry = registries.get(typeClass);
-        if (registry != null) return (Registry<T>) registry;
-        return null;
+        return (Registry<T>) registries.get(typeClass);
     }
 
     @SuppressWarnings("unchecked")
     public static <T> GeneratorRegistry<T> getGeneratorRegistry(Class<T> typeClass) {
-        GeneratorRegistry<?> registry = generatorRegistries.get(typeClass);
-        if (registry != null) return (GeneratorRegistry<T>) registry;
-        return null;
+        return (GeneratorRegistry<T>) generatorRegistries.get(typeClass);
     }
 }
