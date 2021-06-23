@@ -16,7 +16,7 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.bukkit;
+package com.azortis.orbis.paper;
 
 import com.azortis.orbis.Adapter;
 import com.azortis.orbis.block.data.BlockData;
@@ -29,11 +29,11 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class BukkitAdapter implements Adapter {
+public class PaperAdapter implements Adapter {
 
     private final OrbisPlugin plugin;
 
-    public BukkitAdapter(OrbisPlugin plugin){
+    public PaperAdapter(OrbisPlugin plugin){
         this.plugin = plugin;
     }
 

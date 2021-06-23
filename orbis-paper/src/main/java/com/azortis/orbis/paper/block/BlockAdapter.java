@@ -16,21 +16,7 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.bukkit;
+package com.azortis.orbis.paper.block;
 
-import com.azortis.orbis.container.Container;
-import org.bukkit.World;
-
-public class OrbisWorld extends Container {
-
-    private final World bukkitWorld;
-
-    public OrbisWorld(World bukkitWorld) {
-        super(bukkitWorld.getName(), bukkitWorld.getWorldFolder());
-        this.bukkitWorld = bukkitWorld;
-    }
-
-    public World getBukkitWorld() {
-        return bukkitWorld;
-    }
+public class BlockAdapter {
 }
