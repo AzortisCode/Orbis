@@ -88,7 +88,7 @@ public abstract class Container {
         }
     }
 
-    public void saveContainerInfo(){
+    public void saveContainerInfo() {
         Orbis.getLogger().info("Saving container-info for {}", name);
         try {
             if(containerInfoFile.delete()) {
@@ -100,11 +100,11 @@ public abstract class Container {
         }
     }
 
-    public void reloadContainerInfo(){
+    public void reloadContainerInfo() {
         Orbis.getLogger().info("Loading container-info for {}", name);
         try {
             this.containerInfo = Orbis.getGson().fromJson(new FileReader(containerInfoFile), ContainerInfo.class);
-        }catch (FileNotFoundException ex){
+        } catch (FileNotFoundException ex) {
             Orbis.getLogger().error("container-info file not found for container: {}", name);
         }
     }
