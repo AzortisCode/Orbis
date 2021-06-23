@@ -1,6 +1,6 @@
 plugins {
     java
-    id("com.github.johnrengelman.shadow") version "6.1.0"
+    id("com.github.johnrengelman.shadow") version "7.0.0"
 }
 
 group = "com.azortis"
@@ -26,7 +26,7 @@ repositories {
 dependencies {
     implementation(project(":orbis-core"))
     implementation("com.github.Minestom:Minestom:3026e46220")
-    implementation("org.projectlombok:lombok:1.18.16")
+    implementation("org.projectlombok:lombok:1.18.20")
 }
 
 java {
