@@ -18,9 +18,10 @@
 
 package com.azortis.orbis.block.data.type;
 
+import com.azortis.orbis.block.data.Waterlogged;
 import org.jetbrains.annotations.NotNull;
 
-public interface Slab {
+public interface Slab extends Waterlogged {
 
     @NotNull
     Type getType();

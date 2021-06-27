@@ -18,7 +18,7 @@
 
 package com.azortis.orbis.block.data;
 
-public interface Waterlogged extends BlockData{
+public interface Waterlogged extends BlockData {
 
     boolean isWaterLogged();
 

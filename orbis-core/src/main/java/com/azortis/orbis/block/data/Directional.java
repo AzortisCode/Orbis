@@ -23,7 +23,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Set;
 
-public interface Directional {
+public interface Directional extends BlockData{
 
     @NotNull
     BlockFace getFacing();

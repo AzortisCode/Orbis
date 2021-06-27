@@ -18,5 +18,22 @@
 
 package com.azortis.orbis.block.data.type;
 
-public interface Door {
+import com.azortis.orbis.block.data.Bisected;
+import com.azortis.orbis.block.data.Directional;
+import com.azortis.orbis.block.data.Openable;
+import com.azortis.orbis.block.data.Powerable;
+import org.jetbrains.annotations.NotNull;
+
+public interface Door extends Bisected, Directional, Openable, Powerable {
+
+    @NotNull
+    Hinge getHinge();
+
+    void setHinge(@NotNull Hinge hinge);
+
+    enum Hinge {
+        LEFT,
+        RIGHT;
+    }
+
 }

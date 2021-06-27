@@ -23,6 +23,8 @@ import lombok.Getter;
 
 public class Block {
 
+    //TODO overhaul this class to no longer represent a block being placed, but a block in the world
+
     @Getter
     private final NamespaceId block;
 

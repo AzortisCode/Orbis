@@ -37,7 +37,7 @@ dependencies {
     annotationProcessor("org.projectlombok:lombok:1.18.20")
 
     // Adapters should determine if it should be added to a shadow jar
-    compileOnly("com.google.code.gson:gson:2.8.6")
+    compileOnly("com.google.code.gson:gson:2.8.7")
     compileOnly("org.slf4j:slf4j-api:1.7.30")
     compileOnly("commons-io:commons-io:2.8.0")
     compileOnly("org.jetbrains:annotations:16.0.1")

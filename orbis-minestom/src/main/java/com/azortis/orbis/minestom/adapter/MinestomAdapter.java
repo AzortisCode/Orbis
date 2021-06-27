@@ -22,8 +22,6 @@ import com.azortis.orbis.Adapter;
 import com.azortis.orbis.block.data.BlockData;
 import com.azortis.orbis.container.Container;
 import com.azortis.orbis.util.NamespaceId;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonSerializer;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 

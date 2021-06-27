@@ -18,20 +18,22 @@
 
 package com.azortis.orbis.block.data.type;
 
-import org.jetbrains.annotations.NotNull;
+import com.azortis.orbis.block.data.BlockData;
 
-public interface Stair {
+public interface TurtleEgg extends BlockData {
 
-    @NotNull
-    Shape getShape();
+    int getEggs();
 
-    void setShape(@NotNull Shape shape);
+    void setEggs(int eggs);
 
-    enum Shape {
-        STRAIGHT,
-        INNER_LEFT,
-        INNER_RIGHT,
-        OUTER_LEFT,
-        OUTER_RIGHT
-    }
+    int getMinimumEggs();
+
+    int getMaximumEggs();
+
+    int getHatch();
+
+    void setHatch(int hatch);
+
+    int getMaximumHatch();
+
 }

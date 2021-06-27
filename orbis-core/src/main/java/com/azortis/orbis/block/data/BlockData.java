@@ -19,9 +19,13 @@
 package com.azortis.orbis.block.data;
 
 import com.azortis.orbis.util.NamespaceId;
+import org.jetbrains.annotations.NotNull;
 
 public interface BlockData {
 
     NamespaceId getMaterial();
+
+    @NotNull
+    BlockData clone();
 
 }

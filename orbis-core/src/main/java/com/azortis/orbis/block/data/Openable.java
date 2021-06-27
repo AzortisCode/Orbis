@@ -18,7 +18,7 @@
 
 package com.azortis.orbis.block.data;
 
-public interface Openable extends BlockData{
+public interface Openable extends BlockData {
 
     boolean isOpen();
 

@@ -19,11 +19,13 @@
 package com.azortis.orbis.block.data;
 
 import com.azortis.orbis.block.BlockFace;
+import org.jetbrains.annotations.NotNull;
 
-public interface Rotatable extends BlockData{
+public interface Rotatable extends BlockData {
 
+    @NotNull
     BlockFace getRotation();
 
-    void setRotation(BlockFace blockFace);
+    void setRotation(@NotNull BlockFace blockFace);
 
 }
