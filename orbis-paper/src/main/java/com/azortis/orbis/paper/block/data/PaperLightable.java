@@ -16,21 +16,24 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.block.data;
+package com.azortis.orbis.paper.block.data;
 
-import org.jetbrains.annotations.NotNull;
+import com.azortis.orbis.block.data.Lightable;
+import org.bukkit.block.data.BlockData;
 
-public interface FaceAttachable extends BlockData {
+public class PaperLightable extends PaperBlockData implements Lightable {
 
-    @NotNull
-    AttachedFace getAttachedFace();
-
-    void setAttachedFace(@NotNull AttachedFace attachedFace);
-
-    enum AttachedFace {
-        FLOOR,
-        WALL,
-        CEILING
+    public PaperLightable(BlockData handle) {
+        super(handle);
     }
 
+    @Override
+    public boolean isLit() {
+        return ((org.bukkit.block.data.Lightable) getHandle()).isLit();
+    }
+
+    @Override
+    public void setLit(boolean lit) {
+        ((org.bukkit.block.data.Lightable) getHandle()).setLit(lit);
+    }
 }

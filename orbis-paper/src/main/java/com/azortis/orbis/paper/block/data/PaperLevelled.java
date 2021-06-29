@@ -16,21 +16,29 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.block.data;
+package com.azortis.orbis.paper.block.data;
 
-import org.jetbrains.annotations.NotNull;
+import com.azortis.orbis.block.data.Levelled;
+import org.bukkit.block.data.BlockData;
 
-public interface FaceAttachable extends BlockData {
+public class PaperLevelled extends PaperBlockData implements Levelled {
 
-    @NotNull
-    AttachedFace getAttachedFace();
-
-    void setAttachedFace(@NotNull AttachedFace attachedFace);
-
-    enum AttachedFace {
-        FLOOR,
-        WALL,
-        CEILING
+    public PaperLevelled(BlockData handle) {
+        super(handle);
     }
 
+    @Override
+    public int getLevel() {
+        return ((org.bukkit.block.data.Levelled) getHandle()).getLevel();
+    }
+
+    @Override
+    public void setLevel(int level) {
+        ((org.bukkit.block.data.Levelled) getHandle()).setLevel(level);
+    }
+
+    @Override
+    public int getMaximumLevel() {
+        return ((org.bukkit.block.data.Levelled) getHandle()).getMaximumLevel();
+    }
 }

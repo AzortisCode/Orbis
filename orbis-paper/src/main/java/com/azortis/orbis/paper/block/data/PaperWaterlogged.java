@@ -19,16 +19,21 @@
 package com.azortis.orbis.paper.block.data;
 
 import com.azortis.orbis.block.data.Waterlogged;
+import org.bukkit.block.data.BlockData;
 
 public class PaperWaterlogged extends PaperBlockData implements Waterlogged {
 
+    public PaperWaterlogged(BlockData handle) {
+        super(handle);
+    }
+
     @Override
     public boolean isWaterLogged() {
-        return false;
+        return ((org.bukkit.block.data.Waterlogged) getHandle()).isWaterlogged();
     }
 
     @Override
     public void setWaterLogged(boolean waterLogged) {
-
+        ((org.bukkit.block.data.Waterlogged) getHandle()).setWaterlogged(waterLogged);
     }
 }

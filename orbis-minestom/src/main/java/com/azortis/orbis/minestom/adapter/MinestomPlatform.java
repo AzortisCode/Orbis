@@ -16,32 +16,47 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.paper.block.data;
+package com.azortis.orbis.minestom.adapter;
 
+import com.azortis.orbis.Platform;
 import com.azortis.orbis.block.data.BlockData;
+import com.azortis.orbis.container.Container;
 import com.azortis.orbis.util.NamespaceId;
-import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.slf4j.Logger;
 
-public class PaperBlockData implements BlockData {
-    private final org.bukkit.block.data.BlockData handle;
+import java.io.File;
+import java.util.Collection;
 
-    public PaperBlockData(org.bukkit.block.data.BlockData handle){
-        this.handle = handle;
-    }
-
-    public org.bukkit.block.data.BlockData getHandle() {
-        return handle;
-    }
+public class MinestomPlatform implements Platform {
 
     @Override
-    public NamespaceId getMaterial() {
+    public String getAdaptation() {
         return null;
     }
 
     @Override
-    public @NotNull BlockData clone() {
+    public Logger getLogger() {
         return null;
     }
 
+    @Override
+    public File getDirectory() {
+        return null;
+    }
 
+    @Override
+    public @Nullable Container getContainer(String name) {
+        return null;
+    }
+
+    @Override
+    public Collection<Container> getContainers() {
+        return null;
+    }
+
+    @Override
+    public BlockData createBlockData(NamespaceId material) {
+        return null;
+    }
 }

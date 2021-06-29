@@ -18,30 +18,35 @@
 
 package com.azortis.orbis.paper.block.data;
 
-import com.azortis.orbis.block.data.BlockData;
-import com.azortis.orbis.util.NamespaceId;
+import com.azortis.orbis.block.BlockFace;
+import com.azortis.orbis.block.data.Directional;
+import com.azortis.orbis.paper.block.BlockAdapter;
+import org.bukkit.block.data.BlockData;
 import org.jetbrains.annotations.NotNull;
 
-public class PaperBlockData implements BlockData {
-    private final org.bukkit.block.data.BlockData handle;
+import java.util.Set;
+import java.util.stream.Collectors;
 
-    public PaperBlockData(org.bukkit.block.data.BlockData handle){
-        this.handle = handle;
-    }
+public class PaperDirectional extends PaperBlockData implements Directional {
 
-    public org.bukkit.block.data.BlockData getHandle() {
-        return handle;
-    }
-
-    @Override
-    public NamespaceId getMaterial() {
-        return null;
+    public PaperDirectional(BlockData handle) {
+        super(handle);
     }
 
     @Override
-    public @NotNull BlockData clone() {
-        return null;
+    public @NotNull BlockFace getFacing() {
+        return BlockAdapter.fromPaper(((org.bukkit.block.data.Directional) getHandle()).getFacing());
     }
 
+    @Override
+    public void setFacing(@NotNull BlockFace facing) {
+        ((org.bukkit.block.data.Directional) getHandle()).setFacing(BlockAdapter.toPaper(facing));
+    }
+
+    @Override
+    public @NotNull Set<BlockFace> getFaces() {
+        return ((org.bukkit.block.data.Directional) getHandle()).getFaces().stream().map(BlockAdapter::fromPaper)
+                .collect(Collectors.toSet());
+    }
 
 }

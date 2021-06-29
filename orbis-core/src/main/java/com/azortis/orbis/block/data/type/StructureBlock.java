@@ -32,7 +32,7 @@ public interface StructureBlock extends BlockData {
         SAVE,
         LOAD,
         CORNER,
-        DATA;
+        DATA
     }
 
 }

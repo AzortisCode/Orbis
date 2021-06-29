@@ -16,21 +16,24 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.block.data;
+package com.azortis.orbis.paper.block.data;
 
-import org.jetbrains.annotations.NotNull;
+import com.azortis.orbis.block.data.Snowable;
+import org.bukkit.block.data.BlockData;
 
-public interface FaceAttachable extends BlockData {
+public class PaperSnowable extends PaperBlockData implements Snowable {
 
-    @NotNull
-    AttachedFace getAttachedFace();
-
-    void setAttachedFace(@NotNull AttachedFace attachedFace);
-
-    enum AttachedFace {
-        FLOOR,
-        WALL,
-        CEILING
+    public PaperSnowable(BlockData handle) {
+        super(handle);
     }
 
+    @Override
+    public boolean isSnowy() {
+        return ((org.bukkit.block.data.Snowable) getHandle()).isSnowy();
+    }
+
+    @Override
+    public void setSnowy(boolean snowy) {
+        ((org.bukkit.block.data.Snowable) getHandle()).setSnowy(snowy);
+    }
 }

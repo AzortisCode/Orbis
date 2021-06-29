@@ -16,9 +16,8 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.paper;
+package com.azortis.orbis;
 
-import com.azortis.orbis.Adapter;
 import com.azortis.orbis.block.data.BlockData;
 import com.azortis.orbis.container.Container;
 import com.azortis.orbis.util.NamespaceId;
@@ -26,45 +25,21 @@ import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Collection;
 
-public class PaperAdapter implements Adapter {
+public interface Platform {
 
-    private final OrbisPlugin plugin;
+    String getAdaptation();
 
-    public PaperAdapter(OrbisPlugin plugin){
-        this.plugin = plugin;
-    }
+    Logger getLogger();
 
-    @Override
-    public String getAdaptation() {
-        return "Bukkit";
-    }
-
-    @Override
-    public Logger getLogger() {
-        return plugin.getSLF4JLogger();
-    }
-
-    @Override
-    public File getDirectory() {
-        return plugin.getDataFolder();
-    }
+    File getDirectory();
 
     @Nullable
-    @Override
-    public Container getContainer(String name) {
-        return plugin.getWorld(name);
-    }
+    Container getContainer(String name);
 
-    @Override
-    public Collection<Container> getContainers() {
-        return new ArrayList<>(plugin.getWorlds());
-    }
+    Collection<Container> getContainers();
 
-    @Override
-    public BlockData createBlockData(NamespaceId material) {
-        return null;
-    }
+    BlockData createBlockData(NamespaceId material);
+
 }

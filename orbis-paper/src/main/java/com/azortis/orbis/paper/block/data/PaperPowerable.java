@@ -16,30 +16,24 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis;
+package com.azortis.orbis.paper.block.data;
 
-import com.azortis.orbis.block.data.BlockData;
-import com.azortis.orbis.container.Container;
-import com.azortis.orbis.util.NamespaceId;
-import org.jetbrains.annotations.Nullable;
-import org.slf4j.Logger;
+import com.azortis.orbis.block.data.Powerable;
+import org.bukkit.block.data.BlockData;
 
-import java.io.File;
-import java.util.Collection;
+public class PaperPowerable extends PaperBlockData implements Powerable {
 
-public interface Adapter {
+    public PaperPowerable(BlockData handle) {
+        super(handle);
+    }
 
-    String getAdaptation();
+    @Override
+    public boolean isPowered() {
+        return ((org.bukkit.block.data.Powerable) getHandle()).isPowered();
+    }
 
-    Logger getLogger();
-
-    File getDirectory();
-
-    @Nullable
-    Container getContainer(String name);
-
-    Collection<Container> getContainers();
-
-    BlockData createBlockData(NamespaceId material);
-
+    @Override
+    public void setPowered(boolean powered) {
+        ((org.bukkit.block.data.Powerable) getHandle()).setPowered(powered);
+    }
 }

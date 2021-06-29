@@ -23,10 +23,10 @@ import lombok.Setter;
 
 @Getter
 public class LinkedBiomeWeightMap {
-    private int biome;
+    private final int biome;
     @Setter
     private double[] weights;
-    private LinkedBiomeWeightMap next;
+    private final LinkedBiomeWeightMap next;
 
     public LinkedBiomeWeightMap(int biome, LinkedBiomeWeightMap next) {
         this.biome = biome;

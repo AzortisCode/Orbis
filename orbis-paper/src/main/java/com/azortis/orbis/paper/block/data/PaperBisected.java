@@ -18,30 +18,38 @@
 
 package com.azortis.orbis.paper.block.data;
 
-import com.azortis.orbis.block.data.BlockData;
-import com.azortis.orbis.util.NamespaceId;
+import com.azortis.orbis.block.data.Bisected;
+import org.bukkit.block.data.BlockData;
 import org.jetbrains.annotations.NotNull;
 
-public class PaperBlockData implements BlockData {
-    private final org.bukkit.block.data.BlockData handle;
+public class PaperBisected extends PaperBlockData implements Bisected {
 
-    public PaperBlockData(org.bukkit.block.data.BlockData handle){
-        this.handle = handle;
-    }
-
-    public org.bukkit.block.data.BlockData getHandle() {
-        return handle;
+    public PaperBisected(BlockData handle) {
+        super(handle);
     }
 
     @Override
-    public NamespaceId getMaterial() {
-        return null;
+    public @NotNull Half getHalf() {
+        return fromPaper(((org.bukkit.block.data.Bisected) getHandle()).getHalf());
     }
 
     @Override
-    public @NotNull BlockData clone() {
-        return null;
+    public void setHalf(@NotNull Half half) {
+        ((org.bukkit.block.data.Bisected) getHandle()).setHalf(toPaper(half));
     }
 
+    public static org.bukkit.block.data.Bisected.Half toPaper(Half half){
+        return switch (half){
+            case TOP -> org.bukkit.block.data.Bisected.Half.TOP;
+            case BOTTOM -> org.bukkit.block.data.Bisected.Half.BOTTOM;
+        };
+    }
+
+    public static Half fromPaper(org.bukkit.block.data.Bisected.Half half){
+        return switch (half){
+            case TOP -> Half.TOP;
+            case BOTTOM -> Half.BOTTOM;
+        };
+    }
 
 }

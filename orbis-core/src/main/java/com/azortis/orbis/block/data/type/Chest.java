@@ -32,7 +32,7 @@ public interface Chest extends Directional, Waterlogged {
     enum Type {
         SINGLE,
         LEFT,
-        RIGHT;
+        RIGHT
     }
 
 }

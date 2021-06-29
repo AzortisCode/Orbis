@@ -39,7 +39,7 @@ public class OrbisPlugin extends JavaPlugin {
     @Override
     public void onLoad() {
         this.metrics = new Metrics(this, 10874);
-        Orbis.initialize(new PaperAdapter(this));
+        Orbis.initialize(new PaperPlatform(this));
     }
 
     @Override

@@ -30,7 +30,7 @@ public interface TechnicalPiston extends Directional {
 
     enum Type {
         NORMAL,
-        STICKY;
+        STICKY
     }
 
 }

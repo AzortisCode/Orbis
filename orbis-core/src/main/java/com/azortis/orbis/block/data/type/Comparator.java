@@ -31,7 +31,7 @@ public interface Comparator extends Directional, Powerable {
 
     enum Mode {
         COMPARE,
-        SUBTRACT;
+        SUBTRACT
     }
 
 }

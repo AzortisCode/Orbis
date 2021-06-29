@@ -16,21 +16,30 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.block.data;
+package com.azortis.orbis.paper.block.data;
 
-import org.jetbrains.annotations.NotNull;
+import com.azortis.orbis.block.data.Ageable;
+import org.bukkit.block.data.BlockData;
 
-public interface FaceAttachable extends BlockData {
+public class PaperAgeable extends PaperBlockData implements Ageable {
 
-    @NotNull
-    AttachedFace getAttachedFace();
+    public PaperAgeable(BlockData handle) {
+        super(handle);
+    }
 
-    void setAttachedFace(@NotNull AttachedFace attachedFace);
+    @Override
+    public int getAge() {
+        return ((org.bukkit.block.data.Ageable) getHandle()).getAge();
+    }
 
-    enum AttachedFace {
-        FLOOR,
-        WALL,
-        CEILING
+    @Override
+    public void setAge(int age) {
+        ((org.bukkit.block.data.Ageable) getHandle()).setAge(age);
+    }
+
+    @Override
+    public int getMaximumAge() {
+        return ((org.bukkit.block.data.Ageable) getHandle()).getMaximumAge();
     }
 
 }

@@ -18,10 +18,10 @@
 
 package com.azortis.orbis.block.data;
 
-import com.azortis.orbis.util.Axis;
+import com.azortis.orbis.block.Axis;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.List;
+import java.util.Set;
 
 public interface Orientable extends BlockData{
 
@@ -31,6 +31,6 @@ public interface Orientable extends BlockData{
     void setAxis(@NotNull Axis axis);
 
     @NotNull
-    List<Axis> getAxes();
+    Set<Axis> getAxes();
 
 }

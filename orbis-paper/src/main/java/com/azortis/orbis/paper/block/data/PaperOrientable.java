@@ -18,30 +18,34 @@
 
 package com.azortis.orbis.paper.block.data;
 
-import com.azortis.orbis.block.data.BlockData;
-import com.azortis.orbis.util.NamespaceId;
+import com.azortis.orbis.block.data.Orientable;
+import com.azortis.orbis.block.Axis;
+import com.azortis.orbis.paper.block.BlockAdapter;
+import org.bukkit.block.data.BlockData;
 import org.jetbrains.annotations.NotNull;
 
-public class PaperBlockData implements BlockData {
-    private final org.bukkit.block.data.BlockData handle;
+import java.util.Set;
+import java.util.stream.Collectors;
 
-    public PaperBlockData(org.bukkit.block.data.BlockData handle){
-        this.handle = handle;
-    }
+public class PaperOrientable extends PaperBlockData implements Orientable {
 
-    public org.bukkit.block.data.BlockData getHandle() {
-        return handle;
-    }
-
-    @Override
-    public NamespaceId getMaterial() {
-        return null;
+    public PaperOrientable(BlockData handle) {
+        super(handle);
     }
 
     @Override
-    public @NotNull BlockData clone() {
-        return null;
+    public @NotNull Axis getAxis() {
+        return BlockAdapter.fromPaper(((org.bukkit.block.data.Orientable) getHandle()).getAxis());
     }
 
+    @Override
+    public void setAxis(@NotNull Axis axis) {
+        ((org.bukkit.block.data.Orientable) getHandle()).setAxis(BlockAdapter.toPaper(axis));
+    }
 
+    @Override
+    public @NotNull Set<Axis> getAxes() {
+        return ((org.bukkit.block.data.Orientable) getHandle()).getAxes().stream().map(BlockAdapter::fromPaper)
+                .collect(Collectors.toSet());
+    }
 }

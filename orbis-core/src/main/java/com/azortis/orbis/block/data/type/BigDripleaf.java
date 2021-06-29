@@ -31,7 +31,7 @@ public interface BigDripleaf extends DripLeaf {
         NONE,
         UNSTABLE,
         PARTIAL,
-        FULL;
+        FULL
     }
 
 }

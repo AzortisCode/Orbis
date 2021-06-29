@@ -41,7 +41,7 @@ public final class Orbis {
     public static final String SETTINGS_VERSION = "1";
 
     @Getter
-    private static Adapter adapter = null;
+    private static Platform platform = null;
     @Getter
     private static Logger logger;
     @Getter
@@ -56,12 +56,12 @@ public final class Orbis {
     private Orbis() {
     }
 
-    public static void initialize(Adapter adaptation) {
+    public static void initialize(Platform platform) {
         // Only initialize once.
-        if (adapter == null) {
-            adapter = adaptation;
-            logger = adaptation.getLogger();
-            logger.info("Initializing {} adaptation of Orbis", adaptation.getAdaptation());
+        if (Orbis.platform == null) {
+            Orbis.platform = platform;
+            logger = platform.getLogger();
+            logger.info("Initializing {} adaptation of Orbis", platform.getAdaptation());
 
             // Load registries for loading certain objects of packs dynamically
             registries = new HashMap<>();
@@ -78,7 +78,7 @@ public final class Orbis {
                     .registerTypeAdapter(Distributor.class, new DistributorAdapter()).create();
 
             // Load managers
-            packManager = new PackManager(adaptation.getDirectory());
+            packManager = new PackManager(platform.getDirectory());
 
         }
     }

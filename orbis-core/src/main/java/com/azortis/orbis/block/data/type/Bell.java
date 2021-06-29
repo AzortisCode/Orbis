@@ -33,7 +33,7 @@ public interface Bell extends Directional, Powerable {
         FLOOR,
         CEILING,
         SINGLE_WALL,
-        DOUBLE_WALL;
+        DOUBLE_WALL
     }
 
 }

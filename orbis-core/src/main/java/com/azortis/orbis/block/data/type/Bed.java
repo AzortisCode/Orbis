@@ -32,7 +32,7 @@ public interface Bed extends Directional {
 
     enum Part {
         HEAD,
-        FOOT;
+        FOOT
     }
 
 }

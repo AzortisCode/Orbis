@@ -21,8 +21,9 @@ package com.azortis.orbis.block.data;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
+import java.util.Set;
 
-public interface Rail extends BlockData {
+public interface Rail extends Waterlogged {
 
     @NotNull
     Shape getShape();
@@ -30,7 +31,7 @@ public interface Rail extends BlockData {
     void setShape(@NotNull Shape shape);
 
     @NotNull
-    List<Shape> getShapes();
+    Set<Shape> getShapes();
 
     enum Shape {
         NORTH_SOUTH,
@@ -42,6 +43,6 @@ public interface Rail extends BlockData {
         SOUTH_EAST,
         SOUTH_WEST,
         NORTH_WEST,
-        NORTH_EAST;
+        NORTH_EAST
     }
 }

@@ -16,21 +16,8 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.block.data;
+package com.azortis.orbis.block;
 
-import org.jetbrains.annotations.NotNull;
-
-public interface FaceAttachable extends BlockData {
-
-    @NotNull
-    AttachedFace getAttachedFace();
-
-    void setAttachedFace(@NotNull AttachedFace attachedFace);
-
-    enum AttachedFace {
-        FLOOR,
-        WALL,
-        CEILING
-    }
-
+public enum Axis {
+    X,Y,Z
 }

@@ -48,7 +48,7 @@ public interface NoteBlock extends Powerable {
         DIDGERIDOO,
         BIT,
         BANJO,
-        PLING;
+        PLING
     }
 
 }

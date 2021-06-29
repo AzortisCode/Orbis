@@ -33,7 +33,7 @@ public interface Door extends Bisected, Directional, Openable, Powerable {
 
     enum Hinge {
         LEFT,
-        RIGHT;
+        RIGHT
     }
 
 }

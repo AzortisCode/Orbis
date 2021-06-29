@@ -31,7 +31,7 @@ public interface Bamboo extends Ageable, Sapling {
     enum Leaves {
         NONE,
         SMALL,
-        LARGE;
+        LARGE
     }
 
 }

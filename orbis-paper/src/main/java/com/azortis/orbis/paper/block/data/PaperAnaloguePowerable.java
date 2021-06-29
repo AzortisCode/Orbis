@@ -16,21 +16,30 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.block.data;
+package com.azortis.orbis.paper.block.data;
 
-import org.jetbrains.annotations.NotNull;
+import com.azortis.orbis.block.data.AnaloguePowerable;
+import org.bukkit.block.data.BlockData;
 
-public interface FaceAttachable extends BlockData {
+public class PaperAnaloguePowerable extends PaperBlockData implements AnaloguePowerable {
 
-    @NotNull
-    AttachedFace getAttachedFace();
+    public PaperAnaloguePowerable(BlockData handle) {
+        super(handle);
+    }
 
-    void setAttachedFace(@NotNull AttachedFace attachedFace);
+    @Override
+    public int getPower() {
+        return ((org.bukkit.block.data.AnaloguePowerable) getHandle()).getPower();
+    }
 
-    enum AttachedFace {
-        FLOOR,
-        WALL,
-        CEILING
+    @Override
+    public void setPower(int power) {
+        ((org.bukkit.block.data.AnaloguePowerable) getHandle()).setPower(power);
+    }
+
+    @Override
+    public int getMaximumPower() {
+        return ((org.bukkit.block.data.AnaloguePowerable) getHandle()).getMaximumPower();
     }
 
 }

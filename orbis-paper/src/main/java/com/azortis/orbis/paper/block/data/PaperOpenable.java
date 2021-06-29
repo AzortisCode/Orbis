@@ -16,8 +16,24 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.util;
+package com.azortis.orbis.paper.block.data;
 
-public enum Axis {
-    X,Y,Z;
+import com.azortis.orbis.block.data.Openable;
+import org.bukkit.block.data.BlockData;
+
+public class PaperOpenable extends PaperBlockData implements Openable {
+
+    public PaperOpenable(BlockData handle) {
+        super(handle);
+    }
+
+    @Override
+    public boolean isOpen() {
+        return ((org.bukkit.block.data.Openable) getHandle()).isOpen();
+    }
+
+    @Override
+    public void setOpen(boolean open) {
+        ((org.bukkit.block.data.Openable) getHandle()).setOpen(open);
+    }
 }

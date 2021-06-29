@@ -40,7 +40,7 @@ public interface Jigsaw extends BlockData {
         WEST_UP,
         EAST_UP,
         NORTH_UP,
-        SOUTH_UP;
+        SOUTH_UP
     }
 
 }

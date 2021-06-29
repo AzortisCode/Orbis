@@ -16,47 +16,28 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.minestom.adapter;
+package com.azortis.orbis.paper.block.data;
 
-import com.azortis.orbis.Adapter;
-import com.azortis.orbis.block.data.BlockData;
-import com.azortis.orbis.container.Container;
-import com.azortis.orbis.util.NamespaceId;
-import org.jetbrains.annotations.Nullable;
-import org.slf4j.Logger;
+import com.azortis.orbis.block.BlockFace;
+import com.azortis.orbis.block.data.Rotatable;
+import com.azortis.orbis.paper.block.BlockAdapter;
+import org.bukkit.block.data.BlockData;
+import org.jetbrains.annotations.NotNull;
 
-import java.io.File;
-import java.util.Collection;
+public class PaperRotatable extends PaperBlockData implements Rotatable {
 
-public class MinestomAdapter implements Adapter {
-
-    @Override
-    public String getAdaptation() {
-        return null;
+    public PaperRotatable(BlockData handle) {
+        super(handle);
     }
 
     @Override
-    public Logger getLogger() {
-        return null;
+    public @NotNull BlockFace getRotation() {
+        return BlockAdapter.fromPaper(((org.bukkit.block.data.Rotatable) getHandle()).getRotation());
     }
 
     @Override
-    public File getDirectory() {
-        return null;
+    public void setRotation(@NotNull BlockFace blockFace) {
+        ((org.bukkit.block.data.Rotatable) getHandle()).setRotation(BlockAdapter.toPaper(blockFace));
     }
 
-    @Override
-    public @Nullable Container getContainer(String name) {
-        return null;
-    }
-
-    @Override
-    public Collection<Container> getContainers() {
-        return null;
-    }
-
-    @Override
-    public BlockData createBlockData(NamespaceId material) {
-        return null;
-    }
 }
