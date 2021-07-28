@@ -19,10 +19,15 @@
 package com.azortis.orbis.generator.biome;
 
 import com.azortis.orbis.container.Container;
+import com.azortis.orbis.pack.studio.annotations.Directory;
+import com.azortis.orbis.pack.studio.annotations.GeneratorType;
+import com.azortis.orbis.registry.DistributorRegistry;
 import com.azortis.orbis.util.NamespaceId;
 
 import java.io.File;
 
+@Directory(value = "/generators/distributor/", searchSubFolders = false)
+@GeneratorType(DistributorRegistry.class)
 public abstract class Distributor {
 
     private String name;

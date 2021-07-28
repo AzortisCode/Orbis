@@ -27,6 +27,7 @@ import org.jetbrains.annotations.Nullable;
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class PackManager {
 
@@ -39,7 +40,7 @@ public class PackManager {
         }
 
         // Iterate through all folders and files(*.orbis).
-        for (File entry : packsDirectory.listFiles()){
+        for (File entry : Objects.requireNonNull(packsDirectory.listFiles())){
             if(!entry.isDirectory()) {
                 loadPack(entry);
             }
