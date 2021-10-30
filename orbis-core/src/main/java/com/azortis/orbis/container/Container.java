@@ -34,7 +34,7 @@ import java.nio.file.Files;
 import java.nio.file.StandardOpenOption;
 
 /**
- * An representation of a world/instance for core package
+ * A representation of a world/instance for core package
  */
 public abstract class Container {
     //name, folder, installed, settings folder, dimension, engine

@@ -25,7 +25,7 @@ repositories {
 
 dependencies {
     implementation(project(":orbis-core"))
-    compileOnly("io.papermc.paper:paper-api:1.17-R0.1-SNAPSHOT")
+    compileOnly("io.papermc.paper:paper-api:1.17.1-R0.1-SNAPSHOT")
     compileOnly("org.slf4j:slf4j-api:1.7.31")
 }
 

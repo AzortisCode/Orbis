@@ -38,10 +38,4 @@ public class PaperBlockData implements BlockData {
         return null;
     }
 
-    @Override
-    public @NotNull BlockData clone() {
-        return null;
-    }
-
-
 }

@@ -16,14 +16,25 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.block.data.type;
+package com.azortis.orbis.paper.block.data.type;
 
-import com.azortis.orbis.block.data.BlockData;
+import com.azortis.orbis.block.data.type.CaveVinesPlant;
+import com.azortis.orbis.paper.block.data.PaperBlockData;
+import org.bukkit.block.data.BlockData;
 
-public interface CaveVinePlant extends BlockData {
+public class PaperCaveVinesPlant extends PaperBlockData implements CaveVinesPlant {
 
-    boolean isBerries();
+    public PaperCaveVinesPlant(BlockData handle) {
+        super(handle);
+    }
 
-    void setBerries(boolean berries);
+    @Override
+    public boolean isBerries() {
+        return ((org.bukkit.block.data.type.CaveVinesPlant) getHandle()).isBerries();
+    }
 
+    @Override
+    public void setBerries(boolean berries) {
+        ((org.bukkit.block.data.type.CaveVinesPlant) getHandle()).setBerries(berries);
+    }
 }

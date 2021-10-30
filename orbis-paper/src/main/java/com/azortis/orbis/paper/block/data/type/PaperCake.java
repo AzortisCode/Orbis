@@ -16,16 +16,30 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.pack.studio;
+package com.azortis.orbis.paper.block.data.type;
 
-import com.azortis.orbis.container.Container;
+import com.azortis.orbis.block.data.type.Cake;
+import com.azortis.orbis.paper.block.data.PaperBlockData;
+import org.bukkit.block.data.BlockData;
 
-import java.io.File;
+public class PaperCake extends PaperBlockData implements Cake {
 
-public abstract class StudioContainer extends Container {
-
-    public StudioContainer(String name, File folder) {
-        super(name, folder);
+    public PaperCake(BlockData handle) {
+        super(handle);
     }
 
+    @Override
+    public int getBites() {
+        return ((org.bukkit.block.data.type.Cake) getHandle()).getBites();
+    }
+
+    @Override
+    public void setBites(int bites) {
+        ((org.bukkit.block.data.type.Cake) getHandle()).setBites(bites);
+    }
+
+    @Override
+    public int getMaximumBites() {
+        return ((org.bukkit.block.data.type.Cake) getHandle()).getMaximumBites();
+    }
 }

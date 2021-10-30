@@ -16,16 +16,16 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.pack.studio;
+package com.azortis.orbis.block.data.type;
 
-import com.azortis.orbis.container.Container;
+import com.azortis.orbis.block.data.Attachable;
+import com.azortis.orbis.block.data.MultipleFacing;
+import com.azortis.orbis.block.data.Powerable;
 
-import java.io.File;
+public interface Tripwire extends Attachable, MultipleFacing, Powerable {
 
-public abstract class StudioContainer extends Container {
+    boolean isDisarmed();
 
-    public StudioContainer(String name, File folder) {
-        super(name, folder);
-    }
+    void setDisarmed(boolean disarmed);
 
 }

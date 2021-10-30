@@ -16,16 +16,25 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.block.data.type;
+package com.azortis.orbis.paper.block.data.type;
 
-import com.azortis.orbis.block.data.Attachable;
-import com.azortis.orbis.block.data.MultipleFacing;
-import com.azortis.orbis.block.data.Powerable;
+import com.azortis.orbis.block.data.type.BubbleColumn;
+import com.azortis.orbis.paper.block.data.PaperBlockData;
+import org.bukkit.block.data.BlockData;
 
-public interface Trapwire extends Attachable, MultipleFacing, Powerable {
+public class PaperBubbleColumn extends PaperBlockData implements BubbleColumn {
 
-    boolean isDisarmed();
+    public PaperBubbleColumn(BlockData handle) {
+        super(handle);
+    }
 
-    void setDisarmed(boolean disarmed);
+    @Override
+    public boolean isDrag() {
+        return ((org.bukkit.block.data.type.BubbleColumn) getHandle()).isDrag();
+    }
 
+    @Override
+    public void setDrag(boolean drag) {
+        ((org.bukkit.block.data.type.BubbleColumn) getHandle()).setDrag(drag);
+    }
 }

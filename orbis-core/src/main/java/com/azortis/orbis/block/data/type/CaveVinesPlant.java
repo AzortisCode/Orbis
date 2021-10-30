@@ -16,16 +16,14 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.pack.studio;
+package com.azortis.orbis.block.data.type;
 
-import com.azortis.orbis.container.Container;
+import com.azortis.orbis.block.data.BlockData;
 
-import java.io.File;
+public interface CaveVinesPlant extends BlockData {
 
-public abstract class StudioContainer extends Container {
+    boolean isBerries();
 
-    public StudioContainer(String name, File folder) {
-        super(name, folder);
-    }
+    void setBerries(boolean berries);
 
 }

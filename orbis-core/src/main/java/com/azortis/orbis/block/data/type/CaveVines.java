@@ -20,5 +20,5 @@ package com.azortis.orbis.block.data.type;
 
 import com.azortis.orbis.block.data.Ageable;
 
-public interface CaveVines extends Ageable, CaveVinePlant {
+public interface CaveVines extends Ageable, CaveVinesPlant {
 }

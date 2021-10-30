@@ -25,7 +25,4 @@ public interface BlockData {
 
     NamespaceId getMaterial();
 
-    @NotNull
-    BlockData clone();
-
 }

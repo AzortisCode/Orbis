@@ -24,13 +24,13 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * A indicator for where config files for specified type can be found.
+ * An indicator for where config files for specified type can be found.
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 public @interface Directory {
     /**
-     * The root directory where configuration files for this this type can be found.
+     * The root directory where configuration files for this type can be found.
      *
      * @return Directory path with "/" as root for the pack.
      */

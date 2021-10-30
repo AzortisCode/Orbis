@@ -18,14 +18,6 @@
 
 package com.azortis.orbis.pack.studio;
 
-import com.azortis.orbis.container.Container;
-
-import java.io.File;
-
-public abstract class StudioContainer extends Container {
-
-    public StudioContainer(String name, File folder) {
-        super(name, folder);
-    }
+public class Project {
 
 }
