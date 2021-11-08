@@ -18,18 +18,19 @@
 
 package com.azortis.orbis.block.property;
 
+import com.google.common.collect.ImmutableSet;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Collection;
+import java.util.Set;
 
 public abstract class AbstractProperty<T> implements Property<T> {
 
     private final String name;
-    private final Collection<T> values;
+    private final Set<T> values;
 
-    public AbstractProperty(final @NotNull String name, final @NotNull Collection<T> values) {
+    public AbstractProperty(final @NotNull String name, final @NotNull Set<T> values) {
         this.name = name;
-        this.values = values;
+        this.values = ImmutableSet.copyOf(values);
     }
 
     @Override
@@ -38,7 +39,7 @@ public abstract class AbstractProperty<T> implements Property<T> {
     }
 
     @Override
-    public @NotNull Collection<T> getValues() {
+    public @NotNull Set<T> getValues() {
         return values;
     }
 

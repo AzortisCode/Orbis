@@ -16,37 +16,45 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.paper.block.data;
+package com.azortis.orbis.block.data.type;
 
-import com.azortis.orbis.block.BlockFace;
 import com.azortis.orbis.block.data.Directional;
-import com.azortis.orbis.paper.block.BlockAdapter;
-import org.bukkit.block.data.BlockData;
+import com.azortis.orbis.block.property.Direction;
+import com.azortis.orbis.block.property.EnumProperty;
+import com.azortis.orbis.block.property.PistonType;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Set;
-import java.util.stream.Collectors;
 
-public class PaperDirectional extends PaperBlockData implements Directional {
+public interface MovingPiston extends Directional {
 
-    public PaperDirectional(BlockData handle) {
-        super(handle);
+    EnumProperty<PistonType> TYPE = new EnumProperty<>("type", Set.of(PistonType.NORMAL, PistonType.STICKY));
+    EnumProperty<Direction> FACING = new EnumProperty<>("facing",
+            Set.of(Direction.UP, Direction.DOWN, Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST));
+
+    default PistonType getType(){
+        return getProperty(TYPE);
+    }
+
+    default void setType(PistonType type){
+        setProperty(TYPE, type);
     }
 
     @Override
-    public @NotNull BlockFace getFacing() {
-        return BlockAdapter.fromPaper(((org.bukkit.block.data.Directional) getHandle()).getFacing());
+    @NotNull
+    default Direction getFacing() {
+        return getProperty(FACING);
     }
 
     @Override
-    public void setFacing(@NotNull BlockFace facing) {
-        ((org.bukkit.block.data.Directional) getHandle()).setFacing(BlockAdapter.toPaper(facing));
+    default void setFacing(@NotNull Direction facing) {
+        setProperty(FACING, facing);
     }
 
     @Override
-    public @NotNull Set<BlockFace> getFaces() {
-        return ((org.bukkit.block.data.Directional) getHandle()).getFaces().stream().map(BlockAdapter::fromPaper)
-                .collect(Collectors.toSet());
+    @NotNull
+    default Set<Direction> getFaces() {
+        return FACING.getValues();
     }
 
 }

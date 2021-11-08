@@ -16,24 +16,28 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.paper.block.data;
+package com.azortis.orbis.block.property;
 
-import com.azortis.orbis.block.data.Powerable;
-import org.bukkit.block.data.BlockData;
+import com.azortis.orbis.util.StringRepresentable;
+import org.jetbrains.annotations.NotNull;
 
-public class PaperPowerable extends PaperBlockData implements Powerable {
+public enum BedPart implements StringRepresentable {
+    HEAD("head"),
+    FOOT("foot");
 
-    public PaperPowerable(BlockData handle) {
-        super(handle);
+    private final String name;
+
+    BedPart(String name) {
+        this.name = name;
     }
 
     @Override
-    public boolean isPowered() {
-        return ((org.bukkit.block.data.Powerable) getHandle()).isPowered();
+    public String toString() {
+        return this.name;
     }
 
     @Override
-    public void setPowered(boolean powered) {
-        ((org.bukkit.block.data.Powerable) getHandle()).setPowered(powered);
+    public @NotNull String getSerializedName() {
+        return this.name;
     }
 }

@@ -30,4 +30,5 @@ public interface Property<T> {
     @NotNull Collection<T> getValues();
 
     @Nullable T getValueFor(final @NotNull String value);
+
 }

@@ -18,6 +18,27 @@
 
 package com.azortis.orbis.block;
 
-public enum Axis {
-    X,Y,Z
+import com.azortis.orbis.util.StringRepresentable;
+import org.jetbrains.annotations.NotNull;
+
+public enum Axis implements StringRepresentable {
+    X("x"),
+    Y("y"),
+    Z("z");
+
+    private final String name;
+
+    Axis(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return this.name;
+    }
+
+    @Override
+    public @NotNull String getSerializedName() {
+        return this.name;
+    }
 }

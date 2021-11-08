@@ -18,10 +18,18 @@
 
 package com.azortis.orbis.block.data;
 
+import com.azortis.orbis.block.property.BooleanProperty;
+
 public interface Powerable extends BlockData {
 
-    boolean isPowered();
+    BooleanProperty POWERED = new BooleanProperty("powered");
 
-    void setPowered(boolean powered);
+    default boolean isPowered(){
+        return getProperty(POWERED);
+    }
+
+    default void setPowered(boolean powered){
+        setProperty(POWERED, powered);
+    }
 
 }

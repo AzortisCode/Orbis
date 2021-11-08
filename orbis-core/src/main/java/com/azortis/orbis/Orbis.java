@@ -79,7 +79,6 @@ public final class Orbis {
 
             // Load managers
             packManager = new PackManager(platform.getDirectory());
-
         }
     }
 

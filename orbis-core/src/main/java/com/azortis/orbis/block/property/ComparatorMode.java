@@ -16,30 +16,29 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.paper.block.data.type;
+package com.azortis.orbis.block.property;
 
-import com.azortis.orbis.block.data.type.Farmland;
-import com.azortis.orbis.paper.block.data.PaperBlockData;
-import org.bukkit.block.data.BlockData;
+import com.azortis.orbis.util.StringRepresentable;
+import org.jetbrains.annotations.NotNull;
 
-public class PaperFarmland extends PaperBlockData implements Farmland {
+public enum ComparatorMode implements StringRepresentable {
+    COMPARE("compare"),
+    SUBTRACT("subtract");
 
-    public PaperFarmland(BlockData handle) {
-        super(handle);
+    private final String name;
+
+    ComparatorMode(String name) {
+        this.name = name;
     }
 
     @Override
-    public int getMoisture() {
-        return ((org.bukkit.block.data.type.Farmland) getHandle()).getMoisture();
+    public String toString() {
+        return this.name;
     }
 
     @Override
-    public void setMoisture(int moisture) {
-        ((org.bukkit.block.data.type.Farmland) getHandle()).setMoisture(moisture);
+    public @NotNull String getSerializedName() {
+        return this.name;
     }
 
-    @Override
-    public int getMaximumMoisture() {
-        return ((org.bukkit.block.data.type.Farmland) getHandle()).getMaximumMoisture();
-    }
 }

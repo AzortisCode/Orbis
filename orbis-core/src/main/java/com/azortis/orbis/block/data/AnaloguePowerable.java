@@ -18,12 +18,24 @@
 
 package com.azortis.orbis.block.data;
 
+import com.azortis.orbis.block.property.IntegerProperty;
+
+import java.util.Set;
+
 public interface AnaloguePowerable extends BlockData {
 
-    int getPower();
+    IntegerProperty POWER = new IntegerProperty("power", Set.of(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15));
 
-    void setPower(int power);
+    default int getPower(){
+        return getProperty(POWER);
+    }
 
-    int getMaximumPower();
+    default void setPower(int power){
+        setProperty(POWER, power);
+    }
+
+    default int getMaximumPower(){
+        return 15;
+    }
 
 }

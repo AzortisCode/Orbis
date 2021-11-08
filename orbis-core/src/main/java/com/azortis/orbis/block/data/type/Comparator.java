@@ -20,18 +20,24 @@ package com.azortis.orbis.block.data.type;
 
 import com.azortis.orbis.block.data.Directional;
 import com.azortis.orbis.block.data.Powerable;
+import com.azortis.orbis.block.property.ComparatorMode;
+import com.azortis.orbis.block.property.EnumProperty;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Set;
 
 public interface Comparator extends Directional, Powerable {
 
+    EnumProperty<ComparatorMode> MODE = new EnumProperty<>("mode",
+            Set.of(ComparatorMode.COMPARE, ComparatorMode.SUBTRACT));
+
     @NotNull
-    Mode getMode();
+    default ComparatorMode getMode(){
+        return getProperty(MODE);
+    }
 
-    void setMode(@NotNull Mode mode);
-
-    enum Mode {
-        COMPARE,
-        SUBTRACT
+    default void setMode(@NotNull ComparatorMode mode){
+        setProperty(MODE, mode);
     }
 
 }

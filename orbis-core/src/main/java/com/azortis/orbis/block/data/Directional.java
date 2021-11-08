@@ -18,19 +18,29 @@
 
 package com.azortis.orbis.block.data;
 
-import com.azortis.orbis.block.BlockFace;
+import com.azortis.orbis.block.property.Direction;
+import com.azortis.orbis.block.property.EnumProperty;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Set;
 
-public interface Directional extends BlockData{
+public interface Directional extends BlockData {
+
+    EnumProperty<Direction> FACING = new EnumProperty<>("facing",
+            Set.of(Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST));
 
     @NotNull
-    BlockFace getFacing();
+    default Direction getFacing(){
+        return getProperty(FACING);
+    }
 
-    void setFacing(@NotNull BlockFace facing);
+    default void setFacing(@NotNull Direction facing){
+        setProperty(FACING, facing);
+    }
 
     @NotNull
-    Set<BlockFace> getFaces();
+    default Set<Direction> getFaces(){
+        return FACING.getValues();
+    }
 
 }

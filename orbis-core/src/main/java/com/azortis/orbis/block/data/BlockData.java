@@ -18,11 +18,15 @@
 
 package com.azortis.orbis.block.data;
 
+import com.azortis.orbis.block.property.Property;
 import com.azortis.orbis.util.NamespaceId;
-import org.jetbrains.annotations.NotNull;
 
 public interface BlockData {
 
     NamespaceId getMaterial();
+
+    <T> T getProperty(Property<T> property);
+
+    <T> void setProperty(Property<T> property, T value);
 
 }

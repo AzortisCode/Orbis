@@ -18,10 +18,18 @@
 
 package com.azortis.orbis.block.data;
 
+import com.azortis.orbis.block.property.BooleanProperty;
+
 public interface Lightable extends BlockData {
 
-    boolean isLit();
+    BooleanProperty LIT = new BooleanProperty("lit");
 
-    void setLit(boolean lit);
+    default boolean isLit(){
+        return getProperty(LIT);
+    }
+
+    default void setLit(boolean lit){
+        setProperty(LIT, lit);
+    }
 
 }

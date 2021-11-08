@@ -16,38 +16,31 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.paper.block.data.type;
+package com.azortis.orbis.block.data.type;
 
-import com.azortis.orbis.block.data.type.BrewingStand;
-import com.azortis.orbis.paper.block.data.PaperBlockData;
-import org.bukkit.block.data.BlockData;
+import com.azortis.orbis.block.Axis;
+import com.azortis.orbis.block.data.Orientable;
+import com.azortis.orbis.block.property.EnumProperty;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Set;
 
-public class PaperBrewingStand extends PaperBlockData implements BrewingStand {
+public interface NetherPortal extends Orientable {
 
-    public PaperBrewingStand(BlockData handle) {
-        super(handle);
+    EnumProperty<Axis> AXIS = new EnumProperty<>("axis", Set.of(Axis.X, Axis.Z));
+
+    @Override
+    default @NotNull Axis getAxis() {
+        return getProperty(AXIS);
     }
 
     @Override
-    public boolean hasBottle(int bottle) {
-        return ((org.bukkit.block.data.type.BrewingStand) getHandle()).hasBottle(bottle);
+    default void setAxis(@NotNull Axis axis) {
+        setProperty(AXIS, axis);
     }
 
     @Override
-    public void setBottle(int bottle, boolean has) {
-        ((org.bukkit.block.data.type.BrewingStand) getHandle()).setBottle(bottle, has);
-    }
-
-    @Override
-    public @NotNull Set<Integer> getBottles() {
-        return ((org.bukkit.block.data.type.BrewingStand) getHandle()).getBottles();
-    }
-
-    @Override
-    public int getMaximumBottles() {
-        return ((org.bukkit.block.data.type.BrewingStand) getHandle()).getMaximumBottles();
+    default @NotNull Set<Axis> getAxes() {
+        return AXIS.getValues();
     }
 }

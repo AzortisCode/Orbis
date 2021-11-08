@@ -19,11 +19,18 @@
 package com.azortis.orbis.block.data.type;
 
 import com.azortis.orbis.block.data.Directional;
+import com.azortis.orbis.block.property.BooleanProperty;
 
 public interface EndPortalFrame extends Directional {
 
-    boolean hasEye();
+    BooleanProperty EYE = new BooleanProperty("eye");
 
-    void setEye(boolean has);
+    default boolean hasEye(){
+        return getProperty(EYE);
+    }
+
+    default void setEye(boolean eye){
+        setProperty(EYE, eye);
+    }
 
 }

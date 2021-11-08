@@ -16,21 +16,32 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.block.data.type;
+package com.azortis.orbis.block.property;
 
-import com.azortis.orbis.block.data.Directional;
+import com.azortis.orbis.util.StringRepresentable;
 import org.jetbrains.annotations.NotNull;
 
-public interface TechnicalPiston extends Directional {
+public enum Direction implements StringRepresentable {
+    DOWN("down"),
+    UP("up"),
+    NORTH("north"),
+    SOUTH("south"),
+    WEST("west"),
+    EAST("east");
 
-    @NotNull
-    Type getType();
+    private final String name;
 
-    void setType(Type type);
-
-    enum Type {
-        NORMAL,
-        STICKY
+    Direction(String name) {
+        this.name = name;
     }
 
+    @Override
+    public String toString() {
+        return this.name;
+    }
+
+    @Override
+    public @NotNull String getSerializedName() {
+        return this.name;
+    }
 }

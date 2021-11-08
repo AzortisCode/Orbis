@@ -18,10 +18,18 @@
 
 package com.azortis.orbis.block.data;
 
+import com.azortis.orbis.block.property.BooleanProperty;
+
 public interface Waterlogged extends BlockData {
 
-    boolean isWaterLogged();
+    BooleanProperty WATERLOGGED = new BooleanProperty("waterlogged");
 
-    void setWaterLogged(boolean waterLogged);
+    default boolean isWaterLogged(){
+        return getProperty(WATERLOGGED);
+    }
+
+    default void setWaterLogged(boolean waterLogged){
+        setProperty(WATERLOGGED, waterLogged);
+    }
 
 }

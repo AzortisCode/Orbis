@@ -19,11 +19,18 @@
 package com.azortis.orbis.block.data.type;
 
 import com.azortis.orbis.block.data.BlockData;
+import com.azortis.orbis.block.property.BooleanProperty;
 
 public interface BubbleColumn extends BlockData {
 
-    boolean isDrag();
+    BooleanProperty DRAG = new BooleanProperty("drag");
 
-    void setDrag(boolean drag);
+    default boolean isDrag(){
+        return getProperty(DRAG);
+    }
+
+    default void setDrag(boolean drag){
+        setProperty(DRAG, drag);
+    }
 
 }

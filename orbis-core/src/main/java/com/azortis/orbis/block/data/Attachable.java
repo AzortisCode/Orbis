@@ -18,10 +18,18 @@
 
 package com.azortis.orbis.block.data;
 
+import com.azortis.orbis.block.property.BooleanProperty;
+
 public interface Attachable extends BlockData {
 
-    boolean isAttached();
+    BooleanProperty ATTACHED = new BooleanProperty("attached");
 
-    void setAttached(boolean attached);
+    default boolean isAttached(){
+        return getProperty(ATTACHED);
+    }
+
+    default void setAttached(boolean attached){
+        setProperty(ATTACHED, attached);
+    }
 
 }

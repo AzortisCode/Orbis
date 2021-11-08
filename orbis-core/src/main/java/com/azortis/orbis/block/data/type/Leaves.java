@@ -19,15 +19,30 @@
 package com.azortis.orbis.block.data.type;
 
 import com.azortis.orbis.block.data.BlockData;
+import com.azortis.orbis.block.property.BooleanProperty;
+import com.azortis.orbis.block.property.IntegerProperty;
+
+import java.util.Set;
 
 public interface Leaves extends BlockData {
 
-    boolean isPersistent();
+    BooleanProperty PERSISTENT = new BooleanProperty("persistent");
+    IntegerProperty DISTANCE = new IntegerProperty("distance", Set.of(1,2,3,4,5,6,7));
 
-    void setPersistent(boolean persistent);
+    default boolean isPersistent(){
+        return getProperty(PERSISTENT);
+    }
 
-    int getDistance();
+    default void setPersistent(boolean persistent){
+        setProperty(PERSISTENT, persistent);
+    }
 
-    void setDistance(int distance);
+    default int getDistance(){
+        return getProperty(DISTANCE);
+    }
+
+    default void setDistance(int distance){
+        setProperty(DISTANCE, distance);
+    }
 
 }

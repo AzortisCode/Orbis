@@ -19,18 +19,27 @@
 package com.azortis.orbis.block.data;
 
 import com.azortis.orbis.block.Axis;
+import com.azortis.orbis.block.property.EnumProperty;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Set;
 
-public interface Orientable extends BlockData{
+public interface Orientable extends BlockData {
+
+    EnumProperty<Axis> AXIS = new EnumProperty<>("axis", Set.of(Axis.X, Axis.Y, Axis.Z));
 
     @NotNull
-    Axis getAxis();
+    default Axis getAxis(){
+        return getProperty(AXIS);
+    }
 
-    void setAxis(@NotNull Axis axis);
+    default void setAxis(@NotNull Axis axis){
+        setProperty(AXIS, axis);
+    }
 
     @NotNull
-    Set<Axis> getAxes();
+    default Set<Axis> getAxes(){
+        return AXIS.getValues();
+    }
 
 }

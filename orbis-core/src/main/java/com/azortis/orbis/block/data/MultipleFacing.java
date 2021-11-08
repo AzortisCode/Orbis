@@ -25,6 +25,8 @@ import java.util.Set;
 
 public interface MultipleFacing extends BlockData {
 
+
+
     boolean hasFace(@NotNull BlockFace face);
 
     void setFace(@NotNull BlockFace face, boolean has);

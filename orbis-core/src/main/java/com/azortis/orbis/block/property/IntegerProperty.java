@@ -20,11 +20,11 @@ package com.azortis.orbis.block.property;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Collection;
+import java.util.Set;
 
 public final class IntegerProperty extends AbstractProperty<Integer> {
 
-    public IntegerProperty(final @NotNull String name, final @NotNull Collection<Integer> values) {
+    public IntegerProperty(final @NotNull String name, final @NotNull Set<Integer> values) {
         super(name, values);
     }
 

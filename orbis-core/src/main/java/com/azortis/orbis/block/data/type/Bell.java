@@ -20,20 +20,24 @@ package com.azortis.orbis.block.data.type;
 
 import com.azortis.orbis.block.data.Directional;
 import com.azortis.orbis.block.data.Powerable;
+import com.azortis.orbis.block.property.BellAttachment;
+import com.azortis.orbis.block.property.EnumProperty;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Set;
 
 public interface Bell extends Directional, Powerable {
 
+    EnumProperty<BellAttachment> ATTACHMENT = new EnumProperty<>("attachment",
+            Set.of(BellAttachment.FLOOR, BellAttachment.CEILING, BellAttachment.SINGLE_WALL, BellAttachment.DOUBLE_WALL));
+
     @NotNull
-    Attachment getAttachment();
+    default BellAttachment getAttachment(){
+        return getProperty(ATTACHMENT);
+    }
 
-    void setAttachment(@NotNull Attachment attachment);
-
-    enum Attachment {
-        FLOOR,
-        CEILING,
-        SINGLE_WALL,
-        DOUBLE_WALL
+    default void setAttachment(@NotNull BellAttachment attachment){
+        setProperty(ATTACHMENT, attachment);
     }
 
 }

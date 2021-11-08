@@ -20,12 +20,14 @@ package com.azortis.orbis.block.property;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Collection;
+import java.util.Set;
 
 public final class BooleanProperty extends AbstractProperty<Boolean> {
 
-    public BooleanProperty(final @NotNull String name, final @NotNull Collection<Boolean> values) {
-        super(name, values);
+    public static final Set<Boolean> VALUES = Set.of(true, false);
+
+    public BooleanProperty(final @NotNull String name) {
+        super(name, VALUES);
     }
 
     @Override

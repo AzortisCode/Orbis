@@ -16,24 +16,36 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.paper.block.data;
+package com.azortis.orbis.block.data.type;
 
-import com.azortis.orbis.block.data.Openable;
-import org.bukkit.block.data.BlockData;
+import com.azortis.orbis.block.data.Directional;
+import com.azortis.orbis.block.data.Powerable;
+import com.azortis.orbis.block.property.IntegerProperty;
 
-public class PaperOpenable extends PaperBlockData implements Openable {
+import java.util.Set;
 
-    public PaperOpenable(BlockData handle) {
-        super(handle);
+public interface RedstoneRepeater extends Directional, Powerable {
+
+    IntegerProperty DELAY = new IntegerProperty("delay", Set.of(1,2,3,4));
+
+    default int getDelay(){
+        return getProperty(DELAY);
     }
 
-    @Override
-    public boolean isOpen() {
-        return ((org.bukkit.block.data.Openable) getHandle()).isOpen();
+    default void setDelay(int delay){
+        setProperty(DELAY, delay);
     }
 
-    @Override
-    public void setOpen(boolean open) {
-        ((org.bukkit.block.data.Openable) getHandle()).setOpen(open);
+    default int getMinimumDelay(){
+        return 1;
     }
+
+    default int getMaximumDelay(){
+        return 4;
+    }
+
+    boolean isLocked();
+
+    void setLocked(boolean locked);
+
 }

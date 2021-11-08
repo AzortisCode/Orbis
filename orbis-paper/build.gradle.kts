@@ -3,6 +3,7 @@ import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 plugins {
     java
     id("com.github.johnrengelman.shadow") version "7.0.0"
+    id("io.papermc.paperweight.userdev") version "1.1.15-SNAPSHOT"
 }
 
 group = "com.azortis"
@@ -10,7 +11,6 @@ version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
-    mavenLocal()
     jcenter()
     maven {
         url = uri("https://papermc.io/repo/repository/maven-public/")
@@ -25,7 +25,7 @@ repositories {
 
 dependencies {
     implementation(project(":orbis-core"))
-    compileOnly("io.papermc.paper:paper-api:1.17.1-R0.1-SNAPSHOT")
+    paperDevBundle("1.17.1-R0.1-SNAPSHOT")
     compileOnly("org.slf4j:slf4j-api:1.7.31")
 }
 
@@ -45,5 +45,6 @@ tasks {
 tasks {
     build {
         dependsOn(shadowJar)
+        dependsOn(reobfJar)
     }
 }

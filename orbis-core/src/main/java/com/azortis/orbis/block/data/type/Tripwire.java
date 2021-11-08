@@ -21,11 +21,18 @@ package com.azortis.orbis.block.data.type;
 import com.azortis.orbis.block.data.Attachable;
 import com.azortis.orbis.block.data.MultipleFacing;
 import com.azortis.orbis.block.data.Powerable;
+import com.azortis.orbis.block.property.BooleanProperty;
 
 public interface Tripwire extends Attachable, MultipleFacing, Powerable {
 
-    boolean isDisarmed();
+    BooleanProperty DISARMED = new BooleanProperty("disarmed");
 
-    void setDisarmed(boolean disarmed);
+    default boolean isDisarmed(){
+        return getProperty(DISARMED);
+    }
+
+    default void setDisarmed(boolean disarmed){
+        setProperty(DISARMED, disarmed);
+    }
 
 }

@@ -16,28 +16,31 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.paper.block.data;
+package com.azortis.orbis.block.property;
 
-import com.azortis.orbis.block.BlockFace;
-import com.azortis.orbis.block.data.Rotatable;
-import com.azortis.orbis.paper.block.BlockAdapter;
-import org.bukkit.block.data.BlockData;
+import com.azortis.orbis.util.StringRepresentable;
 import org.jetbrains.annotations.NotNull;
 
-public class PaperRotatable extends PaperBlockData implements Rotatable {
+public enum BellAttachment implements StringRepresentable {
+    FLOOR("floor"),
+    CEILING("ceiling"),
+    SINGLE_WALL("single_wall"),
+    DOUBLE_WALL("double_wall");
 
-    public PaperRotatable(BlockData handle) {
-        super(handle);
+    private final String name;
+
+    BellAttachment(String name) {
+        this.name = name;
     }
 
     @Override
-    public @NotNull BlockFace getRotation() {
-        return BlockAdapter.fromPaper(((org.bukkit.block.data.Rotatable) getHandle()).getRotation());
+    public String toString() {
+        return this.name;
     }
 
     @Override
-    public void setRotation(@NotNull BlockFace blockFace) {
-        ((org.bukkit.block.data.Rotatable) getHandle()).setRotation(BlockAdapter.toPaper(blockFace));
+    public @NotNull String getSerializedName() {
+        return this.name;
     }
 
 }

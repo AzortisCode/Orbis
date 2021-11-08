@@ -19,13 +19,24 @@
 package com.azortis.orbis.block.data.type;
 
 import com.azortis.orbis.block.data.BlockData;
+import com.azortis.orbis.block.property.IntegerProperty;
+
+import java.util.Set;
 
 public interface RespawnAnchor extends BlockData {
 
-    int getCharges();
+    IntegerProperty CHARGES = new IntegerProperty("charges", Set.of(0,1,2,3,4));
 
-    void setCharges(int charges);
+    default int getCharges(){
+        return getProperty(CHARGES);
+    }
 
-    int getMaximumCharges();
+    default void setCharges(int charges){
+        setProperty(CHARGES, charges);
+    }
+
+    default int getMaximumCharges(){
+        return 4;
+    }
 
 }

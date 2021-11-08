@@ -16,25 +16,28 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.paper.block.data.type;
+package com.azortis.orbis.block.property;
 
-import com.azortis.orbis.block.data.type.CaveVinesPlant;
-import com.azortis.orbis.paper.block.data.PaperBlockData;
-import org.bukkit.block.data.BlockData;
+import com.azortis.orbis.util.StringRepresentable;
+import org.jetbrains.annotations.NotNull;
 
-public class PaperCaveVinesPlant extends PaperBlockData implements CaveVinesPlant {
+public enum PistonType implements StringRepresentable {
+    NORMAL("normal"),
+    STICKY("sticky");
 
-    public PaperCaveVinesPlant(BlockData handle) {
-        super(handle);
+    private final String name;
+
+    PistonType(String name) {
+        this.name = name;
     }
 
     @Override
-    public boolean isBerries() {
-        return ((org.bukkit.block.data.type.CaveVinesPlant) getHandle()).isBerries();
+    public String toString() {
+        return this.name;
     }
 
     @Override
-    public void setBerries(boolean berries) {
-        ((org.bukkit.block.data.type.CaveVinesPlant) getHandle()).setBerries(berries);
+    public @NotNull String getSerializedName() {
+        return this.name;
     }
 }

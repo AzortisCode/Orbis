@@ -19,13 +19,24 @@
 package com.azortis.orbis.block.data.type;
 
 import com.azortis.orbis.block.data.BlockData;
+import com.azortis.orbis.block.property.IntegerProperty;
+
+import java.util.Set;
 
 public interface Cake extends BlockData {
 
-    int getBites();
+    IntegerProperty BITES = new IntegerProperty("bites", Set.of(0,1,2,3,4,5,6));
 
-    void setBites(int bites);
+    default int getBites(){
+        return getProperty(BITES);
+    }
 
-    int getMaximumBites();
+    default void setBites(int bites){
+        setProperty(BITES, bites);
+    }
+
+    default int getMaximumBites(){
+        return 6;
+    }
 
 }

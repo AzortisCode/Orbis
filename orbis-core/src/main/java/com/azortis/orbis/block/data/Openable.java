@@ -18,10 +18,18 @@
 
 package com.azortis.orbis.block.data;
 
+import com.azortis.orbis.block.property.BooleanProperty;
+
 public interface Openable extends BlockData {
 
-    boolean isOpen();
+    BooleanProperty OPEN = new BooleanProperty("open");
 
-    void setOpen(boolean open);
+    default boolean isOpen(){
+        return getProperty(OPEN);
+    }
+
+    default void setOpen(boolean open){
+        setProperty(OPEN, open);
+    }
 
 }

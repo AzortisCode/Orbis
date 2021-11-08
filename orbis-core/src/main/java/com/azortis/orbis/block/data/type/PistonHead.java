@@ -18,10 +18,53 @@
 
 package com.azortis.orbis.block.data.type;
 
-public interface PistonHead extends TechnicalPiston{
+import com.azortis.orbis.block.data.Directional;
+import com.azortis.orbis.block.property.BooleanProperty;
+import com.azortis.orbis.block.property.Direction;
+import com.azortis.orbis.block.property.EnumProperty;
+import com.azortis.orbis.block.property.PistonType;
+import org.jetbrains.annotations.NotNull;
 
-    boolean isShort();
+import java.util.Set;
 
-    void setShort(boolean _short);
+public interface PistonHead extends Directional {
+
+    BooleanProperty SHORT = new BooleanProperty("short");
+    EnumProperty<PistonType> TYPE = new EnumProperty<>("type", Set.of(PistonType.NORMAL, PistonType.STICKY));
+    EnumProperty<Direction> FACING = new EnumProperty<>("facing",
+            Set.of(Direction.UP, Direction.DOWN, Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST));
+
+    default boolean isShort(){
+        return getProperty(SHORT);
+    }
+
+    default void setShort(boolean _short){
+        setProperty(SHORT, _short);
+    }
+
+    default PistonType getType(){
+        return getProperty(TYPE);
+    }
+
+    default void setType(PistonType type){
+        setProperty(TYPE, type);
+    }
+
+    @Override
+    @NotNull
+    default Direction getFacing() {
+        return getProperty(FACING);
+    }
+
+    @Override
+    default void setFacing(@NotNull Direction facing) {
+        setProperty(FACING, facing);
+    }
+
+    @Override
+    @NotNull
+    default Set<Direction> getFaces() {
+        return FACING.getValues();
+    }
 
 }

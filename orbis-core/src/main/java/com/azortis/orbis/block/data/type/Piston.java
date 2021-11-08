@@ -19,11 +19,42 @@
 package com.azortis.orbis.block.data.type;
 
 import com.azortis.orbis.block.data.Directional;
+import com.azortis.orbis.block.property.BooleanProperty;
+import com.azortis.orbis.block.property.Direction;
+import com.azortis.orbis.block.property.EnumProperty;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Set;
 
 public interface Piston extends Directional {
 
-    boolean isExtended();
+    BooleanProperty EXTENDED = new BooleanProperty("extended");
+    EnumProperty<Direction> FACING = new EnumProperty<>("facing",
+            Set.of(Direction.UP, Direction.DOWN, Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST));
 
-    void setExtended(boolean extended);
+    default boolean isExtended(){
+        return getProperty(EXTENDED);
+    }
+
+    default void setExtended(boolean extended){
+        setProperty(EXTENDED, extended);
+    }
+
+    @Override
+    @NotNull
+    default Direction getFacing() {
+        return getProperty(FACING);
+    }
+
+    @Override
+    default void setFacing(@NotNull Direction facing) {
+        setProperty(FACING, facing);
+    }
+
+    @Override
+    @NotNull
+    default Set<Direction> getFaces() {
+        return FACING.getValues();
+    }
 
 }

@@ -18,10 +18,18 @@
 
 package com.azortis.orbis.block.data;
 
+import com.azortis.orbis.block.property.BooleanProperty;
+
 public interface Snowable extends BlockData {
 
-    boolean isSnowy();
+    BooleanProperty SNOWY = new BooleanProperty("snowy");
 
-    void setSnowy(boolean snowy);
+    default boolean isSnowy(){
+        return getProperty(SNOWY);
+    }
+
+    default void setSnowy(boolean snowy){
+        setProperty(SNOWY, snowy);
+    }
 
 }

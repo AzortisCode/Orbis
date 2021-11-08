@@ -22,15 +22,15 @@ import com.azortis.orbis.util.StringRepresentable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public final class EnumProperty<T extends Enum<T> & StringRepresentable> extends AbstractProperty<T> {
 
     private final Map<String, T> names = new HashMap<>();
 
-    public EnumProperty(final @NotNull String name, final @NotNull Collection<T> values) {
+    public EnumProperty(final @NotNull String name, final @NotNull Set<T> values) {
         super(name, values);
         for (final T value : values) {
             final String key = value.getSerializedName();

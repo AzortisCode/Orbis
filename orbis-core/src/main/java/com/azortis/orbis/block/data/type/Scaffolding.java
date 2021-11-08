@@ -19,17 +19,34 @@
 package com.azortis.orbis.block.data.type;
 
 import com.azortis.orbis.block.data.Waterlogged;
+import com.azortis.orbis.block.property.BooleanProperty;
+import com.azortis.orbis.block.property.IntegerProperty;
+
+import java.util.Set;
 
 public interface Scaffolding extends Waterlogged {
 
-    boolean isBottom();
+    BooleanProperty BOTTOM = new BooleanProperty("bottom");
+    IntegerProperty DISTANCE = new IntegerProperty("distance", Set.of(0,1,2,3,4,5,6,7));
 
-    void setBottom(boolean bottom);
+    default boolean isBottom(){
+        return getProperty(BOTTOM);
+    }
 
-    int getDistance();
+    default void setBottom(boolean bottom){
+        setProperty(BOTTOM, bottom);
+    }
 
-    void setDistance(int distance);
+    default int getDistance(){
+        return getProperty(DISTANCE);
+    }
 
-    int getMaximumDistance();
+    default void setDistance(int distance){
+        setProperty(DISTANCE, distance);
+    }
+
+    default int getMaximumDistance(){
+        return 7;
+    }
 
 }

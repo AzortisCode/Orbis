@@ -19,19 +19,40 @@
 package com.azortis.orbis.block.data.type;
 
 import com.azortis.orbis.block.data.BlockData;
+import com.azortis.orbis.block.property.BooleanProperty;
+import com.google.common.collect.ImmutableSet;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Set;
 
 public interface BrewingStand extends BlockData {
 
-    boolean hasBottle(int bottle);
+    Set<Integer> BOTTLES = ImmutableSet.of(0,1,2);
+    BooleanProperty HAS_BOTTLE_0 = new BooleanProperty("has_bottle_0");
+    BooleanProperty HAS_BOTTLE_1 = new BooleanProperty("has_bottle_1");
+    BooleanProperty HAS_BOTTLE_2 = new BooleanProperty("has_bottle_2");
 
-    void setBottle(int bottle, boolean has);
+    default boolean hasBottle(int bottle){
+        return switch (bottle){
+            case 0 -> getProperty(HAS_BOTTLE_0);
+            case 1 -> getProperty(HAS_BOTTLE_1);
+            case 2 -> getProperty(HAS_BOTTLE_2);
+            default -> throw new IllegalStateException("Unexpected value: " + bottle);
+        };
+    }
+
+    default void setBottle(int bottle, boolean has){
+        switch (bottle){
+            case 0 -> setProperty(HAS_BOTTLE_0, has);
+            case 1 -> setProperty(HAS_BOTTLE_1, has);
+            case 2 -> setProperty(HAS_BOTTLE_2, has);
+            default -> throw new IllegalStateException("Unexpected value: " + bottle);
+        }
+    }
 
     @NotNull
-    Set<Integer> getBottles();
-
-    int getMaximumBottles();
+    default Set<Integer> getBottles(){
+        return BOTTLES;
+    }
 
 }

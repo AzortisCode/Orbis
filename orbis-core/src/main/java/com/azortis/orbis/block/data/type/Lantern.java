@@ -19,11 +19,18 @@
 package com.azortis.orbis.block.data.type;
 
 import com.azortis.orbis.block.data.Waterlogged;
+import com.azortis.orbis.block.property.BooleanProperty;
 
 public interface Lantern extends Waterlogged {
 
-    boolean isHanging();
+    BooleanProperty HANGING = new BooleanProperty("hanging");
 
-    void setHanging(boolean hanging);
+    default boolean isHanging(){
+        return getProperty(HANGING);
+    }
+
+    default void setHanging(boolean hanging){
+        setProperty(HANGING, hanging);
+    }
 
 }

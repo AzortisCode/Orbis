@@ -19,20 +19,29 @@
 package com.azortis.orbis.block.data.type;
 
 import com.azortis.orbis.block.data.Directional;
+import com.azortis.orbis.block.property.BedPart;
+import com.azortis.orbis.block.property.BooleanProperty;
+import com.azortis.orbis.block.property.EnumProperty;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Set;
 
 public interface Bed extends Directional {
 
+    BooleanProperty OCCUPIED = new BooleanProperty("occupied");
+    EnumProperty<BedPart> PART = new EnumProperty<>("part", Set.of(BedPart.HEAD, BedPart.FOOT));
+
+    default boolean isOccupied(){
+        return getProperty(OCCUPIED);
+    }
+
     @NotNull
-    Part getPart();
+    default BedPart getPart(){
+        return getProperty(PART);
+    }
 
-    void setPart(@NotNull Part part);
-
-    boolean isOccupied();
-
-    enum Part {
-        HEAD,
-        FOOT
+    default void setPart(@NotNull BedPart part){
+        setProperty(PART, part);
     }
 
 }

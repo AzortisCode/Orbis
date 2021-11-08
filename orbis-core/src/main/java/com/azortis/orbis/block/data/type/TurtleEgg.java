@@ -19,21 +19,41 @@
 package com.azortis.orbis.block.data.type;
 
 import com.azortis.orbis.block.data.BlockData;
+import com.azortis.orbis.block.property.IntegerProperty;
+
+import java.util.Set;
 
 public interface TurtleEgg extends BlockData {
 
-    int getEggs();
+    IntegerProperty EGGS = new IntegerProperty("eggs", Set.of(1,2,3,4));
+    IntegerProperty HATCH = new IntegerProperty("hatch", Set.of(0,1,2));
 
-    void setEggs(int eggs);
+    default int getEggs(){
+        return getProperty(EGGS);
+    }
 
-    int getMinimumEggs();
+    default void setEggs(int eggs){
+        setProperty(EGGS, eggs);
+    }
 
-    int getMaximumEggs();
+    default int getMinimumEggs(){
+        return 1;
+    }
 
-    int getHatch();
+    default int getMaximumEggs(){
+        return 4;
+    }
 
-    void setHatch(int hatch);
+    default int getHatch(){
+        return getProperty(HATCH);
+    }
 
-    int getMaximumHatch();
+    default void setHatch(int hatch){
+        setProperty(HATCH, hatch);
+    }
+
+    default int getMaximumHatch(){
+        return 2;
+    }
 
 }

@@ -16,25 +16,14 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.paper.block.data.type;
+package com.azortis.orbis.paper.nms;
 
-import com.azortis.orbis.block.data.type.BubbleColumn;
-import com.azortis.orbis.paper.block.data.PaperBlockData;
 import org.bukkit.block.data.BlockData;
 
-public class PaperBubbleColumn extends PaperBlockData implements BubbleColumn {
+import java.util.Map;
 
-    public PaperBubbleColumn(BlockData handle) {
-        super(handle);
-    }
+public interface INMSBinding {
 
-    @Override
-    public boolean isDrag() {
-        return ((org.bukkit.block.data.type.BubbleColumn) getHandle()).isDrag();
-    }
+    Map<String, String> getPropertyMap(BlockData blockData);
 
-    @Override
-    public void setDrag(boolean drag) {
-        ((org.bukkit.block.data.type.BubbleColumn) getHandle()).setDrag(drag);
-    }
 }
