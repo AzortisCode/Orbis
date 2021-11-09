@@ -22,6 +22,7 @@ import com.azortis.orbis.util.StringRepresentable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -30,8 +31,8 @@ public final class EnumProperty<T extends Enum<T> & StringRepresentable> extends
 
     private final Map<String, T> names = new HashMap<>();
 
-    public EnumProperty(final @NotNull String name, final @NotNull Set<T> values) {
-        super(name, values);
+    public EnumProperty(final @NotNull String name, final Class<T> type, final @NotNull Set<T> values) {
+        super(name, type, values);
         for (final T value : values) {
             final String key = value.getSerializedName();
             if (names.containsKey(key)) {
@@ -49,4 +50,9 @@ public final class EnumProperty<T extends Enum<T> & StringRepresentable> extends
         }
         return val;
     }
+
+    public Set<String> getNames(){
+        return Collections.unmodifiableSet(names.keySet());
+    }
+
 }

@@ -27,7 +27,7 @@ import java.util.Set;
 public interface Directional extends BlockData {
 
     EnumProperty<Direction> FACING = new EnumProperty<>("facing",
-            Set.of(Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST));
+            Direction.class, Set.of(Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST));
 
     @NotNull
     default Direction getFacing(){

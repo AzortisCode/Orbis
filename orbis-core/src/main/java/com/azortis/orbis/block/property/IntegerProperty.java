@@ -20,12 +20,20 @@ package com.azortis.orbis.block.property;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
+import java.util.TreeSet;
+import java.util.stream.Collectors;
 
 public final class IntegerProperty extends AbstractProperty<Integer> {
 
-    public IntegerProperty(final @NotNull String name, final @NotNull Set<Integer> values) {
-        super(name, values);
+    private final int min, max;
+
+    public IntegerProperty(final @NotNull String name, final int min, final int max) {
+        super(name, Integer.class, createIntegerSet(min, max));
+        this.min = min;
+        this.max = max;
     }
 
     @Override
@@ -40,4 +48,21 @@ public final class IntegerProperty extends AbstractProperty<Integer> {
             throw new IllegalArgumentException("Invalid int value: " + value + ". Not an int.");
         }
     }
+
+    public int getMin() {
+        return min;
+    }
+
+    public int getMax() {
+        return max;
+    }
+
+    private static Set<Integer> createIntegerSet(int min, int max){
+        Set<Integer> values = new TreeSet<>();
+        for (int i = min; i <= max; i++) {
+            values.add(i);
+        }
+        return values;
+    }
+
 }

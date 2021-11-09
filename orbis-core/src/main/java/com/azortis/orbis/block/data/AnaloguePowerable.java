@@ -24,7 +24,7 @@ import java.util.Set;
 
 public interface AnaloguePowerable extends BlockData {
 
-    IntegerProperty POWER = new IntegerProperty("power", Set.of(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15));
+    /*IntegerProperty POWER = new IntegerProperty("power", Set.of(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15));
 
     default int getPower(){
         return getProperty(POWER);
@@ -36,6 +36,6 @@ public interface AnaloguePowerable extends BlockData {
 
     default int getMaximumPower(){
         return 15;
-    }
+    }*/
 
 }

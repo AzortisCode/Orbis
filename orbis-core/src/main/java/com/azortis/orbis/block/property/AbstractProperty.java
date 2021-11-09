@@ -26,16 +26,22 @@ import java.util.Set;
 public abstract class AbstractProperty<T> implements Property<T> {
 
     private final String name;
+    private final Class<T> type;
     private final Set<T> values;
 
-    public AbstractProperty(final @NotNull String name, final @NotNull Set<T> values) {
+    public AbstractProperty(final @NotNull String name, final Class<T> type, final @NotNull Set<T> values) {
         this.name = name;
+        this.type = type;
         this.values = ImmutableSet.copyOf(values);
     }
 
     @Override
     public @NotNull String getName() {
         return name;
+    }
+
+    public Class<T> getType() {
+        return type;
     }
 
     @Override

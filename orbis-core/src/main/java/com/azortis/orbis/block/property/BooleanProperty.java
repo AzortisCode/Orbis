@@ -27,7 +27,7 @@ public final class BooleanProperty extends AbstractProperty<Boolean> {
     public static final Set<Boolean> VALUES = Set.of(true, false);
 
     public BooleanProperty(final @NotNull String name) {
-        super(name, VALUES);
+        super(name, Boolean.class, VALUES);
     }
 
     @Override

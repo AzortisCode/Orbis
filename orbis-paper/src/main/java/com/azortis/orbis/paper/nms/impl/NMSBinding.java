@@ -18,44 +18,92 @@
 
 package com.azortis.orbis.paper.nms.impl;
 
+import com.azortis.orbis.block.Axis;
+import com.azortis.orbis.block.property.*;
 import com.azortis.orbis.paper.nms.INMSBinding;
 import com.azortis.orbis.util.NamespaceId;
+import net.minecraft.core.Registry;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.block.state.properties.Property;
-import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.block.data.BlockData;
-import org.bukkit.craftbukkit.v1_17_R1.CraftServer;
 import org.bukkit.craftbukkit.v1_17_R1.block.data.CraftBlockData;
-import org.bukkit.craftbukkit.v1_17_R1.util.CraftMagicNumbers;
 
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class NMSBinding implements INMSBinding {
 
-    @Override
-    public Map<String, String> getPropertyMap(BlockData blockData) {
-        BlockState state = ((CraftBlockData)blockData).getState();
-        Map<String, String> propertyMap = new HashMap<>();
-        for (Property<?> property : state.getProperties()){
-            String value = property.value(state).toString().split("=")[1];
-            propertyMap.put(property.getName(), value);
-        }
-        return propertyMap;
+    private static Block getBlockFromId(NamespaceId material){
+        return Registry.BLOCK.get(ResourceLocation.tryParse(material.getId()));
     }
 
-    public BlockData createBlockData(NamespaceId id, Map<String, String> properties){
-        Block block = CraftMagicNumbers.getBlock(Material.valueOf(id.getId().toLowerCase(Locale.ENGLISH)));
-        BlockState state = block.defaultBlockState();
+    private static net.minecraft.world.level.block.state.properties.Property<?> translateProperty(Property<?> property){
+        final String name = property.getName();
+        net.minecraft.world.level.block.state.properties.Property<?> nativeProp = null;
 
-        for(Property<?> property : state.getProperties()){
+        if(property instanceof BooleanProperty){
+            nativeProp = net.minecraft.world.level.block.state.properties.BooleanProperty.create(name);
+        } else if (property instanceof IntegerProperty intProperty){
+            nativeProp = net.minecraft.world.level.block.state.properties.IntegerProperty.create(name,
+                    intProperty.getMin(), intProperty.getMax());
+        } else if (property instanceof EnumProperty enumProperty){
+            Class<?> type = enumProperty.getType();
 
+            // Check against all the different enums... kill me
+            if(type == Axis.class) {
+                nativeProp = net.minecraft.world.level.block.state.properties.EnumProperty.create(name,
+                        net.minecraft.core.Direction.Axis.class,
+                        getNativeValues(net.minecraft.core.Direction.Axis.class, enumProperty));
+            } else if (type == BedPart.class){
+                nativeProp = net.minecraft.world.level.block.state.properties.EnumProperty.create(name,
+                        net.minecraft.world.level.block.state.properties.BedPart.class,
+                        getNativeValues(net.minecraft.world.level.block.state.properties.BedPart.class, enumProperty));
+            }else if(type == Direction.class){
+                nativeProp = net.minecraft.world.level.block.state.properties.EnumProperty.create(name,
+                        net.minecraft.core.Direction.class,
+                        getNativeValues(net.minecraft.core.Direction.class, enumProperty));
+            }
         }
+        return nativeProp;
+    }
+
+    private static <T extends StringRepresentable> Collection<T> getNativeValues(Class<T> type, EnumProperty<?> enumProperty){
+        return Arrays.stream(type.getEnumConstants()).filter(t -> enumProperty.getNames().contains(t.getSerializedName()))
+                .collect(Collectors.toUnmodifiableSet());
+    }
+
+    @Override
+    public Map<Property<?>, ?> getPropertyMap(BlockData blockData) {
+        BlockState state = ((CraftBlockData)blockData).getState();
         return null;
     }
 
+    @Override
+    public Property<?> getProperty(NamespaceId material, String name) {
+        return null;
+    }
+
+    @Override
+    public Map<String, Property<?>> getProperties(NamespaceId material) {
+        return null;
+    }
+
+    @Override
+    public boolean hasProperty(NamespaceId material, Property<?> property) {
+        net.minecraft.world.level.block.state.properties.Property<?> property1 = translateProperty(property);
+        if(property1 == null) return false;
+        return getBlockFromId(material).defaultBlockState().hasProperty(property1);
+    }
+
+    @Override
+    public <T> T getValue(BlockData blockData, Property<T> property) {
+        return null;
+    }
+
+    @Override
+    public <T> void setValue(BlockData blockData, Property<T> property, T value) {
+
+    }
 }

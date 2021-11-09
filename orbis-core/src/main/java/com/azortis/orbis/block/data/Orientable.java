@@ -26,7 +26,7 @@ import java.util.Set;
 
 public interface Orientable extends BlockData {
 
-    EnumProperty<Axis> AXIS = new EnumProperty<>("axis", Set.of(Axis.X, Axis.Y, Axis.Z));
+    EnumProperty<Axis> AXIS = new EnumProperty<>("axis", Axis.class, Set.of(Axis.X, Axis.Y, Axis.Z));
 
     @NotNull
     default Axis getAxis(){
