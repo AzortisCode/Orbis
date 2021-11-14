@@ -24,7 +24,10 @@ import com.google.common.io.CharSource;
 import net.lingala.zip4j.ZipFile;
 import org.jetbrains.annotations.Nullable;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.Reader;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -33,29 +36,29 @@ public class PackManager {
 
     private final Map<Pack, File> loadedPacks = new HashMap<>();
 
-    public PackManager(File rootDirectory){
+    public PackManager(File rootDirectory) {
         File packsDirectory = new File(rootDirectory, "/packs/");
-        if(!packsDirectory.exists()){
-            if(!packsDirectory.mkdirs()) Orbis.getLogger().error("Couldn't create packs folder!");
+        if (!packsDirectory.exists()) {
+            if (!packsDirectory.mkdirs()) Orbis.getLogger().error("Couldn't create packs folder!");
         }
 
         // Iterate through all folders and files(*.orbis).
-        for (File entry : Objects.requireNonNull(packsDirectory.listFiles())){
-            if(!entry.isDirectory()) {
+        for (File entry : Objects.requireNonNull(packsDirectory.listFiles())) {
+            if (!entry.isDirectory()) {
                 loadPack(entry);
             }
         }
     }
 
     @Nullable
-    public Pack getPack(String name){
-        for (Pack pack : loadedPacks.keySet()){
-            if(pack.getName().equalsIgnoreCase(name))return pack;
+    public Pack getPack(String name) {
+        for (Pack pack : loadedPacks.keySet()) {
+            if (pack.getName().equalsIgnoreCase(name)) return pack;
         }
         return null;
     }
 
-    public void extractPack(File destinationFolder, Pack pack){
+    public void extractPack(File destinationFolder, Pack pack) {
         try {
             new ZipFile(loadedPacks.get(pack)).extractAll(destinationFolder.getPath());
         } catch (IOException ex) {
@@ -63,17 +66,17 @@ public class PackManager {
         }
     }
 
-    private void loadPack(File packFile){
+    private void loadPack(File packFile) {
         try {
             ZipFile zipFile = new ZipFile(packFile);
-            if(zipFile.isValidZipFile()) {
+            if (zipFile.isValidZipFile()) {
                 InputStream inputStream = zipFile.getInputStream(zipFile.getFileHeader("pack.json"));
                 byte[] buffer = ByteStreams.toByteArray(inputStream);
                 Reader reader = CharSource.wrap(new String(buffer)).openStream();
                 Pack pack = Orbis.getGson().fromJson(reader, Pack.class);
                 loadedPacks.put(pack, packFile);
             }
-        } catch (IOException ex){
+        } catch (IOException ex) {
             Orbis.getLogger().error("Couldn't load pack: {}", packFile.getName());
         }
     }

@@ -37,7 +37,7 @@ public class DimensionRegistry implements Registry<Dimension> {
         File dimensionFile = new File(container.getSettingsFolder(), name + ".json");
         try {
             return Orbis.getGson().fromJson(new FileReader(dimensionFile), Dimension.class);
-        }catch (FileNotFoundException ex){
+        } catch (FileNotFoundException ex) {
             Orbis.getLogger().error("Dimension file {} not found!", name);
         }
         return null;

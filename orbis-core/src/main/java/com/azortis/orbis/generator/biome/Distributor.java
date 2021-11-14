@@ -57,7 +57,7 @@ public abstract class Distributor {
     //
 
     public void setContainer(Container container) {
-        if(this.container == null)this.container = container;
+        if (this.container == null) this.container = container;
     }
 
     public Container getContainer() {

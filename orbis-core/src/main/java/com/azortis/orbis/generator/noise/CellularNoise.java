@@ -18,7 +18,7 @@
 
 package com.azortis.orbis.generator.noise;
 
-public class CellularNoise implements NoiseGenerator{
+public class CellularNoise implements NoiseGenerator {
 
     private final FastNoise noise;
 

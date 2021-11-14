@@ -91,7 +91,7 @@ public abstract class Container {
     public void saveContainerInfo() {
         Orbis.getLogger().info("Saving container-info for {}", name);
         try {
-            if(containerInfoFile.delete()) {
+            if (containerInfoFile.delete()) {
                 final String containerJson = Orbis.getGson().toJson(containerInfo);
                 Files.write(containerInfoFile.toPath(), containerJson.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.WRITE);
             }

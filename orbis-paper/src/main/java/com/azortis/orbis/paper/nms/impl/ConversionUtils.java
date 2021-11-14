@@ -130,11 +130,11 @@ public class ConversionUtils {
         propertyBiMap = propertyBuilder.build();
     }
 
-    protected static Property<?> fromNative(net.minecraft.world.level.block.state.properties.Property<?> nativeProperty){
+    protected static Property<?> fromNative(net.minecraft.world.level.block.state.properties.Property<?> nativeProperty) {
         return propertyBiMap.inverse().get(nativeProperty);
     }
 
-    protected static net.minecraft.world.level.block.state.properties.Property<?> toNative(Property<?> property){
+    protected static net.minecraft.world.level.block.state.properties.Property<?> toNative(Property<?> property) {
         return propertyBiMap.get(property);
     }
 

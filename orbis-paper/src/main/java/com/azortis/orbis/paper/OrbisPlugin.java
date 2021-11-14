@@ -19,8 +19,10 @@
 package com.azortis.orbis.paper;
 
 import com.azortis.orbis.Orbis;
-import com.azortis.orbis.paper.generator.PaperChunkGenerator;
 import com.azortis.orbis.pack.Pack;
+import com.azortis.orbis.paper.generator.PaperChunkGenerator;
+import com.azortis.orbis.paper.nms.INMSBinding;
+import com.azortis.orbis.paper.nms.impl.NMSBinding;
 import org.bukkit.World;
 import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -33,6 +35,8 @@ import java.util.Map;
 
 public class OrbisPlugin extends JavaPlugin {
 
+    private static final INMSBinding nms = new NMSBinding();
+
     private final Map<String, OrbisWorld> worldMap = new HashMap<>();
     private Metrics metrics;
 
@@ -44,9 +48,9 @@ public class OrbisPlugin extends JavaPlugin {
 
     @Override
     public @Nullable ChunkGenerator getDefaultWorldGenerator(@NotNull String worldName, @Nullable String packName) {
-        if(packName != null){
+        if (packName != null) {
             Pack pack = Orbis.getPackManager().getPack(packName);
-            if(pack != null){
+            if (pack != null) {
                 return new PaperChunkGenerator(this, worldName, pack);
             } else {
                 Orbis.getLogger().error("No pack by the name {} exists!", packName);
@@ -58,25 +62,29 @@ public class OrbisPlugin extends JavaPlugin {
     }
 
     @NotNull
-    public OrbisWorld loadWorld(@NotNull World world, @NotNull Pack pack){
+    public OrbisWorld loadWorld(@NotNull World world, @NotNull Pack pack) {
         OrbisWorld orbisWorld = new OrbisWorld(world);
         orbisWorld.installPack(pack, false);
-        if(!orbisWorld.isLoaded()) orbisWorld.load();
+        if (!orbisWorld.isLoaded()) orbisWorld.load();
         worldMap.put(world.getName(), orbisWorld);
         return orbisWorld;
     }
 
+    public static INMSBinding getNMS() {
+        return nms;
+    }
+
     @Nullable
-    public OrbisWorld getWorld(World world){
+    public OrbisWorld getWorld(World world) {
         return worldMap.get(world.getName());
     }
 
     @Nullable
-    public OrbisWorld getWorld(String worldName){
+    public OrbisWorld getWorld(String worldName) {
         return worldMap.get(worldName);
     }
 
-    public Collection<OrbisWorld> getWorlds(){
+    public Collection<OrbisWorld> getWorlds() {
         return worldMap.values();
     }
 

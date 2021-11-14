@@ -25,18 +25,23 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
 
 public interface INMSBinding {
 
-    Map<Property<?>, Optional<?>> getPropertyMap(BlockData blockData);
+    @Nullable Property<?> getProperty(NamespaceId material, String name);
 
     Map<String, Property<?>> getProperties(NamespaceId material);
 
     boolean hasProperty(NamespaceId material, Property<?> property);
 
+    Map<Property<?>, Optional<?>> getValues(BlockData blockData);
+
     <T> T getValue(BlockData blockData, Property<T> property);
 
-    <T> void setValue(BlockData blockData, Property<T> property, T value);
+    <T> BlockData setValue(BlockData blockData, Property<T> property, T value);
+
+    BlockData createBlockState(NamespaceId material);
+
+    BlockData createBlockState(NamespaceId material, Map<Property<?>, Optional<?>> values);
 
 }

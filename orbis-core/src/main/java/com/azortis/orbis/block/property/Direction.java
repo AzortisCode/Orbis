@@ -44,4 +44,5 @@ public enum Direction implements Nameable {
     public @NotNull String getSerializedName() {
         return this.name;
     }
+
 }

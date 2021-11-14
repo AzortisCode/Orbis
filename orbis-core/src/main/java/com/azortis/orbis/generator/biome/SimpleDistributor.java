@@ -27,9 +27,11 @@ import com.google.gson.annotations.SerializedName;
 import lombok.*;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-public class SimpleDistributor extends Distributor{
+public class SimpleDistributor extends Distributor {
 
     private List<BiomeLayer> biomeLayers;
     private transient Map<Biome, NoiseGenerator> noiseGenMap;
@@ -46,7 +48,7 @@ public class SimpleDistributor extends Distributor{
         noiseGenMap = new HashMap<>();
         Registry<Biome> biomeRegistry = Orbis.getRegistry(Biome.class);
         assert biomeRegistry != null;
-        for (BiomeLayer layer : biomeLayers){
+        for (BiomeLayer layer : biomeLayers) {
             layer.setBiome(biomeRegistry.loadType(getContainer(), layer.getBiomeName()));
             noiseGenMap.put(layer.getBiome(), new OpenSimplex2S(layer.getSeed()));
         }
@@ -66,9 +68,9 @@ public class SimpleDistributor extends Distributor{
     private Biome getBiome(double x, double z) {
         double maxValue = Double.NEGATIVE_INFINITY;
         Biome biome = null;
-        for (BiomeLayer layer : biomeLayers){
+        for (BiomeLayer layer : biomeLayers) {
             double noiseValue = noiseGenMap.get(layer.getBiome()).noise(x / layer.getZoom(), z / layer.getZoom());
-            if(noiseValue > maxValue){
+            if (noiseValue > maxValue) {
                 biome = layer.getBiome();
                 maxValue = noiseValue;
             }

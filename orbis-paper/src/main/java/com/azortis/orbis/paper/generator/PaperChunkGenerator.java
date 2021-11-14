@@ -18,9 +18,9 @@
 
 package com.azortis.orbis.paper.generator;
 
+import com.azortis.orbis.pack.Pack;
 import com.azortis.orbis.paper.OrbisPlugin;
 import com.azortis.orbis.paper.OrbisWorld;
-import com.azortis.orbis.pack.Pack;
 import org.bukkit.World;
 import org.bukkit.generator.ChunkGenerator;
 import org.jetbrains.annotations.NotNull;
@@ -44,8 +44,8 @@ public class PaperChunkGenerator extends ChunkGenerator {
 
     // If the world got initialized through the normal Bukkit configs then the ChunkGenerator gets made before the world
     // can be registered with orbis, so this is our bypass
-    private synchronized void load(World world){
-        if(!loaded) {
+    private synchronized void load(World world) {
+        if (!loaded) {
             orbisWorld = plugin.getWorld(worldName);
             if (orbisWorld != null) {
                 if (orbisWorld.isLoaded()) orbisWorld.load();
@@ -58,7 +58,7 @@ public class PaperChunkGenerator extends ChunkGenerator {
 
     @Override
     public @NotNull ChunkData generateChunkData(@NotNull World world, @NotNull Random random, int chunkX, int chunkZ, @NotNull BiomeGrid biomeGrid) {
-        if(!loaded) load(world);
+        if (!loaded) load(world);
         PaperChunkData chunkData = new PaperChunkData(orbisWorld.getDimension(), createChunkData(world));
         orbisWorld.getEngine().generateChunkData(chunkData, new PaperBiomeGrid(biomeGrid), chunkX, chunkZ);
         return chunkData.getHandle();

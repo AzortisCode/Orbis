@@ -18,11 +18,11 @@
 
 package com.azortis.orbis.generator.noise;
 
-public class OpenSimplex2S implements NoiseGenerator{
+public class OpenSimplex2S implements NoiseGenerator {
 
     private final FastNoise noise;
 
-    public OpenSimplex2S(long seed){
+    public OpenSimplex2S(long seed) {
         noise = new FastNoise(seed);
         noise.setNoiseType(FastNoise.NoiseType.OpenSimplex2S);
         noise.setFrequency(1);
@@ -34,7 +34,7 @@ public class OpenSimplex2S implements NoiseGenerator{
     }
 
     @Override
-    public double noise(double x, double z){
+    public double noise(double x, double z) {
         return noise.getNoise(x, z);
     }
 

@@ -23,6 +23,7 @@ import lombok.Setter;
 
 /**
  * Credits to k.jpg from FastNoise for making this class.
+ *
  * @param <TTag> The type tag of the point gatherer.
  */
 @Getter

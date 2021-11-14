@@ -69,7 +69,7 @@ public class Interpolator {
     }
 
     public int getFinalHeight(int x, int z, double scale, HeightProvider provider) {
-        return (int) getStarCast(x, z, scale, (xx, zz) -> getBilinearNoise((int)xx, (int)zz, scale, provider));
+        return (int) getStarCast(x, z, scale, (xx, zz) -> getBilinearNoise((int) xx, (int) zz, scale, provider));
     }
 
 }

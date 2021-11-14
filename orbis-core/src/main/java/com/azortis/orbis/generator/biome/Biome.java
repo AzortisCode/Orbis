@@ -23,8 +23,6 @@ import com.azortis.orbis.util.NamespaceId;
 import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
 
-import java.util.List;
-
 @Getter
 public class Biome {
 

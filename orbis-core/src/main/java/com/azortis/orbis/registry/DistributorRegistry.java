@@ -43,7 +43,7 @@ public class DistributorRegistry implements GeneratorRegistry<Distributor> {
         distributorClasses.put(new NamespaceId("orbis:simple"), SimpleDistributor.class);
     }
 
-    public DistributorRegistry(){
+    public DistributorRegistry() {
     }
 
     @Override
@@ -55,7 +55,7 @@ public class DistributorRegistry implements GeneratorRegistry<Distributor> {
             distributor.setSettingsFolder(new File(container.getSettingsFolder(), DISTRIBUTOR_DIRECTORY + name + "/"));
             distributor.load();
             return distributor;
-        }catch (FileNotFoundException ex){
+        } catch (FileNotFoundException ex) {
             Orbis.getLogger().error("Distributor file {} not found", name);
         }
         return null;
@@ -68,7 +68,7 @@ public class DistributorRegistry implements GeneratorRegistry<Distributor> {
 
     @Override
     public void createFolders(Container container) {
-        if(!new File(container.getSettingsFolder(), DISTRIBUTOR_DIRECTORY).mkdirs()){
+        if (!new File(container.getSettingsFolder(), DISTRIBUTOR_DIRECTORY).mkdirs()) {
             Orbis.getLogger().error("Unable to create distributor directory for container {}", container.getName());
         }
     }

@@ -19,8 +19,10 @@
 package com.azortis.orbis.paper;
 
 import com.azortis.orbis.Platform;
+import com.azortis.orbis.block.StateDefinition;
 import com.azortis.orbis.block.data.BlockData;
 import com.azortis.orbis.container.Container;
+import com.azortis.orbis.paper.block.PaperStateDefinition;
 import com.azortis.orbis.util.NamespaceId;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
@@ -33,7 +35,7 @@ public class PaperPlatform implements Platform {
 
     private final OrbisPlugin plugin;
 
-    public PaperPlatform(OrbisPlugin plugin){
+    public PaperPlatform(OrbisPlugin plugin) {
         this.plugin = plugin;
     }
 
@@ -64,7 +66,8 @@ public class PaperPlatform implements Platform {
     }
 
     @Override
-    public BlockData createBlockData(NamespaceId material) {
-        return null;
+    public StateDefinition getStateDefinition(NamespaceId material) {
+        return new PaperStateDefinition(material);
     }
+
 }

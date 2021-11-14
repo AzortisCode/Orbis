@@ -20,11 +20,8 @@ package com.azortis.orbis.block.property;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
-import java.util.stream.Collectors;
 
 public class IntegerProperty extends AbstractProperty<Integer> {
 
@@ -57,7 +54,7 @@ public class IntegerProperty extends AbstractProperty<Integer> {
         return max;
     }
 
-    private static Set<Integer> createIntegerSet(int min, int max){
+    private static Set<Integer> createIntegerSet(int min, int max) {
         Set<Integer> values = new TreeSet<>();
         for (int i = min; i <= max; i++) {
             values.add(i);
@@ -65,7 +62,7 @@ public class IntegerProperty extends AbstractProperty<Integer> {
         return values;
     }
 
-    protected static IntegerProperty create(final @NotNull String name, final int min, final int max){
+    protected static IntegerProperty create(final @NotNull String name, final int min, final int max) {
         return new IntegerProperty(name, min, max);
     }
 

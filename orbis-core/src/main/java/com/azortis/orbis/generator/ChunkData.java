@@ -37,20 +37,20 @@ public abstract class ChunkData {
     /**
      * Stores a block in the chunk. The specified coordinates are chunk positions.
      *
-     * @param x The x-coordinate in the chunk. Ranges from 0-15
-     * @param y The y-coordinate in the chunk Ranges from heightMin and heightMax
-     * @param z The z-coordinate in the chunk. Ranges from 0-15
+     * @param x     The x-coordinate in the chunk. Ranges from 0-15
+     * @param y     The y-coordinate in the chunk Ranges from heightMin and heightMax
+     * @param z     The z-coordinate in the chunk. Ranges from 0-15
      * @param block The block to put at the specified position.
      */
-    public void setBlock(int x, int y, int z, Block block){
+    public void setBlock(int x, int y, int z, Block block) {
         int blockHash = block.hashCode();
-        if(!blockMap.containsKey(blockHash))blockMap.put(blockHash, block);
+        if (!blockMap.containsKey(blockHash)) blockMap.put(blockHash, block);
         int yIndex = y + Math.abs(dimension.getMinHeight());
         blocks[x + z * 16 + yIndex * 256] = block.hashCode();
         setBlock(x, y, z, block.getBlock().getId());
     }
 
-    public Block getBlock(int x, int y, int z){
+    public Block getBlock(int x, int y, int z) {
         int yIndex = y + Math.abs(dimension.getMinHeight());
         return blockMap.get(blocks[x + z * 16 + yIndex * 256]);
     }

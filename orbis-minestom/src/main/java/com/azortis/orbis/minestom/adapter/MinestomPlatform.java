@@ -19,6 +19,7 @@
 package com.azortis.orbis.minestom.adapter;
 
 import com.azortis.orbis.Platform;
+import com.azortis.orbis.block.StateDefinition;
 import com.azortis.orbis.block.data.BlockData;
 import com.azortis.orbis.container.Container;
 import com.azortis.orbis.util.NamespaceId;
@@ -56,7 +57,8 @@ public class MinestomPlatform implements Platform {
     }
 
     @Override
-    public BlockData createBlockData(NamespaceId material) {
+    public StateDefinition getStateDefinition(NamespaceId material) {
         return null;
     }
+
 }

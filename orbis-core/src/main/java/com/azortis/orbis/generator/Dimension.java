@@ -34,9 +34,10 @@ public class Dimension {
     private String distributor;
 
     // Used for the GSON deserializer
-    private Dimension(){}
+    private Dimension() {
+    }
 
-    public Dimension(String name){
+    public Dimension(String name) {
         this.name = name;
     }
 

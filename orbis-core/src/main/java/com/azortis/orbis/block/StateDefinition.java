@@ -18,19 +18,26 @@
 
 package com.azortis.orbis.block;
 
+import com.azortis.orbis.block.property.Property;
 import com.azortis.orbis.util.NamespaceId;
-import lombok.Getter;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-@Deprecated
-public class Block {
+import java.util.Map;
+import java.util.Optional;
 
-    //TODO overhaul this class to no longer represent a block being placed, but a block in the world
+public interface StateDefinition extends Cloneable {
 
-    @Getter
-    private final NamespaceId block;
+    @NotNull NamespaceId getMaterial();
 
-    public Block(NamespaceId block) {
-        this.block = block;
-    }
+    @Nullable Property<?> getProperty(String name);
+
+    Map<String, Property<?>> getProperties();
+
+    boolean hasProperty(Property<?> property);
+
+    BlockState getDefaultBlockState();
+
+    BlockState getBlockState(Map<Property<?>, Optional<?>> values);
 
 }

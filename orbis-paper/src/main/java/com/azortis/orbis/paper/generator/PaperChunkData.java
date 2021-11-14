@@ -36,14 +36,14 @@ public class PaperChunkData extends ChunkData {
 
     @Override
     protected void setBlock(int x, int y, int z, String blockId) {
-        if(blockId.equals("water")){
+        if (blockId.equals("water")) {
             handle.setBlock(x, y, z, Material.WATER);
             return;
         }
         handle.setBlock(x, y, z, Material.valueOf(blockId.toUpperCase(Locale.ENGLISH)));
     }
 
-    public ChunkGenerator.ChunkData getHandle(){
+    public ChunkGenerator.ChunkData getHandle() {
         return handle;
     }
 

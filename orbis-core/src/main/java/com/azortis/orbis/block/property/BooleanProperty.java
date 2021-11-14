@@ -39,7 +39,7 @@ public class BooleanProperty extends AbstractProperty<Boolean> {
         return val;
     }
 
-    protected static BooleanProperty create(final @NotNull String name){
+    protected static BooleanProperty create(final @NotNull String name) {
         return new BooleanProperty(name);
     }
 

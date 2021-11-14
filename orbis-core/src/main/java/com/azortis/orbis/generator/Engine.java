@@ -31,9 +31,9 @@ public abstract class Engine {
         this.container = container;
     }
 
-    public abstract void generateChunkData(ChunkData chunkData, BiomeGrid biomeGrid,  int chunkX, int chunkZ);
+    public abstract void generateChunkData(ChunkData chunkData, BiomeGrid biomeGrid, int chunkX, int chunkZ);
 
-    public Dimension getDimension(){
+    public Dimension getDimension() {
         return container.getDimension();
     }
 

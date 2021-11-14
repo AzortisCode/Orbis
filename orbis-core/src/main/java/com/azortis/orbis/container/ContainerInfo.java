@@ -31,7 +31,8 @@ public class ContainerInfo {
     private String dimensionFile;
 
     // Used for gson deserialization
-    private ContainerInfo() {}
+    private ContainerInfo() {
+    }
 
     public ContainerInfo(String settingsVersion) {
         this.settingsVersion = settingsVersion;

@@ -22,7 +22,7 @@ public class PerlinNoise implements NoiseGenerator {
 
     private final FastNoise noise;
 
-    public PerlinNoise(long seed){
+    public PerlinNoise(long seed) {
         noise = new FastNoise(seed);
         noise.setNoiseType(FastNoise.NoiseType.Perlin);
         noise.setRotationType3D(FastNoise.RotationType3D.ImproveXZPlanes);

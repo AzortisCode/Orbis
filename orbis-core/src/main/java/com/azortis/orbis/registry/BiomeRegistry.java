@@ -30,7 +30,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class BiomeRegistry implements Registry<Biome>{
+public class BiomeRegistry implements Registry<Biome> {
 
     private static final String BIOME_DIRECTORY = "/biomes/";
 
@@ -61,7 +61,7 @@ public class BiomeRegistry implements Registry<Biome>{
 
     @Override
     public void createFolders(Container container) {
-        if(!getFolder(container).mkdirs()){
+        if (!getFolder(container).mkdirs()) {
             Orbis.getLogger().error("Failed to create biome directory for {}", container.getName());
         }
     }

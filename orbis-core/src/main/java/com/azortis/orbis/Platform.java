@@ -18,6 +18,8 @@
 
 package com.azortis.orbis;
 
+import com.azortis.orbis.block.BlockState;
+import com.azortis.orbis.block.StateDefinition;
 import com.azortis.orbis.block.data.BlockData;
 import com.azortis.orbis.container.Container;
 import com.azortis.orbis.util.NamespaceId;
@@ -40,6 +42,6 @@ public interface Platform {
 
     Collection<Container> getContainers();
 
-    BlockData createBlockData(NamespaceId material);
+    StateDefinition getStateDefinition(NamespaceId material);
 
 }

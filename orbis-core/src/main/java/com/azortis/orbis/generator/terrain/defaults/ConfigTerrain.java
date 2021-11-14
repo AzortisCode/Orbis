@@ -34,7 +34,7 @@ public class ConfigTerrain extends Terrain {
     @Override
     public double getTerrainHeight(int x, int z, double biomeWeight, NoiseGenerator noise) {
         double height = 0;
-        for (NoiseLayer layer : layers){
+        for (NoiseLayer layer : layers) {
             height += (noise.noise(x / layer.zoom, z / layer.zoom) * layer.coefficient);
         }
         return super.getBiome().getBaseHeight() + height;

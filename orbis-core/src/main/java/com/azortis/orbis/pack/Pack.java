@@ -38,7 +38,7 @@ public class Pack {
     private String description;
 
     // Used for gson deserialization
-    private Pack(){
+    private Pack() {
     }
 
     public Pack(String name, String author, String dimensionFile, String packVersion) {

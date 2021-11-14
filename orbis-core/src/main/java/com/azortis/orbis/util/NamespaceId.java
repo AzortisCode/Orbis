@@ -56,9 +56,9 @@ public class NamespaceId {
 
     @Override
     public boolean equals(Object obj) {
-        if(obj instanceof String){
+        if (obj instanceof String) {
             return namespaceId.equalsIgnoreCase((String) obj);
-        } else if(obj instanceof NamespaceId){
+        } else if (obj instanceof NamespaceId) {
             return ((NamespaceId) obj).getNamespaceId().equalsIgnoreCase(namespaceId);
         }
         return false;
