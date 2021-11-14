@@ -16,30 +16,29 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.block.data;
+package com.azortis.orbis.block.property;
 
-import com.azortis.orbis.block.Axis;
-import com.azortis.orbis.block.property.EnumProperty;
+import com.azortis.orbis.util.Nameable;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Set;
+public enum Axis implements Nameable {
+    X("x"),
+    Y("y"),
+    Z("z");
 
-public interface Orientable extends BlockData {
+    private final String name;
 
-    EnumProperty<Axis> AXIS = new EnumProperty<>("axis", Axis.class, Set.of(Axis.X, Axis.Y, Axis.Z));
-
-    @NotNull
-    default Axis getAxis(){
-        return getProperty(AXIS);
+    Axis(String name) {
+        this.name = name;
     }
 
-    default void setAxis(@NotNull Axis axis){
-        setProperty(AXIS, axis);
+    @Override
+    public String toString() {
+        return this.name;
     }
 
-    @NotNull
-    default Set<Axis> getAxes(){
-        return AXIS.getValues();
+    @Override
+    public @NotNull String getSerializedName() {
+        return this.name;
     }
-
 }

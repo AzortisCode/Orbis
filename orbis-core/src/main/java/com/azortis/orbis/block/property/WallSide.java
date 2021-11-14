@@ -16,14 +16,29 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.block.data;
+package com.azortis.orbis.block.property;
 
-public interface Ageable extends BlockData {
+import com.azortis.orbis.util.Nameable;
+import org.jetbrains.annotations.NotNull;
 
-    int getAge();
+public enum WallSide implements Nameable {
+    NONE("none"),
+    LOW("low"),
+    TALL("tall");
 
-    void setAge(int age);
+    private final String name;
 
-    int getMaximumAge();
+    WallSide(String name) {
+        this.name = name;
+    }
 
+    @Override
+    public String toString() {
+        return this.name;
+    }
+
+    @Override
+    public @NotNull String getSerializedName() {
+        return this.name;
+    }
 }

@@ -19,11 +19,8 @@
 package com.azortis.orbis.paper;
 
 import com.azortis.orbis.Orbis;
-import com.azortis.orbis.block.data.Waterlogged;
-import com.azortis.orbis.block.property.Property;
 import com.azortis.orbis.paper.generator.PaperChunkGenerator;
 import com.azortis.orbis.pack.Pack;
-import com.azortis.orbis.util.NamespaceId;
 import org.bukkit.World;
 import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.plugin.java.JavaPlugin;

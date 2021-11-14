@@ -18,20 +18,19 @@
 
 package com.azortis.orbis.block.property;
 
-import com.azortis.orbis.util.StringRepresentable;
+import com.azortis.orbis.util.Nameable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public final class EnumProperty<T extends Enum<T> & StringRepresentable> extends AbstractProperty<T> {
+public class EnumProperty<T extends Enum<T> & Nameable> extends AbstractProperty<T> {
 
     private final Map<String, T> names = new HashMap<>();
 
-    public EnumProperty(final @NotNull String name, final Class<T> type, final @NotNull Set<T> values) {
+    protected EnumProperty(final @NotNull String name, final Class<T> type, final @NotNull Set<T> values) {
         super(name, type, values);
         for (final T value : values) {
             final String key = value.getSerializedName();
@@ -53,6 +52,30 @@ public final class EnumProperty<T extends Enum<T> & StringRepresentable> extends
 
     public Set<String> getNames(){
         return Collections.unmodifiableSet(names.keySet());
+    }
+
+    protected static <T extends Enum<T> & Nameable> EnumProperty<T> create(final @NotNull String name,
+                                                                           final @NotNull Class<T> type){
+        return create(name, type, t -> true);
+    }
+
+    protected static <T extends Enum<T> & Nameable> EnumProperty<T> create(final @NotNull String name,
+                                                                           final @NotNull Class<T> type,
+                                                                           final @NotNull Predicate<T> filter){
+        return create(name, type, Arrays.stream(type.getEnumConstants()).filter(filter).collect(Collectors.toSet()));
+    }
+
+    @SafeVarargs
+    protected static <T extends Enum<T> & Nameable> EnumProperty<T> create(final @NotNull String name,
+                                                                           final Class<T> type,
+                                                                           final @NotNull T... values){
+        return create(name, type, Set.of(values));
+    }
+
+    protected static <T extends Enum<T> & Nameable> EnumProperty<T> create(final @NotNull String name,
+                                                                           final @NotNull Class<T> type,
+                                                                           final @NotNull Set<T> values){
+        return new EnumProperty<>(name, type, values);
     }
 
 }

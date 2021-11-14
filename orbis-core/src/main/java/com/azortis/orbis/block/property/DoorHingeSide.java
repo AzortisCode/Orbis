@@ -16,26 +16,28 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.block.data;
+package com.azortis.orbis.block.property;
 
-import com.azortis.orbis.block.property.IntegerProperty;
+import com.azortis.orbis.util.Nameable;
+import org.jetbrains.annotations.NotNull;
 
-import java.util.Set;
+public enum DoorHingeSide implements Nameable {
+    LEFT("left"),
+    RIGHT("right");
 
-public interface AnaloguePowerable extends BlockData {
+    private final String name;
 
-    /*IntegerProperty POWER = new IntegerProperty("power", Set.of(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15));
-
-    default int getPower(){
-        return getProperty(POWER);
+    DoorHingeSide(String name) {
+        this.name = name;
     }
 
-    default void setPower(int power){
-        setProperty(POWER, power);
+    @Override
+    public String toString() {
+        return this.name;
     }
 
-    default int getMaximumPower(){
-        return 15;
-    }*/
-
+    @Override
+    public @NotNull String getSerializedName() {
+        return this.name;
+    }
 }

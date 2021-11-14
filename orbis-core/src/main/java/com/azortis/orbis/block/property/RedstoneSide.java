@@ -16,20 +16,34 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.block.data;
+package com.azortis.orbis.block.property;
 
-import com.azortis.orbis.block.property.BooleanProperty;
+import com.azortis.orbis.util.Nameable;
+import org.jetbrains.annotations.NotNull;
 
-public interface Lightable extends BlockData {
+public enum RedstoneSide implements Nameable {
+    UP("up"),
+    SIDE("side"),
+    NONE("none");
 
-    BooleanProperty LIT = new BooleanProperty("lit");
+    private final String name;
 
-    default boolean isLit(){
-        return getProperty(LIT);
+    RedstoneSide(String name) {
+        this.name = name;
     }
 
-    default void setLit(boolean lit){
-        setProperty(LIT, lit);
+    @Override
+    public String toString() {
+        return this.getSerializedName();
+    }
+
+    @Override
+    public @NotNull String getSerializedName() {
+        return this.name;
+    }
+
+    public boolean isConnected() {
+        return this != NONE;
     }
 
 }

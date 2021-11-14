@@ -16,16 +16,31 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.block.data;
+package com.azortis.orbis.block.property;
 
-import com.azortis.orbis.block.BlockFace;
+import com.azortis.orbis.util.Nameable;
 import org.jetbrains.annotations.NotNull;
 
-public interface Rotatable extends BlockData {
+public enum BellAttachType implements Nameable {
+    FLOOR("floor"),
+    CEILING("ceiling"),
+    SINGLE_WALL("single_wall"),
+    DOUBLE_WALL("double_wall");
 
-    @NotNull
-    BlockFace getRotation();
+    private final String name;
 
-    void setRotation(@NotNull BlockFace blockFace);
+    BellAttachType(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return this.name;
+    }
+
+    @Override
+    public @NotNull String getSerializedName() {
+        return this.name;
+    }
 
 }

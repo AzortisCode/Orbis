@@ -16,20 +16,37 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.block.data;
+package com.azortis.orbis.block.property;
 
-import com.azortis.orbis.block.property.BooleanProperty;
+import com.azortis.orbis.util.Nameable;
+import org.jetbrains.annotations.NotNull;
 
-public interface Attachable extends BlockData {
+public enum Tilt implements Nameable {
+    NONE("none", true),
+    UNSTABLE("unstable", false),
+    PARTIAL("partial", true),
+    FULL("full", true);
 
-    BooleanProperty ATTACHED = new BooleanProperty("attached");
+    private final String name;
+    private final boolean causesVibration;
 
-    default boolean isAttached(){
-        return getProperty(ATTACHED);
+    Tilt(String name, boolean stable) {
+        this.name = name;
+        this.causesVibration = stable;
     }
 
-    default void setAttached(boolean attached){
-        setProperty(ATTACHED, attached);
+    @Override
+    public String toString() {
+        return this.name;
+    }
+
+    @Override
+    public @NotNull String getSerializedName() {
+        return this.name;
+    }
+
+    public boolean causesVibration() {
+        return this.causesVibration;
     }
 
 }

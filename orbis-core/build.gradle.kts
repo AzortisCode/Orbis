@@ -30,7 +30,7 @@ repositories {
 dependencies {
     // No adapter contains this by default
     implementation("net.sf.trove4j:trove4j:3.0.3")
-    implementation("com.google.guava:guava:30.1-jre")
+    implementation("com.google.guava:guava:31.0.1-jre")
     implementation("net.lingala.zip4j:zip4j:2.7.0")
     implementation("org.projectlombok:lombok:1.18.20")
 

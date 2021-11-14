@@ -18,10 +18,10 @@
 
 package com.azortis.orbis.block.property;
 
-import com.azortis.orbis.util.StringRepresentable;
+import com.azortis.orbis.util.Nameable;
 import org.jetbrains.annotations.NotNull;
 
-public enum BedPart implements StringRepresentable {
+public enum BedPart implements Nameable {
     HEAD("head"),
     FOOT("foot");
 

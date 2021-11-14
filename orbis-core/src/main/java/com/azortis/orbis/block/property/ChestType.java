@@ -16,19 +16,19 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.block;
+package com.azortis.orbis.block.property;
 
-import com.azortis.orbis.util.StringRepresentable;
+import com.azortis.orbis.util.Nameable;
 import org.jetbrains.annotations.NotNull;
 
-public enum Axis implements StringRepresentable {
-    X("x"),
-    Y("y"),
-    Z("z");
+public enum ChestType implements Nameable {
+    SINGLE("single"),
+    LEFT("left"),
+    RIGHT("right");
 
     private final String name;
 
-    Axis(String name) {
+    ChestType(String name) {
         this.name = name;
     }
 

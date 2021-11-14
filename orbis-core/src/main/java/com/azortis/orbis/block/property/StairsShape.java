@@ -16,26 +16,32 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.paper.block.data;
+package com.azortis.orbis.block.property;
 
-import com.azortis.orbis.block.data.BlockData;
-import com.azortis.orbis.util.NamespaceId;
+import com.azortis.orbis.util.Nameable;
 import org.jetbrains.annotations.NotNull;
 
-public class PaperBlockData implements BlockData {
-    private final org.bukkit.block.data.BlockData handle;
+public enum StairsShape implements Nameable {
+    STRAIGHT("straight"),
+    INNER_LEFT("inner_left"),
+    INNER_RIGHT("inner_right"),
+    OUTER_LEFT("outer_left"),
+    OUTER_RIGHT("outer_right");
 
-    public PaperBlockData(org.bukkit.block.data.BlockData handle){
-        this.handle = handle;
-    }
+    private final String name;
 
-    public org.bukkit.block.data.BlockData getHandle() {
-        return handle;
+    StairsShape(String name) {
+        this.name = name;
     }
 
     @Override
-    public NamespaceId getMaterial() {
-        return null;
+    public String toString() {
+        return this.name;
+    }
+
+    @Override
+    public @NotNull String getSerializedName() {
+        return this.name;
     }
 
 }

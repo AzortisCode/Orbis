@@ -16,20 +16,31 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.block.data;
+package com.azortis.orbis.block.property;
 
-import com.azortis.orbis.block.property.BooleanProperty;
+import com.azortis.orbis.util.Nameable;
+import org.jetbrains.annotations.NotNull;
 
-public interface Waterlogged extends BlockData {
+public enum StructureMode implements Nameable {
+    SAVE("save"),
+    LOAD("load"),
+    CORNER("corner"),
+    DATA("data");
 
-    BooleanProperty WATERLOGGED = new BooleanProperty("waterlogged");
+    private final String name;
 
-    default boolean isWaterLogged(){
-        return getProperty(WATERLOGGED);
+    StructureMode(String name) {
+        this.name = name;
     }
 
-    default void setWaterLogged(boolean waterLogged){
-        setProperty(WATERLOGGED, waterLogged);
+    @Override
+    public String toString() {
+        return this.name;
+    }
+
+    @Override
+    public @NotNull String getSerializedName() {
+        return this.name;
     }
 
 }

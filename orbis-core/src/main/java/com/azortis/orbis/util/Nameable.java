@@ -16,25 +16,11 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.block.data;
+package com.azortis.orbis.util;
 
-import com.azortis.orbis.block.BlockFace;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Set;
+public interface Nameable {
 
-public interface MultipleFacing extends BlockData {
-
-
-
-    boolean hasFace(@NotNull BlockFace face);
-
-    void setFace(@NotNull BlockFace face, boolean has);
-
-    @NotNull
-    Set<BlockFace> getFaces();
-
-    @NotNull
-    Set<BlockFace> getAllowedFaces();
-
+    @NotNull String getSerializedName();
 }

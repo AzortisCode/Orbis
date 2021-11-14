@@ -18,9 +18,9 @@
 
 package com.azortis.orbis.paper.nms.impl;
 
-import com.azortis.orbis.block.Axis;
 import com.azortis.orbis.block.property.*;
 import com.azortis.orbis.paper.nms.INMSBinding;
+import com.azortis.orbis.util.Nameable;
 import com.azortis.orbis.util.NamespaceId;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
@@ -31,7 +31,6 @@ import org.bukkit.block.data.BlockData;
 import org.bukkit.craftbukkit.v1_17_R1.block.data.CraftBlockData;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class NMSBinding implements INMSBinding {
 
@@ -39,71 +38,85 @@ public class NMSBinding implements INMSBinding {
         return Registry.BLOCK.get(ResourceLocation.tryParse(material.getId()));
     }
 
-    private static net.minecraft.world.level.block.state.properties.Property<?> translateProperty(Property<?> property){
-        final String name = property.getName();
-        net.minecraft.world.level.block.state.properties.Property<?> nativeProp = null;
-
-        if(property instanceof BooleanProperty){
-            nativeProp = net.minecraft.world.level.block.state.properties.BooleanProperty.create(name);
-        } else if (property instanceof IntegerProperty intProperty){
-            nativeProp = net.minecraft.world.level.block.state.properties.IntegerProperty.create(name,
-                    intProperty.getMin(), intProperty.getMax());
-        } else if (property instanceof EnumProperty enumProperty){
-            Class<?> type = enumProperty.getType();
-
-            // Check against all the different enums... kill me
-            if(type == Axis.class) {
-                nativeProp = net.minecraft.world.level.block.state.properties.EnumProperty.create(name,
-                        net.minecraft.core.Direction.Axis.class,
-                        getNativeValues(net.minecraft.core.Direction.Axis.class, enumProperty));
-            } else if (type == BedPart.class){
-                nativeProp = net.minecraft.world.level.block.state.properties.EnumProperty.create(name,
-                        net.minecraft.world.level.block.state.properties.BedPart.class,
-                        getNativeValues(net.minecraft.world.level.block.state.properties.BedPart.class, enumProperty));
-            }else if(type == Direction.class){
-                nativeProp = net.minecraft.world.level.block.state.properties.EnumProperty.create(name,
-                        net.minecraft.core.Direction.class,
-                        getNativeValues(net.minecraft.core.Direction.class, enumProperty));
-            }
-        }
-        return nativeProp;
-    }
-
-    private static <T extends StringRepresentable> Collection<T> getNativeValues(Class<T> type, EnumProperty<?> enumProperty){
-        return Arrays.stream(type.getEnumConstants()).filter(t -> enumProperty.getNames().contains(t.getSerializedName()))
-                .collect(Collectors.toUnmodifiableSet());
-    }
-
     @Override
-    public Map<Property<?>, ?> getPropertyMap(BlockData blockData) {
+    public Map<Property<?>, Optional<?>> getPropertyMap(BlockData blockData) {
         BlockState state = ((CraftBlockData)blockData).getState();
-        return null;
-    }
-
-    @Override
-    public Property<?> getProperty(NamespaceId material, String name) {
-        return null;
+        Map<Property<?>, Optional<?>> propertyMap = new HashMap<>();
+        state.getProperties().forEach(nativeProperty -> {
+            Property<?> property = ConversionUtils.fromNative(nativeProperty);
+            if(nativeProperty instanceof net.minecraft.world.level.block.state.properties.EnumProperty){
+                StringRepresentable stringRepresentable = (StringRepresentable) state.getValue(nativeProperty);
+                propertyMap.put(property, Optional.ofNullable(property.getValueFor(stringRepresentable.getSerializedName())));
+            } else {
+                propertyMap.put(property, state.getOptionalValue(nativeProperty));
+            }
+        });
+        return propertyMap;
     }
 
     @Override
     public Map<String, Property<?>> getProperties(NamespaceId material) {
-        return null;
+        BlockState state = getBlockFromId(material).defaultBlockState();
+        Map<String, Property<?>> propertyMap = new HashMap<>();
+        state.getProperties().forEach(nativeProperty -> {
+            Property<?> property = ConversionUtils.fromNative(nativeProperty);
+            propertyMap.put(property.getName(), property);
+        });
+        return propertyMap;
     }
 
     @Override
     public boolean hasProperty(NamespaceId material, Property<?> property) {
-        net.minecraft.world.level.block.state.properties.Property<?> property1 = translateProperty(property);
-        if(property1 == null) return false;
-        return getBlockFromId(material).defaultBlockState().hasProperty(property1);
+        net.minecraft.world.level.block.state.properties.Property<?> nativeProperty = ConversionUtils.toNative(property);
+        return getBlockFromId(material).defaultBlockState().hasProperty(nativeProperty);
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public <T> T getValue(BlockData blockData, Property<T> property) {
-        return null;
+        net.minecraft.world.level.block.state.properties.Property<?> nativeProperty = ConversionUtils.toNative(property);
+        BlockState state = ((CraftBlockData) blockData).getState();
+
+        if(state.hasProperty(nativeProperty)) {
+            if (nativeProperty instanceof net.minecraft.world.level.block.state.properties.EnumProperty enumProperty) {
+                StringRepresentable stringRepresentable = (StringRepresentable) state.getValue(enumProperty);
+                return property.getValueFor(stringRepresentable.getSerializedName());
+            } else {
+                return (T) state.getValue(nativeProperty);
+            }
+        } else {
+            throw new IllegalArgumentException("Cannot get property " + property.getName() +
+                    " as it does not exist in" + blockData.getMaterial().name());
+        }
     }
 
     @Override
     public <T> void setValue(BlockData blockData, Property<T> property, T value) {
+        BlockState state = ((CraftBlockData) blockData).getState();
 
+        if(property instanceof BooleanProperty){
+            net.minecraft.world.level.block.state.properties.BooleanProperty nativeProperty =
+                    (net.minecraft.world.level.block.state.properties.BooleanProperty) ConversionUtils.toNative(property);
+            state.setValue(nativeProperty, (Boolean) value);
+        } else if(property instanceof IntegerProperty){
+            net.minecraft.world.level.block.state.properties.IntegerProperty nativeProperty =
+                    (net.minecraft.world.level.block.state.properties.IntegerProperty) ConversionUtils.toNative(property);
+            state.setValue(nativeProperty, (Integer) value);
+        } else if(property instanceof EnumProperty enumProperty){
+            String name = ((Nameable)value).getSerializedName();
+            setEnumValue(state, enumProperty, name);
+        }
     }
+
+    @SuppressWarnings("unchecked")
+    private <T extends Enum<T> & StringRepresentable> void setEnumValue(BlockState state, EnumProperty<?> property,
+                                                                        String name){
+        net.minecraft.world.level.block.state.properties.EnumProperty<T> enumProperty =
+                (net.minecraft.world.level.block.state.properties.EnumProperty<T>) ConversionUtils.toNative(property);
+        Optional<T> value = enumProperty.getValue(name);
+        value.ifPresentOrElse(t -> state.setValue(enumProperty, t), () -> {
+            throw new IllegalStateException("Unexpected value: " + name);
+        });
+    }
+
 }

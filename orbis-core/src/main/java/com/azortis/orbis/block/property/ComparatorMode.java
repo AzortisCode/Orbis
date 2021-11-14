@@ -18,10 +18,10 @@
 
 package com.azortis.orbis.block.property;
 
-import com.azortis.orbis.util.StringRepresentable;
+import com.azortis.orbis.util.Nameable;
 import org.jetbrains.annotations.NotNull;
 
-public enum ComparatorMode implements StringRepresentable {
+public enum ComparatorMode implements Nameable {
     COMPARE("compare"),
     SUBTRACT("subtract");
 

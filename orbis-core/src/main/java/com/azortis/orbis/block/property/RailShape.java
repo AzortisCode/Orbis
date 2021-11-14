@@ -16,31 +16,41 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.block.data;
+package com.azortis.orbis.block.property;
 
-import com.azortis.orbis.block.property.Direction;
-import com.azortis.orbis.block.property.EnumProperty;
+import com.azortis.orbis.util.Nameable;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Set;
+public enum RailShape implements Nameable {
+    NORTH_SOUTH("north_south"),
+    EAST_WEST("east_west"),
+    ASCENDING_EAST("ascending_east"),
+    ASCENDING_WEST("ascending_west"),
+    ASCENDING_NORTH("ascending_north"),
+    ASCENDING_SOUTH("ascending_south"),
+    SOUTH_EAST("south_east"),
+    SOUTH_WEST("south_west"),
+    NORTH_WEST("north_west"),
+    NORTH_EAST("north_east");
 
-public interface Directional extends BlockData {
+    private final String name;
 
-    EnumProperty<Direction> FACING = new EnumProperty<>("facing",
-            Direction.class, Set.of(Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST));
-
-    @NotNull
-    default Direction getFacing(){
-        return getProperty(FACING);
+    RailShape(String name) {
+        this.name = name;
     }
 
-    default void setFacing(@NotNull Direction facing){
-        setProperty(FACING, facing);
+    @Override
+    public String toString() {
+        return this.name;
     }
 
-    @NotNull
-    default Set<Direction> getFaces(){
-        return FACING.getValues();
+    @Override
+    public @NotNull String getSerializedName() {
+        return this.name;
+    }
+
+    public boolean isAscending() {
+        return this == ASCENDING_NORTH || this == ASCENDING_EAST || this == ASCENDING_SOUTH || this == ASCENDING_WEST;
     }
 
 }

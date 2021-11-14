@@ -16,20 +16,29 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.block.data;
+package com.azortis.orbis.block.property;
 
-import com.azortis.orbis.block.property.BooleanProperty;
+import com.azortis.orbis.util.Nameable;
+import org.jetbrains.annotations.NotNull;
 
-public interface Openable extends BlockData {
+public enum AttachFace implements Nameable {
+    FLOOR("floor"),
+    WALL("wall"),
+    CEILING("ceiling");
 
-    BooleanProperty OPEN = new BooleanProperty("open");
+    private final String name;
 
-    default boolean isOpen(){
-        return getProperty(OPEN);
+    AttachFace(String name) {
+        this.name = name;
     }
 
-    default void setOpen(boolean open){
-        setProperty(OPEN, open);
+    @Override
+    public String toString() {
+        return this.name;
     }
 
+    @Override
+    public @NotNull String getSerializedName() {
+        return this.name;
+    }
 }

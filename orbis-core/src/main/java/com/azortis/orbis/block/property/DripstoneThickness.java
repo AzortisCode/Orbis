@@ -18,18 +18,19 @@
 
 package com.azortis.orbis.block.property;
 
-import com.azortis.orbis.util.StringRepresentable;
+import com.azortis.orbis.util.Nameable;
 import org.jetbrains.annotations.NotNull;
 
-public enum BellAttachment implements StringRepresentable {
-    FLOOR("floor"),
-    CEILING("ceiling"),
-    SINGLE_WALL("single_wall"),
-    DOUBLE_WALL("double_wall");
+public enum DripstoneThickness implements Nameable {
+    TIP_MERGE("tip_merge"),
+    TIP("tip"),
+    FRUSTUM("frustum"),
+    MIDDLE("middle"),
+    BASE("base");
 
     private final String name;
 
-    BellAttachment(String name) {
+    DripstoneThickness(String name) {
         this.name = name;
     }
 

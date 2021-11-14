@@ -16,14 +16,29 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.block.data;
+package com.azortis.orbis.block.property;
 
-public interface Levelled extends BlockData {
+import com.azortis.orbis.util.Nameable;
+import org.jetbrains.annotations.NotNull;
 
-    int getLevel();
+public enum SlabType implements Nameable {
+    TOP("top"),
+    BOTTOM("bottom"),
+    DOUBLE("double");
 
-    void setLevel(int level);
+    private final String name;
 
-    int getMaximumLevel();
+    SlabType(String name) {
+        this.name = name;
+    }
 
+    @Override
+    public String toString() {
+        return this.name;
+    }
+
+    @Override
+    public @NotNull String getSerializedName() {
+        return this.name;
+    }
 }

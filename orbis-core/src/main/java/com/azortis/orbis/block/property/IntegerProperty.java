@@ -26,11 +26,11 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
 
-public final class IntegerProperty extends AbstractProperty<Integer> {
+public class IntegerProperty extends AbstractProperty<Integer> {
 
     private final int min, max;
 
-    public IntegerProperty(final @NotNull String name, final int min, final int max) {
+    protected IntegerProperty(final @NotNull String name, final int min, final int max) {
         super(name, Integer.class, createIntegerSet(min, max));
         this.min = min;
         this.max = max;
@@ -63,6 +63,10 @@ public final class IntegerProperty extends AbstractProperty<Integer> {
             values.add(i);
         }
         return values;
+    }
+
+    protected static IntegerProperty create(final @NotNull String name, final int min, final int max){
+        return new IntegerProperty(name, min, max);
     }
 
 }

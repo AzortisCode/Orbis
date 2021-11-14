@@ -22,11 +22,11 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Set;
 
-public final class BooleanProperty extends AbstractProperty<Boolean> {
+public class BooleanProperty extends AbstractProperty<Boolean> {
 
     public static final Set<Boolean> VALUES = Set.of(true, false);
 
-    public BooleanProperty(final @NotNull String name) {
+    protected BooleanProperty(final @NotNull String name) {
         super(name, Boolean.class, VALUES);
     }
 
@@ -38,4 +38,9 @@ public final class BooleanProperty extends AbstractProperty<Boolean> {
         }
         return val;
     }
+
+    protected static BooleanProperty create(final @NotNull String name){
+        return new BooleanProperty(name);
+    }
+
 }

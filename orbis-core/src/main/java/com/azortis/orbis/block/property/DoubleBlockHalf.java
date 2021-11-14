@@ -16,33 +16,29 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.block.data;
+package com.azortis.orbis.block.property;
 
+import com.azortis.orbis.util.Nameable;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.List;
-import java.util.Set;
+public enum DoubleBlockHalf implements Nameable {
+    UPPER("upper"),
+    LOWER("lower");
 
-public interface Rail extends Waterlogged {
+    private final String name;
 
-    @NotNull
-    Shape getShape();
-
-    void setShape(@NotNull Shape shape);
-
-    @NotNull
-    Set<Shape> getShapes();
-
-    enum Shape {
-        NORTH_SOUTH,
-        EAST_WEST,
-        ASCENDING_EAST,
-        ASCENDING_WEST,
-        ASCENDING_NORTH,
-        ASCENDING_SOUTH,
-        SOUTH_EAST,
-        SOUTH_WEST,
-        NORTH_WEST,
-        NORTH_EAST
+    DoubleBlockHalf(String name) {
+        this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return this.name;
+    }
+
+    @Override
+    public @NotNull String getSerializedName() {
+        return this.name;
+    }
+
 }

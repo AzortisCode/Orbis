@@ -16,20 +16,42 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.block.data;
+package com.azortis.orbis.block.property;
 
-import com.azortis.orbis.block.property.BooleanProperty;
+import com.azortis.orbis.util.Nameable;
+import org.jetbrains.annotations.NotNull;
 
-public interface Powerable extends BlockData {
+public enum NoteBlockInstrument implements Nameable {
+    HARP("harp"),
+    BASEDRUM("basedrum"),
+    SNARE("snare"),
+    HAT("hat"),
+    BASS("bass"),
+    FLUTE("flute"),
+    BELL("bell"),
+    GUITAR("guitar"),
+    CHIME("chime"),
+    XYLOPHONE("xylophone"),
+    IRON_XYLOPHONE("iron_xylophone"),
+    COW_BELL("cow_bell"),
+    DIDGERIDOO("didgeridoo"),
+    BIT("bit"),
+    BANJO("banjo"),
+    PLING("pling");
 
-    BooleanProperty POWERED = new BooleanProperty("powered");
+    private final String name;
 
-    default boolean isPowered(){
-        return getProperty(POWERED);
+    NoteBlockInstrument(String name) {
+        this.name = name;
     }
 
-    default void setPowered(boolean powered){
-        setProperty(POWERED, powered);
+    @Override
+    public String toString() {
+        return this.name;
     }
 
+    @Override
+    public @NotNull String getSerializedName() {
+        return this.name;
+    }
 }

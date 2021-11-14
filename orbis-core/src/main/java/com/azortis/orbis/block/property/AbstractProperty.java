@@ -27,9 +27,9 @@ public abstract class AbstractProperty<T> implements Property<T> {
 
     private final String name;
     private final Class<T> type;
-    private final Set<T> values;
+    private final ImmutableSet<T> values;
 
-    public AbstractProperty(final @NotNull String name, final Class<T> type, final @NotNull Set<T> values) {
+    protected AbstractProperty(final @NotNull String name, final Class<T> type, final @NotNull Set<T> values) {
         this.name = name;
         this.type = type;
         this.values = ImmutableSet.copyOf(values);
@@ -40,7 +40,8 @@ public abstract class AbstractProperty<T> implements Property<T> {
         return name;
     }
 
-    public Class<T> getType() {
+    @Override
+    public @NotNull Class<T> getType() {
         return type;
     }
 
@@ -55,13 +56,4 @@ public abstract class AbstractProperty<T> implements Property<T> {
         return name.equals(property.getName());
     }
 
-    @Override
-    public int hashCode() {
-        return name.hashCode();
-    }
-
-    @Override
-    public String toString() {
-        return getClass().getSimpleName() + "{name=" + name + "}";
-    }
 }

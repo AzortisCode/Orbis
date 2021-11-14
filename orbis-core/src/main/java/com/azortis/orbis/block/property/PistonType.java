@@ -18,10 +18,10 @@
 
 package com.azortis.orbis.block.property;
 
-import com.azortis.orbis.util.StringRepresentable;
+import com.azortis.orbis.util.Nameable;
 import org.jetbrains.annotations.NotNull;
 
-public enum PistonType implements StringRepresentable {
+public enum PistonType implements Nameable {
     NORMAL("normal"),
     STICKY("sticky");
 

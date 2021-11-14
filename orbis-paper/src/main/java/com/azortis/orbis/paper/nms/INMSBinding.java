@@ -21,15 +21,15 @@ package com.azortis.orbis.paper.nms;
 import com.azortis.orbis.block.property.Property;
 import com.azortis.orbis.util.NamespaceId;
 import org.bukkit.block.data.BlockData;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 
 public interface INMSBinding {
 
-    Map<Property<?>, ?> getPropertyMap(BlockData blockData);
-
-    Property<?> getProperty(NamespaceId material, String name);
+    Map<Property<?>, Optional<?>> getPropertyMap(BlockData blockData);
 
     Map<String, Property<?>> getProperties(NamespaceId material);
 

@@ -21,6 +21,7 @@ package com.azortis.orbis.block.data;
 import com.azortis.orbis.block.property.Property;
 import com.azortis.orbis.util.NamespaceId;
 
+@Deprecated
 public interface BlockData {
 
     NamespaceId getMaterial();

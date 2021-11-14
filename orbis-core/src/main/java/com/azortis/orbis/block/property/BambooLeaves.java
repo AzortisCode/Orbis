@@ -16,20 +16,29 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.block.data;
+package com.azortis.orbis.block.property;
 
+import com.azortis.orbis.util.Nameable;
 import org.jetbrains.annotations.NotNull;
 
-public interface Bisected extends BlockData{
+public enum BambooLeaves implements Nameable {
+    NONE("none"),
+    SMALL("small"),
+    LARGE("large");
 
-    @NotNull
-    Half getHalf();
+    private final String name;
 
-    void setHalf(@NotNull Half half);
-
-    enum Half {
-        TOP,
-        BOTTOM
+    BambooLeaves(String name) {
+        this.name = name;
     }
 
+    @Override
+    public String toString() {
+        return this.name;
+    }
+
+    @Override
+    public @NotNull String getSerializedName() {
+        return this.name;
+    }
 }

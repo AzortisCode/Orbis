@@ -27,6 +27,8 @@ public interface Property<T> {
 
     @NotNull String getName();
 
+    @NotNull Class<T> getType();
+
     @NotNull Collection<T> getValues();
 
     @Nullable T getValueFor(final @NotNull String value);
