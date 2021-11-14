@@ -29,7 +29,6 @@ repositories {
 
 dependencies {
     // No adapter contains this by default
-    implementation("net.sf.trove4j:trove4j:3.0.3")
     implementation("com.google.guava:guava:31.0.1-jre")
     implementation("net.lingala.zip4j:zip4j:2.7.0")
     implementation("org.projectlombok:lombok:1.18.20")
@@ -37,6 +36,7 @@ dependencies {
     annotationProcessor("org.projectlombok:lombok:1.18.20")
 
     // Adapters should determine if it should be added to a shadow jar
+    compileOnly("it.unimi.dsi:fastutil:8.5.6")
     compileOnly("com.google.code.gson:gson:2.8.7")
     compileOnly("org.slf4j:slf4j-api:1.7.31")
     compileOnly("commons-io:commons-io:2.8.0")

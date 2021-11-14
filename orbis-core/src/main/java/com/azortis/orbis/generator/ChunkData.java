@@ -19,11 +19,12 @@
 package com.azortis.orbis.generator;
 
 import com.azortis.orbis.block.Block;
-import gnu.trove.map.hash.TIntObjectHashMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
 public abstract class ChunkData {
     private final Dimension dimension;
-    private final TIntObjectHashMap<Block> blockMap = new TIntObjectHashMap<>();
+    private final Int2ObjectMap<Block> blockMap = new Int2ObjectOpenHashMap<>();
     private final int[] blocks;
 
     public ChunkData(Dimension dimension) {
