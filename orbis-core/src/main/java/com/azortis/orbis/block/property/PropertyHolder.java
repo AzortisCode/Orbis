@@ -16,30 +16,28 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.block;
+package com.azortis.orbis.block.property;
 
-import com.azortis.orbis.block.property.Property;
-import com.azortis.orbis.util.NamespaceId;
-import org.jetbrains.annotations.NotNull;
-
+import java.lang.reflect.Field;
 import java.util.Map;
-import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
-public interface Block {
+public final class PropertyHolder {
 
-    @NotNull NamespaceId key();
+    private static final Map<String, Property<?>> PROPERTIES = new ConcurrentHashMap<>();
+    private static final Map<String, String> NAME_REWRITES = Map.of();
 
-    int id();
+    static {
+        for (final Field field : Properties.class.getDeclaredFields()) {
+            try {
+                PROPERTIES.put(NAME_REWRITES.getOrDefault(field.getName(), field.getName()), (Property<?>) field.get(null));
+            } catch (final IllegalAccessException exception) {
+                exception.printStackTrace();
+            }
+        }
+    }
 
-    int stateId();
-
-    boolean isAir();
-
-    boolean isSolid();
-
-    boolean isLiquid();
-
-    @NotNull Set<Property<?>> availableProperties();
-
-    @NotNull Map<String, String> properties();
+    public static Property<?> getByName(final String name) {
+        return PROPERTIES.get(name);
+    }
 }

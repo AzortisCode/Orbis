@@ -16,18 +16,21 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.block.data;
+package com.azortis.orbis.block;
 
 import com.azortis.orbis.block.property.Property;
 import com.azortis.orbis.util.NamespaceId;
 
-@Deprecated
-public interface BlockData {
+import java.util.Map;
+import java.util.Set;
 
-    NamespaceId getMaterial();
-
-    <T> T getProperty(Property<T> property);
-
-    <T> void setProperty(Property<T> property, T value);
-
-}
+record BlockImpl(
+        NamespaceId key,
+        int id,
+        int stateId,
+        boolean isAir,
+        boolean isSolid,
+        boolean isLiquid,
+        Set<Property<?>> availableProperties,
+        Map<String, String> properties
+) implements Block {}

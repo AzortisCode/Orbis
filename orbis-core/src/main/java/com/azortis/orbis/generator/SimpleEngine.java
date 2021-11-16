@@ -19,7 +19,7 @@
 package com.azortis.orbis.generator;
 
 import com.azortis.orbis.Orbis;
-import com.azortis.orbis.block.Block;
+import com.azortis.orbis.block.Blocks;
 import com.azortis.orbis.container.Container;
 import com.azortis.orbis.generator.biome.Biome;
 import com.azortis.orbis.generator.biome.BiomeGrid;
@@ -27,7 +27,6 @@ import com.azortis.orbis.generator.biome.Distributor;
 import com.azortis.orbis.generator.interpolation.Interpolator;
 import com.azortis.orbis.generator.noise.NoiseGenerator;
 import com.azortis.orbis.generator.noise.PerlinNoise;
-import com.azortis.orbis.util.NamespaceId;
 
 import java.util.Objects;
 
@@ -36,10 +35,6 @@ public class SimpleEngine extends Engine {
     private final NoiseGenerator noise;
     private final Distributor distributor;
     private final Interpolator interpolator = new Interpolator();
-
-    final Block bedrock = new Block(new NamespaceId("minecraft:bedrock"));
-    final Block stone = new Block(new NamespaceId("minecraft:stone"));
-    final Block water = new Block(new NamespaceId("minecraft:water"));
 
     public SimpleEngine(Container container) {
         super(container);
@@ -65,14 +60,14 @@ public class SimpleEngine extends Engine {
                     biomeGrid.setBiome(x, y, z, biome);
 
                     if (y == 0) {
-                        chunkData.setBlock(cx, y, cz, bedrock);
+                        chunkData.setBlock(cx, y, cz, Blocks.BEDROCK);
                     } else if (y > height && y <= getDimension().getFluidHeight()) {
-                        chunkData.setBlock(cx, y, cz, water);
+                        chunkData.setBlock(cx, y, cz, Blocks.WATER);
                     } else if (y <= height) {
                         if (y <= (height - 6)) {
-                            chunkData.setBlock(cx, y, cz, stone);
+                            chunkData.setBlock(cx, y, cz, Blocks.STONE);
                         } else {
-                            chunkData.setBlock(cx, y, cz, new Block(biome.getSurfaceBlock()));
+                            chunkData.setBlock(cx, y, cz, Blocks.get(biome.getSurfaceBlock()));
                         }
                     }
                 }

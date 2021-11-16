@@ -18,33 +18,63 @@
 
 package com.azortis.orbis.paper.generator;
 
+import com.azortis.orbis.block.Block;
+import com.azortis.orbis.block.BlockLoader;
 import com.azortis.orbis.generator.ChunkData;
 import com.azortis.orbis.generator.Dimension;
-import org.bukkit.Material;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.block.EntityBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.chunk.ChunkAccess;
+import org.bukkit.craftbukkit.v1_17_R1.generator.CraftChunkData;
 import org.bukkit.generator.ChunkGenerator;
-
-import java.util.Locale;
 
 public class PaperChunkData extends ChunkData {
 
-    private final ChunkGenerator.ChunkData handle;
+    private final CraftChunkData handle;
 
     public PaperChunkData(Dimension dimension, ChunkGenerator.ChunkData handle) {
         super(dimension);
-        this.handle = handle;
+        this.handle = (CraftChunkData) handle;
     }
 
     @Override
-    protected void setBlock(int x, int y, int z, String blockId) {
-        if (blockId.equals("water")) {
-            handle.setBlock(x, y, z, Material.WATER);
-            return;
-        }
-        handle.setBlock(x, y, z, Material.valueOf(blockId.toUpperCase(Locale.ENGLISH)));
+    public Block getBlock(int x, int y, int z) {
+        return BlockLoader.fromStateId(net.minecraft.world.level.block.Block.getId(handle.getTypeId(x, y, z)));
+    }
+
+    @Override
+    protected void setBlock(int x, int y, int z, int stateId) {
+        setBlock(handle, x, y, z, net.minecraft.world.level.block.Block.stateById(stateId));
     }
 
     public ChunkGenerator.ChunkData getHandle() {
         return handle;
     }
 
+    // TODO: Desperately try and come up with a better solution than just copying the private method out so we can
+    //  use it
+    private static void setBlock(CraftChunkData data, int x, int y, int z, BlockState type) {
+        if (x != (x & 0xf) || y < data.getMinHeight() || y >= data.getMaxHeight() || z != (z & 0xf)) {
+            return;
+        }
+
+        ChunkAccess access = data.getHandle();
+        BlockPos blockPosition = new BlockPos(access.getPos().getMinBlockX() + x, y, access.getPos().getMinBlockZ() + z);
+        BlockState oldBlockData = access.setBlockState(blockPosition, type, false);
+
+        if (type.hasBlockEntity()) {
+            BlockEntity tileEntity = ((EntityBlock) type.getBlock()).newBlockEntity(blockPosition, type);
+
+            // createTile can return null, currently only the case with material MOVING_PISTON
+            if (tileEntity == null) {
+                access.removeBlockEntity(blockPosition);
+            } else {
+                access.setBlockEntity(tileEntity);
+            }
+        } else if (oldBlockData != null && oldBlockData.hasBlockEntity()) {
+            access.removeBlockEntity(blockPosition);
+        }
+    }
 }

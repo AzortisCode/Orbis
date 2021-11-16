@@ -19,20 +19,15 @@
 package com.azortis.orbis.generator;
 
 import com.azortis.orbis.block.Block;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
 public abstract class ChunkData {
     private final Dimension dimension;
-    private final Int2ObjectMap<Block> blockMap = new Int2ObjectOpenHashMap<>();
-    private final int[] blocks;
 
     public ChunkData(Dimension dimension) {
         this.dimension = dimension;
-
-        int ySize = Math.abs(dimension.getMinHeight()) + dimension.getMaxHeight();
-        blocks = new int[16 * ySize * 16];
     }
+
+    public abstract Block getBlock(final int x, final int y, final int z);
 
     /**
      * Stores a block in the chunk. The specified coordinates are chunk positions.
@@ -42,19 +37,9 @@ public abstract class ChunkData {
      * @param z     The z-coordinate in the chunk. Ranges from 0-15
      * @param block The block to put at the specified position.
      */
-    public void setBlock(int x, int y, int z, Block block) {
-        int blockHash = block.hashCode();
-        if (!blockMap.containsKey(blockHash)) blockMap.put(blockHash, block);
-        int yIndex = y + Math.abs(dimension.getMinHeight());
-        blocks[x + z * 16 + yIndex * 256] = block.hashCode();
-        setBlock(x, y, z, block.getBlock().getId());
+    public final void setBlock(final int x, final int y, final int z, final Block block) {
+        setBlock(x, y, z, block.stateId());
     }
 
-    public Block getBlock(int x, int y, int z) {
-        int yIndex = y + Math.abs(dimension.getMinHeight());
-        return blockMap.get(blocks[x + z * 16 + yIndex * 256]);
-    }
-
-    protected abstract void setBlock(int x, int y, int z, String blockId);
-
+    protected abstract void setBlock(final int x, final int y, final int z, final int stateId);
 }
