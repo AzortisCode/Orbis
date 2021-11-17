@@ -16,29 +16,11 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.block.property;
+package com.azortis.orbis.utils;
 
-import com.azortis.orbis.utils.Nameable;
 import org.jetbrains.annotations.NotNull;
 
-public enum ChestType implements Nameable {
-    SINGLE("single"),
-    LEFT("left"),
-    RIGHT("right");
+public interface Nameable {
 
-    private final String name;
-
-    ChestType(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return this.name;
-    }
-
-    @Override
-    public @NotNull String getSerializedName() {
-        return this.name;
-    }
+    @NotNull String getSerializedName();
 }

@@ -16,29 +16,16 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.block.property;
+package com.azortis.orbis.codegen;
 
-import com.azortis.orbis.utils.Nameable;
-import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-public enum ChestType implements Nameable {
-    SINGLE("single"),
-    LEFT("left"),
-    RIGHT("right");
+public final class Generators {
+    private static final Logger LOGGER = LoggerFactory.getLogger(Generators.class);
 
-    private final String name;
+    public static void main(String[] args){
 
-    ChestType(String name) {
-        this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return this.name;
-    }
-
-    @Override
-    public @NotNull String getSerializedName() {
-        return this.name;
-    }
 }

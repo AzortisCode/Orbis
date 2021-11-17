@@ -18,7 +18,7 @@
 
 package com.azortis.orbis.block.property;
 
-import com.azortis.orbis.util.Nameable;
+import com.azortis.orbis.utils.Nameable;
 import org.jetbrains.annotations.NotNull;
 
 public enum StairsShape implements Nameable {

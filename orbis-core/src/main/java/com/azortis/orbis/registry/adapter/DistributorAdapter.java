@@ -21,7 +21,7 @@ package com.azortis.orbis.registry.adapter;
 import com.azortis.orbis.Orbis;
 import com.azortis.orbis.generator.biome.Distributor;
 import com.azortis.orbis.registry.GeneratorRegistry;
-import com.azortis.orbis.util.NamespaceId;
+import com.azortis.orbis.utils.NamespaceId;
 import com.google.gson.*;
 
 import java.lang.reflect.Type;

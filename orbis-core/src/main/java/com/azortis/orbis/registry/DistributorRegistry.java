@@ -23,7 +23,7 @@ import com.azortis.orbis.container.Container;
 import com.azortis.orbis.generator.biome.Distributor;
 import com.azortis.orbis.generator.biome.SimpleDistributor;
 import com.azortis.orbis.generator.biome.complex.ComplexDistributor;
-import com.azortis.orbis.util.NamespaceId;
+import com.azortis.orbis.utils.NamespaceId;
 
 import java.io.File;
 import java.io.FileNotFoundException;

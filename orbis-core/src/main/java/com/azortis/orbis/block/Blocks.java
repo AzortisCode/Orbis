@@ -18,7 +18,7 @@
 
 package com.azortis.orbis.block;
 
-import com.azortis.orbis.util.NamespaceId;
+import com.azortis.orbis.utils.NamespaceId;
 import org.jetbrains.annotations.NotNull;
 
 // TODO: Generate this

@@ -20,7 +20,7 @@ package com.azortis.orbis;
 
 import com.azortis.orbis.block.StateDefinition;
 import com.azortis.orbis.container.Container;
-import com.azortis.orbis.util.NamespaceId;
+import com.azortis.orbis.utils.NamespaceId;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 

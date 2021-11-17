@@ -19,7 +19,7 @@
 package com.azortis.orbis.generator.biome;
 
 import com.azortis.orbis.generator.terrain.Terrain;
-import com.azortis.orbis.util.NamespaceId;
+import com.azortis.orbis.utils.NamespaceId;
 import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
 

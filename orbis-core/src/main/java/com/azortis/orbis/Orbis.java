@@ -27,7 +27,7 @@ import com.azortis.orbis.registry.*;
 import com.azortis.orbis.registry.adapter.DistributorAdapter;
 import com.azortis.orbis.registry.adapter.NamespaceIdAdapter;
 import com.azortis.orbis.registry.adapter.TerrainAdapter;
-import com.azortis.orbis.util.NamespaceId;
+import com.azortis.orbis.utils.NamespaceId;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import lombok.Getter;

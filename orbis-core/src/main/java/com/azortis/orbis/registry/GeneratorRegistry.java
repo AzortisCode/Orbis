@@ -18,7 +18,7 @@
 
 package com.azortis.orbis.registry;
 
-import com.azortis.orbis.util.NamespaceId;
+import com.azortis.orbis.utils.NamespaceId;
 
 import java.util.List;
 

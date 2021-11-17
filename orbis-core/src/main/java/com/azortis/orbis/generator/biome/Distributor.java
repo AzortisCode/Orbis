@@ -22,7 +22,7 @@ import com.azortis.orbis.container.Container;
 import com.azortis.orbis.pack.studio.annotations.Directory;
 import com.azortis.orbis.pack.studio.annotations.GeneratorType;
 import com.azortis.orbis.registry.DistributorRegistry;
-import com.azortis.orbis.util.NamespaceId;
+import com.azortis.orbis.utils.NamespaceId;
 
 import java.io.File;
 

@@ -24,6 +24,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Map;
 import java.util.Optional;
 
+@Deprecated
 public interface BlockState extends StateDefinition {
 
     Map<Property<?>, Optional<?>> getValues();

@@ -22,7 +22,7 @@ import com.azortis.orbis.Orbis;
 import com.azortis.orbis.generator.noise.NoiseGenerator;
 import com.azortis.orbis.generator.noise.OpenSimplex2S;
 import com.azortis.orbis.registry.Registry;
-import com.azortis.orbis.util.NamespaceId;
+import com.azortis.orbis.utils.NamespaceId;
 import com.google.gson.annotations.SerializedName;
 import lombok.*;
 import org.jetbrains.annotations.NotNull;

@@ -22,7 +22,7 @@ import com.azortis.orbis.block.BlockState;
 import com.azortis.orbis.block.StateDefinition;
 import com.azortis.orbis.block.property.Property;
 import com.azortis.orbis.paper.OrbisPlugin;
-import com.azortis.orbis.util.NamespaceId;
+import com.azortis.orbis.utils.NamespaceId;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

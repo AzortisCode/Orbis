@@ -16,7 +16,7 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.util;
+package com.azortis.orbis.utils;
 
 import com.google.common.base.Preconditions;
 import lombok.Getter;

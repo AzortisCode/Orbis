@@ -21,7 +21,7 @@ package com.azortis.orbis.paper.block;
 import com.azortis.orbis.block.BlockState;
 import com.azortis.orbis.block.property.Property;
 import com.azortis.orbis.paper.OrbisPlugin;
-import com.azortis.orbis.util.NamespaceId;
+import com.azortis.orbis.utils.NamespaceId;
 import org.bukkit.block.data.BlockData;
 import org.jetbrains.annotations.Nullable;
 

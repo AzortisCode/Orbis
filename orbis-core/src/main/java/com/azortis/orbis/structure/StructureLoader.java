@@ -16,11 +16,10 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.util;
+package com.azortis.orbis.structure;
 
-import org.jetbrains.annotations.NotNull;
+public final class StructureLoader {
 
-public interface Nameable {
 
-    @NotNull String getSerializedName();
+
 }
