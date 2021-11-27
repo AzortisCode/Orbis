@@ -39,6 +39,4 @@ public interface Platform {
 
     Collection<Container> getContainers();
 
-    StateDefinition getStateDefinition(NamespaceId material);
-
 }

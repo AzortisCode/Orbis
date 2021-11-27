@@ -27,8 +27,8 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Map;
 import java.util.Optional;
 
-public class PaperStateDefinition implements StateDefinition {
-    private final NamespaceId material;
+public class PaperStateDefinition {
+    /*private final NamespaceId material;
 
     public PaperStateDefinition(NamespaceId material) {
         this.material = material;
@@ -62,5 +62,5 @@ public class PaperStateDefinition implements StateDefinition {
     @Override
     public OldBlockState getBlockState(Map<Property<?>, Optional<?>> values) {
         return null;
-    }
+    }*/
 }

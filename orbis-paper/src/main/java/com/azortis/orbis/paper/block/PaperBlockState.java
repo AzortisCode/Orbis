@@ -27,8 +27,8 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Map;
 import java.util.Optional;
 
-public class PaperBlockState extends PaperStateDefinition implements OldBlockState {
-    private BlockData handle;
+public class PaperBlockState   {
+    /*private BlockData handle;
 
     public PaperBlockState(NamespaceId material, BlockData handle) {
         super(material);
@@ -61,6 +61,6 @@ public class PaperBlockState extends PaperStateDefinition implements OldBlockSta
 
     public BlockData getHandle() {
         return handle;
-    }
+    }*/
 
 }

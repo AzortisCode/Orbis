@@ -26,7 +26,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Optional;
 
-public interface Block {
+public sealed interface Block extends Blocks permits BlockImpl {
 
     @NotNull NamespaceId getKey();
 

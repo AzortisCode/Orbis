@@ -18,19 +18,37 @@
 
 package com.azortis.orbis.block.property;
 
+import com.google.common.collect.ImmutableSet;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Collection;
+import java.util.Set;
 
-public interface Property<T extends Comparable<T>> {
+public sealed abstract class Property<T extends Comparable<T>> extends Properties permits BooleanProperty,
+        IntegerProperty, EnumProperty {
 
-    @NotNull String getKey();
+    private final String key;
+    private final Class<T> type;
+    private final ImmutableSet<T> values;
 
-    @NotNull Class<T> getType();
+    public Property(String key, Class<T> type, Set<T> values) {
+        this.key = key;
+        this.type = type;
+        this.values = ImmutableSet.copyOf(values);
+    }
 
-    @NotNull Collection<T> getValues();
+    public String getKey() {
+        return key;
+    }
 
-    @Nullable T getValueFor(final @NotNull String value);
+    public Class<T> getType() {
+        return type;
+    }
+
+    public ImmutableSet<T> getValues() {
+        return values;
+    }
+
+    public abstract @Nullable T getValueFor(final @NotNull String value);
 
 }

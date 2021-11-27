@@ -26,11 +26,11 @@ import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-public class EnumProperty<T extends Enum<T> & Nameable> extends AbstractProperty<T> {
+public non-sealed class EnumProperty<T extends Enum<T> & Nameable> extends Property<T> {
 
     private final Map<String, T> names = new HashMap<>();
 
-    protected EnumProperty(final @NotNull String key, final Class<T> type, final @NotNull Set<T> values) {
+    private EnumProperty(final @NotNull String key, final Class<T> type, final @NotNull Set<T> values) {
         super(key, type, values);
         for (final T value : values) {
             final String name = value.getSerializedName();

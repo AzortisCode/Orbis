@@ -23,11 +23,11 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Set;
 import java.util.TreeSet;
 
-public class IntegerProperty extends AbstractProperty<Integer> {
+public non-sealed class IntegerProperty extends Property<Integer> {
 
     private final int min, max;
 
-    protected IntegerProperty(final @NotNull String key, final int min, final int max) {
+    private IntegerProperty(final @NotNull String key, final int min, final int max) {
         super(key, Integer.class, createIntegerSet(min, max));
         this.min = min;
         this.max = max;

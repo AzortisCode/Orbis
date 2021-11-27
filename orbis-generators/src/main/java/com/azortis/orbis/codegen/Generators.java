@@ -18,6 +18,7 @@
 
 package com.azortis.orbis.codegen;
 
+import com.azortis.orbis.codegen.block.BlocksGenerator;
 import com.azortis.orbis.codegen.block.PropertiesGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,8 +35,6 @@ public final class Generators {
             MC_VERSION.replace("_", ".") + "/";
 
     public static void main(String[] args){
-        LOGGER.error(args[0]);
-        LOGGER.error(args[1]);
         StringBuilder outputBuilder = new StringBuilder();
         for (String arg : args){
             if(arg.startsWith("$") || arg.endsWith("$")){
@@ -43,9 +42,9 @@ public final class Generators {
             }
             outputBuilder.append(" ");
         }
-        LOGGER.error(outputBuilder.toString());
         final File outputFolder = new File(outputBuilder.toString().trim());
         new PropertiesGenerator(getInputStream("block_properties.json"), outputFolder).generate();
+        new BlocksGenerator(getInputStream("blocks.json"), outputFolder).generate();
     }
 
     private static InputStream getInputStream(String fileName) {

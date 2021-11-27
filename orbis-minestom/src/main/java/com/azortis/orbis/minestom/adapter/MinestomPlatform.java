@@ -54,9 +54,4 @@ public class MinestomPlatform implements Platform {
         return null;
     }
 
-    @Override
-    public StateDefinition getStateDefinition(NamespaceId material) {
-        return null;
-    }
-
 }

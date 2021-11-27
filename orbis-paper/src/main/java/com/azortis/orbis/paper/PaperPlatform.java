@@ -63,9 +63,4 @@ public class PaperPlatform implements Platform {
         return new ArrayList<>(plugin.getWorlds());
     }
 
-    @Override
-    public StateDefinition getStateDefinition(NamespaceId material) {
-        return new PaperStateDefinition(material);
-    }
-
 }

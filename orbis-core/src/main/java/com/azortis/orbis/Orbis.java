@@ -19,6 +19,7 @@
 package com.azortis.orbis;
 
 import com.azortis.orbis.block.BlockRegistry;
+import com.azortis.orbis.block.property.PropertyRegistry;
 import com.azortis.orbis.generator.Dimension;
 import com.azortis.orbis.generator.biome.Biome;
 import com.azortis.orbis.generator.biome.Distributor;
@@ -88,6 +89,7 @@ public final class Orbis {
                     .registerTypeAdapter(Distributor.class, new DistributorAdapter()).create();
 
             // Load minecraft data into memory
+            PropertyRegistry.init();
             BlockRegistry.init();
 
             // Load managers

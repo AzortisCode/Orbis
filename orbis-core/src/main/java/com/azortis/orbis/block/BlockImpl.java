@@ -27,7 +27,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Map;
 import java.util.Optional;
 
-class BlockImpl implements Block {
+final class BlockImpl implements Block {
     private final NamespaceId key;
     private final int id;
     private final int stateId;

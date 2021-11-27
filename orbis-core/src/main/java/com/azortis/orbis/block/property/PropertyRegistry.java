@@ -32,17 +32,22 @@ public final class PropertyRegistry {
             "MODE_COMPARATOR", "COMPARATOR_MODE",
             "STRUCTUREBLOCK_MODE", "STRUCTURE_BLOCK_MODE",
             "NOTEBLOCK_INSTRUMENT", "NOTE_BLOCK_INSTRUMENT");
+    private static volatile boolean loaded = false;
 
-    static {
-        Map<String, Property<?>> propertyMap = new HashMap<>();
-        for (final Field field : Properties.class.getDeclaredFields()) {
-            try {
-                PROPERTIES.put(field.getName(), (Property<?>) field.get(null));
-            } catch (final IllegalAccessException exception) {
-                exception.printStackTrace();
+    public static void init(){
+        if(!loaded){
+            Map<String, Property<?>> propertyMap = new HashMap<>();
+            for (final Field field : Properties.class.getDeclaredFields()) {
+                try {
+                    PROPERTIES.put(field.getName(), (Property<?>) field.get(Property.class));
+                } catch (final IllegalAccessException exception) {
+                    exception.printStackTrace();
+                }
             }
+            loaded = true;
         }
     }
+
 
     public static Property<?> getByName(String name){
         return PROPERTIES.get(name);

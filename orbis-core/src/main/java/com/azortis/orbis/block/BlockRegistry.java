@@ -28,7 +28,6 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -37,7 +36,7 @@ import java.io.FileReader;
 import java.util.HashMap;
 import java.util.Map;
 
-public class BlockRegistry {
+public final class BlockRegistry {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(BlockRegistry.class);
     private static final Map<String, Block> KEY_MAP = new HashMap<>();
@@ -59,16 +58,25 @@ public class BlockRegistry {
         }
     }
 
-    public static @Nullable Block fromKey(final String key){
+    public static boolean containsKey(final String key){
+        final String id = key.indexOf(':') == -1 ? "minecraft:" + key : key;
+        return KEY_MAP.containsKey(key);
+    }
+
+    public static Block fromKey(final String key){
         final String id = key.indexOf(':') == -1 ? "minecraft:" + key : key;
         return KEY_MAP.get(id);
     }
 
-    public static @Nullable Block fromKey(NamespaceId key){
+    public static boolean containsKey(final NamespaceId key){
+        return KEY_MAP.containsKey(key.getNamespaceId());
+    }
+
+    public static Block fromKey(final NamespaceId key){
         return KEY_MAP.get(key.getNamespaceId());
     }
 
-    public static @Nullable Block fromStateId(int stateId){
+    public static Block fromStateId(final int stateId){
         return STATE_MAP.get(stateId);
     }
 
