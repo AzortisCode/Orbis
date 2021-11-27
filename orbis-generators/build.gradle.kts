@@ -12,12 +12,15 @@ application {
 
 repositories {
     mavenCentral()
+    maven {
+        url = uri("https://jitpack.io")
+    }
 }
 
 dependencies {
+    implementation(project(":orbis-core"))
     implementation("com.google.code.gson:gson:2.8.9")
     implementation("org.jetbrains:annotations:16.0.1")
-    implementation("com.github.Articdive:ArticData:1.17.1-SNAPSHOT")
     implementation("com.squareup:javapoet:1.13.0")
     implementation("com.google.guava:guava:31.0.1-jre")
     implementation("org.apache.logging.log4j:log4j-core:2.14.1")
@@ -30,3 +33,9 @@ java {
     }
 }
 
+tasks {
+    run {
+        run.get().setArgsString("$" + project.rootProject.childProjects["orbis-core"]!!.projectDir.invariantSeparatorsPath +
+                "/src/generated/java$")
+    }
+}

@@ -20,17 +20,114 @@ package com.azortis.orbis.block;
 
 import com.azortis.orbis.block.property.Property;
 import com.azortis.orbis.utils.NamespaceId;
+import com.google.common.collect.*;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Map;
-import java.util.Set;
+import java.util.Optional;
 
-record BlockImpl(
-        NamespaceId key,
-        int id,
-        int stateId,
-        boolean isAir,
-        boolean isSolid,
-        boolean isLiquid,
-        Set<Property<?>> availableProperties,
-        Map<String, String> properties
-) implements Block {}
+class BlockImpl implements Block{
+    private final NamespaceId key;
+    private final int id;
+    private final int stateId;
+    private final boolean isAir;
+    private final boolean isSolid;
+    private final boolean isLiquid;
+    private final ImmutableMap<Property<?>, Comparable<?>> values;
+    private final Block defaultBlock;
+    private ImmutableTable<Property<?>, Comparable<?>, Block> neighbours;
+
+    BlockImpl(NamespaceId key, int id, int stateId, boolean isAir, boolean isSolid, boolean isLiquid,
+              @NotNull ImmutableMap<Property<?>, Comparable<?>> values,
+              @Nullable Block defaultBlock) {
+        this.key = key;
+        this.id = id;
+        this.stateId = stateId;
+        this.isAir = isAir;
+        this.isSolid = isSolid;
+        this.isLiquid = isLiquid;
+        this.values = values;
+        this.defaultBlock = defaultBlock;
+    }
+
+    @Override
+    public @NotNull NamespaceId getKey() {
+        return key;
+    }
+
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public int getStateId() {
+        return stateId;
+    }
+
+    @Override
+    public boolean isAir() {
+        return isAir;
+    }
+
+    @Override
+    public boolean isSolid() {
+        return isSolid;
+    }
+
+    @Override
+    public boolean isLiquid() {
+        return isLiquid;
+    }
+
+    @Override
+    public @NotNull ImmutableSet<Property<?>> getProperties() {
+        return values.keySet();
+    }
+
+    @Override
+    public boolean hasProperty(Property<?> property) {
+        return values.containsKey(property);
+    }
+
+    @Override
+    public @NotNull ImmutableMap<Property<?>, Comparable<?>> getValues() {
+        return values;
+    }
+
+    @Override
+    public <T extends Comparable<T>> @NotNull T getValue(Property<T> property) {
+        Comparable<?> value = values.get(property);
+        if(value == null){
+            throw new IllegalArgumentException("Cannot get property " + property + " because it doesn't exists in " + this);
+        } else {
+            return property.getType().cast(value);
+        }
+    }
+
+    @Override
+    public @NotNull <T extends Comparable<T>> Optional<T> getValueOptional(Property<T> property) {
+        Comparable<?> value = values.get(property);
+        return value == null ? Optional.empty() : Optional.of(property.getType().cast(value));
+    }
+
+    @Override
+    public @NotNull <T extends Comparable<T>, V extends T> Block setValue(Property<T> property, V value) {
+        return null;
+    }
+
+    @Override
+    public @NotNull Block getDefault() {
+        return this.defaultBlock == null ? this : this.defaultBlock;
+    }
+
+    void populateNeighbours(Map<Map<Property<?>, Comparable<?>>, Block> states){
+        if(neighbours == null){
+
+        } else {
+            throw new IllegalStateException("Neighbours already populated in " + this);
+        }
+    }
+
+}

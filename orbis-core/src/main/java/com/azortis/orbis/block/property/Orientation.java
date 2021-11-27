@@ -16,21 +16,38 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.block;
+package com.azortis.orbis.block.property;
 
-import com.azortis.orbis.block.property.Property;
-import org.jetbrains.annotations.Nullable;
+import com.azortis.orbis.utils.Nameable;
+import org.jetbrains.annotations.NotNull;
 
-import java.util.Map;
-import java.util.Optional;
+public enum Orientation implements Nameable {
+    UP_NORTH("up_north"),
+    UP_EAST("up_east"),
+    UP_SOUTH("up_south"),
+    UP_WEST("up_west"),
+    DOWN_NORTH("down_north"),
+    DOWN_EAST("down_east"),
+    DOWN_SOUTH("down_south"),
+    DOWN_WEST("down_west"),
+    NORTH_UP("north_up"),
+    EAST_UP("east_up"),
+    SOUTH_UP("south_up"),
+    WEST_UP("west_up");
 
-@Deprecated
-public interface BlockState extends StateDefinition {
+    private final String name;
 
-    Map<Property<?>, Optional<?>> getValues();
+    Orientation(final String name){
+        this.name = name;
+    }
 
-    @Nullable <T> T getValue(Property<T> property);
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 
-    <T> void setValue(Property<T> property, T value);
-
+    @Override
+    public @NotNull String getSerializedName() {
+        return null;
+    }
 }

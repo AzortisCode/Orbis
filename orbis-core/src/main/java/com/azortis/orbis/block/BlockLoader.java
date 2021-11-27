@@ -41,9 +41,9 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class BlockLoader {
 
-    private static final Map<String, Block> KEY_MAP = new HashMap<>();
+    private static final Map<String, OldBlock> KEY_MAP = new HashMap<>();
     private static final Map<String, PropertyEntry> PROPERTY_MAP = new HashMap<>();
-    private static final Int2ObjectMap<Block> STATES = new Int2ObjectOpenHashMap<>();
+    private static final Int2ObjectMap<OldBlock> STATES = new Int2ObjectOpenHashMap<>();
 
     private static final Logger LOGGER = LoggerFactory.getLogger(BlockLoader.class);
     private static final String FILE_NAME = "1_17_1_blocks.json";
@@ -62,20 +62,20 @@ public final class BlockLoader {
         isLoaded = true;
     }
 
-    public static @Nullable Block fromStateId(final int stateId) {
+    public static @Nullable OldBlock fromStateId(final int stateId) {
         return STATES.get(stateId);
     }
 
-    public static @Nullable Block fromKey(final String key) {
+    public static @Nullable OldBlock fromKey(final String key) {
         final String id = key.indexOf(':') == -1 ? "minecraft:" + key : key;
         return KEY_MAP.get(id);
     }
 
-    public static @Nullable Block fromKey(final NamespaceId key) {
+    public static @Nullable OldBlock fromKey(final NamespaceId key) {
         return fromKey(key.toString());
     }
 
-    public static @Nullable Block getWithProperties(final String key, final Map<String, String> properties) {
+    public static @Nullable OldBlock getWithProperties(final String key, final Map<String, String> properties) {
         final PropertyEntry entry = PROPERTY_MAP.get(key);
         return entry == null ? null : entry.properties.get(properties);
     }
@@ -102,7 +102,7 @@ public final class BlockLoader {
 
             // Get default state and add to map
             final int defaultState = value.get("defaultStateId").getAsInt();
-            final Block defaultBlock = STATES.get(defaultState);
+            final OldBlock defaultBlock = STATES.get(defaultState);
             KEY_MAP.put(key, defaultBlock);
             PROPERTY_MAP.put(key, propertyEntry);
         });
@@ -116,7 +116,7 @@ public final class BlockLoader {
             propertyMap.put(entry.getKey(), entry.getValue().getAsString().toLowerCase(Locale.ROOT));
         });
         final ImmutableMap<String, String> properties = propertyMap.build();
-        final Block block = new BlockImpl(
+        final OldBlock block = new OldBlockImpl(
                 new NamespaceId(key),
                 blockObject.get("id").getAsInt(),
                 data.get("stateId").getAsInt(),
@@ -132,9 +132,9 @@ public final class BlockLoader {
 
     private static final class PropertyEntry {
 
-        public final Map<Map<String, String>, Block> properties = new ConcurrentHashMap<>();
+        public final Map<Map<String, String>, OldBlock> properties = new ConcurrentHashMap<>();
     }
 
-    private record StateEntry(Map<String, String> properties, Block block) {
+    private record StateEntry(Map<String, String> properties, OldBlock block) {
     }
 }

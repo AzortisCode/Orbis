@@ -18,7 +18,7 @@
 
 package com.azortis.orbis.paper.block;
 
-import com.azortis.orbis.block.BlockState;
+import com.azortis.orbis.block.OldBlockState;
 import com.azortis.orbis.block.StateDefinition;
 import com.azortis.orbis.block.property.Property;
 import com.azortis.orbis.paper.OrbisPlugin;
@@ -57,12 +57,12 @@ public class PaperStateDefinition implements StateDefinition {
     }
 
     @Override
-    public BlockState getDefaultBlockState() {
+    public OldBlockState getDefaultBlockState() {
         return new PaperBlockState(this.material, OrbisPlugin.getNMS().createBlockState(this.material));
     }
 
     @Override
-    public BlockState getBlockState(Map<Property<?>, Optional<?>> values) {
+    public OldBlockState getBlockState(Map<Property<?>, Optional<?>> values) {
         return null;
     }
 }

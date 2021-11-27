@@ -37,8 +37,8 @@ public interface StateDefinition extends Cloneable {
 
     boolean hasProperty(Property<?> property);
 
-    BlockState getDefaultBlockState();
+    OldBlockState getDefaultBlockState();
 
-    BlockState getBlockState(Map<Property<?>, Optional<?>> values);
+    OldBlockState getBlockState(Map<Property<?>, Optional<?>> values);
 
 }

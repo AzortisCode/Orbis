@@ -18,14 +18,43 @@
 
 package com.azortis.orbis.codegen;
 
+import com.azortis.orbis.codegen.block.PropertiesGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+
 public final class Generators {
     private static final Logger LOGGER = LoggerFactory.getLogger(Generators.class);
+    private static final String baseArticDataURL = "https://raw.githubusercontent.com/Articdive/ArticData/1.17.1/";
+    private static final String mcVersion = "1_17_1";
 
     public static void main(String[] args){
+        LOGGER.error(args[0]);
+        LOGGER.error(args[1]);
+        StringBuilder outputBuilder = new StringBuilder();
+        for (String arg : args){
+            if(arg.startsWith("$") || arg.endsWith("$")){
+                outputBuilder.append(arg.replace("$", ""));
+            }
+            outputBuilder.append(" ");
+        }
+        LOGGER.error(outputBuilder.toString());
+        final File outputFolder = new File(outputBuilder.toString().trim());
+        new PropertiesGenerator(getInputStream("block_properties.json"), outputFolder).generate();
+    }
 
+    private static InputStream getInputStream(String fileName) {
+        try {
+            return new URL(baseArticDataURL + mcVersion + "_" + fileName).openStream();
+        } catch (IOException ex){
+            LOGGER.error("Failed to create InputStream for " + fileName);
+        }
+        return null;
     }
 
 }

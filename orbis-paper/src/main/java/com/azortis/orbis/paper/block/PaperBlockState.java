@@ -18,7 +18,7 @@
 
 package com.azortis.orbis.paper.block;
 
-import com.azortis.orbis.block.BlockState;
+import com.azortis.orbis.block.OldBlockState;
 import com.azortis.orbis.block.property.Property;
 import com.azortis.orbis.paper.OrbisPlugin;
 import com.azortis.orbis.utils.NamespaceId;
@@ -28,7 +28,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Map;
 import java.util.Optional;
 
-public class PaperBlockState extends PaperStateDefinition implements BlockState {
+public class PaperBlockState extends PaperStateDefinition implements OldBlockState {
     private BlockData handle;
 
     public PaperBlockState(NamespaceId material, BlockData handle) {
@@ -52,9 +52,9 @@ public class PaperBlockState extends PaperStateDefinition implements BlockState 
     }
 
     @Override
-    public BlockState clone() {
+    public OldBlockState clone() {
         try {
-            return (BlockState) super.clone();
+            return (OldBlockState) super.clone();
         } catch (CloneNotSupportedException e) {
             throw new AssertionError("Clone not supported", e);
         }

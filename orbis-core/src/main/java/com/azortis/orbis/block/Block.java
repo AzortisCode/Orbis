@@ -20,18 +20,19 @@ package com.azortis.orbis.block;
 
 import com.azortis.orbis.block.property.Property;
 import com.azortis.orbis.utils.NamespaceId;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Map;
-import java.util.Set;
+import java.util.Optional;
 
 public interface Block {
 
-    @NotNull NamespaceId key();
+    @NotNull NamespaceId getKey();
 
-    int id();
+    int getId();
 
-    int stateId();
+    int getStateId();
 
     boolean isAir();
 
@@ -39,7 +40,18 @@ public interface Block {
 
     boolean isLiquid();
 
-    @NotNull Set<Property<?>> availableProperties();
+    @NotNull ImmutableSet<Property<?>> getProperties();
 
-    @NotNull Map<String, String> properties();
+    boolean hasProperty(Property<?> property);
+
+    @NotNull ImmutableMap<Property<?>, Comparable<?>> getValues();
+
+    @NotNull <T extends Comparable<T>> T getValue(Property<T> property);
+
+    @NotNull <T extends Comparable<T>> Optional<T> getValueOptional(Property<T> property);
+
+    @NotNull <T extends Comparable<T>, V extends T> Block setValue(Property<T> property, V value);
+
+    @NotNull Block getDefault();
+
 }

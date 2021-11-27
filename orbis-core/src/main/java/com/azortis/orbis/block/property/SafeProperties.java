@@ -19,7 +19,7 @@
 package com.azortis.orbis.block.property;
 
 @SuppressWarnings("unused")
-public final class Properties {
+public final class SafeProperties {
     public static final BooleanProperty ATTACHED = BooleanProperty.create("attached");
     public static final BooleanProperty BOTTOM = BooleanProperty.create("bottom");
     public static final BooleanProperty CONDITIONAL = BooleanProperty.create("conditional");

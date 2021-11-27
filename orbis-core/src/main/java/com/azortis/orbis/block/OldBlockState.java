@@ -16,28 +16,21 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.block.property;
+package com.azortis.orbis.block;
 
-import java.lang.reflect.Field;
+import com.azortis.orbis.block.property.Property;
+import org.jetbrains.annotations.Nullable;
+
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.Optional;
 
-public final class PropertyHolder {
+@Deprecated
+public interface OldBlockState extends StateDefinition {
 
-    private static final Map<String, Property<?>> PROPERTIES = new ConcurrentHashMap<>();
-    private static final Map<String, String> NAME_REWRITES = Map.of();
+    Map<Property<?>, Optional<?>> getValues();
 
-    static {
-        for (final Field field : SafeProperties.class.getDeclaredFields()) {
-            try {
-                PROPERTIES.put(NAME_REWRITES.getOrDefault(field.getName(), field.getName()), (Property<?>) field.get(null));
-            } catch (final IllegalAccessException exception) {
-                exception.printStackTrace();
-            }
-        }
-    }
+    @Nullable <T> T getValue(Property<T> property);
 
-    public static Property<?> getByName(final String name) {
-        return PROPERTIES.get(name);
-    }
+    <T> void setValue(Property<T> property, T value);
+
 }

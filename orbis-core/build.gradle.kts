@@ -8,7 +8,7 @@ group = "com.azortis"
 version = "1.0-SNAPSHOT"
 
 sourceSets.main {
-    java.srcDir("src/generated/java")
+    java.setSrcDirs(listOf("src/main/java","src/generated/java"))
 }
 
 repositories {

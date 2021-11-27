@@ -18,15 +18,14 @@
 
 package com.azortis.orbis.codegen.block;
 
+import com.azortis.orbis.block.property.*;
 import com.azortis.orbis.codegen.OrbisCodeGenerator;
 import com.google.common.collect.ImmutableMap;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
-import com.squareup.javapoet.ClassName;
-import com.squareup.javapoet.FieldSpec;
-import com.squareup.javapoet.TypeSpec;
+import com.squareup.javapoet.*;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,23 +34,45 @@ import javax.lang.model.element.Modifier;
 import java.io.File;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class PropertiesGenerator extends OrbisCodeGenerator {
     private static final Logger LOGGER = LoggerFactory.getLogger(PropertiesGenerator.class);
     private static final ImmutableMap<String, String> rewrites; // Mapping certain names
-    private static final ImmutableMap<String, String> enumClasses;
+    private static final ImmutableMap<String, Class<? extends Enum<?>>> enumClasses;
 
     static {
-        ImmutableMap.Builder<String, String> builder = ImmutableMap.builder();
-        builder.put("ROTATION_16", "ROTATION");
-        builder.put("MODE_COMPARATOR", "COMPARATOR_MODE");
-        builder.put("STRUCTUREBLOCK_MODE", "STRUCTURE_BLOCK_MODE");
-        rewrites = builder.build();
-
-        builder = ImmutableMap.builder();
-
-        enumClasses = builder.build();
+        rewrites = ImmutableMap.of(
+                "ROTATION_16", "ROTATION",
+                "MODE_COMPARATOR", "COMPARATOR_MODE",
+                "STRUCTUREBLOCK_MODE", "STRUCTURE_BLOCK_MODE",
+                "NOTEBLOCK_INSTRUMENT", "NOTE_BLOCK_INSTRUMENT");
+        ImmutableMap.Builder<String, Class<? extends Enum<?>>> builder = ImmutableMap.builder();
+        enumClasses = builder
+                .put("AttachFace", AttachFace.class)
+                .put("Axis", Axis.class)
+                .put("BambooLeaves", BambooLeaves.class)
+                .put("BedPart", BedPart.class)
+                .put("BellAttachType", BellAttachType.class)
+                .put("ChestType", ChestType.class)
+                .put("ComparatorMode", ComparatorMode.class)
+                .put("Direction", Direction.class)
+                .put("DoorHingeSide", DoorHingeSide.class)
+                .put("DoubleBlockHalf", DoubleBlockHalf.class)
+                .put("DripstoneThickness", DripstoneThickness.class)
+                .put("Half", Half.class)
+                .put("NoteBlockInstrument", NoteBlockInstrument.class)
+                .put("FrontAndTop", Orientation.class)
+                .put("PistonType", PistonType.class)
+                .put("RailShape", RailShape.class)
+                .put("RedstoneSide", RedstoneSide.class)
+                .put("SculkSensorPhase", SculkSensorPhase.class)
+                .put("SlabType", SlabType.class)
+                .put("StairsShape", StairsShape.class)
+                .put("StructureMode", StructureMode.class)
+                .put("Tilt", Tilt.class)
+                .put("WallSide", WallSide.class).build();
     }
 
     public PropertiesGenerator(InputStream inputStream, File outputFolder) {
@@ -72,9 +93,9 @@ public class PropertiesGenerator extends OrbisCodeGenerator {
         JsonObject properties = GSON.fromJson(new InputStreamReader(inputStream), JsonObject.class);
 
         // Property types
-        ClassName booleanProperty = ClassName.get("com.azortis.orbis.block.property", "BooleanProperty");
-        ClassName integerProperty = ClassName.get("com.azortis.orbis.block.property", "IntegerProperty");
-        ClassName enumProperty = ClassName.get("com.azortis.orbis.block.property", "EnumProperty");
+        ClassName booleanProperty = ClassName.get(BooleanProperty.class);
+        ClassName integerProperty = ClassName.get(IntegerProperty.class);
+        ClassName enumProperty = ClassName.get(EnumProperty.class);
 
         // Class to write to
         ClassName propertiesClassName = ClassName.get("com.azortis.orbis.block.property", "Properties");
@@ -96,25 +117,88 @@ public class PropertiesGenerator extends OrbisCodeGenerator {
                             FieldSpec.builder(booleanProperty, propertyName)
                                     .addModifiers(Modifier.PUBLIC, Modifier.FINAL, Modifier.STATIC)
                                     .addAnnotation(NotNull.class)
-                                    .initializer("$T.create($S);", booleanProperty, key).build());
+                                    .initializer("$T.create($S)", booleanProperty, key).build());
                 } else {
-                    int min = values.get(0).getAsInt();
-                    int max = values.get((values.size() - 1)).getAsInt();
+                    int min = Integer.MAX_VALUE;
+                    int max = Integer.MIN_VALUE;
+                    for (JsonElement element : values){
+                        int intValue = element.getAsInt();
+                        if(intValue < min)min = intValue;
+                        if(intValue > max)max = intValue;
+                    }
                     propertiesClass.addField(
                             FieldSpec.builder(integerProperty, propertyName)
                                     .addModifiers(Modifier.PUBLIC, Modifier.FINAL, Modifier.STATIC)
                                     .addAnnotation(NotNull.class)
-                                    .initializer("$T.create($S,$L,$L);", integerProperty, min, max)
+                                    .initializer("$T.create($S, $L, $L)", integerProperty, key, min, max)
                                     .build());
                 }
             } else {
+                String mojangEnumName = propertyObject.get("enumMojangName").getAsString();
+                Class<? extends Enum<?>> enumClass = enumClasses.get(mojangEnumName);
+                ClassName enumClassName = getEnumClass(mojangEnumName);
+                ParameterizedTypeName enumType = ParameterizedTypeName.get(enumProperty, enumClassName);
 
+                // If the values contain all the enum constants we can do it very simple.
+                if(enumClass == null){
+                    LOGGER.error("Mojang enum class: " + mojangEnumName + " is missing!");
+                    break;
+                }
+
+                if(values.size() == enumClass.getEnumConstants().length){
+                    propertiesClass.addField(
+                            FieldSpec.builder(enumType, propertyName)
+                                    .addModifiers(Modifier.PUBLIC, Modifier.FINAL, Modifier.STATIC)
+                                    .addAnnotation(NotNull.class)
+                                    .initializer("$T.create($S, $T.class)", enumProperty, key, enumClassName)
+                                    .build());
+                    continue;
+                }
+
+                List<String> enumValues = new ArrayList<>();
+                for (JsonElement element : values){
+                    enumValues.add(element.getAsString());
+                }
+                CodeBlock.Builder builder = CodeBlock.builder();
+                builder.add("$T.create($S, $T.class", enumProperty, key, enumClassName);
+                // If size of values > 60% of the possible enum constants then we use a predicate
+                if(values.size() >= Math.round(0.60D * enumClass.getEnumConstants().length)){
+                    builder.add(", (" + key + ") -> ");
+                    List<String> enumsToFilter = getEnumValues(enumClass).stream().filter(s -> !enumValues.contains(s))
+                            .collect(Collectors.toList());
+                    boolean isFirst = true;
+                    for (String enumName : enumsToFilter){
+                        if(isFirst){
+                            isFirst = false;
+                            builder.add(key + " != $T." + enumName, enumClassName);
+                            continue;
+                        }
+                        builder.add(" && " + key + " != $T." + enumName, enumClassName);
+                    }
+                } else {
+                    for (String enumName : enumValues){
+                        builder.add(", $T." + enumName, enumClassName);
+                    }
+                }
+                builder.add(")");
+                propertiesClass.addField(
+                        FieldSpec.builder(enumType, propertyName)
+                                .addModifiers(Modifier.PUBLIC, Modifier.FINAL, Modifier.STATIC)
+                                .addAnnotation(NotNull.class)
+                                .initializer(builder.build())
+                                .build());
             }
         }
+        JavaFile propertiesFile = JavaFile.builder("com.azortis.orbis.block.property", propertiesClass.build()).build();
+        writeFiles(List.of(propertiesFile));
+    }
+
+    private List<String> getEnumValues(Class<? extends Enum<?>> enumClass){
+        return Arrays.stream(enumClass.getEnumConstants()).map(Enum::name).collect(Collectors.toList());
     }
 
     private ClassName getEnumClass(String mojangEnum){
-        return null;
+        return ClassName.get(Objects.requireNonNull(enumClasses.get(mojangEnum)));
     }
 
     private String getPropertyName(String mojangPropertyName){
