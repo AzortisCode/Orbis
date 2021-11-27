@@ -27,8 +27,8 @@ public class IntegerProperty extends AbstractProperty<Integer> {
 
     private final int min, max;
 
-    protected IntegerProperty(final @NotNull String name, final int min, final int max) {
-        super(name, Integer.class, createIntegerSet(min, max));
+    protected IntegerProperty(final @NotNull String key, final int min, final int max) {
+        super(key, Integer.class, createIntegerSet(min, max));
         this.min = min;
         this.max = max;
     }
@@ -62,8 +62,8 @@ public class IntegerProperty extends AbstractProperty<Integer> {
         return values;
     }
 
-    protected static IntegerProperty create(final @NotNull String name, final int min, final int max) {
-        return new IntegerProperty(name, min, max);
+    protected static IntegerProperty create(final @NotNull String key, final int min, final int max) {
+        return new IntegerProperty(key, min, max);
     }
 
 }

@@ -36,9 +36,9 @@ public interface INMSBinding {
 
     Map<Property<?>, Optional<?>> getValues(BlockData blockData);
 
-    <T> T getValue(BlockData blockData, Property<T> property);
+    <T extends Comparable<T>> T getValue(BlockData blockData, Property<T> property);
 
-    <T> BlockData setValue(BlockData blockData, Property<T> property, T value);
+    <T extends Comparable<T>> BlockData setValue(BlockData blockData, Property<T> property, T value);
 
     BlockData createBlockState(NamespaceId material);
 

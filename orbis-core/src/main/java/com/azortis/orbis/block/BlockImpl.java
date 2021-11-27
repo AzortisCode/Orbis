@@ -27,7 +27,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Map;
 import java.util.Optional;
 
-class BlockImpl implements Block{
+class BlockImpl implements Block {
     private final NamespaceId key;
     private final int id;
     private final int stateId;
@@ -114,7 +114,11 @@ class BlockImpl implements Block{
 
     @Override
     public @NotNull <T extends Comparable<T>, V extends T> Block setValue(Property<T> property, V value) {
-        return null;
+        Block block = this.neighbours.get(property, value);
+        if(block == null){
+            throw new IllegalArgumentException("Cannot get " + property + " in " + this + " as it doesn't exist");
+        }
+        return block;
     }
 
     @Override
@@ -122,12 +126,30 @@ class BlockImpl implements Block{
         return this.defaultBlock == null ? this : this.defaultBlock;
     }
 
-    void populateNeighbours(Map<Map<Property<?>, Comparable<?>>, Block> states){
+    @SuppressWarnings("UnstableApiUsage")
+    void populateNeighbours(Map<Map<Property<?>, Comparable<?>>, BlockImpl> states){
         if(neighbours == null){
+            Table<Property<?>, Comparable<?>, Block> table = HashBasedTable.create();
 
+            for (Map.Entry<Property<?>, Comparable<?>> entry : this.values.entrySet()){
+                Property<?> property = entry.getKey();
+
+                for (Comparable<?> value : property.getValues()){
+                    if(value != entry.getValue()){
+                        table.put(property, value, states.get(createStateKey(property, value)));
+                    }
+                }
+            }
+            this.neighbours = table.isEmpty() ? ImmutableTable.copyOf(table) : ImmutableTable.copyOf(ArrayTable.create(table));
         } else {
             throw new IllegalStateException("Neighbours already populated in " + this);
         }
+    }
+
+    private Map<Property<?>, Comparable<?>> createStateKey(Property<?> property, Comparable<?> value){
+        Map<Property<?>, Comparable<?>> stateKey = Maps.newHashMap();
+        stateKey.put(property, value);
+        return stateKey;
     }
 
 }

@@ -18,8 +18,8 @@
 
 package com.azortis.orbis.paper.generator;
 
-import com.azortis.orbis.block.OldBlock;
-import com.azortis.orbis.block.BlockLoader;
+import com.azortis.orbis.block.Block;
+import com.azortis.orbis.block.BlockRegistry;
 import com.azortis.orbis.generator.ChunkData;
 import com.azortis.orbis.generator.Dimension;
 import net.minecraft.core.BlockPos;
@@ -40,8 +40,8 @@ public class PaperChunkData extends ChunkData {
     }
 
     @Override
-    public OldBlock getBlock(int x, int y, int z) {
-        return BlockLoader.fromStateId(net.minecraft.world.level.block.Block.getId(handle.getTypeId(x, y, z)));
+    public Block getBlock(int x, int y, int z) {
+        return BlockRegistry.fromStateId(net.minecraft.world.level.block.Block.getId(handle.getTypeId(x, y, z)));
     }
 
     @Override

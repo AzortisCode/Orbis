@@ -19,7 +19,6 @@
 package com.azortis.orbis.generator;
 
 import com.azortis.orbis.Orbis;
-import com.azortis.orbis.block.Blocks;
 import com.azortis.orbis.container.Container;
 import com.azortis.orbis.generator.biome.Biome;
 import com.azortis.orbis.generator.biome.BiomeGrid;
@@ -59,17 +58,17 @@ public class SimpleEngine extends Engine {
                 for (int y = 0; y < getDimension().getMaxHeight(); y++) {
                     biomeGrid.setBiome(x, y, z, biome);
 
-                    if (y == 0) {
-                        chunkData.setBlock(cx, y, cz, Blocks.BEDROCK);
+                    /*if (y == 0) {
+                        chunkData.setBlock(cx, y, cz, OldBlocks.BEDROCK);
                     } else if (y > height && y <= getDimension().getFluidHeight()) {
-                        chunkData.setBlock(cx, y, cz, Blocks.WATER);
+                        chunkData.setBlock(cx, y, cz, OldBlocks.WATER);
                     } else if (y <= height) {
                         if (y <= (height - 6)) {
-                            chunkData.setBlock(cx, y, cz, Blocks.STONE);
+                            chunkData.setBlock(cx, y, cz, OldBlocks.STONE);
                         } else {
-                            chunkData.setBlock(cx, y, cz, Blocks.get(biome.getSurfaceBlock()));
+                            chunkData.setBlock(cx, y, cz, OldBlocks.get(biome.getSurfaceBlock()));
                         }
-                    }
+                    }*/
                 }
             }
         }

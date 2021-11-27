@@ -18,26 +18,38 @@
 
 package com.azortis.orbis.block.property;
 
+import com.google.common.collect.ImmutableMap;
+
 import java.lang.reflect.Field;
+import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
-public final class PropertyHolder {
+public final class PropertyRegistry {
 
-    private static final Map<String, Property<?>> PROPERTIES = new ConcurrentHashMap<>();
-    private static final Map<String, String> NAME_REWRITES = Map.of();
+    private static final Map<String, Property<?>> PROPERTIES = new HashMap<>();
+    public static final ImmutableMap<String, String> NAME_REWRITES = ImmutableMap.of(
+            "ROTATION_16", "ROTATION",
+            "MODE_COMPARATOR", "COMPARATOR_MODE",
+            "STRUCTUREBLOCK_MODE", "STRUCTURE_BLOCK_MODE",
+            "NOTEBLOCK_INSTRUMENT", "NOTE_BLOCK_INSTRUMENT");
 
     static {
-        for (final Field field : SafeProperties.class.getDeclaredFields()) {
+        Map<String, Property<?>> propertyMap = new HashMap<>();
+        for (final Field field : Properties.class.getDeclaredFields()) {
             try {
-                PROPERTIES.put(NAME_REWRITES.getOrDefault(field.getName(), field.getName()), (Property<?>) field.get(null));
+                PROPERTIES.put(field.getName(), (Property<?>) field.get(null));
             } catch (final IllegalAccessException exception) {
                 exception.printStackTrace();
             }
         }
     }
 
-    public static Property<?> getByName(final String name) {
+    public static Property<?> getByName(String name){
         return PROPERTIES.get(name);
     }
+
+    public static Property<?> getByMojangName(String mojangName){
+        return PROPERTIES.get(NAME_REWRITES.getOrDefault(mojangName, mojangName));
+    }
+
 }

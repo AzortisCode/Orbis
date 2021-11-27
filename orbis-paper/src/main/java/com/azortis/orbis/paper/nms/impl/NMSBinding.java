@@ -56,7 +56,7 @@ public class NMSBinding implements INMSBinding {
         Map<String, Property<?>> propertyMap = new HashMap<>();
         state.getProperties().forEach(nativeProperty -> {
             Property<?> property = ConversionUtils.fromNative(nativeProperty);
-            propertyMap.put(property.getName(), property);
+            propertyMap.put(property.getKey(), property);
         });
         return propertyMap;
     }
@@ -85,7 +85,7 @@ public class NMSBinding implements INMSBinding {
 
     @SuppressWarnings("unchecked")
     @Override
-    public <T> T getValue(BlockData blockData, Property<T> property) {
+    public <T extends Comparable<T>> T getValue(BlockData blockData, Property<T> property) {
         net.minecraft.world.level.block.state.properties.Property<?> nativeProperty = ConversionUtils.toNative(property);
         BlockState state = ((CraftBlockData) blockData).getState();
         if (state.hasProperty(nativeProperty)) {
@@ -96,13 +96,13 @@ public class NMSBinding implements INMSBinding {
                 return (T) state.getValue(nativeProperty);
             }
         } else {
-            throw new IllegalArgumentException("Cannot get property " + property.getName() +
+            throw new IllegalArgumentException("Cannot get property " + property.getKey() +
                     " as it does not exist in" + blockData.getMaterial().name());
         }
     }
 
     @Override
-    public <T> BlockData setValue(BlockData blockData, Property<T> property, T value) {
+    public <T extends Comparable<T>> BlockData setValue(BlockData blockData, Property<T> property, T value) {
         BlockState state = ((CraftBlockData) blockData).getState();
 
         if (property instanceof BooleanProperty) {

@@ -39,15 +39,9 @@ import java.util.stream.Collectors;
 
 public class PropertiesGenerator extends OrbisCodeGenerator {
     private static final Logger LOGGER = LoggerFactory.getLogger(PropertiesGenerator.class);
-    private static final ImmutableMap<String, String> rewrites; // Mapping certain names
     private static final ImmutableMap<String, Class<? extends Enum<?>>> enumClasses;
 
     static {
-        rewrites = ImmutableMap.of(
-                "ROTATION_16", "ROTATION",
-                "MODE_COMPARATOR", "COMPARATOR_MODE",
-                "STRUCTUREBLOCK_MODE", "STRUCTURE_BLOCK_MODE",
-                "NOTEBLOCK_INSTRUMENT", "NOTE_BLOCK_INSTRUMENT");
         ImmutableMap.Builder<String, Class<? extends Enum<?>>> builder = ImmutableMap.builder();
         enumClasses = builder
                 .put("AttachFace", AttachFace.class)
@@ -205,7 +199,7 @@ public class PropertiesGenerator extends OrbisCodeGenerator {
     }
 
     private String getPropertyName(String mojangPropertyName){
-        if(rewrites.containsKey(mojangPropertyName))return rewrites.get(mojangPropertyName);
+        if(PropertyRegistry.NAME_REWRITES.containsKey(mojangPropertyName))return PropertyRegistry.NAME_REWRITES.get(mojangPropertyName);
         return mojangPropertyName;
     }
 

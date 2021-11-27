@@ -18,6 +18,7 @@
 
 package com.azortis.orbis;
 
+import com.azortis.orbis.block.BlockRegistry;
 import com.azortis.orbis.generator.Dimension;
 import com.azortis.orbis.generator.biome.Biome;
 import com.azortis.orbis.generator.biome.Distributor;
@@ -31,15 +32,23 @@ import com.azortis.orbis.utils.NamespaceId;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import lombok.Getter;
+import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class Orbis {
 
     public static final String SETTINGS_VERSION = "1";
+    public static final String MC_VERSION = "1_17_1";
+    private static final String DOWNLOAD_URL = "https://raw.githubusercontent.com/Articdive/ArticData/" +
+            MC_VERSION.replace("_", ".") + "/";
 
+    private static boolean initialized = false;
     @Getter
     private static Platform platform = null;
     @Getter
@@ -58,7 +67,8 @@ public final class Orbis {
 
     public static void initialize(Platform platform) {
         // Only initialize once.
-        if (Orbis.platform == null) {
+        if (!initialized) {
+            initialized = true;
             Orbis.platform = platform;
             logger = platform.getLogger();
             logger.info("Initializing {} adaptation of Orbis", platform.getAdaptation());
@@ -77,6 +87,9 @@ public final class Orbis {
                     .registerTypeAdapter(Terrain.class, new TerrainAdapter())
                     .registerTypeAdapter(Distributor.class, new DistributorAdapter()).create();
 
+            // Load minecraft data into memory
+            BlockRegistry.init();
+
             // Load managers
             packManager = new PackManager(platform.getDirectory());
         }
@@ -91,4 +104,29 @@ public final class Orbis {
     public static <T> GeneratorRegistry<T> getGeneratorRegistry(Class<T> typeClass) {
         return (GeneratorRegistry<T>) generatorRegistries.get(typeClass);
     }
+
+    public static File getDataFile(String dateFileName){
+        if(initialized){
+            try {
+                File dataFolder = new File(platform.getDirectory() + "/data/");
+                if(!dataFolder.exists() && !dataFolder.mkdirs()){
+                    throw new IllegalStateException("Failed to create data directory");
+                } else {
+                    dateFileName = MC_VERSION + "_" + dateFileName;
+                    File dataFile = new File(dataFolder, dateFileName);
+                    if(!dataFile.exists()){
+                        URL downloadUrl = new URL(DOWNLOAD_URL + dateFileName);
+                        FileUtils.copyURLToFile(downloadUrl, dataFile);
+                    }
+                    return dataFile;
+                }
+            } catch (IOException ex){
+                logger.error("Failed to download {}", dateFileName);
+            }
+        } else {
+            throw new IllegalStateException("Orbis hasn't yet been initialized!");
+        }
+        return null;
+    }
+
 }

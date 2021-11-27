@@ -29,8 +29,9 @@ import java.net.URL;
 
 public final class Generators {
     private static final Logger LOGGER = LoggerFactory.getLogger(Generators.class);
-    private static final String baseArticDataURL = "https://raw.githubusercontent.com/Articdive/ArticData/1.17.1/";
-    private static final String mcVersion = "1_17_1";
+    private static final String MC_VERSION = "1_17_1";
+    private static final String BASE_ARTIC_DATA_URL = "https://raw.githubusercontent.com/Articdive/ArticData/" +
+            MC_VERSION.replace("_", ".") + "/";
 
     public static void main(String[] args){
         LOGGER.error(args[0]);
@@ -49,7 +50,7 @@ public final class Generators {
 
     private static InputStream getInputStream(String fileName) {
         try {
-            return new URL(baseArticDataURL + mcVersion + "_" + fileName).openStream();
+            return new URL(BASE_ARTIC_DATA_URL + MC_VERSION + "_" + fileName).openStream();
         } catch (IOException ex){
             LOGGER.error("Failed to create InputStream for " + fileName);
         }

@@ -18,8 +18,6 @@
 
 package com.azortis.orbis.paper.block;
 
-import com.azortis.orbis.block.OldBlockState;
-import com.azortis.orbis.block.StateDefinition;
 import com.azortis.orbis.block.property.Property;
 import com.azortis.orbis.paper.OrbisPlugin;
 import com.azortis.orbis.utils.NamespaceId;

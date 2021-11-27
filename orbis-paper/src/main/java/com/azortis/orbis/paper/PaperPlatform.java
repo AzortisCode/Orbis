@@ -19,7 +19,6 @@
 package com.azortis.orbis.paper;
 
 import com.azortis.orbis.Platform;
-import com.azortis.orbis.block.StateDefinition;
 import com.azortis.orbis.container.Container;
 import com.azortis.orbis.paper.block.PaperStateDefinition;
 import com.azortis.orbis.utils.NamespaceId;

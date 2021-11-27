@@ -30,12 +30,12 @@ public class EnumProperty<T extends Enum<T> & Nameable> extends AbstractProperty
 
     private final Map<String, T> names = new HashMap<>();
 
-    protected EnumProperty(final @NotNull String name, final Class<T> type, final @NotNull Set<T> values) {
-        super(name, type, values);
+    protected EnumProperty(final @NotNull String key, final Class<T> type, final @NotNull Set<T> values) {
+        super(key, type, values);
         for (final T value : values) {
-            final String key = value.getSerializedName();
-            if (names.containsKey(key)) {
-                throw new IllegalArgumentException("Multiple values have the same name! Name: " + key);
+            final String name = value.getSerializedName();
+            if (names.containsKey(name)) {
+                throw new IllegalArgumentException("Multiple values have the same name! Name: " + name);
             }
             names.put(value.getSerializedName(), value);
         }
@@ -54,28 +54,28 @@ public class EnumProperty<T extends Enum<T> & Nameable> extends AbstractProperty
         return Collections.unmodifiableSet(names.keySet());
     }
 
-    protected static <T extends Enum<T> & Nameable> EnumProperty<T> create(final @NotNull String name,
+    protected static <T extends Enum<T> & Nameable> EnumProperty<T> create(final @NotNull String key,
                                                                            final @NotNull Class<T> type) {
-        return create(name, type, t -> true);
+        return create(key, type, t -> true);
     }
 
-    protected static <T extends Enum<T> & Nameable> EnumProperty<T> create(final @NotNull String name,
+    protected static <T extends Enum<T> & Nameable> EnumProperty<T> create(final @NotNull String key,
                                                                            final @NotNull Class<T> type,
                                                                            final @NotNull Predicate<T> filter) {
-        return create(name, type, Arrays.stream(type.getEnumConstants()).filter(filter).collect(Collectors.toSet()));
+        return create(key, type, Arrays.stream(type.getEnumConstants()).filter(filter).collect(Collectors.toSet()));
     }
 
     @SafeVarargs
-    protected static <T extends Enum<T> & Nameable> EnumProperty<T> create(final @NotNull String name,
+    protected static <T extends Enum<T> & Nameable> EnumProperty<T> create(final @NotNull String key,
                                                                            final Class<T> type,
                                                                            final @NotNull T... values) {
-        return create(name, type, Set.of(values));
+        return create(key, type, Set.of(values));
     }
 
-    protected static <T extends Enum<T> & Nameable> EnumProperty<T> create(final @NotNull String name,
+    protected static <T extends Enum<T> & Nameable> EnumProperty<T> create(final @NotNull String key,
                                                                            final @NotNull Class<T> type,
                                                                            final @NotNull Set<T> values) {
-        return new EnumProperty<>(name, type, values);
+        return new EnumProperty<>(key, type, values);
     }
 
 }

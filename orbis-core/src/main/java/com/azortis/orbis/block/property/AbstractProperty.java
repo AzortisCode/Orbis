@@ -23,21 +23,21 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Set;
 
-public abstract class AbstractProperty<T> implements Property<T> {
+public abstract class AbstractProperty<T extends Comparable<T>> implements Property<T> {
 
-    private final String name;
+    private final String key;
     private final Class<T> type;
     private final ImmutableSet<T> values;
 
-    protected AbstractProperty(final @NotNull String name, final Class<T> type, final @NotNull Set<T> values) {
-        this.name = name;
+    protected AbstractProperty(final @NotNull String key, final Class<T> type, final @NotNull Set<T> values) {
+        this.key = key;
         this.type = type;
         this.values = ImmutableSet.copyOf(values);
     }
 
     @Override
-    public @NotNull String getName() {
-        return name;
+    public @NotNull String getKey() {
+        return key;
     }
 
     @Override
@@ -53,7 +53,7 @@ public abstract class AbstractProperty<T> implements Property<T> {
     @Override
     public boolean equals(Object obj) {
         if (!(obj instanceof final Property<?> property)) return false;
-        return name.equals(property.getName());
+        return key.equals(property.getKey());
     }
 
 }

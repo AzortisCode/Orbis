@@ -23,9 +23,9 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Collection;
 
-public interface Property<T> {
+public interface Property<T extends Comparable<T>> {
 
-    @NotNull String getName();
+    @NotNull String getKey();
 
     @NotNull Class<T> getType();
 

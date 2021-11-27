@@ -18,11 +18,9 @@
 
 package com.azortis.orbis.paper.nms.impl;
 
-import com.azortis.orbis.block.property.SafeProperties;
 import com.azortis.orbis.block.property.Property;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.ImmutableBiMap;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
 public class ConversionUtils {
     private static final BiMap<Property<?>, net.minecraft.world.level.block.state.properties.Property<?>> propertyBiMap;
@@ -31,7 +29,7 @@ public class ConversionUtils {
         // Map all Orbis properties to NMS properties for easy lookup
         ImmutableBiMap.Builder<Property<?>, net.minecraft.world.level.block.state.properties.Property<?>> propertyBuilder
                 = ImmutableBiMap.builder();
-        propertyBuilder.put(SafeProperties.ATTACHED, BlockStateProperties.ATTACHED);
+        /*propertyBuilder.put(SafeProperties.ATTACHED, BlockStateProperties.ATTACHED);
         propertyBuilder.put(SafeProperties.BOTTOM, BlockStateProperties.BOTTOM);
         propertyBuilder.put(SafeProperties.CONDITIONAL, BlockStateProperties.CONDITIONAL);
         propertyBuilder.put(SafeProperties.DISARMED, BlockStateProperties.DISARMED);
@@ -126,7 +124,7 @@ public class ConversionUtils {
         propertyBuilder.put(SafeProperties.TILT, BlockStateProperties.TILT);
         propertyBuilder.put(SafeProperties.VERTICAL_DIRECTION, BlockStateProperties.VERTICAL_DIRECTION);
         propertyBuilder.put(SafeProperties.DRIPSTONE_THICKNESS, BlockStateProperties.DRIPSTONE_THICKNESS);
-        propertyBuilder.put(SafeProperties.SCULK_SENSOR_PHASE, BlockStateProperties.SCULK_SENSOR_PHASE);
+        propertyBuilder.put(SafeProperties.SCULK_SENSOR_PHASE, BlockStateProperties.SCULK_SENSOR_PHASE);*/
         propertyBiMap = propertyBuilder.build();
     }
 
