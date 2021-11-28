@@ -45,7 +45,7 @@ import java.util.Map;
 public final class Orbis {
 
     public static final String SETTINGS_VERSION = "1";
-    public static final String MC_VERSION = "1_17_1";
+    public static final String MC_VERSION = "1_18";
     private static final String DOWNLOAD_URL = "https://raw.githubusercontent.com/Articdive/ArticData/" +
             MC_VERSION.replace("_", ".") + "/";
 

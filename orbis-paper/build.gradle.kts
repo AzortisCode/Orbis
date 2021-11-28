@@ -3,11 +3,10 @@ import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 plugins {
     java
     id("com.github.johnrengelman.shadow") version "7.0.0"
-    id("io.papermc.paperweight.userdev") version "1.1.15-SNAPSHOT"
+    id("io.papermc.paperweight.userdev") version "1.3.0-SNAPSHOT"
 }
 
 group = "com.azortis"
-version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
@@ -24,7 +23,7 @@ repositories {
 
 dependencies {
     implementation(project(":orbis-core"))
-    paperDevBundle("1.17.1-R0.1-SNAPSHOT")
+    paperDevBundle("1.18-rc3-R0.1-SNAPSHOT")
     compileOnly("org.slf4j:slf4j-api:1.7.31")
 }
 

@@ -22,7 +22,7 @@ import com.azortis.orbis.block.Block;
 import com.azortis.orbis.block.BlockRegistry;
 import com.azortis.orbis.paper.nms.INMSBinding;
 import org.bukkit.block.data.BlockData;
-import org.bukkit.craftbukkit.v1_17_R1.block.data.CraftBlockData;
+import org.bukkit.craftbukkit.v1_18_R1.block.data.CraftBlockData;
 
 public class NMSBinding implements INMSBinding {
 
