@@ -36,6 +36,7 @@ final class BlockImpl implements Block {
     private final boolean isSolid;
     private final boolean isLiquid;
     private final ImmutableMap<Property<?>, Comparable<?>> values;
+    private final ImmutableMap<String, Property<?>> propertyMap;
     private final Block defaultBlock;
     private Table<Property<?>, Comparable<?>, Block> neighbours;
 
@@ -49,6 +50,12 @@ final class BlockImpl implements Block {
         this.isSolid = isSolid;
         this.isLiquid = isLiquid;
         this.values = values;
+        // Build PropertyMap
+        ImmutableMap.Builder<String, Property<?>> builder = ImmutableMap.builder();
+        for (Property<?> property : this.values.keySet()){
+            builder.put(property.getKey(), property);
+        }
+        this.propertyMap = builder.build();
         this.defaultBlock = defaultBlock;
     }
 
@@ -85,6 +92,11 @@ final class BlockImpl implements Block {
     @Override
     public @NotNull ImmutableSet<Property<?>> getProperties() {
         return values.keySet();
+    }
+
+    @Override
+    public @NotNull ImmutableMap<String, Property<?>> getPropertyMap() {
+        return this.propertyMap;
     }
 
     @Override

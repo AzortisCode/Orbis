@@ -32,7 +32,6 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import java.io.File;
 import java.io.FileReader;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 
 public final class BlockRegistry {
@@ -76,6 +75,29 @@ public final class BlockRegistry {
 
     public static Block fromStateId(final int stateId) {
         return STATE_MAP.get(stateId);
+    }
+
+    public static Block withProperties(final String key, Map<String, String> properties){
+        Block block = fromKey(key); // Fetch default block
+        for (Map.Entry<String, String> entry : properties.entrySet()){
+            Property<?> property = block.getPropertyMap().get(entry.getKey());
+            block = setValue(block, property, entry.getValue());
+        }
+        return block;
+    }
+
+    public static Block withProperties(final NamespaceId key, Map<String, String> properties){
+        return withProperties(key.getNamespaceId(), properties);
+    }
+
+    public static boolean isLoaded() {
+        return loaded;
+    }
+
+    @SuppressWarnings("unchecked")
+    private static <T extends Comparable<T>> Block setValue(Block block, Property<?> property, String value){
+        Property<T> property1 = (Property<T>) property;
+        return block.setValue(property1, property1.getValueFor(value));
     }
 
     private static void load(final JsonObject data) {
@@ -157,7 +179,4 @@ public final class BlockRegistry {
         return builder.build();
     }
 
-    public static boolean isLoaded() {
-        return loaded;
-    }
 }

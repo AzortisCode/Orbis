@@ -42,6 +42,8 @@ public sealed interface Block extends Blocks permits BlockImpl {
 
     @NotNull ImmutableSet<Property<?>> getProperties();
 
+    @NotNull ImmutableMap<String, Property<?>> getPropertyMap();
+
     boolean hasProperty(Property<?> property);
 
     @NotNull ImmutableMap<Property<?>, Comparable<?>> getValues();
@@ -53,5 +55,4 @@ public sealed interface Block extends Blocks permits BlockImpl {
     @NotNull <T extends Comparable<T>, V extends T> Block setValue(Property<T> property, V value);
 
     @NotNull Block getDefault();
-
 }
