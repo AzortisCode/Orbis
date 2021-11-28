@@ -9,7 +9,6 @@ version = "1.0-SNAPSHOT"
 repositories {
     mavenCentral()
     mavenLocal()
-    jcenter()
     maven {
         url = uri("https://repo.spongepowered.org/maven")
     }
