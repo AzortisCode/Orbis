@@ -18,30 +18,15 @@
 
 package com.azortis.orbis.paper.nms.impl;
 
-import com.azortis.orbis.block.property.BooleanProperty;
-import com.azortis.orbis.block.property.EnumProperty;
-import com.azortis.orbis.block.property.IntegerProperty;
-import com.azortis.orbis.block.property.Property;
+import com.azortis.orbis.block.Block;
+import com.azortis.orbis.block.BlockRegistry;
 import com.azortis.orbis.paper.nms.INMSBinding;
-import com.azortis.orbis.utils.Nameable;
-import com.azortis.orbis.utils.NamespaceId;
-import net.minecraft.core.Registry;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
 import org.bukkit.block.data.BlockData;
 import org.bukkit.craftbukkit.v1_17_R1.block.data.CraftBlockData;
-import org.jetbrains.annotations.Nullable;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
 
 public class NMSBinding implements INMSBinding {
 
-    private static Block getBlockFromId(NamespaceId material) {
+    /*private static Block getBlockFromId(NamespaceId material) {
         return Registry.BLOCK.get(ResourceLocation.tryParse(material.getId()));
     }
 
@@ -152,15 +137,24 @@ public class NMSBinding implements INMSBinding {
 
     @SuppressWarnings("unchecked")
     private <T extends Enum<T> & StringRepresentable> BlockState setEnumValue(BlockState state, EnumProperty<?> property,
-                                                                        String name) {
+                                                                              String name) {
         net.minecraft.world.level.block.state.properties.EnumProperty<T> enumProperty =
                 (net.minecraft.world.level.block.state.properties.EnumProperty<T>) ConversionUtils.toNative(property);
         Optional<T> value = enumProperty.getValue(name);
-        if(value.isPresent()) {
+        if (value.isPresent()) {
             return state.setValue(enumProperty, value.get());
         } else {
             throw new IllegalStateException("Unexpected value " + name);
         }
+    }*/
+
+    @Override
+    public Block getBlock(BlockData blockData) {
+        return BlockRegistry.fromStateId(net.minecraft.world.level.block.Block.getId(((CraftBlockData)blockData).getState()));
     }
 
+    @Override
+    public BlockData getBlockData(int stateId) {
+        return net.minecraft.world.level.block.Block.stateById(stateId).createCraftBlockData();
+    }
 }

@@ -24,6 +24,7 @@ import com.google.common.collect.*;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
@@ -36,7 +37,7 @@ final class BlockImpl implements Block {
     private final boolean isLiquid;
     private final ImmutableMap<Property<?>, Comparable<?>> values;
     private final Block defaultBlock;
-    private ImmutableTable<Property<?>, Comparable<?>, Block> neighbours;
+    private Table<Property<?>, Comparable<?>, Block> neighbours;
 
     BlockImpl(NamespaceId key, int id, int stateId, boolean isAir, boolean isSolid, boolean isLiquid,
               @NotNull ImmutableMap<Property<?>, Comparable<?>> values,
@@ -99,7 +100,7 @@ final class BlockImpl implements Block {
     @Override
     public <T extends Comparable<T>> @NotNull T getValue(Property<T> property) {
         Comparable<?> value = values.get(property);
-        if(value == null){
+        if (value == null) {
             throw new IllegalArgumentException("Cannot get property " + property + " because it doesn't exists in " + this);
         } else {
             return property.getType().cast(value);
@@ -115,7 +116,7 @@ final class BlockImpl implements Block {
     @Override
     public @NotNull <T extends Comparable<T>, V extends T> Block setValue(Property<T> property, V value) {
         Block block = this.neighbours.get(property, value);
-        if(block == null){
+        if (block == null) {
             throw new IllegalArgumentException("Cannot get " + property + " in " + this + " as it doesn't exist");
         }
         return block;
@@ -127,29 +128,29 @@ final class BlockImpl implements Block {
     }
 
     @SuppressWarnings("UnstableApiUsage")
-    void populateNeighbours(Map<Map<Property<?>, Comparable<?>>, BlockImpl> states){
-        if(neighbours == null){
+    void populateNeighbours(Map<Map<Property<?>, Comparable<?>>, BlockImpl> states) {
+        if (neighbours == null) {
             Table<Property<?>, Comparable<?>, Block> table = HashBasedTable.create();
 
-            for (Map.Entry<Property<?>, Comparable<?>> entry : this.values.entrySet()){
+            for (Map.Entry<Property<?>, Comparable<?>> entry : this.values.entrySet()) {
                 Property<?> property = entry.getKey();
 
-                for (Comparable<?> value : property.getValues()){
-                    if(value != entry.getValue()){
+                for (Comparable<?> value : property.getValues()) {
+                    if (value != entry.getValue()) {
                         table.put(property, value, states.get(createStateKey(property, value)));
                     }
                 }
             }
-            this.neighbours = table.isEmpty() ? ImmutableTable.copyOf(table) : ImmutableTable.copyOf(ArrayTable.create(table));
+            this.neighbours = table.isEmpty() ? table : ArrayTable.create(table);
         } else {
             throw new IllegalStateException("Neighbours already populated in " + this);
         }
     }
 
-    private Map<Property<?>, Comparable<?>> createStateKey(Property<?> property, Comparable<?> value){
-        Map<Property<?>, Comparable<?>> stateKey = Maps.newHashMap();
-        stateKey.put(property, value);
-        return stateKey;
+    private Map<Property<?>, Comparable<?>> createStateKey(Property<?> property, Comparable<?> value) {
+        Map<Property<?>, Comparable<?>> stateKey = new HashMap<>(values);
+        stateKey.replace(property, value);
+        return ImmutableMap.copyOf(stateKey);
     }
 
 }

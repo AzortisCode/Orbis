@@ -34,10 +34,10 @@ public final class Generators {
     private static final String BASE_ARTIC_DATA_URL = "https://raw.githubusercontent.com/Articdive/ArticData/" +
             MC_VERSION.replace("_", ".") + "/";
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         StringBuilder outputBuilder = new StringBuilder();
-        for (String arg : args){
-            if(arg.startsWith("$") || arg.endsWith("$")){
+        for (String arg : args) {
+            if (arg.startsWith("$") || arg.endsWith("$")) {
                 outputBuilder.append(arg.replace("$", ""));
             }
             outputBuilder.append(" ");
@@ -50,7 +50,7 @@ public final class Generators {
     private static InputStream getInputStream(String fileName) {
         try {
             return new URL(BASE_ARTIC_DATA_URL + MC_VERSION + "_" + fileName).openStream();
-        } catch (IOException ex){
+        } catch (IOException ex) {
             LOGGER.error("Failed to create InputStream for " + fileName);
         }
         return null;

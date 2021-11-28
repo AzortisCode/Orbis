@@ -18,17 +18,12 @@
 
 package com.azortis.orbis.paper.nms;
 
-import com.azortis.orbis.block.property.Property;
-import com.azortis.orbis.utils.NamespaceId;
+import com.azortis.orbis.block.Block;
 import org.bukkit.block.data.BlockData;
-import org.jetbrains.annotations.Nullable;
-
-import java.util.Map;
-import java.util.Optional;
 
 public interface INMSBinding {
 
-    @Nullable Property<?> getProperty(NamespaceId material, String name);
+    /*@Nullable Property<?> getProperty(NamespaceId material, String name);
 
     Map<String, Property<?>> getProperties(NamespaceId material);
 
@@ -42,6 +37,14 @@ public interface INMSBinding {
 
     BlockData createBlockState(NamespaceId material);
 
-    BlockData createBlockState(NamespaceId material, Map<Property<?>, Optional<?>> values);
+    BlockData createBlockState(NamespaceId material, Map<Property<?>, Optional<?>> values);*/
+
+    Block getBlock(BlockData blockData);
+
+    BlockData getBlockData(int stateId);
+
+    default BlockData getBlockData(Block block){
+        return getBlockData(block.getStateId());
+    }
 
 }

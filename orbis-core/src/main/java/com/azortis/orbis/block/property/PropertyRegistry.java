@@ -34,8 +34,8 @@ public final class PropertyRegistry {
             "NOTEBLOCK_INSTRUMENT", "NOTE_BLOCK_INSTRUMENT");
     private static volatile boolean loaded = false;
 
-    public static void init(){
-        if(!loaded){
+    public static void init() {
+        if (!loaded) {
             Map<String, Property<?>> propertyMap = new HashMap<>();
             for (final Field field : Properties.class.getDeclaredFields()) {
                 try {
@@ -48,12 +48,11 @@ public final class PropertyRegistry {
         }
     }
 
-
-    public static Property<?> getByName(String name){
+    public static Property<?> getByName(String name) {
         return PROPERTIES.get(name);
     }
 
-    public static Property<?> getByMojangName(String mojangName){
+    public static Property<?> getByMojangName(String mojangName) {
         return PROPERTIES.get(NAME_REWRITES.getOrDefault(mojangName, mojangName));
     }
 

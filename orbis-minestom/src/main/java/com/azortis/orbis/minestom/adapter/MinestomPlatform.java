@@ -20,7 +20,6 @@ package com.azortis.orbis.minestom.adapter;
 
 import com.azortis.orbis.Platform;
 import com.azortis.orbis.container.Container;
-import com.azortis.orbis.utils.NamespaceId;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 
@@ -45,7 +44,8 @@ public class MinestomPlatform implements Platform {
     }
 
     @Override
-    public @Nullable Container getContainer(String name) {
+    public @Nullable
+    Container getContainer(String name) {
         return null;
     }
 

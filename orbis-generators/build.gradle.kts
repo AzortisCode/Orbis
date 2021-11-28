@@ -35,7 +35,9 @@ java {
 
 tasks {
     run {
-        run.get().setArgsString("$" + project.rootProject.childProjects["orbis-core"]!!.projectDir.invariantSeparatorsPath +
-                "/src/generated/java$")
+        run.get().setArgsString(
+            "$" + project.rootProject.childProjects["orbis-core"]!!.projectDir.invariantSeparatorsPath +
+                    "/src/generated/java$"
+        )
     }
 }

@@ -1,6 +1,5 @@
 package com.azortis.orbis.block;
 
-import java.lang.SuppressWarnings;
 import org.jetbrains.annotations.NotNull;
 
 /**

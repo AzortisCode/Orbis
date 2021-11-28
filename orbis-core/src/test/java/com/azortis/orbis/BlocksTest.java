@@ -18,24 +18,21 @@
 
 package com.azortis.orbis;
 
-import com.azortis.orbis.container.Container;
-import org.jetbrains.annotations.Nullable;
-import org.slf4j.Logger;
+import com.azortis.orbis.block.Block;
+import com.azortis.orbis.block.property.NoteBlockInstrument;
+import com.azortis.orbis.block.property.Property;
+import org.junit.jupiter.api.Test;
 
-import java.io.File;
-import java.util.Collection;
+import static org.junit.jupiter.api.Assertions.*;
 
-public interface Platform {
+public class BlocksTest {
 
-    String getAdaptation();
-
-    Logger getLogger();
-
-    File getDirectory();
-
-    @Nullable
-    Container getContainer(String name);
-
-    Collection<Container> getContainers();
+    @Test
+    public void testBlocks(){
+        Orbis.initialize(new MockPlatform());
+        //assertTrue(BlockRegistry.isLoaded());
+        assertNotNull(Block.ACACIA_DOOR);
+        assertSame(Property.NOTE_BLOCK_INSTRUMENT.getValueFor("HARP"), NoteBlockInstrument.HARP);
+    }
 
 }

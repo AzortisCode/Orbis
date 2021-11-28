@@ -24,8 +24,6 @@ import com.azortis.orbis.generator.Dimension;
 import lombok.Getter;
 import net.minestom.server.instance.batch.ChunkBatch;
 
-import java.util.Locale;
-
 public class MinestomChunkData extends ChunkData {
 
     @Getter

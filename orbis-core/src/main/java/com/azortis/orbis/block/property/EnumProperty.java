@@ -43,11 +43,11 @@ public non-sealed class EnumProperty<T extends Enum<T> & Nameable> extends Prope
 
     @Override
     public @Nullable T getValueFor(@NotNull String value) {
-        final T val = names.get(value);
-        if (!getValues().contains(val)) {
-            throw new IllegalArgumentException("Invalid value: " + value + ". Must be in " + getValues());
+        value = value.toLowerCase(Locale.ENGLISH);
+        if (!names.containsKey(value)) {
+            throw new IllegalArgumentException("Invalid value: " + value + ". Must be in " + names.keySet());
         }
-        return val;
+        return names.get(value);
     }
 
     public Set<String> getNames() {

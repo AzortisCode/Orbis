@@ -44,17 +44,17 @@ public abstract class OrbisCodeGenerator {
 
     public abstract void generate();
 
-    protected void writeFiles(@NotNull List<JavaFile> files){
-        for (JavaFile javaFile : files){
+    protected void writeFiles(@NotNull List<JavaFile> files) {
+        for (JavaFile javaFile : files) {
             try {
                 javaFile.writeTo(this.outputFolder);
-            } catch (IOException ex){
+            } catch (IOException ex) {
                 LOGGER.error("An error occurred while trying to write source code to the filesystem.");
             }
         }
     }
 
-    private String toConstant(String namespaceId){
+    private String toConstant(String namespaceId) {
         return namespaceId.replace("minecraft:", "").toUpperCase(Locale.ENGLISH);
     }
 

@@ -8,7 +8,7 @@ group = "com.azortis"
 version = "1.0-SNAPSHOT"
 
 sourceSets.main {
-    java.setSrcDirs(listOf("src/main/java","src/generated/java"))
+    java.setSrcDirs(listOf("src/main/java", "src/generated/java"))
 }
 
 repositories {
@@ -46,6 +46,17 @@ dependencies {
     compileOnly("org.slf4j:slf4j-api:1.7.31")
     compileOnly("commons-io:commons-io:2.8.0")
     compileOnly("org.jetbrains:annotations:16.0.1")
+
+    // For testing
+    testImplementation("it.unimi.dsi:fastutil:8.5.6")
+    testImplementation("org.slf4j:slf4j-api:1.7.31")
+    testImplementation("org.jetbrains:annotations:16.0.1")
+    testImplementation("com.google.code.gson:gson:2.8.9")
+    testImplementation("commons-io:commons-io:2.8.0")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1")
+    testImplementation("org.apache.logging.log4j:log4j-core:2.14.1")
+    testImplementation("org.apache.logging.log4j:log4j-slf4j-impl:2.14.1")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.1")
 }
 
 java {
@@ -69,5 +80,8 @@ publishing {
 tasks {
     build {
         dependsOn(shadowJar)
+    }
+    test {
+        useJUnitPlatform()
     }
 }

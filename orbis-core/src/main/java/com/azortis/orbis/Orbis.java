@@ -107,22 +107,22 @@ public final class Orbis {
         return (GeneratorRegistry<T>) generatorRegistries.get(typeClass);
     }
 
-    public static File getDataFile(String dateFileName){
-        if(initialized){
+    public static File getDataFile(String dateFileName) {
+        if (initialized) {
             try {
                 File dataFolder = new File(platform.getDirectory() + "/data/");
-                if(!dataFolder.exists() && !dataFolder.mkdirs()){
+                if (!dataFolder.exists() && !dataFolder.mkdirs()) {
                     throw new IllegalStateException("Failed to create data directory");
                 } else {
                     dateFileName = MC_VERSION + "_" + dateFileName;
                     File dataFile = new File(dataFolder, dateFileName);
-                    if(!dataFile.exists()){
+                    if (!dataFile.exists()) {
                         URL downloadUrl = new URL(DOWNLOAD_URL + dateFileName);
                         FileUtils.copyURLToFile(downloadUrl, dataFile);
                     }
                     return dataFile;
                 }
-            } catch (IOException ex){
+            } catch (IOException ex) {
                 logger.error("Failed to download {}", dateFileName);
             }
         } else {

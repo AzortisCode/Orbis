@@ -20,8 +20,6 @@ package com.azortis.orbis.paper;
 
 import com.azortis.orbis.Platform;
 import com.azortis.orbis.container.Container;
-import com.azortis.orbis.paper.block.PaperStateDefinition;
-import com.azortis.orbis.utils.NamespaceId;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 

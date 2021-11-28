@@ -21,7 +21,6 @@ package com.azortis.orbis.generator;
 import com.azortis.orbis.Orbis;
 import com.azortis.orbis.block.Block;
 import com.azortis.orbis.block.BlockRegistry;
-import com.azortis.orbis.block.property.Property;
 import com.azortis.orbis.container.Container;
 import com.azortis.orbis.generator.biome.Biome;
 import com.azortis.orbis.generator.biome.BiomeGrid;

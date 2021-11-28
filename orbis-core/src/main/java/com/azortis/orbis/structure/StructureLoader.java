@@ -21,5 +21,4 @@ package com.azortis.orbis.structure;
 public final class StructureLoader {
 
 
-
 }

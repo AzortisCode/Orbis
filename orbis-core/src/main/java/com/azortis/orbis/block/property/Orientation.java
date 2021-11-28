@@ -37,17 +37,17 @@ public enum Orientation implements Nameable {
 
     private final String name;
 
-    Orientation(final String name){
+    Orientation(final String name) {
         this.name = name;
     }
 
     @Override
     public String toString() {
-        return super.toString();
+        return this.name;
     }
 
     @Override
     public @NotNull String getSerializedName() {
-        return null;
+        return this.name;
     }
 }

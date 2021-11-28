@@ -19,23 +19,41 @@
 package com.azortis.orbis;
 
 import com.azortis.orbis.container.Container;
-import org.jetbrains.annotations.Nullable;
-import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.util.Collection;
 
-public interface Platform {
+public class MockPlatform implements Platform{
 
-    String getAdaptation();
+    private final File directory;
 
-    Logger getLogger();
+    public MockPlatform(){
+        this.directory = new File(System.getProperty("user.dir"));
+    }
 
-    File getDirectory();
+    @Override
+    public String getAdaptation() {
+        return "Test";
+    }
 
-    @Nullable
-    Container getContainer(String name);
+    @Override
+    public org.slf4j.Logger getLogger() {
+        return LoggerFactory.getLogger(BlocksTest.class);
+    }
 
-    Collection<Container> getContainers();
+    @Override
+    public File getDirectory() {
+        return this.directory;
+    }
 
+    @Override
+    public @org.jetbrains.annotations.Nullable Container getContainer(String name) {
+        return null;
+    }
+
+    @Override
+    public Collection<Container> getContainers() {
+        return null;
+    }
 }

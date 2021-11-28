@@ -28,59 +28,57 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.FileReader;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public final class BlockRegistry {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(BlockRegistry.class);
     private static final Map<String, Block> KEY_MAP = new HashMap<>();
     private static final Int2ObjectMap<Block> STATE_MAP = new Int2ObjectOpenHashMap<>();
     private static final String BLOCKS_DATA = "blocks.json";
     private static volatile boolean loaded = false;
 
-    public static void init(){
+    public static void init() {
         try {
-            if(loaded){
+            if (!loaded) {
                 File blocksDataFile = Orbis.getDataFile(BLOCKS_DATA);
                 assert blocksDataFile != null;
                 final JsonObject data = Orbis.getGson().fromJson(new FileReader(blocksDataFile), JsonObject.class);
                 load(data);
                 loaded = true;
             }
-        } catch (Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
-    public static boolean containsKey(final String key){
+    public static boolean containsKey(final String key) {
         final String id = key.indexOf(':') == -1 ? "minecraft:" + key : key;
         return KEY_MAP.containsKey(key);
     }
 
-    public static Block fromKey(final String key){
+    public static Block fromKey(final String key) {
         final String id = key.indexOf(':') == -1 ? "minecraft:" + key : key;
         return KEY_MAP.get(id);
     }
 
-    public static boolean containsKey(final NamespaceId key){
+    public static boolean containsKey(final NamespaceId key) {
         return KEY_MAP.containsKey(key.getNamespaceId());
     }
 
-    public static Block fromKey(final NamespaceId key){
+    public static Block fromKey(final NamespaceId key) {
         return KEY_MAP.get(key.getNamespaceId());
     }
 
-    public static Block fromStateId(final int stateId){
+    public static Block fromStateId(final int stateId) {
         return STATE_MAP.get(stateId);
     }
 
-    private static void load(final JsonObject data){
+    private static void load(final JsonObject data) {
         data.entrySet().forEach(entry -> {
             final String key = entry.getKey();
             final NamespaceId namespacedKey = new NamespaceId(key);
@@ -89,7 +87,7 @@ public final class BlockRegistry {
             final int defaultStateId = block.get("defaultStateId").getAsInt();
 
             Map<String, Property<?>> availableProperties = new HashMap<>();
-            for (JsonElement propertyElement : block.getAsJsonArray("properties")){
+            for (JsonElement propertyElement : block.getAsJsonArray("properties")) {
                 String mojangName = propertyElement.getAsString();
                 Property<?> property = PropertyRegistry.getByMojangName(mojangName);
                 availableProperties.put(property.getKey(), property);
@@ -100,10 +98,10 @@ public final class BlockRegistry {
             BlockImpl defaultBlock = null;
             JsonArray states = block.getAsJsonArray("states");
             JsonElement elementToRemove = null;
-            for (JsonElement stateElement : states){
+            for (JsonElement stateElement : states) {
                 final JsonObject state = stateElement.getAsJsonObject();
                 final int stateId = state.get("stateId").getAsInt();
-                if(stateId == defaultStateId){
+                if (stateId == defaultStateId) {
                     ImmutableMap<Property<?>, Comparable<?>> propertyMap = getPropertyMap(availableProperties, state);
                     defaultBlock = new BlockImpl(
                             namespacedKey,
@@ -121,7 +119,7 @@ public final class BlockRegistry {
                 }
             }
             states.remove(elementToRemove);
-            for (JsonElement stateElement : states){
+            for (JsonElement stateElement : states) {
                 final JsonObject state = stateElement.getAsJsonObject();
                 final int stateId = state.get("stateId").getAsInt();
                 ImmutableMap<Property<?>, Comparable<?>> propertyMap = getPropertyMap(availableProperties, state);
@@ -146,13 +144,13 @@ public final class BlockRegistry {
     }
 
     private static ImmutableMap<Property<?>, Comparable<?>> getPropertyMap(Map<String, Property<?>> availableProperties,
-                                                                           final JsonObject state){
+                                                                           final JsonObject state) {
         JsonObject properties = state.getAsJsonObject("properties");
         ImmutableMap.Builder<Property<?>, Comparable<?>> builder = ImmutableMap.builder();
-        for (Map.Entry<String, Property<?>> entry : availableProperties.entrySet()){
-            String stringValue = properties.get(entry.getKey()).getAsString();
+        for (Map.Entry<String, Property<?>> entry : availableProperties.entrySet()) {
+            String stringValue = properties.get(entry.getKey()).getAsJsonPrimitive().getAsString();
             Comparable<?> value = entry.getValue().getValueFor(stringValue);
-            if(value != null){
+            if (value != null) {
                 builder.put(entry.getValue(), value);
             }
         }
