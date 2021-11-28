@@ -22,7 +22,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Set;
 
-public non-sealed class BooleanProperty extends Property<Boolean> {
+public final class BooleanProperty extends Property<Boolean> {
 
     public static final Set<Boolean> VALUES = Set.of(true, false);
 
@@ -39,7 +39,7 @@ public non-sealed class BooleanProperty extends Property<Boolean> {
         return val;
     }
 
-    protected static BooleanProperty create(final @NotNull String key) {
+    static BooleanProperty create(final @NotNull String key) {
         return new BooleanProperty(key);
     }
 

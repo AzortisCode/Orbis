@@ -23,7 +23,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Set;
 import java.util.TreeSet;
 
-public non-sealed class IntegerProperty extends Property<Integer> {
+public final class IntegerProperty extends Property<Integer> {
 
     private final int min, max;
 
@@ -62,7 +62,7 @@ public non-sealed class IntegerProperty extends Property<Integer> {
         return values;
     }
 
-    protected static IntegerProperty create(final @NotNull String key, final int min, final int max) {
+    static IntegerProperty create(final @NotNull String key, final int min, final int max) {
         return new IntegerProperty(key, min, max);
     }
 

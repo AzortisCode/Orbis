@@ -26,7 +26,7 @@ import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-public non-sealed class EnumProperty<T extends Enum<T> & Nameable> extends Property<T> {
+public final class EnumProperty<T extends Enum<T> & Nameable> extends Property<T> {
 
     private final Map<String, T> names = new HashMap<>();
 
@@ -54,25 +54,25 @@ public non-sealed class EnumProperty<T extends Enum<T> & Nameable> extends Prope
         return Collections.unmodifiableSet(names.keySet());
     }
 
-    protected static <T extends Enum<T> & Nameable> EnumProperty<T> create(final @NotNull String key,
+    static <T extends Enum<T> & Nameable> EnumProperty<T> create(final @NotNull String key,
                                                                            final @NotNull Class<T> type) {
         return create(key, type, t -> true);
     }
 
-    protected static <T extends Enum<T> & Nameable> EnumProperty<T> create(final @NotNull String key,
+    static <T extends Enum<T> & Nameable> EnumProperty<T> create(final @NotNull String key,
                                                                            final @NotNull Class<T> type,
                                                                            final @NotNull Predicate<T> filter) {
         return create(key, type, Arrays.stream(type.getEnumConstants()).filter(filter).collect(Collectors.toSet()));
     }
 
     @SafeVarargs
-    protected static <T extends Enum<T> & Nameable> EnumProperty<T> create(final @NotNull String key,
+    static <T extends Enum<T> & Nameable> EnumProperty<T> create(final @NotNull String key,
                                                                            final Class<T> type,
                                                                            final @NotNull T... values) {
         return create(key, type, Set.of(values));
     }
 
-    protected static <T extends Enum<T> & Nameable> EnumProperty<T> create(final @NotNull String key,
+    static <T extends Enum<T> & Nameable> EnumProperty<T> create(final @NotNull String key,
                                                                            final @NotNull Class<T> type,
                                                                            final @NotNull Set<T> values) {
         return new EnumProperty<>(key, type, values);
