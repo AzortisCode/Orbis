@@ -23,22 +23,6 @@ import org.bukkit.block.data.BlockData;
 
 public interface INMSBinding {
 
-    /*@Nullable Property<?> getProperty(NamespaceId material, String name);
-
-    Map<String, Property<?>> getProperties(NamespaceId material);
-
-    boolean hasProperty(NamespaceId material, Property<?> property);
-
-    Map<Property<?>, Optional<?>> getValues(BlockData blockData);
-
-    <T extends Comparable<T>> T getValue(BlockData blockData, Property<T> property);
-
-    <T extends Comparable<T>> BlockData setValue(BlockData blockData, Property<T> property, T value);
-
-    BlockData createBlockState(NamespaceId material);
-
-    BlockData createBlockState(NamespaceId material, Map<Property<?>, Optional<?>> values);*/
-
     Block getBlock(BlockData blockData);
 
     BlockData getBlockData(int stateId);
