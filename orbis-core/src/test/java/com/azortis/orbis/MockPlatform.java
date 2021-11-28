@@ -29,7 +29,7 @@ public class MockPlatform implements Platform{
     private final File directory;
 
     public MockPlatform(){
-        this.directory = new File(System.getProperty("user.dir"));
+        this.directory = new File(System.getProperty("user.dir") + "/test-data/");
     }
 
     @Override
