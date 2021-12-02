@@ -24,35 +24,74 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Optional;
+import java.util.Map;
 
-public sealed interface Block extends Blocks permits BlockImpl {
+public final class Block {
 
-    @NotNull NamespaceId getKey();
+    private final NamespaceId key;
+    private final int id;
+    private final ImmutableSet<Property<?>> properties;
+    private final ImmutableMap<String, Property<?>> propertyMap;
 
-    int getId();
+    // Populated in BlockRegistry
+    private BlockState defaultState;
+    private ImmutableSet<BlockState> states;
 
-    int getStateId();
+    Block(NamespaceId key, int id, @NotNull ImmutableSet<Property<?>> properties) {
+        this.key = key;
+        this.id = id;
+        this.properties = properties;
 
-    boolean isAir();
+        // Build the property map
+        ImmutableMap.Builder<String, Property<?>> builder = ImmutableMap.builder();
+        for (Property<?> property : properties){
+            builder.put(property.getKey(), property);
+        }
+        this.propertyMap = builder.build();
+    }
 
-    boolean isSolid();
+    public @NotNull NamespaceId getKey() {
+        return key;
+    }
 
-    boolean isLiquid();
+    public int getId() {
+        return id;
+    }
 
-    @NotNull ImmutableSet<Property<?>> getProperties();
+    public @NotNull ImmutableSet<Property<?>> getProperties() {
+        return properties;
+    }
 
-    @NotNull ImmutableMap<String, Property<?>> getPropertyMap();
+    public @NotNull ImmutableMap<String, Property<?>> getPropertyMap() {
+        return propertyMap;
+    }
 
-    boolean hasProperty(Property<?> property);
+    public boolean hasProperty(Property<?> property){
+        return properties.contains(property);
+    }
 
-    @NotNull ImmutableMap<Property<?>, Comparable<?>> getValues();
+    void setDefaultState(BlockState state){
+        if(defaultState == null)defaultState = state;
+    }
 
-    @NotNull <T extends Comparable<T>> T getValue(Property<T> property);
+    public @NotNull BlockState getDefaultState() {
+        return defaultState;
+    }
 
-    @NotNull <T extends Comparable<T>> Optional<T> getValueOptional(Property<T> property);
+    void setStates(ImmutableSet<BlockState> states){
+        if(this.states == null)this.states = states;
+    }
 
-    @NotNull <T extends Comparable<T>, V extends T> Block setValue(Property<T> property, V value);
+    public ImmutableSet<BlockState> getStates() {
+        return states;
+    }
 
-    @NotNull Block getDefault();
+    public @NotNull BlockState withProperties(Map<String, String> properties){
+        BlockState state = this.defaultState;
+        for (Map.Entry<String, String> entry : properties.entrySet()){
+            state = state.setValue(propertyMap.get(entry.getKey()), entry.getValue());
+        }
+        return state;
+    }
+
 }
