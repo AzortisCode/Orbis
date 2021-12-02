@@ -19,4 +19,8 @@
 package com.azortis.orbis.block.entity;
 
 public abstract class BlockEntity {
+
+    protected String id;
+    protected int x,y,z;
+
 }

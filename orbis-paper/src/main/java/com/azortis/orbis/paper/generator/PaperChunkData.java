@@ -18,14 +18,13 @@
 
 package com.azortis.orbis.paper.generator;
 
-import com.azortis.orbis.block.Block;
 import com.azortis.orbis.block.BlockRegistry;
+import com.azortis.orbis.block.BlockState;
 import com.azortis.orbis.generator.ChunkData;
 import com.azortis.orbis.generator.Dimension;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.ChunkAccess;
 import org.bukkit.craftbukkit.v1_18_R1.generator.CraftChunkData;
 import org.bukkit.generator.ChunkGenerator;
@@ -40,7 +39,7 @@ public class PaperChunkData extends ChunkData {
     }
 
     @Override
-    public Block getBlock(int x, int y, int z) {
+    public BlockState getBlock(int x, int y, int z) {
         return BlockRegistry.fromStateId(net.minecraft.world.level.block.Block.getId(handle.getTypeId(x, y, z)));
     }
 
@@ -55,14 +54,14 @@ public class PaperChunkData extends ChunkData {
 
     // TODO: Desperately try and come up with a better solution than just copying the private method out so we can
     //  use it
-    private static void setBlock(CraftChunkData data, int x, int y, int z, BlockState type) {
+    private static void setBlock(CraftChunkData data, int x, int y, int z, net.minecraft.world.level.block.state.BlockState type) {
         if (x != (x & 0xf) || y < data.getMinHeight() || y >= data.getMaxHeight() || z != (z & 0xf)) {
             return;
         }
 
         ChunkAccess access = data.getHandle();
         BlockPos blockPosition = new BlockPos(access.getPos().getMinBlockX() + x, y, access.getPos().getMinBlockZ() + z);
-        BlockState oldBlockData = access.setBlockState(blockPosition, type, false);
+        net.minecraft.world.level.block.state.BlockState oldBlockData = access.setBlockState(blockPosition, type, false);
 
         if (type.hasBlockEntity()) {
             BlockEntity tileEntity = ((EntityBlock) type.getBlock()).newBlockEntity(blockPosition, type);

@@ -19,97 +19,61 @@
 package com.azortis.orbis.block;
 
 import com.azortis.orbis.block.property.Property;
-import com.azortis.orbis.utils.NamespaceId;
-import com.google.common.collect.*;
+import com.google.common.collect.ArrayTable;
+import com.google.common.collect.HashBasedTable;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Table;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-final class BlockImpl implements Block {
-    private final NamespaceId key;
-    private final int id;
+public final class BlockState {
+
+    private final Block block;
     private final int stateId;
     private final boolean isAir;
     private final boolean isSolid;
     private final boolean isLiquid;
     private final ImmutableMap<Property<?>, Comparable<?>> values;
-    private final ImmutableMap<String, Property<?>> propertyMap;
-    private final Block defaultBlock;
-    private Table<Property<?>, Comparable<?>, Block> neighbours;
 
-    BlockImpl(NamespaceId key, int id, int stateId, boolean isAir, boolean isSolid, boolean isLiquid,
-              @NotNull ImmutableMap<Property<?>, Comparable<?>> values,
-              @Nullable Block defaultBlock) {
-        this.key = key;
-        this.id = id;
+    // Populated by BlockRegistry
+    private Table<Property<?>, Comparable<?>, BlockState> neighbours;
+
+    BlockState(Block block, int stateId, boolean isAir, boolean isSolid, boolean isLiquid, @NotNull ImmutableMap<Property<?>, Comparable<?>> values) {
+        this.block = block;
         this.stateId = stateId;
         this.isAir = isAir;
         this.isSolid = isSolid;
         this.isLiquid = isLiquid;
         this.values = values;
-        // Build PropertyMap
-        ImmutableMap.Builder<String, Property<?>> builder = ImmutableMap.builder();
-        for (Property<?> property : this.values.keySet()){
-            builder.put(property.getKey(), property);
-        }
-        this.propertyMap = builder.build();
-        this.defaultBlock = defaultBlock;
     }
 
-    @Override
-    public @NotNull NamespaceId getKey() {
-        return key;
+    public Block getBlock() {
+        return block;
     }
 
-    @Override
-    public int getId() {
-        return id;
-    }
-
-    @Override
     public int getStateId() {
         return stateId;
     }
 
-    @Override
     public boolean isAir() {
         return isAir;
     }
 
-    @Override
     public boolean isSolid() {
         return isSolid;
     }
 
-    @Override
     public boolean isLiquid() {
         return isLiquid;
     }
 
-    @Override
-    public @NotNull ImmutableSet<Property<?>> getProperties() {
-        return values.keySet();
-    }
-
-    @Override
-    public @NotNull ImmutableMap<String, Property<?>> getPropertyMap() {
-        return this.propertyMap;
-    }
-
-    @Override
-    public boolean hasProperty(Property<?> property) {
-        return values.containsKey(property);
-    }
-
-    @Override
     public @NotNull ImmutableMap<Property<?>, Comparable<?>> getValues() {
         return values;
     }
 
-    @Override
     public <T extends Comparable<T>> @NotNull T getValue(Property<T> property) {
         Comparable<?> value = values.get(property);
         if (value == null) {
@@ -119,30 +83,29 @@ final class BlockImpl implements Block {
         }
     }
 
-    @Override
     public @NotNull <T extends Comparable<T>> Optional<T> getValueOptional(Property<T> property) {
         Comparable<?> value = values.get(property);
         return value == null ? Optional.empty() : Optional.of(property.getType().cast(value));
     }
 
-    @Override
-    public @NotNull <T extends Comparable<T>, V extends T> Block setValue(Property<T> property, V value) {
-        Block block = this.neighbours.get(property, value);
-        if (block == null) {
+    public @NotNull <T extends Comparable<T>, V extends T> BlockState setValue(Property<T> property, V value) {
+        BlockState stateHolder = this.neighbours.get(property, value);
+        if (stateHolder == null) {
             throw new IllegalArgumentException("Cannot get " + property + " in " + this + " as it doesn't exist");
         }
-        return block;
+        return stateHolder;
     }
 
-    @Override
-    public @NotNull Block getDefault() {
-        return this.defaultBlock == null ? this : this.defaultBlock;
+    @SuppressWarnings("unchecked")
+    public @NotNull <T extends Comparable<T>> BlockState setValue(Property<?> property, String value){
+        Property<T> typedProperty = (Property<T>) property;
+        return setValue(typedProperty, typedProperty.getValueFor(value));
     }
 
     @SuppressWarnings("UnstableApiUsage")
-    void populateNeighbours(Map<Map<Property<?>, Comparable<?>>, BlockImpl> states) {
+    void populateNeighbours(Map<Map<Property<?>, Comparable<?>>, BlockState> states) {
         if (neighbours == null) {
-            Table<Property<?>, Comparable<?>, Block> table = HashBasedTable.create();
+            Table<Property<?>, Comparable<?>, BlockState> table = HashBasedTable.create();
 
             for (Map.Entry<Property<?>, Comparable<?>> entry : this.values.entrySet()) {
                 Property<?> property = entry.getKey();

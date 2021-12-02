@@ -18,8 +18,8 @@
 
 package com.azortis.orbis.paper.nms.impl;
 
-import com.azortis.orbis.block.Block;
 import com.azortis.orbis.block.BlockRegistry;
+import com.azortis.orbis.block.BlockState;
 import com.azortis.orbis.paper.nms.INMSBinding;
 import org.bukkit.block.data.BlockData;
 import org.bukkit.craftbukkit.v1_18_R1.block.data.CraftBlockData;
@@ -27,7 +27,7 @@ import org.bukkit.craftbukkit.v1_18_R1.block.data.CraftBlockData;
 public class NMSBinding implements INMSBinding {
 
     @Override
-    public Block getBlock(BlockData blockData) {
+    public BlockState getBlock(BlockData blockData) {
         return BlockRegistry.fromStateId(net.minecraft.world.level.block.Block.getId(((CraftBlockData)blockData).getState()));
     }
 

@@ -18,9 +18,10 @@
 
 package com.azortis.orbis;
 
-import com.azortis.orbis.block.Block;
+import com.azortis.orbis.block.BlockRegistry;
+import com.azortis.orbis.block.Blocks;
 import com.azortis.orbis.block.property.NoteBlockInstrument;
-import com.azortis.orbis.block.property.Property;
+import com.azortis.orbis.block.property.Properties;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -30,9 +31,10 @@ public class BlocksTest {
     @Test
     public void testBlocks(){
         Orbis.initialize(new MockPlatform());
-        //assertTrue(BlockRegistry.isLoaded());
-        assertNotNull(Block.ACACIA_DOOR);
-        assertSame(Property.NOTE_BLOCK_INSTRUMENT.getValueFor("HARP"), NoteBlockInstrument.HARP);
+        assertTrue(BlockRegistry.isLoaded());
+        assertNotNull(Blocks.ACACIA_DOOR);
+        assertSame(Properties.NOTE_BLOCK_INSTRUMENT.getValueFor("HARP"), NoteBlockInstrument.HARP);
+        assertSame(Blocks.GRASS_BLOCK.getDefaultState().setValue(Properties.SNOWY, true), BlockRegistry.fromStateId(8));
     }
 
 }

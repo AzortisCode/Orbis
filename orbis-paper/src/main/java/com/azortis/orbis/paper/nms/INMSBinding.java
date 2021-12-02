@@ -18,17 +18,17 @@
 
 package com.azortis.orbis.paper.nms;
 
-import com.azortis.orbis.block.Block;
+import com.azortis.orbis.block.BlockState;
 import org.bukkit.block.data.BlockData;
 
 public interface INMSBinding {
 
-    Block getBlock(BlockData blockData);
+    BlockState getBlock(BlockData blockData);
 
     BlockData getBlockData(int stateId);
 
-    default BlockData getBlockData(Block block){
-        return getBlockData(block.getStateId());
+    default BlockData getBlockData(BlockState stateHolder){
+        return getBlockData(stateHolder.getStateId());
     }
 
 }
