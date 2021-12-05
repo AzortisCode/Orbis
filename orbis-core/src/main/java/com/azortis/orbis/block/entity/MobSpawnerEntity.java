@@ -18,19 +18,8 @@
 
 package com.azortis.orbis.block.entity;
 
-import com.azortis.orbis.utils.BlockPos;
-import com.azortis.orbis.utils.NamespaceId;
+public interface MobSpawnerEntity extends BlockEntity {
 
-public interface BlockEntity {
 
-    NamespaceId getKey();
-
-    int getX();
-
-    int getY();
-
-    int getZ();
-
-    BlockPos getBlockPos();
 
 }

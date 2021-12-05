@@ -16,21 +16,21 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.block.entity;
+package com.azortis.orbis.paper.nms.impl.block;
 
-import com.azortis.orbis.utils.BlockPos;
-import com.azortis.orbis.utils.NamespaceId;
+import com.azortis.orbis.block.entity.MobSpawnerEntity;
+import net.minecraft.world.level.BaseSpawner;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.SpawnerBlockEntity;
 
-public interface BlockEntity {
+public class PaperMobSpawnerEntity extends PaperBlockEntity implements MobSpawnerEntity {
+    private final BaseSpawner spawner;
 
-    NamespaceId getKey();
+    public PaperMobSpawnerEntity(BlockEntity handle) {
+        super(handle);
+        this.spawner = ((SpawnerBlockEntity)handle).getSpawner();
+    }
 
-    int getX();
 
-    int getY();
-
-    int getZ();
-
-    BlockPos getBlockPos();
 
 }

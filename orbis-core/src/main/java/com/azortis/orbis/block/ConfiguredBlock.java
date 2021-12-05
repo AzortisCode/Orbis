@@ -16,21 +16,20 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.block.entity;
+package com.azortis.orbis.block;
 
-import com.azortis.orbis.utils.BlockPos;
 import com.azortis.orbis.utils.NamespaceId;
 
-public interface BlockEntity {
+public interface ConfiguredBlock {
 
     NamespaceId getKey();
 
-    int getX();
+    int getId();
 
-    int getY();
+    int getStateId();
 
-    int getZ();
+    Block getBlock();
 
-    BlockPos getBlockPos();
+    BlockState getBlockState();
 
 }

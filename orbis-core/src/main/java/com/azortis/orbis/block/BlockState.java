@@ -19,6 +19,7 @@
 package com.azortis.orbis.block;
 
 import com.azortis.orbis.block.property.Property;
+import com.azortis.orbis.utils.NamespaceId;
 import com.google.common.collect.ArrayTable;
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.ImmutableMap;
@@ -29,7 +30,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-public final class BlockState {
+public final class BlockState implements ConfiguredBlock {
 
     private final Block block;
     private final int stateId;
@@ -50,10 +51,12 @@ public final class BlockState {
         this.values = values;
     }
 
+    @Override
     public Block getBlock() {
         return block;
     }
 
+    @Override
     public int getStateId() {
         return stateId;
     }
@@ -89,17 +92,19 @@ public final class BlockState {
     }
 
     public @NotNull <T extends Comparable<T>, V extends T> BlockState setValue(Property<T> property, V value) {
-        BlockState stateHolder = this.neighbours.get(property, value);
-        if (stateHolder == null) {
+        BlockState state = this.neighbours.get(property, value);
+        if (state == null) {
             throw new IllegalArgumentException("Cannot get " + property + " in " + this + " as it doesn't exist");
         }
-        return stateHolder;
+        return state;
     }
 
-    @SuppressWarnings("unchecked")
-    public @NotNull <T extends Comparable<T>> BlockState setValue(Property<?> property, String value){
-        Property<T> typedProperty = (Property<T>) property;
-        return setValue(typedProperty, typedProperty.getValueFor(value));
+    public @NotNull BlockState setValue(Property<?> property, String value){
+        BlockState state = this.neighbours.get(property, property.getValueFor(value));
+        if (state == null) {
+            throw new IllegalArgumentException("Cannot get " + property + " in " + this + " as it doesn't exist");
+        }
+        return state;
     }
 
     @SuppressWarnings("UnstableApiUsage")
@@ -128,4 +133,18 @@ public final class BlockState {
         return ImmutableMap.copyOf(stateKey);
     }
 
+    @Override
+    public NamespaceId getKey() {
+        return block.getKey();
+    }
+
+    @Override
+    public int getId() {
+        return block.getId();
+    }
+
+    @Override
+    public BlockState getBlockState() {
+        return this;
+    }
 }

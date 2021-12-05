@@ -16,21 +16,10 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.block.entity;
+package com.azortis.orbis.inventory;
 
-import com.azortis.orbis.utils.BlockPos;
-import com.azortis.orbis.utils.NamespaceId;
+public final class InventoryFactory {
 
-public interface BlockEntity {
 
-    NamespaceId getKey();
-
-    int getX();
-
-    int getY();
-
-    int getZ();
-
-    BlockPos getBlockPos();
 
 }

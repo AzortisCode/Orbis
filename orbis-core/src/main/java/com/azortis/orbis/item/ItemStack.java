@@ -16,21 +16,19 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.block.entity;
+package com.azortis.orbis.item;
 
-import com.azortis.orbis.utils.BlockPos;
 import com.azortis.orbis.utils.NamespaceId;
 
-public interface BlockEntity {
+public class ItemStack {
 
-    NamespaceId getKey();
+    private final NamespaceId key;
 
-    int getX();
+    public ItemStack(NamespaceId key) {
+        this.key = key;
+    }
 
-    int getY();
-
-    int getZ();
-
-    BlockPos getBlockPos();
-
+    public NamespaceId getKey() {
+        return key;
+    }
 }

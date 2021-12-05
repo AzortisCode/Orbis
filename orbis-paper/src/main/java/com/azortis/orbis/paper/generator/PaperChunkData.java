@@ -26,6 +26,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.chunk.ChunkAccess;
+import org.bukkit.craftbukkit.v1_18_R1.block.CraftBlockState;
 import org.bukkit.craftbukkit.v1_18_R1.generator.CraftChunkData;
 import org.bukkit.generator.ChunkGenerator;
 

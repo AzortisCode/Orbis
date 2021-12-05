@@ -26,7 +26,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
 
-public final class Block {
+public final class Block implements ConfiguredBlock {
 
     private final NamespaceId key;
     private final int id;
@@ -50,10 +50,12 @@ public final class Block {
         this.propertyMap = builder.build();
     }
 
+    @Override
     public @NotNull NamespaceId getKey() {
         return key;
     }
 
+    @Override
     public int getId() {
         return id;
     }
@@ -94,4 +96,18 @@ public final class Block {
         return state;
     }
 
+    @Override
+    public int getStateId() {
+        return defaultState.getStateId();
+    }
+
+    @Override
+    public Block getBlock() {
+        return this;
+    }
+
+    @Override
+    public BlockState getBlockState() {
+        return defaultState;
+    }
 }
