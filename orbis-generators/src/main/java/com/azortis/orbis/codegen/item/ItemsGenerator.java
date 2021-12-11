@@ -16,19 +16,7 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.paper.nms;
+package com.azortis.orbis.codegen.item;
 
-import com.azortis.orbis.block.BlockState;
-import org.bukkit.block.data.BlockData;
-
-public interface INMSBinding {
-
-    BlockState getBlock(BlockData blockData);
-
-    BlockData getBlockData(int stateId);
-
-    default BlockData getBlockData(BlockState stateHolder){
-        return getBlockData(stateHolder.stateId());
-    }
-
+public class ItemsGenerator {
 }

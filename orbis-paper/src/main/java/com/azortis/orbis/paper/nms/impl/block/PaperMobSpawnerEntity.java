@@ -31,6 +31,13 @@ public class PaperMobSpawnerEntity extends PaperBlockEntity implements MobSpawne
         this.spawner = ((SpawnerBlockEntity)handle).getSpawner();
     }
 
+    @Override
+    public int getDelay() {
+        return spawner.spawnDelay;
+    }
 
-
+    @Override
+    public void setDelay(int delay) {
+        spawner.spawnDelay = delay;
+    }
 }

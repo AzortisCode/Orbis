@@ -32,6 +32,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardOpenOption;
+import java.util.Objects;
 
 /**
  * A representation of a world/instance for core package
@@ -62,7 +63,7 @@ public abstract class Container {
         this.name = name;
         this.folder = folder;
         this.settingsFolder = new File(folder, "/settings/");
-        if (settingsFolder.exists() && settingsFolder.listFiles().length > 0) installed = true;
+        if (settingsFolder.exists() && Objects.requireNonNull(settingsFolder.listFiles()).length > 0) installed = true;
 
         this.containerInfoFile = new File(folder, "container-info.json");
         try {

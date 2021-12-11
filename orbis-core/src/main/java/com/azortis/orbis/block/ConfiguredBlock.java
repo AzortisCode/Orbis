@@ -18,18 +18,16 @@
 
 package com.azortis.orbis.block;
 
-import com.azortis.orbis.utils.NamespaceId;
+import net.kyori.adventure.key.Keyed;
 
-public interface ConfiguredBlock {
+public interface ConfiguredBlock extends Keyed {
 
-    NamespaceId getKey();
+    int id();
 
-    int getId();
+    int stateId();
 
-    int getStateId();
+    Block block();
 
-    Block getBlock();
-
-    BlockState getBlockState();
+    BlockState blockState();
 
 }

@@ -40,6 +40,7 @@ dependencies {
     annotationProcessor("org.projectlombok:lombok:1.18.20")
 
     // Adapters should determine if it should be added to a shadow jar
+    compileOnly("net.kyori:adventure-api:4.9.3")
     compileOnly("io.github.jglrxavpok.hephaistos:common:2.2.0")
     compileOnly("it.unimi.dsi:fastutil:8.5.6")
     compileOnly("com.google.code.gson:gson:2.8.9")

@@ -20,6 +20,8 @@ package com.azortis.orbis.block.entity;
 
 public interface MobSpawnerEntity extends BlockEntity {
 
+    int getDelay();
 
+    void setDelay(int delay);
 
 }

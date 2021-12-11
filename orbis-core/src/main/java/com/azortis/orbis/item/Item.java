@@ -16,19 +16,24 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.paper.nms;
+package com.azortis.orbis.item;
 
-import com.azortis.orbis.block.BlockState;
-import org.bukkit.block.data.BlockData;
+import com.azortis.orbis.block.Block;
+import net.kyori.adventure.key.Key;
 
-public interface INMSBinding {
+public final class Item {
 
-    BlockState getBlock(BlockData blockData);
+    private final Key key;
+    private final int id;
 
-    BlockData getBlockData(int stateId);
+    // Populated in ItemRegistry
+    private Block block;
 
-    default BlockData getBlockData(BlockState stateHolder){
-        return getBlockData(stateHolder.stateId());
+    Item(Key key, int id) {
+        this.key = key;
+        this.id = id;
     }
+
+
 
 }

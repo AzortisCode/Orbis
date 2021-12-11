@@ -23,7 +23,7 @@ import com.azortis.orbis.container.Container;
 import com.azortis.orbis.generator.biome.Distributor;
 import com.azortis.orbis.generator.biome.SimpleDistributor;
 import com.azortis.orbis.generator.biome.complex.ComplexDistributor;
-import com.azortis.orbis.utils.NamespaceId;
+import net.kyori.adventure.key.Key;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -36,11 +36,11 @@ import java.util.Map;
 public class DistributorRegistry implements GeneratorRegistry<Distributor> {
 
     private static final String DISTRIBUTOR_DIRECTORY = "/generators/distributor/";
-    private static final Map<NamespaceId, Class<? extends Distributor>> distributorClasses = new HashMap<>();
+    private static final Map<Key, Class<? extends Distributor>> distributorClasses = new HashMap<>();
 
     static {
-        distributorClasses.put(new NamespaceId("orbis:complex"), ComplexDistributor.class);
-        distributorClasses.put(new NamespaceId("orbis:simple"), SimpleDistributor.class);
+        distributorClasses.put(Key.key("orbis:complex"), ComplexDistributor.class);
+        distributorClasses.put(Key.key("orbis:simple"), SimpleDistributor.class);
     }
 
     public DistributorRegistry() {
@@ -79,17 +79,17 @@ public class DistributorRegistry implements GeneratorRegistry<Distributor> {
     }
 
     @Override
-    public void registerTypeClass(NamespaceId namespaceId, Class<? extends Distributor> typeClass) {
+    public void registerTypeClass(Key key, Class<? extends Distributor> typeClass) {
         //TODO do this I'm too lazy
     }
 
     @Override
-    public Class<? extends Distributor> getTypeClass(NamespaceId namespaceId) {
-        return distributorClasses.get(namespaceId);
+    public Class<? extends Distributor> getTypeClass(Key key) {
+        return distributorClasses.get(key);
     }
 
     @Override
-    public List<NamespaceId> getTypeNamespaceIds() {
+    public List<Key> getTypeNamespaceIds() {
         return new ArrayList<>(distributorClasses.keySet());
     }
 }

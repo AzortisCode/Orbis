@@ -20,21 +20,23 @@ package com.azortis.orbis.paper.nms.impl.block;
 
 import com.azortis.orbis.block.entity.BlockEntity;
 import com.azortis.orbis.utils.BlockPos;
-import com.azortis.orbis.utils.NamespaceId;
+import net.kyori.adventure.key.Key;
+import org.jetbrains.annotations.NotNull;
 
 public class PaperBlockEntity implements BlockEntity {
     private final net.minecraft.world.level.block.entity.BlockEntity handle;
-    private final NamespaceId key;
+    private final Key key;
     private final BlockPos blockPos;
 
+    @SuppressWarnings("PatternValidation")
     public PaperBlockEntity(net.minecraft.world.level.block.entity.BlockEntity handle) {
         this.handle = handle;
-        this.key = new NamespaceId(handle.getMinecraftKeyString());
+        this.key = Key.key(handle.getMinecraftKeyString());
         this.blockPos = new BlockPos(handle.getBlockPos().getX(), handle.getBlockPos().getY(), handle.getBlockPos().getZ());
     }
 
     @Override
-    public NamespaceId getKey() {
+    public @NotNull Key key() {
         return key;
     }
 

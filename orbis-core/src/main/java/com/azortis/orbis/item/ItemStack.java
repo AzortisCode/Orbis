@@ -18,17 +18,14 @@
 
 package com.azortis.orbis.item;
 
-import com.azortis.orbis.utils.NamespaceId;
+import net.kyori.adventure.key.Keyed;
 
-public class ItemStack {
+public interface ItemStack extends Keyed {
 
-    private final NamespaceId key;
+    int getAmount();
 
-    public ItemStack(NamespaceId key) {
-        this.key = key;
-    }
+    void setAmount(int amount);
 
-    public NamespaceId getKey() {
-        return key;
-    }
+
+
 }

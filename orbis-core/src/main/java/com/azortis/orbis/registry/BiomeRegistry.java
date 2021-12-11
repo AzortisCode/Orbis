@@ -22,6 +22,8 @@ import com.azortis.orbis.Orbis;
 import com.azortis.orbis.container.Container;
 import com.azortis.orbis.generator.biome.Biome;
 import com.azortis.orbis.generator.terrain.Terrain;
+import com.google.common.collect.Lists;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -29,6 +31,8 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class BiomeRegistry implements Registry<Biome> {
 
@@ -53,10 +57,10 @@ public class BiomeRegistry implements Registry<Biome> {
     }
 
     @Override
-    public List<String> getEntries(Container container) {
-        List<String> entryList = new ArrayList<>();
-        Arrays.stream(getFolder(container).listFiles()).forEach(file -> entryList.add(file.getName()));
-        return entryList;
+    public List<String> getEntries(@NotNull Container container) {
+        File[] files = getFolder(container).listFiles();
+        if(files == null)return Lists.newArrayList();
+        return Arrays.stream(files).map(File::getName).collect(Collectors.toList());
     }
 
     @Override
@@ -66,8 +70,9 @@ public class BiomeRegistry implements Registry<Biome> {
         }
     }
 
+    @NotNull
     @Override
-    public File getFolder(Container container) {
+    public File getFolder(@NotNull Container container) {
         return new File(container.getSettingsFolder(), BIOME_DIRECTORY);
     }
 

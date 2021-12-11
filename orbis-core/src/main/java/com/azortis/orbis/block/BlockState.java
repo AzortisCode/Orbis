@@ -19,11 +19,11 @@
 package com.azortis.orbis.block;
 
 import com.azortis.orbis.block.property.Property;
-import com.azortis.orbis.utils.NamespaceId;
 import com.google.common.collect.ArrayTable;
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Table;
+import net.kyori.adventure.key.Key;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
@@ -52,12 +52,12 @@ public final class BlockState implements ConfiguredBlock {
     }
 
     @Override
-    public Block getBlock() {
+    public Block block() {
         return block;
     }
 
     @Override
-    public int getStateId() {
+    public int stateId() {
         return stateId;
     }
 
@@ -134,17 +134,22 @@ public final class BlockState implements ConfiguredBlock {
     }
 
     @Override
-    public NamespaceId getKey() {
-        return block.getKey();
+    public @NotNull Key key() {
+        return block.key();
     }
 
     @Override
-    public int getId() {
-        return block.getId();
+    public int id() {
+        return block.id();
     }
 
     @Override
-    public BlockState getBlockState() {
+    public BlockState blockState() {
         return this;
     }
+
+    public static BlockState fromStateId(int stateId){
+        return BlockRegistry.fromStateId(stateId);
+    }
+
 }

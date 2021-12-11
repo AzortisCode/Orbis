@@ -16,22 +16,7 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.registry.adapter;
+package com.azortis.orbis.item;
 
-import com.azortis.orbis.utils.NamespaceId;
-import com.google.gson.*;
-
-import java.lang.reflect.Type;
-
-public class NamespaceIdAdapter implements JsonSerializer<NamespaceId>, JsonDeserializer<NamespaceId> {
-
-    @Override
-    public JsonElement serialize(NamespaceId namespaceID, Type type, JsonSerializationContext context) {
-        return context.serialize(namespaceID.getNamespaceId(), String.class);
-    }
-
-    @Override
-    public NamespaceId deserialize(JsonElement element, Type type, JsonDeserializationContext context) throws JsonParseException {
-        return new NamespaceId(context.deserialize(element, String.class));
-    }
+public interface IItemFactory {
 }

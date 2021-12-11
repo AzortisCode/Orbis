@@ -21,7 +21,6 @@ package com.azortis.orbis.block;
 import com.azortis.orbis.Orbis;
 import com.azortis.orbis.block.property.Property;
 import com.azortis.orbis.block.property.PropertyRegistry;
-import com.azortis.orbis.utils.NamespaceId;
 import com.google.common.collect.ImmutableBiMap;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
@@ -30,6 +29,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import net.kyori.adventure.key.Key;
 
 import java.io.File;
 import java.io.FileReader;
@@ -67,12 +67,12 @@ public final class BlockRegistry {
         return KEY_BLOCK_MAP.get(id);
     }
 
-    public static boolean containsKey(final NamespaceId key) {
-        return KEY_BLOCK_MAP.containsKey(key.getNamespaceId());
+    public static boolean containsKey(final Key key) {
+        return KEY_BLOCK_MAP.containsKey(key.asString());
     }
 
-    public static Block fromKey(final NamespaceId key) {
-        return KEY_BLOCK_MAP.get(key.getNamespaceId());
+    public static Block fromKey(final Key key) {
+        return KEY_BLOCK_MAP.get(key.asString());
     }
 
     public static BlockState fromStateId(final int stateId) {
@@ -83,10 +83,10 @@ public final class BlockRegistry {
         return loaded;
     }
 
+    @SuppressWarnings("PatternValidation")
     private static void load(final JsonObject data) {
         data.entrySet().forEach(entry -> {
-            final String key = entry.getKey();
-            final NamespaceId namespacedKey = new NamespaceId(key);
+            final Key key = Key.key(entry.getKey());
             final JsonObject blockData = entry.getValue().getAsJsonObject();
             final int id = blockData.get("id").getAsInt();
             final int defaultStateId = blockData.get("defaultStateId").getAsInt();
@@ -100,7 +100,7 @@ public final class BlockRegistry {
             }
             ImmutableBiMap<String, Property<?>> availableProperties = propertiesBuilder.build();
 
-            Block block = new Block(namespacedKey, id, availableProperties.values());
+            Block block = new Block(key, id, availableProperties.values());
             Map<Map<Property<?>, Comparable<?>>, BlockState> blockStates = new HashMap<>();
             JsonArray states = blockData.getAsJsonArray("states");
             for (JsonElement stateElement : states){
@@ -120,9 +120,9 @@ public final class BlockRegistry {
             block.setStates(ImmutableSet.copyOf(blockStates.values()));
             blockStates.values().forEach(blockState -> {
                 blockState.populateNeighbours(blockStates);
-                ID_STATE_MAP.put(blockState.getStateId(), blockState);
+                ID_STATE_MAP.put(blockState.stateId(), blockState);
             });
-            KEY_BLOCK_MAP.put(key, block);
+            KEY_BLOCK_MAP.put(key.asString(), block);
         });
     }
 

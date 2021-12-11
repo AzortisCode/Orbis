@@ -22,7 +22,7 @@ import com.azortis.orbis.container.Container;
 import com.azortis.orbis.pack.studio.annotations.Directory;
 import com.azortis.orbis.pack.studio.annotations.GeneratorType;
 import com.azortis.orbis.registry.DistributorRegistry;
-import com.azortis.orbis.utils.NamespaceId;
+import net.kyori.adventure.key.Key;
 
 import java.io.File;
 
@@ -31,7 +31,7 @@ import java.io.File;
 public abstract class Distributor {
 
     private String name;
-    private NamespaceId providerId;
+    private Key providerId;
     private transient Container container;
     private transient File settingsFolder;
 
@@ -43,11 +43,11 @@ public abstract class Distributor {
         return name;
     }
 
-    public NamespaceId getProviderId() {
+    public Key getProviderId() {
         return providerId;
     }
 
-    public Distributor(String name, NamespaceId providerId) {
+    public Distributor(String name, Key providerId) {
         this.name = name;
         this.providerId = providerId;
     }

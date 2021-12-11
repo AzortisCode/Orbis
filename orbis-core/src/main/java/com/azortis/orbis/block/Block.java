@@ -19,16 +19,16 @@
 package com.azortis.orbis.block;
 
 import com.azortis.orbis.block.property.Property;
-import com.azortis.orbis.utils.NamespaceId;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
+import net.kyori.adventure.key.Key;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
 
 public final class Block implements ConfiguredBlock {
 
-    private final NamespaceId key;
+    private final Key key;
     private final int id;
     private final ImmutableSet<Property<?>> properties;
     private final ImmutableMap<String, Property<?>> propertyMap;
@@ -37,7 +37,7 @@ public final class Block implements ConfiguredBlock {
     private BlockState defaultState;
     private ImmutableSet<BlockState> states;
 
-    Block(NamespaceId key, int id, @NotNull ImmutableSet<Property<?>> properties) {
+    Block(Key key, int id, @NotNull ImmutableSet<Property<?>> properties) {
         this.key = key;
         this.id = id;
         this.properties = properties;
@@ -51,12 +51,12 @@ public final class Block implements ConfiguredBlock {
     }
 
     @Override
-    public @NotNull NamespaceId getKey() {
+    public @NotNull Key key() {
         return key;
     }
 
     @Override
-    public int getId() {
+    public int id() {
         return id;
     }
 
@@ -97,17 +97,26 @@ public final class Block implements ConfiguredBlock {
     }
 
     @Override
-    public int getStateId() {
-        return defaultState.getStateId();
+    public int stateId() {
+        return defaultState.stateId();
     }
 
     @Override
-    public Block getBlock() {
+    public Block block() {
         return this;
     }
 
     @Override
-    public BlockState getBlockState() {
+    public BlockState blockState() {
         return defaultState;
     }
+
+    public static Block fromKey(String key){
+        return BlockRegistry.fromKey(key);
+    }
+
+    public static Block fromKey(Key key){
+        return BlockRegistry.fromKey(key);
+    }
+
 }

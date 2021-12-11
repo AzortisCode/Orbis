@@ -38,7 +38,7 @@ public abstract class ChunkData {
      * @param blockState The block to put at the specified position.
      */
     public final void setBlock(final int x, final int y, final int z, final BlockState blockState) {
-        setBlock(x, y, z, blockState.getStateId());
+        setBlock(x, y, z, blockState.stateId());
     }
 
     protected abstract void setBlock(final int x, final int y, final int z, final int stateId);

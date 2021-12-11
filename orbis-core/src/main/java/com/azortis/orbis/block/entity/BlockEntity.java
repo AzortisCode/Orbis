@@ -19,11 +19,9 @@
 package com.azortis.orbis.block.entity;
 
 import com.azortis.orbis.utils.BlockPos;
-import com.azortis.orbis.utils.NamespaceId;
+import net.kyori.adventure.key.Keyed;
 
-public interface BlockEntity {
-
-    NamespaceId getKey();
+public interface BlockEntity extends Keyed {
 
     int getX();
 

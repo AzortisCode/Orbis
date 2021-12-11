@@ -65,6 +65,7 @@ public final class EnumProperty<T extends Enum<T> & Nameable> extends Property<T
         return create(key, type, Arrays.stream(type.getEnumConstants()).filter(filter).collect(Collectors.toSet()));
     }
 
+    @SuppressWarnings("SameParameterValue")
     @SafeVarargs
     static <T extends Enum<T> & Nameable> EnumProperty<T> create(final @NotNull String key,
                                                                            final Class<T> type,

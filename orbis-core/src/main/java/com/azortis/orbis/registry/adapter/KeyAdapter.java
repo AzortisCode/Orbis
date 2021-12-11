@@ -18,28 +18,21 @@
 
 package com.azortis.orbis.registry.adapter;
 
-import com.azortis.orbis.Orbis;
-import com.azortis.orbis.generator.terrain.Terrain;
-import com.azortis.orbis.registry.GeneratorRegistry;
 import com.google.gson.*;
 import net.kyori.adventure.key.Key;
 
 import java.lang.reflect.Type;
 
-public class TerrainAdapter implements JsonDeserializer<Terrain> {
-
-    private final GeneratorRegistry<Terrain> terrainRegistry;
-
-    public TerrainAdapter() {
-        this.terrainRegistry = Orbis.getGeneratorRegistry(Terrain.class);
-    }
+public class KeyAdapter implements JsonSerializer<Key>, JsonDeserializer<Key> {
 
     @Override
-    public Terrain deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context) throws JsonParseException {
-        final JsonPrimitive object = jsonElement.getAsJsonObject().getAsJsonPrimitive("providerId");
-        final Key terrainProviderId = context.deserialize(object, Key.class);
-        final Class<? extends Terrain> terrainType = terrainRegistry.getTypeClass(terrainProviderId);
-        return context.deserialize(jsonElement, terrainType);
+    public JsonElement serialize(Key key, Type type, JsonSerializationContext context) {
+        return context.serialize(key.asString(), String.class);
     }
 
+    @SuppressWarnings("PatternValidation")
+    @Override
+    public Key deserialize(JsonElement element, Type type, JsonDeserializationContext context) throws JsonParseException {
+        return Key.key(context.deserialize(element, String.class));
+    }
 }

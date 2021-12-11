@@ -18,16 +18,16 @@
 
 package com.azortis.orbis.registry;
 
-import com.azortis.orbis.utils.NamespaceId;
+import net.kyori.adventure.key.Key;
 
 import java.util.List;
 
 public interface GeneratorRegistry<T> extends Registry<T> {
 
-    void registerTypeClass(NamespaceId namespaceId, Class<? extends T> typeClass);
+    void registerTypeClass(Key key, Class<? extends T> typeClass);
 
-    Class<? extends T> getTypeClass(NamespaceId namespaceId);
+    Class<? extends T> getTypeClass(Key key);
 
-    List<NamespaceId> getTypeNamespaceIds();
+    List<Key> getTypeNamespaceIds();
 
 }
