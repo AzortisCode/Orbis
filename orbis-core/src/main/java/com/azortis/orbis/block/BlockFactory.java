@@ -21,5 +21,5 @@ package com.azortis.orbis.block;
 /**
  * Used for creating {@link com.azortis.orbis.block.entity.BlockEntity} instances on the platform
  */
-public class BlockFactory {
+public interface BlockFactory {
 }

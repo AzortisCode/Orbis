@@ -18,7 +18,7 @@
 
 package com.azortis.orbis.registry;
 
-import com.azortis.orbis.container.Container;
+import com.azortis.orbis.world.Container;
 
 import java.io.File;
 import java.util.List;

@@ -19,10 +19,10 @@
 package com.azortis.orbis.registry;
 
 import com.azortis.orbis.Orbis;
-import com.azortis.orbis.container.Container;
 import com.azortis.orbis.generator.biome.Distributor;
 import com.azortis.orbis.generator.biome.SimpleDistributor;
 import com.azortis.orbis.generator.biome.complex.ComplexDistributor;
+import com.azortis.orbis.world.Container;
 import net.kyori.adventure.key.Key;
 
 import java.io.File;

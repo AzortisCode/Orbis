@@ -59,7 +59,7 @@ public final class BlockRegistry {
 
     public static boolean containsKey(final String key) {
         final String id = key.indexOf(':') == -1 ? "minecraft:" + key : key;
-        return KEY_BLOCK_MAP.containsKey(key);
+        return KEY_BLOCK_MAP.containsKey(id);
     }
 
     public static Block fromKey(final String key) {

@@ -22,6 +22,9 @@ import com.azortis.orbis.block.entity.BlockEntity;
 import com.azortis.orbis.utils.BlockPos;
 import net.kyori.adventure.key.Key;
 import org.jetbrains.annotations.NotNull;
+import org.jglrxavpok.hephaistos.nbt.NBT;
+import org.jglrxavpok.hephaistos.nbt.NBTCompound;
+import org.jglrxavpok.hephaistos.nbt.mutable.MutableNBTCompound;
 
 public class PaperBlockEntity implements BlockEntity {
     private final net.minecraft.world.level.block.entity.BlockEntity handle;
@@ -36,28 +39,46 @@ public class PaperBlockEntity implements BlockEntity {
     }
 
     @Override
-    public @NotNull Key key() {
+    public final @NotNull Key key() {
         return key;
     }
 
     @Override
-    public int getX() {
+    public final int x() {
         return blockPos.getX();
     }
 
     @Override
-    public int getY() {
+    public final int y() {
         return blockPos.getY();
     }
 
     @Override
-    public int getZ() {
+    public final int z() {
         return blockPos.getZ();
     }
 
     @Override
-    public BlockPos getBlockPos() {
+    public final @NotNull BlockPos blockPos() {
         return blockPos;
+    }
+
+    @Override
+    public final @NotNull NBTCompound save(boolean includeMeta) {
+        MutableNBTCompound compound = new MutableNBTCompound();
+        saveAdditional(compound);
+        if (includeMeta) saveMetadata(compound);
+        return compound.toCompound();
+    }
+
+    protected void saveAdditional(MutableNBTCompound compound) {
+        compound.set("id", NBT.String(key.asString()));
+    }
+
+    private void saveMetadata(MutableNBTCompound compound) {
+        compound.set("x", NBT.Int(x()));
+        compound.set("y", NBT.Int(y()));
+        compound.set("z", NBT.Int(z()));
     }
 
     public net.minecraft.world.level.block.entity.BlockEntity getHandle() {

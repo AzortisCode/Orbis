@@ -18,5 +18,5 @@
 
 package com.azortis.orbis.item;
 
-public class ItemFactory {
+public interface ItemFactory {
 }

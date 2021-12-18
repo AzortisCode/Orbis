@@ -20,15 +20,19 @@ package com.azortis.orbis.block.entity;
 
 import com.azortis.orbis.utils.BlockPos;
 import net.kyori.adventure.key.Keyed;
+import org.jetbrains.annotations.NotNull;
+import org.jglrxavpok.hephaistos.nbt.NBTCompound;
 
 public interface BlockEntity extends Keyed {
 
-    int getX();
+    int x();
 
-    int getY();
+    int y();
 
-    int getZ();
+    int z();
 
-    BlockPos getBlockPos();
+    @NotNull BlockPos blockPos();
+
+    @NotNull NBTCompound save(boolean includeMeta);
 
 }

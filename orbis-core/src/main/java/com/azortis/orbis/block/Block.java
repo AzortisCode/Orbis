@@ -37,14 +37,14 @@ public final class Block implements ConfiguredBlock {
     private BlockState defaultState;
     private ImmutableSet<BlockState> states;
 
-    Block(Key key, int id, @NotNull ImmutableSet<Property<?>> properties) {
+    Block(@NotNull Key key, int id, @NotNull ImmutableSet<Property<?>> properties) {
         this.key = key;
         this.id = id;
         this.properties = properties;
 
         // Build the property map
         ImmutableMap.Builder<String, Property<?>> builder = ImmutableMap.builder();
-        for (Property<?> property : properties){
+        for (Property<?> property : properties) {
             builder.put(property.getKey(), property);
         }
         this.propertyMap = builder.build();
@@ -60,11 +60,11 @@ public final class Block implements ConfiguredBlock {
         return id;
     }
 
-    public @NotNull ImmutableSet<Property<?>> getProperties() {
+    public @NotNull ImmutableSet<Property<?>> properties() {
         return properties;
     }
 
-    public @NotNull ImmutableMap<String, Property<?>> getPropertyMap() {
+    public @NotNull ImmutableMap<String, Property<?>> propertyMap() {
         return propertyMap;
     }
 
@@ -76,7 +76,7 @@ public final class Block implements ConfiguredBlock {
         if(defaultState == null)defaultState = state;
     }
 
-    public @NotNull BlockState getDefaultState() {
+    public @NotNull BlockState defaultState() {
         return defaultState;
     }
 
@@ -84,7 +84,7 @@ public final class Block implements ConfiguredBlock {
         if(this.states == null)this.states = states;
     }
 
-    public ImmutableSet<BlockState> getStates() {
+    public ImmutableSet<BlockState> states() {
         return states;
     }
 
@@ -111,11 +111,11 @@ public final class Block implements ConfiguredBlock {
         return defaultState;
     }
 
-    public static Block fromKey(String key){
+    public static Block fromKey(final String key) {
         return BlockRegistry.fromKey(key);
     }
 
-    public static Block fromKey(Key key){
+    public static Block fromKey(final Key key) {
         return BlockRegistry.fromKey(key);
     }
 

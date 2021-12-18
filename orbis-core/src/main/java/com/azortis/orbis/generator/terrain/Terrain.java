@@ -18,9 +18,9 @@
 
 package com.azortis.orbis.generator.terrain;
 
-import com.azortis.orbis.container.Container;
 import com.azortis.orbis.generator.biome.Biome;
 import com.azortis.orbis.generator.noise.NoiseGenerator;
+import com.azortis.orbis.world.Container;
 import lombok.Getter;
 
 @Getter

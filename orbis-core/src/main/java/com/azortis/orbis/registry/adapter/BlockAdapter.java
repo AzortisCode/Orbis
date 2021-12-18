@@ -16,25 +16,25 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.container;
+package com.azortis.orbis.registry.adapter;
 
-import lombok.Getter;
-import lombok.Setter;
+import com.azortis.orbis.block.ConfiguredBlock;
+import com.google.gson.*;
 
-@Getter
-public class ContainerInfo {
+import java.lang.reflect.Type;
 
-    private String settingsVersion;
-    @Setter
-    private String packName;
-    @Setter
-    private String dimensionFile;
+public class BlockAdapter implements JsonSerializer<ConfiguredBlock>, JsonDeserializer<ConfiguredBlock> {
 
-    // Used for gson deserialization
-    private ContainerInfo() {
+    @Override
+    public ConfiguredBlock deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+        return null;
     }
 
-    public ContainerInfo(String settingsVersion) {
-        this.settingsVersion = settingsVersion;
+    @Override
+    public JsonElement serialize(ConfiguredBlock configuredBlock, Type typeOfSrc, JsonSerializationContext context) {
+        if (configuredBlock.blockState() == configuredBlock.block().defaultState()) {
+            return context.serialize(configuredBlock.key());
+        }
+        return null;
     }
 }

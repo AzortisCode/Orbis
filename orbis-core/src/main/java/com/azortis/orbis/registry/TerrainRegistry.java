@@ -19,11 +19,11 @@
 package com.azortis.orbis.registry;
 
 import com.azortis.orbis.Orbis;
-import com.azortis.orbis.container.Container;
 import com.azortis.orbis.generator.biome.Biome;
 import com.azortis.orbis.generator.terrain.Terrain;
 import com.azortis.orbis.generator.terrain.defaults.ConfigTerrain;
 import com.azortis.orbis.generator.terrain.defaults.PlainsTerrain;
+import com.azortis.orbis.world.Container;
 import net.kyori.adventure.key.Key;
 
 import java.io.File;

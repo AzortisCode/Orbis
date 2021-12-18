@@ -22,6 +22,7 @@ import com.azortis.orbis.block.entity.MobSpawnerEntity;
 import net.minecraft.world.level.BaseSpawner;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.SpawnerBlockEntity;
+import org.jglrxavpok.hephaistos.nbt.mutable.MutableNBTCompound;
 
 public class PaperMobSpawnerEntity extends PaperBlockEntity implements MobSpawnerEntity {
     private final BaseSpawner spawner;
@@ -39,5 +40,11 @@ public class PaperMobSpawnerEntity extends PaperBlockEntity implements MobSpawne
     @Override
     public void setDelay(int delay) {
         spawner.spawnDelay = delay;
+    }
+
+    @Override
+    protected void saveAdditional(MutableNBTCompound compound) {
+        super.saveAdditional(compound);
+
     }
 }

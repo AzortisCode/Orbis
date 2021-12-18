@@ -16,7 +16,25 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.inventory;
+package com.azortis.orbis.world;
 
-public interface IInventoryFactory {
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+public class ContainerInfo {
+
+    private String settingsVersion;
+    @Setter
+    private String packName;
+    @Setter
+    private String dimensionFile;
+
+    // Used for gson deserialization
+    private ContainerInfo() {
+    }
+
+    public ContainerInfo(String settingsVersion) {
+        this.settingsVersion = settingsVersion;
+    }
 }

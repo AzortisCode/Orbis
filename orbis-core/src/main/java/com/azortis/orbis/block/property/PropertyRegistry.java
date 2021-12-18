@@ -36,7 +36,6 @@ public final class PropertyRegistry {
 
     public static void init() {
         if (!loaded) {
-            Map<String, Property<?>> propertyMap = new HashMap<>();
             for (final Field field : Properties.class.getDeclaredFields()) {
                 try {
                     PROPERTIES.put(field.getName(), (Property<?>) field.get(Property.class));

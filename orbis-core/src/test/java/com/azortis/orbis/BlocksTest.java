@@ -34,7 +34,7 @@ public class BlocksTest {
         assertTrue(BlockRegistry.isLoaded());
         assertNotNull(Blocks.ACACIA_DOOR);
         assertSame(Properties.NOTE_BLOCK_INSTRUMENT.getValueFor("HARP"), NoteBlockInstrument.HARP);
-        assertSame(Blocks.GRASS_BLOCK.getDefaultState().setValue(Properties.SNOWY, true), BlockRegistry.fromStateId(8));
+        assertSame(Blocks.GRASS_BLOCK.defaultState().setValue(Properties.SNOWY, true), BlockRegistry.fromStateId(8));
     }
 
 }

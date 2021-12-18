@@ -18,5 +18,22 @@
 
 package com.azortis.orbis.codegen.item;
 
-public class ItemsGenerator {
+import com.azortis.orbis.codegen.OrbisCodeGenerator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.File;
+import java.io.InputStream;
+
+public class ItemsGenerator extends OrbisCodeGenerator {
+    private static final Logger LOGGER = LoggerFactory.getLogger(ItemsGenerator.class);
+
+    public ItemsGenerator(InputStream inputStream, File outputFolder) {
+        super(inputStream, outputFolder);
+    }
+
+    @Override
+    public void generate() {
+
+    }
 }

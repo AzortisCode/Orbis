@@ -19,7 +19,7 @@
 package com.azortis.orbis.paper;
 
 import com.azortis.orbis.Platform;
-import com.azortis.orbis.container.Container;
+import com.azortis.orbis.world.Container;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 

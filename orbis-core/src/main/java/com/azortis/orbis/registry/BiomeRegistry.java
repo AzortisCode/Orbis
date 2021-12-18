@@ -19,19 +19,17 @@
 package com.azortis.orbis.registry;
 
 import com.azortis.orbis.Orbis;
-import com.azortis.orbis.container.Container;
 import com.azortis.orbis.generator.biome.Biome;
 import com.azortis.orbis.generator.terrain.Terrain;
+import com.azortis.orbis.world.Container;
 import com.google.common.collect.Lists;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class BiomeRegistry implements Registry<Biome> {

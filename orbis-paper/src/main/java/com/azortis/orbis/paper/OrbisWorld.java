@@ -18,7 +18,7 @@
 
 package com.azortis.orbis.paper;
 
-import com.azortis.orbis.container.Container;
+import com.azortis.orbis.world.Container;
 import org.bukkit.World;
 
 public class OrbisWorld extends Container {

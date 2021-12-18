@@ -20,20 +20,65 @@ package com.azortis.orbis.item;
 
 import com.azortis.orbis.block.Block;
 import net.kyori.adventure.key.Key;
+import net.kyori.adventure.key.Keyed;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public final class Item {
+public final class Item implements Keyed {
 
     private final Key key;
     private final int id;
+    private final int maxStackSize;
+    private final int maxDamage;
+    private final Key blockKey;
 
-    // Populated in ItemRegistry
-    private Block block;
-
-    Item(Key key, int id) {
+    Item(@NotNull Key key, int id, int maxStackSize, int maxDamage, @Nullable Key blockKey) {
         this.key = key;
         this.id = id;
+        this.maxStackSize = maxStackSize;
+        this.maxDamage = maxDamage;
+        this.blockKey = blockKey;
     }
 
+    @Override
+    public @NotNull Key key() {
+        return key;
+    }
 
+    public int id() {
+        return id;
+    }
+
+    public int maxStackSize() {
+        return maxStackSize;
+    }
+
+    public int maxDamage() {
+        return maxDamage;
+    }
+
+    public boolean isDamageable() {
+        return maxDamage > 0;
+    }
+
+    public boolean isStackable() {
+        return !isDamageable() && maxStackSize > 1;
+    }
+
+    public boolean hasBlock() {
+        return blockKey != null;
+    }
+
+    public @Nullable Block block() {
+        return blockKey == null ? null : Block.fromKey(blockKey);
+    }
+
+    public static Item fromKey(@NotNull String key) {
+        return ItemRegistry.fromItemKey(key);
+    }
+
+    public static Item fromKey(@NotNull Key key) {
+        return ItemRegistry.fromItemKey(key);
+    }
 
 }

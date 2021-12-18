@@ -16,7 +16,9 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.item;
+package com.azortis.orbis.paper.nms.impl.item;
 
-public interface IItemFactory {
+import com.azortis.orbis.item.ItemFactory;
+
+public class PaperItemFactory implements ItemFactory {
 }

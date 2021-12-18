@@ -22,10 +22,11 @@ import net.kyori.adventure.key.Keyed;
 
 public interface ItemStack extends Keyed {
 
+    Item item();
+
     int getAmount();
 
     void setAmount(int amount);
-
 
 
 }

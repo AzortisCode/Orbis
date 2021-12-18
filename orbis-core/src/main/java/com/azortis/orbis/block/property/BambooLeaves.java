@@ -28,7 +28,7 @@ public enum BambooLeaves implements Nameable {
 
     private final String name;
 
-    BambooLeaves(String name) {
+    BambooLeaves(@NotNull String name) {
         this.name = name;
     }
 

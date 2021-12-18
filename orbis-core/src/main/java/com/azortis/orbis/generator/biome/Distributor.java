@@ -18,10 +18,10 @@
 
 package com.azortis.orbis.generator.biome;
 
-import com.azortis.orbis.container.Container;
 import com.azortis.orbis.pack.studio.annotations.Directory;
 import com.azortis.orbis.pack.studio.annotations.GeneratorType;
 import com.azortis.orbis.registry.DistributorRegistry;
+import com.azortis.orbis.world.Container;
 import net.kyori.adventure.key.Key;
 
 import java.io.File;

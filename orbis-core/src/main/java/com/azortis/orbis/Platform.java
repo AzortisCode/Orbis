@@ -18,7 +18,7 @@
 
 package com.azortis.orbis;
 
-import com.azortis.orbis.container.Container;
+import com.azortis.orbis.world.Container;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 

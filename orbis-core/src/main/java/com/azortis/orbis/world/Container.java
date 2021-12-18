@@ -16,7 +16,7 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.container;
+package com.azortis.orbis.world;
 
 import com.azortis.orbis.Orbis;
 import com.azortis.orbis.generator.Dimension;

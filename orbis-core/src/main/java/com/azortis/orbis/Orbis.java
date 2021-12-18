@@ -24,6 +24,7 @@ import com.azortis.orbis.generator.Dimension;
 import com.azortis.orbis.generator.biome.Biome;
 import com.azortis.orbis.generator.biome.Distributor;
 import com.azortis.orbis.generator.terrain.Terrain;
+import com.azortis.orbis.item.ItemRegistry;
 import com.azortis.orbis.pack.PackManager;
 import com.azortis.orbis.registry.*;
 import com.azortis.orbis.registry.adapter.DistributorAdapter;
@@ -45,7 +46,7 @@ import java.util.Map;
 public final class Orbis {
 
     public static final String SETTINGS_VERSION = "1";
-    public static final String MC_VERSION = "1_18";
+    public static final String MC_VERSION = "1_18_1";
     private static final String DOWNLOAD_URL = "https://raw.githubusercontent.com/Articdive/ArticData/" +
             MC_VERSION.replace("_", ".") + "/";
 
@@ -91,6 +92,7 @@ public final class Orbis {
             // Load minecraft data into memory
             PropertyRegistry.init();
             BlockRegistry.init();
+            ItemRegistry.init();
 
             // Load managers
             packManager = new PackManager(platform.getDirectory());
