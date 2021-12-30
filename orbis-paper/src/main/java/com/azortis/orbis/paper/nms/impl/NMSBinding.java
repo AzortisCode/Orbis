@@ -20,19 +20,35 @@ package com.azortis.orbis.paper.nms.impl;
 
 import com.azortis.orbis.block.BlockRegistry;
 import com.azortis.orbis.block.BlockState;
+import com.azortis.orbis.item.Item;
 import com.azortis.orbis.paper.nms.INMSBinding;
+import net.minecraft.core.Registry;
+import net.minecraft.resources.ResourceLocation;
+import org.bukkit.Material;
 import org.bukkit.block.data.BlockData;
 import org.bukkit.craftbukkit.v1_18_R1.block.data.CraftBlockData;
+import org.bukkit.craftbukkit.v1_18_R1.util.CraftMagicNumbers;
+import org.jetbrains.annotations.NotNull;
 
 public class NMSBinding implements INMSBinding {
 
     @Override
-    public BlockState getBlock(BlockData blockData) {
-        return BlockRegistry.fromStateId(net.minecraft.world.level.block.Block.getId(((CraftBlockData)blockData).getState()));
+    public BlockState getBlock(@NotNull BlockData blockData) {
+        return BlockRegistry.fromStateId(net.minecraft.world.level.block.Block.getId(((CraftBlockData) blockData).getState()));
     }
 
     @Override
     public BlockData getBlockData(int stateId) {
         return net.minecraft.world.level.block.Block.stateById(stateId).createCraftBlockData();
+    }
+
+    @Override
+    public Material getMaterial(@NotNull Item item) {
+        return CraftMagicNumbers.getMaterial(Registry.ITEM.get(ResourceLocation.tryParse(item.key().asString())));
+    }
+
+    @Override
+    public Item getItem(@NotNull Material material) {
+        return Item.fromKey(Registry.ITEM.getKey(CraftMagicNumbers.getItem(material)).toString());
     }
 }

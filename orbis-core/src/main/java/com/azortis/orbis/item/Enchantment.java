@@ -75,9 +75,21 @@ public final class Enchantment {
     public boolean isCompatibleWith(@NotNull List<Enchantment> enchantments) {
         boolean compatible = true;
         for (Enchantment enchantment : enchantments) {
-            if (!isCompatibleWith(enchantment)) compatible = false;
+            if (!isCompatibleWith(enchantment)) {
+                compatible = false;
+                break;
+            }
         }
         return compatible;
     }
+
+    public static Enchantment fromKey(@NotNull String key) {
+        return ItemRegistry.fromEnchantmentKey(key);
+    }
+
+    public static Enchantment fromKey(@NotNull Key key) {
+        return ItemRegistry.fromEnchantmentKey(key);
+    }
+
 
 }

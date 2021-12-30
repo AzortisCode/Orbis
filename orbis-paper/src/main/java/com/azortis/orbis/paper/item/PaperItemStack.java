@@ -16,42 +16,30 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.paper.nms.impl.item;
+package com.azortis.orbis.paper.item;
 
 import com.azortis.orbis.item.Item;
 import com.azortis.orbis.item.ItemStack;
-import net.kyori.adventure.key.Key;
-import net.minecraft.core.Registry;
-import net.minecraft.resources.ResourceLocation;
+import com.azortis.orbis.paper.OrbisPlugin;
 import org.jetbrains.annotations.NotNull;
 
 public class PaperItemStack implements ItemStack {
-    private final net.minecraft.world.item.ItemStack handle;
-    private final Key key;
+    private final org.bukkit.inventory.ItemStack handle;
     private final Item item;
 
-    @SuppressWarnings("PatternValidation")
-    public PaperItemStack(@NotNull net.minecraft.world.item.ItemStack handle) {
+    public PaperItemStack(@NotNull org.bukkit.inventory.ItemStack handle, Item item) {
         this.handle = handle;
-        this.key = Key.key(Registry.ITEM.getKey(handle.getItem()).toString());
-        this.item = Item.fromKey(key);
-    }
-
-    public PaperItemStack(@NotNull Key key) {
-        this.handle = new net.minecraft.world.item.ItemStack(Registry.ITEM.get(ResourceLocation.tryParse(key.asString())));
-        this.key = key;
-        this.item = Item.fromKey(key);
-    }
-
-    public PaperItemStack(@NotNull Item item) {
-        this.handle = new net.minecraft.world.item.ItemStack(Registry.ITEM.get(ResourceLocation.tryParse(item.key().asString())));
-        this.key = item.key();
         this.item = item;
     }
 
-    @Override
-    public @NotNull Key key() {
-        return key;
+    public PaperItemStack(@NotNull org.bukkit.inventory.ItemStack handle) {
+        this.handle = handle;
+        this.item = OrbisPlugin.getNMS().getItem(handle.getType());
+    }
+
+    public PaperItemStack(@NotNull Item item) {
+        this.handle = new org.bukkit.inventory.ItemStack(OrbisPlugin.getNMS().getMaterial(item));
+        this.item = item;
     }
 
     @Override
@@ -61,11 +49,15 @@ public class PaperItemStack implements ItemStack {
 
     @Override
     public int getAmount() {
-        return handle.getCount();
+        return handle.getAmount();
     }
 
     @Override
     public void setAmount(int amount) {
-        handle.setCount(amount);
+        handle.setAmount(amount);
+    }
+
+    public org.bukkit.inventory.ItemStack getHandle() {
+        return handle;
     }
 }

@@ -19,10 +19,12 @@
 package com.azortis.orbis.block;
 
 import com.azortis.orbis.block.property.Property;
+import com.azortis.orbis.item.Item;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import net.kyori.adventure.key.Key;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Map;
 
@@ -32,12 +34,13 @@ public final class Block implements ConfiguredBlock {
     private final int id;
     private final ImmutableSet<Property<?>> properties;
     private final ImmutableMap<String, Property<?>> propertyMap;
+    private final Key itemKey;
 
     // Populated in BlockRegistry
     private BlockState defaultState;
     private ImmutableSet<BlockState> states;
 
-    Block(@NotNull Key key, int id, @NotNull ImmutableSet<Property<?>> properties) {
+    Block(@NotNull Key key, int id, @NotNull ImmutableSet<Property<?>> properties, @Nullable Key itemKey) {
         this.key = key;
         this.id = id;
         this.properties = properties;
@@ -48,6 +51,7 @@ public final class Block implements ConfiguredBlock {
             builder.put(property.getKey(), property);
         }
         this.propertyMap = builder.build();
+        this.itemKey = itemKey;
     }
 
     @Override
@@ -109,6 +113,18 @@ public final class Block implements ConfiguredBlock {
     @Override
     public BlockState blockState() {
         return defaultState;
+    }
+
+    public boolean hasItem() {
+        return itemKey != null;
+    }
+
+    public @Nullable Key itemKey() {
+        return itemKey;
+    }
+
+    public @Nullable Item item() {
+        return itemKey == null ? null : Item.fromKey(itemKey);
     }
 
     public static Block fromKey(final String key) {

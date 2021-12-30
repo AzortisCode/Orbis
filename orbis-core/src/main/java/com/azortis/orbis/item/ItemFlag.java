@@ -18,12 +18,12 @@
 
 package com.azortis.orbis.item;
 
-public interface ItemStack {
-
-    Item item();
-
-    int getAmount();
-
-    void setAmount(int amount);
-
+public enum ItemFlag {
+    HIDE_ATTRIBUTES,
+    HIDE_DESTROYS,
+    HIDE_DYE,
+    HIDE_ENCHANTS,
+    HIDE_PLACED_ON,
+    HIDE_POTION_EFFECTS,
+    HIDE_UNBREAKABLE;
 }

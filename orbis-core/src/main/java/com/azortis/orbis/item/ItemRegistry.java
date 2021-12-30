@@ -87,6 +87,10 @@ public final class ItemRegistry {
         return KEY_ENCHANTMENT_MAP.get(key.asString());
     }
 
+    public static boolean isLoaded() {
+        return loaded;
+    }
+
     @SuppressWarnings("PatternValidation")
     private static void loadItems(final JsonObject data) {
         data.entrySet().forEach(entry -> {

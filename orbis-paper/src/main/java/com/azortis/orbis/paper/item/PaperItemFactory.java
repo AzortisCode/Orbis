@@ -16,7 +16,7 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.paper.nms.impl.item;
+package com.azortis.orbis.paper.item;
 
 import com.azortis.orbis.item.ItemFactory;
 

@@ -19,16 +19,23 @@
 package com.azortis.orbis.paper.nms;
 
 import com.azortis.orbis.block.BlockState;
+import com.azortis.orbis.item.Item;
+import org.bukkit.Material;
 import org.bukkit.block.data.BlockData;
+import org.jetbrains.annotations.NotNull;
 
 public interface INMSBinding {
 
-    BlockState getBlock(BlockData blockData);
+    BlockState getBlock(@NotNull BlockData blockData);
 
     BlockData getBlockData(int stateId);
 
-    default BlockData getBlockData(BlockState stateHolder){
-        return getBlockData(stateHolder.stateId());
+    default BlockData getBlockData(BlockState blockState) {
+        return getBlockData(blockState.stateId());
     }
+
+    Material getMaterial(@NotNull Item item);
+
+    Item getItem(@NotNull Material material);
 
 }

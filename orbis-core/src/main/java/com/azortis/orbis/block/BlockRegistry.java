@@ -100,10 +100,15 @@ public final class BlockRegistry {
             }
             ImmutableBiMap<String, Property<?>> availableProperties = propertiesBuilder.build();
 
-            Block block = new Block(key, id, availableProperties.values());
+            Key itemKey = null;
+            if (blockData.has("correspondingItem")) {
+                itemKey = Key.key(blockData.get("correspondingItem").getAsString());
+            }
+
+            Block block = new Block(key, id, availableProperties.values(), itemKey);
             Map<Map<Property<?>, Comparable<?>>, BlockState> blockStates = new HashMap<>();
             JsonArray states = blockData.getAsJsonArray("states");
-            for (JsonElement stateElement : states){
+            for (JsonElement stateElement : states) {
                 final JsonObject state = stateElement.getAsJsonObject();
                 final int stateId = state.get("stateId").getAsInt();
                 final ImmutableMap<Property<?>, Comparable<?>> values = getValues(availableProperties, state);
