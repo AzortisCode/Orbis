@@ -69,6 +69,10 @@ public final class Item implements Keyed {
         return blockKey != null;
     }
 
+    public @Nullable Key blockKey() {
+        return blockKey;
+    }
+
     public @Nullable Block block() {
         return blockKey == null ? null : Block.fromKey(blockKey);
     }

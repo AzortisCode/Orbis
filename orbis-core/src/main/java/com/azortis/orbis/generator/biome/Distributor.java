@@ -31,7 +31,7 @@ import java.io.File;
 public abstract class Distributor {
 
     private String name;
-    private Key providerId;
+    private Key providerKey;
     private transient Container container;
     private transient File settingsFolder;
 
@@ -43,13 +43,13 @@ public abstract class Distributor {
         return name;
     }
 
-    public Key getProviderId() {
-        return providerId;
+    public Key getProviderKey() {
+        return providerKey;
     }
 
-    public Distributor(String name, Key providerId) {
+    public Distributor(String name, Key providerKey) {
         this.name = name;
-        this.providerId = providerId;
+        this.providerKey = providerKey;
     }
 
     //

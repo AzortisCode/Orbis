@@ -18,5 +18,66 @@
 
 package com.azortis.orbis.item;
 
+import com.google.common.collect.ImmutableSet;
+import net.kyori.adventure.key.Key;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
+
 public final class Enchantment {
+
+    private final Key key;
+    private final int id;
+    private final int maxLevel;
+    private final int minLevel;
+
+    private ImmutableSet<Enchantment> incompatibleEnchantments;
+
+    public Enchantment(@NotNull Key key, int id, int maxLevel, int minLevel) {
+        this.key = key;
+        this.id = id;
+        this.maxLevel = maxLevel;
+        this.minLevel = minLevel;
+    }
+
+    public Key key() {
+        return key;
+    }
+
+    public int id() {
+        return id;
+    }
+
+    public int maxLevel() {
+        return maxLevel;
+    }
+
+    public int minLevel() {
+        return minLevel;
+    }
+
+    void setIncompatibleEnchantments(ImmutableSet<Enchantment> incompatibleEnchantments) {
+        if (this.incompatibleEnchantments == null) {
+            this.incompatibleEnchantments = incompatibleEnchantments;
+        } else {
+            throw new IllegalStateException("Incompatible enchantments already populated in " + this);
+        }
+    }
+
+    public ImmutableSet<Enchantment> incompatibleEnchantments() {
+        return incompatibleEnchantments;
+    }
+
+    public boolean isCompatibleWith(@NotNull Enchantment enchantment) {
+        return !incompatibleEnchantments.contains(enchantment);
+    }
+
+    public boolean isCompatibleWith(@NotNull List<Enchantment> enchantments) {
+        boolean compatible = true;
+        for (Enchantment enchantment : enchantments) {
+            if (!isCompatibleWith(enchantment)) compatible = false;
+        }
+        return compatible;
+    }
+
 }

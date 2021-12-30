@@ -19,6 +19,9 @@
 package com.azortis.orbis.item;
 
 import com.azortis.orbis.Orbis;
+import com.google.common.collect.ImmutableSet;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import net.kyori.adventure.key.Key;
 import org.jetbrains.annotations.NotNull;
@@ -48,9 +51,14 @@ public final class ItemRegistry {
         }
     }
 
-    public static boolean containsItemKey(final String itemKey) {
-        final String id = itemKey.indexOf(':') == -1 ? "minecraft:" + itemKey : itemKey;
+    public static boolean containsItemKey(final String key) {
+        final String id = key.indexOf(':') == -1 ? "minecraft:" + key : key;
         return KEY_ITEM_MAP.containsKey(id);
+    }
+
+    public static boolean containsEnchantmentKey(final String key) {
+        final String id = key.indexOf(':') == -1 ? "minecraft:" + key : key;
+        return KEY_ENCHANTMENT_MAP.containsKey(id);
     }
 
     public static Item fromItemKey(@NotNull String key) {
@@ -58,12 +66,25 @@ public final class ItemRegistry {
         return KEY_ITEM_MAP.get(id);
     }
 
-    public static boolean containsItemKey(final Key key) {
+    public static Enchantment fromEnchantmentKey(@NotNull String key) {
+        final String id = key.indexOf(':') == -1 ? "minecraft:" + key : key;
+        return KEY_ENCHANTMENT_MAP.get(id);
+    }
+
+    public static boolean containsItemKey(@NotNull Key key) {
         return KEY_ITEM_MAP.containsKey(key.asString());
+    }
+
+    public static boolean containsEnchantmentKey(@NotNull Key key) {
+        return KEY_ENCHANTMENT_MAP.containsKey(key.asString());
     }
 
     public static Item fromItemKey(@NotNull Key key) {
         return KEY_ITEM_MAP.get(key.asString());
+    }
+
+    public static Enchantment fromEnchantmentKey(@NotNull Key key) {
+        return KEY_ENCHANTMENT_MAP.get(key.asString());
     }
 
     @SuppressWarnings("PatternValidation")
@@ -81,6 +102,31 @@ public final class ItemRegistry {
                 final Key blockKey = Key.key(itemData.get("blockId").getAsString());
                 KEY_ITEM_MAP.put(key.asString(), new Item(key, id, maxStackSize, maxDamage, blockKey));
             }
+        });
+    }
+
+    @SuppressWarnings("PatternValidation")
+    private static void loadEnchantments(final JsonObject data) {
+        data.entrySet().forEach(entry -> {
+            final Key key = Key.key(entry.getKey());
+            final JsonObject enchantmentData = entry.getValue().getAsJsonObject();
+            final int id = enchantmentData.get("id").getAsInt();
+            final int maxLevel = enchantmentData.get("maxLevel").getAsInt();
+            final int minLevel = enchantmentData.get("minLevel").getAsInt();
+
+            KEY_ENCHANTMENT_MAP.put(key.asString(), new Enchantment(key, id, maxLevel, minLevel));
+        });
+
+        data.entrySet().forEach(entry -> {
+            final Key key = Key.key(entry.getKey());
+            final JsonArray incompatibleEnchantments = entry.getValue().getAsJsonObject()
+                    .get("incompatibleEnchantments").getAsJsonArray();
+
+            ImmutableSet.Builder<Enchantment> builder = ImmutableSet.builder();
+            for (JsonElement element : incompatibleEnchantments) {
+                builder.add(fromEnchantmentKey(element.getAsString()));
+            }
+            fromEnchantmentKey(key).setIncompatibleEnchantments(builder.build());
         });
     }
 
