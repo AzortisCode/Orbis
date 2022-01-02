@@ -16,22 +16,29 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.registry.adapter;
+package com.azortis.orbis.item;
 
-import com.azortis.orbis.utils.NamespaceId;
-import com.google.gson.*;
+import com.azortis.orbis.item.meta.ItemMeta;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jglrxavpok.hephaistos.nbt.NBTCompound;
 
-import java.lang.reflect.Type;
+public interface ItemStack extends Cloneable {
 
-public class NamespaceIdAdapter implements JsonSerializer<NamespaceId>, JsonDeserializer<NamespaceId> {
+    Item item();
 
-    @Override
-    public JsonElement serialize(NamespaceId namespaceID, Type type, JsonSerializationContext context) {
-        return context.serialize(namespaceID.getNamespaceId(), String.class);
-    }
+    int getAmount();
 
-    @Override
-    public NamespaceId deserialize(JsonElement element, Type type, JsonDeserializationContext context) throws JsonParseException {
-        return new NamespaceId(context.deserialize(element, String.class));
-    }
+    void setAmount(int amount);
+
+    boolean hasItemMeta();
+
+    @NotNull ItemMeta getItemMeta();
+
+    void setItemMeta(@Nullable ItemMeta meta);
+
+    @NotNull ItemStack clone();
+
+    @NotNull NBTCompound serialize();
+
 }

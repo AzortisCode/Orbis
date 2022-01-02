@@ -21,8 +21,6 @@ package com.azortis.orbis.paper;
 import com.azortis.orbis.Orbis;
 import com.azortis.orbis.pack.Pack;
 import com.azortis.orbis.paper.generator.PaperChunkGenerator;
-import com.azortis.orbis.paper.nms.INMSBinding;
-import com.azortis.orbis.paper.nms.impl.NMSBinding;
 import org.bukkit.World;
 import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -34,8 +32,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class OrbisPlugin extends JavaPlugin {
-
-    private static final INMSBinding nms = new NMSBinding();
 
     private final Map<String, OrbisWorld> worldMap = new HashMap<>();
     private Metrics metrics;
@@ -68,10 +64,6 @@ public class OrbisPlugin extends JavaPlugin {
         if (!orbisWorld.isLoaded()) orbisWorld.load();
         worldMap.put(world.getName(), orbisWorld);
         return orbisWorld;
-    }
-
-    public static INMSBinding getNMS() {
-        return nms;
     }
 
     @Nullable

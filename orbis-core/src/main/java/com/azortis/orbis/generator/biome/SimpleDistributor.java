@@ -22,9 +22,9 @@ import com.azortis.orbis.Orbis;
 import com.azortis.orbis.generator.noise.NoiseGenerator;
 import com.azortis.orbis.generator.noise.OpenSimplex2S;
 import com.azortis.orbis.registry.Registry;
-import com.azortis.orbis.utils.NamespaceId;
 import com.google.gson.annotations.SerializedName;
 import lombok.*;
+import net.kyori.adventure.key.Key;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
@@ -39,7 +39,7 @@ public class SimpleDistributor extends Distributor {
     private SimpleDistributor() {
     }
 
-    public SimpleDistributor(String name, NamespaceId distributor) {
+    public SimpleDistributor(String name, Key distributor) {
         super(name, distributor);
     }
 

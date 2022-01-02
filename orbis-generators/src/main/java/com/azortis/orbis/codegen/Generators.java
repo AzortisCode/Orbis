@@ -18,8 +18,11 @@
 
 package com.azortis.orbis.codegen;
 
+import com.azortis.orbis.Orbis;
 import com.azortis.orbis.codegen.block.BlocksGenerator;
 import com.azortis.orbis.codegen.block.PropertiesGenerator;
+import com.azortis.orbis.codegen.item.EnchantmentsGenerator;
+import com.azortis.orbis.codegen.item.ItemsGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -30,9 +33,8 @@ import java.net.URL;
 
 public final class Generators {
     private static final Logger LOGGER = LoggerFactory.getLogger(Generators.class);
-    private static final String MC_VERSION = "1_18";
     private static final String BASE_ARTIC_DATA_URL = "https://raw.githubusercontent.com/Articdive/ArticData/" +
-            MC_VERSION.replace("_", ".") + "/";
+            Orbis.MC_VERSION.replace("_", ".") + "/";
 
     public static void main(String[] args) {
         StringBuilder outputBuilder = new StringBuilder();
@@ -45,11 +47,13 @@ public final class Generators {
         final File outputFolder = new File(outputBuilder.toString().trim());
         new PropertiesGenerator(getInputStream("block_properties.json"), outputFolder).generate();
         new BlocksGenerator(getInputStream("blocks.json"), outputFolder).generate();
+        new ItemsGenerator(getInputStream("items.json"), outputFolder).generate();
+        new EnchantmentsGenerator(getInputStream("enchantments.json"), outputFolder).generate();
     }
 
     private static InputStream getInputStream(String fileName) {
         try {
-            return new URL(BASE_ARTIC_DATA_URL + MC_VERSION + "_" + fileName).openStream();
+            return new URL(BASE_ARTIC_DATA_URL + Orbis.MC_VERSION + "_" + fileName).openStream();
         } catch (IOException ex) {
             LOGGER.error("Failed to create InputStream for " + fileName);
         }

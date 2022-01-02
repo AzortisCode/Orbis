@@ -21,13 +21,15 @@ package com.azortis.orbis.block;
 import com.azortis.orbis.Orbis;
 import com.azortis.orbis.block.property.Property;
 import com.azortis.orbis.block.property.PropertyRegistry;
-import com.azortis.orbis.utils.NamespaceId;
+import com.google.common.collect.ImmutableBiMap;
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import net.kyori.adventure.key.Key;
 
 import java.io.File;
 import java.io.FileReader;
@@ -36,8 +38,8 @@ import java.util.Map;
 
 public final class BlockRegistry {
 
-    private static final Map<String, Block> KEY_MAP = new HashMap<>();
-    private static final Int2ObjectMap<Block> STATE_MAP = new Int2ObjectOpenHashMap<>();
+    private static final Map<String, Block> KEY_BLOCK_MAP = new HashMap<>();
+    private static final Int2ObjectMap<BlockState> ID_STATE_MAP = new Int2ObjectOpenHashMap<>();
     private static final String BLOCKS_DATA = "blocks.json";
     private static volatile boolean loaded = false;
 
@@ -57,116 +59,80 @@ public final class BlockRegistry {
 
     public static boolean containsKey(final String key) {
         final String id = key.indexOf(':') == -1 ? "minecraft:" + key : key;
-        return KEY_MAP.containsKey(key);
+        return KEY_BLOCK_MAP.containsKey(id);
     }
 
     public static Block fromKey(final String key) {
         final String id = key.indexOf(':') == -1 ? "minecraft:" + key : key;
-        return KEY_MAP.get(id);
+        return KEY_BLOCK_MAP.get(id);
     }
 
-    public static boolean containsKey(final NamespaceId key) {
-        return KEY_MAP.containsKey(key.getNamespaceId());
+    public static boolean containsKey(final Key key) {
+        return KEY_BLOCK_MAP.containsKey(key.asString());
     }
 
-    public static Block fromKey(final NamespaceId key) {
-        return KEY_MAP.get(key.getNamespaceId());
+    public static Block fromKey(final Key key) {
+        return KEY_BLOCK_MAP.get(key.asString());
     }
 
-    public static Block fromStateId(final int stateId) {
-        return STATE_MAP.get(stateId);
-    }
-
-    public static Block withProperties(final String key, Map<String, String> properties){
-        Block block = fromKey(key); // Fetch default block
-        for (Map.Entry<String, String> entry : properties.entrySet()){
-            Property<?> property = block.getPropertyMap().get(entry.getKey());
-            block = setValue(block, property, entry.getValue());
-        }
-        return block;
-    }
-
-    public static Block withProperties(final NamespaceId key, Map<String, String> properties){
-        return withProperties(key.getNamespaceId(), properties);
+    public static BlockState fromStateId(final int stateId) {
+        return ID_STATE_MAP.get(stateId);
     }
 
     public static boolean isLoaded() {
         return loaded;
     }
 
-    @SuppressWarnings("unchecked")
-    private static <T extends Comparable<T>> Block setValue(Block block, Property<?> property, String value){
-        Property<T> property1 = (Property<T>) property;
-        return block.setValue(property1, property1.getValueFor(value));
-    }
-
+    @SuppressWarnings("PatternValidation")
     private static void load(final JsonObject data) {
         data.entrySet().forEach(entry -> {
-            final String key = entry.getKey();
-            final NamespaceId namespacedKey = new NamespaceId(key);
-            final JsonObject block = entry.getValue().getAsJsonObject();
-            final int id = block.get("id").getAsInt();
-            final int defaultStateId = block.get("defaultStateId").getAsInt();
+            final Key key = Key.key(entry.getKey());
+            final JsonObject blockData = entry.getValue().getAsJsonObject();
+            final int id = blockData.get("id").getAsInt();
+            final int defaultStateId = blockData.get("defaultStateId").getAsInt();
 
-            Map<String, Property<?>> availableProperties = new HashMap<>();
-            for (JsonElement propertyElement : block.getAsJsonArray("properties")) {
+
+            ImmutableBiMap.Builder<String, Property<?>> propertiesBuilder = ImmutableBiMap.builder();
+            for (JsonElement propertyElement : blockData.getAsJsonArray("properties")) {
                 String mojangName = propertyElement.getAsString();
                 Property<?> property = PropertyRegistry.getByMojangName(mojangName);
-                availableProperties.put(property.getKey(), property);
+                propertiesBuilder.put(property.getKey(), property);
+            }
+            ImmutableBiMap<String, Property<?>> availableProperties = propertiesBuilder.build();
+
+            Key itemKey = null;
+            if (blockData.has("correspondingItem")) {
+                itemKey = Key.key(blockData.get("correspondingItem").getAsString());
             }
 
-            // Find default block state first, then remove that entry from the states.
-            Map<Map<Property<?>, Comparable<?>>, BlockImpl> blockStates = new HashMap<>();
-            BlockImpl defaultBlock = null;
-            JsonArray states = block.getAsJsonArray("states");
-            JsonElement elementToRemove = null;
+            Block block = new Block(key, id, availableProperties.values(), itemKey);
+            Map<Map<Property<?>, Comparable<?>>, BlockState> blockStates = new HashMap<>();
+            JsonArray states = blockData.getAsJsonArray("states");
             for (JsonElement stateElement : states) {
                 final JsonObject state = stateElement.getAsJsonObject();
                 final int stateId = state.get("stateId").getAsInt();
-                if (stateId == defaultStateId) {
-                    ImmutableMap<Property<?>, Comparable<?>> propertyMap = getPropertyMap(availableProperties, state);
-                    defaultBlock = new BlockImpl(
-                            namespacedKey,
-                            id,
-                            stateId,
-                            state.get("air").getAsBoolean(),
-                            state.get("solid").getAsBoolean(),
-                            state.get("liquid").getAsBoolean(),
-                            propertyMap,
-                            null
-                    );
-                    blockStates.put(propertyMap, defaultBlock);
-                    elementToRemove = stateElement;
-                    break;
-                }
-            }
-            states.remove(elementToRemove);
-            for (JsonElement stateElement : states) {
-                final JsonObject state = stateElement.getAsJsonObject();
-                final int stateId = state.get("stateId").getAsInt();
-                ImmutableMap<Property<?>, Comparable<?>> propertyMap = getPropertyMap(availableProperties, state);
-                BlockImpl block1 = new BlockImpl(
-                        namespacedKey,
-                        id,
+                final ImmutableMap<Property<?>, Comparable<?>> values = getValues(availableProperties, state);
+
+                BlockState blockState = new BlockState(block,
                         stateId,
                         state.get("air").getAsBoolean(),
                         state.get("solid").getAsBoolean(),
                         state.get("liquid").getAsBoolean(),
-                        propertyMap,
-                        defaultBlock
-                );
-                blockStates.put(propertyMap, block1);
+                        values);
+                if (stateId == defaultStateId) block.setDefaultState(blockState);
+                blockStates.put(values, blockState);
             }
-            blockStates.values().forEach(block1 -> {
-                block1.populateNeighbours(blockStates);
-                STATE_MAP.put(block1.getStateId(), block1);
+            block.setStates(ImmutableSet.copyOf(blockStates.values()));
+            blockStates.values().forEach(blockState -> {
+                blockState.populateNeighbours(blockStates);
+                ID_STATE_MAP.put(blockState.stateId(), blockState);
             });
-            KEY_MAP.put(key, defaultBlock);
+            KEY_BLOCK_MAP.put(key.asString(), block);
         });
     }
 
-    private static ImmutableMap<Property<?>, Comparable<?>> getPropertyMap(Map<String, Property<?>> availableProperties,
-                                                                           final JsonObject state) {
+    private static ImmutableMap<Property<?>, Comparable<?>> getValues(Map<String, Property<?>> availableProperties,
+                                                                      final JsonObject state) {
         JsonObject properties = state.getAsJsonObject("properties");
         ImmutableMap.Builder<Property<?>, Comparable<?>> builder = ImmutableMap.builder();
         for (Map.Entry<String, Property<?>> entry : availableProperties.entrySet()) {

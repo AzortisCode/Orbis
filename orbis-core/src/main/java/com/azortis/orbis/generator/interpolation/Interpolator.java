@@ -21,6 +21,7 @@ package com.azortis.orbis.generator.interpolation;
 /**
  * This class uses Cyberpwn his starcast algorithm, and the idea of using a HeightProvider also comes from them.
  */
+@SuppressWarnings("SameParameterValue")
 public class Interpolator {
 
     private double lerp(double a, double b, double f) {

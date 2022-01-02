@@ -24,7 +24,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Set;
 
-public sealed abstract class Property<T extends Comparable<T>> extends Properties permits BooleanProperty,
+public sealed abstract class Property<T extends Comparable<T>> permits BooleanProperty,
         IntegerProperty, EnumProperty {
 
     private final String key;

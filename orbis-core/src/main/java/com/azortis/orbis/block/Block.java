@@ -19,40 +19,120 @@
 package com.azortis.orbis.block;
 
 import com.azortis.orbis.block.property.Property;
-import com.azortis.orbis.utils.NamespaceId;
+import com.azortis.orbis.item.Item;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
+import net.kyori.adventure.key.Key;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-import java.util.Optional;
+import java.util.Map;
 
-public sealed interface Block extends Blocks permits BlockImpl {
+public final class Block implements ConfiguredBlock {
 
-    @NotNull NamespaceId getKey();
+    private final Key key;
+    private final int id;
+    private final ImmutableSet<Property<?>> properties;
+    private final ImmutableMap<String, Property<?>> propertyMap;
+    private final Key itemKey;
 
-    int getId();
+    // Populated in BlockRegistry
+    private BlockState defaultState;
+    private ImmutableSet<BlockState> states;
 
-    int getStateId();
+    Block(@NotNull Key key, int id, @NotNull ImmutableSet<Property<?>> properties, @Nullable Key itemKey) {
+        this.key = key;
+        this.id = id;
+        this.properties = properties;
 
-    boolean isAir();
+        // Build the property map
+        ImmutableMap.Builder<String, Property<?>> builder = ImmutableMap.builder();
+        for (Property<?> property : properties) {
+            builder.put(property.getKey(), property);
+        }
+        this.propertyMap = builder.build();
+        this.itemKey = itemKey;
+    }
 
-    boolean isSolid();
+    @Override
+    public @NotNull Key key() {
+        return key;
+    }
 
-    boolean isLiquid();
+    @Override
+    public int id() {
+        return id;
+    }
 
-    @NotNull ImmutableSet<Property<?>> getProperties();
+    public @NotNull ImmutableSet<Property<?>> properties() {
+        return properties;
+    }
 
-    @NotNull ImmutableMap<String, Property<?>> getPropertyMap();
+    public @NotNull ImmutableMap<String, Property<?>> propertyMap() {
+        return propertyMap;
+    }
 
-    boolean hasProperty(Property<?> property);
+    public boolean hasProperty(Property<?> property) {
+        return properties.contains(property);
+    }
 
-    @NotNull ImmutableMap<Property<?>, Comparable<?>> getValues();
+    void setDefaultState(BlockState state) {
+        if (defaultState == null) defaultState = state;
+    }
 
-    @NotNull <T extends Comparable<T>> T getValue(Property<T> property);
+    public @NotNull BlockState defaultState() {
+        return defaultState;
+    }
 
-    @NotNull <T extends Comparable<T>> Optional<T> getValueOptional(Property<T> property);
+    void setStates(ImmutableSet<BlockState> states) {
+        if (this.states == null) this.states = states;
+    }
 
-    @NotNull <T extends Comparable<T>, V extends T> Block setValue(Property<T> property, V value);
+    public ImmutableSet<BlockState> states() {
+        return states;
+    }
 
-    @NotNull Block getDefault();
+    public @NotNull BlockState withProperties(Map<String, String> properties) {
+        BlockState state = this.defaultState;
+        for (Map.Entry<String, String> entry : properties.entrySet()) {
+            state = state.setValue(propertyMap.get(entry.getKey()), entry.getValue());
+        }
+        return state;
+    }
+
+    @Override
+    public int stateId() {
+        return defaultState.stateId();
+    }
+
+    @Override
+    public Block block() {
+        return this;
+    }
+
+    @Override
+    public BlockState blockState() {
+        return defaultState;
+    }
+
+    public boolean hasItem() {
+        return itemKey != null;
+    }
+
+    public @Nullable Key itemKey() {
+        return itemKey;
+    }
+
+    public @Nullable Item item() {
+        return itemKey == null ? null : Item.fromKey(itemKey);
+    }
+
+    public static Block fromKey(final String key) {
+        return BlockRegistry.fromKey(key);
+    }
+
+    public static Block fromKey(final Key key) {
+        return BlockRegistry.fromKey(key);
+    }
+
 }

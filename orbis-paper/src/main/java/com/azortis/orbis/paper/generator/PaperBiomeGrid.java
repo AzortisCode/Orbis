@@ -34,6 +34,6 @@ public class PaperBiomeGrid implements BiomeGrid {
 
     @Override
     public void setBiome(int x, int y, int z, Biome biome) {
-        handle.setBiome(x, y, z, org.bukkit.block.Biome.valueOf(biome.getDerivative().getId().toUpperCase(Locale.ROOT)));
+        handle.setBiome(x, y, z, org.bukkit.block.Biome.valueOf(biome.getDerivative().value().toUpperCase(Locale.ROOT)));
     }
 }

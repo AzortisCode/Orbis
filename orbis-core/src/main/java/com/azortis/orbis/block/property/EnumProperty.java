@@ -55,26 +55,27 @@ public final class EnumProperty<T extends Enum<T> & Nameable> extends Property<T
     }
 
     static <T extends Enum<T> & Nameable> EnumProperty<T> create(final @NotNull String key,
-                                                                           final @NotNull Class<T> type) {
+                                                                 final @NotNull Class<T> type) {
         return create(key, type, t -> true);
     }
 
     static <T extends Enum<T> & Nameable> EnumProperty<T> create(final @NotNull String key,
-                                                                           final @NotNull Class<T> type,
-                                                                           final @NotNull Predicate<T> filter) {
+                                                                 final @NotNull Class<T> type,
+                                                                 final @NotNull Predicate<T> filter) {
         return create(key, type, Arrays.stream(type.getEnumConstants()).filter(filter).collect(Collectors.toSet()));
     }
 
+    @SuppressWarnings("SameParameterValue")
     @SafeVarargs
     static <T extends Enum<T> & Nameable> EnumProperty<T> create(final @NotNull String key,
-                                                                           final Class<T> type,
-                                                                           final @NotNull T... values) {
+                                                                 final Class<T> type,
+                                                                 final @NotNull T... values) {
         return create(key, type, Set.of(values));
     }
 
     static <T extends Enum<T> & Nameable> EnumProperty<T> create(final @NotNull String key,
-                                                                           final @NotNull Class<T> type,
-                                                                           final @NotNull Set<T> values) {
+                                                                 final @NotNull Class<T> type,
+                                                                 final @NotNull Set<T> values) {
         return new EnumProperty<>(key, type, values);
     }
 

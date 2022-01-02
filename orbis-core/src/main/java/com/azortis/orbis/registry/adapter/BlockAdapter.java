@@ -16,8 +16,25 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.structure;
+package com.azortis.orbis.registry.adapter;
 
-public class StructureObject {
+import com.azortis.orbis.block.ConfiguredBlock;
+import com.google.gson.*;
 
+import java.lang.reflect.Type;
+
+public class BlockAdapter implements JsonSerializer<ConfiguredBlock>, JsonDeserializer<ConfiguredBlock> {
+
+    @Override
+    public ConfiguredBlock deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+        return null;
+    }
+
+    @Override
+    public JsonElement serialize(ConfiguredBlock configuredBlock, Type typeOfSrc, JsonSerializationContext context) {
+        if (configuredBlock.blockState() == configuredBlock.block().defaultState()) {
+            return context.serialize(configuredBlock.key());
+        }
+        return null;
+    }
 }

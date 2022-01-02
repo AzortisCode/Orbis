@@ -16,23 +16,15 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.paper.nms.impl;
+package com.azortis.orbis.item;
 
-import com.azortis.orbis.block.Block;
-import com.azortis.orbis.block.BlockRegistry;
-import com.azortis.orbis.paper.nms.INMSBinding;
-import org.bukkit.block.data.BlockData;
-import org.bukkit.craftbukkit.v1_18_R1.block.data.CraftBlockData;
+import org.jetbrains.annotations.NotNull;
+import org.jglrxavpok.hephaistos.nbt.NBTCompound;
 
-public class NMSBinding implements INMSBinding {
+public interface ItemFactory {
 
-    @Override
-    public Block getBlock(BlockData blockData) {
-        return BlockRegistry.fromStateId(net.minecraft.world.level.block.Block.getId(((CraftBlockData)blockData).getState()));
-    }
+    @NotNull ItemStack createItemStack(@NotNull Item item);
 
-    @Override
-    public BlockData getBlockData(int stateId) {
-        return net.minecraft.world.level.block.Block.stateById(stateId).createCraftBlockData();
-    }
+    @NotNull ItemStack createItemStack(@NotNull NBTCompound compound);
+
 }

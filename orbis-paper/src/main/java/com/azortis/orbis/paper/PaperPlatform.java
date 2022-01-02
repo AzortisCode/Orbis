@@ -19,7 +19,10 @@
 package com.azortis.orbis.paper;
 
 import com.azortis.orbis.Platform;
-import com.azortis.orbis.container.Container;
+import com.azortis.orbis.item.ItemFactory;
+import com.azortis.orbis.paper.item.PaperItemFactory;
+import com.azortis.orbis.world.Container;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 
@@ -30,9 +33,11 @@ import java.util.Collection;
 public class PaperPlatform implements Platform {
 
     private final OrbisPlugin plugin;
+    private final PaperItemFactory itemFactory;
 
     public PaperPlatform(OrbisPlugin plugin) {
         this.plugin = plugin;
+        this.itemFactory = new PaperItemFactory();
     }
 
     @Override
@@ -48,6 +53,11 @@ public class PaperPlatform implements Platform {
     @Override
     public File getDirectory() {
         return plugin.getDataFolder();
+    }
+
+    @Override
+    public @NotNull ItemFactory getItemFactory() {
+        return itemFactory;
     }
 
     @Nullable

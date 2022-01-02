@@ -19,20 +19,20 @@
 package com.azortis.orbis.generator.biome;
 
 import com.azortis.orbis.generator.terrain.Terrain;
-import com.azortis.orbis.utils.NamespaceId;
 import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
+import net.kyori.adventure.key.Key;
 
 @Getter
 public class Biome {
 
     private String name;
-    private NamespaceId derivative;
+    private Key derivative;
 
     @SerializedName("terrain")
     private String terrainName;
     private int baseHeight;
-    private NamespaceId surfaceBlock;
+    private Key surfaceBlock;
 
     private transient Terrain terrain;
 

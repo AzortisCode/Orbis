@@ -18,7 +18,9 @@
 
 package com.azortis.orbis;
 
-import com.azortis.orbis.container.Container;
+import com.azortis.orbis.item.ItemFactory;
+import com.azortis.orbis.world.Container;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 
@@ -33,8 +35,9 @@ public interface Platform {
 
     File getDirectory();
 
-    @Nullable
-    Container getContainer(String name);
+    @NotNull ItemFactory getItemFactory();
+
+    @Nullable Container getContainer(String name);
 
     Collection<Container> getContainers();
 

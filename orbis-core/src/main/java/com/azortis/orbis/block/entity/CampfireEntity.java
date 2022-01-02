@@ -16,19 +16,9 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.paper.nms;
+package com.azortis.orbis.block.entity;
 
-import com.azortis.orbis.block.Block;
-import org.bukkit.block.data.BlockData;
+public interface CampfireEntity extends BlockEntity {
 
-public interface INMSBinding {
-
-    Block getBlock(BlockData blockData);
-
-    BlockData getBlockData(int stateId);
-
-    default BlockData getBlockData(Block block){
-        return getBlockData(block.getStateId());
-    }
 
 }

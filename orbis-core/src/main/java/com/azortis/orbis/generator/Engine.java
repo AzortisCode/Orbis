@@ -18,8 +18,8 @@
 
 package com.azortis.orbis.generator;
 
-import com.azortis.orbis.container.Container;
 import com.azortis.orbis.generator.biome.BiomeGrid;
+import com.azortis.orbis.world.Container;
 import lombok.Getter;
 
 public abstract class Engine {

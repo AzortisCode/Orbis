@@ -21,8 +21,8 @@ package com.azortis.orbis.registry.adapter;
 import com.azortis.orbis.Orbis;
 import com.azortis.orbis.generator.biome.Distributor;
 import com.azortis.orbis.registry.GeneratorRegistry;
-import com.azortis.orbis.utils.NamespaceId;
 import com.google.gson.*;
+import net.kyori.adventure.key.Key;
 
 import java.lang.reflect.Type;
 
@@ -37,7 +37,7 @@ public class DistributorAdapter implements JsonDeserializer<Distributor> {
     @Override
     public Distributor deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context) throws JsonParseException {
         final JsonPrimitive object = jsonElement.getAsJsonObject().getAsJsonPrimitive("providerId");
-        final NamespaceId distributorProviderId = context.deserialize(object, NamespaceId.class);
+        final Key distributorProviderId = context.deserialize(object, Key.class);
         final Class<? extends Distributor> distributorClass = distributorRegistry.getTypeClass(distributorProviderId);
         return context.deserialize(jsonElement, distributorClass);
     }

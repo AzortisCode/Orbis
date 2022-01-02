@@ -16,25 +16,14 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.container;
+package com.azortis.orbis.item;
 
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter
-public class ContainerInfo {
-
-    private String settingsVersion;
-    @Setter
-    private String packName;
-    @Setter
-    private String dimensionFile;
-
-    // Used for gson deserialization
-    private ContainerInfo() {
-    }
-
-    public ContainerInfo(String settingsVersion) {
-        this.settingsVersion = settingsVersion;
-    }
+public enum ItemFlag {
+    HIDE_ENCHANTS,
+    HIDE_ATTRIBUTES,
+    HIDE_UNBREAKABLE,
+    HIDE_CAN_DESTROY,
+    HIDE_CAN_PLACE,
+    HIDE_MISCELLANEOUS,
+    HIDE_DYE;
 }

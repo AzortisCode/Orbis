@@ -24,16 +24,19 @@ import com.azortis.orbis.generator.Dimension;
 import com.azortis.orbis.generator.biome.Biome;
 import com.azortis.orbis.generator.biome.Distributor;
 import com.azortis.orbis.generator.terrain.Terrain;
+import com.azortis.orbis.item.ItemFactory;
+import com.azortis.orbis.item.ItemRegistry;
 import com.azortis.orbis.pack.PackManager;
 import com.azortis.orbis.registry.*;
 import com.azortis.orbis.registry.adapter.DistributorAdapter;
-import com.azortis.orbis.registry.adapter.NamespaceIdAdapter;
+import com.azortis.orbis.registry.adapter.KeyAdapter;
 import com.azortis.orbis.registry.adapter.TerrainAdapter;
-import com.azortis.orbis.utils.NamespaceId;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import lombok.Getter;
+import net.kyori.adventure.key.Key;
 import org.apache.commons.io.FileUtils;
+import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 
 import java.io.File;
@@ -45,7 +48,7 @@ import java.util.Map;
 public final class Orbis {
 
     public static final String SETTINGS_VERSION = "1";
-    public static final String MC_VERSION = "1_18";
+    public static final String MC_VERSION = "1_18_1";
     private static final String DOWNLOAD_URL = "https://raw.githubusercontent.com/Articdive/ArticData/" +
             MC_VERSION.replace("_", ".") + "/";
 
@@ -84,13 +87,14 @@ public final class Orbis {
 
             // Register the type adapters to use in the serialization/deserialization of settings in packs.
             gson = new GsonBuilder().disableHtmlEscaping().setPrettyPrinting()
-                    .registerTypeAdapter(NamespaceId.class, new NamespaceIdAdapter())
+                    .registerTypeAdapter(Key.class, new KeyAdapter())
                     .registerTypeAdapter(Terrain.class, new TerrainAdapter())
                     .registerTypeAdapter(Distributor.class, new DistributorAdapter()).create();
 
             // Load minecraft data into memory
             PropertyRegistry.init();
             BlockRegistry.init();
+            ItemRegistry.init();
 
             // Load managers
             packManager = new PackManager(platform.getDirectory());
@@ -129,6 +133,11 @@ public final class Orbis {
             throw new IllegalStateException("Orbis hasn't yet been initialized!");
         }
         return null;
+    }
+
+    public @NotNull
+    static ItemFactory getItemFactory() {
+        return platform.getItemFactory();
     }
 
 }

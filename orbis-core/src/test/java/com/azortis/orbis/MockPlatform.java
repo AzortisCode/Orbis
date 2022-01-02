@@ -18,17 +18,17 @@
 
 package com.azortis.orbis;
 
-import com.azortis.orbis.container.Container;
+import com.azortis.orbis.world.Container;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.util.Collection;
 
-public class MockPlatform implements Platform{
+public class MockPlatform implements Platform {
 
     private final File directory;
 
-    public MockPlatform(){
+    public MockPlatform() {
         this.directory = new File(System.getProperty("user.dir") + "/test-data/");
     }
 
