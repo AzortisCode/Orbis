@@ -18,12 +18,27 @@
 
 package com.azortis.orbis.item;
 
-public interface ItemStack {
+import com.azortis.orbis.item.meta.ItemMeta;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jglrxavpok.hephaistos.nbt.NBTCompound;
+
+public interface ItemStack extends Cloneable {
 
     Item item();
 
     int getAmount();
 
     void setAmount(int amount);
+
+    boolean hasItemMeta();
+
+    @NotNull ItemMeta getItemMeta();
+
+    void setItemMeta(@Nullable ItemMeta meta);
+
+    @NotNull ItemStack clone();
+
+    @NotNull NBTCompound serialize();
 
 }

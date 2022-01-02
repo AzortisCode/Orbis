@@ -119,7 +119,7 @@ public final class BlockRegistry {
                         state.get("solid").getAsBoolean(),
                         state.get("liquid").getAsBoolean(),
                         values);
-                if(stateId == defaultStateId)block.setDefaultState(blockState);
+                if (stateId == defaultStateId) block.setDefaultState(blockState);
                 blockStates.put(values, blockState);
             }
             block.setStates(ImmutableSet.copyOf(blockStates.values()));

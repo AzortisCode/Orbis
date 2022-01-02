@@ -57,7 +57,7 @@ public class BiomeRegistry implements Registry<Biome> {
     @Override
     public List<String> getEntries(@NotNull Container container) {
         File[] files = getFolder(container).listFiles();
-        if(files == null)return Lists.newArrayList();
+        if (files == null) return Lists.newArrayList();
         return Arrays.stream(files).map(File::getName).collect(Collectors.toList());
     }
 

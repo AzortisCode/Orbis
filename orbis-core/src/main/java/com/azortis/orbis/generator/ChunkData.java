@@ -32,9 +32,9 @@ public abstract class ChunkData {
     /**
      * Stores a block in the chunk. The specified coordinates are chunk positions.
      *
-     * @param x     The x-coordinate in the chunk. Ranges from 0-15
-     * @param y     The y-coordinate in the chunk Ranges from heightMin and heightMax
-     * @param z     The z-coordinate in the chunk. Ranges from 0-15
+     * @param x          The x-coordinate in the chunk. Ranges from 0-15
+     * @param y          The y-coordinate in the chunk Ranges from heightMin and heightMax
+     * @param z          The z-coordinate in the chunk. Ranges from 0-15
      * @param blockState The block to put at the specified position.
      */
     public final void setBlock(final int x, final int y, final int z, final BlockState blockState) {

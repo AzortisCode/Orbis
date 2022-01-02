@@ -31,7 +31,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class BlocksTest {
 
     @Test
-    public void testBlocks(){
+    public void testBlocks() {
         Orbis.initialize(new MockPlatform());
         assertTrue(BlockRegistry.isLoaded());
         assertTrue(ItemRegistry.isLoaded());

@@ -80,9 +80,20 @@ public interface ItemMeta {
 
     boolean hasItemFlag(@NotNull ItemFlag itemFlag);
 
+    boolean hasDamage();
+
+    int getDamage();
+
+    void setDamage(int damage);
+
+    int getRepairCost();
+
+    void setRepairCost(int repairCost);
+
     boolean isUnbreakable();
 
     void setUnbreakable(boolean unbreakable);
 
+    //TODO Add Attributes & Placeable/Destroyable key support
 
 }

@@ -24,6 +24,7 @@ import com.azortis.orbis.generator.Dimension;
 import com.azortis.orbis.generator.biome.Biome;
 import com.azortis.orbis.generator.biome.Distributor;
 import com.azortis.orbis.generator.terrain.Terrain;
+import com.azortis.orbis.item.ItemFactory;
 import com.azortis.orbis.item.ItemRegistry;
 import com.azortis.orbis.pack.PackManager;
 import com.azortis.orbis.registry.*;
@@ -35,6 +36,7 @@ import com.google.gson.GsonBuilder;
 import lombok.Getter;
 import net.kyori.adventure.key.Key;
 import org.apache.commons.io.FileUtils;
+import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 
 import java.io.File;
@@ -131,6 +133,11 @@ public final class Orbis {
             throw new IllegalStateException("Orbis hasn't yet been initialized!");
         }
         return null;
+    }
+
+    public @NotNull
+    static ItemFactory getItemFactory() {
+        return platform.getItemFactory();
     }
 
 }

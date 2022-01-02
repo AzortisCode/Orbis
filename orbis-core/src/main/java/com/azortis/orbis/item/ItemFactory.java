@@ -18,5 +18,13 @@
 
 package com.azortis.orbis.item;
 
+import org.jetbrains.annotations.NotNull;
+import org.jglrxavpok.hephaistos.nbt.NBTCompound;
+
 public interface ItemFactory {
+
+    @NotNull ItemStack createItemStack(@NotNull Item item);
+
+    @NotNull ItemStack createItemStack(@NotNull NBTCompound compound);
+
 }

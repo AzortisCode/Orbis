@@ -29,14 +29,14 @@ public final class Item implements Keyed {
     private final Key key;
     private final int id;
     private final int maxStackSize;
-    private final int maxDamage;
+    private final int durability;
     private final Key blockKey;
 
-    Item(@NotNull Key key, int id, int maxStackSize, int maxDamage, @Nullable Key blockKey) {
+    Item(@NotNull Key key, int id, int maxStackSize, int durability, @Nullable Key blockKey) {
         this.key = key;
         this.id = id;
         this.maxStackSize = maxStackSize;
-        this.maxDamage = maxDamage;
+        this.durability = durability;
         this.blockKey = blockKey;
     }
 
@@ -53,12 +53,12 @@ public final class Item implements Keyed {
         return maxStackSize;
     }
 
-    public int maxDamage() {
-        return maxDamage;
+    public int durability() {
+        return durability;
     }
 
     public boolean isDamageable() {
-        return maxDamage > 0;
+        return durability > 0;
     }
 
     public boolean isStackable() {

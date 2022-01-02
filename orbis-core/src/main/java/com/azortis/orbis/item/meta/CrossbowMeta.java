@@ -16,14 +16,22 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.item;
+package com.azortis.orbis.item.meta;
 
-public enum ItemFlag {
-    HIDE_ENCHANTS,
-    HIDE_ATTRIBUTES,
-    HIDE_UNBREAKABLE,
-    HIDE_CAN_DESTROY,
-    HIDE_CAN_PLACE,
-    HIDE_MISCELLANEOUS,
-    HIDE_DYE;
+import com.azortis.orbis.item.ItemStack;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
+
+public interface CrossbowMeta extends ItemMeta {
+
+    void addChargedProjectile(@NotNull ItemStack projectile);
+
+    @NotNull List<ItemStack> getChargedProjectiles();
+
+    boolean hasChargedProjectiles();
+
+    void setChargedProjectiles(@Nullable List<ItemStack> chargedProjectiles);
+
 }

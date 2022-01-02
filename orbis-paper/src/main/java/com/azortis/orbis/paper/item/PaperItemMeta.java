@@ -16,21 +16,28 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.paper.item.meta;
+package com.azortis.orbis.paper.item;
 
 import com.azortis.orbis.item.Enchantment;
 import com.azortis.orbis.item.ItemFlag;
 import com.azortis.orbis.item.meta.ItemMeta;
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.serializer.gson.GsonComponentSerializer;
 import org.bukkit.NamespacedKey;
+import org.bukkit.inventory.meta.Damageable;
+import org.bukkit.inventory.meta.Repairable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jglrxavpok.hephaistos.nbt.NBT;
+import org.jglrxavpok.hephaistos.nbt.NBTString;
+import org.jglrxavpok.hephaistos.nbt.NBTType;
+import org.jglrxavpok.hephaistos.nbt.mutable.MutableNBTCompound;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class PaperItemMeta implements ItemMeta {
-    private final org.bukkit.inventory.meta.ItemMeta handle;
+    protected final org.bukkit.inventory.meta.ItemMeta handle;
 
     public PaperItemMeta(org.bukkit.inventory.meta.ItemMeta handle) {
         this.handle = handle;
@@ -140,6 +147,31 @@ public class PaperItemMeta implements ItemMeta {
     }
 
     @Override
+    public boolean hasDamage() {
+        return ((Damageable) handle).hasDamage();
+    }
+
+    @Override
+    public int getDamage() {
+        return ((Damageable) handle).getDamage();
+    }
+
+    @Override
+    public void setDamage(int damage) {
+        ((Damageable) handle).setDamage(damage);
+    }
+
+    @Override
+    public int getRepairCost() {
+        return ((Repairable) handle).getRepairCost();
+    }
+
+    @Override
+    public void setRepairCost(int repairCost) {
+        ((Repairable) handle).setRepairCost(repairCost);
+    }
+
+    @Override
     public boolean isUnbreakable() {
         return handle.isUnbreakable();
     }
@@ -149,7 +181,44 @@ public class PaperItemMeta implements ItemMeta {
         handle.setUnbreakable(unbreakable);
     }
 
-    public org.bukkit.inventory.meta.ItemMeta getHandle() {
+    protected MutableNBTCompound serialize() {
+        MutableNBTCompound compound = new MutableNBTCompound();
+        MutableNBTCompound displayCompound = new MutableNBTCompound();
+        if (hasDisplayName()) {
+            assert getDisplayName() != null : "hasDisplayName returns true, but the value is null!";
+            displayCompound.set("Name", NBT.String(GsonComponentSerializer.gson().serialize(getDisplayName())));
+        }
+        if (hasLore()) {
+            assert getLore() != null : "hasLore returns true, but the value is null!";
+            List<NBTString> lore = new ArrayList<>();
+            for (Component loreLine : getLore()) {
+                lore.add(NBT.String(GsonComponentSerializer.gson().serialize(loreLine)));
+            }
+            displayCompound.set("Lore", NBT.List(NBTType.TAG_String, lore));
+        }
+        if (!displayCompound.isEmpty()) compound.set("display", displayCompound.toCompound());
+        if (!getItemFlags().isEmpty()) {
+            byte hideFlags = 0;
+            for (ItemFlag itemFlag : getItemFlags()) {
+                hideFlags |= getBitModifier(itemFlag);
+            }
+            compound.set("HideFlags", NBT.Byte(hideFlags)); // Officially value is stored as an int, but max value is 127
+        }
+        if (hasDamage()) {
+            compound.set("Damage", NBT.Int(getDamage()));
+        }
+        compound.set("Unbreakable", NBT.Boolean(isUnbreakable()));
+        if (hasCustomModelData()) {
+            compound.set("CustomModelData", NBT.Int(getCustomModelData()));
+        }
+        return compound;
+    }
+
+    private byte getBitModifier(ItemFlag itemFlag) {
+        return (byte) (1 << itemFlag.ordinal());
+    }
+
+    public @NotNull org.bukkit.inventory.meta.ItemMeta getHandle() {
         return handle;
     }
 
@@ -162,13 +231,13 @@ public class PaperItemMeta implements ItemMeta {
 
     private static org.bukkit.inventory.ItemFlag toPaper(ItemFlag itemFlag) {
         return switch (itemFlag) {
-            case HIDE_ATTRIBUTES -> org.bukkit.inventory.ItemFlag.HIDE_ATTRIBUTES;
-            case HIDE_DESTROYS -> org.bukkit.inventory.ItemFlag.HIDE_DESTROYS;
-            case HIDE_DYE -> org.bukkit.inventory.ItemFlag.HIDE_DYE;
             case HIDE_ENCHANTS -> org.bukkit.inventory.ItemFlag.HIDE_ENCHANTS;
-            case HIDE_PLACED_ON -> org.bukkit.inventory.ItemFlag.HIDE_PLACED_ON;
-            case HIDE_POTION_EFFECTS -> org.bukkit.inventory.ItemFlag.HIDE_POTION_EFFECTS;
+            case HIDE_ATTRIBUTES -> org.bukkit.inventory.ItemFlag.HIDE_ATTRIBUTES;
             case HIDE_UNBREAKABLE -> org.bukkit.inventory.ItemFlag.HIDE_UNBREAKABLE;
+            case HIDE_CAN_DESTROY -> org.bukkit.inventory.ItemFlag.HIDE_DESTROYS;
+            case HIDE_CAN_PLACE -> org.bukkit.inventory.ItemFlag.HIDE_PLACED_ON;
+            case HIDE_MISCELLANEOUS -> org.bukkit.inventory.ItemFlag.HIDE_POTION_EFFECTS;
+            case HIDE_DYE -> org.bukkit.inventory.ItemFlag.HIDE_DYE;
         };
     }
 
@@ -177,9 +246,9 @@ public class PaperItemMeta implements ItemMeta {
             case HIDE_ENCHANTS -> ItemFlag.HIDE_ENCHANTS;
             case HIDE_ATTRIBUTES -> ItemFlag.HIDE_ATTRIBUTES;
             case HIDE_UNBREAKABLE -> ItemFlag.HIDE_UNBREAKABLE;
-            case HIDE_DESTROYS -> ItemFlag.HIDE_DESTROYS;
-            case HIDE_PLACED_ON -> ItemFlag.HIDE_PLACED_ON;
-            case HIDE_POTION_EFFECTS -> ItemFlag.HIDE_POTION_EFFECTS;
+            case HIDE_DESTROYS -> ItemFlag.HIDE_CAN_DESTROY;
+            case HIDE_PLACED_ON -> ItemFlag.HIDE_CAN_PLACE;
+            case HIDE_POTION_EFFECTS -> ItemFlag.HIDE_MISCELLANEOUS;
             case HIDE_DYE -> ItemFlag.HIDE_DYE;
         };
     }

@@ -25,3306 +25,3306 @@ import org.jetbrains.annotations.NotNull;
  */
 @SuppressWarnings("all")
 public final class Items {
-  @NotNull
-  public static final Item AIR = ItemRegistry.fromItemKey("minecraft:air");
+    @NotNull
+    public static final Item AIR = ItemRegistry.fromItemKey("minecraft:air");
 
-  @NotNull
-  public static final Item STONE = ItemRegistry.fromItemKey("minecraft:stone");
+    @NotNull
+    public static final Item STONE = ItemRegistry.fromItemKey("minecraft:stone");
 
-  @NotNull
-  public static final Item GRANITE = ItemRegistry.fromItemKey("minecraft:granite");
+    @NotNull
+    public static final Item GRANITE = ItemRegistry.fromItemKey("minecraft:granite");
 
-  @NotNull
-  public static final Item POLISHED_GRANITE = ItemRegistry.fromItemKey("minecraft:polished_granite");
+    @NotNull
+    public static final Item POLISHED_GRANITE = ItemRegistry.fromItemKey("minecraft:polished_granite");
 
-  @NotNull
-  public static final Item DIORITE = ItemRegistry.fromItemKey("minecraft:diorite");
+    @NotNull
+    public static final Item DIORITE = ItemRegistry.fromItemKey("minecraft:diorite");
 
-  @NotNull
-  public static final Item POLISHED_DIORITE = ItemRegistry.fromItemKey("minecraft:polished_diorite");
+    @NotNull
+    public static final Item POLISHED_DIORITE = ItemRegistry.fromItemKey("minecraft:polished_diorite");
 
-  @NotNull
-  public static final Item ANDESITE = ItemRegistry.fromItemKey("minecraft:andesite");
+    @NotNull
+    public static final Item ANDESITE = ItemRegistry.fromItemKey("minecraft:andesite");
 
-  @NotNull
-  public static final Item POLISHED_ANDESITE = ItemRegistry.fromItemKey("minecraft:polished_andesite");
+    @NotNull
+    public static final Item POLISHED_ANDESITE = ItemRegistry.fromItemKey("minecraft:polished_andesite");
 
-  @NotNull
-  public static final Item DEEPSLATE = ItemRegistry.fromItemKey("minecraft:deepslate");
+    @NotNull
+    public static final Item DEEPSLATE = ItemRegistry.fromItemKey("minecraft:deepslate");
 
-  @NotNull
-  public static final Item COBBLED_DEEPSLATE = ItemRegistry.fromItemKey("minecraft:cobbled_deepslate");
+    @NotNull
+    public static final Item COBBLED_DEEPSLATE = ItemRegistry.fromItemKey("minecraft:cobbled_deepslate");
 
-  @NotNull
-  public static final Item POLISHED_DEEPSLATE = ItemRegistry.fromItemKey("minecraft:polished_deepslate");
+    @NotNull
+    public static final Item POLISHED_DEEPSLATE = ItemRegistry.fromItemKey("minecraft:polished_deepslate");
 
-  @NotNull
-  public static final Item CALCITE = ItemRegistry.fromItemKey("minecraft:calcite");
+    @NotNull
+    public static final Item CALCITE = ItemRegistry.fromItemKey("minecraft:calcite");
 
-  @NotNull
-  public static final Item TUFF = ItemRegistry.fromItemKey("minecraft:tuff");
+    @NotNull
+    public static final Item TUFF = ItemRegistry.fromItemKey("minecraft:tuff");
 
-  @NotNull
-  public static final Item DRIPSTONE_BLOCK = ItemRegistry.fromItemKey("minecraft:dripstone_block");
+    @NotNull
+    public static final Item DRIPSTONE_BLOCK = ItemRegistry.fromItemKey("minecraft:dripstone_block");
 
-  @NotNull
-  public static final Item GRASS_BLOCK = ItemRegistry.fromItemKey("minecraft:grass_block");
+    @NotNull
+    public static final Item GRASS_BLOCK = ItemRegistry.fromItemKey("minecraft:grass_block");
 
-  @NotNull
-  public static final Item DIRT = ItemRegistry.fromItemKey("minecraft:dirt");
+    @NotNull
+    public static final Item DIRT = ItemRegistry.fromItemKey("minecraft:dirt");
 
-  @NotNull
-  public static final Item COARSE_DIRT = ItemRegistry.fromItemKey("minecraft:coarse_dirt");
+    @NotNull
+    public static final Item COARSE_DIRT = ItemRegistry.fromItemKey("minecraft:coarse_dirt");
 
-  @NotNull
-  public static final Item PODZOL = ItemRegistry.fromItemKey("minecraft:podzol");
+    @NotNull
+    public static final Item PODZOL = ItemRegistry.fromItemKey("minecraft:podzol");
 
-  @NotNull
-  public static final Item ROOTED_DIRT = ItemRegistry.fromItemKey("minecraft:rooted_dirt");
+    @NotNull
+    public static final Item ROOTED_DIRT = ItemRegistry.fromItemKey("minecraft:rooted_dirt");
 
-  @NotNull
-  public static final Item CRIMSON_NYLIUM = ItemRegistry.fromItemKey("minecraft:crimson_nylium");
+    @NotNull
+    public static final Item CRIMSON_NYLIUM = ItemRegistry.fromItemKey("minecraft:crimson_nylium");
 
-  @NotNull
-  public static final Item WARPED_NYLIUM = ItemRegistry.fromItemKey("minecraft:warped_nylium");
+    @NotNull
+    public static final Item WARPED_NYLIUM = ItemRegistry.fromItemKey("minecraft:warped_nylium");
 
-  @NotNull
-  public static final Item COBBLESTONE = ItemRegistry.fromItemKey("minecraft:cobblestone");
+    @NotNull
+    public static final Item COBBLESTONE = ItemRegistry.fromItemKey("minecraft:cobblestone");
 
-  @NotNull
-  public static final Item OAK_PLANKS = ItemRegistry.fromItemKey("minecraft:oak_planks");
+    @NotNull
+    public static final Item OAK_PLANKS = ItemRegistry.fromItemKey("minecraft:oak_planks");
 
-  @NotNull
-  public static final Item SPRUCE_PLANKS = ItemRegistry.fromItemKey("minecraft:spruce_planks");
+    @NotNull
+    public static final Item SPRUCE_PLANKS = ItemRegistry.fromItemKey("minecraft:spruce_planks");
 
-  @NotNull
-  public static final Item BIRCH_PLANKS = ItemRegistry.fromItemKey("minecraft:birch_planks");
+    @NotNull
+    public static final Item BIRCH_PLANKS = ItemRegistry.fromItemKey("minecraft:birch_planks");
 
-  @NotNull
-  public static final Item JUNGLE_PLANKS = ItemRegistry.fromItemKey("minecraft:jungle_planks");
+    @NotNull
+    public static final Item JUNGLE_PLANKS = ItemRegistry.fromItemKey("minecraft:jungle_planks");
 
-  @NotNull
-  public static final Item ACACIA_PLANKS = ItemRegistry.fromItemKey("minecraft:acacia_planks");
+    @NotNull
+    public static final Item ACACIA_PLANKS = ItemRegistry.fromItemKey("minecraft:acacia_planks");
 
-  @NotNull
-  public static final Item DARK_OAK_PLANKS = ItemRegistry.fromItemKey("minecraft:dark_oak_planks");
+    @NotNull
+    public static final Item DARK_OAK_PLANKS = ItemRegistry.fromItemKey("minecraft:dark_oak_planks");
 
-  @NotNull
-  public static final Item CRIMSON_PLANKS = ItemRegistry.fromItemKey("minecraft:crimson_planks");
+    @NotNull
+    public static final Item CRIMSON_PLANKS = ItemRegistry.fromItemKey("minecraft:crimson_planks");
 
-  @NotNull
-  public static final Item WARPED_PLANKS = ItemRegistry.fromItemKey("minecraft:warped_planks");
+    @NotNull
+    public static final Item WARPED_PLANKS = ItemRegistry.fromItemKey("minecraft:warped_planks");
 
-  @NotNull
-  public static final Item OAK_SAPLING = ItemRegistry.fromItemKey("minecraft:oak_sapling");
+    @NotNull
+    public static final Item OAK_SAPLING = ItemRegistry.fromItemKey("minecraft:oak_sapling");
 
-  @NotNull
-  public static final Item SPRUCE_SAPLING = ItemRegistry.fromItemKey("minecraft:spruce_sapling");
+    @NotNull
+    public static final Item SPRUCE_SAPLING = ItemRegistry.fromItemKey("minecraft:spruce_sapling");
 
-  @NotNull
-  public static final Item BIRCH_SAPLING = ItemRegistry.fromItemKey("minecraft:birch_sapling");
+    @NotNull
+    public static final Item BIRCH_SAPLING = ItemRegistry.fromItemKey("minecraft:birch_sapling");
 
-  @NotNull
-  public static final Item JUNGLE_SAPLING = ItemRegistry.fromItemKey("minecraft:jungle_sapling");
+    @NotNull
+    public static final Item JUNGLE_SAPLING = ItemRegistry.fromItemKey("minecraft:jungle_sapling");
 
-  @NotNull
-  public static final Item ACACIA_SAPLING = ItemRegistry.fromItemKey("minecraft:acacia_sapling");
+    @NotNull
+    public static final Item ACACIA_SAPLING = ItemRegistry.fromItemKey("minecraft:acacia_sapling");
 
-  @NotNull
-  public static final Item DARK_OAK_SAPLING = ItemRegistry.fromItemKey("minecraft:dark_oak_sapling");
+    @NotNull
+    public static final Item DARK_OAK_SAPLING = ItemRegistry.fromItemKey("minecraft:dark_oak_sapling");
 
-  @NotNull
-  public static final Item BEDROCK = ItemRegistry.fromItemKey("minecraft:bedrock");
+    @NotNull
+    public static final Item BEDROCK = ItemRegistry.fromItemKey("minecraft:bedrock");
 
-  @NotNull
-  public static final Item SAND = ItemRegistry.fromItemKey("minecraft:sand");
+    @NotNull
+    public static final Item SAND = ItemRegistry.fromItemKey("minecraft:sand");
 
-  @NotNull
-  public static final Item RED_SAND = ItemRegistry.fromItemKey("minecraft:red_sand");
+    @NotNull
+    public static final Item RED_SAND = ItemRegistry.fromItemKey("minecraft:red_sand");
 
-  @NotNull
-  public static final Item GRAVEL = ItemRegistry.fromItemKey("minecraft:gravel");
+    @NotNull
+    public static final Item GRAVEL = ItemRegistry.fromItemKey("minecraft:gravel");
 
-  @NotNull
-  public static final Item COAL_ORE = ItemRegistry.fromItemKey("minecraft:coal_ore");
+    @NotNull
+    public static final Item COAL_ORE = ItemRegistry.fromItemKey("minecraft:coal_ore");
 
-  @NotNull
-  public static final Item DEEPSLATE_COAL_ORE = ItemRegistry.fromItemKey("minecraft:deepslate_coal_ore");
+    @NotNull
+    public static final Item DEEPSLATE_COAL_ORE = ItemRegistry.fromItemKey("minecraft:deepslate_coal_ore");
 
-  @NotNull
-  public static final Item IRON_ORE = ItemRegistry.fromItemKey("minecraft:iron_ore");
+    @NotNull
+    public static final Item IRON_ORE = ItemRegistry.fromItemKey("minecraft:iron_ore");
 
-  @NotNull
-  public static final Item DEEPSLATE_IRON_ORE = ItemRegistry.fromItemKey("minecraft:deepslate_iron_ore");
+    @NotNull
+    public static final Item DEEPSLATE_IRON_ORE = ItemRegistry.fromItemKey("minecraft:deepslate_iron_ore");
 
-  @NotNull
-  public static final Item COPPER_ORE = ItemRegistry.fromItemKey("minecraft:copper_ore");
+    @NotNull
+    public static final Item COPPER_ORE = ItemRegistry.fromItemKey("minecraft:copper_ore");
 
-  @NotNull
-  public static final Item DEEPSLATE_COPPER_ORE = ItemRegistry.fromItemKey("minecraft:deepslate_copper_ore");
+    @NotNull
+    public static final Item DEEPSLATE_COPPER_ORE = ItemRegistry.fromItemKey("minecraft:deepslate_copper_ore");
 
-  @NotNull
-  public static final Item GOLD_ORE = ItemRegistry.fromItemKey("minecraft:gold_ore");
+    @NotNull
+    public static final Item GOLD_ORE = ItemRegistry.fromItemKey("minecraft:gold_ore");
 
-  @NotNull
-  public static final Item DEEPSLATE_GOLD_ORE = ItemRegistry.fromItemKey("minecraft:deepslate_gold_ore");
+    @NotNull
+    public static final Item DEEPSLATE_GOLD_ORE = ItemRegistry.fromItemKey("minecraft:deepslate_gold_ore");
 
-  @NotNull
-  public static final Item REDSTONE_ORE = ItemRegistry.fromItemKey("minecraft:redstone_ore");
+    @NotNull
+    public static final Item REDSTONE_ORE = ItemRegistry.fromItemKey("minecraft:redstone_ore");
 
-  @NotNull
-  public static final Item DEEPSLATE_REDSTONE_ORE = ItemRegistry.fromItemKey("minecraft:deepslate_redstone_ore");
+    @NotNull
+    public static final Item DEEPSLATE_REDSTONE_ORE = ItemRegistry.fromItemKey("minecraft:deepslate_redstone_ore");
 
-  @NotNull
-  public static final Item EMERALD_ORE = ItemRegistry.fromItemKey("minecraft:emerald_ore");
+    @NotNull
+    public static final Item EMERALD_ORE = ItemRegistry.fromItemKey("minecraft:emerald_ore");
 
-  @NotNull
-  public static final Item DEEPSLATE_EMERALD_ORE = ItemRegistry.fromItemKey("minecraft:deepslate_emerald_ore");
+    @NotNull
+    public static final Item DEEPSLATE_EMERALD_ORE = ItemRegistry.fromItemKey("minecraft:deepslate_emerald_ore");
 
-  @NotNull
-  public static final Item LAPIS_ORE = ItemRegistry.fromItemKey("minecraft:lapis_ore");
+    @NotNull
+    public static final Item LAPIS_ORE = ItemRegistry.fromItemKey("minecraft:lapis_ore");
 
-  @NotNull
-  public static final Item DEEPSLATE_LAPIS_ORE = ItemRegistry.fromItemKey("minecraft:deepslate_lapis_ore");
+    @NotNull
+    public static final Item DEEPSLATE_LAPIS_ORE = ItemRegistry.fromItemKey("minecraft:deepslate_lapis_ore");
 
-  @NotNull
-  public static final Item DIAMOND_ORE = ItemRegistry.fromItemKey("minecraft:diamond_ore");
+    @NotNull
+    public static final Item DIAMOND_ORE = ItemRegistry.fromItemKey("minecraft:diamond_ore");
 
-  @NotNull
-  public static final Item DEEPSLATE_DIAMOND_ORE = ItemRegistry.fromItemKey("minecraft:deepslate_diamond_ore");
+    @NotNull
+    public static final Item DEEPSLATE_DIAMOND_ORE = ItemRegistry.fromItemKey("minecraft:deepslate_diamond_ore");
 
-  @NotNull
-  public static final Item NETHER_GOLD_ORE = ItemRegistry.fromItemKey("minecraft:nether_gold_ore");
+    @NotNull
+    public static final Item NETHER_GOLD_ORE = ItemRegistry.fromItemKey("minecraft:nether_gold_ore");
 
-  @NotNull
-  public static final Item NETHER_QUARTZ_ORE = ItemRegistry.fromItemKey("minecraft:nether_quartz_ore");
+    @NotNull
+    public static final Item NETHER_QUARTZ_ORE = ItemRegistry.fromItemKey("minecraft:nether_quartz_ore");
 
-  @NotNull
-  public static final Item ANCIENT_DEBRIS = ItemRegistry.fromItemKey("minecraft:ancient_debris");
+    @NotNull
+    public static final Item ANCIENT_DEBRIS = ItemRegistry.fromItemKey("minecraft:ancient_debris");
 
-  @NotNull
-  public static final Item COAL_BLOCK = ItemRegistry.fromItemKey("minecraft:coal_block");
+    @NotNull
+    public static final Item COAL_BLOCK = ItemRegistry.fromItemKey("minecraft:coal_block");
 
-  @NotNull
-  public static final Item RAW_IRON_BLOCK = ItemRegistry.fromItemKey("minecraft:raw_iron_block");
+    @NotNull
+    public static final Item RAW_IRON_BLOCK = ItemRegistry.fromItemKey("minecraft:raw_iron_block");
 
-  @NotNull
-  public static final Item RAW_COPPER_BLOCK = ItemRegistry.fromItemKey("minecraft:raw_copper_block");
+    @NotNull
+    public static final Item RAW_COPPER_BLOCK = ItemRegistry.fromItemKey("minecraft:raw_copper_block");
 
-  @NotNull
-  public static final Item RAW_GOLD_BLOCK = ItemRegistry.fromItemKey("minecraft:raw_gold_block");
+    @NotNull
+    public static final Item RAW_GOLD_BLOCK = ItemRegistry.fromItemKey("minecraft:raw_gold_block");
 
-  @NotNull
-  public static final Item AMETHYST_BLOCK = ItemRegistry.fromItemKey("minecraft:amethyst_block");
+    @NotNull
+    public static final Item AMETHYST_BLOCK = ItemRegistry.fromItemKey("minecraft:amethyst_block");
 
-  @NotNull
-  public static final Item BUDDING_AMETHYST = ItemRegistry.fromItemKey("minecraft:budding_amethyst");
+    @NotNull
+    public static final Item BUDDING_AMETHYST = ItemRegistry.fromItemKey("minecraft:budding_amethyst");
 
-  @NotNull
-  public static final Item IRON_BLOCK = ItemRegistry.fromItemKey("minecraft:iron_block");
+    @NotNull
+    public static final Item IRON_BLOCK = ItemRegistry.fromItemKey("minecraft:iron_block");
 
-  @NotNull
-  public static final Item COPPER_BLOCK = ItemRegistry.fromItemKey("minecraft:copper_block");
+    @NotNull
+    public static final Item COPPER_BLOCK = ItemRegistry.fromItemKey("minecraft:copper_block");
 
-  @NotNull
-  public static final Item GOLD_BLOCK = ItemRegistry.fromItemKey("minecraft:gold_block");
+    @NotNull
+    public static final Item GOLD_BLOCK = ItemRegistry.fromItemKey("minecraft:gold_block");
 
-  @NotNull
-  public static final Item DIAMOND_BLOCK = ItemRegistry.fromItemKey("minecraft:diamond_block");
+    @NotNull
+    public static final Item DIAMOND_BLOCK = ItemRegistry.fromItemKey("minecraft:diamond_block");
 
-  @NotNull
-  public static final Item NETHERITE_BLOCK = ItemRegistry.fromItemKey("minecraft:netherite_block");
+    @NotNull
+    public static final Item NETHERITE_BLOCK = ItemRegistry.fromItemKey("minecraft:netherite_block");
 
-  @NotNull
-  public static final Item EXPOSED_COPPER = ItemRegistry.fromItemKey("minecraft:exposed_copper");
+    @NotNull
+    public static final Item EXPOSED_COPPER = ItemRegistry.fromItemKey("minecraft:exposed_copper");
 
-  @NotNull
-  public static final Item WEATHERED_COPPER = ItemRegistry.fromItemKey("minecraft:weathered_copper");
+    @NotNull
+    public static final Item WEATHERED_COPPER = ItemRegistry.fromItemKey("minecraft:weathered_copper");
 
-  @NotNull
-  public static final Item OXIDIZED_COPPER = ItemRegistry.fromItemKey("minecraft:oxidized_copper");
+    @NotNull
+    public static final Item OXIDIZED_COPPER = ItemRegistry.fromItemKey("minecraft:oxidized_copper");
 
-  @NotNull
-  public static final Item CUT_COPPER = ItemRegistry.fromItemKey("minecraft:cut_copper");
+    @NotNull
+    public static final Item CUT_COPPER = ItemRegistry.fromItemKey("minecraft:cut_copper");
 
-  @NotNull
-  public static final Item EXPOSED_CUT_COPPER = ItemRegistry.fromItemKey("minecraft:exposed_cut_copper");
+    @NotNull
+    public static final Item EXPOSED_CUT_COPPER = ItemRegistry.fromItemKey("minecraft:exposed_cut_copper");
 
-  @NotNull
-  public static final Item WEATHERED_CUT_COPPER = ItemRegistry.fromItemKey("minecraft:weathered_cut_copper");
+    @NotNull
+    public static final Item WEATHERED_CUT_COPPER = ItemRegistry.fromItemKey("minecraft:weathered_cut_copper");
 
-  @NotNull
-  public static final Item OXIDIZED_CUT_COPPER = ItemRegistry.fromItemKey("minecraft:oxidized_cut_copper");
+    @NotNull
+    public static final Item OXIDIZED_CUT_COPPER = ItemRegistry.fromItemKey("minecraft:oxidized_cut_copper");
 
-  @NotNull
-  public static final Item CUT_COPPER_STAIRS = ItemRegistry.fromItemKey("minecraft:cut_copper_stairs");
+    @NotNull
+    public static final Item CUT_COPPER_STAIRS = ItemRegistry.fromItemKey("minecraft:cut_copper_stairs");
 
-  @NotNull
-  public static final Item EXPOSED_CUT_COPPER_STAIRS = ItemRegistry.fromItemKey("minecraft:exposed_cut_copper_stairs");
+    @NotNull
+    public static final Item EXPOSED_CUT_COPPER_STAIRS = ItemRegistry.fromItemKey("minecraft:exposed_cut_copper_stairs");
 
-  @NotNull
-  public static final Item WEATHERED_CUT_COPPER_STAIRS = ItemRegistry.fromItemKey("minecraft:weathered_cut_copper_stairs");
+    @NotNull
+    public static final Item WEATHERED_CUT_COPPER_STAIRS = ItemRegistry.fromItemKey("minecraft:weathered_cut_copper_stairs");
 
-  @NotNull
-  public static final Item OXIDIZED_CUT_COPPER_STAIRS = ItemRegistry.fromItemKey("minecraft:oxidized_cut_copper_stairs");
+    @NotNull
+    public static final Item OXIDIZED_CUT_COPPER_STAIRS = ItemRegistry.fromItemKey("minecraft:oxidized_cut_copper_stairs");
 
-  @NotNull
-  public static final Item CUT_COPPER_SLAB = ItemRegistry.fromItemKey("minecraft:cut_copper_slab");
+    @NotNull
+    public static final Item CUT_COPPER_SLAB = ItemRegistry.fromItemKey("minecraft:cut_copper_slab");
 
-  @NotNull
-  public static final Item EXPOSED_CUT_COPPER_SLAB = ItemRegistry.fromItemKey("minecraft:exposed_cut_copper_slab");
+    @NotNull
+    public static final Item EXPOSED_CUT_COPPER_SLAB = ItemRegistry.fromItemKey("minecraft:exposed_cut_copper_slab");
 
-  @NotNull
-  public static final Item WEATHERED_CUT_COPPER_SLAB = ItemRegistry.fromItemKey("minecraft:weathered_cut_copper_slab");
+    @NotNull
+    public static final Item WEATHERED_CUT_COPPER_SLAB = ItemRegistry.fromItemKey("minecraft:weathered_cut_copper_slab");
 
-  @NotNull
-  public static final Item OXIDIZED_CUT_COPPER_SLAB = ItemRegistry.fromItemKey("minecraft:oxidized_cut_copper_slab");
+    @NotNull
+    public static final Item OXIDIZED_CUT_COPPER_SLAB = ItemRegistry.fromItemKey("minecraft:oxidized_cut_copper_slab");
 
-  @NotNull
-  public static final Item WAXED_COPPER_BLOCK = ItemRegistry.fromItemKey("minecraft:waxed_copper_block");
+    @NotNull
+    public static final Item WAXED_COPPER_BLOCK = ItemRegistry.fromItemKey("minecraft:waxed_copper_block");
 
-  @NotNull
-  public static final Item WAXED_EXPOSED_COPPER = ItemRegistry.fromItemKey("minecraft:waxed_exposed_copper");
+    @NotNull
+    public static final Item WAXED_EXPOSED_COPPER = ItemRegistry.fromItemKey("minecraft:waxed_exposed_copper");
 
-  @NotNull
-  public static final Item WAXED_WEATHERED_COPPER = ItemRegistry.fromItemKey("minecraft:waxed_weathered_copper");
+    @NotNull
+    public static final Item WAXED_WEATHERED_COPPER = ItemRegistry.fromItemKey("minecraft:waxed_weathered_copper");
 
-  @NotNull
-  public static final Item WAXED_OXIDIZED_COPPER = ItemRegistry.fromItemKey("minecraft:waxed_oxidized_copper");
+    @NotNull
+    public static final Item WAXED_OXIDIZED_COPPER = ItemRegistry.fromItemKey("minecraft:waxed_oxidized_copper");
 
-  @NotNull
-  public static final Item WAXED_CUT_COPPER = ItemRegistry.fromItemKey("minecraft:waxed_cut_copper");
+    @NotNull
+    public static final Item WAXED_CUT_COPPER = ItemRegistry.fromItemKey("minecraft:waxed_cut_copper");
 
-  @NotNull
-  public static final Item WAXED_EXPOSED_CUT_COPPER = ItemRegistry.fromItemKey("minecraft:waxed_exposed_cut_copper");
+    @NotNull
+    public static final Item WAXED_EXPOSED_CUT_COPPER = ItemRegistry.fromItemKey("minecraft:waxed_exposed_cut_copper");
 
-  @NotNull
-  public static final Item WAXED_WEATHERED_CUT_COPPER = ItemRegistry.fromItemKey("minecraft:waxed_weathered_cut_copper");
+    @NotNull
+    public static final Item WAXED_WEATHERED_CUT_COPPER = ItemRegistry.fromItemKey("minecraft:waxed_weathered_cut_copper");
 
-  @NotNull
-  public static final Item WAXED_OXIDIZED_CUT_COPPER = ItemRegistry.fromItemKey("minecraft:waxed_oxidized_cut_copper");
+    @NotNull
+    public static final Item WAXED_OXIDIZED_CUT_COPPER = ItemRegistry.fromItemKey("minecraft:waxed_oxidized_cut_copper");
 
-  @NotNull
-  public static final Item WAXED_CUT_COPPER_STAIRS = ItemRegistry.fromItemKey("minecraft:waxed_cut_copper_stairs");
+    @NotNull
+    public static final Item WAXED_CUT_COPPER_STAIRS = ItemRegistry.fromItemKey("minecraft:waxed_cut_copper_stairs");
 
-  @NotNull
-  public static final Item WAXED_EXPOSED_CUT_COPPER_STAIRS = ItemRegistry.fromItemKey("minecraft:waxed_exposed_cut_copper_stairs");
+    @NotNull
+    public static final Item WAXED_EXPOSED_CUT_COPPER_STAIRS = ItemRegistry.fromItemKey("minecraft:waxed_exposed_cut_copper_stairs");
 
-  @NotNull
-  public static final Item WAXED_WEATHERED_CUT_COPPER_STAIRS = ItemRegistry.fromItemKey("minecraft:waxed_weathered_cut_copper_stairs");
+    @NotNull
+    public static final Item WAXED_WEATHERED_CUT_COPPER_STAIRS = ItemRegistry.fromItemKey("minecraft:waxed_weathered_cut_copper_stairs");
 
-  @NotNull
-  public static final Item WAXED_OXIDIZED_CUT_COPPER_STAIRS = ItemRegistry.fromItemKey("minecraft:waxed_oxidized_cut_copper_stairs");
+    @NotNull
+    public static final Item WAXED_OXIDIZED_CUT_COPPER_STAIRS = ItemRegistry.fromItemKey("minecraft:waxed_oxidized_cut_copper_stairs");
 
-  @NotNull
-  public static final Item WAXED_CUT_COPPER_SLAB = ItemRegistry.fromItemKey("minecraft:waxed_cut_copper_slab");
+    @NotNull
+    public static final Item WAXED_CUT_COPPER_SLAB = ItemRegistry.fromItemKey("minecraft:waxed_cut_copper_slab");
 
-  @NotNull
-  public static final Item WAXED_EXPOSED_CUT_COPPER_SLAB = ItemRegistry.fromItemKey("minecraft:waxed_exposed_cut_copper_slab");
+    @NotNull
+    public static final Item WAXED_EXPOSED_CUT_COPPER_SLAB = ItemRegistry.fromItemKey("minecraft:waxed_exposed_cut_copper_slab");
 
-  @NotNull
-  public static final Item WAXED_WEATHERED_CUT_COPPER_SLAB = ItemRegistry.fromItemKey("minecraft:waxed_weathered_cut_copper_slab");
+    @NotNull
+    public static final Item WAXED_WEATHERED_CUT_COPPER_SLAB = ItemRegistry.fromItemKey("minecraft:waxed_weathered_cut_copper_slab");
 
-  @NotNull
-  public static final Item WAXED_OXIDIZED_CUT_COPPER_SLAB = ItemRegistry.fromItemKey("minecraft:waxed_oxidized_cut_copper_slab");
+    @NotNull
+    public static final Item WAXED_OXIDIZED_CUT_COPPER_SLAB = ItemRegistry.fromItemKey("minecraft:waxed_oxidized_cut_copper_slab");
 
-  @NotNull
-  public static final Item OAK_LOG = ItemRegistry.fromItemKey("minecraft:oak_log");
+    @NotNull
+    public static final Item OAK_LOG = ItemRegistry.fromItemKey("minecraft:oak_log");
 
-  @NotNull
-  public static final Item SPRUCE_LOG = ItemRegistry.fromItemKey("minecraft:spruce_log");
+    @NotNull
+    public static final Item SPRUCE_LOG = ItemRegistry.fromItemKey("minecraft:spruce_log");
 
-  @NotNull
-  public static final Item BIRCH_LOG = ItemRegistry.fromItemKey("minecraft:birch_log");
+    @NotNull
+    public static final Item BIRCH_LOG = ItemRegistry.fromItemKey("minecraft:birch_log");
 
-  @NotNull
-  public static final Item JUNGLE_LOG = ItemRegistry.fromItemKey("minecraft:jungle_log");
+    @NotNull
+    public static final Item JUNGLE_LOG = ItemRegistry.fromItemKey("minecraft:jungle_log");
 
-  @NotNull
-  public static final Item ACACIA_LOG = ItemRegistry.fromItemKey("minecraft:acacia_log");
+    @NotNull
+    public static final Item ACACIA_LOG = ItemRegistry.fromItemKey("minecraft:acacia_log");
 
-  @NotNull
-  public static final Item DARK_OAK_LOG = ItemRegistry.fromItemKey("minecraft:dark_oak_log");
+    @NotNull
+    public static final Item DARK_OAK_LOG = ItemRegistry.fromItemKey("minecraft:dark_oak_log");
 
-  @NotNull
-  public static final Item CRIMSON_STEM = ItemRegistry.fromItemKey("minecraft:crimson_stem");
+    @NotNull
+    public static final Item CRIMSON_STEM = ItemRegistry.fromItemKey("minecraft:crimson_stem");
 
-  @NotNull
-  public static final Item WARPED_STEM = ItemRegistry.fromItemKey("minecraft:warped_stem");
+    @NotNull
+    public static final Item WARPED_STEM = ItemRegistry.fromItemKey("minecraft:warped_stem");
 
-  @NotNull
-  public static final Item STRIPPED_OAK_LOG = ItemRegistry.fromItemKey("minecraft:stripped_oak_log");
+    @NotNull
+    public static final Item STRIPPED_OAK_LOG = ItemRegistry.fromItemKey("minecraft:stripped_oak_log");
 
-  @NotNull
-  public static final Item STRIPPED_SPRUCE_LOG = ItemRegistry.fromItemKey("minecraft:stripped_spruce_log");
+    @NotNull
+    public static final Item STRIPPED_SPRUCE_LOG = ItemRegistry.fromItemKey("minecraft:stripped_spruce_log");
 
-  @NotNull
-  public static final Item STRIPPED_BIRCH_LOG = ItemRegistry.fromItemKey("minecraft:stripped_birch_log");
+    @NotNull
+    public static final Item STRIPPED_BIRCH_LOG = ItemRegistry.fromItemKey("minecraft:stripped_birch_log");
 
-  @NotNull
-  public static final Item STRIPPED_JUNGLE_LOG = ItemRegistry.fromItemKey("minecraft:stripped_jungle_log");
+    @NotNull
+    public static final Item STRIPPED_JUNGLE_LOG = ItemRegistry.fromItemKey("minecraft:stripped_jungle_log");
 
-  @NotNull
-  public static final Item STRIPPED_ACACIA_LOG = ItemRegistry.fromItemKey("minecraft:stripped_acacia_log");
+    @NotNull
+    public static final Item STRIPPED_ACACIA_LOG = ItemRegistry.fromItemKey("minecraft:stripped_acacia_log");
 
-  @NotNull
-  public static final Item STRIPPED_DARK_OAK_LOG = ItemRegistry.fromItemKey("minecraft:stripped_dark_oak_log");
+    @NotNull
+    public static final Item STRIPPED_DARK_OAK_LOG = ItemRegistry.fromItemKey("minecraft:stripped_dark_oak_log");
 
-  @NotNull
-  public static final Item STRIPPED_CRIMSON_STEM = ItemRegistry.fromItemKey("minecraft:stripped_crimson_stem");
+    @NotNull
+    public static final Item STRIPPED_CRIMSON_STEM = ItemRegistry.fromItemKey("minecraft:stripped_crimson_stem");
 
-  @NotNull
-  public static final Item STRIPPED_WARPED_STEM = ItemRegistry.fromItemKey("minecraft:stripped_warped_stem");
+    @NotNull
+    public static final Item STRIPPED_WARPED_STEM = ItemRegistry.fromItemKey("minecraft:stripped_warped_stem");
 
-  @NotNull
-  public static final Item STRIPPED_OAK_WOOD = ItemRegistry.fromItemKey("minecraft:stripped_oak_wood");
+    @NotNull
+    public static final Item STRIPPED_OAK_WOOD = ItemRegistry.fromItemKey("minecraft:stripped_oak_wood");
 
-  @NotNull
-  public static final Item STRIPPED_SPRUCE_WOOD = ItemRegistry.fromItemKey("minecraft:stripped_spruce_wood");
+    @NotNull
+    public static final Item STRIPPED_SPRUCE_WOOD = ItemRegistry.fromItemKey("minecraft:stripped_spruce_wood");
 
-  @NotNull
-  public static final Item STRIPPED_BIRCH_WOOD = ItemRegistry.fromItemKey("minecraft:stripped_birch_wood");
+    @NotNull
+    public static final Item STRIPPED_BIRCH_WOOD = ItemRegistry.fromItemKey("minecraft:stripped_birch_wood");
 
-  @NotNull
-  public static final Item STRIPPED_JUNGLE_WOOD = ItemRegistry.fromItemKey("minecraft:stripped_jungle_wood");
+    @NotNull
+    public static final Item STRIPPED_JUNGLE_WOOD = ItemRegistry.fromItemKey("minecraft:stripped_jungle_wood");
 
-  @NotNull
-  public static final Item STRIPPED_ACACIA_WOOD = ItemRegistry.fromItemKey("minecraft:stripped_acacia_wood");
+    @NotNull
+    public static final Item STRIPPED_ACACIA_WOOD = ItemRegistry.fromItemKey("minecraft:stripped_acacia_wood");
 
-  @NotNull
-  public static final Item STRIPPED_DARK_OAK_WOOD = ItemRegistry.fromItemKey("minecraft:stripped_dark_oak_wood");
+    @NotNull
+    public static final Item STRIPPED_DARK_OAK_WOOD = ItemRegistry.fromItemKey("minecraft:stripped_dark_oak_wood");
 
-  @NotNull
-  public static final Item STRIPPED_CRIMSON_HYPHAE = ItemRegistry.fromItemKey("minecraft:stripped_crimson_hyphae");
+    @NotNull
+    public static final Item STRIPPED_CRIMSON_HYPHAE = ItemRegistry.fromItemKey("minecraft:stripped_crimson_hyphae");
 
-  @NotNull
-  public static final Item STRIPPED_WARPED_HYPHAE = ItemRegistry.fromItemKey("minecraft:stripped_warped_hyphae");
+    @NotNull
+    public static final Item STRIPPED_WARPED_HYPHAE = ItemRegistry.fromItemKey("minecraft:stripped_warped_hyphae");
 
-  @NotNull
-  public static final Item OAK_WOOD = ItemRegistry.fromItemKey("minecraft:oak_wood");
+    @NotNull
+    public static final Item OAK_WOOD = ItemRegistry.fromItemKey("minecraft:oak_wood");
 
-  @NotNull
-  public static final Item SPRUCE_WOOD = ItemRegistry.fromItemKey("minecraft:spruce_wood");
+    @NotNull
+    public static final Item SPRUCE_WOOD = ItemRegistry.fromItemKey("minecraft:spruce_wood");
 
-  @NotNull
-  public static final Item BIRCH_WOOD = ItemRegistry.fromItemKey("minecraft:birch_wood");
+    @NotNull
+    public static final Item BIRCH_WOOD = ItemRegistry.fromItemKey("minecraft:birch_wood");
 
-  @NotNull
-  public static final Item JUNGLE_WOOD = ItemRegistry.fromItemKey("minecraft:jungle_wood");
+    @NotNull
+    public static final Item JUNGLE_WOOD = ItemRegistry.fromItemKey("minecraft:jungle_wood");
 
-  @NotNull
-  public static final Item ACACIA_WOOD = ItemRegistry.fromItemKey("minecraft:acacia_wood");
+    @NotNull
+    public static final Item ACACIA_WOOD = ItemRegistry.fromItemKey("minecraft:acacia_wood");
 
-  @NotNull
-  public static final Item DARK_OAK_WOOD = ItemRegistry.fromItemKey("minecraft:dark_oak_wood");
+    @NotNull
+    public static final Item DARK_OAK_WOOD = ItemRegistry.fromItemKey("minecraft:dark_oak_wood");
 
-  @NotNull
-  public static final Item CRIMSON_HYPHAE = ItemRegistry.fromItemKey("minecraft:crimson_hyphae");
+    @NotNull
+    public static final Item CRIMSON_HYPHAE = ItemRegistry.fromItemKey("minecraft:crimson_hyphae");
 
-  @NotNull
-  public static final Item WARPED_HYPHAE = ItemRegistry.fromItemKey("minecraft:warped_hyphae");
+    @NotNull
+    public static final Item WARPED_HYPHAE = ItemRegistry.fromItemKey("minecraft:warped_hyphae");
 
-  @NotNull
-  public static final Item OAK_LEAVES = ItemRegistry.fromItemKey("minecraft:oak_leaves");
+    @NotNull
+    public static final Item OAK_LEAVES = ItemRegistry.fromItemKey("minecraft:oak_leaves");
 
-  @NotNull
-  public static final Item SPRUCE_LEAVES = ItemRegistry.fromItemKey("minecraft:spruce_leaves");
+    @NotNull
+    public static final Item SPRUCE_LEAVES = ItemRegistry.fromItemKey("minecraft:spruce_leaves");
 
-  @NotNull
-  public static final Item BIRCH_LEAVES = ItemRegistry.fromItemKey("minecraft:birch_leaves");
+    @NotNull
+    public static final Item BIRCH_LEAVES = ItemRegistry.fromItemKey("minecraft:birch_leaves");
 
-  @NotNull
-  public static final Item JUNGLE_LEAVES = ItemRegistry.fromItemKey("minecraft:jungle_leaves");
+    @NotNull
+    public static final Item JUNGLE_LEAVES = ItemRegistry.fromItemKey("minecraft:jungle_leaves");
 
-  @NotNull
-  public static final Item ACACIA_LEAVES = ItemRegistry.fromItemKey("minecraft:acacia_leaves");
+    @NotNull
+    public static final Item ACACIA_LEAVES = ItemRegistry.fromItemKey("minecraft:acacia_leaves");
 
-  @NotNull
-  public static final Item DARK_OAK_LEAVES = ItemRegistry.fromItemKey("minecraft:dark_oak_leaves");
+    @NotNull
+    public static final Item DARK_OAK_LEAVES = ItemRegistry.fromItemKey("minecraft:dark_oak_leaves");
 
-  @NotNull
-  public static final Item AZALEA_LEAVES = ItemRegistry.fromItemKey("minecraft:azalea_leaves");
+    @NotNull
+    public static final Item AZALEA_LEAVES = ItemRegistry.fromItemKey("minecraft:azalea_leaves");
 
-  @NotNull
-  public static final Item FLOWERING_AZALEA_LEAVES = ItemRegistry.fromItemKey("minecraft:flowering_azalea_leaves");
+    @NotNull
+    public static final Item FLOWERING_AZALEA_LEAVES = ItemRegistry.fromItemKey("minecraft:flowering_azalea_leaves");
 
-  @NotNull
-  public static final Item SPONGE = ItemRegistry.fromItemKey("minecraft:sponge");
+    @NotNull
+    public static final Item SPONGE = ItemRegistry.fromItemKey("minecraft:sponge");
 
-  @NotNull
-  public static final Item WET_SPONGE = ItemRegistry.fromItemKey("minecraft:wet_sponge");
+    @NotNull
+    public static final Item WET_SPONGE = ItemRegistry.fromItemKey("minecraft:wet_sponge");
 
-  @NotNull
-  public static final Item GLASS = ItemRegistry.fromItemKey("minecraft:glass");
+    @NotNull
+    public static final Item GLASS = ItemRegistry.fromItemKey("minecraft:glass");
 
-  @NotNull
-  public static final Item TINTED_GLASS = ItemRegistry.fromItemKey("minecraft:tinted_glass");
+    @NotNull
+    public static final Item TINTED_GLASS = ItemRegistry.fromItemKey("minecraft:tinted_glass");
 
-  @NotNull
-  public static final Item LAPIS_BLOCK = ItemRegistry.fromItemKey("minecraft:lapis_block");
+    @NotNull
+    public static final Item LAPIS_BLOCK = ItemRegistry.fromItemKey("minecraft:lapis_block");
 
-  @NotNull
-  public static final Item SANDSTONE = ItemRegistry.fromItemKey("minecraft:sandstone");
+    @NotNull
+    public static final Item SANDSTONE = ItemRegistry.fromItemKey("minecraft:sandstone");
 
-  @NotNull
-  public static final Item CHISELED_SANDSTONE = ItemRegistry.fromItemKey("minecraft:chiseled_sandstone");
+    @NotNull
+    public static final Item CHISELED_SANDSTONE = ItemRegistry.fromItemKey("minecraft:chiseled_sandstone");
 
-  @NotNull
-  public static final Item CUT_SANDSTONE = ItemRegistry.fromItemKey("minecraft:cut_sandstone");
+    @NotNull
+    public static final Item CUT_SANDSTONE = ItemRegistry.fromItemKey("minecraft:cut_sandstone");
 
-  @NotNull
-  public static final Item COBWEB = ItemRegistry.fromItemKey("minecraft:cobweb");
+    @NotNull
+    public static final Item COBWEB = ItemRegistry.fromItemKey("minecraft:cobweb");
 
-  @NotNull
-  public static final Item GRASS = ItemRegistry.fromItemKey("minecraft:grass");
+    @NotNull
+    public static final Item GRASS = ItemRegistry.fromItemKey("minecraft:grass");
 
-  @NotNull
-  public static final Item FERN = ItemRegistry.fromItemKey("minecraft:fern");
+    @NotNull
+    public static final Item FERN = ItemRegistry.fromItemKey("minecraft:fern");
 
-  @NotNull
-  public static final Item AZALEA = ItemRegistry.fromItemKey("minecraft:azalea");
+    @NotNull
+    public static final Item AZALEA = ItemRegistry.fromItemKey("minecraft:azalea");
 
-  @NotNull
-  public static final Item FLOWERING_AZALEA = ItemRegistry.fromItemKey("minecraft:flowering_azalea");
+    @NotNull
+    public static final Item FLOWERING_AZALEA = ItemRegistry.fromItemKey("minecraft:flowering_azalea");
 
-  @NotNull
-  public static final Item DEAD_BUSH = ItemRegistry.fromItemKey("minecraft:dead_bush");
+    @NotNull
+    public static final Item DEAD_BUSH = ItemRegistry.fromItemKey("minecraft:dead_bush");
 
-  @NotNull
-  public static final Item SEAGRASS = ItemRegistry.fromItemKey("minecraft:seagrass");
+    @NotNull
+    public static final Item SEAGRASS = ItemRegistry.fromItemKey("minecraft:seagrass");
 
-  @NotNull
-  public static final Item SEA_PICKLE = ItemRegistry.fromItemKey("minecraft:sea_pickle");
+    @NotNull
+    public static final Item SEA_PICKLE = ItemRegistry.fromItemKey("minecraft:sea_pickle");
 
-  @NotNull
-  public static final Item WHITE_WOOL = ItemRegistry.fromItemKey("minecraft:white_wool");
+    @NotNull
+    public static final Item WHITE_WOOL = ItemRegistry.fromItemKey("minecraft:white_wool");
 
-  @NotNull
-  public static final Item ORANGE_WOOL = ItemRegistry.fromItemKey("minecraft:orange_wool");
+    @NotNull
+    public static final Item ORANGE_WOOL = ItemRegistry.fromItemKey("minecraft:orange_wool");
 
-  @NotNull
-  public static final Item MAGENTA_WOOL = ItemRegistry.fromItemKey("minecraft:magenta_wool");
+    @NotNull
+    public static final Item MAGENTA_WOOL = ItemRegistry.fromItemKey("minecraft:magenta_wool");
 
-  @NotNull
-  public static final Item LIGHT_BLUE_WOOL = ItemRegistry.fromItemKey("minecraft:light_blue_wool");
+    @NotNull
+    public static final Item LIGHT_BLUE_WOOL = ItemRegistry.fromItemKey("minecraft:light_blue_wool");
 
-  @NotNull
-  public static final Item YELLOW_WOOL = ItemRegistry.fromItemKey("minecraft:yellow_wool");
+    @NotNull
+    public static final Item YELLOW_WOOL = ItemRegistry.fromItemKey("minecraft:yellow_wool");
 
-  @NotNull
-  public static final Item LIME_WOOL = ItemRegistry.fromItemKey("minecraft:lime_wool");
+    @NotNull
+    public static final Item LIME_WOOL = ItemRegistry.fromItemKey("minecraft:lime_wool");
 
-  @NotNull
-  public static final Item PINK_WOOL = ItemRegistry.fromItemKey("minecraft:pink_wool");
+    @NotNull
+    public static final Item PINK_WOOL = ItemRegistry.fromItemKey("minecraft:pink_wool");
 
-  @NotNull
-  public static final Item GRAY_WOOL = ItemRegistry.fromItemKey("minecraft:gray_wool");
+    @NotNull
+    public static final Item GRAY_WOOL = ItemRegistry.fromItemKey("minecraft:gray_wool");
 
-  @NotNull
-  public static final Item LIGHT_GRAY_WOOL = ItemRegistry.fromItemKey("minecraft:light_gray_wool");
+    @NotNull
+    public static final Item LIGHT_GRAY_WOOL = ItemRegistry.fromItemKey("minecraft:light_gray_wool");
 
-  @NotNull
-  public static final Item CYAN_WOOL = ItemRegistry.fromItemKey("minecraft:cyan_wool");
+    @NotNull
+    public static final Item CYAN_WOOL = ItemRegistry.fromItemKey("minecraft:cyan_wool");
 
-  @NotNull
-  public static final Item PURPLE_WOOL = ItemRegistry.fromItemKey("minecraft:purple_wool");
+    @NotNull
+    public static final Item PURPLE_WOOL = ItemRegistry.fromItemKey("minecraft:purple_wool");
 
-  @NotNull
-  public static final Item BLUE_WOOL = ItemRegistry.fromItemKey("minecraft:blue_wool");
+    @NotNull
+    public static final Item BLUE_WOOL = ItemRegistry.fromItemKey("minecraft:blue_wool");
 
-  @NotNull
-  public static final Item BROWN_WOOL = ItemRegistry.fromItemKey("minecraft:brown_wool");
+    @NotNull
+    public static final Item BROWN_WOOL = ItemRegistry.fromItemKey("minecraft:brown_wool");
 
-  @NotNull
-  public static final Item GREEN_WOOL = ItemRegistry.fromItemKey("minecraft:green_wool");
+    @NotNull
+    public static final Item GREEN_WOOL = ItemRegistry.fromItemKey("minecraft:green_wool");
 
-  @NotNull
-  public static final Item RED_WOOL = ItemRegistry.fromItemKey("minecraft:red_wool");
+    @NotNull
+    public static final Item RED_WOOL = ItemRegistry.fromItemKey("minecraft:red_wool");
 
-  @NotNull
-  public static final Item BLACK_WOOL = ItemRegistry.fromItemKey("minecraft:black_wool");
+    @NotNull
+    public static final Item BLACK_WOOL = ItemRegistry.fromItemKey("minecraft:black_wool");
 
-  @NotNull
-  public static final Item DANDELION = ItemRegistry.fromItemKey("minecraft:dandelion");
+    @NotNull
+    public static final Item DANDELION = ItemRegistry.fromItemKey("minecraft:dandelion");
 
-  @NotNull
-  public static final Item POPPY = ItemRegistry.fromItemKey("minecraft:poppy");
+    @NotNull
+    public static final Item POPPY = ItemRegistry.fromItemKey("minecraft:poppy");
 
-  @NotNull
-  public static final Item BLUE_ORCHID = ItemRegistry.fromItemKey("minecraft:blue_orchid");
+    @NotNull
+    public static final Item BLUE_ORCHID = ItemRegistry.fromItemKey("minecraft:blue_orchid");
 
-  @NotNull
-  public static final Item ALLIUM = ItemRegistry.fromItemKey("minecraft:allium");
+    @NotNull
+    public static final Item ALLIUM = ItemRegistry.fromItemKey("minecraft:allium");
 
-  @NotNull
-  public static final Item AZURE_BLUET = ItemRegistry.fromItemKey("minecraft:azure_bluet");
+    @NotNull
+    public static final Item AZURE_BLUET = ItemRegistry.fromItemKey("minecraft:azure_bluet");
 
-  @NotNull
-  public static final Item RED_TULIP = ItemRegistry.fromItemKey("minecraft:red_tulip");
+    @NotNull
+    public static final Item RED_TULIP = ItemRegistry.fromItemKey("minecraft:red_tulip");
 
-  @NotNull
-  public static final Item ORANGE_TULIP = ItemRegistry.fromItemKey("minecraft:orange_tulip");
+    @NotNull
+    public static final Item ORANGE_TULIP = ItemRegistry.fromItemKey("minecraft:orange_tulip");
 
-  @NotNull
-  public static final Item WHITE_TULIP = ItemRegistry.fromItemKey("minecraft:white_tulip");
+    @NotNull
+    public static final Item WHITE_TULIP = ItemRegistry.fromItemKey("minecraft:white_tulip");
 
-  @NotNull
-  public static final Item PINK_TULIP = ItemRegistry.fromItemKey("minecraft:pink_tulip");
+    @NotNull
+    public static final Item PINK_TULIP = ItemRegistry.fromItemKey("minecraft:pink_tulip");
 
-  @NotNull
-  public static final Item OXEYE_DAISY = ItemRegistry.fromItemKey("minecraft:oxeye_daisy");
+    @NotNull
+    public static final Item OXEYE_DAISY = ItemRegistry.fromItemKey("minecraft:oxeye_daisy");
 
-  @NotNull
-  public static final Item CORNFLOWER = ItemRegistry.fromItemKey("minecraft:cornflower");
+    @NotNull
+    public static final Item CORNFLOWER = ItemRegistry.fromItemKey("minecraft:cornflower");
 
-  @NotNull
-  public static final Item LILY_OF_THE_VALLEY = ItemRegistry.fromItemKey("minecraft:lily_of_the_valley");
+    @NotNull
+    public static final Item LILY_OF_THE_VALLEY = ItemRegistry.fromItemKey("minecraft:lily_of_the_valley");
 
-  @NotNull
-  public static final Item WITHER_ROSE = ItemRegistry.fromItemKey("minecraft:wither_rose");
+    @NotNull
+    public static final Item WITHER_ROSE = ItemRegistry.fromItemKey("minecraft:wither_rose");
 
-  @NotNull
-  public static final Item SPORE_BLOSSOM = ItemRegistry.fromItemKey("minecraft:spore_blossom");
+    @NotNull
+    public static final Item SPORE_BLOSSOM = ItemRegistry.fromItemKey("minecraft:spore_blossom");
 
-  @NotNull
-  public static final Item BROWN_MUSHROOM = ItemRegistry.fromItemKey("minecraft:brown_mushroom");
+    @NotNull
+    public static final Item BROWN_MUSHROOM = ItemRegistry.fromItemKey("minecraft:brown_mushroom");
 
-  @NotNull
-  public static final Item RED_MUSHROOM = ItemRegistry.fromItemKey("minecraft:red_mushroom");
+    @NotNull
+    public static final Item RED_MUSHROOM = ItemRegistry.fromItemKey("minecraft:red_mushroom");
 
-  @NotNull
-  public static final Item CRIMSON_FUNGUS = ItemRegistry.fromItemKey("minecraft:crimson_fungus");
+    @NotNull
+    public static final Item CRIMSON_FUNGUS = ItemRegistry.fromItemKey("minecraft:crimson_fungus");
 
-  @NotNull
-  public static final Item WARPED_FUNGUS = ItemRegistry.fromItemKey("minecraft:warped_fungus");
+    @NotNull
+    public static final Item WARPED_FUNGUS = ItemRegistry.fromItemKey("minecraft:warped_fungus");
 
-  @NotNull
-  public static final Item CRIMSON_ROOTS = ItemRegistry.fromItemKey("minecraft:crimson_roots");
+    @NotNull
+    public static final Item CRIMSON_ROOTS = ItemRegistry.fromItemKey("minecraft:crimson_roots");
 
-  @NotNull
-  public static final Item WARPED_ROOTS = ItemRegistry.fromItemKey("minecraft:warped_roots");
+    @NotNull
+    public static final Item WARPED_ROOTS = ItemRegistry.fromItemKey("minecraft:warped_roots");
 
-  @NotNull
-  public static final Item NETHER_SPROUTS = ItemRegistry.fromItemKey("minecraft:nether_sprouts");
+    @NotNull
+    public static final Item NETHER_SPROUTS = ItemRegistry.fromItemKey("minecraft:nether_sprouts");
 
-  @NotNull
-  public static final Item WEEPING_VINES = ItemRegistry.fromItemKey("minecraft:weeping_vines");
+    @NotNull
+    public static final Item WEEPING_VINES = ItemRegistry.fromItemKey("minecraft:weeping_vines");
 
-  @NotNull
-  public static final Item TWISTING_VINES = ItemRegistry.fromItemKey("minecraft:twisting_vines");
+    @NotNull
+    public static final Item TWISTING_VINES = ItemRegistry.fromItemKey("minecraft:twisting_vines");
 
-  @NotNull
-  public static final Item SUGAR_CANE = ItemRegistry.fromItemKey("minecraft:sugar_cane");
+    @NotNull
+    public static final Item SUGAR_CANE = ItemRegistry.fromItemKey("minecraft:sugar_cane");
 
-  @NotNull
-  public static final Item KELP = ItemRegistry.fromItemKey("minecraft:kelp");
+    @NotNull
+    public static final Item KELP = ItemRegistry.fromItemKey("minecraft:kelp");
 
-  @NotNull
-  public static final Item MOSS_CARPET = ItemRegistry.fromItemKey("minecraft:moss_carpet");
+    @NotNull
+    public static final Item MOSS_CARPET = ItemRegistry.fromItemKey("minecraft:moss_carpet");
 
-  @NotNull
-  public static final Item MOSS_BLOCK = ItemRegistry.fromItemKey("minecraft:moss_block");
+    @NotNull
+    public static final Item MOSS_BLOCK = ItemRegistry.fromItemKey("minecraft:moss_block");
 
-  @NotNull
-  public static final Item HANGING_ROOTS = ItemRegistry.fromItemKey("minecraft:hanging_roots");
+    @NotNull
+    public static final Item HANGING_ROOTS = ItemRegistry.fromItemKey("minecraft:hanging_roots");
 
-  @NotNull
-  public static final Item BIG_DRIPLEAF = ItemRegistry.fromItemKey("minecraft:big_dripleaf");
+    @NotNull
+    public static final Item BIG_DRIPLEAF = ItemRegistry.fromItemKey("minecraft:big_dripleaf");
 
-  @NotNull
-  public static final Item SMALL_DRIPLEAF = ItemRegistry.fromItemKey("minecraft:small_dripleaf");
+    @NotNull
+    public static final Item SMALL_DRIPLEAF = ItemRegistry.fromItemKey("minecraft:small_dripleaf");
 
-  @NotNull
-  public static final Item BAMBOO = ItemRegistry.fromItemKey("minecraft:bamboo");
+    @NotNull
+    public static final Item BAMBOO = ItemRegistry.fromItemKey("minecraft:bamboo");
 
-  @NotNull
-  public static final Item OAK_SLAB = ItemRegistry.fromItemKey("minecraft:oak_slab");
+    @NotNull
+    public static final Item OAK_SLAB = ItemRegistry.fromItemKey("minecraft:oak_slab");
 
-  @NotNull
-  public static final Item SPRUCE_SLAB = ItemRegistry.fromItemKey("minecraft:spruce_slab");
+    @NotNull
+    public static final Item SPRUCE_SLAB = ItemRegistry.fromItemKey("minecraft:spruce_slab");
 
-  @NotNull
-  public static final Item BIRCH_SLAB = ItemRegistry.fromItemKey("minecraft:birch_slab");
+    @NotNull
+    public static final Item BIRCH_SLAB = ItemRegistry.fromItemKey("minecraft:birch_slab");
 
-  @NotNull
-  public static final Item JUNGLE_SLAB = ItemRegistry.fromItemKey("minecraft:jungle_slab");
+    @NotNull
+    public static final Item JUNGLE_SLAB = ItemRegistry.fromItemKey("minecraft:jungle_slab");
 
-  @NotNull
-  public static final Item ACACIA_SLAB = ItemRegistry.fromItemKey("minecraft:acacia_slab");
+    @NotNull
+    public static final Item ACACIA_SLAB = ItemRegistry.fromItemKey("minecraft:acacia_slab");
 
-  @NotNull
-  public static final Item DARK_OAK_SLAB = ItemRegistry.fromItemKey("minecraft:dark_oak_slab");
+    @NotNull
+    public static final Item DARK_OAK_SLAB = ItemRegistry.fromItemKey("minecraft:dark_oak_slab");
 
-  @NotNull
-  public static final Item CRIMSON_SLAB = ItemRegistry.fromItemKey("minecraft:crimson_slab");
+    @NotNull
+    public static final Item CRIMSON_SLAB = ItemRegistry.fromItemKey("minecraft:crimson_slab");
 
-  @NotNull
-  public static final Item WARPED_SLAB = ItemRegistry.fromItemKey("minecraft:warped_slab");
+    @NotNull
+    public static final Item WARPED_SLAB = ItemRegistry.fromItemKey("minecraft:warped_slab");
 
-  @NotNull
-  public static final Item STONE_SLAB = ItemRegistry.fromItemKey("minecraft:stone_slab");
+    @NotNull
+    public static final Item STONE_SLAB = ItemRegistry.fromItemKey("minecraft:stone_slab");
 
-  @NotNull
-  public static final Item SMOOTH_STONE_SLAB = ItemRegistry.fromItemKey("minecraft:smooth_stone_slab");
+    @NotNull
+    public static final Item SMOOTH_STONE_SLAB = ItemRegistry.fromItemKey("minecraft:smooth_stone_slab");
 
-  @NotNull
-  public static final Item SANDSTONE_SLAB = ItemRegistry.fromItemKey("minecraft:sandstone_slab");
+    @NotNull
+    public static final Item SANDSTONE_SLAB = ItemRegistry.fromItemKey("minecraft:sandstone_slab");
 
-  @NotNull
-  public static final Item CUT_STANDSTONE_SLAB = ItemRegistry.fromItemKey("minecraft:cut_sandstone_slab");
+    @NotNull
+    public static final Item CUT_STANDSTONE_SLAB = ItemRegistry.fromItemKey("minecraft:cut_sandstone_slab");
 
-  @NotNull
-  public static final Item PETRIFIED_OAK_SLAB = ItemRegistry.fromItemKey("minecraft:petrified_oak_slab");
+    @NotNull
+    public static final Item PETRIFIED_OAK_SLAB = ItemRegistry.fromItemKey("minecraft:petrified_oak_slab");
 
-  @NotNull
-  public static final Item COBBLESTONE_SLAB = ItemRegistry.fromItemKey("minecraft:cobblestone_slab");
+    @NotNull
+    public static final Item COBBLESTONE_SLAB = ItemRegistry.fromItemKey("minecraft:cobblestone_slab");
 
-  @NotNull
-  public static final Item BRICK_SLAB = ItemRegistry.fromItemKey("minecraft:brick_slab");
+    @NotNull
+    public static final Item BRICK_SLAB = ItemRegistry.fromItemKey("minecraft:brick_slab");
 
-  @NotNull
-  public static final Item STONE_BRICK_SLAB = ItemRegistry.fromItemKey("minecraft:stone_brick_slab");
+    @NotNull
+    public static final Item STONE_BRICK_SLAB = ItemRegistry.fromItemKey("minecraft:stone_brick_slab");
 
-  @NotNull
-  public static final Item NETHER_BRICK_SLAB = ItemRegistry.fromItemKey("minecraft:nether_brick_slab");
+    @NotNull
+    public static final Item NETHER_BRICK_SLAB = ItemRegistry.fromItemKey("minecraft:nether_brick_slab");
 
-  @NotNull
-  public static final Item QUARTZ_SLAB = ItemRegistry.fromItemKey("minecraft:quartz_slab");
+    @NotNull
+    public static final Item QUARTZ_SLAB = ItemRegistry.fromItemKey("minecraft:quartz_slab");
 
-  @NotNull
-  public static final Item RED_SANDSTONE_SLAB = ItemRegistry.fromItemKey("minecraft:red_sandstone_slab");
+    @NotNull
+    public static final Item RED_SANDSTONE_SLAB = ItemRegistry.fromItemKey("minecraft:red_sandstone_slab");
 
-  @NotNull
-  public static final Item CUT_RED_SANDSTONE_SLAB = ItemRegistry.fromItemKey("minecraft:cut_red_sandstone_slab");
+    @NotNull
+    public static final Item CUT_RED_SANDSTONE_SLAB = ItemRegistry.fromItemKey("minecraft:cut_red_sandstone_slab");
 
-  @NotNull
-  public static final Item PURPUR_SLAB = ItemRegistry.fromItemKey("minecraft:purpur_slab");
+    @NotNull
+    public static final Item PURPUR_SLAB = ItemRegistry.fromItemKey("minecraft:purpur_slab");
 
-  @NotNull
-  public static final Item PRISMARINE_SLAB = ItemRegistry.fromItemKey("minecraft:prismarine_slab");
+    @NotNull
+    public static final Item PRISMARINE_SLAB = ItemRegistry.fromItemKey("minecraft:prismarine_slab");
 
-  @NotNull
-  public static final Item PRISMARINE_BRICK_SLAB = ItemRegistry.fromItemKey("minecraft:prismarine_brick_slab");
+    @NotNull
+    public static final Item PRISMARINE_BRICK_SLAB = ItemRegistry.fromItemKey("minecraft:prismarine_brick_slab");
 
-  @NotNull
-  public static final Item DARK_PRISMARINE_SLAB = ItemRegistry.fromItemKey("minecraft:dark_prismarine_slab");
+    @NotNull
+    public static final Item DARK_PRISMARINE_SLAB = ItemRegistry.fromItemKey("minecraft:dark_prismarine_slab");
 
-  @NotNull
-  public static final Item SMOOTH_QUARTZ = ItemRegistry.fromItemKey("minecraft:smooth_quartz");
+    @NotNull
+    public static final Item SMOOTH_QUARTZ = ItemRegistry.fromItemKey("minecraft:smooth_quartz");
 
-  @NotNull
-  public static final Item SMOOTH_RED_SANDSTONE = ItemRegistry.fromItemKey("minecraft:smooth_red_sandstone");
+    @NotNull
+    public static final Item SMOOTH_RED_SANDSTONE = ItemRegistry.fromItemKey("minecraft:smooth_red_sandstone");
 
-  @NotNull
-  public static final Item SMOOTH_SANDSTONE = ItemRegistry.fromItemKey("minecraft:smooth_sandstone");
+    @NotNull
+    public static final Item SMOOTH_SANDSTONE = ItemRegistry.fromItemKey("minecraft:smooth_sandstone");
 
-  @NotNull
-  public static final Item SMOOTH_STONE = ItemRegistry.fromItemKey("minecraft:smooth_stone");
+    @NotNull
+    public static final Item SMOOTH_STONE = ItemRegistry.fromItemKey("minecraft:smooth_stone");
 
-  @NotNull
-  public static final Item BRICKS = ItemRegistry.fromItemKey("minecraft:bricks");
+    @NotNull
+    public static final Item BRICKS = ItemRegistry.fromItemKey("minecraft:bricks");
 
-  @NotNull
-  public static final Item BOOKSHELF = ItemRegistry.fromItemKey("minecraft:bookshelf");
+    @NotNull
+    public static final Item BOOKSHELF = ItemRegistry.fromItemKey("minecraft:bookshelf");
 
-  @NotNull
-  public static final Item MOSSY_COBBLESTONE = ItemRegistry.fromItemKey("minecraft:mossy_cobblestone");
+    @NotNull
+    public static final Item MOSSY_COBBLESTONE = ItemRegistry.fromItemKey("minecraft:mossy_cobblestone");
 
-  @NotNull
-  public static final Item OBSIDIAN = ItemRegistry.fromItemKey("minecraft:obsidian");
+    @NotNull
+    public static final Item OBSIDIAN = ItemRegistry.fromItemKey("minecraft:obsidian");
 
-  @NotNull
-  public static final Item TORCH = ItemRegistry.fromItemKey("minecraft:torch");
+    @NotNull
+    public static final Item TORCH = ItemRegistry.fromItemKey("minecraft:torch");
 
-  @NotNull
-  public static final Item END_ROD = ItemRegistry.fromItemKey("minecraft:end_rod");
+    @NotNull
+    public static final Item END_ROD = ItemRegistry.fromItemKey("minecraft:end_rod");
 
-  @NotNull
-  public static final Item CHORUS_PLANT = ItemRegistry.fromItemKey("minecraft:chorus_plant");
+    @NotNull
+    public static final Item CHORUS_PLANT = ItemRegistry.fromItemKey("minecraft:chorus_plant");
 
-  @NotNull
-  public static final Item CHORUS_FLOWER = ItemRegistry.fromItemKey("minecraft:chorus_flower");
+    @NotNull
+    public static final Item CHORUS_FLOWER = ItemRegistry.fromItemKey("minecraft:chorus_flower");
 
-  @NotNull
-  public static final Item PURPUR_BLOCK = ItemRegistry.fromItemKey("minecraft:purpur_block");
+    @NotNull
+    public static final Item PURPUR_BLOCK = ItemRegistry.fromItemKey("minecraft:purpur_block");
 
-  @NotNull
-  public static final Item PURPUR_PILLAR = ItemRegistry.fromItemKey("minecraft:purpur_pillar");
+    @NotNull
+    public static final Item PURPUR_PILLAR = ItemRegistry.fromItemKey("minecraft:purpur_pillar");
 
-  @NotNull
-  public static final Item PURPUR_STAIRS = ItemRegistry.fromItemKey("minecraft:purpur_stairs");
+    @NotNull
+    public static final Item PURPUR_STAIRS = ItemRegistry.fromItemKey("minecraft:purpur_stairs");
 
-  @NotNull
-  public static final Item SPAWNER = ItemRegistry.fromItemKey("minecraft:spawner");
+    @NotNull
+    public static final Item SPAWNER = ItemRegistry.fromItemKey("minecraft:spawner");
 
-  @NotNull
-  public static final Item OAK_STAIRS = ItemRegistry.fromItemKey("minecraft:oak_stairs");
+    @NotNull
+    public static final Item OAK_STAIRS = ItemRegistry.fromItemKey("minecraft:oak_stairs");
 
-  @NotNull
-  public static final Item CHEST = ItemRegistry.fromItemKey("minecraft:chest");
+    @NotNull
+    public static final Item CHEST = ItemRegistry.fromItemKey("minecraft:chest");
 
-  @NotNull
-  public static final Item CRAFTING_TABLE = ItemRegistry.fromItemKey("minecraft:crafting_table");
+    @NotNull
+    public static final Item CRAFTING_TABLE = ItemRegistry.fromItemKey("minecraft:crafting_table");
 
-  @NotNull
-  public static final Item FARMLAND = ItemRegistry.fromItemKey("minecraft:farmland");
+    @NotNull
+    public static final Item FARMLAND = ItemRegistry.fromItemKey("minecraft:farmland");
 
-  @NotNull
-  public static final Item FURNACE = ItemRegistry.fromItemKey("minecraft:furnace");
+    @NotNull
+    public static final Item FURNACE = ItemRegistry.fromItemKey("minecraft:furnace");
 
-  @NotNull
-  public static final Item LADDER = ItemRegistry.fromItemKey("minecraft:ladder");
+    @NotNull
+    public static final Item LADDER = ItemRegistry.fromItemKey("minecraft:ladder");
 
-  @NotNull
-  public static final Item COBBLESTONE_STAIRS = ItemRegistry.fromItemKey("minecraft:cobblestone_stairs");
+    @NotNull
+    public static final Item COBBLESTONE_STAIRS = ItemRegistry.fromItemKey("minecraft:cobblestone_stairs");
 
-  @NotNull
-  public static final Item SNOW = ItemRegistry.fromItemKey("minecraft:snow");
+    @NotNull
+    public static final Item SNOW = ItemRegistry.fromItemKey("minecraft:snow");
 
-  @NotNull
-  public static final Item ICE = ItemRegistry.fromItemKey("minecraft:ice");
+    @NotNull
+    public static final Item ICE = ItemRegistry.fromItemKey("minecraft:ice");
 
-  @NotNull
-  public static final Item SNOW_BLOCK = ItemRegistry.fromItemKey("minecraft:snow_block");
+    @NotNull
+    public static final Item SNOW_BLOCK = ItemRegistry.fromItemKey("minecraft:snow_block");
 
-  @NotNull
-  public static final Item CACTUS = ItemRegistry.fromItemKey("minecraft:cactus");
+    @NotNull
+    public static final Item CACTUS = ItemRegistry.fromItemKey("minecraft:cactus");
 
-  @NotNull
-  public static final Item CLAY = ItemRegistry.fromItemKey("minecraft:clay");
+    @NotNull
+    public static final Item CLAY = ItemRegistry.fromItemKey("minecraft:clay");
 
-  @NotNull
-  public static final Item JUKEBOX = ItemRegistry.fromItemKey("minecraft:jukebox");
+    @NotNull
+    public static final Item JUKEBOX = ItemRegistry.fromItemKey("minecraft:jukebox");
 
-  @NotNull
-  public static final Item OAK_FENCE = ItemRegistry.fromItemKey("minecraft:oak_fence");
+    @NotNull
+    public static final Item OAK_FENCE = ItemRegistry.fromItemKey("minecraft:oak_fence");
 
-  @NotNull
-  public static final Item SPRUCE_FENCE = ItemRegistry.fromItemKey("minecraft:spruce_fence");
+    @NotNull
+    public static final Item SPRUCE_FENCE = ItemRegistry.fromItemKey("minecraft:spruce_fence");
 
-  @NotNull
-  public static final Item BIRCH_FENCE = ItemRegistry.fromItemKey("minecraft:birch_fence");
+    @NotNull
+    public static final Item BIRCH_FENCE = ItemRegistry.fromItemKey("minecraft:birch_fence");
 
-  @NotNull
-  public static final Item JUNGLE_FENCE = ItemRegistry.fromItemKey("minecraft:jungle_fence");
+    @NotNull
+    public static final Item JUNGLE_FENCE = ItemRegistry.fromItemKey("minecraft:jungle_fence");
 
-  @NotNull
-  public static final Item ACACIA_FENCE = ItemRegistry.fromItemKey("minecraft:acacia_fence");
+    @NotNull
+    public static final Item ACACIA_FENCE = ItemRegistry.fromItemKey("minecraft:acacia_fence");
 
-  @NotNull
-  public static final Item DARK_OAK_FENCE = ItemRegistry.fromItemKey("minecraft:dark_oak_fence");
+    @NotNull
+    public static final Item DARK_OAK_FENCE = ItemRegistry.fromItemKey("minecraft:dark_oak_fence");
 
-  @NotNull
-  public static final Item CRIMSON_FENCE = ItemRegistry.fromItemKey("minecraft:crimson_fence");
+    @NotNull
+    public static final Item CRIMSON_FENCE = ItemRegistry.fromItemKey("minecraft:crimson_fence");
 
-  @NotNull
-  public static final Item WARPED_FENCE = ItemRegistry.fromItemKey("minecraft:warped_fence");
+    @NotNull
+    public static final Item WARPED_FENCE = ItemRegistry.fromItemKey("minecraft:warped_fence");
 
-  @NotNull
-  public static final Item PUMPKIN = ItemRegistry.fromItemKey("minecraft:pumpkin");
+    @NotNull
+    public static final Item PUMPKIN = ItemRegistry.fromItemKey("minecraft:pumpkin");
 
-  @NotNull
-  public static final Item CARVED_PUMPKIN = ItemRegistry.fromItemKey("minecraft:carved_pumpkin");
+    @NotNull
+    public static final Item CARVED_PUMPKIN = ItemRegistry.fromItemKey("minecraft:carved_pumpkin");
 
-  @NotNull
-  public static final Item JACK_O_LANTERN = ItemRegistry.fromItemKey("minecraft:jack_o_lantern");
+    @NotNull
+    public static final Item JACK_O_LANTERN = ItemRegistry.fromItemKey("minecraft:jack_o_lantern");
 
-  @NotNull
-  public static final Item NETHERRACK = ItemRegistry.fromItemKey("minecraft:netherrack");
+    @NotNull
+    public static final Item NETHERRACK = ItemRegistry.fromItemKey("minecraft:netherrack");
 
-  @NotNull
-  public static final Item SOUL_SAND = ItemRegistry.fromItemKey("minecraft:soul_sand");
+    @NotNull
+    public static final Item SOUL_SAND = ItemRegistry.fromItemKey("minecraft:soul_sand");
 
-  @NotNull
-  public static final Item SOUL_SOIL = ItemRegistry.fromItemKey("minecraft:soul_soil");
+    @NotNull
+    public static final Item SOUL_SOIL = ItemRegistry.fromItemKey("minecraft:soul_soil");
 
-  @NotNull
-  public static final Item BASALT = ItemRegistry.fromItemKey("minecraft:basalt");
+    @NotNull
+    public static final Item BASALT = ItemRegistry.fromItemKey("minecraft:basalt");
 
-  @NotNull
-  public static final Item POLISHED_BASALT = ItemRegistry.fromItemKey("minecraft:polished_basalt");
+    @NotNull
+    public static final Item POLISHED_BASALT = ItemRegistry.fromItemKey("minecraft:polished_basalt");
 
-  @NotNull
-  public static final Item SMOOTH_BASALT = ItemRegistry.fromItemKey("minecraft:smooth_basalt");
+    @NotNull
+    public static final Item SMOOTH_BASALT = ItemRegistry.fromItemKey("minecraft:smooth_basalt");
 
-  @NotNull
-  public static final Item SOUL_TORCH = ItemRegistry.fromItemKey("minecraft:soul_torch");
+    @NotNull
+    public static final Item SOUL_TORCH = ItemRegistry.fromItemKey("minecraft:soul_torch");
 
-  @NotNull
-  public static final Item GLOWSTONE = ItemRegistry.fromItemKey("minecraft:glowstone");
+    @NotNull
+    public static final Item GLOWSTONE = ItemRegistry.fromItemKey("minecraft:glowstone");
 
-  @NotNull
-  public static final Item INFESTED_STONE = ItemRegistry.fromItemKey("minecraft:infested_stone");
+    @NotNull
+    public static final Item INFESTED_STONE = ItemRegistry.fromItemKey("minecraft:infested_stone");
 
-  @NotNull
-  public static final Item INFESTED_COBBLESTONE = ItemRegistry.fromItemKey("minecraft:infested_cobblestone");
+    @NotNull
+    public static final Item INFESTED_COBBLESTONE = ItemRegistry.fromItemKey("minecraft:infested_cobblestone");
 
-  @NotNull
-  public static final Item INFESTED_STONE_BRICKS = ItemRegistry.fromItemKey("minecraft:infested_stone_bricks");
+    @NotNull
+    public static final Item INFESTED_STONE_BRICKS = ItemRegistry.fromItemKey("minecraft:infested_stone_bricks");
 
-  @NotNull
-  public static final Item INFESTED_MOSSY_STONE_BRICKS = ItemRegistry.fromItemKey("minecraft:infested_mossy_stone_bricks");
+    @NotNull
+    public static final Item INFESTED_MOSSY_STONE_BRICKS = ItemRegistry.fromItemKey("minecraft:infested_mossy_stone_bricks");
 
-  @NotNull
-  public static final Item INFESTED_CRACKED_STONE_BRICKS = ItemRegistry.fromItemKey("minecraft:infested_cracked_stone_bricks");
+    @NotNull
+    public static final Item INFESTED_CRACKED_STONE_BRICKS = ItemRegistry.fromItemKey("minecraft:infested_cracked_stone_bricks");
 
-  @NotNull
-  public static final Item INFESTED_CHISELED_STONE_BRICKS = ItemRegistry.fromItemKey("minecraft:infested_chiseled_stone_bricks");
+    @NotNull
+    public static final Item INFESTED_CHISELED_STONE_BRICKS = ItemRegistry.fromItemKey("minecraft:infested_chiseled_stone_bricks");
 
-  @NotNull
-  public static final Item INFESTED_DEEPSLATE = ItemRegistry.fromItemKey("minecraft:infested_deepslate");
+    @NotNull
+    public static final Item INFESTED_DEEPSLATE = ItemRegistry.fromItemKey("minecraft:infested_deepslate");
 
-  @NotNull
-  public static final Item STONE_BRICKS = ItemRegistry.fromItemKey("minecraft:stone_bricks");
+    @NotNull
+    public static final Item STONE_BRICKS = ItemRegistry.fromItemKey("minecraft:stone_bricks");
 
-  @NotNull
-  public static final Item MOSSY_STONE_BRICKS = ItemRegistry.fromItemKey("minecraft:mossy_stone_bricks");
+    @NotNull
+    public static final Item MOSSY_STONE_BRICKS = ItemRegistry.fromItemKey("minecraft:mossy_stone_bricks");
 
-  @NotNull
-  public static final Item CRACKED_STONE_BRICKS = ItemRegistry.fromItemKey("minecraft:cracked_stone_bricks");
+    @NotNull
+    public static final Item CRACKED_STONE_BRICKS = ItemRegistry.fromItemKey("minecraft:cracked_stone_bricks");
 
-  @NotNull
-  public static final Item CHISELED_STONE_BRICKS = ItemRegistry.fromItemKey("minecraft:chiseled_stone_bricks");
+    @NotNull
+    public static final Item CHISELED_STONE_BRICKS = ItemRegistry.fromItemKey("minecraft:chiseled_stone_bricks");
 
-  @NotNull
-  public static final Item DEEPSLATE_BRICKS = ItemRegistry.fromItemKey("minecraft:deepslate_bricks");
+    @NotNull
+    public static final Item DEEPSLATE_BRICKS = ItemRegistry.fromItemKey("minecraft:deepslate_bricks");
 
-  @NotNull
-  public static final Item CRACKED_DEEPSLATE_BRICKS = ItemRegistry.fromItemKey("minecraft:cracked_deepslate_bricks");
+    @NotNull
+    public static final Item CRACKED_DEEPSLATE_BRICKS = ItemRegistry.fromItemKey("minecraft:cracked_deepslate_bricks");
 
-  @NotNull
-  public static final Item DEEPSLATE_TILES = ItemRegistry.fromItemKey("minecraft:deepslate_tiles");
+    @NotNull
+    public static final Item DEEPSLATE_TILES = ItemRegistry.fromItemKey("minecraft:deepslate_tiles");
 
-  @NotNull
-  public static final Item CRACKED_DEEPSLATE_TILES = ItemRegistry.fromItemKey("minecraft:cracked_deepslate_tiles");
+    @NotNull
+    public static final Item CRACKED_DEEPSLATE_TILES = ItemRegistry.fromItemKey("minecraft:cracked_deepslate_tiles");
 
-  @NotNull
-  public static final Item CHISELED_DEEPSLATE = ItemRegistry.fromItemKey("minecraft:chiseled_deepslate");
+    @NotNull
+    public static final Item CHISELED_DEEPSLATE = ItemRegistry.fromItemKey("minecraft:chiseled_deepslate");
 
-  @NotNull
-  public static final Item BROWN_MUSHROOM_BLOCK = ItemRegistry.fromItemKey("minecraft:brown_mushroom_block");
+    @NotNull
+    public static final Item BROWN_MUSHROOM_BLOCK = ItemRegistry.fromItemKey("minecraft:brown_mushroom_block");
 
-  @NotNull
-  public static final Item RED_MUSHROOM_BLOCK = ItemRegistry.fromItemKey("minecraft:red_mushroom_block");
+    @NotNull
+    public static final Item RED_MUSHROOM_BLOCK = ItemRegistry.fromItemKey("minecraft:red_mushroom_block");
 
-  @NotNull
-  public static final Item MUSHROOM_STEM = ItemRegistry.fromItemKey("minecraft:mushroom_stem");
+    @NotNull
+    public static final Item MUSHROOM_STEM = ItemRegistry.fromItemKey("minecraft:mushroom_stem");
 
-  @NotNull
-  public static final Item IRON_BARS = ItemRegistry.fromItemKey("minecraft:iron_bars");
+    @NotNull
+    public static final Item IRON_BARS = ItemRegistry.fromItemKey("minecraft:iron_bars");
 
-  @NotNull
-  public static final Item CHAIN = ItemRegistry.fromItemKey("minecraft:chain");
+    @NotNull
+    public static final Item CHAIN = ItemRegistry.fromItemKey("minecraft:chain");
 
-  @NotNull
-  public static final Item GLASS_PANE = ItemRegistry.fromItemKey("minecraft:glass_pane");
+    @NotNull
+    public static final Item GLASS_PANE = ItemRegistry.fromItemKey("minecraft:glass_pane");
 
-  @NotNull
-  public static final Item MELON = ItemRegistry.fromItemKey("minecraft:melon");
+    @NotNull
+    public static final Item MELON = ItemRegistry.fromItemKey("minecraft:melon");
 
-  @NotNull
-  public static final Item VINE = ItemRegistry.fromItemKey("minecraft:vine");
+    @NotNull
+    public static final Item VINE = ItemRegistry.fromItemKey("minecraft:vine");
 
-  @NotNull
-  public static final Item GLOW_LICHEN = ItemRegistry.fromItemKey("minecraft:glow_lichen");
+    @NotNull
+    public static final Item GLOW_LICHEN = ItemRegistry.fromItemKey("minecraft:glow_lichen");
 
-  @NotNull
-  public static final Item BRICK_STAIRS = ItemRegistry.fromItemKey("minecraft:brick_stairs");
+    @NotNull
+    public static final Item BRICK_STAIRS = ItemRegistry.fromItemKey("minecraft:brick_stairs");
 
-  @NotNull
-  public static final Item STONE_BRICK_STAIRS = ItemRegistry.fromItemKey("minecraft:stone_brick_stairs");
+    @NotNull
+    public static final Item STONE_BRICK_STAIRS = ItemRegistry.fromItemKey("minecraft:stone_brick_stairs");
 
-  @NotNull
-  public static final Item MYCELIUM = ItemRegistry.fromItemKey("minecraft:mycelium");
+    @NotNull
+    public static final Item MYCELIUM = ItemRegistry.fromItemKey("minecraft:mycelium");
 
-  @NotNull
-  public static final Item LILY_PAD = ItemRegistry.fromItemKey("minecraft:lily_pad");
+    @NotNull
+    public static final Item LILY_PAD = ItemRegistry.fromItemKey("minecraft:lily_pad");
 
-  @NotNull
-  public static final Item NETHER_BRICKS = ItemRegistry.fromItemKey("minecraft:nether_bricks");
+    @NotNull
+    public static final Item NETHER_BRICKS = ItemRegistry.fromItemKey("minecraft:nether_bricks");
 
-  @NotNull
-  public static final Item CRACKED_NETHER_BRICKS = ItemRegistry.fromItemKey("minecraft:cracked_nether_bricks");
+    @NotNull
+    public static final Item CRACKED_NETHER_BRICKS = ItemRegistry.fromItemKey("minecraft:cracked_nether_bricks");
 
-  @NotNull
-  public static final Item CHISELED_NETHER_BRICKS = ItemRegistry.fromItemKey("minecraft:chiseled_nether_bricks");
+    @NotNull
+    public static final Item CHISELED_NETHER_BRICKS = ItemRegistry.fromItemKey("minecraft:chiseled_nether_bricks");
 
-  @NotNull
-  public static final Item NETHER_BRICK_FENCE = ItemRegistry.fromItemKey("minecraft:nether_brick_fence");
+    @NotNull
+    public static final Item NETHER_BRICK_FENCE = ItemRegistry.fromItemKey("minecraft:nether_brick_fence");
 
-  @NotNull
-  public static final Item NETHER_BRICK_STAIRS = ItemRegistry.fromItemKey("minecraft:nether_brick_stairs");
+    @NotNull
+    public static final Item NETHER_BRICK_STAIRS = ItemRegistry.fromItemKey("minecraft:nether_brick_stairs");
 
-  @NotNull
-  public static final Item ENCHANTING_TABLE = ItemRegistry.fromItemKey("minecraft:enchanting_table");
+    @NotNull
+    public static final Item ENCHANTING_TABLE = ItemRegistry.fromItemKey("minecraft:enchanting_table");
 
-  @NotNull
-  public static final Item END_PORTAL_FRAME = ItemRegistry.fromItemKey("minecraft:end_portal_frame");
+    @NotNull
+    public static final Item END_PORTAL_FRAME = ItemRegistry.fromItemKey("minecraft:end_portal_frame");
 
-  @NotNull
-  public static final Item END_STONE = ItemRegistry.fromItemKey("minecraft:end_stone");
+    @NotNull
+    public static final Item END_STONE = ItemRegistry.fromItemKey("minecraft:end_stone");
 
-  @NotNull
-  public static final Item END_STONE_BRICKS = ItemRegistry.fromItemKey("minecraft:end_stone_bricks");
+    @NotNull
+    public static final Item END_STONE_BRICKS = ItemRegistry.fromItemKey("minecraft:end_stone_bricks");
 
-  @NotNull
-  public static final Item DRAGON_EGG = ItemRegistry.fromItemKey("minecraft:dragon_egg");
+    @NotNull
+    public static final Item DRAGON_EGG = ItemRegistry.fromItemKey("minecraft:dragon_egg");
 
-  @NotNull
-  public static final Item SANDSTONE_STAIRS = ItemRegistry.fromItemKey("minecraft:sandstone_stairs");
+    @NotNull
+    public static final Item SANDSTONE_STAIRS = ItemRegistry.fromItemKey("minecraft:sandstone_stairs");
 
-  @NotNull
-  public static final Item ENDER_CHEST = ItemRegistry.fromItemKey("minecraft:ender_chest");
+    @NotNull
+    public static final Item ENDER_CHEST = ItemRegistry.fromItemKey("minecraft:ender_chest");
 
-  @NotNull
-  public static final Item EMERALD_BLOCK = ItemRegistry.fromItemKey("minecraft:emerald_block");
+    @NotNull
+    public static final Item EMERALD_BLOCK = ItemRegistry.fromItemKey("minecraft:emerald_block");
 
-  @NotNull
-  public static final Item SPRUCE_STAIRS = ItemRegistry.fromItemKey("minecraft:spruce_stairs");
+    @NotNull
+    public static final Item SPRUCE_STAIRS = ItemRegistry.fromItemKey("minecraft:spruce_stairs");
 
-  @NotNull
-  public static final Item BIRCH_STAIRS = ItemRegistry.fromItemKey("minecraft:birch_stairs");
+    @NotNull
+    public static final Item BIRCH_STAIRS = ItemRegistry.fromItemKey("minecraft:birch_stairs");
 
-  @NotNull
-  public static final Item JUNGLE_STAIRS = ItemRegistry.fromItemKey("minecraft:jungle_stairs");
+    @NotNull
+    public static final Item JUNGLE_STAIRS = ItemRegistry.fromItemKey("minecraft:jungle_stairs");
 
-  @NotNull
-  public static final Item CRIMSON_STAIRS = ItemRegistry.fromItemKey("minecraft:crimson_stairs");
+    @NotNull
+    public static final Item CRIMSON_STAIRS = ItemRegistry.fromItemKey("minecraft:crimson_stairs");
 
-  @NotNull
-  public static final Item WARPED_STAIRS = ItemRegistry.fromItemKey("minecraft:warped_stairs");
+    @NotNull
+    public static final Item WARPED_STAIRS = ItemRegistry.fromItemKey("minecraft:warped_stairs");
 
-  @NotNull
-  public static final Item COMMAND_BLOCK = ItemRegistry.fromItemKey("minecraft:command_block");
+    @NotNull
+    public static final Item COMMAND_BLOCK = ItemRegistry.fromItemKey("minecraft:command_block");
 
-  @NotNull
-  public static final Item BEACON = ItemRegistry.fromItemKey("minecraft:beacon");
+    @NotNull
+    public static final Item BEACON = ItemRegistry.fromItemKey("minecraft:beacon");
 
-  @NotNull
-  public static final Item COBBLESTONE_WALL = ItemRegistry.fromItemKey("minecraft:cobblestone_wall");
+    @NotNull
+    public static final Item COBBLESTONE_WALL = ItemRegistry.fromItemKey("minecraft:cobblestone_wall");
 
-  @NotNull
-  public static final Item MOSSY_COBBLESTONE_WALL = ItemRegistry.fromItemKey("minecraft:mossy_cobblestone_wall");
+    @NotNull
+    public static final Item MOSSY_COBBLESTONE_WALL = ItemRegistry.fromItemKey("minecraft:mossy_cobblestone_wall");
 
-  @NotNull
-  public static final Item BRICK_WALL = ItemRegistry.fromItemKey("minecraft:brick_wall");
+    @NotNull
+    public static final Item BRICK_WALL = ItemRegistry.fromItemKey("minecraft:brick_wall");
 
-  @NotNull
-  public static final Item PRISMARINE_WALL = ItemRegistry.fromItemKey("minecraft:prismarine_wall");
+    @NotNull
+    public static final Item PRISMARINE_WALL = ItemRegistry.fromItemKey("minecraft:prismarine_wall");
 
-  @NotNull
-  public static final Item RED_SANDSTONE_WALL = ItemRegistry.fromItemKey("minecraft:red_sandstone_wall");
+    @NotNull
+    public static final Item RED_SANDSTONE_WALL = ItemRegistry.fromItemKey("minecraft:red_sandstone_wall");
 
-  @NotNull
-  public static final Item MOSSY_STONE_BRICK_WALL = ItemRegistry.fromItemKey("minecraft:mossy_stone_brick_wall");
+    @NotNull
+    public static final Item MOSSY_STONE_BRICK_WALL = ItemRegistry.fromItemKey("minecraft:mossy_stone_brick_wall");
 
-  @NotNull
-  public static final Item GRANITE_WALL = ItemRegistry.fromItemKey("minecraft:granite_wall");
+    @NotNull
+    public static final Item GRANITE_WALL = ItemRegistry.fromItemKey("minecraft:granite_wall");
 
-  @NotNull
-  public static final Item STONE_BRICK_WALL = ItemRegistry.fromItemKey("minecraft:stone_brick_wall");
+    @NotNull
+    public static final Item STONE_BRICK_WALL = ItemRegistry.fromItemKey("minecraft:stone_brick_wall");
 
-  @NotNull
-  public static final Item NETHER_BRICK_WALL = ItemRegistry.fromItemKey("minecraft:nether_brick_wall");
+    @NotNull
+    public static final Item NETHER_BRICK_WALL = ItemRegistry.fromItemKey("minecraft:nether_brick_wall");
 
-  @NotNull
-  public static final Item ANDESITE_WALL = ItemRegistry.fromItemKey("minecraft:andesite_wall");
+    @NotNull
+    public static final Item ANDESITE_WALL = ItemRegistry.fromItemKey("minecraft:andesite_wall");
 
-  @NotNull
-  public static final Item RED_NETHER_BRICK_WALL = ItemRegistry.fromItemKey("minecraft:red_nether_brick_wall");
+    @NotNull
+    public static final Item RED_NETHER_BRICK_WALL = ItemRegistry.fromItemKey("minecraft:red_nether_brick_wall");
 
-  @NotNull
-  public static final Item SANDSTONE_WALL = ItemRegistry.fromItemKey("minecraft:sandstone_wall");
+    @NotNull
+    public static final Item SANDSTONE_WALL = ItemRegistry.fromItemKey("minecraft:sandstone_wall");
 
-  @NotNull
-  public static final Item END_STONE_BRICK_WALL = ItemRegistry.fromItemKey("minecraft:end_stone_brick_wall");
+    @NotNull
+    public static final Item END_STONE_BRICK_WALL = ItemRegistry.fromItemKey("minecraft:end_stone_brick_wall");
 
-  @NotNull
-  public static final Item DIORITE_WALL = ItemRegistry.fromItemKey("minecraft:diorite_wall");
+    @NotNull
+    public static final Item DIORITE_WALL = ItemRegistry.fromItemKey("minecraft:diorite_wall");
 
-  @NotNull
-  public static final Item BLACKSTONE_WALL = ItemRegistry.fromItemKey("minecraft:blackstone_wall");
+    @NotNull
+    public static final Item BLACKSTONE_WALL = ItemRegistry.fromItemKey("minecraft:blackstone_wall");
 
-  @NotNull
-  public static final Item POLISHED_BLACKSTONE_WALL = ItemRegistry.fromItemKey("minecraft:polished_blackstone_wall");
+    @NotNull
+    public static final Item POLISHED_BLACKSTONE_WALL = ItemRegistry.fromItemKey("minecraft:polished_blackstone_wall");
 
-  @NotNull
-  public static final Item POLISHED_BLACKSTONE_BRICK_WALL = ItemRegistry.fromItemKey("minecraft:polished_blackstone_brick_wall");
+    @NotNull
+    public static final Item POLISHED_BLACKSTONE_BRICK_WALL = ItemRegistry.fromItemKey("minecraft:polished_blackstone_brick_wall");
 
-  @NotNull
-  public static final Item COBBLED_DEEPSLATE_WALL = ItemRegistry.fromItemKey("minecraft:cobbled_deepslate_wall");
+    @NotNull
+    public static final Item COBBLED_DEEPSLATE_WALL = ItemRegistry.fromItemKey("minecraft:cobbled_deepslate_wall");
 
-  @NotNull
-  public static final Item POLISHED_DEEPSLATE_WALL = ItemRegistry.fromItemKey("minecraft:polished_deepslate_wall");
+    @NotNull
+    public static final Item POLISHED_DEEPSLATE_WALL = ItemRegistry.fromItemKey("minecraft:polished_deepslate_wall");
 
-  @NotNull
-  public static final Item DEEPSLATE_BRICK_WALL = ItemRegistry.fromItemKey("minecraft:deepslate_brick_wall");
+    @NotNull
+    public static final Item DEEPSLATE_BRICK_WALL = ItemRegistry.fromItemKey("minecraft:deepslate_brick_wall");
 
-  @NotNull
-  public static final Item DEEPSLATE_TILE_WALL = ItemRegistry.fromItemKey("minecraft:deepslate_tile_wall");
+    @NotNull
+    public static final Item DEEPSLATE_TILE_WALL = ItemRegistry.fromItemKey("minecraft:deepslate_tile_wall");
 
-  @NotNull
-  public static final Item ANVIL = ItemRegistry.fromItemKey("minecraft:anvil");
+    @NotNull
+    public static final Item ANVIL = ItemRegistry.fromItemKey("minecraft:anvil");
 
-  @NotNull
-  public static final Item CHIPPED_ANVIL = ItemRegistry.fromItemKey("minecraft:chipped_anvil");
+    @NotNull
+    public static final Item CHIPPED_ANVIL = ItemRegistry.fromItemKey("minecraft:chipped_anvil");
 
-  @NotNull
-  public static final Item DAMAGED_ANVIL = ItemRegistry.fromItemKey("minecraft:damaged_anvil");
+    @NotNull
+    public static final Item DAMAGED_ANVIL = ItemRegistry.fromItemKey("minecraft:damaged_anvil");
 
-  @NotNull
-  public static final Item CHISELED_QUARTZ_BLOCK = ItemRegistry.fromItemKey("minecraft:chiseled_quartz_block");
+    @NotNull
+    public static final Item CHISELED_QUARTZ_BLOCK = ItemRegistry.fromItemKey("minecraft:chiseled_quartz_block");
 
-  @NotNull
-  public static final Item QUARTZ_BLOCK = ItemRegistry.fromItemKey("minecraft:quartz_block");
+    @NotNull
+    public static final Item QUARTZ_BLOCK = ItemRegistry.fromItemKey("minecraft:quartz_block");
 
-  @NotNull
-  public static final Item QUARTZ_BRICKS = ItemRegistry.fromItemKey("minecraft:quartz_bricks");
+    @NotNull
+    public static final Item QUARTZ_BRICKS = ItemRegistry.fromItemKey("minecraft:quartz_bricks");
 
-  @NotNull
-  public static final Item QUARTZ_PILLAR = ItemRegistry.fromItemKey("minecraft:quartz_pillar");
+    @NotNull
+    public static final Item QUARTZ_PILLAR = ItemRegistry.fromItemKey("minecraft:quartz_pillar");
 
-  @NotNull
-  public static final Item QUARTZ_STAIRS = ItemRegistry.fromItemKey("minecraft:quartz_stairs");
+    @NotNull
+    public static final Item QUARTZ_STAIRS = ItemRegistry.fromItemKey("minecraft:quartz_stairs");
 
-  @NotNull
-  public static final Item WHITE_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:white_terracotta");
+    @NotNull
+    public static final Item WHITE_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:white_terracotta");
 
-  @NotNull
-  public static final Item ORANGE_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:orange_terracotta");
+    @NotNull
+    public static final Item ORANGE_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:orange_terracotta");
 
-  @NotNull
-  public static final Item MAGENTA_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:magenta_terracotta");
+    @NotNull
+    public static final Item MAGENTA_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:magenta_terracotta");
 
-  @NotNull
-  public static final Item LIGHT_BLUE_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:light_blue_terracotta");
+    @NotNull
+    public static final Item LIGHT_BLUE_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:light_blue_terracotta");
 
-  @NotNull
-  public static final Item YELLOW_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:yellow_terracotta");
+    @NotNull
+    public static final Item YELLOW_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:yellow_terracotta");
 
-  @NotNull
-  public static final Item LIME_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:lime_terracotta");
+    @NotNull
+    public static final Item LIME_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:lime_terracotta");
 
-  @NotNull
-  public static final Item PINK_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:pink_terracotta");
+    @NotNull
+    public static final Item PINK_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:pink_terracotta");
 
-  @NotNull
-  public static final Item GRAY_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:gray_terracotta");
+    @NotNull
+    public static final Item GRAY_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:gray_terracotta");
 
-  @NotNull
-  public static final Item LIGHT_GRAY_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:light_gray_terracotta");
+    @NotNull
+    public static final Item LIGHT_GRAY_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:light_gray_terracotta");
 
-  @NotNull
-  public static final Item CYAN_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:cyan_terracotta");
+    @NotNull
+    public static final Item CYAN_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:cyan_terracotta");
 
-  @NotNull
-  public static final Item PURPLE_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:purple_terracotta");
+    @NotNull
+    public static final Item PURPLE_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:purple_terracotta");
 
-  @NotNull
-  public static final Item BLUE_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:blue_terracotta");
+    @NotNull
+    public static final Item BLUE_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:blue_terracotta");
 
-  @NotNull
-  public static final Item BROWN_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:brown_terracotta");
+    @NotNull
+    public static final Item BROWN_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:brown_terracotta");
 
-  @NotNull
-  public static final Item GREEN_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:green_terracotta");
+    @NotNull
+    public static final Item GREEN_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:green_terracotta");
 
-  @NotNull
-  public static final Item RED_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:red_terracotta");
+    @NotNull
+    public static final Item RED_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:red_terracotta");
 
-  @NotNull
-  public static final Item BLACK_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:black_terracotta");
+    @NotNull
+    public static final Item BLACK_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:black_terracotta");
 
-  @NotNull
-  public static final Item BARRIER = ItemRegistry.fromItemKey("minecraft:barrier");
+    @NotNull
+    public static final Item BARRIER = ItemRegistry.fromItemKey("minecraft:barrier");
 
-  @NotNull
-  public static final Item LIGHT = ItemRegistry.fromItemKey("minecraft:light");
+    @NotNull
+    public static final Item LIGHT = ItemRegistry.fromItemKey("minecraft:light");
 
-  @NotNull
-  public static final Item HAY_BLOCK = ItemRegistry.fromItemKey("minecraft:hay_block");
+    @NotNull
+    public static final Item HAY_BLOCK = ItemRegistry.fromItemKey("minecraft:hay_block");
 
-  @NotNull
-  public static final Item WHITE_CARPET = ItemRegistry.fromItemKey("minecraft:white_carpet");
+    @NotNull
+    public static final Item WHITE_CARPET = ItemRegistry.fromItemKey("minecraft:white_carpet");
 
-  @NotNull
-  public static final Item ORANGE_CARPET = ItemRegistry.fromItemKey("minecraft:orange_carpet");
+    @NotNull
+    public static final Item ORANGE_CARPET = ItemRegistry.fromItemKey("minecraft:orange_carpet");
 
-  @NotNull
-  public static final Item MAGENTA_CARPET = ItemRegistry.fromItemKey("minecraft:magenta_carpet");
+    @NotNull
+    public static final Item MAGENTA_CARPET = ItemRegistry.fromItemKey("minecraft:magenta_carpet");
 
-  @NotNull
-  public static final Item LIGHT_BLUE_CARPET = ItemRegistry.fromItemKey("minecraft:light_blue_carpet");
+    @NotNull
+    public static final Item LIGHT_BLUE_CARPET = ItemRegistry.fromItemKey("minecraft:light_blue_carpet");
 
-  @NotNull
-  public static final Item YELLOW_CARPET = ItemRegistry.fromItemKey("minecraft:yellow_carpet");
+    @NotNull
+    public static final Item YELLOW_CARPET = ItemRegistry.fromItemKey("minecraft:yellow_carpet");
 
-  @NotNull
-  public static final Item LIME_CARPET = ItemRegistry.fromItemKey("minecraft:lime_carpet");
+    @NotNull
+    public static final Item LIME_CARPET = ItemRegistry.fromItemKey("minecraft:lime_carpet");
 
-  @NotNull
-  public static final Item PINK_CARPET = ItemRegistry.fromItemKey("minecraft:pink_carpet");
+    @NotNull
+    public static final Item PINK_CARPET = ItemRegistry.fromItemKey("minecraft:pink_carpet");
 
-  @NotNull
-  public static final Item GRAY_CARPET = ItemRegistry.fromItemKey("minecraft:gray_carpet");
+    @NotNull
+    public static final Item GRAY_CARPET = ItemRegistry.fromItemKey("minecraft:gray_carpet");
 
-  @NotNull
-  public static final Item LIGHT_GRAY_CARPET = ItemRegistry.fromItemKey("minecraft:light_gray_carpet");
+    @NotNull
+    public static final Item LIGHT_GRAY_CARPET = ItemRegistry.fromItemKey("minecraft:light_gray_carpet");
 
-  @NotNull
-  public static final Item CYAN_CARPET = ItemRegistry.fromItemKey("minecraft:cyan_carpet");
+    @NotNull
+    public static final Item CYAN_CARPET = ItemRegistry.fromItemKey("minecraft:cyan_carpet");
 
-  @NotNull
-  public static final Item PURPLE_CARPET = ItemRegistry.fromItemKey("minecraft:purple_carpet");
+    @NotNull
+    public static final Item PURPLE_CARPET = ItemRegistry.fromItemKey("minecraft:purple_carpet");
 
-  @NotNull
-  public static final Item BLUE_CARPET = ItemRegistry.fromItemKey("minecraft:blue_carpet");
+    @NotNull
+    public static final Item BLUE_CARPET = ItemRegistry.fromItemKey("minecraft:blue_carpet");
 
-  @NotNull
-  public static final Item BROWN_CARPET = ItemRegistry.fromItemKey("minecraft:brown_carpet");
+    @NotNull
+    public static final Item BROWN_CARPET = ItemRegistry.fromItemKey("minecraft:brown_carpet");
 
-  @NotNull
-  public static final Item GREEN_CARPET = ItemRegistry.fromItemKey("minecraft:green_carpet");
+    @NotNull
+    public static final Item GREEN_CARPET = ItemRegistry.fromItemKey("minecraft:green_carpet");
 
-  @NotNull
-  public static final Item RED_CARPET = ItemRegistry.fromItemKey("minecraft:red_carpet");
+    @NotNull
+    public static final Item RED_CARPET = ItemRegistry.fromItemKey("minecraft:red_carpet");
 
-  @NotNull
-  public static final Item BLACK_CARPET = ItemRegistry.fromItemKey("minecraft:black_carpet");
+    @NotNull
+    public static final Item BLACK_CARPET = ItemRegistry.fromItemKey("minecraft:black_carpet");
 
-  @NotNull
-  public static final Item TERRACOTTA = ItemRegistry.fromItemKey("minecraft:terracotta");
+    @NotNull
+    public static final Item TERRACOTTA = ItemRegistry.fromItemKey("minecraft:terracotta");
 
-  @NotNull
-  public static final Item PACKED_ICE = ItemRegistry.fromItemKey("minecraft:packed_ice");
+    @NotNull
+    public static final Item PACKED_ICE = ItemRegistry.fromItemKey("minecraft:packed_ice");
 
-  @NotNull
-  public static final Item ACACIA_STAIRS = ItemRegistry.fromItemKey("minecraft:acacia_stairs");
+    @NotNull
+    public static final Item ACACIA_STAIRS = ItemRegistry.fromItemKey("minecraft:acacia_stairs");
 
-  @NotNull
-  public static final Item DARK_OAK_STAIRS = ItemRegistry.fromItemKey("minecraft:dark_oak_stairs");
+    @NotNull
+    public static final Item DARK_OAK_STAIRS = ItemRegistry.fromItemKey("minecraft:dark_oak_stairs");
 
-  @NotNull
-  public static final Item DIRT_PATH = ItemRegistry.fromItemKey("minecraft:dirt_path");
+    @NotNull
+    public static final Item DIRT_PATH = ItemRegistry.fromItemKey("minecraft:dirt_path");
 
-  @NotNull
-  public static final Item SUNFLOWER = ItemRegistry.fromItemKey("minecraft:sunflower");
+    @NotNull
+    public static final Item SUNFLOWER = ItemRegistry.fromItemKey("minecraft:sunflower");
 
-  @NotNull
-  public static final Item LILAC = ItemRegistry.fromItemKey("minecraft:lilac");
+    @NotNull
+    public static final Item LILAC = ItemRegistry.fromItemKey("minecraft:lilac");
 
-  @NotNull
-  public static final Item ROSE_BUSH = ItemRegistry.fromItemKey("minecraft:rose_bush");
+    @NotNull
+    public static final Item ROSE_BUSH = ItemRegistry.fromItemKey("minecraft:rose_bush");
 
-  @NotNull
-  public static final Item PEONY = ItemRegistry.fromItemKey("minecraft:peony");
+    @NotNull
+    public static final Item PEONY = ItemRegistry.fromItemKey("minecraft:peony");
 
-  @NotNull
-  public static final Item TALL_GRASS = ItemRegistry.fromItemKey("minecraft:tall_grass");
+    @NotNull
+    public static final Item TALL_GRASS = ItemRegistry.fromItemKey("minecraft:tall_grass");
 
-  @NotNull
-  public static final Item LARGE_FERN = ItemRegistry.fromItemKey("minecraft:large_fern");
+    @NotNull
+    public static final Item LARGE_FERN = ItemRegistry.fromItemKey("minecraft:large_fern");
 
-  @NotNull
-  public static final Item WHITE_STAINED_GLASS = ItemRegistry.fromItemKey("minecraft:white_stained_glass");
+    @NotNull
+    public static final Item WHITE_STAINED_GLASS = ItemRegistry.fromItemKey("minecraft:white_stained_glass");
 
-  @NotNull
-  public static final Item ORANGE_STAINED_GLASS = ItemRegistry.fromItemKey("minecraft:orange_stained_glass");
+    @NotNull
+    public static final Item ORANGE_STAINED_GLASS = ItemRegistry.fromItemKey("minecraft:orange_stained_glass");
 
-  @NotNull
-  public static final Item MAGENTA_STAINED_GLASS = ItemRegistry.fromItemKey("minecraft:magenta_stained_glass");
+    @NotNull
+    public static final Item MAGENTA_STAINED_GLASS = ItemRegistry.fromItemKey("minecraft:magenta_stained_glass");
 
-  @NotNull
-  public static final Item LIGHT_BLUE_STAINED_GLASS = ItemRegistry.fromItemKey("minecraft:light_blue_stained_glass");
+    @NotNull
+    public static final Item LIGHT_BLUE_STAINED_GLASS = ItemRegistry.fromItemKey("minecraft:light_blue_stained_glass");
 
-  @NotNull
-  public static final Item YELLOW_STAINED_GLASS = ItemRegistry.fromItemKey("minecraft:yellow_stained_glass");
+    @NotNull
+    public static final Item YELLOW_STAINED_GLASS = ItemRegistry.fromItemKey("minecraft:yellow_stained_glass");
 
-  @NotNull
-  public static final Item LIME_STAINED_GLASS = ItemRegistry.fromItemKey("minecraft:lime_stained_glass");
+    @NotNull
+    public static final Item LIME_STAINED_GLASS = ItemRegistry.fromItemKey("minecraft:lime_stained_glass");
 
-  @NotNull
-  public static final Item PINK_STAINED_GLASS = ItemRegistry.fromItemKey("minecraft:pink_stained_glass");
+    @NotNull
+    public static final Item PINK_STAINED_GLASS = ItemRegistry.fromItemKey("minecraft:pink_stained_glass");
 
-  @NotNull
-  public static final Item GRAY_STAINED_GLASS = ItemRegistry.fromItemKey("minecraft:gray_stained_glass");
+    @NotNull
+    public static final Item GRAY_STAINED_GLASS = ItemRegistry.fromItemKey("minecraft:gray_stained_glass");
 
-  @NotNull
-  public static final Item LIGHT_GRAY_STAINED_GLASS = ItemRegistry.fromItemKey("minecraft:light_gray_stained_glass");
+    @NotNull
+    public static final Item LIGHT_GRAY_STAINED_GLASS = ItemRegistry.fromItemKey("minecraft:light_gray_stained_glass");
 
-  @NotNull
-  public static final Item CYAN_STAINED_GLASS = ItemRegistry.fromItemKey("minecraft:cyan_stained_glass");
+    @NotNull
+    public static final Item CYAN_STAINED_GLASS = ItemRegistry.fromItemKey("minecraft:cyan_stained_glass");
 
-  @NotNull
-  public static final Item PURPLE_STAINED_GLASS = ItemRegistry.fromItemKey("minecraft:purple_stained_glass");
+    @NotNull
+    public static final Item PURPLE_STAINED_GLASS = ItemRegistry.fromItemKey("minecraft:purple_stained_glass");
 
-  @NotNull
-  public static final Item BLUE_STAINED_GLASS = ItemRegistry.fromItemKey("minecraft:blue_stained_glass");
+    @NotNull
+    public static final Item BLUE_STAINED_GLASS = ItemRegistry.fromItemKey("minecraft:blue_stained_glass");
 
-  @NotNull
-  public static final Item BROWN_STAINED_GLASS = ItemRegistry.fromItemKey("minecraft:brown_stained_glass");
+    @NotNull
+    public static final Item BROWN_STAINED_GLASS = ItemRegistry.fromItemKey("minecraft:brown_stained_glass");
 
-  @NotNull
-  public static final Item GREEN_STAINED_GLASS = ItemRegistry.fromItemKey("minecraft:green_stained_glass");
+    @NotNull
+    public static final Item GREEN_STAINED_GLASS = ItemRegistry.fromItemKey("minecraft:green_stained_glass");
 
-  @NotNull
-  public static final Item RED_STAINED_GLASS = ItemRegistry.fromItemKey("minecraft:red_stained_glass");
+    @NotNull
+    public static final Item RED_STAINED_GLASS = ItemRegistry.fromItemKey("minecraft:red_stained_glass");
 
-  @NotNull
-  public static final Item BLACK_STAINED_GLASS = ItemRegistry.fromItemKey("minecraft:black_stained_glass");
+    @NotNull
+    public static final Item BLACK_STAINED_GLASS = ItemRegistry.fromItemKey("minecraft:black_stained_glass");
 
-  @NotNull
-  public static final Item WHITE_STAINED_GLASS_PANE = ItemRegistry.fromItemKey("minecraft:white_stained_glass_pane");
+    @NotNull
+    public static final Item WHITE_STAINED_GLASS_PANE = ItemRegistry.fromItemKey("minecraft:white_stained_glass_pane");
 
-  @NotNull
-  public static final Item ORANGE_STAINED_GLASS_PANE = ItemRegistry.fromItemKey("minecraft:orange_stained_glass_pane");
+    @NotNull
+    public static final Item ORANGE_STAINED_GLASS_PANE = ItemRegistry.fromItemKey("minecraft:orange_stained_glass_pane");
 
-  @NotNull
-  public static final Item MAGENTA_STAINED_GLASS_PANE = ItemRegistry.fromItemKey("minecraft:magenta_stained_glass_pane");
+    @NotNull
+    public static final Item MAGENTA_STAINED_GLASS_PANE = ItemRegistry.fromItemKey("minecraft:magenta_stained_glass_pane");
 
-  @NotNull
-  public static final Item LIGHT_BLUE_STAINED_GLASS_PANE = ItemRegistry.fromItemKey("minecraft:light_blue_stained_glass_pane");
+    @NotNull
+    public static final Item LIGHT_BLUE_STAINED_GLASS_PANE = ItemRegistry.fromItemKey("minecraft:light_blue_stained_glass_pane");
 
-  @NotNull
-  public static final Item YELLOW_STAINED_GLASS_PANE = ItemRegistry.fromItemKey("minecraft:yellow_stained_glass_pane");
+    @NotNull
+    public static final Item YELLOW_STAINED_GLASS_PANE = ItemRegistry.fromItemKey("minecraft:yellow_stained_glass_pane");
 
-  @NotNull
-  public static final Item LIME_STAINED_GLASS_PANE = ItemRegistry.fromItemKey("minecraft:lime_stained_glass_pane");
+    @NotNull
+    public static final Item LIME_STAINED_GLASS_PANE = ItemRegistry.fromItemKey("minecraft:lime_stained_glass_pane");
 
-  @NotNull
-  public static final Item PINK_STAINED_GLASS_PANE = ItemRegistry.fromItemKey("minecraft:pink_stained_glass_pane");
+    @NotNull
+    public static final Item PINK_STAINED_GLASS_PANE = ItemRegistry.fromItemKey("minecraft:pink_stained_glass_pane");
 
-  @NotNull
-  public static final Item GRAY_STAINED_GLASS_PANE = ItemRegistry.fromItemKey("minecraft:gray_stained_glass_pane");
+    @NotNull
+    public static final Item GRAY_STAINED_GLASS_PANE = ItemRegistry.fromItemKey("minecraft:gray_stained_glass_pane");
 
-  @NotNull
-  public static final Item LIGHT_GRAY_STAINED_GLASS_PANE = ItemRegistry.fromItemKey("minecraft:light_gray_stained_glass_pane");
+    @NotNull
+    public static final Item LIGHT_GRAY_STAINED_GLASS_PANE = ItemRegistry.fromItemKey("minecraft:light_gray_stained_glass_pane");
 
-  @NotNull
-  public static final Item CYAN_STAINED_GLASS_PANE = ItemRegistry.fromItemKey("minecraft:cyan_stained_glass_pane");
+    @NotNull
+    public static final Item CYAN_STAINED_GLASS_PANE = ItemRegistry.fromItemKey("minecraft:cyan_stained_glass_pane");
 
-  @NotNull
-  public static final Item PURPLE_STAINED_GLASS_PANE = ItemRegistry.fromItemKey("minecraft:purple_stained_glass_pane");
+    @NotNull
+    public static final Item PURPLE_STAINED_GLASS_PANE = ItemRegistry.fromItemKey("minecraft:purple_stained_glass_pane");
 
-  @NotNull
-  public static final Item BLUE_STAINED_GLASS_PANE = ItemRegistry.fromItemKey("minecraft:blue_stained_glass_pane");
+    @NotNull
+    public static final Item BLUE_STAINED_GLASS_PANE = ItemRegistry.fromItemKey("minecraft:blue_stained_glass_pane");
 
-  @NotNull
-  public static final Item BROWN_STAINED_GLASS_PANE = ItemRegistry.fromItemKey("minecraft:brown_stained_glass_pane");
+    @NotNull
+    public static final Item BROWN_STAINED_GLASS_PANE = ItemRegistry.fromItemKey("minecraft:brown_stained_glass_pane");
 
-  @NotNull
-  public static final Item GREEN_STAINED_GLASS_PANE = ItemRegistry.fromItemKey("minecraft:green_stained_glass_pane");
+    @NotNull
+    public static final Item GREEN_STAINED_GLASS_PANE = ItemRegistry.fromItemKey("minecraft:green_stained_glass_pane");
 
-  @NotNull
-  public static final Item RED_STAINED_GLASS_PANE = ItemRegistry.fromItemKey("minecraft:red_stained_glass_pane");
+    @NotNull
+    public static final Item RED_STAINED_GLASS_PANE = ItemRegistry.fromItemKey("minecraft:red_stained_glass_pane");
 
-  @NotNull
-  public static final Item BLACK_STAINED_GLASS_PANE = ItemRegistry.fromItemKey("minecraft:black_stained_glass_pane");
+    @NotNull
+    public static final Item BLACK_STAINED_GLASS_PANE = ItemRegistry.fromItemKey("minecraft:black_stained_glass_pane");
 
-  @NotNull
-  public static final Item PRISMARINE = ItemRegistry.fromItemKey("minecraft:prismarine");
+    @NotNull
+    public static final Item PRISMARINE = ItemRegistry.fromItemKey("minecraft:prismarine");
 
-  @NotNull
-  public static final Item PRISMARINE_BRICKS = ItemRegistry.fromItemKey("minecraft:prismarine_bricks");
+    @NotNull
+    public static final Item PRISMARINE_BRICKS = ItemRegistry.fromItemKey("minecraft:prismarine_bricks");
 
-  @NotNull
-  public static final Item DARK_PRISMARINE = ItemRegistry.fromItemKey("minecraft:dark_prismarine");
+    @NotNull
+    public static final Item DARK_PRISMARINE = ItemRegistry.fromItemKey("minecraft:dark_prismarine");
 
-  @NotNull
-  public static final Item PRISMARINE_STAIRS = ItemRegistry.fromItemKey("minecraft:prismarine_stairs");
+    @NotNull
+    public static final Item PRISMARINE_STAIRS = ItemRegistry.fromItemKey("minecraft:prismarine_stairs");
 
-  @NotNull
-  public static final Item PRISMARINE_BRICK_STAIRS = ItemRegistry.fromItemKey("minecraft:prismarine_brick_stairs");
+    @NotNull
+    public static final Item PRISMARINE_BRICK_STAIRS = ItemRegistry.fromItemKey("minecraft:prismarine_brick_stairs");
 
-  @NotNull
-  public static final Item DARK_PRISMARINE_STAIRS = ItemRegistry.fromItemKey("minecraft:dark_prismarine_stairs");
+    @NotNull
+    public static final Item DARK_PRISMARINE_STAIRS = ItemRegistry.fromItemKey("minecraft:dark_prismarine_stairs");
 
-  @NotNull
-  public static final Item SEA_LANTERN = ItemRegistry.fromItemKey("minecraft:sea_lantern");
+    @NotNull
+    public static final Item SEA_LANTERN = ItemRegistry.fromItemKey("minecraft:sea_lantern");
 
-  @NotNull
-  public static final Item RED_SANDSTONE = ItemRegistry.fromItemKey("minecraft:red_sandstone");
+    @NotNull
+    public static final Item RED_SANDSTONE = ItemRegistry.fromItemKey("minecraft:red_sandstone");
 
-  @NotNull
-  public static final Item CHISELED_RED_SANDSTONE = ItemRegistry.fromItemKey("minecraft:chiseled_red_sandstone");
+    @NotNull
+    public static final Item CHISELED_RED_SANDSTONE = ItemRegistry.fromItemKey("minecraft:chiseled_red_sandstone");
 
-  @NotNull
-  public static final Item CUT_RED_SANDSTONE = ItemRegistry.fromItemKey("minecraft:cut_red_sandstone");
+    @NotNull
+    public static final Item CUT_RED_SANDSTONE = ItemRegistry.fromItemKey("minecraft:cut_red_sandstone");
 
-  @NotNull
-  public static final Item RED_SANDSTONE_STAIRS = ItemRegistry.fromItemKey("minecraft:red_sandstone_stairs");
+    @NotNull
+    public static final Item RED_SANDSTONE_STAIRS = ItemRegistry.fromItemKey("minecraft:red_sandstone_stairs");
 
-  @NotNull
-  public static final Item REPEATING_COMMAND_BLOCK = ItemRegistry.fromItemKey("minecraft:repeating_command_block");
+    @NotNull
+    public static final Item REPEATING_COMMAND_BLOCK = ItemRegistry.fromItemKey("minecraft:repeating_command_block");
 
-  @NotNull
-  public static final Item CHAIN_COMMAND_BLOCK = ItemRegistry.fromItemKey("minecraft:chain_command_block");
+    @NotNull
+    public static final Item CHAIN_COMMAND_BLOCK = ItemRegistry.fromItemKey("minecraft:chain_command_block");
 
-  @NotNull
-  public static final Item MAGMA_BLOCK = ItemRegistry.fromItemKey("minecraft:magma_block");
+    @NotNull
+    public static final Item MAGMA_BLOCK = ItemRegistry.fromItemKey("minecraft:magma_block");
 
-  @NotNull
-  public static final Item NETHER_WART_BLOCK = ItemRegistry.fromItemKey("minecraft:nether_wart_block");
+    @NotNull
+    public static final Item NETHER_WART_BLOCK = ItemRegistry.fromItemKey("minecraft:nether_wart_block");
 
-  @NotNull
-  public static final Item WARPED_WART_BLOCK = ItemRegistry.fromItemKey("minecraft:warped_wart_block");
+    @NotNull
+    public static final Item WARPED_WART_BLOCK = ItemRegistry.fromItemKey("minecraft:warped_wart_block");
 
-  @NotNull
-  public static final Item RED_NETHER_BRICKS = ItemRegistry.fromItemKey("minecraft:red_nether_bricks");
+    @NotNull
+    public static final Item RED_NETHER_BRICKS = ItemRegistry.fromItemKey("minecraft:red_nether_bricks");
 
-  @NotNull
-  public static final Item BONE_BLOCK = ItemRegistry.fromItemKey("minecraft:bone_block");
+    @NotNull
+    public static final Item BONE_BLOCK = ItemRegistry.fromItemKey("minecraft:bone_block");
 
-  @NotNull
-  public static final Item STRUCTURE_VOID = ItemRegistry.fromItemKey("minecraft:structure_void");
+    @NotNull
+    public static final Item STRUCTURE_VOID = ItemRegistry.fromItemKey("minecraft:structure_void");
 
-  @NotNull
-  public static final Item SHULKER_BOX = ItemRegistry.fromItemKey("minecraft:shulker_box");
+    @NotNull
+    public static final Item SHULKER_BOX = ItemRegistry.fromItemKey("minecraft:shulker_box");
 
-  @NotNull
-  public static final Item WHITE_SHULKER_BOX = ItemRegistry.fromItemKey("minecraft:white_shulker_box");
+    @NotNull
+    public static final Item WHITE_SHULKER_BOX = ItemRegistry.fromItemKey("minecraft:white_shulker_box");
 
-  @NotNull
-  public static final Item ORANGE_SHULKER_BOX = ItemRegistry.fromItemKey("minecraft:orange_shulker_box");
+    @NotNull
+    public static final Item ORANGE_SHULKER_BOX = ItemRegistry.fromItemKey("minecraft:orange_shulker_box");
 
-  @NotNull
-  public static final Item MAGENTA_SHULKER_BOX = ItemRegistry.fromItemKey("minecraft:magenta_shulker_box");
+    @NotNull
+    public static final Item MAGENTA_SHULKER_BOX = ItemRegistry.fromItemKey("minecraft:magenta_shulker_box");
 
-  @NotNull
-  public static final Item LIGHT_BLUE_SHULKER_BOX = ItemRegistry.fromItemKey("minecraft:light_blue_shulker_box");
+    @NotNull
+    public static final Item LIGHT_BLUE_SHULKER_BOX = ItemRegistry.fromItemKey("minecraft:light_blue_shulker_box");
 
-  @NotNull
-  public static final Item YELLOW_SHULKER_BOX = ItemRegistry.fromItemKey("minecraft:yellow_shulker_box");
+    @NotNull
+    public static final Item YELLOW_SHULKER_BOX = ItemRegistry.fromItemKey("minecraft:yellow_shulker_box");
 
-  @NotNull
-  public static final Item LIME_SHULKER_BOX = ItemRegistry.fromItemKey("minecraft:lime_shulker_box");
+    @NotNull
+    public static final Item LIME_SHULKER_BOX = ItemRegistry.fromItemKey("minecraft:lime_shulker_box");
 
-  @NotNull
-  public static final Item PINK_SHULKER_BOX = ItemRegistry.fromItemKey("minecraft:pink_shulker_box");
+    @NotNull
+    public static final Item PINK_SHULKER_BOX = ItemRegistry.fromItemKey("minecraft:pink_shulker_box");
 
-  @NotNull
-  public static final Item GRAY_SHULKER_BOX = ItemRegistry.fromItemKey("minecraft:gray_shulker_box");
+    @NotNull
+    public static final Item GRAY_SHULKER_BOX = ItemRegistry.fromItemKey("minecraft:gray_shulker_box");
 
-  @NotNull
-  public static final Item LIGHT_GRAY_SHULKER_BOX = ItemRegistry.fromItemKey("minecraft:light_gray_shulker_box");
+    @NotNull
+    public static final Item LIGHT_GRAY_SHULKER_BOX = ItemRegistry.fromItemKey("minecraft:light_gray_shulker_box");
 
-  @NotNull
-  public static final Item CYAN_SHULKER_BOX = ItemRegistry.fromItemKey("minecraft:cyan_shulker_box");
+    @NotNull
+    public static final Item CYAN_SHULKER_BOX = ItemRegistry.fromItemKey("minecraft:cyan_shulker_box");
 
-  @NotNull
-  public static final Item PURPLE_SHULKER_BOX = ItemRegistry.fromItemKey("minecraft:purple_shulker_box");
+    @NotNull
+    public static final Item PURPLE_SHULKER_BOX = ItemRegistry.fromItemKey("minecraft:purple_shulker_box");
 
-  @NotNull
-  public static final Item BLUE_SHULKER_BOX = ItemRegistry.fromItemKey("minecraft:blue_shulker_box");
+    @NotNull
+    public static final Item BLUE_SHULKER_BOX = ItemRegistry.fromItemKey("minecraft:blue_shulker_box");
 
-  @NotNull
-  public static final Item BROWN_SHULKER_BOX = ItemRegistry.fromItemKey("minecraft:brown_shulker_box");
+    @NotNull
+    public static final Item BROWN_SHULKER_BOX = ItemRegistry.fromItemKey("minecraft:brown_shulker_box");
 
-  @NotNull
-  public static final Item GREEN_SHULKER_BOX = ItemRegistry.fromItemKey("minecraft:green_shulker_box");
+    @NotNull
+    public static final Item GREEN_SHULKER_BOX = ItemRegistry.fromItemKey("minecraft:green_shulker_box");
 
-  @NotNull
-  public static final Item RED_SHULKER_BOX = ItemRegistry.fromItemKey("minecraft:red_shulker_box");
+    @NotNull
+    public static final Item RED_SHULKER_BOX = ItemRegistry.fromItemKey("minecraft:red_shulker_box");
 
-  @NotNull
-  public static final Item BLACK_SHULKER_BOX = ItemRegistry.fromItemKey("minecraft:black_shulker_box");
+    @NotNull
+    public static final Item BLACK_SHULKER_BOX = ItemRegistry.fromItemKey("minecraft:black_shulker_box");
 
-  @NotNull
-  public static final Item WHITE_GLAZED_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:white_glazed_terracotta");
+    @NotNull
+    public static final Item WHITE_GLAZED_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:white_glazed_terracotta");
 
-  @NotNull
-  public static final Item ORANGE_GLAZED_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:orange_glazed_terracotta");
+    @NotNull
+    public static final Item ORANGE_GLAZED_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:orange_glazed_terracotta");
 
-  @NotNull
-  public static final Item MAGENTA_GLAZED_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:magenta_glazed_terracotta");
+    @NotNull
+    public static final Item MAGENTA_GLAZED_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:magenta_glazed_terracotta");
 
-  @NotNull
-  public static final Item LIGHT_BLUE_GLAZED_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:light_blue_glazed_terracotta");
+    @NotNull
+    public static final Item LIGHT_BLUE_GLAZED_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:light_blue_glazed_terracotta");
 
-  @NotNull
-  public static final Item YELLOW_GLAZED_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:yellow_glazed_terracotta");
+    @NotNull
+    public static final Item YELLOW_GLAZED_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:yellow_glazed_terracotta");
 
-  @NotNull
-  public static final Item LIME_GLAZED_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:lime_glazed_terracotta");
+    @NotNull
+    public static final Item LIME_GLAZED_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:lime_glazed_terracotta");
 
-  @NotNull
-  public static final Item PINK_GLAZED_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:pink_glazed_terracotta");
+    @NotNull
+    public static final Item PINK_GLAZED_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:pink_glazed_terracotta");
 
-  @NotNull
-  public static final Item GRAY_GLAZED_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:gray_glazed_terracotta");
+    @NotNull
+    public static final Item GRAY_GLAZED_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:gray_glazed_terracotta");
 
-  @NotNull
-  public static final Item LIGHT_GRAY_GLAZED_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:light_gray_glazed_terracotta");
+    @NotNull
+    public static final Item LIGHT_GRAY_GLAZED_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:light_gray_glazed_terracotta");
 
-  @NotNull
-  public static final Item CYAN_GLAZED_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:cyan_glazed_terracotta");
+    @NotNull
+    public static final Item CYAN_GLAZED_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:cyan_glazed_terracotta");
 
-  @NotNull
-  public static final Item PURPLE_GLAZED_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:purple_glazed_terracotta");
+    @NotNull
+    public static final Item PURPLE_GLAZED_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:purple_glazed_terracotta");
 
-  @NotNull
-  public static final Item BLUE_GLAZED_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:blue_glazed_terracotta");
+    @NotNull
+    public static final Item BLUE_GLAZED_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:blue_glazed_terracotta");
 
-  @NotNull
-  public static final Item BROWN_GLAZED_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:brown_glazed_terracotta");
+    @NotNull
+    public static final Item BROWN_GLAZED_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:brown_glazed_terracotta");
 
-  @NotNull
-  public static final Item GREEN_GLAZED_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:green_glazed_terracotta");
+    @NotNull
+    public static final Item GREEN_GLAZED_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:green_glazed_terracotta");
 
-  @NotNull
-  public static final Item RED_GLAZED_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:red_glazed_terracotta");
+    @NotNull
+    public static final Item RED_GLAZED_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:red_glazed_terracotta");
 
-  @NotNull
-  public static final Item BLACK_GLAZED_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:black_glazed_terracotta");
+    @NotNull
+    public static final Item BLACK_GLAZED_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:black_glazed_terracotta");
 
-  @NotNull
-  public static final Item WHITE_CONCRETE = ItemRegistry.fromItemKey("minecraft:white_concrete");
+    @NotNull
+    public static final Item WHITE_CONCRETE = ItemRegistry.fromItemKey("minecraft:white_concrete");
 
-  @NotNull
-  public static final Item ORANGE_CONCRETE = ItemRegistry.fromItemKey("minecraft:orange_concrete");
+    @NotNull
+    public static final Item ORANGE_CONCRETE = ItemRegistry.fromItemKey("minecraft:orange_concrete");
 
-  @NotNull
-  public static final Item MAGENTA_CONCRETE = ItemRegistry.fromItemKey("minecraft:magenta_concrete");
+    @NotNull
+    public static final Item MAGENTA_CONCRETE = ItemRegistry.fromItemKey("minecraft:magenta_concrete");
 
-  @NotNull
-  public static final Item LIGHT_BLUE_CONCRETE = ItemRegistry.fromItemKey("minecraft:light_blue_concrete");
+    @NotNull
+    public static final Item LIGHT_BLUE_CONCRETE = ItemRegistry.fromItemKey("minecraft:light_blue_concrete");
 
-  @NotNull
-  public static final Item YELLOW_CONCRETE = ItemRegistry.fromItemKey("minecraft:yellow_concrete");
+    @NotNull
+    public static final Item YELLOW_CONCRETE = ItemRegistry.fromItemKey("minecraft:yellow_concrete");
 
-  @NotNull
-  public static final Item LIME_CONCRETE = ItemRegistry.fromItemKey("minecraft:lime_concrete");
+    @NotNull
+    public static final Item LIME_CONCRETE = ItemRegistry.fromItemKey("minecraft:lime_concrete");
 
-  @NotNull
-  public static final Item PINK_CONCRETE = ItemRegistry.fromItemKey("minecraft:pink_concrete");
+    @NotNull
+    public static final Item PINK_CONCRETE = ItemRegistry.fromItemKey("minecraft:pink_concrete");
 
-  @NotNull
-  public static final Item GRAY_CONCRETE = ItemRegistry.fromItemKey("minecraft:gray_concrete");
+    @NotNull
+    public static final Item GRAY_CONCRETE = ItemRegistry.fromItemKey("minecraft:gray_concrete");
 
-  @NotNull
-  public static final Item LIGHT_GRAY_CONCRETE = ItemRegistry.fromItemKey("minecraft:light_gray_concrete");
+    @NotNull
+    public static final Item LIGHT_GRAY_CONCRETE = ItemRegistry.fromItemKey("minecraft:light_gray_concrete");
 
-  @NotNull
-  public static final Item CYAN_CONCRETE = ItemRegistry.fromItemKey("minecraft:cyan_concrete");
+    @NotNull
+    public static final Item CYAN_CONCRETE = ItemRegistry.fromItemKey("minecraft:cyan_concrete");
 
-  @NotNull
-  public static final Item PURPLE_CONCRETE = ItemRegistry.fromItemKey("minecraft:purple_concrete");
+    @NotNull
+    public static final Item PURPLE_CONCRETE = ItemRegistry.fromItemKey("minecraft:purple_concrete");
 
-  @NotNull
-  public static final Item BLUE_CONCRETE = ItemRegistry.fromItemKey("minecraft:blue_concrete");
+    @NotNull
+    public static final Item BLUE_CONCRETE = ItemRegistry.fromItemKey("minecraft:blue_concrete");
 
-  @NotNull
-  public static final Item BROWN_CONCRETE = ItemRegistry.fromItemKey("minecraft:brown_concrete");
+    @NotNull
+    public static final Item BROWN_CONCRETE = ItemRegistry.fromItemKey("minecraft:brown_concrete");
 
-  @NotNull
-  public static final Item GREEN_CONCRETE = ItemRegistry.fromItemKey("minecraft:green_concrete");
+    @NotNull
+    public static final Item GREEN_CONCRETE = ItemRegistry.fromItemKey("minecraft:green_concrete");
 
-  @NotNull
-  public static final Item RED_CONCRETE = ItemRegistry.fromItemKey("minecraft:red_concrete");
+    @NotNull
+    public static final Item RED_CONCRETE = ItemRegistry.fromItemKey("minecraft:red_concrete");
 
-  @NotNull
-  public static final Item BLACK_CONCRETE = ItemRegistry.fromItemKey("minecraft:black_concrete");
+    @NotNull
+    public static final Item BLACK_CONCRETE = ItemRegistry.fromItemKey("minecraft:black_concrete");
 
-  @NotNull
-  public static final Item WHITE_CONCRETE_POWDER = ItemRegistry.fromItemKey("minecraft:white_concrete_powder");
+    @NotNull
+    public static final Item WHITE_CONCRETE_POWDER = ItemRegistry.fromItemKey("minecraft:white_concrete_powder");
 
-  @NotNull
-  public static final Item ORANGE_CONCRETE_POWDER = ItemRegistry.fromItemKey("minecraft:orange_concrete_powder");
+    @NotNull
+    public static final Item ORANGE_CONCRETE_POWDER = ItemRegistry.fromItemKey("minecraft:orange_concrete_powder");
 
-  @NotNull
-  public static final Item MAGENTA_CONCRETE_POWDER = ItemRegistry.fromItemKey("minecraft:magenta_concrete_powder");
+    @NotNull
+    public static final Item MAGENTA_CONCRETE_POWDER = ItemRegistry.fromItemKey("minecraft:magenta_concrete_powder");
 
-  @NotNull
-  public static final Item LIGHT_BLUE_CONCRETE_POWDER = ItemRegistry.fromItemKey("minecraft:light_blue_concrete_powder");
+    @NotNull
+    public static final Item LIGHT_BLUE_CONCRETE_POWDER = ItemRegistry.fromItemKey("minecraft:light_blue_concrete_powder");
 
-  @NotNull
-  public static final Item YELLOW_CONCRETE_POWDER = ItemRegistry.fromItemKey("minecraft:yellow_concrete_powder");
+    @NotNull
+    public static final Item YELLOW_CONCRETE_POWDER = ItemRegistry.fromItemKey("minecraft:yellow_concrete_powder");
 
-  @NotNull
-  public static final Item LIME_CONCRETE_POWDER = ItemRegistry.fromItemKey("minecraft:lime_concrete_powder");
+    @NotNull
+    public static final Item LIME_CONCRETE_POWDER = ItemRegistry.fromItemKey("minecraft:lime_concrete_powder");
 
-  @NotNull
-  public static final Item PINK_CONCRETE_POWDER = ItemRegistry.fromItemKey("minecraft:pink_concrete_powder");
+    @NotNull
+    public static final Item PINK_CONCRETE_POWDER = ItemRegistry.fromItemKey("minecraft:pink_concrete_powder");
 
-  @NotNull
-  public static final Item GRAY_CONCRETE_POWDER = ItemRegistry.fromItemKey("minecraft:gray_concrete_powder");
+    @NotNull
+    public static final Item GRAY_CONCRETE_POWDER = ItemRegistry.fromItemKey("minecraft:gray_concrete_powder");
 
-  @NotNull
-  public static final Item LIGHT_GRAY_CONCRETE_POWDER = ItemRegistry.fromItemKey("minecraft:light_gray_concrete_powder");
+    @NotNull
+    public static final Item LIGHT_GRAY_CONCRETE_POWDER = ItemRegistry.fromItemKey("minecraft:light_gray_concrete_powder");
 
-  @NotNull
-  public static final Item CYAN_CONCRETE_POWDER = ItemRegistry.fromItemKey("minecraft:cyan_concrete_powder");
+    @NotNull
+    public static final Item CYAN_CONCRETE_POWDER = ItemRegistry.fromItemKey("minecraft:cyan_concrete_powder");
 
-  @NotNull
-  public static final Item PURPLE_CONCRETE_POWDER = ItemRegistry.fromItemKey("minecraft:purple_concrete_powder");
+    @NotNull
+    public static final Item PURPLE_CONCRETE_POWDER = ItemRegistry.fromItemKey("minecraft:purple_concrete_powder");
 
-  @NotNull
-  public static final Item BLUE_CONCRETE_POWDER = ItemRegistry.fromItemKey("minecraft:blue_concrete_powder");
+    @NotNull
+    public static final Item BLUE_CONCRETE_POWDER = ItemRegistry.fromItemKey("minecraft:blue_concrete_powder");
 
-  @NotNull
-  public static final Item BROWN_CONCRETE_POWDER = ItemRegistry.fromItemKey("minecraft:brown_concrete_powder");
+    @NotNull
+    public static final Item BROWN_CONCRETE_POWDER = ItemRegistry.fromItemKey("minecraft:brown_concrete_powder");
 
-  @NotNull
-  public static final Item GREEN_CONCRETE_POWDER = ItemRegistry.fromItemKey("minecraft:green_concrete_powder");
+    @NotNull
+    public static final Item GREEN_CONCRETE_POWDER = ItemRegistry.fromItemKey("minecraft:green_concrete_powder");
 
-  @NotNull
-  public static final Item RED_CONCRETE_POWDER = ItemRegistry.fromItemKey("minecraft:red_concrete_powder");
+    @NotNull
+    public static final Item RED_CONCRETE_POWDER = ItemRegistry.fromItemKey("minecraft:red_concrete_powder");
 
-  @NotNull
-  public static final Item BLACK_CONCRETE_POWDER = ItemRegistry.fromItemKey("minecraft:black_concrete_powder");
+    @NotNull
+    public static final Item BLACK_CONCRETE_POWDER = ItemRegistry.fromItemKey("minecraft:black_concrete_powder");
 
-  @NotNull
-  public static final Item TURTLE_EGG = ItemRegistry.fromItemKey("minecraft:turtle_egg");
+    @NotNull
+    public static final Item TURTLE_EGG = ItemRegistry.fromItemKey("minecraft:turtle_egg");
 
-  @NotNull
-  public static final Item DEAD_TUBE_CORAL_BLOCK = ItemRegistry.fromItemKey("minecraft:dead_tube_coral_block");
+    @NotNull
+    public static final Item DEAD_TUBE_CORAL_BLOCK = ItemRegistry.fromItemKey("minecraft:dead_tube_coral_block");
 
-  @NotNull
-  public static final Item DEAD_BRAIN_CORAL_BLOCK = ItemRegistry.fromItemKey("minecraft:dead_brain_coral_block");
+    @NotNull
+    public static final Item DEAD_BRAIN_CORAL_BLOCK = ItemRegistry.fromItemKey("minecraft:dead_brain_coral_block");
 
-  @NotNull
-  public static final Item DEAD_BUBBLE_CORAL_BLOCK = ItemRegistry.fromItemKey("minecraft:dead_bubble_coral_block");
+    @NotNull
+    public static final Item DEAD_BUBBLE_CORAL_BLOCK = ItemRegistry.fromItemKey("minecraft:dead_bubble_coral_block");
 
-  @NotNull
-  public static final Item DEAD_FIRE_CORAL_BLOCK = ItemRegistry.fromItemKey("minecraft:dead_fire_coral_block");
+    @NotNull
+    public static final Item DEAD_FIRE_CORAL_BLOCK = ItemRegistry.fromItemKey("minecraft:dead_fire_coral_block");
 
-  @NotNull
-  public static final Item DEAD_HORN_CORAL_BLOCK = ItemRegistry.fromItemKey("minecraft:dead_horn_coral_block");
+    @NotNull
+    public static final Item DEAD_HORN_CORAL_BLOCK = ItemRegistry.fromItemKey("minecraft:dead_horn_coral_block");
 
-  @NotNull
-  public static final Item TUBE_CORAL_BLOCK = ItemRegistry.fromItemKey("minecraft:tube_coral_block");
+    @NotNull
+    public static final Item TUBE_CORAL_BLOCK = ItemRegistry.fromItemKey("minecraft:tube_coral_block");
 
-  @NotNull
-  public static final Item BRAIN_CORAL_BLOCK = ItemRegistry.fromItemKey("minecraft:brain_coral_block");
+    @NotNull
+    public static final Item BRAIN_CORAL_BLOCK = ItemRegistry.fromItemKey("minecraft:brain_coral_block");
 
-  @NotNull
-  public static final Item BUBBLE_CORAL_BLOCK = ItemRegistry.fromItemKey("minecraft:bubble_coral_block");
+    @NotNull
+    public static final Item BUBBLE_CORAL_BLOCK = ItemRegistry.fromItemKey("minecraft:bubble_coral_block");
 
-  @NotNull
-  public static final Item FIRE_CORAL_BLOCK = ItemRegistry.fromItemKey("minecraft:fire_coral_block");
+    @NotNull
+    public static final Item FIRE_CORAL_BLOCK = ItemRegistry.fromItemKey("minecraft:fire_coral_block");
 
-  @NotNull
-  public static final Item HORN_CORAL_BLOCK = ItemRegistry.fromItemKey("minecraft:horn_coral_block");
+    @NotNull
+    public static final Item HORN_CORAL_BLOCK = ItemRegistry.fromItemKey("minecraft:horn_coral_block");
 
-  @NotNull
-  public static final Item TUBE_CORAL = ItemRegistry.fromItemKey("minecraft:tube_coral");
+    @NotNull
+    public static final Item TUBE_CORAL = ItemRegistry.fromItemKey("minecraft:tube_coral");
 
-  @NotNull
-  public static final Item BRAIN_CORAL = ItemRegistry.fromItemKey("minecraft:brain_coral");
+    @NotNull
+    public static final Item BRAIN_CORAL = ItemRegistry.fromItemKey("minecraft:brain_coral");
 
-  @NotNull
-  public static final Item BUBBLE_CORAL = ItemRegistry.fromItemKey("minecraft:bubble_coral");
+    @NotNull
+    public static final Item BUBBLE_CORAL = ItemRegistry.fromItemKey("minecraft:bubble_coral");
 
-  @NotNull
-  public static final Item FIRE_CORAL = ItemRegistry.fromItemKey("minecraft:fire_coral");
+    @NotNull
+    public static final Item FIRE_CORAL = ItemRegistry.fromItemKey("minecraft:fire_coral");
 
-  @NotNull
-  public static final Item HORN_CORAL = ItemRegistry.fromItemKey("minecraft:horn_coral");
+    @NotNull
+    public static final Item HORN_CORAL = ItemRegistry.fromItemKey("minecraft:horn_coral");
 
-  @NotNull
-  public static final Item DEAD_BRAIN_CORAL = ItemRegistry.fromItemKey("minecraft:dead_brain_coral");
+    @NotNull
+    public static final Item DEAD_BRAIN_CORAL = ItemRegistry.fromItemKey("minecraft:dead_brain_coral");
 
-  @NotNull
-  public static final Item DEAD_BUBBLE_CORAL = ItemRegistry.fromItemKey("minecraft:dead_bubble_coral");
+    @NotNull
+    public static final Item DEAD_BUBBLE_CORAL = ItemRegistry.fromItemKey("minecraft:dead_bubble_coral");
 
-  @NotNull
-  public static final Item DEAD_FIRE_CORAL = ItemRegistry.fromItemKey("minecraft:dead_fire_coral");
+    @NotNull
+    public static final Item DEAD_FIRE_CORAL = ItemRegistry.fromItemKey("minecraft:dead_fire_coral");
 
-  @NotNull
-  public static final Item DEAD_HORN_CORAL = ItemRegistry.fromItemKey("minecraft:dead_horn_coral");
+    @NotNull
+    public static final Item DEAD_HORN_CORAL = ItemRegistry.fromItemKey("minecraft:dead_horn_coral");
 
-  @NotNull
-  public static final Item DEAD_TUBE_CORAL = ItemRegistry.fromItemKey("minecraft:dead_tube_coral");
+    @NotNull
+    public static final Item DEAD_TUBE_CORAL = ItemRegistry.fromItemKey("minecraft:dead_tube_coral");
 
-  @NotNull
-  public static final Item TUBE_CORAL_FAN = ItemRegistry.fromItemKey("minecraft:tube_coral_fan");
+    @NotNull
+    public static final Item TUBE_CORAL_FAN = ItemRegistry.fromItemKey("minecraft:tube_coral_fan");
 
-  @NotNull
-  public static final Item BRAIN_CORAL_FAN = ItemRegistry.fromItemKey("minecraft:brain_coral_fan");
+    @NotNull
+    public static final Item BRAIN_CORAL_FAN = ItemRegistry.fromItemKey("minecraft:brain_coral_fan");
 
-  @NotNull
-  public static final Item BUBBLE_CORAL_FAN = ItemRegistry.fromItemKey("minecraft:bubble_coral_fan");
+    @NotNull
+    public static final Item BUBBLE_CORAL_FAN = ItemRegistry.fromItemKey("minecraft:bubble_coral_fan");
 
-  @NotNull
-  public static final Item FIRE_CORAL_FAN = ItemRegistry.fromItemKey("minecraft:fire_coral_fan");
+    @NotNull
+    public static final Item FIRE_CORAL_FAN = ItemRegistry.fromItemKey("minecraft:fire_coral_fan");
 
-  @NotNull
-  public static final Item HORN_CORAL_FAN = ItemRegistry.fromItemKey("minecraft:horn_coral_fan");
+    @NotNull
+    public static final Item HORN_CORAL_FAN = ItemRegistry.fromItemKey("minecraft:horn_coral_fan");
 
-  @NotNull
-  public static final Item DEAD_TUBE_CORAL_FAN = ItemRegistry.fromItemKey("minecraft:dead_tube_coral_fan");
+    @NotNull
+    public static final Item DEAD_TUBE_CORAL_FAN = ItemRegistry.fromItemKey("minecraft:dead_tube_coral_fan");
 
-  @NotNull
-  public static final Item DEAD_BRAIN_CORAL_FAN = ItemRegistry.fromItemKey("minecraft:dead_brain_coral_fan");
+    @NotNull
+    public static final Item DEAD_BRAIN_CORAL_FAN = ItemRegistry.fromItemKey("minecraft:dead_brain_coral_fan");
 
-  @NotNull
-  public static final Item DEAD_BUBBLE_CORAL_FAN = ItemRegistry.fromItemKey("minecraft:dead_bubble_coral_fan");
+    @NotNull
+    public static final Item DEAD_BUBBLE_CORAL_FAN = ItemRegistry.fromItemKey("minecraft:dead_bubble_coral_fan");
 
-  @NotNull
-  public static final Item DEAD_FIRE_CORAL_FAN = ItemRegistry.fromItemKey("minecraft:dead_fire_coral_fan");
+    @NotNull
+    public static final Item DEAD_FIRE_CORAL_FAN = ItemRegistry.fromItemKey("minecraft:dead_fire_coral_fan");
 
-  @NotNull
-  public static final Item DEAD_HORN_CORAL_FAN = ItemRegistry.fromItemKey("minecraft:dead_horn_coral_fan");
+    @NotNull
+    public static final Item DEAD_HORN_CORAL_FAN = ItemRegistry.fromItemKey("minecraft:dead_horn_coral_fan");
 
-  @NotNull
-  public static final Item BLUE_ICE = ItemRegistry.fromItemKey("minecraft:blue_ice");
+    @NotNull
+    public static final Item BLUE_ICE = ItemRegistry.fromItemKey("minecraft:blue_ice");
 
-  @NotNull
-  public static final Item CONDUIT = ItemRegistry.fromItemKey("minecraft:conduit");
+    @NotNull
+    public static final Item CONDUIT = ItemRegistry.fromItemKey("minecraft:conduit");
 
-  @NotNull
-  public static final Item POLISHED_GRANITE_STAIRS = ItemRegistry.fromItemKey("minecraft:polished_granite_stairs");
+    @NotNull
+    public static final Item POLISHED_GRANITE_STAIRS = ItemRegistry.fromItemKey("minecraft:polished_granite_stairs");
 
-  @NotNull
-  public static final Item SMOOTH_RED_SANDSTONE_STAIRS = ItemRegistry.fromItemKey("minecraft:smooth_red_sandstone_stairs");
+    @NotNull
+    public static final Item SMOOTH_RED_SANDSTONE_STAIRS = ItemRegistry.fromItemKey("minecraft:smooth_red_sandstone_stairs");
 
-  @NotNull
-  public static final Item MOSSY_STONE_BRICK_STAIRS = ItemRegistry.fromItemKey("minecraft:mossy_stone_brick_stairs");
+    @NotNull
+    public static final Item MOSSY_STONE_BRICK_STAIRS = ItemRegistry.fromItemKey("minecraft:mossy_stone_brick_stairs");
 
-  @NotNull
-  public static final Item POLISHED_DIORITE_STAIRS = ItemRegistry.fromItemKey("minecraft:polished_diorite_stairs");
+    @NotNull
+    public static final Item POLISHED_DIORITE_STAIRS = ItemRegistry.fromItemKey("minecraft:polished_diorite_stairs");
 
-  @NotNull
-  public static final Item MOSSY_COBBLESTONE_STAIRS = ItemRegistry.fromItemKey("minecraft:mossy_cobblestone_stairs");
+    @NotNull
+    public static final Item MOSSY_COBBLESTONE_STAIRS = ItemRegistry.fromItemKey("minecraft:mossy_cobblestone_stairs");
 
-  @NotNull
-  public static final Item END_STONE_BRICK_STAIRS = ItemRegistry.fromItemKey("minecraft:end_stone_brick_stairs");
+    @NotNull
+    public static final Item END_STONE_BRICK_STAIRS = ItemRegistry.fromItemKey("minecraft:end_stone_brick_stairs");
 
-  @NotNull
-  public static final Item STONE_STAIRS = ItemRegistry.fromItemKey("minecraft:stone_stairs");
+    @NotNull
+    public static final Item STONE_STAIRS = ItemRegistry.fromItemKey("minecraft:stone_stairs");
 
-  @NotNull
-  public static final Item SMOOTH_SANDSTONE_STAIRS = ItemRegistry.fromItemKey("minecraft:smooth_sandstone_stairs");
+    @NotNull
+    public static final Item SMOOTH_SANDSTONE_STAIRS = ItemRegistry.fromItemKey("minecraft:smooth_sandstone_stairs");
 
-  @NotNull
-  public static final Item SMOOTH_QUARTZ_STAIRS = ItemRegistry.fromItemKey("minecraft:smooth_quartz_stairs");
+    @NotNull
+    public static final Item SMOOTH_QUARTZ_STAIRS = ItemRegistry.fromItemKey("minecraft:smooth_quartz_stairs");
 
-  @NotNull
-  public static final Item GRANITE_STAIRS = ItemRegistry.fromItemKey("minecraft:granite_stairs");
+    @NotNull
+    public static final Item GRANITE_STAIRS = ItemRegistry.fromItemKey("minecraft:granite_stairs");
 
-  @NotNull
-  public static final Item ANDESITE_STAIRS = ItemRegistry.fromItemKey("minecraft:andesite_stairs");
+    @NotNull
+    public static final Item ANDESITE_STAIRS = ItemRegistry.fromItemKey("minecraft:andesite_stairs");
 
-  @NotNull
-  public static final Item RED_NETHER_BRICK_STAIRS = ItemRegistry.fromItemKey("minecraft:red_nether_brick_stairs");
+    @NotNull
+    public static final Item RED_NETHER_BRICK_STAIRS = ItemRegistry.fromItemKey("minecraft:red_nether_brick_stairs");
 
-  @NotNull
-  public static final Item POLISHED_ANDESITE_STAIRS = ItemRegistry.fromItemKey("minecraft:polished_andesite_stairs");
+    @NotNull
+    public static final Item POLISHED_ANDESITE_STAIRS = ItemRegistry.fromItemKey("minecraft:polished_andesite_stairs");
 
-  @NotNull
-  public static final Item DIORITE_STAIRS = ItemRegistry.fromItemKey("minecraft:diorite_stairs");
+    @NotNull
+    public static final Item DIORITE_STAIRS = ItemRegistry.fromItemKey("minecraft:diorite_stairs");
 
-  @NotNull
-  public static final Item COBBLED_DEEPSLATE_STAIRS = ItemRegistry.fromItemKey("minecraft:cobbled_deepslate_stairs");
+    @NotNull
+    public static final Item COBBLED_DEEPSLATE_STAIRS = ItemRegistry.fromItemKey("minecraft:cobbled_deepslate_stairs");
 
-  @NotNull
-  public static final Item POLISHED_DEEPSLATE_STAIRS = ItemRegistry.fromItemKey("minecraft:polished_deepslate_stairs");
+    @NotNull
+    public static final Item POLISHED_DEEPSLATE_STAIRS = ItemRegistry.fromItemKey("minecraft:polished_deepslate_stairs");
 
-  @NotNull
-  public static final Item DEEPSLATE_BRICK_STAIRS = ItemRegistry.fromItemKey("minecraft:deepslate_brick_stairs");
+    @NotNull
+    public static final Item DEEPSLATE_BRICK_STAIRS = ItemRegistry.fromItemKey("minecraft:deepslate_brick_stairs");
 
-  @NotNull
-  public static final Item DEEPSLATE_TILE_STAIRS = ItemRegistry.fromItemKey("minecraft:deepslate_tile_stairs");
+    @NotNull
+    public static final Item DEEPSLATE_TILE_STAIRS = ItemRegistry.fromItemKey("minecraft:deepslate_tile_stairs");
 
-  @NotNull
-  public static final Item POLISHED_GRANITE_SLAB = ItemRegistry.fromItemKey("minecraft:polished_granite_slab");
+    @NotNull
+    public static final Item POLISHED_GRANITE_SLAB = ItemRegistry.fromItemKey("minecraft:polished_granite_slab");
 
-  @NotNull
-  public static final Item SMOOTH_RED_SANDSTONE_SLAB = ItemRegistry.fromItemKey("minecraft:smooth_red_sandstone_slab");
+    @NotNull
+    public static final Item SMOOTH_RED_SANDSTONE_SLAB = ItemRegistry.fromItemKey("minecraft:smooth_red_sandstone_slab");
 
-  @NotNull
-  public static final Item MOSSY_STONE_BRICK_SLAB = ItemRegistry.fromItemKey("minecraft:mossy_stone_brick_slab");
+    @NotNull
+    public static final Item MOSSY_STONE_BRICK_SLAB = ItemRegistry.fromItemKey("minecraft:mossy_stone_brick_slab");
 
-  @NotNull
-  public static final Item POLISHED_DIORITE_SLAB = ItemRegistry.fromItemKey("minecraft:polished_diorite_slab");
+    @NotNull
+    public static final Item POLISHED_DIORITE_SLAB = ItemRegistry.fromItemKey("minecraft:polished_diorite_slab");
 
-  @NotNull
-  public static final Item MOSSY_COBBLESTONE_SLAB = ItemRegistry.fromItemKey("minecraft:mossy_cobblestone_slab");
+    @NotNull
+    public static final Item MOSSY_COBBLESTONE_SLAB = ItemRegistry.fromItemKey("minecraft:mossy_cobblestone_slab");
 
-  @NotNull
-  public static final Item END_STONE_BRICK_SLAB = ItemRegistry.fromItemKey("minecraft:end_stone_brick_slab");
+    @NotNull
+    public static final Item END_STONE_BRICK_SLAB = ItemRegistry.fromItemKey("minecraft:end_stone_brick_slab");
 
-  @NotNull
-  public static final Item SMOOTH_SANDSTONE_SLAB = ItemRegistry.fromItemKey("minecraft:smooth_sandstone_slab");
+    @NotNull
+    public static final Item SMOOTH_SANDSTONE_SLAB = ItemRegistry.fromItemKey("minecraft:smooth_sandstone_slab");
 
-  @NotNull
-  public static final Item SMOOTH_QUARTZ_SLAB = ItemRegistry.fromItemKey("minecraft:smooth_quartz_slab");
+    @NotNull
+    public static final Item SMOOTH_QUARTZ_SLAB = ItemRegistry.fromItemKey("minecraft:smooth_quartz_slab");
 
-  @NotNull
-  public static final Item GRANITE_SLAB = ItemRegistry.fromItemKey("minecraft:granite_slab");
+    @NotNull
+    public static final Item GRANITE_SLAB = ItemRegistry.fromItemKey("minecraft:granite_slab");
 
-  @NotNull
-  public static final Item ANDESITE_SLAB = ItemRegistry.fromItemKey("minecraft:andesite_slab");
+    @NotNull
+    public static final Item ANDESITE_SLAB = ItemRegistry.fromItemKey("minecraft:andesite_slab");
 
-  @NotNull
-  public static final Item RED_NETHER_BRICK_SLAB = ItemRegistry.fromItemKey("minecraft:red_nether_brick_slab");
+    @NotNull
+    public static final Item RED_NETHER_BRICK_SLAB = ItemRegistry.fromItemKey("minecraft:red_nether_brick_slab");
 
-  @NotNull
-  public static final Item POLISHED_ANDESITE_SLAB = ItemRegistry.fromItemKey("minecraft:polished_andesite_slab");
+    @NotNull
+    public static final Item POLISHED_ANDESITE_SLAB = ItemRegistry.fromItemKey("minecraft:polished_andesite_slab");
 
-  @NotNull
-  public static final Item DIORITE_SLAB = ItemRegistry.fromItemKey("minecraft:diorite_slab");
+    @NotNull
+    public static final Item DIORITE_SLAB = ItemRegistry.fromItemKey("minecraft:diorite_slab");
 
-  @NotNull
-  public static final Item COBBLED_DEEPSLATE_SLAB = ItemRegistry.fromItemKey("minecraft:cobbled_deepslate_slab");
+    @NotNull
+    public static final Item COBBLED_DEEPSLATE_SLAB = ItemRegistry.fromItemKey("minecraft:cobbled_deepslate_slab");
 
-  @NotNull
-  public static final Item POLISHED_DEEPSLATE_SLAB = ItemRegistry.fromItemKey("minecraft:polished_deepslate_slab");
+    @NotNull
+    public static final Item POLISHED_DEEPSLATE_SLAB = ItemRegistry.fromItemKey("minecraft:polished_deepslate_slab");
 
-  @NotNull
-  public static final Item DEEPSLATE_BRICK_SLAB = ItemRegistry.fromItemKey("minecraft:deepslate_brick_slab");
+    @NotNull
+    public static final Item DEEPSLATE_BRICK_SLAB = ItemRegistry.fromItemKey("minecraft:deepslate_brick_slab");
 
-  @NotNull
-  public static final Item DEEPSLATE_TILE_SLAB = ItemRegistry.fromItemKey("minecraft:deepslate_tile_slab");
+    @NotNull
+    public static final Item DEEPSLATE_TILE_SLAB = ItemRegistry.fromItemKey("minecraft:deepslate_tile_slab");
 
-  @NotNull
-  public static final Item SCAFFOLDING = ItemRegistry.fromItemKey("minecraft:scaffolding");
+    @NotNull
+    public static final Item SCAFFOLDING = ItemRegistry.fromItemKey("minecraft:scaffolding");
 
-  @NotNull
-  public static final Item REDSTONE = ItemRegistry.fromItemKey("minecraft:redstone");
+    @NotNull
+    public static final Item REDSTONE = ItemRegistry.fromItemKey("minecraft:redstone");
 
-  @NotNull
-  public static final Item REDSTONE_TORCH = ItemRegistry.fromItemKey("minecraft:redstone_torch");
+    @NotNull
+    public static final Item REDSTONE_TORCH = ItemRegistry.fromItemKey("minecraft:redstone_torch");
 
-  @NotNull
-  public static final Item REDSTONE_BLOCK = ItemRegistry.fromItemKey("minecraft:redstone_block");
+    @NotNull
+    public static final Item REDSTONE_BLOCK = ItemRegistry.fromItemKey("minecraft:redstone_block");
 
-  @NotNull
-  public static final Item REPEATER = ItemRegistry.fromItemKey("minecraft:repeater");
+    @NotNull
+    public static final Item REPEATER = ItemRegistry.fromItemKey("minecraft:repeater");
 
-  @NotNull
-  public static final Item COMPARATOR = ItemRegistry.fromItemKey("minecraft:comparator");
+    @NotNull
+    public static final Item COMPARATOR = ItemRegistry.fromItemKey("minecraft:comparator");
 
-  @NotNull
-  public static final Item PISTON = ItemRegistry.fromItemKey("minecraft:piston");
+    @NotNull
+    public static final Item PISTON = ItemRegistry.fromItemKey("minecraft:piston");
 
-  @NotNull
-  public static final Item STICKY_PISTON = ItemRegistry.fromItemKey("minecraft:sticky_piston");
+    @NotNull
+    public static final Item STICKY_PISTON = ItemRegistry.fromItemKey("minecraft:sticky_piston");
 
-  @NotNull
-  public static final Item SLIME_BLOCK = ItemRegistry.fromItemKey("minecraft:slime_block");
+    @NotNull
+    public static final Item SLIME_BLOCK = ItemRegistry.fromItemKey("minecraft:slime_block");
 
-  @NotNull
-  public static final Item HONEY_BLOCK = ItemRegistry.fromItemKey("minecraft:honey_block");
+    @NotNull
+    public static final Item HONEY_BLOCK = ItemRegistry.fromItemKey("minecraft:honey_block");
 
-  @NotNull
-  public static final Item OBSERVER = ItemRegistry.fromItemKey("minecraft:observer");
+    @NotNull
+    public static final Item OBSERVER = ItemRegistry.fromItemKey("minecraft:observer");
 
-  @NotNull
-  public static final Item HOPPER = ItemRegistry.fromItemKey("minecraft:hopper");
+    @NotNull
+    public static final Item HOPPER = ItemRegistry.fromItemKey("minecraft:hopper");
 
-  @NotNull
-  public static final Item DISPENSER = ItemRegistry.fromItemKey("minecraft:dispenser");
+    @NotNull
+    public static final Item DISPENSER = ItemRegistry.fromItemKey("minecraft:dispenser");
 
-  @NotNull
-  public static final Item DROPPER = ItemRegistry.fromItemKey("minecraft:dropper");
+    @NotNull
+    public static final Item DROPPER = ItemRegistry.fromItemKey("minecraft:dropper");
 
-  @NotNull
-  public static final Item LECTERN = ItemRegistry.fromItemKey("minecraft:lectern");
+    @NotNull
+    public static final Item LECTERN = ItemRegistry.fromItemKey("minecraft:lectern");
 
-  @NotNull
-  public static final Item TARGET = ItemRegistry.fromItemKey("minecraft:target");
+    @NotNull
+    public static final Item TARGET = ItemRegistry.fromItemKey("minecraft:target");
 
-  @NotNull
-  public static final Item LEVER = ItemRegistry.fromItemKey("minecraft:lever");
+    @NotNull
+    public static final Item LEVER = ItemRegistry.fromItemKey("minecraft:lever");
 
-  @NotNull
-  public static final Item LIGHTNING_ROD = ItemRegistry.fromItemKey("minecraft:lightning_rod");
+    @NotNull
+    public static final Item LIGHTNING_ROD = ItemRegistry.fromItemKey("minecraft:lightning_rod");
 
-  @NotNull
-  public static final Item DAYLIGHT_DETECTOR = ItemRegistry.fromItemKey("minecraft:daylight_detector");
+    @NotNull
+    public static final Item DAYLIGHT_DETECTOR = ItemRegistry.fromItemKey("minecraft:daylight_detector");
 
-  @NotNull
-  public static final Item SCULK_SENSOR = ItemRegistry.fromItemKey("minecraft:sculk_sensor");
+    @NotNull
+    public static final Item SCULK_SENSOR = ItemRegistry.fromItemKey("minecraft:sculk_sensor");
 
-  @NotNull
-  public static final Item TRIPWIRE_HOOK = ItemRegistry.fromItemKey("minecraft:tripwire_hook");
+    @NotNull
+    public static final Item TRIPWIRE_HOOK = ItemRegistry.fromItemKey("minecraft:tripwire_hook");
 
-  @NotNull
-  public static final Item TRAPPED_CHEST = ItemRegistry.fromItemKey("minecraft:trapped_chest");
+    @NotNull
+    public static final Item TRAPPED_CHEST = ItemRegistry.fromItemKey("minecraft:trapped_chest");
 
-  @NotNull
-  public static final Item TNT = ItemRegistry.fromItemKey("minecraft:tnt");
+    @NotNull
+    public static final Item TNT = ItemRegistry.fromItemKey("minecraft:tnt");
 
-  @NotNull
-  public static final Item REDSTONE_LAMP = ItemRegistry.fromItemKey("minecraft:redstone_lamp");
+    @NotNull
+    public static final Item REDSTONE_LAMP = ItemRegistry.fromItemKey("minecraft:redstone_lamp");
 
-  @NotNull
-  public static final Item NOTE_BLOCK = ItemRegistry.fromItemKey("minecraft:note_block");
+    @NotNull
+    public static final Item NOTE_BLOCK = ItemRegistry.fromItemKey("minecraft:note_block");
 
-  @NotNull
-  public static final Item STONE_BUTTON = ItemRegistry.fromItemKey("minecraft:stone_button");
+    @NotNull
+    public static final Item STONE_BUTTON = ItemRegistry.fromItemKey("minecraft:stone_button");
 
-  @NotNull
-  public static final Item POLISHED_BLACKSTONE_BUTTON = ItemRegistry.fromItemKey("minecraft:polished_blackstone_button");
+    @NotNull
+    public static final Item POLISHED_BLACKSTONE_BUTTON = ItemRegistry.fromItemKey("minecraft:polished_blackstone_button");
 
-  @NotNull
-  public static final Item OAK_BUTTON = ItemRegistry.fromItemKey("minecraft:oak_button");
+    @NotNull
+    public static final Item OAK_BUTTON = ItemRegistry.fromItemKey("minecraft:oak_button");
 
-  @NotNull
-  public static final Item SPRUCE_BUTTON = ItemRegistry.fromItemKey("minecraft:spruce_button");
+    @NotNull
+    public static final Item SPRUCE_BUTTON = ItemRegistry.fromItemKey("minecraft:spruce_button");
 
-  @NotNull
-  public static final Item BIRCH_BUTTON = ItemRegistry.fromItemKey("minecraft:birch_button");
+    @NotNull
+    public static final Item BIRCH_BUTTON = ItemRegistry.fromItemKey("minecraft:birch_button");
 
-  @NotNull
-  public static final Item JUNGLE_BUTTON = ItemRegistry.fromItemKey("minecraft:jungle_button");
+    @NotNull
+    public static final Item JUNGLE_BUTTON = ItemRegistry.fromItemKey("minecraft:jungle_button");
 
-  @NotNull
-  public static final Item ACACIA_BUTTON = ItemRegistry.fromItemKey("minecraft:acacia_button");
+    @NotNull
+    public static final Item ACACIA_BUTTON = ItemRegistry.fromItemKey("minecraft:acacia_button");
 
-  @NotNull
-  public static final Item DARK_OAK_BUTTON = ItemRegistry.fromItemKey("minecraft:dark_oak_button");
+    @NotNull
+    public static final Item DARK_OAK_BUTTON = ItemRegistry.fromItemKey("minecraft:dark_oak_button");
 
-  @NotNull
-  public static final Item CRIMSON_BUTTON = ItemRegistry.fromItemKey("minecraft:crimson_button");
+    @NotNull
+    public static final Item CRIMSON_BUTTON = ItemRegistry.fromItemKey("minecraft:crimson_button");
 
-  @NotNull
-  public static final Item WARPED_BUTTON = ItemRegistry.fromItemKey("minecraft:warped_button");
+    @NotNull
+    public static final Item WARPED_BUTTON = ItemRegistry.fromItemKey("minecraft:warped_button");
 
-  @NotNull
-  public static final Item STONE_PRESSURE_PLATE = ItemRegistry.fromItemKey("minecraft:stone_pressure_plate");
+    @NotNull
+    public static final Item STONE_PRESSURE_PLATE = ItemRegistry.fromItemKey("minecraft:stone_pressure_plate");
 
-  @NotNull
-  public static final Item POLISHED_BLACKSTONE_PRESSURE_PLATE = ItemRegistry.fromItemKey("minecraft:polished_blackstone_pressure_plate");
+    @NotNull
+    public static final Item POLISHED_BLACKSTONE_PRESSURE_PLATE = ItemRegistry.fromItemKey("minecraft:polished_blackstone_pressure_plate");
 
-  @NotNull
-  public static final Item LIGHT_WEIGHTED_PRESSURE_PLATE = ItemRegistry.fromItemKey("minecraft:light_weighted_pressure_plate");
+    @NotNull
+    public static final Item LIGHT_WEIGHTED_PRESSURE_PLATE = ItemRegistry.fromItemKey("minecraft:light_weighted_pressure_plate");
 
-  @NotNull
-  public static final Item HEAVY_WEIGHTED_PRESSURE_PLATE = ItemRegistry.fromItemKey("minecraft:heavy_weighted_pressure_plate");
+    @NotNull
+    public static final Item HEAVY_WEIGHTED_PRESSURE_PLATE = ItemRegistry.fromItemKey("minecraft:heavy_weighted_pressure_plate");
 
-  @NotNull
-  public static final Item OAK_PRESSURE_PLATE = ItemRegistry.fromItemKey("minecraft:oak_pressure_plate");
+    @NotNull
+    public static final Item OAK_PRESSURE_PLATE = ItemRegistry.fromItemKey("minecraft:oak_pressure_plate");
 
-  @NotNull
-  public static final Item SPRUCE_PRESSURE_PLATE = ItemRegistry.fromItemKey("minecraft:spruce_pressure_plate");
+    @NotNull
+    public static final Item SPRUCE_PRESSURE_PLATE = ItemRegistry.fromItemKey("minecraft:spruce_pressure_plate");
 
-  @NotNull
-  public static final Item BIRCH_PRESSURE_PLATE = ItemRegistry.fromItemKey("minecraft:birch_pressure_plate");
+    @NotNull
+    public static final Item BIRCH_PRESSURE_PLATE = ItemRegistry.fromItemKey("minecraft:birch_pressure_plate");
 
-  @NotNull
-  public static final Item JUNGLE_PRESSURE_PLATE = ItemRegistry.fromItemKey("minecraft:jungle_pressure_plate");
+    @NotNull
+    public static final Item JUNGLE_PRESSURE_PLATE = ItemRegistry.fromItemKey("minecraft:jungle_pressure_plate");
 
-  @NotNull
-  public static final Item ACACIA_PRESSURE_PLATE = ItemRegistry.fromItemKey("minecraft:acacia_pressure_plate");
+    @NotNull
+    public static final Item ACACIA_PRESSURE_PLATE = ItemRegistry.fromItemKey("minecraft:acacia_pressure_plate");
 
-  @NotNull
-  public static final Item DARK_OAK_PRESSURE_PLATE = ItemRegistry.fromItemKey("minecraft:dark_oak_pressure_plate");
+    @NotNull
+    public static final Item DARK_OAK_PRESSURE_PLATE = ItemRegistry.fromItemKey("minecraft:dark_oak_pressure_plate");
 
-  @NotNull
-  public static final Item CRIMSON_PRESSURE_PLATE = ItemRegistry.fromItemKey("minecraft:crimson_pressure_plate");
+    @NotNull
+    public static final Item CRIMSON_PRESSURE_PLATE = ItemRegistry.fromItemKey("minecraft:crimson_pressure_plate");
 
-  @NotNull
-  public static final Item WARPED_PRESSURE_PLATE = ItemRegistry.fromItemKey("minecraft:warped_pressure_plate");
+    @NotNull
+    public static final Item WARPED_PRESSURE_PLATE = ItemRegistry.fromItemKey("minecraft:warped_pressure_plate");
 
-  @NotNull
-  public static final Item IRON_DOOR = ItemRegistry.fromItemKey("minecraft:iron_door");
+    @NotNull
+    public static final Item IRON_DOOR = ItemRegistry.fromItemKey("minecraft:iron_door");
 
-  @NotNull
-  public static final Item OAK_DOOR = ItemRegistry.fromItemKey("minecraft:oak_door");
+    @NotNull
+    public static final Item OAK_DOOR = ItemRegistry.fromItemKey("minecraft:oak_door");
 
-  @NotNull
-  public static final Item SPRUCE_DOOR = ItemRegistry.fromItemKey("minecraft:spruce_door");
+    @NotNull
+    public static final Item SPRUCE_DOOR = ItemRegistry.fromItemKey("minecraft:spruce_door");
 
-  @NotNull
-  public static final Item BIRCH_DOOR = ItemRegistry.fromItemKey("minecraft:birch_door");
+    @NotNull
+    public static final Item BIRCH_DOOR = ItemRegistry.fromItemKey("minecraft:birch_door");
 
-  @NotNull
-  public static final Item JUNGLE_DOOR = ItemRegistry.fromItemKey("minecraft:jungle_door");
+    @NotNull
+    public static final Item JUNGLE_DOOR = ItemRegistry.fromItemKey("minecraft:jungle_door");
 
-  @NotNull
-  public static final Item ACACIA_DOOR = ItemRegistry.fromItemKey("minecraft:acacia_door");
+    @NotNull
+    public static final Item ACACIA_DOOR = ItemRegistry.fromItemKey("minecraft:acacia_door");
 
-  @NotNull
-  public static final Item DARK_OAK_DOOR = ItemRegistry.fromItemKey("minecraft:dark_oak_door");
+    @NotNull
+    public static final Item DARK_OAK_DOOR = ItemRegistry.fromItemKey("minecraft:dark_oak_door");
 
-  @NotNull
-  public static final Item CRIMSON_DOOR = ItemRegistry.fromItemKey("minecraft:crimson_door");
+    @NotNull
+    public static final Item CRIMSON_DOOR = ItemRegistry.fromItemKey("minecraft:crimson_door");
 
-  @NotNull
-  public static final Item WARPED_DOOR = ItemRegistry.fromItemKey("minecraft:warped_door");
+    @NotNull
+    public static final Item WARPED_DOOR = ItemRegistry.fromItemKey("minecraft:warped_door");
 
-  @NotNull
-  public static final Item IRON_TRAPDOOR = ItemRegistry.fromItemKey("minecraft:iron_trapdoor");
+    @NotNull
+    public static final Item IRON_TRAPDOOR = ItemRegistry.fromItemKey("minecraft:iron_trapdoor");
 
-  @NotNull
-  public static final Item OAK_TRAPDOOR = ItemRegistry.fromItemKey("minecraft:oak_trapdoor");
+    @NotNull
+    public static final Item OAK_TRAPDOOR = ItemRegistry.fromItemKey("minecraft:oak_trapdoor");
 
-  @NotNull
-  public static final Item SPRUCE_TRAPDOOR = ItemRegistry.fromItemKey("minecraft:spruce_trapdoor");
+    @NotNull
+    public static final Item SPRUCE_TRAPDOOR = ItemRegistry.fromItemKey("minecraft:spruce_trapdoor");
 
-  @NotNull
-  public static final Item BIRCH_TRAPDOOR = ItemRegistry.fromItemKey("minecraft:birch_trapdoor");
+    @NotNull
+    public static final Item BIRCH_TRAPDOOR = ItemRegistry.fromItemKey("minecraft:birch_trapdoor");
 
-  @NotNull
-  public static final Item JUNGLE_TRAPDOOR = ItemRegistry.fromItemKey("minecraft:jungle_trapdoor");
+    @NotNull
+    public static final Item JUNGLE_TRAPDOOR = ItemRegistry.fromItemKey("minecraft:jungle_trapdoor");
 
-  @NotNull
-  public static final Item ACACIA_TRAPDOOR = ItemRegistry.fromItemKey("minecraft:acacia_trapdoor");
+    @NotNull
+    public static final Item ACACIA_TRAPDOOR = ItemRegistry.fromItemKey("minecraft:acacia_trapdoor");
 
-  @NotNull
-  public static final Item DARK_OAK_TRAPDOOR = ItemRegistry.fromItemKey("minecraft:dark_oak_trapdoor");
+    @NotNull
+    public static final Item DARK_OAK_TRAPDOOR = ItemRegistry.fromItemKey("minecraft:dark_oak_trapdoor");
 
-  @NotNull
-  public static final Item CRIMSON_TRAPDOOR = ItemRegistry.fromItemKey("minecraft:crimson_trapdoor");
+    @NotNull
+    public static final Item CRIMSON_TRAPDOOR = ItemRegistry.fromItemKey("minecraft:crimson_trapdoor");
 
-  @NotNull
-  public static final Item WARPED_TRAPDOOR = ItemRegistry.fromItemKey("minecraft:warped_trapdoor");
+    @NotNull
+    public static final Item WARPED_TRAPDOOR = ItemRegistry.fromItemKey("minecraft:warped_trapdoor");
 
-  @NotNull
-  public static final Item OAK_FENCE_GATE = ItemRegistry.fromItemKey("minecraft:oak_fence_gate");
+    @NotNull
+    public static final Item OAK_FENCE_GATE = ItemRegistry.fromItemKey("minecraft:oak_fence_gate");
 
-  @NotNull
-  public static final Item SPRUCE_FENCE_GATE = ItemRegistry.fromItemKey("minecraft:spruce_fence_gate");
+    @NotNull
+    public static final Item SPRUCE_FENCE_GATE = ItemRegistry.fromItemKey("minecraft:spruce_fence_gate");
 
-  @NotNull
-  public static final Item BIRCH_FENCE_GATE = ItemRegistry.fromItemKey("minecraft:birch_fence_gate");
+    @NotNull
+    public static final Item BIRCH_FENCE_GATE = ItemRegistry.fromItemKey("minecraft:birch_fence_gate");
 
-  @NotNull
-  public static final Item JUNGLE_FENCE_GATE = ItemRegistry.fromItemKey("minecraft:jungle_fence_gate");
+    @NotNull
+    public static final Item JUNGLE_FENCE_GATE = ItemRegistry.fromItemKey("minecraft:jungle_fence_gate");
 
-  @NotNull
-  public static final Item ACACIA_FENCE_GATE = ItemRegistry.fromItemKey("minecraft:acacia_fence_gate");
+    @NotNull
+    public static final Item ACACIA_FENCE_GATE = ItemRegistry.fromItemKey("minecraft:acacia_fence_gate");
 
-  @NotNull
-  public static final Item DARK_OAK_FENCE_GATE = ItemRegistry.fromItemKey("minecraft:dark_oak_fence_gate");
+    @NotNull
+    public static final Item DARK_OAK_FENCE_GATE = ItemRegistry.fromItemKey("minecraft:dark_oak_fence_gate");
 
-  @NotNull
-  public static final Item CRIMSON_FENCE_GATE = ItemRegistry.fromItemKey("minecraft:crimson_fence_gate");
+    @NotNull
+    public static final Item CRIMSON_FENCE_GATE = ItemRegistry.fromItemKey("minecraft:crimson_fence_gate");
 
-  @NotNull
-  public static final Item WARPED_FENCE_GATE = ItemRegistry.fromItemKey("minecraft:warped_fence_gate");
+    @NotNull
+    public static final Item WARPED_FENCE_GATE = ItemRegistry.fromItemKey("minecraft:warped_fence_gate");
 
-  @NotNull
-  public static final Item POWERED_RAIL = ItemRegistry.fromItemKey("minecraft:powered_rail");
+    @NotNull
+    public static final Item POWERED_RAIL = ItemRegistry.fromItemKey("minecraft:powered_rail");
 
-  @NotNull
-  public static final Item DETECTOR_RAIL = ItemRegistry.fromItemKey("minecraft:detector_rail");
+    @NotNull
+    public static final Item DETECTOR_RAIL = ItemRegistry.fromItemKey("minecraft:detector_rail");
 
-  @NotNull
-  public static final Item RAIL = ItemRegistry.fromItemKey("minecraft:rail");
+    @NotNull
+    public static final Item RAIL = ItemRegistry.fromItemKey("minecraft:rail");
 
-  @NotNull
-  public static final Item ACTIVATOR_RAIL = ItemRegistry.fromItemKey("minecraft:activator_rail");
+    @NotNull
+    public static final Item ACTIVATOR_RAIL = ItemRegistry.fromItemKey("minecraft:activator_rail");
 
-  @NotNull
-  public static final Item SADDLE = ItemRegistry.fromItemKey("minecraft:saddle");
+    @NotNull
+    public static final Item SADDLE = ItemRegistry.fromItemKey("minecraft:saddle");
 
-  @NotNull
-  public static final Item MINECART = ItemRegistry.fromItemKey("minecraft:minecart");
+    @NotNull
+    public static final Item MINECART = ItemRegistry.fromItemKey("minecraft:minecart");
 
-  @NotNull
-  public static final Item CHEST_MINECART = ItemRegistry.fromItemKey("minecraft:chest_minecart");
+    @NotNull
+    public static final Item CHEST_MINECART = ItemRegistry.fromItemKey("minecraft:chest_minecart");
 
-  @NotNull
-  public static final Item FURNACE_MINECART = ItemRegistry.fromItemKey("minecraft:furnace_minecart");
+    @NotNull
+    public static final Item FURNACE_MINECART = ItemRegistry.fromItemKey("minecraft:furnace_minecart");
 
-  @NotNull
-  public static final Item TNT_MINECART = ItemRegistry.fromItemKey("minecraft:tnt_minecart");
+    @NotNull
+    public static final Item TNT_MINECART = ItemRegistry.fromItemKey("minecraft:tnt_minecart");
 
-  @NotNull
-  public static final Item HOPPER_MINECART = ItemRegistry.fromItemKey("minecraft:hopper_minecart");
+    @NotNull
+    public static final Item HOPPER_MINECART = ItemRegistry.fromItemKey("minecraft:hopper_minecart");
 
-  @NotNull
-  public static final Item CARROT_ON_A_STICK = ItemRegistry.fromItemKey("minecraft:carrot_on_a_stick");
+    @NotNull
+    public static final Item CARROT_ON_A_STICK = ItemRegistry.fromItemKey("minecraft:carrot_on_a_stick");
 
-  @NotNull
-  public static final Item WARPED_FUNGUS_ON_A_STICK = ItemRegistry.fromItemKey("minecraft:warped_fungus_on_a_stick");
+    @NotNull
+    public static final Item WARPED_FUNGUS_ON_A_STICK = ItemRegistry.fromItemKey("minecraft:warped_fungus_on_a_stick");
 
-  @NotNull
-  public static final Item ELYTRA = ItemRegistry.fromItemKey("minecraft:elytra");
+    @NotNull
+    public static final Item ELYTRA = ItemRegistry.fromItemKey("minecraft:elytra");
 
-  @NotNull
-  public static final Item OAK_BOAT = ItemRegistry.fromItemKey("minecraft:oak_boat");
+    @NotNull
+    public static final Item OAK_BOAT = ItemRegistry.fromItemKey("minecraft:oak_boat");
 
-  @NotNull
-  public static final Item SPRUCE_BOAT = ItemRegistry.fromItemKey("minecraft:spruce_boat");
+    @NotNull
+    public static final Item SPRUCE_BOAT = ItemRegistry.fromItemKey("minecraft:spruce_boat");
 
-  @NotNull
-  public static final Item BIRCH_BOAT = ItemRegistry.fromItemKey("minecraft:birch_boat");
+    @NotNull
+    public static final Item BIRCH_BOAT = ItemRegistry.fromItemKey("minecraft:birch_boat");
 
-  @NotNull
-  public static final Item JUNGLE_BOAT = ItemRegistry.fromItemKey("minecraft:jungle_boat");
+    @NotNull
+    public static final Item JUNGLE_BOAT = ItemRegistry.fromItemKey("minecraft:jungle_boat");
 
-  @NotNull
-  public static final Item ACACIA_BOAT = ItemRegistry.fromItemKey("minecraft:acacia_boat");
+    @NotNull
+    public static final Item ACACIA_BOAT = ItemRegistry.fromItemKey("minecraft:acacia_boat");
 
-  @NotNull
-  public static final Item DARK_OAK_BOAT = ItemRegistry.fromItemKey("minecraft:dark_oak_boat");
+    @NotNull
+    public static final Item DARK_OAK_BOAT = ItemRegistry.fromItemKey("minecraft:dark_oak_boat");
 
-  @NotNull
-  public static final Item STRUCTURE_BLOCK = ItemRegistry.fromItemKey("minecraft:structure_block");
+    @NotNull
+    public static final Item STRUCTURE_BLOCK = ItemRegistry.fromItemKey("minecraft:structure_block");
 
-  @NotNull
-  public static final Item JIGSAW = ItemRegistry.fromItemKey("minecraft:jigsaw");
+    @NotNull
+    public static final Item JIGSAW = ItemRegistry.fromItemKey("minecraft:jigsaw");
 
-  @NotNull
-  public static final Item TURTLE_HELMET = ItemRegistry.fromItemKey("minecraft:turtle_helmet");
+    @NotNull
+    public static final Item TURTLE_HELMET = ItemRegistry.fromItemKey("minecraft:turtle_helmet");
 
-  @NotNull
-  public static final Item SCUTE = ItemRegistry.fromItemKey("minecraft:scute");
+    @NotNull
+    public static final Item SCUTE = ItemRegistry.fromItemKey("minecraft:scute");
 
-  @NotNull
-  public static final Item FLINT_AND_STEEL = ItemRegistry.fromItemKey("minecraft:flint_and_steel");
+    @NotNull
+    public static final Item FLINT_AND_STEEL = ItemRegistry.fromItemKey("minecraft:flint_and_steel");
 
-  @NotNull
-  public static final Item APPLE = ItemRegistry.fromItemKey("minecraft:apple");
+    @NotNull
+    public static final Item APPLE = ItemRegistry.fromItemKey("minecraft:apple");
 
-  @NotNull
-  public static final Item BOW = ItemRegistry.fromItemKey("minecraft:bow");
+    @NotNull
+    public static final Item BOW = ItemRegistry.fromItemKey("minecraft:bow");
 
-  @NotNull
-  public static final Item ARROW = ItemRegistry.fromItemKey("minecraft:arrow");
+    @NotNull
+    public static final Item ARROW = ItemRegistry.fromItemKey("minecraft:arrow");
 
-  @NotNull
-  public static final Item COAL = ItemRegistry.fromItemKey("minecraft:coal");
+    @NotNull
+    public static final Item COAL = ItemRegistry.fromItemKey("minecraft:coal");
 
-  @NotNull
-  public static final Item CHARCOAL = ItemRegistry.fromItemKey("minecraft:charcoal");
+    @NotNull
+    public static final Item CHARCOAL = ItemRegistry.fromItemKey("minecraft:charcoal");
 
-  @NotNull
-  public static final Item DIAMOND = ItemRegistry.fromItemKey("minecraft:diamond");
+    @NotNull
+    public static final Item DIAMOND = ItemRegistry.fromItemKey("minecraft:diamond");
 
-  @NotNull
-  public static final Item EMERALD = ItemRegistry.fromItemKey("minecraft:emerald");
+    @NotNull
+    public static final Item EMERALD = ItemRegistry.fromItemKey("minecraft:emerald");
 
-  @NotNull
-  public static final Item LAPIS_LAZULI = ItemRegistry.fromItemKey("minecraft:lapis_lazuli");
+    @NotNull
+    public static final Item LAPIS_LAZULI = ItemRegistry.fromItemKey("minecraft:lapis_lazuli");
 
-  @NotNull
-  public static final Item QUARTZ = ItemRegistry.fromItemKey("minecraft:quartz");
+    @NotNull
+    public static final Item QUARTZ = ItemRegistry.fromItemKey("minecraft:quartz");
 
-  @NotNull
-  public static final Item AMETHYST_SHARD = ItemRegistry.fromItemKey("minecraft:amethyst_shard");
+    @NotNull
+    public static final Item AMETHYST_SHARD = ItemRegistry.fromItemKey("minecraft:amethyst_shard");
 
-  @NotNull
-  public static final Item RAW_IRON = ItemRegistry.fromItemKey("minecraft:raw_iron");
+    @NotNull
+    public static final Item RAW_IRON = ItemRegistry.fromItemKey("minecraft:raw_iron");
 
-  @NotNull
-  public static final Item IRON_INGOT = ItemRegistry.fromItemKey("minecraft:iron_ingot");
+    @NotNull
+    public static final Item IRON_INGOT = ItemRegistry.fromItemKey("minecraft:iron_ingot");
 
-  @NotNull
-  public static final Item RAW_COPPER = ItemRegistry.fromItemKey("minecraft:raw_copper");
+    @NotNull
+    public static final Item RAW_COPPER = ItemRegistry.fromItemKey("minecraft:raw_copper");
 
-  @NotNull
-  public static final Item COPPER_INGOT = ItemRegistry.fromItemKey("minecraft:copper_ingot");
+    @NotNull
+    public static final Item COPPER_INGOT = ItemRegistry.fromItemKey("minecraft:copper_ingot");
 
-  @NotNull
-  public static final Item RAW_GOLD = ItemRegistry.fromItemKey("minecraft:raw_gold");
+    @NotNull
+    public static final Item RAW_GOLD = ItemRegistry.fromItemKey("minecraft:raw_gold");
 
-  @NotNull
-  public static final Item GOLD_INGOT = ItemRegistry.fromItemKey("minecraft:gold_ingot");
+    @NotNull
+    public static final Item GOLD_INGOT = ItemRegistry.fromItemKey("minecraft:gold_ingot");
 
-  @NotNull
-  public static final Item NETHERITE_INGOT = ItemRegistry.fromItemKey("minecraft:netherite_ingot");
+    @NotNull
+    public static final Item NETHERITE_INGOT = ItemRegistry.fromItemKey("minecraft:netherite_ingot");
 
-  @NotNull
-  public static final Item NETHERITE_SCRAP = ItemRegistry.fromItemKey("minecraft:netherite_scrap");
+    @NotNull
+    public static final Item NETHERITE_SCRAP = ItemRegistry.fromItemKey("minecraft:netherite_scrap");
 
-  @NotNull
-  public static final Item WOODEN_SWORD = ItemRegistry.fromItemKey("minecraft:wooden_sword");
+    @NotNull
+    public static final Item WOODEN_SWORD = ItemRegistry.fromItemKey("minecraft:wooden_sword");
 
-  @NotNull
-  public static final Item WOODEN_SHOVEL = ItemRegistry.fromItemKey("minecraft:wooden_shovel");
+    @NotNull
+    public static final Item WOODEN_SHOVEL = ItemRegistry.fromItemKey("minecraft:wooden_shovel");
 
-  @NotNull
-  public static final Item WOODEN_PICKAXE = ItemRegistry.fromItemKey("minecraft:wooden_pickaxe");
+    @NotNull
+    public static final Item WOODEN_PICKAXE = ItemRegistry.fromItemKey("minecraft:wooden_pickaxe");
 
-  @NotNull
-  public static final Item WOODEN_AXE = ItemRegistry.fromItemKey("minecraft:wooden_axe");
+    @NotNull
+    public static final Item WOODEN_AXE = ItemRegistry.fromItemKey("minecraft:wooden_axe");
 
-  @NotNull
-  public static final Item WOODEN_HOE = ItemRegistry.fromItemKey("minecraft:wooden_hoe");
+    @NotNull
+    public static final Item WOODEN_HOE = ItemRegistry.fromItemKey("minecraft:wooden_hoe");
 
-  @NotNull
-  public static final Item STONE_SWORD = ItemRegistry.fromItemKey("minecraft:stone_sword");
+    @NotNull
+    public static final Item STONE_SWORD = ItemRegistry.fromItemKey("minecraft:stone_sword");
 
-  @NotNull
-  public static final Item STONE_SHOVEL = ItemRegistry.fromItemKey("minecraft:stone_shovel");
+    @NotNull
+    public static final Item STONE_SHOVEL = ItemRegistry.fromItemKey("minecraft:stone_shovel");
 
-  @NotNull
-  public static final Item STONE_PICKAXE = ItemRegistry.fromItemKey("minecraft:stone_pickaxe");
+    @NotNull
+    public static final Item STONE_PICKAXE = ItemRegistry.fromItemKey("minecraft:stone_pickaxe");
 
-  @NotNull
-  public static final Item STONE_AXE = ItemRegistry.fromItemKey("minecraft:stone_axe");
+    @NotNull
+    public static final Item STONE_AXE = ItemRegistry.fromItemKey("minecraft:stone_axe");
 
-  @NotNull
-  public static final Item STONE_HOE = ItemRegistry.fromItemKey("minecraft:stone_hoe");
+    @NotNull
+    public static final Item STONE_HOE = ItemRegistry.fromItemKey("minecraft:stone_hoe");
 
-  @NotNull
-  public static final Item GOLDEN_SWORD = ItemRegistry.fromItemKey("minecraft:golden_sword");
+    @NotNull
+    public static final Item GOLDEN_SWORD = ItemRegistry.fromItemKey("minecraft:golden_sword");
 
-  @NotNull
-  public static final Item GOLDEN_SHOVEL = ItemRegistry.fromItemKey("minecraft:golden_shovel");
+    @NotNull
+    public static final Item GOLDEN_SHOVEL = ItemRegistry.fromItemKey("minecraft:golden_shovel");
 
-  @NotNull
-  public static final Item GOLDEN_PICKAXE = ItemRegistry.fromItemKey("minecraft:golden_pickaxe");
+    @NotNull
+    public static final Item GOLDEN_PICKAXE = ItemRegistry.fromItemKey("minecraft:golden_pickaxe");
 
-  @NotNull
-  public static final Item GOLDEN_AXE = ItemRegistry.fromItemKey("minecraft:golden_axe");
+    @NotNull
+    public static final Item GOLDEN_AXE = ItemRegistry.fromItemKey("minecraft:golden_axe");
 
-  @NotNull
-  public static final Item GOLDEN_HOE = ItemRegistry.fromItemKey("minecraft:golden_hoe");
+    @NotNull
+    public static final Item GOLDEN_HOE = ItemRegistry.fromItemKey("minecraft:golden_hoe");
 
-  @NotNull
-  public static final Item IRON_SWORD = ItemRegistry.fromItemKey("minecraft:iron_sword");
+    @NotNull
+    public static final Item IRON_SWORD = ItemRegistry.fromItemKey("minecraft:iron_sword");
 
-  @NotNull
-  public static final Item IRON_SHOVEL = ItemRegistry.fromItemKey("minecraft:iron_shovel");
+    @NotNull
+    public static final Item IRON_SHOVEL = ItemRegistry.fromItemKey("minecraft:iron_shovel");
 
-  @NotNull
-  public static final Item IRON_PICKAXE = ItemRegistry.fromItemKey("minecraft:iron_pickaxe");
+    @NotNull
+    public static final Item IRON_PICKAXE = ItemRegistry.fromItemKey("minecraft:iron_pickaxe");
 
-  @NotNull
-  public static final Item IRON_AXE = ItemRegistry.fromItemKey("minecraft:iron_axe");
+    @NotNull
+    public static final Item IRON_AXE = ItemRegistry.fromItemKey("minecraft:iron_axe");
 
-  @NotNull
-  public static final Item IRON_HOE = ItemRegistry.fromItemKey("minecraft:iron_hoe");
+    @NotNull
+    public static final Item IRON_HOE = ItemRegistry.fromItemKey("minecraft:iron_hoe");
 
-  @NotNull
-  public static final Item DIAMOND_SWORD = ItemRegistry.fromItemKey("minecraft:diamond_sword");
+    @NotNull
+    public static final Item DIAMOND_SWORD = ItemRegistry.fromItemKey("minecraft:diamond_sword");
 
-  @NotNull
-  public static final Item DIAMOND_SHOVEL = ItemRegistry.fromItemKey("minecraft:diamond_shovel");
+    @NotNull
+    public static final Item DIAMOND_SHOVEL = ItemRegistry.fromItemKey("minecraft:diamond_shovel");
 
-  @NotNull
-  public static final Item DIAMOND_PICKAXE = ItemRegistry.fromItemKey("minecraft:diamond_pickaxe");
+    @NotNull
+    public static final Item DIAMOND_PICKAXE = ItemRegistry.fromItemKey("minecraft:diamond_pickaxe");
 
-  @NotNull
-  public static final Item DIAMOND_AXE = ItemRegistry.fromItemKey("minecraft:diamond_axe");
+    @NotNull
+    public static final Item DIAMOND_AXE = ItemRegistry.fromItemKey("minecraft:diamond_axe");
 
-  @NotNull
-  public static final Item DIAMOND_HOE = ItemRegistry.fromItemKey("minecraft:diamond_hoe");
+    @NotNull
+    public static final Item DIAMOND_HOE = ItemRegistry.fromItemKey("minecraft:diamond_hoe");
 
-  @NotNull
-  public static final Item NETHERITE_SWORD = ItemRegistry.fromItemKey("minecraft:netherite_sword");
+    @NotNull
+    public static final Item NETHERITE_SWORD = ItemRegistry.fromItemKey("minecraft:netherite_sword");
 
-  @NotNull
-  public static final Item NETHERITE_SHOVEL = ItemRegistry.fromItemKey("minecraft:netherite_shovel");
+    @NotNull
+    public static final Item NETHERITE_SHOVEL = ItemRegistry.fromItemKey("minecraft:netherite_shovel");
 
-  @NotNull
-  public static final Item NETHERITE_PICKAXE = ItemRegistry.fromItemKey("minecraft:netherite_pickaxe");
+    @NotNull
+    public static final Item NETHERITE_PICKAXE = ItemRegistry.fromItemKey("minecraft:netherite_pickaxe");
 
-  @NotNull
-  public static final Item NETHERITE_AXE = ItemRegistry.fromItemKey("minecraft:netherite_axe");
+    @NotNull
+    public static final Item NETHERITE_AXE = ItemRegistry.fromItemKey("minecraft:netherite_axe");
 
-  @NotNull
-  public static final Item NETHERITE_HOE = ItemRegistry.fromItemKey("minecraft:netherite_hoe");
+    @NotNull
+    public static final Item NETHERITE_HOE = ItemRegistry.fromItemKey("minecraft:netherite_hoe");
 
-  @NotNull
-  public static final Item STICK = ItemRegistry.fromItemKey("minecraft:stick");
+    @NotNull
+    public static final Item STICK = ItemRegistry.fromItemKey("minecraft:stick");
 
-  @NotNull
-  public static final Item BOWL = ItemRegistry.fromItemKey("minecraft:bowl");
+    @NotNull
+    public static final Item BOWL = ItemRegistry.fromItemKey("minecraft:bowl");
 
-  @NotNull
-  public static final Item MUSHROOM_STEW = ItemRegistry.fromItemKey("minecraft:mushroom_stew");
+    @NotNull
+    public static final Item MUSHROOM_STEW = ItemRegistry.fromItemKey("minecraft:mushroom_stew");
 
-  @NotNull
-  public static final Item STRING = ItemRegistry.fromItemKey("minecraft:string");
+    @NotNull
+    public static final Item STRING = ItemRegistry.fromItemKey("minecraft:string");
 
-  @NotNull
-  public static final Item FEATHER = ItemRegistry.fromItemKey("minecraft:feather");
+    @NotNull
+    public static final Item FEATHER = ItemRegistry.fromItemKey("minecraft:feather");
 
-  @NotNull
-  public static final Item GUNPOWDER = ItemRegistry.fromItemKey("minecraft:gunpowder");
+    @NotNull
+    public static final Item GUNPOWDER = ItemRegistry.fromItemKey("minecraft:gunpowder");
 
-  @NotNull
-  public static final Item WHEAT_SEEDS = ItemRegistry.fromItemKey("minecraft:wheat_seeds");
+    @NotNull
+    public static final Item WHEAT_SEEDS = ItemRegistry.fromItemKey("minecraft:wheat_seeds");
 
-  @NotNull
-  public static final Item WHEAT = ItemRegistry.fromItemKey("minecraft:wheat");
+    @NotNull
+    public static final Item WHEAT = ItemRegistry.fromItemKey("minecraft:wheat");
 
-  @NotNull
-  public static final Item BREAD = ItemRegistry.fromItemKey("minecraft:bread");
+    @NotNull
+    public static final Item BREAD = ItemRegistry.fromItemKey("minecraft:bread");
 
-  @NotNull
-  public static final Item LEATHER_HELMET = ItemRegistry.fromItemKey("minecraft:leather_helmet");
+    @NotNull
+    public static final Item LEATHER_HELMET = ItemRegistry.fromItemKey("minecraft:leather_helmet");
 
-  @NotNull
-  public static final Item LEATHER_CHESTPLATE = ItemRegistry.fromItemKey("minecraft:leather_chestplate");
+    @NotNull
+    public static final Item LEATHER_CHESTPLATE = ItemRegistry.fromItemKey("minecraft:leather_chestplate");
 
-  @NotNull
-  public static final Item LEATHER_LEGGINGS = ItemRegistry.fromItemKey("minecraft:leather_leggings");
+    @NotNull
+    public static final Item LEATHER_LEGGINGS = ItemRegistry.fromItemKey("minecraft:leather_leggings");
 
-  @NotNull
-  public static final Item LEATHER_BOOTS = ItemRegistry.fromItemKey("minecraft:leather_boots");
+    @NotNull
+    public static final Item LEATHER_BOOTS = ItemRegistry.fromItemKey("minecraft:leather_boots");
 
-  @NotNull
-  public static final Item CHAINMAIL_HELMET = ItemRegistry.fromItemKey("minecraft:chainmail_helmet");
+    @NotNull
+    public static final Item CHAINMAIL_HELMET = ItemRegistry.fromItemKey("minecraft:chainmail_helmet");
 
-  @NotNull
-  public static final Item CHAINMAIL_CHESTPLATE = ItemRegistry.fromItemKey("minecraft:chainmail_chestplate");
+    @NotNull
+    public static final Item CHAINMAIL_CHESTPLATE = ItemRegistry.fromItemKey("minecraft:chainmail_chestplate");
 
-  @NotNull
-  public static final Item CHAINMAIL_LEGGINGS = ItemRegistry.fromItemKey("minecraft:chainmail_leggings");
+    @NotNull
+    public static final Item CHAINMAIL_LEGGINGS = ItemRegistry.fromItemKey("minecraft:chainmail_leggings");
 
-  @NotNull
-  public static final Item CHAINMAIL_BOOTS = ItemRegistry.fromItemKey("minecraft:chainmail_boots");
+    @NotNull
+    public static final Item CHAINMAIL_BOOTS = ItemRegistry.fromItemKey("minecraft:chainmail_boots");
 
-  @NotNull
-  public static final Item IRON_HELMET = ItemRegistry.fromItemKey("minecraft:iron_helmet");
+    @NotNull
+    public static final Item IRON_HELMET = ItemRegistry.fromItemKey("minecraft:iron_helmet");
 
-  @NotNull
-  public static final Item IRON_CHESTPLATE = ItemRegistry.fromItemKey("minecraft:iron_chestplate");
+    @NotNull
+    public static final Item IRON_CHESTPLATE = ItemRegistry.fromItemKey("minecraft:iron_chestplate");
 
-  @NotNull
-  public static final Item IRON_LEGGINGS = ItemRegistry.fromItemKey("minecraft:iron_leggings");
+    @NotNull
+    public static final Item IRON_LEGGINGS = ItemRegistry.fromItemKey("minecraft:iron_leggings");
 
-  @NotNull
-  public static final Item IRON_BOOTS = ItemRegistry.fromItemKey("minecraft:iron_boots");
+    @NotNull
+    public static final Item IRON_BOOTS = ItemRegistry.fromItemKey("minecraft:iron_boots");
 
-  @NotNull
-  public static final Item DIAMOND_HELMET = ItemRegistry.fromItemKey("minecraft:diamond_helmet");
+    @NotNull
+    public static final Item DIAMOND_HELMET = ItemRegistry.fromItemKey("minecraft:diamond_helmet");
 
-  @NotNull
-  public static final Item DIAMOND_CHESTPLATE = ItemRegistry.fromItemKey("minecraft:diamond_chestplate");
+    @NotNull
+    public static final Item DIAMOND_CHESTPLATE = ItemRegistry.fromItemKey("minecraft:diamond_chestplate");
 
-  @NotNull
-  public static final Item DIAMOND_LEGGINGS = ItemRegistry.fromItemKey("minecraft:diamond_leggings");
+    @NotNull
+    public static final Item DIAMOND_LEGGINGS = ItemRegistry.fromItemKey("minecraft:diamond_leggings");
 
-  @NotNull
-  public static final Item DIAMOND_BOOTS = ItemRegistry.fromItemKey("minecraft:diamond_boots");
+    @NotNull
+    public static final Item DIAMOND_BOOTS = ItemRegistry.fromItemKey("minecraft:diamond_boots");
 
-  @NotNull
-  public static final Item GOLDEN_HELMET = ItemRegistry.fromItemKey("minecraft:golden_helmet");
+    @NotNull
+    public static final Item GOLDEN_HELMET = ItemRegistry.fromItemKey("minecraft:golden_helmet");
 
-  @NotNull
-  public static final Item GOLDEN_CHESTPLATE = ItemRegistry.fromItemKey("minecraft:golden_chestplate");
+    @NotNull
+    public static final Item GOLDEN_CHESTPLATE = ItemRegistry.fromItemKey("minecraft:golden_chestplate");
 
-  @NotNull
-  public static final Item GOLDEN_LEGGINGS = ItemRegistry.fromItemKey("minecraft:golden_leggings");
+    @NotNull
+    public static final Item GOLDEN_LEGGINGS = ItemRegistry.fromItemKey("minecraft:golden_leggings");
 
-  @NotNull
-  public static final Item GOLDEN_BOOTS = ItemRegistry.fromItemKey("minecraft:golden_boots");
+    @NotNull
+    public static final Item GOLDEN_BOOTS = ItemRegistry.fromItemKey("minecraft:golden_boots");
 
-  @NotNull
-  public static final Item NETHERITE_HELMET = ItemRegistry.fromItemKey("minecraft:netherite_helmet");
+    @NotNull
+    public static final Item NETHERITE_HELMET = ItemRegistry.fromItemKey("minecraft:netherite_helmet");
 
-  @NotNull
-  public static final Item NETHERITE_CHESTPLATE = ItemRegistry.fromItemKey("minecraft:netherite_chestplate");
+    @NotNull
+    public static final Item NETHERITE_CHESTPLATE = ItemRegistry.fromItemKey("minecraft:netherite_chestplate");
 
-  @NotNull
-  public static final Item NETHERITE_LEGGINGS = ItemRegistry.fromItemKey("minecraft:netherite_leggings");
+    @NotNull
+    public static final Item NETHERITE_LEGGINGS = ItemRegistry.fromItemKey("minecraft:netherite_leggings");
 
-  @NotNull
-  public static final Item NETHERITE_BOOTS = ItemRegistry.fromItemKey("minecraft:netherite_boots");
+    @NotNull
+    public static final Item NETHERITE_BOOTS = ItemRegistry.fromItemKey("minecraft:netherite_boots");
 
-  @NotNull
-  public static final Item FLINT = ItemRegistry.fromItemKey("minecraft:flint");
+    @NotNull
+    public static final Item FLINT = ItemRegistry.fromItemKey("minecraft:flint");
 
-  @NotNull
-  public static final Item PORKCHOP = ItemRegistry.fromItemKey("minecraft:porkchop");
+    @NotNull
+    public static final Item PORKCHOP = ItemRegistry.fromItemKey("minecraft:porkchop");
 
-  @NotNull
-  public static final Item COOKED_PORKCHOP = ItemRegistry.fromItemKey("minecraft:cooked_porkchop");
+    @NotNull
+    public static final Item COOKED_PORKCHOP = ItemRegistry.fromItemKey("minecraft:cooked_porkchop");
 
-  @NotNull
-  public static final Item PAINTING = ItemRegistry.fromItemKey("minecraft:painting");
+    @NotNull
+    public static final Item PAINTING = ItemRegistry.fromItemKey("minecraft:painting");
 
-  @NotNull
-  public static final Item GOLDEN_APPLE = ItemRegistry.fromItemKey("minecraft:golden_apple");
+    @NotNull
+    public static final Item GOLDEN_APPLE = ItemRegistry.fromItemKey("minecraft:golden_apple");
 
-  @NotNull
-  public static final Item ENCHANTED_GOLDEN_APPLE = ItemRegistry.fromItemKey("minecraft:enchanted_golden_apple");
+    @NotNull
+    public static final Item ENCHANTED_GOLDEN_APPLE = ItemRegistry.fromItemKey("minecraft:enchanted_golden_apple");
 
-  @NotNull
-  public static final Item OAK_SIGN = ItemRegistry.fromItemKey("minecraft:oak_sign");
+    @NotNull
+    public static final Item OAK_SIGN = ItemRegistry.fromItemKey("minecraft:oak_sign");
 
-  @NotNull
-  public static final Item SPRUCE_SIGN = ItemRegistry.fromItemKey("minecraft:spruce_sign");
+    @NotNull
+    public static final Item SPRUCE_SIGN = ItemRegistry.fromItemKey("minecraft:spruce_sign");
 
-  @NotNull
-  public static final Item BIRCH_SIGN = ItemRegistry.fromItemKey("minecraft:birch_sign");
+    @NotNull
+    public static final Item BIRCH_SIGN = ItemRegistry.fromItemKey("minecraft:birch_sign");
 
-  @NotNull
-  public static final Item JUNGLE_SIGN = ItemRegistry.fromItemKey("minecraft:jungle_sign");
+    @NotNull
+    public static final Item JUNGLE_SIGN = ItemRegistry.fromItemKey("minecraft:jungle_sign");
 
-  @NotNull
-  public static final Item ACACIA_SIGN = ItemRegistry.fromItemKey("minecraft:acacia_sign");
+    @NotNull
+    public static final Item ACACIA_SIGN = ItemRegistry.fromItemKey("minecraft:acacia_sign");
 
-  @NotNull
-  public static final Item DARK_OAK_SIGN = ItemRegistry.fromItemKey("minecraft:dark_oak_sign");
+    @NotNull
+    public static final Item DARK_OAK_SIGN = ItemRegistry.fromItemKey("minecraft:dark_oak_sign");
 
-  @NotNull
-  public static final Item CRIMSON_SIGN = ItemRegistry.fromItemKey("minecraft:crimson_sign");
+    @NotNull
+    public static final Item CRIMSON_SIGN = ItemRegistry.fromItemKey("minecraft:crimson_sign");
 
-  @NotNull
-  public static final Item WARPED_SIGN = ItemRegistry.fromItemKey("minecraft:warped_sign");
+    @NotNull
+    public static final Item WARPED_SIGN = ItemRegistry.fromItemKey("minecraft:warped_sign");
 
-  @NotNull
-  public static final Item BUCKET = ItemRegistry.fromItemKey("minecraft:bucket");
+    @NotNull
+    public static final Item BUCKET = ItemRegistry.fromItemKey("minecraft:bucket");
 
-  @NotNull
-  public static final Item WATER_BUCKET = ItemRegistry.fromItemKey("minecraft:water_bucket");
+    @NotNull
+    public static final Item WATER_BUCKET = ItemRegistry.fromItemKey("minecraft:water_bucket");
 
-  @NotNull
-  public static final Item LAVA_BUCKET = ItemRegistry.fromItemKey("minecraft:lava_bucket");
+    @NotNull
+    public static final Item LAVA_BUCKET = ItemRegistry.fromItemKey("minecraft:lava_bucket");
 
-  @NotNull
-  public static final Item POWDER_SNOW_BUCKET = ItemRegistry.fromItemKey("minecraft:powder_snow_bucket");
+    @NotNull
+    public static final Item POWDER_SNOW_BUCKET = ItemRegistry.fromItemKey("minecraft:powder_snow_bucket");
 
-  @NotNull
-  public static final Item SNOWBALL = ItemRegistry.fromItemKey("minecraft:snowball");
+    @NotNull
+    public static final Item SNOWBALL = ItemRegistry.fromItemKey("minecraft:snowball");
 
-  @NotNull
-  public static final Item LEATHER = ItemRegistry.fromItemKey("minecraft:leather");
+    @NotNull
+    public static final Item LEATHER = ItemRegistry.fromItemKey("minecraft:leather");
 
-  @NotNull
-  public static final Item MILK_BUCKET = ItemRegistry.fromItemKey("minecraft:milk_bucket");
+    @NotNull
+    public static final Item MILK_BUCKET = ItemRegistry.fromItemKey("minecraft:milk_bucket");
 
-  @NotNull
-  public static final Item PUFFERFISH_BUCKET = ItemRegistry.fromItemKey("minecraft:pufferfish_bucket");
+    @NotNull
+    public static final Item PUFFERFISH_BUCKET = ItemRegistry.fromItemKey("minecraft:pufferfish_bucket");
 
-  @NotNull
-  public static final Item SALMON_BUCKET = ItemRegistry.fromItemKey("minecraft:salmon_bucket");
+    @NotNull
+    public static final Item SALMON_BUCKET = ItemRegistry.fromItemKey("minecraft:salmon_bucket");
 
-  @NotNull
-  public static final Item COD_BUCKET = ItemRegistry.fromItemKey("minecraft:cod_bucket");
+    @NotNull
+    public static final Item COD_BUCKET = ItemRegistry.fromItemKey("minecraft:cod_bucket");
 
-  @NotNull
-  public static final Item TROPICAL_FISH_BUCKET = ItemRegistry.fromItemKey("minecraft:tropical_fish_bucket");
+    @NotNull
+    public static final Item TROPICAL_FISH_BUCKET = ItemRegistry.fromItemKey("minecraft:tropical_fish_bucket");
 
-  @NotNull
-  public static final Item AXOLOTL_BUCKET = ItemRegistry.fromItemKey("minecraft:axolotl_bucket");
+    @NotNull
+    public static final Item AXOLOTL_BUCKET = ItemRegistry.fromItemKey("minecraft:axolotl_bucket");
 
-  @NotNull
-  public static final Item BRICK = ItemRegistry.fromItemKey("minecraft:brick");
+    @NotNull
+    public static final Item BRICK = ItemRegistry.fromItemKey("minecraft:brick");
 
-  @NotNull
-  public static final Item CLAY_BALL = ItemRegistry.fromItemKey("minecraft:clay_ball");
+    @NotNull
+    public static final Item CLAY_BALL = ItemRegistry.fromItemKey("minecraft:clay_ball");
 
-  @NotNull
-  public static final Item DRIED_KELP_BLOCK = ItemRegistry.fromItemKey("minecraft:dried_kelp_block");
+    @NotNull
+    public static final Item DRIED_KELP_BLOCK = ItemRegistry.fromItemKey("minecraft:dried_kelp_block");
 
-  @NotNull
-  public static final Item PAPER = ItemRegistry.fromItemKey("minecraft:paper");
+    @NotNull
+    public static final Item PAPER = ItemRegistry.fromItemKey("minecraft:paper");
 
-  @NotNull
-  public static final Item BOOK = ItemRegistry.fromItemKey("minecraft:book");
+    @NotNull
+    public static final Item BOOK = ItemRegistry.fromItemKey("minecraft:book");
 
-  @NotNull
-  public static final Item SLIME_BALL = ItemRegistry.fromItemKey("minecraft:slime_ball");
+    @NotNull
+    public static final Item SLIME_BALL = ItemRegistry.fromItemKey("minecraft:slime_ball");
 
-  @NotNull
-  public static final Item EGG = ItemRegistry.fromItemKey("minecraft:egg");
+    @NotNull
+    public static final Item EGG = ItemRegistry.fromItemKey("minecraft:egg");
 
-  @NotNull
-  public static final Item COMPASS = ItemRegistry.fromItemKey("minecraft:compass");
+    @NotNull
+    public static final Item COMPASS = ItemRegistry.fromItemKey("minecraft:compass");
 
-  @NotNull
-  public static final Item BUNDLE = ItemRegistry.fromItemKey("minecraft:bundle");
+    @NotNull
+    public static final Item BUNDLE = ItemRegistry.fromItemKey("minecraft:bundle");
 
-  @NotNull
-  public static final Item FISHING_ROD = ItemRegistry.fromItemKey("minecraft:fishing_rod");
+    @NotNull
+    public static final Item FISHING_ROD = ItemRegistry.fromItemKey("minecraft:fishing_rod");
 
-  @NotNull
-  public static final Item CLOCK = ItemRegistry.fromItemKey("minecraft:clock");
+    @NotNull
+    public static final Item CLOCK = ItemRegistry.fromItemKey("minecraft:clock");
 
-  @NotNull
-  public static final Item SPYGLASS = ItemRegistry.fromItemKey("minecraft:spyglass");
+    @NotNull
+    public static final Item SPYGLASS = ItemRegistry.fromItemKey("minecraft:spyglass");
 
-  @NotNull
-  public static final Item GLOWSTONE_DUST = ItemRegistry.fromItemKey("minecraft:glowstone_dust");
+    @NotNull
+    public static final Item GLOWSTONE_DUST = ItemRegistry.fromItemKey("minecraft:glowstone_dust");
 
-  @NotNull
-  public static final Item COD = ItemRegistry.fromItemKey("minecraft:cod");
+    @NotNull
+    public static final Item COD = ItemRegistry.fromItemKey("minecraft:cod");
 
-  @NotNull
-  public static final Item SALMON = ItemRegistry.fromItemKey("minecraft:salmon");
+    @NotNull
+    public static final Item SALMON = ItemRegistry.fromItemKey("minecraft:salmon");
 
-  @NotNull
-  public static final Item TROPICAL_FISH = ItemRegistry.fromItemKey("minecraft:tropical_fish");
+    @NotNull
+    public static final Item TROPICAL_FISH = ItemRegistry.fromItemKey("minecraft:tropical_fish");
 
-  @NotNull
-  public static final Item PUFFERFISH = ItemRegistry.fromItemKey("minecraft:pufferfish");
+    @NotNull
+    public static final Item PUFFERFISH = ItemRegistry.fromItemKey("minecraft:pufferfish");
 
-  @NotNull
-  public static final Item COOKED_COD = ItemRegistry.fromItemKey("minecraft:cooked_cod");
+    @NotNull
+    public static final Item COOKED_COD = ItemRegistry.fromItemKey("minecraft:cooked_cod");
 
-  @NotNull
-  public static final Item COOKED_SALMON = ItemRegistry.fromItemKey("minecraft:cooked_salmon");
+    @NotNull
+    public static final Item COOKED_SALMON = ItemRegistry.fromItemKey("minecraft:cooked_salmon");
 
-  @NotNull
-  public static final Item INK_SAC = ItemRegistry.fromItemKey("minecraft:ink_sac");
+    @NotNull
+    public static final Item INK_SAC = ItemRegistry.fromItemKey("minecraft:ink_sac");
 
-  @NotNull
-  public static final Item GLOW_INK_SAC = ItemRegistry.fromItemKey("minecraft:glow_ink_sac");
+    @NotNull
+    public static final Item GLOW_INK_SAC = ItemRegistry.fromItemKey("minecraft:glow_ink_sac");
 
-  @NotNull
-  public static final Item COCOA_BEANS = ItemRegistry.fromItemKey("minecraft:cocoa_beans");
+    @NotNull
+    public static final Item COCOA_BEANS = ItemRegistry.fromItemKey("minecraft:cocoa_beans");
 
-  @NotNull
-  public static final Item WHITE_DYE = ItemRegistry.fromItemKey("minecraft:white_dye");
+    @NotNull
+    public static final Item WHITE_DYE = ItemRegistry.fromItemKey("minecraft:white_dye");
 
-  @NotNull
-  public static final Item ORANGE_DYE = ItemRegistry.fromItemKey("minecraft:orange_dye");
+    @NotNull
+    public static final Item ORANGE_DYE = ItemRegistry.fromItemKey("minecraft:orange_dye");
 
-  @NotNull
-  public static final Item MAGENTA_DYE = ItemRegistry.fromItemKey("minecraft:magenta_dye");
+    @NotNull
+    public static final Item MAGENTA_DYE = ItemRegistry.fromItemKey("minecraft:magenta_dye");
 
-  @NotNull
-  public static final Item LIGHT_BLUE_DYE = ItemRegistry.fromItemKey("minecraft:light_blue_dye");
+    @NotNull
+    public static final Item LIGHT_BLUE_DYE = ItemRegistry.fromItemKey("minecraft:light_blue_dye");
 
-  @NotNull
-  public static final Item YELLOW_DYE = ItemRegistry.fromItemKey("minecraft:yellow_dye");
+    @NotNull
+    public static final Item YELLOW_DYE = ItemRegistry.fromItemKey("minecraft:yellow_dye");
 
-  @NotNull
-  public static final Item LIME_DYE = ItemRegistry.fromItemKey("minecraft:lime_dye");
+    @NotNull
+    public static final Item LIME_DYE = ItemRegistry.fromItemKey("minecraft:lime_dye");
 
-  @NotNull
-  public static final Item PINK_DYE = ItemRegistry.fromItemKey("minecraft:pink_dye");
+    @NotNull
+    public static final Item PINK_DYE = ItemRegistry.fromItemKey("minecraft:pink_dye");
 
-  @NotNull
-  public static final Item GRAY_DYE = ItemRegistry.fromItemKey("minecraft:gray_dye");
+    @NotNull
+    public static final Item GRAY_DYE = ItemRegistry.fromItemKey("minecraft:gray_dye");
 
-  @NotNull
-  public static final Item LIGHT_GRAY_DYE = ItemRegistry.fromItemKey("minecraft:light_gray_dye");
+    @NotNull
+    public static final Item LIGHT_GRAY_DYE = ItemRegistry.fromItemKey("minecraft:light_gray_dye");
 
-  @NotNull
-  public static final Item CYAN_DYE = ItemRegistry.fromItemKey("minecraft:cyan_dye");
+    @NotNull
+    public static final Item CYAN_DYE = ItemRegistry.fromItemKey("minecraft:cyan_dye");
 
-  @NotNull
-  public static final Item PURPLE_DYE = ItemRegistry.fromItemKey("minecraft:purple_dye");
+    @NotNull
+    public static final Item PURPLE_DYE = ItemRegistry.fromItemKey("minecraft:purple_dye");
 
-  @NotNull
-  public static final Item BLUE_DYE = ItemRegistry.fromItemKey("minecraft:blue_dye");
+    @NotNull
+    public static final Item BLUE_DYE = ItemRegistry.fromItemKey("minecraft:blue_dye");
 
-  @NotNull
-  public static final Item BROWN_DYE = ItemRegistry.fromItemKey("minecraft:brown_dye");
+    @NotNull
+    public static final Item BROWN_DYE = ItemRegistry.fromItemKey("minecraft:brown_dye");
 
-  @NotNull
-  public static final Item GREEN_DYE = ItemRegistry.fromItemKey("minecraft:green_dye");
+    @NotNull
+    public static final Item GREEN_DYE = ItemRegistry.fromItemKey("minecraft:green_dye");
 
-  @NotNull
-  public static final Item RED_DYE = ItemRegistry.fromItemKey("minecraft:red_dye");
+    @NotNull
+    public static final Item RED_DYE = ItemRegistry.fromItemKey("minecraft:red_dye");
 
-  @NotNull
-  public static final Item BLACK_DYE = ItemRegistry.fromItemKey("minecraft:black_dye");
+    @NotNull
+    public static final Item BLACK_DYE = ItemRegistry.fromItemKey("minecraft:black_dye");
 
-  @NotNull
-  public static final Item BONE_MEAL = ItemRegistry.fromItemKey("minecraft:bone_meal");
+    @NotNull
+    public static final Item BONE_MEAL = ItemRegistry.fromItemKey("minecraft:bone_meal");
 
-  @NotNull
-  public static final Item BONE = ItemRegistry.fromItemKey("minecraft:bone");
+    @NotNull
+    public static final Item BONE = ItemRegistry.fromItemKey("minecraft:bone");
 
-  @NotNull
-  public static final Item SUGAR = ItemRegistry.fromItemKey("minecraft:sugar");
+    @NotNull
+    public static final Item SUGAR = ItemRegistry.fromItemKey("minecraft:sugar");
 
-  @NotNull
-  public static final Item CAKE = ItemRegistry.fromItemKey("minecraft:cake");
+    @NotNull
+    public static final Item CAKE = ItemRegistry.fromItemKey("minecraft:cake");
 
-  @NotNull
-  public static final Item WHITE_BED = ItemRegistry.fromItemKey("minecraft:white_bed");
+    @NotNull
+    public static final Item WHITE_BED = ItemRegistry.fromItemKey("minecraft:white_bed");
 
-  @NotNull
-  public static final Item ORANGE_BED = ItemRegistry.fromItemKey("minecraft:orange_bed");
+    @NotNull
+    public static final Item ORANGE_BED = ItemRegistry.fromItemKey("minecraft:orange_bed");
 
-  @NotNull
-  public static final Item MAGENTA_BED = ItemRegistry.fromItemKey("minecraft:magenta_bed");
+    @NotNull
+    public static final Item MAGENTA_BED = ItemRegistry.fromItemKey("minecraft:magenta_bed");
 
-  @NotNull
-  public static final Item LIGHT_BLUE_BED = ItemRegistry.fromItemKey("minecraft:light_blue_bed");
+    @NotNull
+    public static final Item LIGHT_BLUE_BED = ItemRegistry.fromItemKey("minecraft:light_blue_bed");
 
-  @NotNull
-  public static final Item YELLOW_BED = ItemRegistry.fromItemKey("minecraft:yellow_bed");
+    @NotNull
+    public static final Item YELLOW_BED = ItemRegistry.fromItemKey("minecraft:yellow_bed");
 
-  @NotNull
-  public static final Item LIME_BED = ItemRegistry.fromItemKey("minecraft:lime_bed");
+    @NotNull
+    public static final Item LIME_BED = ItemRegistry.fromItemKey("minecraft:lime_bed");
 
-  @NotNull
-  public static final Item PINK_BED = ItemRegistry.fromItemKey("minecraft:pink_bed");
+    @NotNull
+    public static final Item PINK_BED = ItemRegistry.fromItemKey("minecraft:pink_bed");
 
-  @NotNull
-  public static final Item GRAY_BED = ItemRegistry.fromItemKey("minecraft:gray_bed");
+    @NotNull
+    public static final Item GRAY_BED = ItemRegistry.fromItemKey("minecraft:gray_bed");
 
-  @NotNull
-  public static final Item LIGHT_GRAY_BED = ItemRegistry.fromItemKey("minecraft:light_gray_bed");
+    @NotNull
+    public static final Item LIGHT_GRAY_BED = ItemRegistry.fromItemKey("minecraft:light_gray_bed");
 
-  @NotNull
-  public static final Item CYAN_BED = ItemRegistry.fromItemKey("minecraft:cyan_bed");
+    @NotNull
+    public static final Item CYAN_BED = ItemRegistry.fromItemKey("minecraft:cyan_bed");
 
-  @NotNull
-  public static final Item PURPLE_BED = ItemRegistry.fromItemKey("minecraft:purple_bed");
+    @NotNull
+    public static final Item PURPLE_BED = ItemRegistry.fromItemKey("minecraft:purple_bed");
 
-  @NotNull
-  public static final Item BLUE_BED = ItemRegistry.fromItemKey("minecraft:blue_bed");
+    @NotNull
+    public static final Item BLUE_BED = ItemRegistry.fromItemKey("minecraft:blue_bed");
 
-  @NotNull
-  public static final Item BROWN_BED = ItemRegistry.fromItemKey("minecraft:brown_bed");
+    @NotNull
+    public static final Item BROWN_BED = ItemRegistry.fromItemKey("minecraft:brown_bed");
 
-  @NotNull
-  public static final Item GREEN_BED = ItemRegistry.fromItemKey("minecraft:green_bed");
+    @NotNull
+    public static final Item GREEN_BED = ItemRegistry.fromItemKey("minecraft:green_bed");
 
-  @NotNull
-  public static final Item RED_BED = ItemRegistry.fromItemKey("minecraft:red_bed");
+    @NotNull
+    public static final Item RED_BED = ItemRegistry.fromItemKey("minecraft:red_bed");
 
-  @NotNull
-  public static final Item BLACK_BED = ItemRegistry.fromItemKey("minecraft:black_bed");
+    @NotNull
+    public static final Item BLACK_BED = ItemRegistry.fromItemKey("minecraft:black_bed");
 
-  @NotNull
-  public static final Item COOKIE = ItemRegistry.fromItemKey("minecraft:cookie");
+    @NotNull
+    public static final Item COOKIE = ItemRegistry.fromItemKey("minecraft:cookie");
 
-  @NotNull
-  public static final Item FILLED_MAP = ItemRegistry.fromItemKey("minecraft:filled_map");
+    @NotNull
+    public static final Item FILLED_MAP = ItemRegistry.fromItemKey("minecraft:filled_map");
 
-  @NotNull
-  public static final Item SHEARS = ItemRegistry.fromItemKey("minecraft:shears");
+    @NotNull
+    public static final Item SHEARS = ItemRegistry.fromItemKey("minecraft:shears");
 
-  @NotNull
-  public static final Item MELON_SLICE = ItemRegistry.fromItemKey("minecraft:melon_slice");
+    @NotNull
+    public static final Item MELON_SLICE = ItemRegistry.fromItemKey("minecraft:melon_slice");
 
-  @NotNull
-  public static final Item DRIED_KELP = ItemRegistry.fromItemKey("minecraft:dried_kelp");
+    @NotNull
+    public static final Item DRIED_KELP = ItemRegistry.fromItemKey("minecraft:dried_kelp");
 
-  @NotNull
-  public static final Item PUMPKIN_SEEDS = ItemRegistry.fromItemKey("minecraft:pumpkin_seeds");
+    @NotNull
+    public static final Item PUMPKIN_SEEDS = ItemRegistry.fromItemKey("minecraft:pumpkin_seeds");
 
-  @NotNull
-  public static final Item MELON_SEEDS = ItemRegistry.fromItemKey("minecraft:melon_seeds");
+    @NotNull
+    public static final Item MELON_SEEDS = ItemRegistry.fromItemKey("minecraft:melon_seeds");
 
-  @NotNull
-  public static final Item BEEF = ItemRegistry.fromItemKey("minecraft:beef");
+    @NotNull
+    public static final Item BEEF = ItemRegistry.fromItemKey("minecraft:beef");
 
-  @NotNull
-  public static final Item COOKED_BEEF = ItemRegistry.fromItemKey("minecraft:cooked_beef");
+    @NotNull
+    public static final Item COOKED_BEEF = ItemRegistry.fromItemKey("minecraft:cooked_beef");
 
-  @NotNull
-  public static final Item CHICKEN = ItemRegistry.fromItemKey("minecraft:chicken");
+    @NotNull
+    public static final Item CHICKEN = ItemRegistry.fromItemKey("minecraft:chicken");
 
-  @NotNull
-  public static final Item COOKED_CHICKEN = ItemRegistry.fromItemKey("minecraft:cooked_chicken");
+    @NotNull
+    public static final Item COOKED_CHICKEN = ItemRegistry.fromItemKey("minecraft:cooked_chicken");
 
-  @NotNull
-  public static final Item ROTTEN_FLESH = ItemRegistry.fromItemKey("minecraft:rotten_flesh");
+    @NotNull
+    public static final Item ROTTEN_FLESH = ItemRegistry.fromItemKey("minecraft:rotten_flesh");
 
-  @NotNull
-  public static final Item ENDER_PEARL = ItemRegistry.fromItemKey("minecraft:ender_pearl");
+    @NotNull
+    public static final Item ENDER_PEARL = ItemRegistry.fromItemKey("minecraft:ender_pearl");
 
-  @NotNull
-  public static final Item BLAZE_ROD = ItemRegistry.fromItemKey("minecraft:blaze_rod");
+    @NotNull
+    public static final Item BLAZE_ROD = ItemRegistry.fromItemKey("minecraft:blaze_rod");
 
-  @NotNull
-  public static final Item GHAST_TEAR = ItemRegistry.fromItemKey("minecraft:ghast_tear");
+    @NotNull
+    public static final Item GHAST_TEAR = ItemRegistry.fromItemKey("minecraft:ghast_tear");
 
-  @NotNull
-  public static final Item GOLD_NUGGET = ItemRegistry.fromItemKey("minecraft:gold_nugget");
+    @NotNull
+    public static final Item GOLD_NUGGET = ItemRegistry.fromItemKey("minecraft:gold_nugget");
 
-  @NotNull
-  public static final Item NETHER_WART = ItemRegistry.fromItemKey("minecraft:nether_wart");
+    @NotNull
+    public static final Item NETHER_WART = ItemRegistry.fromItemKey("minecraft:nether_wart");
 
-  @NotNull
-  public static final Item POTION = ItemRegistry.fromItemKey("minecraft:potion");
+    @NotNull
+    public static final Item POTION = ItemRegistry.fromItemKey("minecraft:potion");
 
-  @NotNull
-  public static final Item GLASS_BOTTLE = ItemRegistry.fromItemKey("minecraft:glass_bottle");
+    @NotNull
+    public static final Item GLASS_BOTTLE = ItemRegistry.fromItemKey("minecraft:glass_bottle");
 
-  @NotNull
-  public static final Item SPIDER_EYE = ItemRegistry.fromItemKey("minecraft:spider_eye");
+    @NotNull
+    public static final Item SPIDER_EYE = ItemRegistry.fromItemKey("minecraft:spider_eye");
 
-  @NotNull
-  public static final Item FERMENTED_SPIDER_EYE = ItemRegistry.fromItemKey("minecraft:fermented_spider_eye");
+    @NotNull
+    public static final Item FERMENTED_SPIDER_EYE = ItemRegistry.fromItemKey("minecraft:fermented_spider_eye");
 
-  @NotNull
-  public static final Item BLAZE_POWDER = ItemRegistry.fromItemKey("minecraft:blaze_powder");
+    @NotNull
+    public static final Item BLAZE_POWDER = ItemRegistry.fromItemKey("minecraft:blaze_powder");
 
-  @NotNull
-  public static final Item MAGMA_CREAM = ItemRegistry.fromItemKey("minecraft:magma_cream");
+    @NotNull
+    public static final Item MAGMA_CREAM = ItemRegistry.fromItemKey("minecraft:magma_cream");
 
-  @NotNull
-  public static final Item BREWING_STAND = ItemRegistry.fromItemKey("minecraft:brewing_stand");
+    @NotNull
+    public static final Item BREWING_STAND = ItemRegistry.fromItemKey("minecraft:brewing_stand");
 
-  @NotNull
-  public static final Item CAULDRON = ItemRegistry.fromItemKey("minecraft:cauldron");
+    @NotNull
+    public static final Item CAULDRON = ItemRegistry.fromItemKey("minecraft:cauldron");
 
-  @NotNull
-  public static final Item ENDER_EYE = ItemRegistry.fromItemKey("minecraft:ender_eye");
+    @NotNull
+    public static final Item ENDER_EYE = ItemRegistry.fromItemKey("minecraft:ender_eye");
 
-  @NotNull
-  public static final Item GLISTERING_MELON_SLICE = ItemRegistry.fromItemKey("minecraft:glistering_melon_slice");
+    @NotNull
+    public static final Item GLISTERING_MELON_SLICE = ItemRegistry.fromItemKey("minecraft:glistering_melon_slice");
 
-  @NotNull
-  public static final Item AXOLOTL_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:axolotl_spawn_egg");
+    @NotNull
+    public static final Item AXOLOTL_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:axolotl_spawn_egg");
 
-  @NotNull
-  public static final Item BAT_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:bat_spawn_egg");
+    @NotNull
+    public static final Item BAT_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:bat_spawn_egg");
 
-  @NotNull
-  public static final Item BEE_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:bee_spawn_egg");
+    @NotNull
+    public static final Item BEE_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:bee_spawn_egg");
 
-  @NotNull
-  public static final Item BLAZE_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:blaze_spawn_egg");
+    @NotNull
+    public static final Item BLAZE_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:blaze_spawn_egg");
 
-  @NotNull
-  public static final Item CAT_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:cat_spawn_egg");
+    @NotNull
+    public static final Item CAT_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:cat_spawn_egg");
 
-  @NotNull
-  public static final Item CAVE_SPIDER_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:cave_spider_spawn_egg");
+    @NotNull
+    public static final Item CAVE_SPIDER_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:cave_spider_spawn_egg");
 
-  @NotNull
-  public static final Item CHICKEN_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:chicken_spawn_egg");
+    @NotNull
+    public static final Item CHICKEN_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:chicken_spawn_egg");
 
-  @NotNull
-  public static final Item COD_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:cod_spawn_egg");
+    @NotNull
+    public static final Item COD_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:cod_spawn_egg");
 
-  @NotNull
-  public static final Item COW_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:cow_spawn_egg");
+    @NotNull
+    public static final Item COW_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:cow_spawn_egg");
 
-  @NotNull
-  public static final Item CREEPER_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:creeper_spawn_egg");
+    @NotNull
+    public static final Item CREEPER_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:creeper_spawn_egg");
 
-  @NotNull
-  public static final Item DOLPHIN_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:dolphin_spawn_egg");
+    @NotNull
+    public static final Item DOLPHIN_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:dolphin_spawn_egg");
 
-  @NotNull
-  public static final Item DONKEY_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:donkey_spawn_egg");
+    @NotNull
+    public static final Item DONKEY_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:donkey_spawn_egg");
 
-  @NotNull
-  public static final Item DROWNED_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:drowned_spawn_egg");
+    @NotNull
+    public static final Item DROWNED_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:drowned_spawn_egg");
 
-  @NotNull
-  public static final Item ELDER_GUARDIAN_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:elder_guardian_spawn_egg");
+    @NotNull
+    public static final Item ELDER_GUARDIAN_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:elder_guardian_spawn_egg");
 
-  @NotNull
-  public static final Item ENDERMAN_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:enderman_spawn_egg");
+    @NotNull
+    public static final Item ENDERMAN_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:enderman_spawn_egg");
 
-  @NotNull
-  public static final Item ENDERMITE_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:endermite_spawn_egg");
+    @NotNull
+    public static final Item ENDERMITE_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:endermite_spawn_egg");
 
-  @NotNull
-  public static final Item EVOKER_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:evoker_spawn_egg");
+    @NotNull
+    public static final Item EVOKER_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:evoker_spawn_egg");
 
-  @NotNull
-  public static final Item FOX_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:fox_spawn_egg");
+    @NotNull
+    public static final Item FOX_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:fox_spawn_egg");
 
-  @NotNull
-  public static final Item GHAST_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:ghast_spawn_egg");
+    @NotNull
+    public static final Item GHAST_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:ghast_spawn_egg");
 
-  @NotNull
-  public static final Item GLOW_SQUID_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:glow_squid_spawn_egg");
+    @NotNull
+    public static final Item GLOW_SQUID_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:glow_squid_spawn_egg");
 
-  @NotNull
-  public static final Item GOAT_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:goat_spawn_egg");
+    @NotNull
+    public static final Item GOAT_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:goat_spawn_egg");
 
-  @NotNull
-  public static final Item GUARDIAN_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:guardian_spawn_egg");
+    @NotNull
+    public static final Item GUARDIAN_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:guardian_spawn_egg");
 
-  @NotNull
-  public static final Item HOGLIN_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:hoglin_spawn_egg");
+    @NotNull
+    public static final Item HOGLIN_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:hoglin_spawn_egg");
 
-  @NotNull
-  public static final Item HORSE_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:horse_spawn_egg");
+    @NotNull
+    public static final Item HORSE_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:horse_spawn_egg");
 
-  @NotNull
-  public static final Item HUSK_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:husk_spawn_egg");
+    @NotNull
+    public static final Item HUSK_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:husk_spawn_egg");
 
-  @NotNull
-  public static final Item LLAMA_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:llama_spawn_egg");
+    @NotNull
+    public static final Item LLAMA_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:llama_spawn_egg");
 
-  @NotNull
-  public static final Item MAGMA_CUBE_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:magma_cube_spawn_egg");
+    @NotNull
+    public static final Item MAGMA_CUBE_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:magma_cube_spawn_egg");
 
-  @NotNull
-  public static final Item MOOSHROOM_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:mooshroom_spawn_egg");
+    @NotNull
+    public static final Item MOOSHROOM_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:mooshroom_spawn_egg");
 
-  @NotNull
-  public static final Item MULE_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:mule_spawn_egg");
+    @NotNull
+    public static final Item MULE_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:mule_spawn_egg");
 
-  @NotNull
-  public static final Item OCELOT_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:ocelot_spawn_egg");
+    @NotNull
+    public static final Item OCELOT_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:ocelot_spawn_egg");
 
-  @NotNull
-  public static final Item PANDA_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:panda_spawn_egg");
+    @NotNull
+    public static final Item PANDA_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:panda_spawn_egg");
 
-  @NotNull
-  public static final Item PARROT_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:parrot_spawn_egg");
+    @NotNull
+    public static final Item PARROT_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:parrot_spawn_egg");
 
-  @NotNull
-  public static final Item PHANTOM_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:phantom_spawn_egg");
+    @NotNull
+    public static final Item PHANTOM_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:phantom_spawn_egg");
 
-  @NotNull
-  public static final Item PIG_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:pig_spawn_egg");
+    @NotNull
+    public static final Item PIG_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:pig_spawn_egg");
 
-  @NotNull
-  public static final Item PIGLIN_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:piglin_spawn_egg");
+    @NotNull
+    public static final Item PIGLIN_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:piglin_spawn_egg");
 
-  @NotNull
-  public static final Item PIGLIN_BRUTE_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:piglin_brute_spawn_egg");
+    @NotNull
+    public static final Item PIGLIN_BRUTE_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:piglin_brute_spawn_egg");
 
-  @NotNull
-  public static final Item PILLAGER_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:pillager_spawn_egg");
+    @NotNull
+    public static final Item PILLAGER_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:pillager_spawn_egg");
 
-  @NotNull
-  public static final Item POLAR_BEAR_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:polar_bear_spawn_egg");
+    @NotNull
+    public static final Item POLAR_BEAR_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:polar_bear_spawn_egg");
 
-  @NotNull
-  public static final Item PUFFERFISH_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:pufferfish_spawn_egg");
+    @NotNull
+    public static final Item PUFFERFISH_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:pufferfish_spawn_egg");
 
-  @NotNull
-  public static final Item RABBIT_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:rabbit_spawn_egg");
+    @NotNull
+    public static final Item RABBIT_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:rabbit_spawn_egg");
 
-  @NotNull
-  public static final Item RAVAGER_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:ravager_spawn_egg");
+    @NotNull
+    public static final Item RAVAGER_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:ravager_spawn_egg");
 
-  @NotNull
-  public static final Item SALMON_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:salmon_spawn_egg");
+    @NotNull
+    public static final Item SALMON_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:salmon_spawn_egg");
 
-  @NotNull
-  public static final Item SHEEP_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:sheep_spawn_egg");
+    @NotNull
+    public static final Item SHEEP_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:sheep_spawn_egg");
 
-  @NotNull
-  public static final Item SHULKER_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:shulker_spawn_egg");
+    @NotNull
+    public static final Item SHULKER_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:shulker_spawn_egg");
 
-  @NotNull
-  public static final Item SILVERFISH_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:silverfish_spawn_egg");
+    @NotNull
+    public static final Item SILVERFISH_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:silverfish_spawn_egg");
 
-  @NotNull
-  public static final Item SKELETON_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:skeleton_spawn_egg");
+    @NotNull
+    public static final Item SKELETON_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:skeleton_spawn_egg");
 
-  @NotNull
-  public static final Item SKELETON_HORSE_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:skeleton_horse_spawn_egg");
+    @NotNull
+    public static final Item SKELETON_HORSE_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:skeleton_horse_spawn_egg");
 
-  @NotNull
-  public static final Item SLIME_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:slime_spawn_egg");
+    @NotNull
+    public static final Item SLIME_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:slime_spawn_egg");
 
-  @NotNull
-  public static final Item SPIDER_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:spider_spawn_egg");
+    @NotNull
+    public static final Item SPIDER_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:spider_spawn_egg");
 
-  @NotNull
-  public static final Item SQUID_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:squid_spawn_egg");
+    @NotNull
+    public static final Item SQUID_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:squid_spawn_egg");
 
-  @NotNull
-  public static final Item STRAY_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:stray_spawn_egg");
+    @NotNull
+    public static final Item STRAY_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:stray_spawn_egg");
 
-  @NotNull
-  public static final Item STRIDER_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:strider_spawn_egg");
+    @NotNull
+    public static final Item STRIDER_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:strider_spawn_egg");
 
-  @NotNull
-  public static final Item TRADER_LLAMA_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:trader_llama_spawn_egg");
+    @NotNull
+    public static final Item TRADER_LLAMA_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:trader_llama_spawn_egg");
 
-  @NotNull
-  public static final Item TROPICAL_FISH_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:tropical_fish_spawn_egg");
+    @NotNull
+    public static final Item TROPICAL_FISH_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:tropical_fish_spawn_egg");
 
-  @NotNull
-  public static final Item TURTLE_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:turtle_spawn_egg");
+    @NotNull
+    public static final Item TURTLE_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:turtle_spawn_egg");
 
-  @NotNull
-  public static final Item VEX_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:vex_spawn_egg");
+    @NotNull
+    public static final Item VEX_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:vex_spawn_egg");
 
-  @NotNull
-  public static final Item VILLAGER_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:villager_spawn_egg");
+    @NotNull
+    public static final Item VILLAGER_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:villager_spawn_egg");
 
-  @NotNull
-  public static final Item VINDICATOR_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:vindicator_spawn_egg");
+    @NotNull
+    public static final Item VINDICATOR_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:vindicator_spawn_egg");
 
-  @NotNull
-  public static final Item WANDERING_TRADER_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:wandering_trader_spawn_egg");
+    @NotNull
+    public static final Item WANDERING_TRADER_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:wandering_trader_spawn_egg");
 
-  @NotNull
-  public static final Item WITCH_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:witch_spawn_egg");
+    @NotNull
+    public static final Item WITCH_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:witch_spawn_egg");
 
-  @NotNull
-  public static final Item WITHER_SKELETON_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:wither_skeleton_spawn_egg");
+    @NotNull
+    public static final Item WITHER_SKELETON_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:wither_skeleton_spawn_egg");
 
-  @NotNull
-  public static final Item WOLF_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:wolf_spawn_egg");
+    @NotNull
+    public static final Item WOLF_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:wolf_spawn_egg");
 
-  @NotNull
-  public static final Item ZOGLIN_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:zoglin_spawn_egg");
+    @NotNull
+    public static final Item ZOGLIN_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:zoglin_spawn_egg");
 
-  @NotNull
-  public static final Item ZOMBIE_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:zombie_spawn_egg");
+    @NotNull
+    public static final Item ZOMBIE_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:zombie_spawn_egg");
 
-  @NotNull
-  public static final Item ZOMBIE_HORSE_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:zombie_horse_spawn_egg");
+    @NotNull
+    public static final Item ZOMBIE_HORSE_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:zombie_horse_spawn_egg");
 
-  @NotNull
-  public static final Item ZOMBIE_VILLAGER_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:zombie_villager_spawn_egg");
+    @NotNull
+    public static final Item ZOMBIE_VILLAGER_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:zombie_villager_spawn_egg");
 
-  @NotNull
-  public static final Item ZOMBIFIED_PIGLIN_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:zombified_piglin_spawn_egg");
+    @NotNull
+    public static final Item ZOMBIFIED_PIGLIN_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:zombified_piglin_spawn_egg");
 
-  @NotNull
-  public static final Item EXPERIENCE_BOTTLE = ItemRegistry.fromItemKey("minecraft:experience_bottle");
+    @NotNull
+    public static final Item EXPERIENCE_BOTTLE = ItemRegistry.fromItemKey("minecraft:experience_bottle");
 
-  @NotNull
-  public static final Item FIRE_CHARGE = ItemRegistry.fromItemKey("minecraft:fire_charge");
+    @NotNull
+    public static final Item FIRE_CHARGE = ItemRegistry.fromItemKey("minecraft:fire_charge");
 
-  @NotNull
-  public static final Item WRITABLE_BOOK = ItemRegistry.fromItemKey("minecraft:writable_book");
+    @NotNull
+    public static final Item WRITABLE_BOOK = ItemRegistry.fromItemKey("minecraft:writable_book");
 
-  @NotNull
-  public static final Item WRITTEN_BOOK = ItemRegistry.fromItemKey("minecraft:written_book");
+    @NotNull
+    public static final Item WRITTEN_BOOK = ItemRegistry.fromItemKey("minecraft:written_book");
 
-  @NotNull
-  public static final Item ITEM_FRAME = ItemRegistry.fromItemKey("minecraft:item_frame");
+    @NotNull
+    public static final Item ITEM_FRAME = ItemRegistry.fromItemKey("minecraft:item_frame");
 
-  @NotNull
-  public static final Item GLOW_ITEM_FRAME = ItemRegistry.fromItemKey("minecraft:glow_item_frame");
+    @NotNull
+    public static final Item GLOW_ITEM_FRAME = ItemRegistry.fromItemKey("minecraft:glow_item_frame");
 
-  @NotNull
-  public static final Item FLOWER_POT = ItemRegistry.fromItemKey("minecraft:flower_pot");
+    @NotNull
+    public static final Item FLOWER_POT = ItemRegistry.fromItemKey("minecraft:flower_pot");
 
-  @NotNull
-  public static final Item CARROT = ItemRegistry.fromItemKey("minecraft:carrot");
+    @NotNull
+    public static final Item CARROT = ItemRegistry.fromItemKey("minecraft:carrot");
 
-  @NotNull
-  public static final Item POTATO = ItemRegistry.fromItemKey("minecraft:potato");
+    @NotNull
+    public static final Item POTATO = ItemRegistry.fromItemKey("minecraft:potato");
 
-  @NotNull
-  public static final Item BAKED_POTATO = ItemRegistry.fromItemKey("minecraft:baked_potato");
+    @NotNull
+    public static final Item BAKED_POTATO = ItemRegistry.fromItemKey("minecraft:baked_potato");
 
-  @NotNull
-  public static final Item POISONOUS_POTATO = ItemRegistry.fromItemKey("minecraft:poisonous_potato");
+    @NotNull
+    public static final Item POISONOUS_POTATO = ItemRegistry.fromItemKey("minecraft:poisonous_potato");
 
-  @NotNull
-  public static final Item MAP = ItemRegistry.fromItemKey("minecraft:map");
+    @NotNull
+    public static final Item MAP = ItemRegistry.fromItemKey("minecraft:map");
 
-  @NotNull
-  public static final Item GOLDEN_CARROT = ItemRegistry.fromItemKey("minecraft:golden_carrot");
+    @NotNull
+    public static final Item GOLDEN_CARROT = ItemRegistry.fromItemKey("minecraft:golden_carrot");
 
-  @NotNull
-  public static final Item SKELETON_SKULL = ItemRegistry.fromItemKey("minecraft:skeleton_skull");
+    @NotNull
+    public static final Item SKELETON_SKULL = ItemRegistry.fromItemKey("minecraft:skeleton_skull");
 
-  @NotNull
-  public static final Item WITHER_SKELETON_SKULL = ItemRegistry.fromItemKey("minecraft:wither_skeleton_skull");
+    @NotNull
+    public static final Item WITHER_SKELETON_SKULL = ItemRegistry.fromItemKey("minecraft:wither_skeleton_skull");
 
-  @NotNull
-  public static final Item PLAYER_HEAD = ItemRegistry.fromItemKey("minecraft:player_head");
+    @NotNull
+    public static final Item PLAYER_HEAD = ItemRegistry.fromItemKey("minecraft:player_head");
 
-  @NotNull
-  public static final Item ZOMBIE_HEAD = ItemRegistry.fromItemKey("minecraft:zombie_head");
+    @NotNull
+    public static final Item ZOMBIE_HEAD = ItemRegistry.fromItemKey("minecraft:zombie_head");
 
-  @NotNull
-  public static final Item CREEPER_HEAD = ItemRegistry.fromItemKey("minecraft:creeper_head");
+    @NotNull
+    public static final Item CREEPER_HEAD = ItemRegistry.fromItemKey("minecraft:creeper_head");
 
-  @NotNull
-  public static final Item DRAGON_HEAD = ItemRegistry.fromItemKey("minecraft:dragon_head");
+    @NotNull
+    public static final Item DRAGON_HEAD = ItemRegistry.fromItemKey("minecraft:dragon_head");
 
-  @NotNull
-  public static final Item NETHER_STAR = ItemRegistry.fromItemKey("minecraft:nether_star");
+    @NotNull
+    public static final Item NETHER_STAR = ItemRegistry.fromItemKey("minecraft:nether_star");
 
-  @NotNull
-  public static final Item PUMPKIN_PIE = ItemRegistry.fromItemKey("minecraft:pumpkin_pie");
+    @NotNull
+    public static final Item PUMPKIN_PIE = ItemRegistry.fromItemKey("minecraft:pumpkin_pie");
 
-  @NotNull
-  public static final Item FIREWORK_ROCKET = ItemRegistry.fromItemKey("minecraft:firework_rocket");
+    @NotNull
+    public static final Item FIREWORK_ROCKET = ItemRegistry.fromItemKey("minecraft:firework_rocket");
 
-  @NotNull
-  public static final Item FIREWORK_STAR = ItemRegistry.fromItemKey("minecraft:firework_star");
+    @NotNull
+    public static final Item FIREWORK_STAR = ItemRegistry.fromItemKey("minecraft:firework_star");
 
-  @NotNull
-  public static final Item ENCHANTED_BOOK = ItemRegistry.fromItemKey("minecraft:enchanted_book");
+    @NotNull
+    public static final Item ENCHANTED_BOOK = ItemRegistry.fromItemKey("minecraft:enchanted_book");
 
-  @NotNull
-  public static final Item NETHER_BRICK = ItemRegistry.fromItemKey("minecraft:nether_brick");
+    @NotNull
+    public static final Item NETHER_BRICK = ItemRegistry.fromItemKey("minecraft:nether_brick");
 
-  @NotNull
-  public static final Item PRISMARINE_SHARD = ItemRegistry.fromItemKey("minecraft:prismarine_shard");
+    @NotNull
+    public static final Item PRISMARINE_SHARD = ItemRegistry.fromItemKey("minecraft:prismarine_shard");
 
-  @NotNull
-  public static final Item PRISMARINE_CRYSTALS = ItemRegistry.fromItemKey("minecraft:prismarine_crystals");
+    @NotNull
+    public static final Item PRISMARINE_CRYSTALS = ItemRegistry.fromItemKey("minecraft:prismarine_crystals");
 
-  @NotNull
-  public static final Item RABBIT = ItemRegistry.fromItemKey("minecraft:rabbit");
+    @NotNull
+    public static final Item RABBIT = ItemRegistry.fromItemKey("minecraft:rabbit");
 
-  @NotNull
-  public static final Item COOKED_RABBIT = ItemRegistry.fromItemKey("minecraft:cooked_rabbit");
+    @NotNull
+    public static final Item COOKED_RABBIT = ItemRegistry.fromItemKey("minecraft:cooked_rabbit");
 
-  @NotNull
-  public static final Item RABBIT_STEW = ItemRegistry.fromItemKey("minecraft:rabbit_stew");
+    @NotNull
+    public static final Item RABBIT_STEW = ItemRegistry.fromItemKey("minecraft:rabbit_stew");
 
-  @NotNull
-  public static final Item RABBIT_FOOT = ItemRegistry.fromItemKey("minecraft:rabbit_foot");
+    @NotNull
+    public static final Item RABBIT_FOOT = ItemRegistry.fromItemKey("minecraft:rabbit_foot");
 
-  @NotNull
-  public static final Item RABBIT_HIDE = ItemRegistry.fromItemKey("minecraft:rabbit_hide");
+    @NotNull
+    public static final Item RABBIT_HIDE = ItemRegistry.fromItemKey("minecraft:rabbit_hide");
 
-  @NotNull
-  public static final Item ARMOR_STAND = ItemRegistry.fromItemKey("minecraft:armor_stand");
+    @NotNull
+    public static final Item ARMOR_STAND = ItemRegistry.fromItemKey("minecraft:armor_stand");
 
-  @NotNull
-  public static final Item IRON_HORSE_ARMOR = ItemRegistry.fromItemKey("minecraft:iron_horse_armor");
+    @NotNull
+    public static final Item IRON_HORSE_ARMOR = ItemRegistry.fromItemKey("minecraft:iron_horse_armor");
 
-  @NotNull
-  public static final Item GOLDEN_HORSE_ARMOR = ItemRegistry.fromItemKey("minecraft:golden_horse_armor");
+    @NotNull
+    public static final Item GOLDEN_HORSE_ARMOR = ItemRegistry.fromItemKey("minecraft:golden_horse_armor");
 
-  @NotNull
-  public static final Item DIAMOND_HORSE_ARMOR = ItemRegistry.fromItemKey("minecraft:diamond_horse_armor");
+    @NotNull
+    public static final Item DIAMOND_HORSE_ARMOR = ItemRegistry.fromItemKey("minecraft:diamond_horse_armor");
 
-  @NotNull
-  public static final Item LEATHER_HORSE_ARMOR = ItemRegistry.fromItemKey("minecraft:leather_horse_armor");
+    @NotNull
+    public static final Item LEATHER_HORSE_ARMOR = ItemRegistry.fromItemKey("minecraft:leather_horse_armor");
 
-  @NotNull
-  public static final Item LEAD = ItemRegistry.fromItemKey("minecraft:lead");
+    @NotNull
+    public static final Item LEAD = ItemRegistry.fromItemKey("minecraft:lead");
 
-  @NotNull
-  public static final Item NAME_TAG = ItemRegistry.fromItemKey("minecraft:name_tag");
+    @NotNull
+    public static final Item NAME_TAG = ItemRegistry.fromItemKey("minecraft:name_tag");
 
-  @NotNull
-  public static final Item COMMAND_BLOCK_MINECART = ItemRegistry.fromItemKey("minecraft:command_block_minecart");
+    @NotNull
+    public static final Item COMMAND_BLOCK_MINECART = ItemRegistry.fromItemKey("minecraft:command_block_minecart");
 
-  @NotNull
-  public static final Item MUTTON = ItemRegistry.fromItemKey("minecraft:mutton");
+    @NotNull
+    public static final Item MUTTON = ItemRegistry.fromItemKey("minecraft:mutton");
 
-  @NotNull
-  public static final Item COOKED_MUTTON = ItemRegistry.fromItemKey("minecraft:cooked_mutton");
+    @NotNull
+    public static final Item COOKED_MUTTON = ItemRegistry.fromItemKey("minecraft:cooked_mutton");
 
-  @NotNull
-  public static final Item WHITE_BANNER = ItemRegistry.fromItemKey("minecraft:white_banner");
+    @NotNull
+    public static final Item WHITE_BANNER = ItemRegistry.fromItemKey("minecraft:white_banner");
 
-  @NotNull
-  public static final Item ORANGE_BANNER = ItemRegistry.fromItemKey("minecraft:orange_banner");
+    @NotNull
+    public static final Item ORANGE_BANNER = ItemRegistry.fromItemKey("minecraft:orange_banner");
 
-  @NotNull
-  public static final Item MAGENTA_BANNER = ItemRegistry.fromItemKey("minecraft:magenta_banner");
+    @NotNull
+    public static final Item MAGENTA_BANNER = ItemRegistry.fromItemKey("minecraft:magenta_banner");
 
-  @NotNull
-  public static final Item LIGHT_BLUE_BANNER = ItemRegistry.fromItemKey("minecraft:light_blue_banner");
+    @NotNull
+    public static final Item LIGHT_BLUE_BANNER = ItemRegistry.fromItemKey("minecraft:light_blue_banner");
 
-  @NotNull
-  public static final Item YELLOW_BANNER = ItemRegistry.fromItemKey("minecraft:yellow_banner");
+    @NotNull
+    public static final Item YELLOW_BANNER = ItemRegistry.fromItemKey("minecraft:yellow_banner");
 
-  @NotNull
-  public static final Item LIME_BANNER = ItemRegistry.fromItemKey("minecraft:lime_banner");
+    @NotNull
+    public static final Item LIME_BANNER = ItemRegistry.fromItemKey("minecraft:lime_banner");
 
-  @NotNull
-  public static final Item PINK_BANNER = ItemRegistry.fromItemKey("minecraft:pink_banner");
+    @NotNull
+    public static final Item PINK_BANNER = ItemRegistry.fromItemKey("minecraft:pink_banner");
 
-  @NotNull
-  public static final Item GRAY_BANNER = ItemRegistry.fromItemKey("minecraft:gray_banner");
+    @NotNull
+    public static final Item GRAY_BANNER = ItemRegistry.fromItemKey("minecraft:gray_banner");
 
-  @NotNull
-  public static final Item LIGHT_GRAY_BANNER = ItemRegistry.fromItemKey("minecraft:light_gray_banner");
+    @NotNull
+    public static final Item LIGHT_GRAY_BANNER = ItemRegistry.fromItemKey("minecraft:light_gray_banner");
 
-  @NotNull
-  public static final Item CYAN_BANNER = ItemRegistry.fromItemKey("minecraft:cyan_banner");
+    @NotNull
+    public static final Item CYAN_BANNER = ItemRegistry.fromItemKey("minecraft:cyan_banner");
 
-  @NotNull
-  public static final Item PURPLE_BANNER = ItemRegistry.fromItemKey("minecraft:purple_banner");
+    @NotNull
+    public static final Item PURPLE_BANNER = ItemRegistry.fromItemKey("minecraft:purple_banner");
 
-  @NotNull
-  public static final Item BLUE_BANNER = ItemRegistry.fromItemKey("minecraft:blue_banner");
+    @NotNull
+    public static final Item BLUE_BANNER = ItemRegistry.fromItemKey("minecraft:blue_banner");
 
-  @NotNull
-  public static final Item BROWN_BANNER = ItemRegistry.fromItemKey("minecraft:brown_banner");
+    @NotNull
+    public static final Item BROWN_BANNER = ItemRegistry.fromItemKey("minecraft:brown_banner");
 
-  @NotNull
-  public static final Item GREEN_BANNER = ItemRegistry.fromItemKey("minecraft:green_banner");
+    @NotNull
+    public static final Item GREEN_BANNER = ItemRegistry.fromItemKey("minecraft:green_banner");
 
-  @NotNull
-  public static final Item RED_BANNER = ItemRegistry.fromItemKey("minecraft:red_banner");
+    @NotNull
+    public static final Item RED_BANNER = ItemRegistry.fromItemKey("minecraft:red_banner");
 
-  @NotNull
-  public static final Item BLACK_BANNER = ItemRegistry.fromItemKey("minecraft:black_banner");
+    @NotNull
+    public static final Item BLACK_BANNER = ItemRegistry.fromItemKey("minecraft:black_banner");
 
-  @NotNull
-  public static final Item END_CRYSTAL = ItemRegistry.fromItemKey("minecraft:end_crystal");
+    @NotNull
+    public static final Item END_CRYSTAL = ItemRegistry.fromItemKey("minecraft:end_crystal");
 
-  @NotNull
-  public static final Item CHORUS_FRUIT = ItemRegistry.fromItemKey("minecraft:chorus_fruit");
+    @NotNull
+    public static final Item CHORUS_FRUIT = ItemRegistry.fromItemKey("minecraft:chorus_fruit");
 
-  @NotNull
-  public static final Item POPPED_CHORUS_FRUIT = ItemRegistry.fromItemKey("minecraft:popped_chorus_fruit");
+    @NotNull
+    public static final Item POPPED_CHORUS_FRUIT = ItemRegistry.fromItemKey("minecraft:popped_chorus_fruit");
 
-  @NotNull
-  public static final Item BEETROOT = ItemRegistry.fromItemKey("minecraft:beetroot");
+    @NotNull
+    public static final Item BEETROOT = ItemRegistry.fromItemKey("minecraft:beetroot");
 
-  @NotNull
-  public static final Item BEETROOT_SEEDS = ItemRegistry.fromItemKey("minecraft:beetroot_seeds");
+    @NotNull
+    public static final Item BEETROOT_SEEDS = ItemRegistry.fromItemKey("minecraft:beetroot_seeds");
 
-  @NotNull
-  public static final Item BEETROOT_SOUP = ItemRegistry.fromItemKey("minecraft:beetroot_soup");
+    @NotNull
+    public static final Item BEETROOT_SOUP = ItemRegistry.fromItemKey("minecraft:beetroot_soup");
 
-  @NotNull
-  public static final Item DRAGON_BREATH = ItemRegistry.fromItemKey("minecraft:dragon_breath");
+    @NotNull
+    public static final Item DRAGON_BREATH = ItemRegistry.fromItemKey("minecraft:dragon_breath");
 
-  @NotNull
-  public static final Item SPLASH_POTION = ItemRegistry.fromItemKey("minecraft:splash_potion");
+    @NotNull
+    public static final Item SPLASH_POTION = ItemRegistry.fromItemKey("minecraft:splash_potion");
 
-  @NotNull
-  public static final Item SPECTRAL_ARROW = ItemRegistry.fromItemKey("minecraft:spectral_arrow");
+    @NotNull
+    public static final Item SPECTRAL_ARROW = ItemRegistry.fromItemKey("minecraft:spectral_arrow");
 
-  @NotNull
-  public static final Item TIPPED_ARROW = ItemRegistry.fromItemKey("minecraft:tipped_arrow");
+    @NotNull
+    public static final Item TIPPED_ARROW = ItemRegistry.fromItemKey("minecraft:tipped_arrow");
 
-  @NotNull
-  public static final Item LINGERING_POTION = ItemRegistry.fromItemKey("minecraft:lingering_potion");
+    @NotNull
+    public static final Item LINGERING_POTION = ItemRegistry.fromItemKey("minecraft:lingering_potion");
 
-  @NotNull
-  public static final Item SHIELD = ItemRegistry.fromItemKey("minecraft:shield");
+    @NotNull
+    public static final Item SHIELD = ItemRegistry.fromItemKey("minecraft:shield");
 
-  @NotNull
-  public static final Item TOTEM_OF_UNDYING = ItemRegistry.fromItemKey("minecraft:totem_of_undying");
+    @NotNull
+    public static final Item TOTEM_OF_UNDYING = ItemRegistry.fromItemKey("minecraft:totem_of_undying");
 
-  @NotNull
-  public static final Item SHULKER_SHELL = ItemRegistry.fromItemKey("minecraft:shulker_shell");
+    @NotNull
+    public static final Item SHULKER_SHELL = ItemRegistry.fromItemKey("minecraft:shulker_shell");
 
-  @NotNull
-  public static final Item IRON_NUGGET = ItemRegistry.fromItemKey("minecraft:iron_nugget");
+    @NotNull
+    public static final Item IRON_NUGGET = ItemRegistry.fromItemKey("minecraft:iron_nugget");
 
-  @NotNull
-  public static final Item KNOWLEDGE_BOOK = ItemRegistry.fromItemKey("minecraft:knowledge_book");
+    @NotNull
+    public static final Item KNOWLEDGE_BOOK = ItemRegistry.fromItemKey("minecraft:knowledge_book");
 
-  @NotNull
-  public static final Item DEBUG_STICK = ItemRegistry.fromItemKey("minecraft:debug_stick");
+    @NotNull
+    public static final Item DEBUG_STICK = ItemRegistry.fromItemKey("minecraft:debug_stick");
 
-  @NotNull
-  public static final Item MUSIC_DISC_13 = ItemRegistry.fromItemKey("minecraft:music_disc_13");
+    @NotNull
+    public static final Item MUSIC_DISC_13 = ItemRegistry.fromItemKey("minecraft:music_disc_13");
 
-  @NotNull
-  public static final Item MUSIC_DISC_CAT = ItemRegistry.fromItemKey("minecraft:music_disc_cat");
+    @NotNull
+    public static final Item MUSIC_DISC_CAT = ItemRegistry.fromItemKey("minecraft:music_disc_cat");
 
-  @NotNull
-  public static final Item MUSIC_DISC_BLOCKS = ItemRegistry.fromItemKey("minecraft:music_disc_blocks");
+    @NotNull
+    public static final Item MUSIC_DISC_BLOCKS = ItemRegistry.fromItemKey("minecraft:music_disc_blocks");
 
-  @NotNull
-  public static final Item MUSIC_DISC_CHIRP = ItemRegistry.fromItemKey("minecraft:music_disc_chirp");
+    @NotNull
+    public static final Item MUSIC_DISC_CHIRP = ItemRegistry.fromItemKey("minecraft:music_disc_chirp");
 
-  @NotNull
-  public static final Item MUSIC_DISC_FAR = ItemRegistry.fromItemKey("minecraft:music_disc_far");
+    @NotNull
+    public static final Item MUSIC_DISC_FAR = ItemRegistry.fromItemKey("minecraft:music_disc_far");
 
-  @NotNull
-  public static final Item MUSIC_DISC_MALL = ItemRegistry.fromItemKey("minecraft:music_disc_mall");
+    @NotNull
+    public static final Item MUSIC_DISC_MALL = ItemRegistry.fromItemKey("minecraft:music_disc_mall");
 
-  @NotNull
-  public static final Item MUSIC_DISC_MELLOHI = ItemRegistry.fromItemKey("minecraft:music_disc_mellohi");
+    @NotNull
+    public static final Item MUSIC_DISC_MELLOHI = ItemRegistry.fromItemKey("minecraft:music_disc_mellohi");
 
-  @NotNull
-  public static final Item MUSIC_DISC_STAL = ItemRegistry.fromItemKey("minecraft:music_disc_stal");
+    @NotNull
+    public static final Item MUSIC_DISC_STAL = ItemRegistry.fromItemKey("minecraft:music_disc_stal");
 
-  @NotNull
-  public static final Item MUSIC_DISC_STRAD = ItemRegistry.fromItemKey("minecraft:music_disc_strad");
+    @NotNull
+    public static final Item MUSIC_DISC_STRAD = ItemRegistry.fromItemKey("minecraft:music_disc_strad");
 
-  @NotNull
-  public static final Item MUSIC_DISC_WARD = ItemRegistry.fromItemKey("minecraft:music_disc_ward");
+    @NotNull
+    public static final Item MUSIC_DISC_WARD = ItemRegistry.fromItemKey("minecraft:music_disc_ward");
 
-  @NotNull
-  public static final Item MUSIC_DISC_11 = ItemRegistry.fromItemKey("minecraft:music_disc_11");
+    @NotNull
+    public static final Item MUSIC_DISC_11 = ItemRegistry.fromItemKey("minecraft:music_disc_11");
 
-  @NotNull
-  public static final Item MUSIC_DISC_WAIT = ItemRegistry.fromItemKey("minecraft:music_disc_wait");
+    @NotNull
+    public static final Item MUSIC_DISC_WAIT = ItemRegistry.fromItemKey("minecraft:music_disc_wait");
 
-  @NotNull
-  public static final Item MUSIC_DISC_OTHERSIDE = ItemRegistry.fromItemKey("minecraft:music_disc_otherside");
+    @NotNull
+    public static final Item MUSIC_DISC_OTHERSIDE = ItemRegistry.fromItemKey("minecraft:music_disc_otherside");
 
-  @NotNull
-  public static final Item MUSIC_DISC_PIGSTEP = ItemRegistry.fromItemKey("minecraft:music_disc_pigstep");
+    @NotNull
+    public static final Item MUSIC_DISC_PIGSTEP = ItemRegistry.fromItemKey("minecraft:music_disc_pigstep");
 
-  @NotNull
-  public static final Item TRIDENT = ItemRegistry.fromItemKey("minecraft:trident");
+    @NotNull
+    public static final Item TRIDENT = ItemRegistry.fromItemKey("minecraft:trident");
 
-  @NotNull
-  public static final Item PHANTOM_MEMBRANE = ItemRegistry.fromItemKey("minecraft:phantom_membrane");
+    @NotNull
+    public static final Item PHANTOM_MEMBRANE = ItemRegistry.fromItemKey("minecraft:phantom_membrane");
 
-  @NotNull
-  public static final Item NAUTILUS_SHELL = ItemRegistry.fromItemKey("minecraft:nautilus_shell");
+    @NotNull
+    public static final Item NAUTILUS_SHELL = ItemRegistry.fromItemKey("minecraft:nautilus_shell");
 
-  @NotNull
-  public static final Item HEART_OF_THE_SEA = ItemRegistry.fromItemKey("minecraft:heart_of_the_sea");
+    @NotNull
+    public static final Item HEART_OF_THE_SEA = ItemRegistry.fromItemKey("minecraft:heart_of_the_sea");
 
-  @NotNull
-  public static final Item CROSSBOW = ItemRegistry.fromItemKey("minecraft:crossbow");
+    @NotNull
+    public static final Item CROSSBOW = ItemRegistry.fromItemKey("minecraft:crossbow");
 
-  @NotNull
-  public static final Item SUSPICIOUS_STEW = ItemRegistry.fromItemKey("minecraft:suspicious_stew");
+    @NotNull
+    public static final Item SUSPICIOUS_STEW = ItemRegistry.fromItemKey("minecraft:suspicious_stew");
 
-  @NotNull
-  public static final Item LOOM = ItemRegistry.fromItemKey("minecraft:loom");
+    @NotNull
+    public static final Item LOOM = ItemRegistry.fromItemKey("minecraft:loom");
 
-  @NotNull
-  public static final Item FLOWER_BANNER_PATTERN = ItemRegistry.fromItemKey("minecraft:flower_banner_pattern");
+    @NotNull
+    public static final Item FLOWER_BANNER_PATTERN = ItemRegistry.fromItemKey("minecraft:flower_banner_pattern");
 
-  @NotNull
-  public static final Item CREEPER_BANNER_PATTERN = ItemRegistry.fromItemKey("minecraft:creeper_banner_pattern");
+    @NotNull
+    public static final Item CREEPER_BANNER_PATTERN = ItemRegistry.fromItemKey("minecraft:creeper_banner_pattern");
 
-  @NotNull
-  public static final Item SKULL_BANNER_PATTERN = ItemRegistry.fromItemKey("minecraft:skull_banner_pattern");
+    @NotNull
+    public static final Item SKULL_BANNER_PATTERN = ItemRegistry.fromItemKey("minecraft:skull_banner_pattern");
 
-  @NotNull
-  public static final Item MOJANG_BANNER_PATTERN = ItemRegistry.fromItemKey("minecraft:mojang_banner_pattern");
+    @NotNull
+    public static final Item MOJANG_BANNER_PATTERN = ItemRegistry.fromItemKey("minecraft:mojang_banner_pattern");
 
-  @NotNull
-  public static final Item GLOBE_BANNER_PATTERN = ItemRegistry.fromItemKey("minecraft:globe_banner_pattern");
+    @NotNull
+    public static final Item GLOBE_BANNER_PATTERN = ItemRegistry.fromItemKey("minecraft:globe_banner_pattern");
 
-  @NotNull
-  public static final Item PIGLIN_BANNER_PATTERN = ItemRegistry.fromItemKey("minecraft:piglin_banner_pattern");
+    @NotNull
+    public static final Item PIGLIN_BANNER_PATTERN = ItemRegistry.fromItemKey("minecraft:piglin_banner_pattern");
 
-  @NotNull
-  public static final Item COMPOSTER = ItemRegistry.fromItemKey("minecraft:composter");
+    @NotNull
+    public static final Item COMPOSTER = ItemRegistry.fromItemKey("minecraft:composter");
 
-  @NotNull
-  public static final Item BARREL = ItemRegistry.fromItemKey("minecraft:barrel");
+    @NotNull
+    public static final Item BARREL = ItemRegistry.fromItemKey("minecraft:barrel");
 
-  @NotNull
-  public static final Item SMOKER = ItemRegistry.fromItemKey("minecraft:smoker");
+    @NotNull
+    public static final Item SMOKER = ItemRegistry.fromItemKey("minecraft:smoker");
 
-  @NotNull
-  public static final Item BLAST_FURNACE = ItemRegistry.fromItemKey("minecraft:blast_furnace");
+    @NotNull
+    public static final Item BLAST_FURNACE = ItemRegistry.fromItemKey("minecraft:blast_furnace");
 
-  @NotNull
-  public static final Item CARTOGRAPHY_TABLE = ItemRegistry.fromItemKey("minecraft:cartography_table");
+    @NotNull
+    public static final Item CARTOGRAPHY_TABLE = ItemRegistry.fromItemKey("minecraft:cartography_table");
 
-  @NotNull
-  public static final Item FLETCHING_TABLE = ItemRegistry.fromItemKey("minecraft:fletching_table");
+    @NotNull
+    public static final Item FLETCHING_TABLE = ItemRegistry.fromItemKey("minecraft:fletching_table");
 
-  @NotNull
-  public static final Item GRINDSTONE = ItemRegistry.fromItemKey("minecraft:grindstone");
+    @NotNull
+    public static final Item GRINDSTONE = ItemRegistry.fromItemKey("minecraft:grindstone");
 
-  @NotNull
-  public static final Item SMITHING_TABLE = ItemRegistry.fromItemKey("minecraft:smithing_table");
+    @NotNull
+    public static final Item SMITHING_TABLE = ItemRegistry.fromItemKey("minecraft:smithing_table");
 
-  @NotNull
-  public static final Item STONECUTTER = ItemRegistry.fromItemKey("minecraft:stonecutter");
+    @NotNull
+    public static final Item STONECUTTER = ItemRegistry.fromItemKey("minecraft:stonecutter");
 
-  @NotNull
-  public static final Item BELL = ItemRegistry.fromItemKey("minecraft:bell");
+    @NotNull
+    public static final Item BELL = ItemRegistry.fromItemKey("minecraft:bell");
 
-  @NotNull
-  public static final Item LANTERN = ItemRegistry.fromItemKey("minecraft:lantern");
+    @NotNull
+    public static final Item LANTERN = ItemRegistry.fromItemKey("minecraft:lantern");
 
-  @NotNull
-  public static final Item SOUL_LANTERN = ItemRegistry.fromItemKey("minecraft:soul_lantern");
+    @NotNull
+    public static final Item SOUL_LANTERN = ItemRegistry.fromItemKey("minecraft:soul_lantern");
 
-  @NotNull
-  public static final Item SWEET_BERRIES = ItemRegistry.fromItemKey("minecraft:sweet_berries");
+    @NotNull
+    public static final Item SWEET_BERRIES = ItemRegistry.fromItemKey("minecraft:sweet_berries");
 
-  @NotNull
-  public static final Item GLOW_BERRIES = ItemRegistry.fromItemKey("minecraft:glow_berries");
+    @NotNull
+    public static final Item GLOW_BERRIES = ItemRegistry.fromItemKey("minecraft:glow_berries");
 
-  @NotNull
-  public static final Item CAMPFIRE = ItemRegistry.fromItemKey("minecraft:campfire");
+    @NotNull
+    public static final Item CAMPFIRE = ItemRegistry.fromItemKey("minecraft:campfire");
 
-  @NotNull
-  public static final Item SOUL_CAMPFIRE = ItemRegistry.fromItemKey("minecraft:soul_campfire");
+    @NotNull
+    public static final Item SOUL_CAMPFIRE = ItemRegistry.fromItemKey("minecraft:soul_campfire");
 
-  @NotNull
-  public static final Item SHROOMLIGHT = ItemRegistry.fromItemKey("minecraft:shroomlight");
+    @NotNull
+    public static final Item SHROOMLIGHT = ItemRegistry.fromItemKey("minecraft:shroomlight");
 
-  @NotNull
-  public static final Item HONEYCOMB = ItemRegistry.fromItemKey("minecraft:honeycomb");
+    @NotNull
+    public static final Item HONEYCOMB = ItemRegistry.fromItemKey("minecraft:honeycomb");
 
-  @NotNull
-  public static final Item BEE_NEST = ItemRegistry.fromItemKey("minecraft:bee_nest");
+    @NotNull
+    public static final Item BEE_NEST = ItemRegistry.fromItemKey("minecraft:bee_nest");
 
-  @NotNull
-  public static final Item BEEHIVE = ItemRegistry.fromItemKey("minecraft:beehive");
+    @NotNull
+    public static final Item BEEHIVE = ItemRegistry.fromItemKey("minecraft:beehive");
 
-  @NotNull
-  public static final Item HONEY_BOTTLE = ItemRegistry.fromItemKey("minecraft:honey_bottle");
+    @NotNull
+    public static final Item HONEY_BOTTLE = ItemRegistry.fromItemKey("minecraft:honey_bottle");
 
-  @NotNull
-  public static final Item HONEYCOMB_BLOCK = ItemRegistry.fromItemKey("minecraft:honeycomb_block");
+    @NotNull
+    public static final Item HONEYCOMB_BLOCK = ItemRegistry.fromItemKey("minecraft:honeycomb_block");
 
-  @NotNull
-  public static final Item LODESTONE = ItemRegistry.fromItemKey("minecraft:lodestone");
+    @NotNull
+    public static final Item LODESTONE = ItemRegistry.fromItemKey("minecraft:lodestone");
 
-  @NotNull
-  public static final Item CRYING_OBSIDIAN = ItemRegistry.fromItemKey("minecraft:crying_obsidian");
+    @NotNull
+    public static final Item CRYING_OBSIDIAN = ItemRegistry.fromItemKey("minecraft:crying_obsidian");
 
-  @NotNull
-  public static final Item BLACKSTONE = ItemRegistry.fromItemKey("minecraft:blackstone");
+    @NotNull
+    public static final Item BLACKSTONE = ItemRegistry.fromItemKey("minecraft:blackstone");
 
-  @NotNull
-  public static final Item BLACKSTONE_SLAB = ItemRegistry.fromItemKey("minecraft:blackstone_slab");
+    @NotNull
+    public static final Item BLACKSTONE_SLAB = ItemRegistry.fromItemKey("minecraft:blackstone_slab");
 
-  @NotNull
-  public static final Item BLACKSTONE_STAIRS = ItemRegistry.fromItemKey("minecraft:blackstone_stairs");
+    @NotNull
+    public static final Item BLACKSTONE_STAIRS = ItemRegistry.fromItemKey("minecraft:blackstone_stairs");
 
-  @NotNull
-  public static final Item GILDED_BLACKSTONE = ItemRegistry.fromItemKey("minecraft:gilded_blackstone");
+    @NotNull
+    public static final Item GILDED_BLACKSTONE = ItemRegistry.fromItemKey("minecraft:gilded_blackstone");
 
-  @NotNull
-  public static final Item POLISHED_BLACKSTONE = ItemRegistry.fromItemKey("minecraft:polished_blackstone");
+    @NotNull
+    public static final Item POLISHED_BLACKSTONE = ItemRegistry.fromItemKey("minecraft:polished_blackstone");
 
-  @NotNull
-  public static final Item POLISHED_BLACKSTONE_SLAB = ItemRegistry.fromItemKey("minecraft:polished_blackstone_slab");
+    @NotNull
+    public static final Item POLISHED_BLACKSTONE_SLAB = ItemRegistry.fromItemKey("minecraft:polished_blackstone_slab");
 
-  @NotNull
-  public static final Item POLISHED_BLACKSTONE_STAIRS = ItemRegistry.fromItemKey("minecraft:polished_blackstone_stairs");
+    @NotNull
+    public static final Item POLISHED_BLACKSTONE_STAIRS = ItemRegistry.fromItemKey("minecraft:polished_blackstone_stairs");
 
-  @NotNull
-  public static final Item CHISELED_POLISHED_BLACKSTONE = ItemRegistry.fromItemKey("minecraft:chiseled_polished_blackstone");
+    @NotNull
+    public static final Item CHISELED_POLISHED_BLACKSTONE = ItemRegistry.fromItemKey("minecraft:chiseled_polished_blackstone");
 
-  @NotNull
-  public static final Item POLISHED_BLACKSTONE_BRICKS = ItemRegistry.fromItemKey("minecraft:polished_blackstone_bricks");
+    @NotNull
+    public static final Item POLISHED_BLACKSTONE_BRICKS = ItemRegistry.fromItemKey("minecraft:polished_blackstone_bricks");
 
-  @NotNull
-  public static final Item POLISHED_BLACKSTONE_BRICK_SLAB = ItemRegistry.fromItemKey("minecraft:polished_blackstone_brick_slab");
+    @NotNull
+    public static final Item POLISHED_BLACKSTONE_BRICK_SLAB = ItemRegistry.fromItemKey("minecraft:polished_blackstone_brick_slab");
 
-  @NotNull
-  public static final Item POLISHED_BLACKSTONE_BRICK_STAIRS = ItemRegistry.fromItemKey("minecraft:polished_blackstone_brick_stairs");
+    @NotNull
+    public static final Item POLISHED_BLACKSTONE_BRICK_STAIRS = ItemRegistry.fromItemKey("minecraft:polished_blackstone_brick_stairs");
 
-  @NotNull
-  public static final Item CRACKED_POLISHED_BLACKSTONE_BRICKS = ItemRegistry.fromItemKey("minecraft:cracked_polished_blackstone_bricks");
+    @NotNull
+    public static final Item CRACKED_POLISHED_BLACKSTONE_BRICKS = ItemRegistry.fromItemKey("minecraft:cracked_polished_blackstone_bricks");
 
-  @NotNull
-  public static final Item RESPAWN_ANCHOR = ItemRegistry.fromItemKey("minecraft:respawn_anchor");
+    @NotNull
+    public static final Item RESPAWN_ANCHOR = ItemRegistry.fromItemKey("minecraft:respawn_anchor");
 
-  @NotNull
-  public static final Item CANDLE = ItemRegistry.fromItemKey("minecraft:candle");
+    @NotNull
+    public static final Item CANDLE = ItemRegistry.fromItemKey("minecraft:candle");
 
-  @NotNull
-  public static final Item WHITE_CANDLE = ItemRegistry.fromItemKey("minecraft:white_candle");
+    @NotNull
+    public static final Item WHITE_CANDLE = ItemRegistry.fromItemKey("minecraft:white_candle");
 
-  @NotNull
-  public static final Item ORANGE_CANDLE = ItemRegistry.fromItemKey("minecraft:orange_candle");
+    @NotNull
+    public static final Item ORANGE_CANDLE = ItemRegistry.fromItemKey("minecraft:orange_candle");
 
-  @NotNull
-  public static final Item MAGENTA_CANDLE = ItemRegistry.fromItemKey("minecraft:magenta_candle");
+    @NotNull
+    public static final Item MAGENTA_CANDLE = ItemRegistry.fromItemKey("minecraft:magenta_candle");
 
-  @NotNull
-  public static final Item LIGHT_BLUE_CANDLE = ItemRegistry.fromItemKey("minecraft:light_blue_candle");
+    @NotNull
+    public static final Item LIGHT_BLUE_CANDLE = ItemRegistry.fromItemKey("minecraft:light_blue_candle");
 
-  @NotNull
-  public static final Item YELLOW_CANDLE = ItemRegistry.fromItemKey("minecraft:yellow_candle");
+    @NotNull
+    public static final Item YELLOW_CANDLE = ItemRegistry.fromItemKey("minecraft:yellow_candle");
 
-  @NotNull
-  public static final Item LIME_CANDLE = ItemRegistry.fromItemKey("minecraft:lime_candle");
+    @NotNull
+    public static final Item LIME_CANDLE = ItemRegistry.fromItemKey("minecraft:lime_candle");
 
-  @NotNull
-  public static final Item PINK_CANDLE = ItemRegistry.fromItemKey("minecraft:pink_candle");
+    @NotNull
+    public static final Item PINK_CANDLE = ItemRegistry.fromItemKey("minecraft:pink_candle");
 
-  @NotNull
-  public static final Item GRAY_CANDLE = ItemRegistry.fromItemKey("minecraft:gray_candle");
+    @NotNull
+    public static final Item GRAY_CANDLE = ItemRegistry.fromItemKey("minecraft:gray_candle");
 
-  @NotNull
-  public static final Item LIGHT_GRAY_CANDLE = ItemRegistry.fromItemKey("minecraft:light_gray_candle");
+    @NotNull
+    public static final Item LIGHT_GRAY_CANDLE = ItemRegistry.fromItemKey("minecraft:light_gray_candle");
 
-  @NotNull
-  public static final Item CYAN_CANDLE = ItemRegistry.fromItemKey("minecraft:cyan_candle");
+    @NotNull
+    public static final Item CYAN_CANDLE = ItemRegistry.fromItemKey("minecraft:cyan_candle");
 
-  @NotNull
-  public static final Item PURPLE_CANDLE = ItemRegistry.fromItemKey("minecraft:purple_candle");
+    @NotNull
+    public static final Item PURPLE_CANDLE = ItemRegistry.fromItemKey("minecraft:purple_candle");
 
-  @NotNull
-  public static final Item BLUE_CANDLE = ItemRegistry.fromItemKey("minecraft:blue_candle");
+    @NotNull
+    public static final Item BLUE_CANDLE = ItemRegistry.fromItemKey("minecraft:blue_candle");
 
-  @NotNull
-  public static final Item BROWN_CANDLE = ItemRegistry.fromItemKey("minecraft:brown_candle");
+    @NotNull
+    public static final Item BROWN_CANDLE = ItemRegistry.fromItemKey("minecraft:brown_candle");
 
-  @NotNull
-  public static final Item GREEN_CANDLE = ItemRegistry.fromItemKey("minecraft:green_candle");
+    @NotNull
+    public static final Item GREEN_CANDLE = ItemRegistry.fromItemKey("minecraft:green_candle");
 
-  @NotNull
-  public static final Item RED_CANDLE = ItemRegistry.fromItemKey("minecraft:red_candle");
+    @NotNull
+    public static final Item RED_CANDLE = ItemRegistry.fromItemKey("minecraft:red_candle");
 
-  @NotNull
-  public static final Item BLACK_CANDLE = ItemRegistry.fromItemKey("minecraft:black_candle");
+    @NotNull
+    public static final Item BLACK_CANDLE = ItemRegistry.fromItemKey("minecraft:black_candle");
 
-  @NotNull
-  public static final Item SMALL_AMETHYST_BUD = ItemRegistry.fromItemKey("minecraft:small_amethyst_bud");
+    @NotNull
+    public static final Item SMALL_AMETHYST_BUD = ItemRegistry.fromItemKey("minecraft:small_amethyst_bud");
 
-  @NotNull
-  public static final Item MEDIUM_AMETHYST_BUD = ItemRegistry.fromItemKey("minecraft:medium_amethyst_bud");
+    @NotNull
+    public static final Item MEDIUM_AMETHYST_BUD = ItemRegistry.fromItemKey("minecraft:medium_amethyst_bud");
 
-  @NotNull
-  public static final Item LARGE_AMETHYST_BUD = ItemRegistry.fromItemKey("minecraft:large_amethyst_bud");
+    @NotNull
+    public static final Item LARGE_AMETHYST_BUD = ItemRegistry.fromItemKey("minecraft:large_amethyst_bud");
 
-  @NotNull
-  public static final Item AMETHYST_CLUSTER = ItemRegistry.fromItemKey("minecraft:amethyst_cluster");
+    @NotNull
+    public static final Item AMETHYST_CLUSTER = ItemRegistry.fromItemKey("minecraft:amethyst_cluster");
 
-  @NotNull
-  public static final Item POINTED_DRIPSTONE = ItemRegistry.fromItemKey("minecraft:pointed_dripstone");
+    @NotNull
+    public static final Item POINTED_DRIPSTONE = ItemRegistry.fromItemKey("minecraft:pointed_dripstone");
 }

@@ -72,29 +72,29 @@ public final class Block implements ConfiguredBlock {
         return propertyMap;
     }
 
-    public boolean hasProperty(Property<?> property){
+    public boolean hasProperty(Property<?> property) {
         return properties.contains(property);
     }
 
-    void setDefaultState(BlockState state){
-        if(defaultState == null)defaultState = state;
+    void setDefaultState(BlockState state) {
+        if (defaultState == null) defaultState = state;
     }
 
     public @NotNull BlockState defaultState() {
         return defaultState;
     }
 
-    void setStates(ImmutableSet<BlockState> states){
-        if(this.states == null)this.states = states;
+    void setStates(ImmutableSet<BlockState> states) {
+        if (this.states == null) this.states = states;
     }
 
     public ImmutableSet<BlockState> states() {
         return states;
     }
 
-    public @NotNull BlockState withProperties(Map<String, String> properties){
+    public @NotNull BlockState withProperties(Map<String, String> properties) {
         BlockState state = this.defaultState;
-        for (Map.Entry<String, String> entry : properties.entrySet()){
+        for (Map.Entry<String, String> entry : properties.entrySet()) {
             state = state.setValue(propertyMap.get(entry.getKey()), entry.getValue());
         }
         return state;

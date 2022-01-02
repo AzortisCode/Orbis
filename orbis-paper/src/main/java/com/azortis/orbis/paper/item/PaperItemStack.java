@@ -20,25 +20,27 @@ package com.azortis.orbis.paper.item;
 
 import com.azortis.orbis.item.Item;
 import com.azortis.orbis.item.ItemStack;
-import com.azortis.orbis.paper.OrbisPlugin;
+import com.azortis.orbis.item.meta.ItemMeta;
+import com.azortis.orbis.paper.item.meta.PaperCrossbowMeta;
+import com.azortis.orbis.paper.nms.ConversionUtils;
+import org.bukkit.inventory.meta.CrossbowMeta;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jglrxavpok.hephaistos.nbt.NBT;
+import org.jglrxavpok.hephaistos.nbt.NBTCompound;
+import org.jglrxavpok.hephaistos.nbt.mutable.MutableNBTCompound;
 
 public class PaperItemStack implements ItemStack {
     private final org.bukkit.inventory.ItemStack handle;
     private final Item item;
 
-    public PaperItemStack(@NotNull org.bukkit.inventory.ItemStack handle, Item item) {
-        this.handle = handle;
-        this.item = item;
-    }
-
     public PaperItemStack(@NotNull org.bukkit.inventory.ItemStack handle) {
         this.handle = handle;
-        this.item = OrbisPlugin.getNMS().getItem(handle.getType());
+        this.item = ConversionUtils.getItem(handle.getType());
     }
 
     public PaperItemStack(@NotNull Item item) {
-        this.handle = new org.bukkit.inventory.ItemStack(OrbisPlugin.getNMS().getMaterial(item));
+        this.handle = new org.bukkit.inventory.ItemStack(ConversionUtils.getMaterial(item));
         this.item = item;
     }
 
@@ -57,7 +59,50 @@ public class PaperItemStack implements ItemStack {
         handle.setAmount(amount);
     }
 
+    @Override
+    public boolean hasItemMeta() {
+        return handle.hasItemMeta();
+    }
+
+    @Override
+    public @NotNull ItemMeta getItemMeta() {
+        org.bukkit.inventory.meta.ItemMeta paperMeta = handle.getItemMeta();
+        if (paperMeta instanceof CrossbowMeta) { //TODO add more meta's once implemented
+            return new PaperCrossbowMeta(paperMeta);
+        }
+        return new PaperItemMeta(paperMeta);
+    }
+
+    @Override
+    public void setItemMeta(@Nullable ItemMeta meta) {
+        if (meta == null) handle.setItemMeta(null);
+        assert meta instanceof PaperItemMeta : "ItemMeta isn't an instance of PaperItemMeta!";
+        handle.setItemMeta(((PaperItemMeta) meta).getHandle());
+    }
+
+    @Override
+    @SuppressWarnings("all")
+    public @NotNull ItemStack clone() {
+        return new PaperItemStack(handle.clone());
+    }
+
+    @Override
+    public @NotNull NBTCompound serialize() {
+        MutableNBTCompound compound = new MutableNBTCompound();
+        compound.set("id", NBT.String(item.key().asString()));
+        compound.set("Count", NBT.Int(getAmount()));
+        if (hasItemMeta()) {
+            compound.set("tag", ((PaperItemMeta) getItemMeta()).serialize().toCompound());
+        }
+        return compound.toCompound();
+    }
+
     public org.bukkit.inventory.ItemStack getHandle() {
         return handle;
     }
+
+    public static PaperItemStack fromPaper(org.bukkit.inventory.ItemStack itemStack) {
+        return new PaperItemStack(itemStack);
+    }
+
 }

@@ -99,7 +99,7 @@ public final class BlockState implements ConfiguredBlock {
         return state;
     }
 
-    public @NotNull BlockState setValue(Property<?> property, String value){
+    public @NotNull BlockState setValue(Property<?> property, String value) {
         BlockState state = this.neighbours.get(property, property.getValueFor(value));
         if (state == null) {
             throw new IllegalArgumentException("Cannot get " + property + " in " + this + " as it doesn't exist");
@@ -148,7 +148,7 @@ public final class BlockState implements ConfiguredBlock {
         return this;
     }
 
-    public static BlockState fromStateId(int stateId){
+    public static BlockState fromStateId(int stateId) {
         return BlockRegistry.fromStateId(stateId);
     }
 

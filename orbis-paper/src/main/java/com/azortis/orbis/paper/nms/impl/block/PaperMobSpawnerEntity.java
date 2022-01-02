@@ -29,7 +29,7 @@ public class PaperMobSpawnerEntity extends PaperBlockEntity implements MobSpawne
 
     public PaperMobSpawnerEntity(BlockEntity handle) {
         super(handle);
-        this.spawner = ((SpawnerBlockEntity)handle).getSpawner();
+        this.spawner = ((SpawnerBlockEntity) handle).getSpawner();
     }
 
     @Override

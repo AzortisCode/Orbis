@@ -18,7 +18,21 @@
 
 package com.azortis.orbis.paper.item;
 
+import com.azortis.orbis.item.Item;
 import com.azortis.orbis.item.ItemFactory;
+import com.azortis.orbis.item.ItemStack;
+import org.jetbrains.annotations.NotNull;
+import org.jglrxavpok.hephaistos.nbt.NBTCompound;
 
 public class PaperItemFactory implements ItemFactory {
+
+    @Override
+    public @NotNull ItemStack createItemStack(@NotNull Item item) {
+        return new PaperItemStack(item);
+    }
+
+    @Override
+    public @NotNull ItemStack createItemStack(@NotNull NBTCompound compound) {
+        return null;
+    }
 }
