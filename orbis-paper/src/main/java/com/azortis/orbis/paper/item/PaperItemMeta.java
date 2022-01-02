@@ -59,13 +59,8 @@ public class PaperItemMeta implements ItemMeta {
     }
 
     @Override
-    public boolean hasLore() {
-        return handle.hasLore();
-    }
-
-    @Override
-    public @Nullable List<Component> getLore() {
-        return handle.lore();
+    public @NotNull List<Component> getLore() {
+        return handle.hasLore() ? Objects.requireNonNull(handle.lore()) : Collections.emptyList();
     }
 
     @Override
@@ -188,8 +183,7 @@ public class PaperItemMeta implements ItemMeta {
             assert getDisplayName() != null : "hasDisplayName returns true, but the value is null!";
             displayCompound.set("Name", NBT.String(GsonComponentSerializer.gson().serialize(getDisplayName())));
         }
-        if (hasLore()) {
-            assert getLore() != null : "hasLore returns true, but the value is null!";
+        if (!getLore().isEmpty()) {
             List<NBTString> lore = new ArrayList<>();
             for (Component loreLine : getLore()) {
                 lore.add(NBT.String(GsonComponentSerializer.gson().serialize(loreLine)));

@@ -36,11 +36,9 @@ public interface ItemMeta {
 
     void setDisplayName(@Nullable Component displayName);
 
-    boolean hasLore();
+    @NotNull List<Component> getLore();
 
-    @Nullable List<Component> getLore();
-
-    void setLore(@Nullable List<Component> lore);
+    void setLore(@NotNull List<Component> lore);
 
     boolean hasCustomModelData();
 
