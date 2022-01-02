@@ -16,7 +16,7 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.paper.nms.impl.block;
+package com.azortis.orbis.paper.nms.block;
 
 import com.azortis.orbis.block.entity.MobSpawnerEntity;
 import net.minecraft.world.level.BaseSpawner;

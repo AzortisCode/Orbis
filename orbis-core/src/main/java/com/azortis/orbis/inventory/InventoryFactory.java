@@ -18,7 +18,7 @@
 
 package com.azortis.orbis.inventory;
 
-public final class InventoryFactory {
+public interface InventoryFactory {
 
 
 }

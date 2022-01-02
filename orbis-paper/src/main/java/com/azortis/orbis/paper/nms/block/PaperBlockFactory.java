@@ -16,8 +16,9 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.structure;
+package com.azortis.orbis.paper.nms.block;
 
-public class StructureObject {
+import com.azortis.orbis.block.BlockFactory;
 
+public class PaperBlockFactory implements BlockFactory {
 }

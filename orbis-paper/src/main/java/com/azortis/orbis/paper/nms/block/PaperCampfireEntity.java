@@ -16,9 +16,14 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.structure;
+package com.azortis.orbis.paper.nms.block;
 
-public final class StructureLoader {
+import net.minecraft.world.level.block.entity.CampfireBlockEntity;
 
+public class PaperCampfireEntity {
+    private final CampfireBlockEntity handle;
 
+    public PaperCampfireEntity(CampfireBlockEntity handle) {
+        this.handle = handle;
+    }
 }

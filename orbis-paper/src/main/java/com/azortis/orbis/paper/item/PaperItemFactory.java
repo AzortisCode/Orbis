@@ -35,4 +35,5 @@ public class PaperItemFactory implements ItemFactory {
     public @NotNull ItemStack createItemStack(@NotNull NBTCompound compound) {
         return null;
     }
+
 }

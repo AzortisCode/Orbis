@@ -29,6 +29,7 @@ import org.bukkit.inventory.meta.Repairable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jglrxavpok.hephaistos.nbt.NBT;
+import org.jglrxavpok.hephaistos.nbt.NBTCompound;
 import org.jglrxavpok.hephaistos.nbt.NBTString;
 import org.jglrxavpok.hephaistos.nbt.NBTType;
 import org.jglrxavpok.hephaistos.nbt.mutable.MutableNBTCompound;
@@ -142,11 +143,6 @@ public class PaperItemMeta implements ItemMeta {
     }
 
     @Override
-    public boolean hasDamage() {
-        return ((Damageable) handle).hasDamage();
-    }
-
-    @Override
     public int getDamage() {
         return ((Damageable) handle).getDamage();
     }
@@ -198,7 +194,20 @@ public class PaperItemMeta implements ItemMeta {
             }
             compound.set("HideFlags", NBT.Byte(hideFlags)); // Officially value is stored as an int, but max value is 127
         }
-        if (hasDamage()) {
+        if (!getEnchants().isEmpty()) {
+            List<NBTCompound> enchants = new ArrayList<>();
+            for (Map.Entry<Enchantment, Integer> entry : getEnchants().entrySet()) {
+                MutableNBTCompound enchant = new MutableNBTCompound();
+                enchant.set("id", NBT.String(entry.getKey().key().asString()));
+                enchant.set("lvl", NBT.Int(entry.getValue()));
+                enchants.add(enchant.toCompound());
+            }
+            compound.set("Enchantments", NBT.List(NBTType.TAG_Compound, enchants));
+        }
+        if (getRepairCost() > 0) {
+            compound.set("RepairCost", NBT.Int(getRepairCost()));
+        }
+        if (getDamage() > 0) {
             compound.set("Damage", NBT.Int(getDamage()));
         }
         compound.set("Unbreakable", NBT.Boolean(isUnbreakable()));

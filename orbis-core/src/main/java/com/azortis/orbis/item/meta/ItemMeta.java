@@ -78,8 +78,6 @@ public interface ItemMeta {
 
     boolean hasItemFlag(@NotNull ItemFlag itemFlag);
 
-    boolean hasDamage();
-
     int getDamage();
 
     void setDamage(int damage);
