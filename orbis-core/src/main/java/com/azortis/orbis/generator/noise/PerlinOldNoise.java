@@ -16,23 +16,32 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.registry.adapter;
+package com.azortis.orbis.generator.noise;
 
-import com.google.gson.*;
-import net.kyori.adventure.key.Key;
+public class PerlinOldNoise implements OldNoiseGenerator {
 
-import java.lang.reflect.Type;
+    private final FastNoise noise;
 
-public class KeyAdapter implements JsonSerializer<Key>, JsonDeserializer<Key> {
-
-    @Override
-    public JsonElement serialize(Key key, Type type, JsonSerializationContext context) {
-        return context.serialize(key.asString(), String.class);
+    public PerlinOldNoise(long seed) {
+        noise = new FastNoise(seed);
+        noise.setNoiseType(FastNoise.NoiseType.Perlin);
+        noise.setRotationType3D(FastNoise.RotationType3D.ImproveXZPlanes);
+        noise.setFrequency(1); // Multiply the axis yourself. For async reasons.
     }
 
-    @SuppressWarnings("PatternValidation")
     @Override
-    public Key deserialize(JsonElement element, Type type, JsonDeserializationContext context) throws JsonParseException {
-        return Key.key(context.deserialize(element, String.class));
+    public double noise(double x) {
+        return noise.getNoise(x, 0);
     }
+
+    @Override
+    public double noise(double x, double y) {
+        return noise.getNoise(x, 0, y);
+    }
+
+    @Override
+    public double noise(double x, double y, double z) {
+        return noise.getNoise(x, y, z);
+    }
+
 }

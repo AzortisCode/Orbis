@@ -18,7 +18,7 @@
 
 package com.azortis.orbis.block.property;
 
-import com.azortis.orbis.utils.Nameable;
+import com.azortis.orbis.util.Nameable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

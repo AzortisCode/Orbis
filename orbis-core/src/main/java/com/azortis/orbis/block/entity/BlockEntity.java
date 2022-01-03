@@ -18,7 +18,7 @@
 
 package com.azortis.orbis.block.entity;
 
-import com.azortis.orbis.utils.BlockPos;
+import com.azortis.orbis.util.BlockPos;
 import net.kyori.adventure.key.Keyed;
 import org.jetbrains.annotations.NotNull;
 import org.jglrxavpok.hephaistos.nbt.NBTCompound;

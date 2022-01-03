@@ -173,26 +173,26 @@ public class PaperItemMeta implements ItemMeta {
     }
 
     protected MutableNBTCompound serialize() {
-        MutableNBTCompound compound = new MutableNBTCompound();
-        MutableNBTCompound displayCompound = new MutableNBTCompound();
+        MutableNBTCompound tag = new MutableNBTCompound();
+        MutableNBTCompound displayTag = new MutableNBTCompound();
         if (hasDisplayName()) {
             assert getDisplayName() != null : "hasDisplayName returns true, but the value is null!";
-            displayCompound.set("Name", NBT.String(GsonComponentSerializer.gson().serialize(getDisplayName())));
+            displayTag.set("Name", NBT.String(GsonComponentSerializer.gson().serialize(getDisplayName())));
         }
         if (!getLore().isEmpty()) {
             List<NBTString> lore = new ArrayList<>();
             for (Component loreLine : getLore()) {
                 lore.add(NBT.String(GsonComponentSerializer.gson().serialize(loreLine)));
             }
-            displayCompound.set("Lore", NBT.List(NBTType.TAG_String, lore));
+            displayTag.set("Lore", NBT.List(NBTType.TAG_String, lore));
         }
-        if (!displayCompound.isEmpty()) compound.set("display", displayCompound.toCompound());
+        if (!displayTag.isEmpty()) tag.set("display", displayTag.toCompound());
         if (!getItemFlags().isEmpty()) {
             byte hideFlags = 0;
             for (ItemFlag itemFlag : getItemFlags()) {
                 hideFlags |= getBitModifier(itemFlag);
             }
-            compound.set("HideFlags", NBT.Byte(hideFlags)); // Officially value is stored as an int, but max value is 127
+            tag.set("HideFlags", NBT.Byte(hideFlags)); // Officially value is stored as an int, but max value is 127
         }
         if (!getEnchants().isEmpty()) {
             List<NBTCompound> enchants = new ArrayList<>();
@@ -202,19 +202,19 @@ public class PaperItemMeta implements ItemMeta {
                 enchant.set("lvl", NBT.Int(entry.getValue()));
                 enchants.add(enchant.toCompound());
             }
-            compound.set("Enchantments", NBT.List(NBTType.TAG_Compound, enchants));
+            tag.set("Enchantments", NBT.List(NBTType.TAG_Compound, enchants));
         }
         if (getRepairCost() > 0) {
-            compound.set("RepairCost", NBT.Int(getRepairCost()));
+            tag.set("RepairCost", NBT.Int(getRepairCost()));
         }
         if (getDamage() > 0) {
-            compound.set("Damage", NBT.Int(getDamage()));
+            tag.set("Damage", NBT.Int(getDamage()));
         }
-        compound.set("Unbreakable", NBT.Boolean(isUnbreakable()));
+        tag.set("Unbreakable", NBT.Boolean(isUnbreakable()));
         if (hasCustomModelData()) {
-            compound.set("CustomModelData", NBT.Int(getCustomModelData()));
+            tag.set("CustomModelData", NBT.Int(getCustomModelData()));
         }
-        return compound;
+        return tag;
     }
 
     private byte getBitModifier(ItemFlag itemFlag) {

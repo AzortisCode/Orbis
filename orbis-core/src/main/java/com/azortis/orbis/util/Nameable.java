@@ -16,31 +16,11 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.generator.biome.complex;
+package com.azortis.orbis.util;
 
-import com.azortis.orbis.generator.biome.Biome;
-import com.azortis.orbis.generator.biome.Distributor;
+import org.jetbrains.annotations.NotNull;
 
-import java.util.List;
+public interface Nameable {
 
-public class ComplexDistributor extends Distributor {
-
-    private List<ComplexNoiseLayer> globalNoiseLayers;
-
-
-    @Override
-    public void load() {
-
-    }
-
-    @Override
-    public Biome getBiomeAt(int x, int z) {
-        return null;
-    }
-
-    @Override
-    public Biome getBiomeAt(double x, double z) {
-        return null;
-    }
-
+    @NotNull String getSerializedName();
 }

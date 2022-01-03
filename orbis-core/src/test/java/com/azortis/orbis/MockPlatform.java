@@ -18,7 +18,8 @@
 
 package com.azortis.orbis;
 
-import com.azortis.orbis.world.Container;
+import com.azortis.orbis.item.ItemFactory;
+import org.jetbrains.annotations.NotNull;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
@@ -48,12 +49,17 @@ public class MockPlatform implements Platform {
     }
 
     @Override
-    public @org.jetbrains.annotations.Nullable Container getContainer(String name) {
+    public @NotNull ItemFactory getItemFactory() {
+        return null; // Hella not making this lmao
+    }
+
+    @Override
+    public @org.jetbrains.annotations.Nullable World getWorld(String name) {
         return null;
     }
 
     @Override
-    public Collection<Container> getContainers() {
+    public Collection<World> getWorlds() {
         return null;
     }
 }

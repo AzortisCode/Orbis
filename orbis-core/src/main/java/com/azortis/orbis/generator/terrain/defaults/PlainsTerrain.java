@@ -18,7 +18,7 @@
 
 package com.azortis.orbis.generator.terrain.defaults;
 
-import com.azortis.orbis.generator.noise.NoiseGenerator;
+import com.azortis.orbis.generator.noise.OldNoiseGenerator;
 import com.azortis.orbis.generator.terrain.Terrain;
 
 public class PlainsTerrain extends Terrain {
@@ -28,7 +28,7 @@ public class PlainsTerrain extends Terrain {
     }
 
     @Override
-    public double getTerrainHeight(int x, int z, double biomeWeight, NoiseGenerator noise) {
+    public double getTerrainHeight(int x, int z, double biomeWeight, OldNoiseGenerator noise) {
         double height = noise.noise(x / 400f, z / 400f) * 50;
         height += noise.noise(x / 50f, z / 50f) * 5;
         height += Math.abs(noise.noise(x / 12f, z / 12f) * 1);

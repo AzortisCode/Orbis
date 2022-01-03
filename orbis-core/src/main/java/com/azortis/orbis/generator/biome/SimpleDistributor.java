@@ -18,10 +18,7 @@
 
 package com.azortis.orbis.generator.biome;
 
-import com.azortis.orbis.Orbis;
-import com.azortis.orbis.generator.noise.NoiseGenerator;
-import com.azortis.orbis.generator.noise.OpenSimplex2S;
-import com.azortis.orbis.registry.Registry;
+import com.azortis.orbis.generator.noise.OldNoiseGenerator;
 import com.google.gson.annotations.SerializedName;
 import lombok.*;
 import net.kyori.adventure.key.Key;
@@ -34,7 +31,7 @@ import java.util.Map;
 public class SimpleDistributor extends Distributor {
 
     private List<BiomeLayer> biomeLayers;
-    private transient Map<Biome, NoiseGenerator> noiseGenMap;
+    private transient Map<Biome, OldNoiseGenerator> noiseGenMap;
 
     private SimpleDistributor() {
     }
@@ -46,12 +43,12 @@ public class SimpleDistributor extends Distributor {
     @Override
     public void load() {
         noiseGenMap = new HashMap<>();
-        Registry<Biome> biomeRegistry = Orbis.getRegistry(Biome.class);
-        assert biomeRegistry != null;
+        /*OldRegistry<Biome> biomeOldRegistry = Orbis.getRegistryOld(Biome.class);
+        assert biomeOldRegistry != null;
         for (BiomeLayer layer : biomeLayers) {
-            layer.setBiome(biomeRegistry.loadType(getContainer(), layer.getBiomeName()));
+            layer.setBiome(biomeOldRegistry.loadType(getContainer(), layer.getBiomeName()));
             noiseGenMap.put(layer.getBiome(), new OpenSimplex2S(layer.getSeed()));
-        }
+        }*/
     }
 
     @Override

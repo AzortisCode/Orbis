@@ -16,21 +16,18 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.registry;
+package com.azortis.orbis.util;
 
-import com.azortis.orbis.world.Container;
+public record BlockPos(int x, int y, int z) {
+    public int getX() {
+        return x;
+    }
 
-import java.io.File;
-import java.util.List;
+    public int getY() {
+        return y;
+    }
 
-public interface Registry<T> {
-
-    T loadType(Container container, String name, Object... context);
-
-    List<String> getEntries(Container container);
-
-    void createFolders(Container container);
-
-    File getFolder(Container container);
-
+    public int getZ() {
+        return z;
+    }
 }

@@ -18,7 +18,7 @@
 
 package com.azortis.orbis.generator.noise;
 
-public class OpenSimplex2S implements NoiseGenerator {
+public class OpenSimplex2S implements OldNoiseGenerator {
 
     private final FastNoise noise;
 

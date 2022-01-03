@@ -16,29 +16,23 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.registry.adapter;
+package com.azortis.orbis.adapter;
 
-import com.azortis.orbis.Orbis;
-import com.azortis.orbis.generator.biome.Distributor;
-import com.azortis.orbis.registry.GeneratorRegistry;
+import com.azortis.orbis.Registry;
+import com.azortis.orbis.generator.terrain.Terrain;
 import com.google.gson.*;
 import net.kyori.adventure.key.Key;
 
 import java.lang.reflect.Type;
 
-public class DistributorAdapter implements JsonDeserializer<Distributor> {
-
-    private final GeneratorRegistry<Distributor> distributorRegistry;
-
-    public DistributorAdapter() {
-        this.distributorRegistry = Orbis.getGeneratorRegistry(Distributor.class);
-    }
+public class TerrainAdapter implements JsonDeserializer<Terrain> {
 
     @Override
-    public Distributor deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context) throws JsonParseException {
+    public Terrain deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context) throws JsonParseException {
         final JsonPrimitive object = jsonElement.getAsJsonObject().getAsJsonPrimitive("providerId");
-        final Key distributorProviderId = context.deserialize(object, Key.class);
-        final Class<? extends Distributor> distributorClass = distributorRegistry.getTypeClass(distributorProviderId);
-        return context.deserialize(jsonElement, distributorClass);
+        final Key terrainKey = context.deserialize(object, Key.class);
+        final Class<? extends Terrain> terrainType = Registry.TERRAIN.getType(terrainKey);
+        return context.deserialize(jsonElement, terrainType);
     }
+
 }

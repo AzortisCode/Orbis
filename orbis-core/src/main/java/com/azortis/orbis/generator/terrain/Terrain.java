@@ -18,9 +18,9 @@
 
 package com.azortis.orbis.generator.terrain;
 
+import com.azortis.orbis.World;
 import com.azortis.orbis.generator.biome.Biome;
-import com.azortis.orbis.generator.noise.NoiseGenerator;
-import com.azortis.orbis.world.Container;
+import com.azortis.orbis.generator.noise.OldNoiseGenerator;
 import lombok.Getter;
 
 @Getter
@@ -28,7 +28,9 @@ public abstract class Terrain {
 
     protected String name;
     protected String providerId;
-    private transient Container container;
+
+    private transient World world;
+
     private transient Biome biome;
 
     // Used for deserialization for gson, more stable.
@@ -40,14 +42,14 @@ public abstract class Terrain {
         this.providerId = providerId;
     }
 
-    public void setContainer(Container container) {
-        if (this.container == null) this.container = container;
+    public void setWorld(World world) {
+        if (this.world == null) this.world = world;
     }
 
     public final void setBiome(Biome biome) {
         if (biome != null) this.biome = biome;
     }
 
-    public abstract double getTerrainHeight(final int x, final int z, double biomeWeight, NoiseGenerator noise);
+    public abstract double getTerrainHeight(final int x, final int z, double biomeWeight, OldNoiseGenerator noise);
 
 }

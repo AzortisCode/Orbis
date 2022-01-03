@@ -33,7 +33,7 @@ import java.util.Map;
 
 public class OrbisPlugin extends JavaPlugin {
 
-    private final Map<String, OrbisWorld> worldMap = new HashMap<>();
+    private final Map<String, PaperWorld> worldMap = new HashMap<>();
     private Metrics metrics;
 
     @Override
@@ -58,25 +58,25 @@ public class OrbisPlugin extends JavaPlugin {
     }
 
     @NotNull
-    public OrbisWorld loadWorld(@NotNull World world, @NotNull Pack pack) {
-        OrbisWorld orbisWorld = new OrbisWorld(world);
-        orbisWorld.installPack(pack, false);
-        if (!orbisWorld.isLoaded()) orbisWorld.load();
-        worldMap.put(world.getName(), orbisWorld);
-        return orbisWorld;
+    public PaperWorld loadWorld(@NotNull World world, @NotNull Pack pack) {
+        PaperWorld paperWorld = new PaperWorld(world);
+        paperWorld.installPack(pack, false);
+        if (!paperWorld.isLoaded()) paperWorld.load();
+        worldMap.put(world.getName(), paperWorld);
+        return paperWorld;
     }
 
     @Nullable
-    public OrbisWorld getWorld(World world) {
+    public PaperWorld getWorld(World world) {
         return worldMap.get(world.getName());
     }
 
     @Nullable
-    public OrbisWorld getWorld(String worldName) {
+    public PaperWorld getWorld(String worldName) {
         return worldMap.get(worldName);
     }
 
-    public Collection<OrbisWorld> getWorlds() {
+    public Collection<PaperWorld> getWorlds() {
         return worldMap.values();
     }
 

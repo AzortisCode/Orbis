@@ -18,23 +18,23 @@
 
 package com.azortis.orbis.generator;
 
+import com.azortis.orbis.World;
 import com.azortis.orbis.generator.biome.BiomeGrid;
-import com.azortis.orbis.world.Container;
 import lombok.Getter;
 
 public abstract class Engine {
 
     @Getter
-    private final Container container;
+    private final World world;
 
-    public Engine(Container container) {
-        this.container = container;
+    public Engine(World world) {
+        this.world = world;
     }
 
     public abstract void generateChunkData(ChunkData chunkData, BiomeGrid biomeGrid, int chunkX, int chunkZ);
 
     public Dimension getDimension() {
-        return container.getDimension();
+        return world.getDimension();
     }
 
 }

@@ -16,25 +16,22 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.registry.adapter;
+package com.azortis.orbis.adapter;
 
-import com.azortis.orbis.block.ConfiguredBlock;
+import com.azortis.orbis.Registry;
+import com.azortis.orbis.generator.biome.Distributor;
 import com.google.gson.*;
+import net.kyori.adventure.key.Key;
 
 import java.lang.reflect.Type;
 
-public class BlockAdapter implements JsonSerializer<ConfiguredBlock>, JsonDeserializer<ConfiguredBlock> {
+public class DistributorAdapter implements JsonDeserializer<Distributor> {
 
     @Override
-    public ConfiguredBlock deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
-        return null;
-    }
-
-    @Override
-    public JsonElement serialize(ConfiguredBlock configuredBlock, Type typeOfSrc, JsonSerializationContext context) {
-        if (configuredBlock.blockState() == configuredBlock.block().defaultState()) {
-            return context.serialize(configuredBlock.key());
-        }
-        return null;
+    public Distributor deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context) throws JsonParseException {
+        final JsonPrimitive object = jsonElement.getAsJsonObject().getAsJsonPrimitive("providerId");
+        final Key distributorKey = context.deserialize(object, Key.class);
+        final Class<? extends Distributor> distributorClass = Registry.DISTRIBUTOR.getType(distributorKey);
+        return context.deserialize(jsonElement, distributorClass);
     }
 }

@@ -19,9 +19,9 @@
 package com.azortis.orbis.paper;
 
 import com.azortis.orbis.Platform;
+import com.azortis.orbis.World;
 import com.azortis.orbis.item.ItemFactory;
 import com.azortis.orbis.paper.item.PaperItemFactory;
-import com.azortis.orbis.world.Container;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
@@ -62,12 +62,12 @@ public class PaperPlatform implements Platform {
 
     @Nullable
     @Override
-    public Container getContainer(String name) {
+    public World getWorld(String name) {
         return plugin.getWorld(name);
     }
 
     @Override
-    public Collection<Container> getContainers() {
+    public Collection<World> getWorlds() {
         return new ArrayList<>(plugin.getWorlds());
     }
 

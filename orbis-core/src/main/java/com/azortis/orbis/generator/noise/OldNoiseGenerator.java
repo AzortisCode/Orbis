@@ -16,21 +16,14 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.paper;
+package com.azortis.orbis.generator.noise;
 
-import com.azortis.orbis.world.Container;
-import org.bukkit.World;
+public interface OldNoiseGenerator {
 
-public class OrbisWorld extends Container {
+    double noise(double x);
 
-    private final World bukkitWorld;
+    double noise(double x, double y);
 
-    public OrbisWorld(World bukkitWorld) {
-        super(bukkitWorld.getName(), bukkitWorld.getWorldFolder());
-        this.bukkitWorld = bukkitWorld;
-    }
+    double noise(double x, double y, double z);
 
-    public World getBukkitWorld() {
-        return bukkitWorld;
-    }
 }

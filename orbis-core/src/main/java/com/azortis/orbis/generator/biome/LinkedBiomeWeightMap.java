@@ -21,6 +21,7 @@ package com.azortis.orbis.generator.biome;
 import lombok.Getter;
 import lombok.Setter;
 
+@Deprecated
 @Getter
 public class LinkedBiomeWeightMap {
     private final int biome;

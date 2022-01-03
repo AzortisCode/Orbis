@@ -18,19 +18,16 @@
 
 package com.azortis.orbis;
 
+import com.azortis.orbis.adapter.DistributorAdapter;
+import com.azortis.orbis.adapter.KeyAdapter;
+import com.azortis.orbis.adapter.TerrainAdapter;
 import com.azortis.orbis.block.BlockRegistry;
 import com.azortis.orbis.block.property.PropertyRegistry;
-import com.azortis.orbis.generator.Dimension;
-import com.azortis.orbis.generator.biome.Biome;
 import com.azortis.orbis.generator.biome.Distributor;
 import com.azortis.orbis.generator.terrain.Terrain;
 import com.azortis.orbis.item.ItemFactory;
 import com.azortis.orbis.item.ItemRegistry;
 import com.azortis.orbis.pack.PackManager;
-import com.azortis.orbis.registry.*;
-import com.azortis.orbis.registry.adapter.DistributorAdapter;
-import com.azortis.orbis.registry.adapter.KeyAdapter;
-import com.azortis.orbis.registry.adapter.TerrainAdapter;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import lombok.Getter;
@@ -42,8 +39,6 @@ import org.slf4j.Logger;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
 
 public final class Orbis {
 
@@ -59,8 +54,6 @@ public final class Orbis {
     private static Logger logger;
     @Getter
     private static Gson gson;
-    private static Map<Class<?>, Registry<?>> registries;
-    private static Map<Class<?>, GeneratorRegistry<?>> generatorRegistries;
 
     // Managers
     @Getter
@@ -77,14 +70,6 @@ public final class Orbis {
             logger = platform.getLogger();
             logger.info("Initializing {} adaptation of Orbis", platform.getAdaptation());
 
-            // Load registries for loading certain objects of packs dynamically
-            registries = new HashMap<>();
-            registries.put(Dimension.class, new DimensionRegistry());
-            registries.put(Biome.class, new BiomeRegistry());
-            generatorRegistries = new HashMap<>();
-            generatorRegistries.put(Terrain.class, new TerrainRegistry());
-            generatorRegistries.put(Distributor.class, new DistributorRegistry());
-
             // Register the type adapters to use in the serialization/deserialization of settings in packs.
             gson = new GsonBuilder().disableHtmlEscaping().setPrettyPrinting()
                     .registerTypeAdapter(Key.class, new KeyAdapter())
@@ -99,16 +84,6 @@ public final class Orbis {
             // Load managers
             packManager = new PackManager(platform.getDirectory());
         }
-    }
-
-    @SuppressWarnings("unchecked")
-    public static <T> Registry<T> getRegistry(Class<? extends T> typeClass) {
-        return (Registry<T>) registries.get(typeClass);
-    }
-
-    @SuppressWarnings("unchecked")
-    public static <T> GeneratorRegistry<T> getGeneratorRegistry(Class<T> typeClass) {
-        return (GeneratorRegistry<T>) generatorRegistries.get(typeClass);
     }
 
     public static File getDataFile(String dateFileName) {
@@ -135,8 +110,8 @@ public final class Orbis {
         return null;
     }
 
-    public @NotNull
-    static ItemFactory getItemFactory() {
+    @NotNull
+    public static ItemFactory getItemFactory() {
         return platform.getItemFactory();
     }
 

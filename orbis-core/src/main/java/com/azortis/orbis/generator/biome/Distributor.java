@@ -18,21 +18,16 @@
 
 package com.azortis.orbis.generator.biome;
 
-import com.azortis.orbis.pack.studio.annotations.Directory;
-import com.azortis.orbis.pack.studio.annotations.GeneratorType;
-import com.azortis.orbis.registry.DistributorRegistry;
-import com.azortis.orbis.world.Container;
+import com.azortis.orbis.World;
 import net.kyori.adventure.key.Key;
 
 import java.io.File;
 
-@Directory(value = "/generators/distributor/", searchSubFolders = false)
-@GeneratorType(DistributorRegistry.class)
 public abstract class Distributor {
 
     private String name;
     private Key providerKey;
-    private transient Container container;
+    private transient World world;
     private transient File settingsFolder;
 
     // Used for GSON deserialization
@@ -56,12 +51,12 @@ public abstract class Distributor {
     // Container
     //
 
-    public void setContainer(Container container) {
-        if (this.container == null) this.container = container;
+    public void setWorld(World world) {
+        if (this.world == null) this.world = world;
     }
 
-    public Container getContainer() {
-        return container;
+    public World getContainer() {
+        return world;
     }
 
 

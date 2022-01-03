@@ -16,16 +16,25 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.pack.studio;
+package com.azortis.orbis.adapter;
 
-import com.azortis.orbis.world.Container;
+import com.azortis.orbis.block.ConfiguredBlock;
+import com.google.gson.*;
 
-import java.io.File;
+import java.lang.reflect.Type;
 
-public abstract class StudioContainer extends Container {
+public class BlockAdapter implements JsonSerializer<ConfiguredBlock>, JsonDeserializer<ConfiguredBlock> {
 
-    public StudioContainer(String name, File folder) {
-        super(name, folder);
+    @Override
+    public ConfiguredBlock deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+        return null;
     }
 
+    @Override
+    public JsonElement serialize(ConfiguredBlock configuredBlock, Type typeOfSrc, JsonSerializationContext context) {
+        if (configuredBlock.blockState() == configuredBlock.block().defaultState()) {
+            return context.serialize(configuredBlock.key());
+        }
+        return null;
+    }
 }

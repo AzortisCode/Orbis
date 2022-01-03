@@ -18,30 +18,29 @@
 
 package com.azortis.orbis.generator.noise;
 
-public class PerlinNoise implements NoiseGenerator {
+public class CellularOldNoise implements OldNoiseGenerator {
 
     private final FastNoise noise;
 
-    public PerlinNoise(long seed) {
+    public CellularOldNoise(long seed) {
         noise = new FastNoise(seed);
-        noise.setNoiseType(FastNoise.NoiseType.Perlin);
-        noise.setRotationType3D(FastNoise.RotationType3D.ImproveXZPlanes);
-        noise.setFrequency(1); // Multiply the axis yourself. For async reasons.
+        noise.setNoiseType(FastNoise.NoiseType.Cellular);
+        noise.setCellularReturnType(FastNoise.CellularReturnType.CellValue);
+        noise.setCellularDistanceFunction(FastNoise.CellularDistanceFunction.Hybrid);
     }
 
     @Override
     public double noise(double x) {
-        return noise.getNoise(x, 0);
+        return 0;
     }
 
     @Override
     public double noise(double x, double y) {
-        return noise.getNoise(x, 0, y);
+        return 0;
     }
 
     @Override
     public double noise(double x, double y, double z) {
-        return noise.getNoise(x, y, z);
+        return 0;
     }
-
 }

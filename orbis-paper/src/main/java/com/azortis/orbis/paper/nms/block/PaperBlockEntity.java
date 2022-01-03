@@ -19,7 +19,7 @@
 package com.azortis.orbis.paper.nms.block;
 
 import com.azortis.orbis.block.entity.BlockEntity;
-import com.azortis.orbis.utils.BlockPos;
+import com.azortis.orbis.util.BlockPos;
 import net.kyori.adventure.key.Key;
 import org.jetbrains.annotations.NotNull;
 import org.jglrxavpok.hephaistos.nbt.NBT;

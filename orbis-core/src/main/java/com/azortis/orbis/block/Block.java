@@ -127,11 +127,11 @@ public final class Block implements ConfiguredBlock {
         return itemKey == null ? null : Item.fromKey(itemKey);
     }
 
-    public static Block fromKey(final String key) {
+    public static Block fromKey(@NotNull String key) {
         return BlockRegistry.fromKey(key);
     }
 
-    public static Block fromKey(final Key key) {
+    public static Block fromKey(@NotNull Key key) {
         return BlockRegistry.fromKey(key);
     }
 

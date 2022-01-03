@@ -16,11 +16,16 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.utils;
+package com.azortis.orbis.pack.studio;
 
-import org.jetbrains.annotations.NotNull;
+import com.azortis.orbis.World;
 
-public interface Nameable {
+import java.io.File;
 
-    @NotNull String getSerializedName();
+public abstract class StudioWorld extends World {
+
+    public StudioWorld(String name, File folder) {
+        super(name, folder);
+    }
+
 }

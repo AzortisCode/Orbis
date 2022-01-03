@@ -19,7 +19,7 @@
 package com.azortis.orbis.generator.noise;
 
 @SuppressWarnings("all")
-public class FastNoise {
+public final class FastNoise {
     public enum NoiseType {
         OpenSimplex2,
         OpenSimplex2S,
@@ -75,27 +75,27 @@ public class FastNoise {
     }
 
     private long mSeed = 1337;
-    private double mFrequency = 0.01f;
+    private double mFrequency = 1d;
     private NoiseType mNoiseType = NoiseType.OpenSimplex2;
     private RotationType3D mRotationType3D = RotationType3D.None;
     private TransformType3D mTransformType3D = TransformType3D.DefaultOpenSimplex2;
 
     private FractalType mFractalType = FractalType.None;
     private int mOctaves = 3;
-    private double mLacunarity = 2.0f;
-    private double mGain = 0.5f;
-    private double mWeightedStrength = 0.0f;
-    private double mPingPongStength = 2.0f;
+    private double mLacunarity = 2.0d;
+    private double mGain = 0.5d;
+    private double mWeightedStrength = 0.0d;
+    private double mPingPongStength = 2.0d;
 
-    private double mFractalBounding = 1 / 1.75f;
+    private double mFractalBounding = 1 / 1.75d;
 
     private CellularDistanceFunction mCellularDistanceFunction = CellularDistanceFunction.EuclideanSq;
     private CellularReturnType mCellularReturnType = CellularReturnType.Distance;
-    private double mCellularJitterModifier = 1.0f;
+    private double mCellularJitterModifier = 1.0d;
 
     private DomainWarpType mDomainWarpType = DomainWarpType.OpenSimplex2;
     private TransformType3D mWarpTransformType3D = TransformType3D.DefaultOpenSimplex2;
-    private double mDomainWarpAmp = 1.0f;
+    private double mDomainWarpAmp = 1.0d;
 
     /// <summary>
     /// Create new FastNoise object with default seed

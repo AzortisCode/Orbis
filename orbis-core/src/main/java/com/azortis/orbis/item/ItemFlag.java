@@ -25,5 +25,5 @@ public enum ItemFlag {
     HIDE_CAN_DESTROY,
     HIDE_CAN_PLACE,
     HIDE_MISCELLANEOUS,
-    HIDE_DYE;
+    HIDE_DYE
 }

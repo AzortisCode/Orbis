@@ -19,29 +19,29 @@
 package com.azortis.orbis.generator;
 
 import com.azortis.orbis.Orbis;
+import com.azortis.orbis.World;
 import com.azortis.orbis.block.BlockRegistry;
 import com.azortis.orbis.block.Blocks;
 import com.azortis.orbis.generator.biome.Biome;
 import com.azortis.orbis.generator.biome.BiomeGrid;
 import com.azortis.orbis.generator.biome.Distributor;
 import com.azortis.orbis.generator.interpolation.Interpolator;
-import com.azortis.orbis.generator.noise.NoiseGenerator;
-import com.azortis.orbis.generator.noise.PerlinNoise;
-import com.azortis.orbis.world.Container;
+import com.azortis.orbis.generator.noise.OldNoiseGenerator;
+import com.azortis.orbis.generator.noise.PerlinOldNoise;
 
 import java.util.Objects;
 
 public class SimpleEngine extends Engine {
 
-    private final NoiseGenerator noise;
+    private final OldNoiseGenerator noise;
     private final Distributor distributor;
     private final Interpolator interpolator = new Interpolator();
 
-    public SimpleEngine(Container container) {
-        super(container);
-        this.noise = new PerlinNoise(getDimension().getSeed());
-        this.distributor = Objects.requireNonNull(Orbis.getGeneratorRegistry(Distributor.class))
-                .loadType(container, getDimension().getDistributor());
+    public SimpleEngine(World world) {
+        super(world);
+        this.noise = new PerlinOldNoise(getDimension().getSeed());
+        this.distributor = Objects.requireNonNull(Orbis.getGeneratorRegistryOld(Distributor.class))
+                .loadType(world, getDimension().getDistributor());
     }
 
     @Override

@@ -16,13 +16,20 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.generator.biome.complex;
+package com.azortis.orbis.paper;
 
-public class ComplexNoiseLayer {
+import com.azortis.orbis.World;
 
-    private String tag;
-    private long seed;
-    private int zoom;
-    private int precision;
+public class PaperWorld extends World {
 
+    private final org.bukkit.World bukkitWorld;
+
+    public PaperWorld(org.bukkit.World bukkitWorld) {
+        super(bukkitWorld.getName(), bukkitWorld.getWorldFolder());
+        this.bukkitWorld = bukkitWorld;
+    }
+
+    public org.bukkit.World getBukkitWorld() {
+        return bukkitWorld;
+    }
 }
