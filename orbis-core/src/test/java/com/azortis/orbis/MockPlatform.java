@@ -34,22 +34,22 @@ public class MockPlatform implements Platform {
     }
 
     @Override
-    public String getAdaptation() {
+    public @NotNull String adaptation() {
         return "Test";
     }
 
     @Override
-    public org.slf4j.Logger getLogger() {
+    public org.slf4j.@NotNull Logger logger() {
         return LoggerFactory.getLogger(BlocksTest.class);
     }
 
     @Override
-    public File getDirectory() {
+    public @NotNull File directory() {
         return this.directory;
     }
 
     @Override
-    public @NotNull ItemFactory getItemFactory() {
+    public @NotNull ItemFactory itemFactory() {
         return null; // Hella not making this lmao
     }
 
@@ -59,7 +59,7 @@ public class MockPlatform implements Platform {
     }
 
     @Override
-    public Collection<World> getWorlds() {
+    public @NotNull Collection<World> worlds() {
         return null;
     }
 }

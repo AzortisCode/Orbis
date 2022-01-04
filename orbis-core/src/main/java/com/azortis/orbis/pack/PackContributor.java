@@ -26,7 +26,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor
-public class PackContributor {
+public final class PackContributor {
     private String name;
     private String contribution;
 }

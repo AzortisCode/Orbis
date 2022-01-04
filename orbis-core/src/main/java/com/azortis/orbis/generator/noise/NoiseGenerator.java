@@ -16,22 +16,37 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.item.meta;
+package com.azortis.orbis.generator.noise;
 
-import com.azortis.orbis.item.ItemStack;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import com.azortis.orbis.World;
+import com.azortis.orbis.util.Inject;
+import net.kyori.adventure.key.Key;
 
-import java.util.List;
+public abstract class NoiseGenerator {
 
-public interface CrossbowMeta extends ItemMeta {
+    private Key type;
+    private long seed;
+    private double frequency;
 
-    void addChargedProjectile(@NotNull ItemStack projectile);
+    private @Inject
+    transient World world;
 
-    @NotNull List<ItemStack> chargedProjectiles();
+    public double sample(double x) {
+        return sample(x, seed);
+    }
 
-    boolean hasChargedProjectiles();
+    public double sample(double x, double z) {
+        return sample(x, z, seed);
+    }
 
-    void chargedProjectiles(@Nullable List<ItemStack> chargedProjectiles);
+    public double sample(double x, double y, double z) {
+        return sample(x, y, z, seed);
+    }
+
+    protected abstract double sample(double x, long seed);
+
+    protected abstract double sample(double x, double z, long seed);
+
+    protected abstract double sample(double x, double y, double z, long seed);
 
 }

@@ -48,7 +48,7 @@ public class PaperChunkGenerator extends ChunkGenerator {
         if (!loaded) {
             paperWorld = plugin.getWorld(worldName);
             if (paperWorld != null) {
-                if (paperWorld.isLoaded()) paperWorld.load();
+                if (paperWorld.isLoaded()) paperWorld.load(world.getSeed());
             } else {
                 paperWorld = plugin.loadWorld(world, pack);
             }

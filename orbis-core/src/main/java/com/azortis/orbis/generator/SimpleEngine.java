@@ -18,36 +18,30 @@
 
 package com.azortis.orbis.generator;
 
-import com.azortis.orbis.Orbis;
 import com.azortis.orbis.World;
-import com.azortis.orbis.block.BlockRegistry;
-import com.azortis.orbis.block.Blocks;
-import com.azortis.orbis.generator.biome.Biome;
 import com.azortis.orbis.generator.biome.BiomeGrid;
-import com.azortis.orbis.generator.biome.Distributor;
 import com.azortis.orbis.generator.interpolation.Interpolator;
 import com.azortis.orbis.generator.noise.OldNoiseGenerator;
 import com.azortis.orbis.generator.noise.PerlinOldNoise;
 
-import java.util.Objects;
-
+@Deprecated
 public class SimpleEngine extends Engine {
 
     private final OldNoiseGenerator noise;
-    private final Distributor distributor;
+    //private final Distributor distributor;
     private final Interpolator interpolator = new Interpolator();
 
     public SimpleEngine(World world) {
         super(world);
-        this.noise = new PerlinOldNoise(getDimension().getSeed());
-        this.distributor = Objects.requireNonNull(Orbis.getGeneratorRegistryOld(Distributor.class))
-                .loadType(world, getDimension().getDistributor());
+        this.noise = new PerlinOldNoise(world.getWorldInfo().seed());
+        /*this.distributor = Objects.requireNonNull(Orbis.getGeneratorRegistryOld(Distributor.class))
+                .loadType(world, getDimension().getDistributorName());*/
     }
 
     @Override
     public void generateChunkData(ChunkData chunkData, BiomeGrid biomeGrid, int chunkX, int chunkZ) {
         // We start a for loop for each consecutive horizontal coordinate of the chunk.
-        for (int cx = 0; cx < 16; cx++) {
+        /*for (int cx = 0; cx < 16; cx++) {
             for (int cz = 0; cz < 16; cz++) {
                 // Get the actual (x,z) coordinates in the world
                 final int x = cx + (chunkX << 4);
@@ -73,12 +67,12 @@ public class SimpleEngine extends Engine {
                     }
                 }
             }
-        }
+        }*/
     }
 
-    public double getHeight(double x, double z) {
+    /*public double getHeight(double x, double z) {
         Biome biome = distributor.getBiomeAt(x, z);
         return biome.getTerrain().getTerrainHeight((int) x, (int) z, 1.0d, noise);
-    }
+    }*/
 
 }

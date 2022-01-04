@@ -25,13 +25,15 @@ import org.jglrxavpok.hephaistos.nbt.mutable.MutableNBTCompound;
 
 public final class WorldInfo {
 
+    public static int DATA_VERSION = 1;
+
     private final int dataVersion;
     private final String packName;
     private final String dimensionFile;
     private final long seed;
 
-    WorldInfo(int dataVersion, @NotNull String packName, @NotNull String dimensionFile, long seed) {
-        this.dataVersion = dataVersion;
+    WorldInfo(@NotNull String packName, @NotNull String dimensionFile, long seed) {
+        this.dataVersion = DATA_VERSION;
         this.packName = packName;
         this.dimensionFile = dimensionFile;
         this.seed = seed;
@@ -59,6 +61,10 @@ public final class WorldInfo {
 
     public long seed() {
         return seed;
+    }
+
+    public WorldInfo seed(long seed) {
+        return new WorldInfo(packName, dimensionFile, seed);
     }
 
     NBTCompound serialize() {

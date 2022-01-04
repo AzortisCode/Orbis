@@ -41,22 +41,22 @@ public class PaperPlatform implements Platform {
     }
 
     @Override
-    public String getAdaptation() {
+    public @NotNull String adaptation() {
         return "Bukkit";
     }
 
     @Override
-    public Logger getLogger() {
+    public @NotNull Logger logger() {
         return plugin.getSLF4JLogger();
     }
 
     @Override
-    public File getDirectory() {
+    public @NotNull File directory() {
         return plugin.getDataFolder();
     }
 
     @Override
-    public @NotNull ItemFactory getItemFactory() {
+    public @NotNull ItemFactory itemFactory() {
         return itemFactory;
     }
 
@@ -67,7 +67,7 @@ public class PaperPlatform implements Platform {
     }
 
     @Override
-    public Collection<World> getWorlds() {
+    public @NotNull Collection<World> worlds() {
         return new ArrayList<>(plugin.getWorlds());
     }
 

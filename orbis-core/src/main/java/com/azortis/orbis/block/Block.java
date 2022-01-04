@@ -92,7 +92,7 @@ public final class Block implements ConfiguredBlock {
         return states;
     }
 
-    public @NotNull BlockState withProperties(Map<String, String> properties) {
+    public @NotNull BlockState withProperties(@NotNull Map<String, String> properties) {
         BlockState state = this.defaultState;
         for (Map.Entry<String, String> entry : properties.entrySet()) {
             state = state.setValue(propertyMap.get(entry.getKey()), entry.getValue());

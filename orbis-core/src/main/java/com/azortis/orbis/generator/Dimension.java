@@ -18,27 +18,48 @@
 
 package com.azortis.orbis.generator;
 
+import com.azortis.orbis.World;
+import com.azortis.orbis.generator.biome.Distributor;
+import com.azortis.orbis.util.Inject;
+import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
+import lombok.experimental.Accessors;
 
+@Accessors(fluent = true)
 @Getter
-public class Dimension {
+public final class Dimension { // No need to check this class if it contains fields that need injection
 
-    private String name;
-    private long seed;
-    private int minHeight;
-    private int maxHeight;
-    private int fluidHeight;
-    private int interpolationRadius;
+    private final String name;
+    private final int minHeight; // Fair, but I mean, is this a dimension property? Answer yes.
+    private final int maxHeight; // Fair, max is 1024
+    private final int fluidHeight;
+    private final int interpolationRadius; // Pretty much bullshit but hey!
+
+    private @Inject
+    transient World world;
 
     // Distribution
-    private String distributor;
+    @SerializedName("distributor")
+    private final String distributorName;
+    private @Inject(fieldName = "distributorName")
+    transient Distributor distributor;
 
-    // Used for the GSON deserializer
-    private Dimension() {
+    public Dimension(String name, int minHeight, int maxHeight, int fluidHeight, int interpolationRadius, String distributorName) {
+        this.name = name;
+        this.minHeight = minHeight;
+        this.maxHeight = maxHeight;
+        this.fluidHeight = fluidHeight;
+        this.interpolationRadius = interpolationRadius;
+        this.distributorName = distributorName;
     }
 
-    public Dimension(String name) {
-        this.name = name;
+    /**
+     * Checks if {@link Dimension} instance is loaded (properly).
+     *
+     * @return If the Dimension object has been loaded (properly).
+     */
+    public boolean isLoaded() {
+        return world == null || distributor == null;
     }
 
 }

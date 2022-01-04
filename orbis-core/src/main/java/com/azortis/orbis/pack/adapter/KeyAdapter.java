@@ -16,7 +16,7 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.adapter;
+package com.azortis.orbis.pack.adapter;
 
 import com.google.gson.*;
 import net.kyori.adventure.key.Key;

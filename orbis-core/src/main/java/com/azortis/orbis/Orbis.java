@@ -18,9 +18,6 @@
 
 package com.azortis.orbis;
 
-import com.azortis.orbis.adapter.DistributorAdapter;
-import com.azortis.orbis.adapter.KeyAdapter;
-import com.azortis.orbis.adapter.TerrainAdapter;
 import com.azortis.orbis.block.BlockRegistry;
 import com.azortis.orbis.block.property.PropertyRegistry;
 import com.azortis.orbis.generator.biome.Distributor;
@@ -28,6 +25,9 @@ import com.azortis.orbis.generator.terrain.Terrain;
 import com.azortis.orbis.item.ItemFactory;
 import com.azortis.orbis.item.ItemRegistry;
 import com.azortis.orbis.pack.PackManager;
+import com.azortis.orbis.pack.adapter.DistributorAdapter;
+import com.azortis.orbis.pack.adapter.KeyAdapter;
+import com.azortis.orbis.pack.adapter.TerrainAdapter;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import lombok.Getter;
@@ -67,8 +67,8 @@ public final class Orbis {
         if (!initialized) {
             initialized = true;
             Orbis.platform = platform;
-            logger = platform.getLogger();
-            logger.info("Initializing {} adaptation of Orbis", platform.getAdaptation());
+            logger = platform.logger();
+            logger.info("Initializing {} adaptation of Orbis", platform.adaptation());
 
             // Register the type adapters to use in the serialization/deserialization of settings in packs.
             gson = new GsonBuilder().disableHtmlEscaping().setPrettyPrinting()
@@ -82,14 +82,14 @@ public final class Orbis {
             ItemRegistry.init();
 
             // Load managers
-            packManager = new PackManager(platform.getDirectory());
+            packManager = new PackManager(platform.directory());
         }
     }
 
     public static File getDataFile(String dateFileName) {
         if (initialized) {
             try {
-                File dataFolder = new File(platform.getDirectory() + "/data/");
+                File dataFolder = new File(platform.directory() + "/data/");
                 if (!dataFolder.exists() && !dataFolder.mkdirs()) {
                     throw new IllegalStateException("Failed to create data directory");
                 } else {
@@ -112,7 +112,7 @@ public final class Orbis {
 
     @NotNull
     public static ItemFactory getItemFactory() {
-        return platform.getItemFactory();
+        return platform.itemFactory();
     }
 
 }

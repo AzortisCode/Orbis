@@ -21,6 +21,7 @@ package com.azortis.orbis.generator.terrain;
 import com.azortis.orbis.World;
 import com.azortis.orbis.generator.biome.Biome;
 import com.azortis.orbis.generator.noise.OldNoiseGenerator;
+import com.azortis.orbis.util.Inject;
 import lombok.Getter;
 
 @Getter
@@ -29,9 +30,10 @@ public abstract class Terrain {
     protected String name;
     protected String providerId;
 
-    private transient World world;
-
-    private transient Biome biome;
+    private @Inject
+    transient World world;
+    private @Inject(isChild = true)
+    transient Biome biome;
 
     // Used for deserialization for gson, more stable.
     private Terrain() {
@@ -40,14 +42,6 @@ public abstract class Terrain {
     public Terrain(String name, String providerId) {
         this.name = name;
         this.providerId = providerId;
-    }
-
-    public void setWorld(World world) {
-        if (this.world == null) this.world = world;
-    }
-
-    public final void setBiome(Biome biome) {
-        if (biome != null) this.biome = biome;
     }
 
     public abstract double getTerrainHeight(final int x, final int z, double biomeWeight, OldNoiseGenerator noise);

@@ -20,92 +20,128 @@ package com.azortis.orbis;
 
 import com.azortis.orbis.generator.Dimension;
 import com.azortis.orbis.generator.Engine;
+import com.azortis.orbis.generator.SimpleEngine;
 import com.azortis.orbis.pack.Pack;
-import lombok.Getter;
+import com.azortis.orbis.pack.PackLoader;
+import com.azortis.orbis.pack.data.DataAccess;
+import com.azortis.orbis.pack.data.WorldDataAccess;
 import org.jetbrains.annotations.NotNull;
+import org.jglrxavpok.hephaistos.nbt.NBTCompound;
+import org.jglrxavpok.hephaistos.nbt.NBTException;
+import org.jglrxavpok.hephaistos.nbt.NBTReader;
+import org.jglrxavpok.hephaistos.nbt.NBTWriter;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.StandardOpenOption;
 import java.util.Objects;
 
 /**
  * A representation of a world/instance for core package
  */
 public abstract class World {
-    //name, folder, installed, settings folder, dimension, engine
+    // TODO restructure fields, make it more clean, but this outta work for now
 
-    @Getter
     private final String name;
-    @Getter
-    private final File folder;
-    @Getter
+    private final File directory;
     private final File settingsFolder;
 
+    // WorldInfo
     private final File worldInfoFile;
     private WorldInfo worldInfo;
 
-    @Getter
-    private final boolean loaded = false;
-    @Getter
+    // Status booleans
+    private boolean loaded = false;
     private boolean installed = false;
-    @Getter
+
+    private final DataAccess data;
     private Dimension dimension;
-    @Getter
     private Engine engine;
 
-    public World(String name, File folder) {
+    public World(String name, File directory) {
         this.name = name;
-        this.folder = folder;
-        this.settingsFolder = new File(folder, "/settings/");
+        this.directory = directory;
+        this.settingsFolder = new File(directory, "/settings/");
         if (settingsFolder.exists() && Objects.requireNonNull(settingsFolder.listFiles()).length > 0) installed = true;
-
-        this.worldInfoFile = new File(folder, "world-info.json");
-        try {
-            if (!worldInfoFile.exists() && worldInfoFile.createNewFile()) {
-                //worldInfo = new WorldInfo(Orbis.SETTINGS_VERSION);
-                String containerJson = Orbis.getGson().toJson(worldInfo);
-                Files.write(worldInfoFile.toPath(), containerJson.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.WRITE);
-            } else {
-                reloadWorldInfo();
-            }
-        } catch (IOException ex) {
-            Orbis.getLogger().error("Failed to create container-info.json file for container {}", name);
+        this.data = new WorldDataAccess(this);
+        this.worldInfoFile = new File(directory, "world-info.dat");
+        if (worldInfoFile.exists()) {
+            installed = true;
+            reloadWorldInfo();
         }
     }
 
-    public void load() {
+    public void load(long seed) {
         if (!loaded) {
-            /*OldRegistry<Dimension> dimensionOldRegistry = Orbis.getRegistryOld(Dimension.class);
-            assert dimensionOldRegistry != null;
-            this.dimension = dimensionOldRegistry.loadType(this, worldInfo.getDimensionFile());
-            this.engine = new SimpleEngine(this);
-            this.loaded = true;*/
+            if (worldInfo.seed() == 0) {
+                worldInfo = worldInfo.seed(seed);
+                saveWorldInfo();
+            }
+            try {
+                dimension = PackLoader.loadDimension(this);
+                engine = new SimpleEngine(this); // TODO create actual engine impl
+                loaded = true;
+            } catch (IOException | NoSuchFieldException | IllegalAccessException e) {
+                e.printStackTrace(); // TODO catch these errors earlier in PackLoader for more constructive feedback
+            }
         }
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public File getDirectory() {
+        return directory;
+    }
+
+    public File getSettingsFolder() {
+        return settingsFolder;
+    }
+
+    public WorldInfo getWorldInfo() {
+        return worldInfo;
+    }
+
+    public DataAccess getData() {
+        return data;
     }
 
     public void saveWorldInfo() {
         Orbis.getLogger().info("Saving container-info for {}", name);
         try {
             if (worldInfoFile.delete()) {
-                final String containerJson = Orbis.getGson().toJson(worldInfo);
-                Files.write(worldInfoFile.toPath(), containerJson.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.WRITE);
+                NBTWriter writer = new NBTWriter(worldInfoFile);
+                writer.writeRaw(worldInfo.serialize());
             }
         } catch (IOException ex) {
-            Orbis.getLogger().error("Failed to save container-info.json file for container {}", name);
+            Orbis.getLogger().error("Failed to save world-info.dat file for world {}", name);
         }
     }
 
     public void reloadWorldInfo() {
         Orbis.getLogger().info("Loading world-info for {}", name);
         try {
-            this.worldInfo = Orbis.getGson().fromJson(new FileReader(worldInfoFile), WorldInfo.class);
-        } catch (FileNotFoundException ex) {
-            Orbis.getLogger().error("world-info file not found for container: {}", name);
+            NBTReader reader = new NBTReader(worldInfoFile);
+            worldInfo = new WorldInfo((NBTCompound) reader.read());
+        } catch (IOException | NBTException e) {
+            Orbis.getLogger().error("Failed to load word-info for world {}", name);
         }
+    }
+
+    public boolean isLoaded() {
+        return loaded;
+    }
+
+    public boolean isInstalled() {
+        return installed;
+    }
+
+    public Dimension getDimension() {
+        return dimension;
+    }
+
+    public Engine getEngine() {
+        return engine;
     }
 
     /**
@@ -116,20 +152,16 @@ public abstract class World {
      */
     public void installPack(@NotNull Pack pack, boolean override) {
         if (!installed || override) {
-            /*if (override) {
+            if (override) {
                 if (!settingsFolder.delete()) {
-                    Orbis.getLogger().error("Couldn't reinstall pack: {}, for container: {}", pack.getName(), this.name);
+                    Orbis.getLogger().error("Couldn't reinstall pack: {}, for world: {}", pack.getName(), name);
                     return;
                 }
             }
             Orbis.getLogger().info("Installing pack {} version {} for {}", pack.getName(), pack.getPackVersion(), name);
             Orbis.getPackManager().extractPack(settingsFolder, pack);
-            if (worldInfo.getPackName() == null) {
-                worldInfo.setPackName(pack.getName());
-                worldInfo.setDimensionFile(pack.getDimensionFile());
-                saveWorldInfo();
-            }
-            installed = true;*/
+            worldInfo = new WorldInfo(pack.getName(), pack.getDimensionFile(), 0L);
+            installed = true;
         }
     }
 }

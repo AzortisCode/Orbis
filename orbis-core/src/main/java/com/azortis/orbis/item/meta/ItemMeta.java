@@ -32,19 +32,19 @@ public interface ItemMeta {
 
     boolean hasDisplayName();
 
-    @Nullable Component getDisplayName();
+    @Nullable Component displayName();
 
-    void setDisplayName(@Nullable Component displayName);
+    void displayName(@Nullable Component displayName);
 
-    @NotNull List<Component> getLore();
+    @NotNull List<Component> lore();
 
-    void setLore(@NotNull List<Component> lore);
+    void lore(@NotNull List<Component> lore);
 
     boolean hasCustomModelData();
 
-    int getCustomModelData();
+    int customModelData();
 
-    void setCustomModelData(int customModelData);
+    void customModelData(int customModelData);
 
     boolean hasEnchants();
 
@@ -52,14 +52,14 @@ public interface ItemMeta {
 
     int getEnchantLevel(@NotNull Enchantment enchantment);
 
-    @NotNull Map<Enchantment, Integer> getEnchants();
+    @NotNull Map<Enchantment, Integer> enchants();
 
     boolean addEnchant(@NotNull Enchantment enchantment, int level, boolean ignoreLevelRestriction);
 
     boolean removeEnchant(@NotNull Enchantment enchantment);
 
     default boolean hasConflictingEnchant(@NotNull Enchantment enchantment) {
-        Set<Enchantment> enchantments = getEnchants().keySet();
+        Set<Enchantment> enchantments = enchants().keySet();
         boolean isConflicting = false;
         for (Enchantment enchantment1 : enchantments) {
             if (enchantment.isCompatibleWith(enchantment)) {
@@ -74,21 +74,21 @@ public interface ItemMeta {
 
     void removeItemFlags(@NotNull ItemFlag... itemFlags);
 
-    @NotNull Set<ItemFlag> getItemFlags();
+    @NotNull Set<ItemFlag> itemFlags();
 
     boolean hasItemFlag(@NotNull ItemFlag itemFlag);
 
-    int getDamage();
+    int damage();
 
-    void setDamage(int damage);
+    void damage(int damage);
 
-    int getRepairCost();
+    int repairCost();
 
-    void setRepairCost(int repairCost);
+    void repairCost(int repairCost);
 
-    boolean isUnbreakable();
+    boolean unbreakable();
 
-    void setUnbreakable(boolean unbreakable);
+    void unbreakable(boolean unbreakable);
 
     //TODO Add Attributes & Placeable/Destroyable key support
 

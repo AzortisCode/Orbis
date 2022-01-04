@@ -49,11 +49,11 @@ public class OrbisPlugin extends JavaPlugin {
             if (pack != null) {
                 return new PaperChunkGenerator(this, worldName, pack);
             } else {
-                Orbis.getLogger().error("No pack by the name {} exists!", packName);
+                Orbis.getLogger().error("No pack by the fieldName {} exists!", packName);
                 return super.getDefaultWorldGenerator(worldName, packName);
             }
         }
-        Orbis.getLogger().error("No pack name specified for world {}", worldName);
+        Orbis.getLogger().error("No pack fieldName specified for world {}", worldName);
         return super.getDefaultWorldGenerator(worldName, null);
     }
 
@@ -61,7 +61,7 @@ public class OrbisPlugin extends JavaPlugin {
     public PaperWorld loadWorld(@NotNull World world, @NotNull Pack pack) {
         PaperWorld paperWorld = new PaperWorld(world);
         paperWorld.installPack(pack, false);
-        if (!paperWorld.isLoaded()) paperWorld.load();
+        if (!paperWorld.isLoaded()) paperWorld.load(world.getSeed());
         worldMap.put(world.getName(), paperWorld);
         return paperWorld;
     }

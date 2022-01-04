@@ -50,22 +50,22 @@ public class PaperItemMeta implements ItemMeta {
     }
 
     @Override
-    public @Nullable Component getDisplayName() {
+    public @Nullable Component displayName() {
         return handle.displayName();
     }
 
     @Override
-    public void setDisplayName(@Nullable Component displayName) {
+    public void displayName(@Nullable Component displayName) {
         handle.displayName(displayName);
     }
 
     @Override
-    public @NotNull List<Component> getLore() {
+    public @NotNull List<Component> lore() {
         return handle.hasLore() ? Objects.requireNonNull(handle.lore()) : Collections.emptyList();
     }
 
     @Override
-    public void setLore(@Nullable List<Component> lore) {
+    public void lore(@Nullable List<Component> lore) {
         handle.lore(lore);
     }
 
@@ -75,12 +75,12 @@ public class PaperItemMeta implements ItemMeta {
     }
 
     @Override
-    public int getCustomModelData() {
+    public int customModelData() {
         return handle.getCustomModelData();
     }
 
     @Override
-    public void setCustomModelData(int customModelData) {
+    public void customModelData(int customModelData) {
         handle.setCustomModelData(customModelData);
     }
 
@@ -100,7 +100,7 @@ public class PaperItemMeta implements ItemMeta {
     }
 
     @Override
-    public @NotNull Map<Enchantment, Integer> getEnchants() {
+    public @NotNull Map<Enchantment, Integer> enchants() {
         Map<Enchantment, Integer> enchantMap = new HashMap<>();
         for (Map.Entry<org.bukkit.enchantments.Enchantment, Integer> entry : handle.getEnchants().entrySet()) {
             enchantMap.put(Enchantment.fromKey(entry.getKey().getKey()), entry.getValue());
@@ -133,7 +133,7 @@ public class PaperItemMeta implements ItemMeta {
     }
 
     @Override
-    public @NotNull Set<ItemFlag> getItemFlags() {
+    public @NotNull Set<ItemFlag> itemFlags() {
         return handle.getItemFlags().stream().map(PaperItemMeta::fromPaper).collect(Collectors.toSet());
     }
 
@@ -143,32 +143,32 @@ public class PaperItemMeta implements ItemMeta {
     }
 
     @Override
-    public int getDamage() {
+    public int damage() {
         return ((Damageable) handle).getDamage();
     }
 
     @Override
-    public void setDamage(int damage) {
+    public void damage(int damage) {
         ((Damageable) handle).setDamage(damage);
     }
 
     @Override
-    public int getRepairCost() {
+    public int repairCost() {
         return ((Repairable) handle).getRepairCost();
     }
 
     @Override
-    public void setRepairCost(int repairCost) {
+    public void repairCost(int repairCost) {
         ((Repairable) handle).setRepairCost(repairCost);
     }
 
     @Override
-    public boolean isUnbreakable() {
+    public boolean unbreakable() {
         return handle.isUnbreakable();
     }
 
     @Override
-    public void setUnbreakable(boolean unbreakable) {
+    public void unbreakable(boolean unbreakable) {
         handle.setUnbreakable(unbreakable);
     }
 
@@ -176,27 +176,27 @@ public class PaperItemMeta implements ItemMeta {
         MutableNBTCompound tag = new MutableNBTCompound();
         MutableNBTCompound displayTag = new MutableNBTCompound();
         if (hasDisplayName()) {
-            assert getDisplayName() != null : "hasDisplayName returns true, but the value is null!";
-            displayTag.set("Name", NBT.String(GsonComponentSerializer.gson().serialize(getDisplayName())));
+            assert displayName() != null : "hasDisplayName returns true, but the value is null!";
+            displayTag.set("Name", NBT.String(GsonComponentSerializer.gson().serialize(displayName())));
         }
-        if (!getLore().isEmpty()) {
+        if (!lore().isEmpty()) {
             List<NBTString> lore = new ArrayList<>();
-            for (Component loreLine : getLore()) {
+            for (Component loreLine : lore()) {
                 lore.add(NBT.String(GsonComponentSerializer.gson().serialize(loreLine)));
             }
             displayTag.set("Lore", NBT.List(NBTType.TAG_String, lore));
         }
         if (!displayTag.isEmpty()) tag.set("display", displayTag.toCompound());
-        if (!getItemFlags().isEmpty()) {
+        if (!itemFlags().isEmpty()) {
             byte hideFlags = 0;
-            for (ItemFlag itemFlag : getItemFlags()) {
+            for (ItemFlag itemFlag : itemFlags()) {
                 hideFlags |= getBitModifier(itemFlag);
             }
             tag.set("HideFlags", NBT.Byte(hideFlags)); // Officially value is stored as an int, but max value is 127
         }
-        if (!getEnchants().isEmpty()) {
+        if (!enchants().isEmpty()) {
             List<NBTCompound> enchants = new ArrayList<>();
-            for (Map.Entry<Enchantment, Integer> entry : getEnchants().entrySet()) {
+            for (Map.Entry<Enchantment, Integer> entry : enchants().entrySet()) {
                 MutableNBTCompound enchant = new MutableNBTCompound();
                 enchant.set("id", NBT.String(entry.getKey().key().asString()));
                 enchant.set("lvl", NBT.Int(entry.getValue()));
@@ -204,15 +204,15 @@ public class PaperItemMeta implements ItemMeta {
             }
             tag.set("Enchantments", NBT.List(NBTType.TAG_Compound, enchants));
         }
-        if (getRepairCost() > 0) {
-            tag.set("RepairCost", NBT.Int(getRepairCost()));
+        if (repairCost() > 0) {
+            tag.set("RepairCost", NBT.Int(repairCost()));
         }
-        if (getDamage() > 0) {
-            tag.set("Damage", NBT.Int(getDamage()));
+        if (damage() > 0) {
+            tag.set("Damage", NBT.Int(damage()));
         }
-        tag.set("Unbreakable", NBT.Boolean(isUnbreakable()));
+        tag.set("Unbreakable", NBT.Boolean(unbreakable()));
         if (hasCustomModelData()) {
-            tag.set("CustomModelData", NBT.Int(getCustomModelData()));
+            tag.set("CustomModelData", NBT.Int(customModelData()));
         }
         return tag;
     }

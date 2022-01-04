@@ -28,16 +28,16 @@ import java.util.Collection;
 
 public interface Platform {
 
-    String getAdaptation();
+    @NotNull String adaptation();
 
-    Logger getLogger();
+    @NotNull Logger logger();
 
-    File getDirectory();
+    @NotNull File directory();
 
-    @NotNull ItemFactory getItemFactory();
+    @NotNull ItemFactory itemFactory();
 
     @Nullable World getWorld(String name);
 
-    Collection<World> getWorlds();
+    @NotNull Collection<World> worlds();
 
 }
