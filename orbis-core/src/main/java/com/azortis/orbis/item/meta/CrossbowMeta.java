@@ -28,10 +28,10 @@ public interface CrossbowMeta extends ItemMeta {
 
     void addChargedProjectile(@NotNull ItemStack projectile);
 
-    @NotNull List<ItemStack> chargedProjectiles();
+    @NotNull List<ItemStack> getChargedProjectiles();
 
     boolean hasChargedProjectiles();
 
-    void chargedProjectiles(@Nullable List<ItemStack> chargedProjectiles);
+    void setChargedProjectiles(@Nullable List<ItemStack> chargedProjectiles);
 
 }

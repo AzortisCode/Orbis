@@ -49,7 +49,7 @@ public class PaperCrossbowMeta extends PaperItemMeta implements CrossbowMeta {
     }
 
     @Override
-    public @NotNull List<ItemStack> chargedProjectiles() {
+    public @NotNull List<ItemStack> getChargedProjectiles() {
         ImmutableList.Builder<ItemStack> chargedProjectiles = ImmutableList.builder();
         crossbowHandle.getChargedProjectiles().forEach(itemStack ->
                 chargedProjectiles.add(PaperItemStack.fromPaper(itemStack)));
@@ -62,7 +62,7 @@ public class PaperCrossbowMeta extends PaperItemMeta implements CrossbowMeta {
     }
 
     @Override
-    public void chargedProjectiles(@Nullable List<ItemStack> chargedProjectiles) {
+    public void setChargedProjectiles(@Nullable List<ItemStack> chargedProjectiles) {
         if (chargedProjectiles == null || chargedProjectiles.isEmpty()) {
             crossbowHandle.setChargedProjectiles(null);
         } else {
@@ -77,7 +77,7 @@ public class PaperCrossbowMeta extends PaperItemMeta implements CrossbowMeta {
     protected MutableNBTCompound serialize() {
         MutableNBTCompound compound = super.serialize();
         List<NBTCompound> chargedProjectiles = new ArrayList<>();
-        for (ItemStack chargedProjectile : chargedProjectiles()) {
+        for (ItemStack chargedProjectile : getChargedProjectiles()) {
             chargedProjectiles.add(chargedProjectile.serialize());
         }
         compound.set("ChargedProjectiles", NBT.List(NBTType.TAG_Compound, chargedProjectiles));
