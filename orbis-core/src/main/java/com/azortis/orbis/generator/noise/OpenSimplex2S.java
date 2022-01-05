@@ -18,19 +18,28 @@
 
 package com.azortis.orbis.generator.noise;
 
-public class OpenSimplex2S implements OldNoiseGenerator {
+import com.azortis.orbis.util.Invoke;
+import net.kyori.adventure.key.Key;
 
-    private final FastNoise noise;
+public final class OpenSimplex2S extends NoiseGenerator{
 
-    public OpenSimplex2S(long seed) {
-        noise = new FastNoise(seed);
+    private transient FastNoise noise;
+
+    public OpenSimplex2S(Key type, long seed, double frequency) {
+        super(type, seed, frequency);
+    }
+
+    @Invoke
+    private void setupNoise() {
+        noise = new FastNoise();
         noise.setNoiseType(FastNoise.NoiseType.OpenSimplex2S);
-        noise.setFrequency(1);
+        noise.setSeed(getNoiseSeed());
+        noise.setFrequency(frequency);
     }
 
     @Override
     public double noise(double x) {
-        return noise.getNoise(x, 0);
+        return noise.getNoise(x,0);
     }
 
     @Override

@@ -18,29 +18,37 @@
 
 package com.azortis.orbis.generator.noise;
 
-public class CellularOldNoise implements OldNoiseGenerator {
+import com.azortis.orbis.util.Invoke;
+import net.kyori.adventure.key.Key;
 
-    private final FastNoise noise;
+public final class OpenSimplex2 extends NoiseGenerator {
 
-    public CellularOldNoise(long seed) {
-        noise = new FastNoise(seed);
-        noise.setNoiseType(FastNoise.NoiseType.Cellular);
-        noise.setCellularReturnType(FastNoise.CellularReturnType.CellValue);
-        noise.setCellularDistanceFunction(FastNoise.CellularDistanceFunction.Hybrid);
+    private transient FastNoise noise;
+
+    public OpenSimplex2(Key type, long seed, double frequency) {
+        super(type, seed, frequency);
+    }
+
+    @Invoke
+    private void setupNoise() {
+        noise = new FastNoise();
+        noise.setNoiseType(FastNoise.NoiseType.OpenSimplex2);
+        noise.setSeed(getNoiseSeed());
+        noise.setFrequency(frequency);
     }
 
     @Override
     public double noise(double x) {
-        return 0;
+        return noise.getNoise(x, 0);
     }
 
     @Override
-    public double noise(double x, double y) {
-        return 0;
+    public double noise(double x, double z) {
+        return noise.getNoise(x, z);
     }
 
     @Override
     public double noise(double x, double y, double z) {
-        return 0;
+        return noise.getNoise(x, y, z);
     }
 }

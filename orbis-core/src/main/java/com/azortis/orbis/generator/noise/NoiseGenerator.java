@@ -22,31 +22,30 @@ import com.azortis.orbis.World;
 import com.azortis.orbis.util.Inject;
 import net.kyori.adventure.key.Key;
 
+@Inject
 public abstract class NoiseGenerator {
 
-    private Key type;
-    private long seed;
-    private double frequency;
+    protected final Key type;
+    protected final long seed;
+    protected final double frequency;
 
-    private @Inject
-    transient World world;
+    @Inject
+    private transient World world;
 
-    public double sample(double x) {
-        return sample(x, seed);
+    public NoiseGenerator(Key type, long seed, double frequency) {
+        this.type = type;
+        this.seed = seed;
+        this.frequency = frequency;
     }
 
-    public double sample(double x, double z) {
-        return sample(x, z, seed);
+    public abstract double noise(double x);
+
+    public abstract double noise(double x, double z);
+
+    public abstract double noise(double x, double y, double z);
+
+    protected long getNoiseSeed() {
+        return ((world.getWorldInfo().seed()) << 16) & (seed << 32); // Really just a fancy way to mix 2 seeds
     }
-
-    public double sample(double x, double y, double z) {
-        return sample(x, y, z, seed);
-    }
-
-    protected abstract double sample(double x, long seed);
-
-    protected abstract double sample(double x, double z, long seed);
-
-    protected abstract double sample(double x, double y, double z, long seed);
 
 }

@@ -60,7 +60,7 @@ public class ChunkPointGatherer<TTag> {
 
                 // If so, remove it.
                 // Copy the last value to this value, and remove the last,
-                // to avoid shifting because order doesn't matter.
+                // to avoid shifting because when doesn't matter.
                 int lastIndex = worldPoints.size() - 1;
                 worldPoints.set(i, worldPoints.get(lastIndex));
                 worldPoints.remove(lastIndex);

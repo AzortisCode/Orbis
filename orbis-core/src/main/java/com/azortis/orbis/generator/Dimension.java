@@ -35,14 +35,14 @@ public final class Dimension { // No need to check this class if it contains fie
     private final int fluidHeight;
     private final int interpolationRadius; // Pretty much bullshit but hey!
 
-    private @Inject
-    transient World world;
+    @Inject
+    private transient World world;
 
     // Distribution
     @SerializedName("distributor")
     private final String distributorName;
-    private @Inject(fieldName = "distributorName")
-    transient Distributor distributor;
+    @Inject(fieldName = "distributorName")
+    private transient Distributor distributor;
 
     public Dimension(String name, int minHeight, int maxHeight, int fluidHeight, int interpolationRadius, String distributorName) {
         this.name = name;

@@ -21,19 +21,17 @@ package com.azortis.orbis.generator;
 import com.azortis.orbis.World;
 import com.azortis.orbis.generator.biome.BiomeGrid;
 import com.azortis.orbis.generator.interpolation.Interpolator;
-import com.azortis.orbis.generator.noise.OldNoiseGenerator;
-import com.azortis.orbis.generator.noise.PerlinOldNoise;
 
 @Deprecated
 public class SimpleEngine extends Engine {
 
-    private final OldNoiseGenerator noise;
+    //private final OldNoiseGenerator noise;
     //private final Distributor distributor;
     private final Interpolator interpolator = new Interpolator();
 
     public SimpleEngine(World world) {
         super(world);
-        this.noise = new PerlinOldNoise(world.getWorldInfo().seed());
+        //this.noise = new PerlinOldNoise(world.getWorldInfo().seed());
         /*this.distributor = Objects.requireNonNull(Orbis.getGeneratorRegistryOld(Distributor.class))
                 .loadType(world, getDimension().getDistributorName());*/
     }

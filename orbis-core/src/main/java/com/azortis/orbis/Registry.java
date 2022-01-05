@@ -21,6 +21,9 @@ package com.azortis.orbis;
 import com.azortis.orbis.generator.biome.Distributor;
 import com.azortis.orbis.generator.biome.SimpleDistributor;
 import com.azortis.orbis.generator.biome.complex.ComplexDistributor;
+import com.azortis.orbis.generator.noise.NoiseGenerator;
+import com.azortis.orbis.generator.noise.OpenSimplex2;
+import com.azortis.orbis.generator.noise.OpenSimplex2S;
 import com.azortis.orbis.generator.terrain.Terrain;
 import com.azortis.orbis.generator.terrain.defaults.ConfigTerrain;
 import com.azortis.orbis.generator.terrain.defaults.PlainsTerrain;
@@ -32,6 +35,9 @@ import java.util.Map;
 
 public final class Registry<T> {
 
+    public static final Registry<NoiseGenerator> NOISE_GENERATOR = new Registry<>(Map.of(
+            Key.key("fastnoise:opensimplex2"), OpenSimplex2.class, Key.key("fastnoise:opensimplex2"), OpenSimplex2S.class
+    ));
     public static final Registry<Distributor> DISTRIBUTOR = new Registry<>(Map.of(
             Key.key("orbis:simple"), SimpleDistributor.class, Key.key("orbis:complex"), ComplexDistributor.class
     ));

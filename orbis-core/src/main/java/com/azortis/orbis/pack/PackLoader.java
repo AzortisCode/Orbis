@@ -23,14 +23,22 @@ import com.azortis.orbis.World;
 import com.azortis.orbis.WorldInfo;
 import com.azortis.orbis.generator.Dimension;
 import com.azortis.orbis.util.Inject;
+import com.azortis.orbis.util.Invoke;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public final class PackLoader {
+    private static final Map<World, Map<Method, Object>> postInjectionMethods = new HashMap<>();
 
     /**
      * Loads a {@link Dimension} with the context of the specified {@link World}
@@ -40,9 +48,10 @@ public final class PackLoader {
      * @throws IOException If any file read operation fails
      */
     public static Dimension loadDimension(@NotNull World world)
-            throws IOException, IllegalAccessException, NoSuchFieldException {
+            throws IOException, IllegalAccessException, NoSuchFieldException, InvocationTargetException {
         File packFolder = world.getSettingsFolder();
         WorldInfo worldInfo = world.getWorldInfo();
+        postInjectionMethods.put(world, new HashMap<>());
 
         // Load initial Dimension object
         File dimensionFile = new File(packFolder, worldInfo.dimensionFile());
@@ -61,31 +70,39 @@ public final class PackLoader {
                         String configName = (String) configNameField.get(dimension);
                         File dataFile = world.getData().getDataFile(field.getType(), configName);
                         Object fieldObject = Orbis.getGson().fromJson(new FileReader(dataFile), field.getType());
-                        setField(dimension, field, fieldObject);
 
-                        if (field.getType().isAnnotationPresent(Inject.class)) {
-                            // Start a generalized loop for every subsequent object
-                            injectDataTree(world, dimension, dimension, fieldObject);
+                        if (shouldInject(fieldObject.getClass())) {
+                            classInjection(world, dimension, dimension, fieldObject);
                         }
                     }
                 }
-            } else if (field.getType().isAnnotationPresent(Inject.class)) {
-                // Start a generalized loop for every subsequent object
-                field.setAccessible(true);
-                Object fieldObject = field.get(dimension);
-                field.setAccessible(false);
-                injectDataTree(world, dimension, dimension, fieldObject);
+            } else if (shouldInject(field, dimension)) {
+                defaultInjection(world, dimension, dimension, field);
             }
         }
+        for (Map.Entry<Method, Object> entry : postInjectionMethods.get(world).entrySet()) {
+            entry.getKey().invoke(entry.getValue());
+        }
+        postInjectionMethods.remove(world);
         return dimension;
     }
 
-    private static void injectDataTree(@NotNull World world, @NotNull Dimension dimension,
+    // Called if a Class has been annotated with @Inject
+    private static void classInjection(@NotNull World world, @NotNull Dimension dimension,
                                        @NotNull Object parentObject, @NotNull Object rootObject)
-            throws IOException, IllegalAccessException, NoSuchFieldException {
-        for (Field field : rootObject.getClass().getDeclaredFields()) {
+            throws NoSuchFieldException, IllegalAccessException, InvocationTargetException, IOException {
+        for (Method method : getAllMethods(rootObject.getClass())) {
+            if (method.isAnnotationPresent(Invoke.class)) {
+                if (method.getAnnotation(Invoke.class).when() == Invoke.Order.PRE_INJECTION) {
+                    method.invoke(rootObject);
+                } else if (method.getAnnotation(Invoke.class).when() == Invoke.Order.POST_INJECTION) {
+                    postInjectionMethods.get(world).put(method, rootObject);
+                }
+            }
+        }
+
+        for (Field field : getAllFields(rootObject.getClass())) {
             if (field.isAnnotationPresent(Inject.class)) {
-                // World and Dimension are considered global injectables
                 if (field.getType() == World.class) {
                     setField(rootObject, field, world);
                 } else if (field.getType() == Dimension.class) {
@@ -93,29 +110,109 @@ public final class PackLoader {
                 } else {
                     Inject inject = field.getAnnotation(Inject.class);
                     if (inject.isChild()) {
-                        // Fields that are child will not be explored any further, as that would result in going up the
-                        // tree which has 0 use.
                         setField(rootObject, field, parentObject);
                     } else if (!inject.fieldName().equalsIgnoreCase("")) {
                         String name = inject.fieldName();
-                        Field configNameField = rootObject.getClass().getDeclaredField(name);
-                        String configName = (String) configNameField.get(rootObject);
-                        File dataFile = world.getData().getDataFile(field.getType(), configName);
-                        Object fieldObject = Orbis.getGson().fromJson(new FileReader(dataFile), field.getType());
-                        setField(rootObject, field, fieldObject);
-
-                        if (field.getType().isAnnotationPresent(Inject.class)) {
-                            injectDataTree(world, dimension, rootObject, fieldObject);
-                        }
+                        nameInjection(world, dimension, rootObject, field, name);
                     }
                 }
-            } else if (field.getType().isAnnotationPresent(Inject.class)) {
-                field.setAccessible(true);
-                Object fieldObject = field.get(dimension);
-                field.setAccessible(false);
-                injectDataTree(world, dimension, rootObject, fieldObject);
             }
         }
+
+        for (Method method : getAllMethods(rootObject.getClass())) {
+            if (method.isAnnotationPresent(Invoke.class) &&
+                    method.getAnnotation(Invoke.class).when() == Invoke.Order.MID_INJECTION) {
+                method.invoke(rootObject);
+            }
+        }
+
+        for (Field field : getAllFields(rootObject.getClass())) {
+            if (shouldInject(field, rootObject)) {
+                defaultInjection(world, dimension, rootObject, field);
+            }
+        }
+
+        for (Method method : getAllMethods(rootObject.getClass())) {
+            if (method.isAnnotationPresent(Invoke.class) &&
+                    method.getAnnotation(Invoke.class).when() == Invoke.Order.POST_CLASS_INJECTION) {
+                method.invoke(rootObject);
+            }
+        }
+    }
+
+    // Called if a field in a class that is being injected its class has been annotated with @Inject
+    private static void defaultInjection(@NotNull World world, @NotNull Dimension dimension,
+                                         @NotNull Object rootObject, @NotNull Field field)
+            throws NoSuchFieldException, IllegalAccessException, InvocationTargetException, IOException {
+        field.setAccessible(true);
+        Object fieldObject = field.get(rootObject);
+        field.setAccessible(false);
+        classInjection(world, dimension, rootObject, fieldObject);
+    }
+
+    // Called if a field in a class that is being injected has been annotated with @Inject that specifies the name of
+    // another field
+    private static void nameInjection(@NotNull World world, @NotNull Dimension dimension,
+                                      @NotNull Object rootObject, @NotNull Field field, @NotNull String name)
+            throws NoSuchFieldException, IllegalAccessException, InvocationTargetException, IOException {
+        Field configNameField = rootObject.getClass().getDeclaredField(name);
+        String configName = (String) configNameField.get(rootObject);
+        File dataFile = world.getData().getDataFile(field.getType(), configName);
+        Object fieldObject = Orbis.getGson().fromJson(new FileReader(dataFile), field.getType());
+        setField(rootObject, field, fieldObject);
+    }
+
+    private static boolean shouldInject(final Field field, Object rootObject) throws IllegalAccessException {
+        field.setAccessible(true);
+        Object fieldObject = field.get(rootObject);
+        field.setAccessible(false);
+        return shouldInject(fieldObject.getClass());
+    }
+
+    private static boolean shouldInject(final Class<?> type) {
+        boolean inject = type.isAnnotationPresent(Inject.class);
+        if (inject) return true;
+        Class<?> superType = type;
+        while (superType != null) {
+            superType = superType.getSuperclass();
+            if (superType == Object.class) {
+                superType = null;
+            } else {
+                inject = superType.isAnnotationPresent(Inject.class);
+                if (inject) superType = null;
+            }
+        }
+        return inject;
+    }
+
+    // Get all the methods from a class type, including ones its inheriting from superclasses
+    private static List<Method> getAllMethods(final Class<?> type) {
+        List<Method> methods = Arrays.asList(type.getDeclaredMethods());
+        Class<?> superType = type;
+        while (superType != null) {
+            superType = superType.getSuperclass();
+            if (superType == Object.class) {
+                superType = null;
+            } else {
+                methods.addAll(Arrays.asList(superType.getDeclaredMethods()));
+            }
+        }
+        return methods;
+    }
+
+    // Get all the fields from a class type, including ones its inheriting from superclasses
+    private static List<Field> getAllFields(final Class<?> type) {
+        List<Field> fields = Arrays.asList(type.getDeclaredFields());
+        Class<?> superType = type;
+        while (superType != null) {
+            superType = superType.getSuperclass();
+            if (superType == Object.class) {
+                superType = null;
+            } else {
+                fields.addAll(Arrays.asList(superType.getDeclaredFields()));
+            }
+        }
+        return fields;
     }
 
     private static void setField(@NotNull Object instance, @NotNull Field field, @NotNull Object fieldInstance)

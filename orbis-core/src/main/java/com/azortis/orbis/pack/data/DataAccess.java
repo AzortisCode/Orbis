@@ -45,6 +45,12 @@ public interface DataAccess {
 
     @NotNull List<File> getDistributorFiles();
 
-    @NotNull List<String> getDistributorEntries();
+    @NotNull List<String> getDistributors();
+
+    File getTerrainFile(@NotNull String terrainFileName) throws FileNotFoundException;
+
+    @NotNull List<File> getTerrainFiles();
+
+    @NotNull List<String> getTerrainGenerators();
 
 }

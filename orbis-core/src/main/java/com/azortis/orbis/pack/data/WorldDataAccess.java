@@ -48,19 +48,47 @@ public final class WorldDataAccess implements DataAccess {
 
     @Override
     public @NotNull List<File> getDistributorFiles() {
-        File distributorDirectory = new File(world.getSettingsFolder() + DISTRIBUTOR_FOLDER);
-        if (distributorDirectory.exists()) {
-            File[] directoryFiles = distributorDirectory.listFiles(File::isFile);
-            if (directoryFiles != null) {
-                return Arrays.asList(directoryFiles);
+        return getFileEntries(DISTRIBUTOR_FOLDER);
+    }
+
+    @Override
+    public @NotNull List<String> getDistributors() {
+        return getEntries(getDistributorFiles());
+    }
+
+    @Override
+    public File getTerrainFile(@NotNull String terrainFileName) throws FileNotFoundException {
+        File terrainFile = new File(world.getSettingsFolder() + TERRAIN_FOLDER,
+                terrainFileName + ".json");
+        if (terrainFile.exists()) {
+            return terrainFile;
+        }
+        throw new FileNotFoundException("No terrain file by the fieldName " + terrainFileName + " exists in " + world);
+    }
+
+    @Override
+    public @NotNull List<File> getTerrainFiles() {
+        return getFileEntries(TERRAIN_FOLDER);
+    }
+
+    @Override
+    public @NotNull List<String> getTerrainGenerators() {
+        return getEntries(getTerrainFiles());
+    }
+
+    private @NotNull List<File> getFileEntries(@NotNull String directory) {
+        File directoryFile = new File(world.getSettingsFolder() + directory);
+        if (directoryFile.exists()) {
+            File[] entryFiles = directoryFile.listFiles(File::isFile);
+            if (entryFiles != null) {
+                return Arrays.asList(entryFiles);
             }
         }
         return Collections.emptyList();
     }
 
-    @Override
-    public @NotNull List<String> getDistributorEntries() {
-        return getDistributorFiles().stream().map(File::getName).map(FilenameUtils::removeExtension)
+    private @NotNull List<String> getEntries(@NotNull List<File> entryFiles) {
+        return entryFiles.stream().map(File::getName).map(FilenameUtils::removeExtension)
                 .collect(Collectors.toList());
     }
 

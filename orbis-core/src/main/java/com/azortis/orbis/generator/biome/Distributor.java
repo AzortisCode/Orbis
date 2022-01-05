@@ -19,16 +19,20 @@
 package com.azortis.orbis.generator.biome;
 
 import com.azortis.orbis.World;
+import com.azortis.orbis.util.Inject;
+import com.azortis.orbis.util.Invoke;
 import net.kyori.adventure.key.Key;
 
 import java.io.File;
 
+@Inject
 public abstract class Distributor {
 
     private String name;
     private Key providerKey;
+
     private transient World world;
-    private transient File settingsFolder;
+    private transient File settingsFolder; // eh
 
     // Used for GSON deserialization
     protected Distributor() {
@@ -76,6 +80,7 @@ public abstract class Distributor {
     // Abstracted methods
     //
 
+    @Invoke(when = Invoke.Order.MID_INJECTION)
     public abstract void load();
 
     public abstract Biome getBiomeAt(int x, int z);

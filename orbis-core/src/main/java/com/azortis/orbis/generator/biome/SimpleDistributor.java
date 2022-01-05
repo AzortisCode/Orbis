@@ -18,20 +18,17 @@
 
 package com.azortis.orbis.generator.biome;
 
-import com.azortis.orbis.generator.noise.OldNoiseGenerator;
 import com.google.gson.annotations.SerializedName;
 import lombok.*;
 import net.kyori.adventure.key.Key;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class SimpleDistributor extends Distributor {
 
     private List<BiomeLayer> biomeLayers;
-    private transient Map<Biome, OldNoiseGenerator> noiseGenMap;
+    //private transient Map<Biome, OldNoiseGenerator> noiseGenMap;
 
     private SimpleDistributor() {
     }
@@ -42,7 +39,7 @@ public class SimpleDistributor extends Distributor {
 
     @Override
     public void load() {
-        noiseGenMap = new HashMap<>();
+        //noiseGenMap = new HashMap<>();
         /*OldRegistry<Biome> biomeOldRegistry = Orbis.getRegistryOld(Biome.class);
         assert biomeOldRegistry != null;
         for (BiomeLayer layer : biomeLayers) {
@@ -63,7 +60,7 @@ public class SimpleDistributor extends Distributor {
 
     @NotNull
     private Biome getBiome(double x, double z) {
-        double maxValue = Double.NEGATIVE_INFINITY;
+        /*double maxValue = Double.NEGATIVE_INFINITY;
         Biome biome = null;
         for (BiomeLayer layer : biomeLayers) {
             double noiseValue = noiseGenMap.get(layer.getBiome()).noise(x / layer.getZoom(), z / layer.getZoom());
@@ -73,7 +70,8 @@ public class SimpleDistributor extends Distributor {
             }
         }
         assert biome != null;
-        return biome;
+        return biome;*/
+        return null;
     }
 
     @NoArgsConstructor(access = AccessLevel.PRIVATE)

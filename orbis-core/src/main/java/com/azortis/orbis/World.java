@@ -33,6 +33,7 @@ import org.jglrxavpok.hephaistos.nbt.NBTWriter;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Objects;
 
 /**
@@ -80,7 +81,7 @@ public abstract class World {
                 dimension = PackLoader.loadDimension(this);
                 engine = new SimpleEngine(this); // TODO create actual engine impl
                 loaded = true;
-            } catch (IOException | NoSuchFieldException | IllegalAccessException e) {
+            } catch (IOException | NoSuchFieldException | IllegalAccessException | InvocationTargetException e) {
                 e.printStackTrace(); // TODO catch these errors earlier in PackLoader for more constructive feedback
             }
         }
