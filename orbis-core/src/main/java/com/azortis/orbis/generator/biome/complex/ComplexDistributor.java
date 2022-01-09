@@ -34,7 +34,7 @@ public class ComplexDistributor extends Distributor {
         super(name, providerKey);
     }
 
-    @Invoke
+    @Invoke(when = Invoke.Order.MID_INJECTION)
     private void setup() {
 
     }

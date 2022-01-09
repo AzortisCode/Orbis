@@ -62,8 +62,12 @@ public abstract class World {
         if (settingsFolder.exists() && Objects.requireNonNull(settingsFolder.listFiles()).length > 0) installed = true;
         this.data = new WorldDataAccess(this);
         this.worldInfoFile = new File(directory, "world-info.dat");
-        if (installed && !worldInfoFile.exists()) {
-            Orbis.getLogger().error("Settings folder exists, but world-info.dat doesn't!");
+        if (installed) {
+            if (!worldInfoFile.exists()) {
+                Orbis.getLogger().error("Settings folder exists, but world-info.dat doesn't!");
+            } else {
+                reloadWorldInfo();
+            }
         }
     }
 

@@ -113,7 +113,7 @@ public final class PackLoader {
                         setField(rootObject, field, parentObject);
                     } else if (!inject.fieldName().equalsIgnoreCase("")) {
                         String name = inject.fieldName();
-                        nameInjection(world, dimension, rootObject, field, name);
+                        nameInjection(world, rootObject, field, name);
                     }
                 }
             }
@@ -128,7 +128,6 @@ public final class PackLoader {
 
         for (Field field : getAllFields(rootObject.getClass())) {
             if (shouldInject(field, rootObject)) {
-                Orbis.getLogger().info("Injecting field {} in object {}", field, rootObject); // Debug
                 defaultInjection(world, dimension, rootObject, field);
             }
         }
@@ -153,9 +152,9 @@ public final class PackLoader {
 
     // Called if a field in a class that is being injected has been annotated with @Inject that specifies the name of
     // another field
-    private static void nameInjection(@NotNull World world, @NotNull Dimension dimension,
-                                      @NotNull Object rootObject, @NotNull Field field, @NotNull String name)
-            throws NoSuchFieldException, IllegalAccessException, InvocationTargetException, IOException {
+    private static void nameInjection(@NotNull World world, @NotNull Object rootObject,
+                                      @NotNull Field field, @NotNull String name)
+            throws NoSuchFieldException, IllegalAccessException, IOException {
         Field configNameField = rootObject.getClass().getDeclaredField(name);
         configNameField.setAccessible(true);
         String configName = (String) configNameField.get(rootObject);
@@ -224,7 +223,8 @@ public final class PackLoader {
         return fields;
     }
 
-    private static void invokeMethod(@NotNull Object instance, @NotNull Method method) throws InvocationTargetException, IllegalAccessException {
+    private static void invokeMethod(@NotNull Object instance, @NotNull Method method)
+            throws InvocationTargetException, IllegalAccessException {
         method.setAccessible(true);
         method.invoke(instance);
         method.setAccessible(false);

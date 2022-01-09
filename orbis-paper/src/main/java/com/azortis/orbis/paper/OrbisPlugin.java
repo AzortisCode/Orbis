@@ -21,6 +21,7 @@ package com.azortis.orbis.paper;
 import com.azortis.orbis.Orbis;
 import com.azortis.orbis.pack.Pack;
 import com.azortis.orbis.paper.generator.PaperChunkGenerator;
+import org.bukkit.Bukkit;
 import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.generator.WorldInfo;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -38,6 +39,10 @@ public class OrbisPlugin extends JavaPlugin {
 
     @Override
     public void onLoad() {
+        if (!Bukkit.getMinecraftVersion().replaceAll("\\.", "_").equalsIgnoreCase(Orbis.MC_VERSION)) {
+            this.getLog4JLogger().error("Unsupported minecraft version! Only works on {}", Orbis.MC_VERSION);
+            return;
+        }
         this.metrics = new Metrics(this, 10874);
         Orbis.initialize(new PaperPlatform(this));
     }
