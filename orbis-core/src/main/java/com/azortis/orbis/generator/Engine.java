@@ -19,22 +19,29 @@
 package com.azortis.orbis.generator;
 
 import com.azortis.orbis.World;
-import com.azortis.orbis.generator.biome.BiomeGrid;
-import lombok.Getter;
+import com.azortis.orbis.generator.biome.Distributor;
+import org.jetbrains.annotations.NotNull;
 
 public abstract class Engine {
 
-    @Getter
-    private final World world;
+    protected final World world;
 
     public Engine(World world) {
         this.world = world;
     }
 
-    public abstract void generateChunkData(ChunkData chunkData, BiomeGrid biomeGrid, int chunkX, int chunkZ);
+    public abstract void generateChunk(int chunkX, int chunkZ, @NotNull ChunkData chunkData);
+
+    public World getWorld() {
+        return world;
+    }
 
     public Dimension getDimension() {
         return world.getDimension();
+    }
+
+    public Distributor getDistributor() {
+        return world.getDimension().distributor();
     }
 
 }

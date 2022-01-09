@@ -16,19 +16,24 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.paper.generator;
+package com.azortis.orbis.paper.nms;
 
 import com.azortis.orbis.block.BlockRegistry;
 import com.azortis.orbis.block.BlockState;
 import com.azortis.orbis.generator.ChunkData;
 import com.azortis.orbis.generator.Dimension;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.chunk.ChunkAccess;
 import org.bukkit.craftbukkit.v1_18_R1.generator.CraftChunkData;
 import org.bukkit.generator.ChunkGenerator;
 
+/**
+ * More efficient ChunkData since we're skipping the whole {@link org.bukkit.block.data.BlockData} conversion,
+ * and directly write using NMS its {@link net.minecraft.world.level.block.state.BlockState}
+ */
 public class PaperChunkData extends ChunkData {
 
     private final CraftChunkData handle;
@@ -45,26 +50,17 @@ public class PaperChunkData extends ChunkData {
 
     @Override
     protected void setBlock(int x, int y, int z, int stateId) {
-        setBlock(handle, x, y, z, net.minecraft.world.level.block.Block.stateById(stateId));
-    }
-
-    public ChunkGenerator.ChunkData getHandle() {
-        return handle;
-    }
-
-    // TODO: Desperately try and come up with a better solution than just copying the private method out so we can
-    //  use it
-    private static void setBlock(CraftChunkData data, int x, int y, int z, net.minecraft.world.level.block.state.BlockState type) {
-        if (x != (x & 0xf) || y < data.getMinHeight() || y >= data.getMaxHeight() || z != (z & 0xf)) {
+        if (x != (x & 0xf) || y < dimension.minHeight() || y >= dimension.maxHeight() || z != (z & 0xf)) {
             return;
         }
 
-        ChunkAccess access = data.getHandle();
+        net.minecraft.world.level.block.state.BlockState blockState = Block.stateById(stateId);
+        ChunkAccess access = handle.getHandle();
         BlockPos blockPosition = new BlockPos(access.getPos().getMinBlockX() + x, y, access.getPos().getMinBlockZ() + z);
-        net.minecraft.world.level.block.state.BlockState oldBlockData = access.setBlockState(blockPosition, type, false);
+        net.minecraft.world.level.block.state.BlockState oldBlockData = access.setBlockState(blockPosition, blockState, false);
 
-        if (type.hasBlockEntity()) {
-            BlockEntity tileEntity = ((EntityBlock) type.getBlock()).newBlockEntity(blockPosition, type);
+        if (blockState.hasBlockEntity()) {
+            BlockEntity tileEntity = ((EntityBlock) blockState.getBlock()).newBlockEntity(blockPosition, blockState);
 
             // createTile can return null, currently only the case with material MOVING_PISTON
             if (tileEntity == null) {
@@ -76,4 +72,5 @@ public class PaperChunkData extends ChunkData {
             access.removeBlockEntity(blockPosition);
         }
     }
+
 }

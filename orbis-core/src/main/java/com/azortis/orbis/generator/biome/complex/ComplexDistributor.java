@@ -16,24 +16,47 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.paper.generator;
+package com.azortis.orbis.generator.biome.complex;
 
 import com.azortis.orbis.generator.biome.Biome;
-import com.azortis.orbis.generator.biome.BiomeGrid;
-import org.bukkit.generator.ChunkGenerator;
+import com.azortis.orbis.generator.biome.Distributor;
+import com.azortis.orbis.util.Inject;
+import com.azortis.orbis.util.Invoke;
+import net.kyori.adventure.key.Key;
+import org.jetbrains.annotations.NotNull;
 
-import java.util.Locale;
+import java.util.Set;
 
-public class PaperBiomeGrid implements BiomeGrid {
+@Inject
+public class ComplexDistributor extends Distributor {
 
-    private final ChunkGenerator.BiomeGrid handle;
+    private ComplexDistributor(String name, Key providerKey) {
+        super(name, providerKey);
+    }
 
-    public PaperBiomeGrid(ChunkGenerator.BiomeGrid handle) {
-        this.handle = handle;
+    @Invoke
+    private void setup() {
+
     }
 
     @Override
-    public void setBiome(int x, int y, int z, Biome biome) {
-        handle.setBiome(x, y, z, org.bukkit.block.Biome.valueOf(biome.getDerivative().value().toUpperCase(Locale.ROOT)));
+    public @NotNull Set<Biome> getPossibleBiomes() {
+        return null;
     }
+
+    @Override
+    public Biome getBiome(int x, int y, int z) {
+        return null;
+    }
+
+    @Override
+    public @NotNull Set<Key> getNativePossibleBiomes() {
+        return null;
+    }
+
+    @Override
+    public Key getNativeBiome(int x, int y, int z) {
+        return null;
+    }
+
 }

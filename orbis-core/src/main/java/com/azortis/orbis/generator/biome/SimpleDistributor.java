@@ -18,49 +18,40 @@
 
 package com.azortis.orbis.generator.biome;
 
-import com.google.gson.annotations.SerializedName;
-import lombok.*;
-import net.kyori.adventure.key.Key;
-import org.jetbrains.annotations.NotNull;
+public class SimpleDistributor {
 
-import java.util.List;
-
-public class SimpleDistributor extends Distributor {
-
-    private List<BiomeLayer> biomeLayers;
+    /*private final List<BiomeLayer> biomeLayers;
     //private transient Map<Biome, OldNoiseGenerator> noiseGenMap;
 
-    private SimpleDistributor() {
+
+    private SimpleDistributor(String name, Key providerKey, List<BiomeLayer> biomeLayers) {
+        super(name, providerKey);
+        this.biomeLayers = biomeLayers;
     }
 
-    public SimpleDistributor(String name, Key distributor) {
-        super(name, distributor);
-    }
-
-    @Override
     public void load() {
         //noiseGenMap = new HashMap<>();
-        /*OldRegistry<Biome> biomeOldRegistry = Orbis.getRegistryOld(Biome.class);
+        *//*OldRegistry<Biome> biomeOldRegistry = Orbis.getRegistryOld(Biome.class);
         assert biomeOldRegistry != null;
         for (BiomeLayer layer : biomeLayers) {
-            layer.setBiome(biomeOldRegistry.loadType(getContainer(), layer.getBiomeName()));
+            layer.setBiome(biomeOldRegistry.loadType(world(), layer.getBiomeName()));
             noiseGenMap.put(layer.getBiome(), new OpenSimplex2S(layer.getSeed()));
-        }*/
+        }*//*
     }
 
     @Override
-    public Biome getBiomeAt(int x, int z) {
+    public Biome getBiome(int x, int z) {
         return getBiome(x, z);
     }
 
     @Override
-    public Biome getBiomeAt(double x, double z) {
+    public Biome getBiome(double x, double z) {
         return getBiome(x, z);
     }
 
     @NotNull
     private Biome getBiome(double x, double z) {
-        /*double maxValue = Double.NEGATIVE_INFINITY;
+        double maxValue = Double.NEGATIVE_INFINITY;
         Biome biome = null;
         for (BiomeLayer layer : biomeLayers) {
             double noiseValue = noiseGenMap.get(layer.getBiome()).noise(x / layer.getZoom(), z / layer.getZoom());
@@ -70,7 +61,7 @@ public class SimpleDistributor extends Distributor {
             }
         }
         assert biome != null;
-        return biome;*/
+        return biome;
         return null;
     }
 
@@ -84,6 +75,6 @@ public class SimpleDistributor extends Distributor {
         private int zoom;
         @Setter
         private transient Biome biome;
-    }
+    }*/
 
 }

@@ -20,24 +20,34 @@ package com.azortis.orbis.generator.terrain.defaults;
 
 import com.azortis.orbis.generator.noise.NoiseGenerator;
 import com.azortis.orbis.generator.terrain.Terrain;
+import com.azortis.orbis.util.Inject;
+import com.google.gson.annotations.SerializedName;
+import net.kyori.adventure.key.Key;
 
 import java.util.List;
 
 public class ConfigTerrain extends Terrain {
 
-    private List<NoiseLayer> layers;
+    @SerializedName("noise")
+    private final String noiseName;
 
-    public ConfigTerrain(String name, String providerId) {
-        super(name, providerId);
+    @Inject(fieldName = "noiseName")
+    private transient NoiseGenerator noise;
+    private final List<NoiseLayer> layers;
+
+    private ConfigTerrain(String name, Key type, String noiseName, List<NoiseLayer> layers) {
+        super(name, type);
+        this.noiseName = noiseName;
+        this.layers = layers;
     }
 
     @Override
-    public double getTerrainHeight(int x, int z, double biomeWeight, NoiseGenerator noise) {
+    public double getTerrainHeight(int x, int z, double biomeWeight) {
         double height = 0;
         for (NoiseLayer layer : layers) {
             height += (noise.noise(x / layer.zoom, z / layer.zoom) * layer.coefficient);
         }
-        return super.getBiome().getBaseHeight() + height;
+        return super.getBiome().baseHeight() + height;
     }
 
     private static class NoiseLayer {

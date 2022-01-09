@@ -19,18 +19,17 @@
 package com.azortis.orbis;
 
 import com.azortis.orbis.block.BlockRegistry;
+import com.azortis.orbis.block.ConfiguredBlock;
 import com.azortis.orbis.block.property.PropertyRegistry;
 import com.azortis.orbis.generator.biome.Distributor;
+import com.azortis.orbis.generator.noise.NoiseGenerator;
 import com.azortis.orbis.generator.terrain.Terrain;
 import com.azortis.orbis.item.ItemFactory;
 import com.azortis.orbis.item.ItemRegistry;
 import com.azortis.orbis.pack.PackManager;
-import com.azortis.orbis.pack.adapter.DistributorAdapter;
-import com.azortis.orbis.pack.adapter.KeyAdapter;
-import com.azortis.orbis.pack.adapter.TerrainAdapter;
+import com.azortis.orbis.pack.adapter.*;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import lombok.Getter;
 import net.kyori.adventure.key.Key;
 import org.apache.commons.io.FileUtils;
 import org.jetbrains.annotations.NotNull;
@@ -48,15 +47,11 @@ public final class Orbis {
             MC_VERSION.replace("_", ".") + "/";
 
     private static boolean initialized = false;
-    @Getter
     private static Platform platform = null;
-    @Getter
     private static Logger logger;
-    @Getter
     private static Gson gson;
 
     // Managers
-    @Getter
     private static PackManager packManager;
 
     private Orbis() {
@@ -73,8 +68,10 @@ public final class Orbis {
             // Register the type adapters to use in the serialization/deserialization of settings in packs.
             gson = new GsonBuilder().disableHtmlEscaping().setPrettyPrinting()
                     .registerTypeAdapter(Key.class, new KeyAdapter())
+                    .registerTypeAdapter(ConfiguredBlock.class, new BlockAdapter())
                     .registerTypeAdapter(Terrain.class, new TerrainAdapter())
-                    .registerTypeAdapter(Distributor.class, new DistributorAdapter()).create();
+                    .registerTypeAdapter(Distributor.class, new DistributorAdapter())
+                    .registerTypeAdapter(NoiseGenerator.class, new NoiseGeneratorAdapter()).create();
 
             // Load minecraft data into memory
             PropertyRegistry.init();
@@ -115,4 +112,19 @@ public final class Orbis {
         return platform.itemFactory();
     }
 
+    public static Platform getPlatform() {
+        return platform;
+    }
+
+    public static Logger getLogger() {
+        return logger;
+    }
+
+    public static Gson getGson() {
+        return gson;
+    }
+
+    public static PackManager getPackManager() {
+        return packManager;
+    }
 }

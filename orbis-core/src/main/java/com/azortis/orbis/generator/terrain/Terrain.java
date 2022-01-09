@@ -20,30 +20,43 @@ package com.azortis.orbis.generator.terrain;
 
 import com.azortis.orbis.World;
 import com.azortis.orbis.generator.biome.Biome;
-import com.azortis.orbis.generator.noise.NoiseGenerator;
 import com.azortis.orbis.util.Inject;
 import lombok.Getter;
+import net.kyori.adventure.key.Key;
 
 @Getter
+@Inject
 public abstract class Terrain {
 
-    protected String name;
-    protected String providerId;
+    protected final String name;
+    protected final Key type;
 
     @Inject
     private transient World world;
     @Inject(isChild = true)
     private transient Biome biome;
 
-    // Used for deserialization for gson, more stable.
-    private Terrain() {
-    }
-
-    public Terrain(String name, String providerId) {
+    protected Terrain(String name, Key type) {
         this.name = name;
-        this.providerId = providerId;
+        this.type = type;
     }
 
-    public abstract double getTerrainHeight(final int x, final int z, double biomeWeight, NoiseGenerator noise);
+    public abstract double getTerrainHeight(final int x, final int z, double biomeWeight);
+
+    public String name() {
+        return name;
+    }
+
+    public Key type() {
+        return type;
+    }
+
+    public World world() {
+        return world;
+    }
+
+    public Biome biome() {
+        return biome;
+    }
 
 }

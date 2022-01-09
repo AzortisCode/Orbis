@@ -28,10 +28,10 @@ import java.lang.reflect.Type;
 public class DistributorAdapter implements JsonDeserializer<Distributor> {
 
     @Override
-    public Distributor deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context) throws JsonParseException {
-        final JsonPrimitive object = jsonElement.getAsJsonObject().getAsJsonPrimitive("providerId");
+    public Distributor deserialize(JsonElement json, Type type, JsonDeserializationContext context) throws JsonParseException {
+        final JsonPrimitive object = json.getAsJsonObject().getAsJsonPrimitive("type");
         final Key distributorKey = context.deserialize(object, Key.class);
         final Class<? extends Distributor> distributorClass = Registry.DISTRIBUTOR.getType(distributorKey);
-        return context.deserialize(jsonElement, distributorClass);
+        return context.deserialize(json, distributorClass);
     }
 }

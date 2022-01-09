@@ -28,11 +28,11 @@ import java.lang.reflect.Type;
 public class TerrainAdapter implements JsonDeserializer<Terrain> {
 
     @Override
-    public Terrain deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context) throws JsonParseException {
-        final JsonPrimitive object = jsonElement.getAsJsonObject().getAsJsonPrimitive("providerId");
+    public Terrain deserialize(JsonElement json, Type type, JsonDeserializationContext context) throws JsonParseException {
+        final JsonPrimitive object = json.getAsJsonObject().getAsJsonPrimitive("type");
         final Key terrainKey = context.deserialize(object, Key.class);
         final Class<? extends Terrain> terrainType = Registry.TERRAIN.getType(terrainKey);
-        return context.deserialize(jsonElement, terrainType);
+        return context.deserialize(json, terrainType);
     }
 
 }

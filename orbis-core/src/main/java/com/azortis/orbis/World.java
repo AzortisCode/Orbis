@@ -26,10 +26,7 @@ import com.azortis.orbis.pack.PackLoader;
 import com.azortis.orbis.pack.data.DataAccess;
 import com.azortis.orbis.pack.data.WorldDataAccess;
 import org.jetbrains.annotations.NotNull;
-import org.jglrxavpok.hephaistos.nbt.NBTCompound;
-import org.jglrxavpok.hephaistos.nbt.NBTException;
-import org.jglrxavpok.hephaistos.nbt.NBTReader;
-import org.jglrxavpok.hephaistos.nbt.NBTWriter;
+import org.jglrxavpok.hephaistos.nbt.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -65,19 +62,19 @@ public abstract class World {
         if (settingsFolder.exists() && Objects.requireNonNull(settingsFolder.listFiles()).length > 0) installed = true;
         this.data = new WorldDataAccess(this);
         this.worldInfoFile = new File(directory, "world-info.dat");
-        if (worldInfoFile.exists()) {
-            installed = true;
-            reloadWorldInfo();
+        if (installed && !worldInfoFile.exists()) {
+            Orbis.getLogger().error("Settings folder exists, but world-info.dat doesn't!");
         }
     }
 
     public void load(long seed) {
-        if (!loaded) {
+        if (!loaded && installed) {
             if (worldInfo.seed() == 0) {
                 worldInfo = worldInfo.seed(seed);
                 saveWorldInfo();
             }
             try {
+                Orbis.getLogger().info("Loading pack {} for {}, this may take some time...", worldInfo.packName(), name);
                 dimension = PackLoader.loadDimension(this);
                 engine = new SimpleEngine(this); // TODO create actual engine impl
                 loaded = true;
@@ -108,12 +105,14 @@ public abstract class World {
     }
 
     public void saveWorldInfo() {
-        Orbis.getLogger().info("Saving container-info for {}", name);
+        Orbis.getLogger().info("Saving world-info for {}", name);
         try {
-            if (worldInfoFile.delete()) {
-                NBTWriter writer = new NBTWriter(worldInfoFile);
-                writer.writeRaw(worldInfo.serialize());
+            if (!worldInfoFile.exists() && !worldInfoFile.createNewFile()) {
+                Orbis.getLogger().error("Failed to save world-info.dat file for world {}", name);
             }
+            NBTWriter writer = new NBTWriter(worldInfoFile, CompressedProcesser.GZIP);
+            writer.writeNamed("", worldInfo.serialize());
+            writer.close();
         } catch (IOException ex) {
             Orbis.getLogger().error("Failed to save world-info.dat file for world {}", name);
         }
@@ -122,8 +121,9 @@ public abstract class World {
     public void reloadWorldInfo() {
         Orbis.getLogger().info("Loading world-info for {}", name);
         try {
-            NBTReader reader = new NBTReader(worldInfoFile);
+            NBTReader reader = new NBTReader(worldInfoFile, CompressedProcesser.GZIP);
             worldInfo = new WorldInfo((NBTCompound) reader.read());
+            reader.close();
         } catch (IOException | NBTException e) {
             Orbis.getLogger().error("Failed to load word-info for world {}", name);
         }

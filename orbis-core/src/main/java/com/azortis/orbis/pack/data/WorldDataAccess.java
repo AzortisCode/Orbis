@@ -37,6 +37,46 @@ public final class WorldDataAccess implements DataAccess {
     }
 
     @Override
+    public File getBiomeFile(@NotNull String biomeFileName) throws FileNotFoundException {
+        File biomeFile = new File(world.getSettingsFolder() + BIOMES_FOLDER,
+                biomeFileName + ".json");
+        if (biomeFile.exists()) {
+            return biomeFile;
+        }
+        throw new FileNotFoundException("No biome file by the name " + biomeFileName + " exists in " + world);
+    }
+
+    @Override
+    public @NotNull List<File> getBiomeFiles() {
+        return getFileEntries(BIOMES_FOLDER);
+    }
+
+    @Override
+    public @NotNull List<String> getBiomes() {
+        return getEntries(getBiomeFiles());
+    }
+
+    @Override
+    public File getNoiseGeneratorFile(@NotNull String noiseGeneratorFileName) throws FileNotFoundException {
+        File noiseGeneratorFile = new File(world.getSettingsFolder() + NOISE_GENERATORS_FOLDER,
+                noiseGeneratorFileName + ".json");
+        if (noiseGeneratorFile.exists()) {
+            return noiseGeneratorFile;
+        }
+        throw new FileNotFoundException("No noise generator file by the fieldName " + noiseGeneratorFileName + " exists in " + world);
+    }
+
+    @Override
+    public @NotNull List<File> getNoiseGeneratorFiles() {
+        return getFileEntries(NOISE_GENERATORS_FOLDER);
+    }
+
+    @Override
+    public @NotNull List<String> getNoiseGenerators() {
+        return getEntries(getNoiseGeneratorFiles());
+    }
+
+    @Override
     public File getDistributorFile(@NotNull String distributorFileName) throws FileNotFoundException {
         File distributorFile = new File(world.getSettingsFolder() + DISTRIBUTOR_FOLDER,
                 distributorFileName + ".json");

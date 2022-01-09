@@ -32,7 +32,7 @@ public class KeyAdapter implements JsonSerializer<Key>, JsonDeserializer<Key> {
 
     @SuppressWarnings("PatternValidation")
     @Override
-    public Key deserialize(JsonElement element, Type type, JsonDeserializationContext context) throws JsonParseException {
-        return Key.key(context.deserialize(element, String.class));
+    public Key deserialize(JsonElement json, Type type, JsonDeserializationContext context) throws JsonParseException {
+        return Key.key(context.deserialize(json, String.class));
     }
 }

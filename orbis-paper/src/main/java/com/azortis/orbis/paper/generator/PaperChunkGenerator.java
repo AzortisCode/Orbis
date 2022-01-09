@@ -21,9 +21,12 @@ package com.azortis.orbis.paper.generator;
 import com.azortis.orbis.pack.Pack;
 import com.azortis.orbis.paper.OrbisPlugin;
 import com.azortis.orbis.paper.PaperWorld;
-import org.bukkit.World;
+import com.azortis.orbis.paper.nms.PaperChunkData;
+import org.bukkit.generator.BiomeProvider;
 import org.bukkit.generator.ChunkGenerator;
+import org.bukkit.generator.WorldInfo;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Random;
 
@@ -33,7 +36,7 @@ public class PaperChunkGenerator extends ChunkGenerator {
     private final String worldName;
     private final Pack pack;
 
-    private volatile boolean loaded = false;
+    private boolean loaded = false;
     private PaperWorld paperWorld;
 
     public PaperChunkGenerator(OrbisPlugin plugin, String worldName, Pack pack) {
@@ -44,28 +47,43 @@ public class PaperChunkGenerator extends ChunkGenerator {
 
     // If the world got initialized through the normal Bukkit configs then the ChunkGenerator gets made before the world
     // can be registered with orbis, so this is our bypass
-    private synchronized void load(World world) {
+    synchronized void load(@NotNull WorldInfo worldInfo) {
         if (!loaded) {
             paperWorld = plugin.getWorld(worldName);
             if (paperWorld != null) {
-                if (paperWorld.isLoaded()) paperWorld.load(world.getSeed());
+                if (paperWorld.isLoaded()) {
+                    paperWorld.load(worldInfo.getSeed());
+                }
             } else {
-                paperWorld = plugin.loadWorld(world, pack);
+                paperWorld = plugin.loadWorld(worldInfo, pack);
             }
             loaded = true;
         }
     }
 
-    @Override
-    public @NotNull ChunkData generateChunkData(@NotNull World world, @NotNull Random random, int chunkX, int chunkZ, @NotNull BiomeGrid biomeGrid) {
-        if (!loaded) load(world);
-        PaperChunkData chunkData = new PaperChunkData(paperWorld.getDimension(), createChunkData(world));
-        paperWorld.getEngine().generateChunkData(chunkData, new PaperBiomeGrid(biomeGrid), chunkX, chunkZ);
-        return chunkData.getHandle();
+    boolean requiresLoading() {
+        return !loaded;
+    }
+
+    public PaperWorld getWorld() {
+        return paperWorld;
     }
 
     @Override
-    public boolean isParallelCapable() {
+    public void generateNoise(@NotNull WorldInfo worldInfo, @NotNull Random ignored, int chunkX, int chunkZ, @NotNull ChunkData chunkData) {
+        if (requiresLoading()) load(worldInfo);
+        PaperChunkData paperChunkData = new PaperChunkData(paperWorld.getDimension(), chunkData);
+        paperWorld.getEngine().generateChunk(chunkX, chunkZ, paperChunkData);
+    }
+
+    @Override
+    public @Nullable BiomeProvider getDefaultBiomeProvider(@NotNull WorldInfo worldInfo) {
+        return new PaperBiomeProvider(this);
+    }
+
+    @Override
+    public boolean shouldGenerateMobs() {
         return true;
     }
+
 }

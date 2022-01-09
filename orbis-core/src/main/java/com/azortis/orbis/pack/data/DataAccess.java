@@ -18,7 +18,10 @@
 
 package com.azortis.orbis.pack.data;
 
+import com.azortis.orbis.generator.biome.Biome;
 import com.azortis.orbis.generator.biome.Distributor;
+import com.azortis.orbis.generator.noise.NoiseGenerator;
+import com.azortis.orbis.generator.terrain.Terrain;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
@@ -29,17 +32,37 @@ import java.util.List;
  * Interface for fetching {@link com.azortis.orbis.generator.Dimension} datafiles.
  */
 public interface DataAccess {
+    String BIOMES_FOLDER = "/biomes/";
     String GENERATORS_FOLDER = "/generators/";
+    String NOISE_GENERATORS_FOLDER = GENERATORS_FOLDER + "/noise/";
     String DISTRIBUTOR_FOLDER = GENERATORS_FOLDER + "/distributor/";
     String TERRAIN_FOLDER = GENERATORS_FOLDER + "/terrain/";
 
     default File getDataFile(@NotNull Class<?> type, @NotNull String dataFileName)
             throws FileNotFoundException, IllegalArgumentException {
-        if (type == Distributor.class) {
+        if (type == Biome.class) {
+            return getBiomeFile(dataFileName);
+        } else if (type == NoiseGenerator.class) {
+            return getNoiseGeneratorFile(dataFileName);
+        } else if (type == Distributor.class) {
             return getDistributorFile(dataFileName);
+        } else if (type == Terrain.class) {
+            return getTerrainFile(dataFileName);
         }
         throw new IllegalArgumentException("Unsupported datatype " + type);
     }
+
+    File getBiomeFile(@NotNull String biomeFileName) throws FileNotFoundException;
+
+    @NotNull List<File> getBiomeFiles();
+
+    @NotNull List<String> getBiomes();
+
+    File getNoiseGeneratorFile(@NotNull String noiseGeneratorFileName) throws FileNotFoundException;
+
+    @NotNull List<File> getNoiseGeneratorFiles();
+
+    @NotNull List<String> getNoiseGenerators();
 
     File getDistributorFile(@NotNull String distributorFileName) throws FileNotFoundException;
 

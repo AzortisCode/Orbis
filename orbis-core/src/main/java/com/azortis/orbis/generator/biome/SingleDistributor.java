@@ -18,40 +18,43 @@
 
 package com.azortis.orbis.generator.biome;
 
-import com.azortis.orbis.block.ConfiguredBlock;
-import com.azortis.orbis.generator.terrain.Terrain;
 import com.azortis.orbis.util.Inject;
 import com.google.gson.annotations.SerializedName;
-import lombok.Getter;
-import lombok.experimental.Accessors;
 import net.kyori.adventure.key.Key;
+import org.jetbrains.annotations.NotNull;
 
-@Accessors(fluent = true)
-@Getter
-@Inject
-public final class Biome {
+import java.util.Set;
 
-    private final String name;
-    private final Key derivative;
+public final class SingleDistributor extends Distributor {
 
-    @SerializedName("terrain")
-    private final String terrainName;
+    @SerializedName("biome")
+    private final String biomeName;
 
-    @Inject(fieldName = "terrainName")
-    private transient Terrain terrain;
+    @Inject(fieldName = "biomeName")
+    private transient Biome biome;
 
-    private final int baseHeight;
-    private final ConfiguredBlock surfaceBlock;
-    private final ConfiguredBlock belowSurfaceBlock;
-
-    public Biome(String name, Key derivative, String terrainName, int baseHeight, ConfiguredBlock surfaceBlock,
-                 ConfiguredBlock belowSurfaceBlock) {
-        this.name = name;
-        this.derivative = derivative;
-        this.terrainName = terrainName;
-        this.baseHeight = baseHeight;
-        this.surfaceBlock = surfaceBlock;
-        this.belowSurfaceBlock = belowSurfaceBlock;
+    private SingleDistributor(String name, Key providerKey, String biomeName) {
+        super(name, providerKey);
+        this.biomeName = biomeName;
     }
 
+    @Override
+    public @NotNull Set<Biome> getPossibleBiomes() {
+        return Set.of(biome);
+    }
+
+    @Override
+    public Biome getBiome(int x, int y, int z) {
+        return biome;
+    }
+
+    @Override
+    public @NotNull Set<Key> getNativePossibleBiomes() {
+        return Set.of(biome.derivative());
+    }
+
+    @Override
+    public Key getNativeBiome(int x, int y, int z) {
+        return biome.derivative();
+    }
 }

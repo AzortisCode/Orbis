@@ -18,16 +18,32 @@
 
 package com.azortis.orbis.generator;
 
+import com.azortis.orbis.block.Block;
 import com.azortis.orbis.block.BlockState;
+import com.azortis.orbis.block.ConfiguredBlock;
 
 public abstract class ChunkData {
-    private final Dimension dimension;
+    protected final Dimension dimension;
 
     public ChunkData(Dimension dimension) {
         this.dimension = dimension;
     }
 
+    public Dimension getDimension() {
+        return dimension;
+    }
+
+    // TODO abstract a method to set a BlockEntity
+
     public abstract BlockState getBlock(final int x, final int y, final int z);
+
+    public final void setBlock(final int x, final int y, final int z, final ConfiguredBlock configuredBlock) {
+        setBlock(x, y, z, configuredBlock.blockState());
+    }
+
+    public final void setBlock(final int x, final int y, final int z, final Block block) {
+        setBlock(x, y, z, block.defaultState());
+    }
 
     /**
      * Stores a block in the chunk. The specified coordinates are chunk positions.
@@ -42,4 +58,5 @@ public abstract class ChunkData {
     }
 
     protected abstract void setBlock(final int x, final int y, final int z, final int stateId);
+
 }

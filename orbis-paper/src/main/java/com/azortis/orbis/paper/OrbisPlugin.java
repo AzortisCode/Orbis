@@ -21,8 +21,8 @@ package com.azortis.orbis.paper;
 import com.azortis.orbis.Orbis;
 import com.azortis.orbis.pack.Pack;
 import com.azortis.orbis.paper.generator.PaperChunkGenerator;
-import org.bukkit.World;
 import org.bukkit.generator.ChunkGenerator;
+import org.bukkit.generator.WorldInfo;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -58,17 +58,17 @@ public class OrbisPlugin extends JavaPlugin {
     }
 
     @NotNull
-    public PaperWorld loadWorld(@NotNull World world, @NotNull Pack pack) {
-        PaperWorld paperWorld = new PaperWorld(world);
+    public PaperWorld loadWorld(@NotNull WorldInfo worldInfo, @NotNull Pack pack) {
+        PaperWorld paperWorld = new PaperWorld(worldInfo);
         paperWorld.installPack(pack, false);
-        if (!paperWorld.isLoaded()) paperWorld.load(world.getSeed());
-        worldMap.put(world.getName(), paperWorld);
+        if (!paperWorld.isLoaded()) paperWorld.load(worldInfo.getSeed());
+        worldMap.put(worldInfo.getName(), paperWorld);
         return paperWorld;
     }
 
     @Nullable
-    public PaperWorld getWorld(World world) {
-        return worldMap.get(world.getName());
+    public PaperWorld getWorld(WorldInfo worldInfo) {
+        return worldMap.get(worldInfo.getName());
     }
 
     @Nullable

@@ -16,24 +16,22 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.paper;
+package com.azortis.orbis.pack.adapter;
 
-import com.azortis.orbis.World;
-import org.bukkit.Bukkit;
-import org.bukkit.generator.WorldInfo;
+import com.azortis.orbis.Registry;
+import com.azortis.orbis.generator.noise.NoiseGenerator;
+import com.google.gson.*;
+import net.kyori.adventure.key.Key;
 
-import java.io.File;
+import java.lang.reflect.Type;
 
-public class PaperWorld extends World {
+public class NoiseGeneratorAdapter implements JsonDeserializer<NoiseGenerator> {
 
-    private final WorldInfo worldInfo;
-
-    public PaperWorld(WorldInfo worldInfo) {
-        super(worldInfo.getName(), new File(Bukkit.getWorldContainer() + "/" + worldInfo.getName() + "/"));
-        this.worldInfo = worldInfo;
-    }
-
-    public WorldInfo getNativeWorldInfo() {
-        return worldInfo;
+    @Override
+    public NoiseGenerator deserialize(JsonElement json, Type type, JsonDeserializationContext context) throws JsonParseException {
+        final JsonPrimitive object = json.getAsJsonObject().getAsJsonPrimitive("type");
+        final Key noiseKey = context.deserialize(object, Key.class);
+        final Class<? extends NoiseGenerator> noiseType = Registry.NOISE_GENERATOR.getType(noiseKey);
+        return context.deserialize(json, noiseType);
     }
 }

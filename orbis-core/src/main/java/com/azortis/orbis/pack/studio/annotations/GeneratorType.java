@@ -18,8 +18,6 @@
 
 package com.azortis.orbis.pack.studio.annotations;
 
-import com.azortis.orbis.registryold.GeneratorOldRegistry;
-
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -28,5 +26,4 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 public @interface GeneratorType {
-    Class<? extends GeneratorOldRegistry<?>> value();
 }

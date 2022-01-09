@@ -1,6 +1,6 @@
 name: Orbis
 author: YourPalJake
-version: 0.1-ALPHA
+version: 0.2-ALPHA
 api-version: 1.16
-main: com.azortis.orbis.bukkit.OrbisPlugin
+main: com.azortis.orbis.paper.OrbisPlugin
 load: STARTUP

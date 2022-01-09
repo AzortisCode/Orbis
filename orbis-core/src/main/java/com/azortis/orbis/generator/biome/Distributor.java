@@ -19,72 +19,59 @@
 package com.azortis.orbis.generator.biome;
 
 import com.azortis.orbis.World;
+import com.azortis.orbis.pack.data.DataAccess;
 import com.azortis.orbis.util.Inject;
 import com.azortis.orbis.util.Invoke;
 import net.kyori.adventure.key.Key;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
+import java.util.Set;
 
 @Inject
 public abstract class Distributor {
 
-    private String name;
-    private Key providerKey;
+    protected final String name;
+    protected final Key type;
 
+    @Inject
     private transient World world;
-    private transient File settingsFolder; // eh
+    private transient File settingsFolder;
 
-    // Used for GSON deserialization
-    protected Distributor() {
+    protected Distributor(String name, Key type) {
+        this.name = name;
+        this.type = type;
     }
 
-    public String getName() {
+    @Invoke(when = Invoke.Order.MID_INJECTION)
+    private void setup() {
+        // Set up the settings folder so that Distributor implementations can load their datafiles before injection
+        this.settingsFolder = new File(world.getSettingsFolder() +
+                DataAccess.DISTRIBUTOR_FOLDER + "/" + name + "/");
+    }
+
+    public String name() {
         return name;
     }
 
-    public Key getProviderKey() {
-        return providerKey;
+    public Key type() {
+        return type;
     }
 
-    public Distributor(String name, Key providerKey) {
-        this.name = name;
-        this.providerKey = providerKey;
-    }
-
-    //
-    // Container
-    //
-
-    public void setWorld(World world) {
-        if (this.world == null) this.world = world;
-    }
-
-    public World getContainer() {
+    public World world() {
         return world;
     }
 
-
-    //
-    // SettingsFolder
-    //
-
-    public void setSettingsFolder(File settingsFolder) {
-        if (this.settingsFolder == null) this.settingsFolder = settingsFolder;
-    }
-
-    public File getSettingsFolder() {
+    public File settingsFolder() {
         return settingsFolder;
     }
 
-    //
-    // Abstracted methods
-    //
+    public abstract @NotNull Set<Biome> getPossibleBiomes();
 
-    @Invoke(when = Invoke.Order.MID_INJECTION)
-    public abstract void load();
+    public abstract Biome getBiome(int x, int y, int z);
 
-    public abstract Biome getBiomeAt(int x, int z);
+    public abstract @NotNull Set<Key> getNativePossibleBiomes();
 
-    public abstract Biome getBiomeAt(double x, double z);
+    public abstract Key getNativeBiome(int x, int y, int z);
 
 }

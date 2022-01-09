@@ -18,16 +18,25 @@
 
 package com.azortis.orbis.pack.adapter;
 
+import com.azortis.orbis.block.Block;
 import com.azortis.orbis.block.ConfiguredBlock;
 import com.google.gson.*;
 
 import java.lang.reflect.Type;
+import java.util.Map;
 
 public class BlockAdapter implements JsonSerializer<ConfiguredBlock>, JsonDeserializer<ConfiguredBlock> {
 
     @Override
-    public ConfiguredBlock deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
-        return null;
+    public ConfiguredBlock deserialize(JsonElement json, Type type, JsonDeserializationContext context) throws JsonParseException {
+        if (json.isJsonPrimitive()) { // If no BlockState properties have been configured
+            return Block.fromKey(json.getAsString());
+        }
+        // It is a configured BlockState
+        final JsonObject blockObject = json.getAsJsonObject();
+        final Block block = Block.fromKey(blockObject.getAsJsonPrimitive("type").getAsString());
+        final Map<String, String> properties = context.deserialize(json.getAsJsonObject().getAsJsonObject("properties"), Map.class);
+        return block.withProperties(properties);
     }
 
     @Override
@@ -35,6 +44,8 @@ public class BlockAdapter implements JsonSerializer<ConfiguredBlock>, JsonDeseri
         if (configuredBlock.blockState() == configuredBlock.block().defaultState()) {
             return context.serialize(configuredBlock.key());
         }
-        return null;
+        JsonObject blockObject = new JsonObject();
+        blockObject.add("type", context.serialize(configuredBlock.key()));
+        return blockObject;
     }
 }

@@ -16,13 +16,14 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.generator.biome;
+package com.azortis.orbis.generator.biome.complex;
 
-/**
- * Interface for filling biomes for native adaptation
- */
-public interface BiomeGrid {
+import com.azortis.orbis.generator.noise.NoiseGenerator;
 
-    void setBiome(int x, int y, int z, Biome biome);
+public class ComplexNoiseLayer {
+
+    private String name;
+    private NoiseGenerator noise;
+
 
 }

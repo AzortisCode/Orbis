@@ -19,58 +19,38 @@
 package com.azortis.orbis.generator;
 
 import com.azortis.orbis.World;
-import com.azortis.orbis.generator.biome.BiomeGrid;
-import com.azortis.orbis.generator.interpolation.Interpolator;
+import com.azortis.orbis.block.Blocks;
+import com.azortis.orbis.generator.biome.Biome;
+import org.jetbrains.annotations.NotNull;
 
-@Deprecated
-public class SimpleEngine extends Engine {
-
-    //private final OldNoiseGenerator noise;
-    //private final Distributor distributor;
-    private final Interpolator interpolator = new Interpolator();
+public final class SimpleEngine extends Engine {
 
     public SimpleEngine(World world) {
         super(world);
-        //this.noise = new PerlinOldNoise(world.getWorldInfo().seed());
-        /*this.distributor = Objects.requireNonNull(Orbis.getGeneratorRegistryOld(Distributor.class))
-                .loadType(world, getDimension().getDistributorName());*/
     }
 
     @Override
-    public void generateChunkData(ChunkData chunkData, BiomeGrid biomeGrid, int chunkX, int chunkZ) {
-        // We start a for loop for each consecutive horizontal coordinate of the chunk.
-        /*for (int cx = 0; cx < 16; cx++) {
-            for (int cz = 0; cz < 16; cz++) {
-                // Get the actual (x,z) coordinates in the world
+    public void generateChunk(int chunkX, int chunkZ, @NotNull ChunkData chunkData) {
+        for (int cx = 0; cx <= 16; cx++) {
+            for (int cz = 0; cz <= 16; cz++) {
                 final int x = cx + (chunkX << 4);
                 final int z = cz + (chunkZ << 4);
 
-                Biome biome = distributor.getBiomeAt(x, z);
-                int height = interpolator.getFinalHeight(x, z, getDimension().getInterpolationRadius(), this::getHeight);
-                //int height = (int) getHeight(x, z);
+                Biome biome = getDimension().distributor().getBiome(x, 0, z);
+                int height = (int) Math.round(biome.terrain().getTerrainHeight(x, z, 1.0d));
 
-                for (int y = 0; y < getDimension().getMaxHeight(); y++) {
-                    biomeGrid.setBiome(x, y, z, biome);
-
+                for (int y = getDimension().minHeight(); y < getDimension().maxHeight(); y++) {
                     if (y == 0) {
-                        chunkData.setBlock(cx, y, cz, Blocks.BEDROCK.defaultState());
-                    } else if (y > height && y <= getDimension().getFluidHeight()) {
-                        chunkData.setBlock(cx, y, cz, Blocks.WATER.defaultState());
-                    } else if (y <= height) {
-                        if (y <= (height - 6)) {
-                            chunkData.setBlock(cx, y, cz, Blocks.STONE.defaultState());
-                        } else {
-                            chunkData.setBlock(cx, y, cz, BlockRegistry.fromKey(biome.getSurfaceBlock()).defaultState());
+                        chunkData.setBlock(cx, y, cz, Blocks.BEDROCK);
+                    } else {
+                        if (y < height) {
+                            chunkData.setBlock(cx, y, cz, biome.belowSurfaceBlock());
+                        } else if (y == height) {
+                            chunkData.setBlock(cx, y, cz, biome.surfaceBlock());
                         }
                     }
                 }
             }
-        }*/
+        }
     }
-
-    /*public double getHeight(double x, double z) {
-        Biome biome = distributor.getBiomeAt(x, z);
-        return biome.getTerrain().getTerrainHeight((int) x, (int) z, 1.0d, noise);
-    }*/
-
 }

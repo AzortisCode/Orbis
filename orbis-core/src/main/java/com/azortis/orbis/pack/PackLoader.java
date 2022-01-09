@@ -32,10 +32,7 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public final class PackLoader {
     private static final Map<World, Map<Method, Object>> postInjectionMethods = new HashMap<>();
@@ -54,7 +51,7 @@ public final class PackLoader {
         postInjectionMethods.put(world, new HashMap<>());
 
         // Load initial Dimension object
-        File dimensionFile = new File(packFolder, worldInfo.dimensionFile());
+        File dimensionFile = new File(packFolder, worldInfo.dimensionFile() + ".json");
         Dimension dimension = Orbis.getGson().fromJson(new FileReader(dimensionFile), Dimension.class);
 
         // Loop through all fields of the Dimension class, and build out the object tree.
@@ -67,9 +64,12 @@ public final class PackLoader {
                     String name = field.getAnnotation(Inject.class).fieldName();
                     if (!name.equalsIgnoreCase("")) {
                         Field configNameField = dimension.getClass().getDeclaredField(name);
+                        configNameField.setAccessible(true);
                         String configName = (String) configNameField.get(dimension);
+                        configNameField.setAccessible(false);
                         File dataFile = world.getData().getDataFile(field.getType(), configName);
                         Object fieldObject = Orbis.getGson().fromJson(new FileReader(dataFile), field.getType());
+                        setField(dimension, field, fieldObject);
 
                         if (shouldInject(fieldObject.getClass())) {
                             classInjection(world, dimension, dimension, fieldObject);
@@ -81,7 +81,7 @@ public final class PackLoader {
             }
         }
         for (Map.Entry<Method, Object> entry : postInjectionMethods.get(world).entrySet()) {
-            entry.getKey().invoke(entry.getValue());
+            invokeMethod(entry.getValue(), entry.getKey());
         }
         postInjectionMethods.remove(world);
         return dimension;
@@ -94,7 +94,7 @@ public final class PackLoader {
         for (Method method : getAllMethods(rootObject.getClass())) {
             if (method.isAnnotationPresent(Invoke.class)) {
                 if (method.getAnnotation(Invoke.class).when() == Invoke.Order.PRE_INJECTION) {
-                    method.invoke(rootObject);
+                    invokeMethod(rootObject, method);
                 } else if (method.getAnnotation(Invoke.class).when() == Invoke.Order.POST_INJECTION) {
                     postInjectionMethods.get(world).put(method, rootObject);
                 }
@@ -122,12 +122,13 @@ public final class PackLoader {
         for (Method method : getAllMethods(rootObject.getClass())) {
             if (method.isAnnotationPresent(Invoke.class) &&
                     method.getAnnotation(Invoke.class).when() == Invoke.Order.MID_INJECTION) {
-                method.invoke(rootObject);
+                invokeMethod(rootObject, method);
             }
         }
 
         for (Field field : getAllFields(rootObject.getClass())) {
             if (shouldInject(field, rootObject)) {
+                Orbis.getLogger().info("Injecting field {} in object {}", field, rootObject); // Debug
                 defaultInjection(world, dimension, rootObject, field);
             }
         }
@@ -135,7 +136,7 @@ public final class PackLoader {
         for (Method method : getAllMethods(rootObject.getClass())) {
             if (method.isAnnotationPresent(Invoke.class) &&
                     method.getAnnotation(Invoke.class).when() == Invoke.Order.POST_CLASS_INJECTION) {
-                method.invoke(rootObject);
+                invokeMethod(rootObject, method);
             }
         }
     }
@@ -156,7 +157,9 @@ public final class PackLoader {
                                       @NotNull Object rootObject, @NotNull Field field, @NotNull String name)
             throws NoSuchFieldException, IllegalAccessException, InvocationTargetException, IOException {
         Field configNameField = rootObject.getClass().getDeclaredField(name);
+        configNameField.setAccessible(true);
         String configName = (String) configNameField.get(rootObject);
+        configNameField.setAccessible(false);
         File dataFile = world.getData().getDataFile(field.getType(), configName);
         Object fieldObject = Orbis.getGson().fromJson(new FileReader(dataFile), field.getType());
         setField(rootObject, field, fieldObject);
@@ -166,6 +169,12 @@ public final class PackLoader {
         field.setAccessible(true);
         Object fieldObject = field.get(rootObject);
         field.setAccessible(false);
+        if (fieldObject == null) {
+            return false;
+        } else if (field.isAnnotationPresent(Inject.class) && field.getAnnotation(Inject.class).isChild()) {
+            // Prevent a StackOverflow
+            return false;
+        }
         return shouldInject(fieldObject.getClass());
     }
 
@@ -187,14 +196,14 @@ public final class PackLoader {
 
     // Get all the methods from a class type, including ones its inheriting from superclasses
     private static List<Method> getAllMethods(final Class<?> type) {
-        List<Method> methods = Arrays.asList(type.getDeclaredMethods());
+        List<Method> methods = new ArrayList<>(Arrays.asList(type.getDeclaredMethods()));
         Class<?> superType = type;
         while (superType != null) {
             superType = superType.getSuperclass();
             if (superType == Object.class) {
                 superType = null;
             } else {
-                methods.addAll(Arrays.asList(superType.getDeclaredMethods()));
+                methods.addAll(new ArrayList<>(Arrays.asList(type.getDeclaredMethods())));
             }
         }
         return methods;
@@ -202,17 +211,23 @@ public final class PackLoader {
 
     // Get all the fields from a class type, including ones its inheriting from superclasses
     private static List<Field> getAllFields(final Class<?> type) {
-        List<Field> fields = Arrays.asList(type.getDeclaredFields());
+        List<Field> fields = new ArrayList<>(Arrays.asList(type.getDeclaredFields()));
         Class<?> superType = type;
         while (superType != null) {
             superType = superType.getSuperclass();
             if (superType == Object.class) {
                 superType = null;
             } else {
-                fields.addAll(Arrays.asList(superType.getDeclaredFields()));
+                fields.addAll(new ArrayList<>(Arrays.asList(superType.getDeclaredFields())));
             }
         }
         return fields;
+    }
+
+    private static void invokeMethod(@NotNull Object instance, @NotNull Method method) throws InvocationTargetException, IllegalAccessException {
+        method.setAccessible(true);
+        method.invoke(instance);
+        method.setAccessible(false);
     }
 
     private static void setField(@NotNull Object instance, @NotNull Field field, @NotNull Object fieldInstance)
