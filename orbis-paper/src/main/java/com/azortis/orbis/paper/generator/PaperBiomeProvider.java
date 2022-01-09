@@ -46,7 +46,7 @@ public class PaperBiomeProvider extends BiomeProvider {
     @Override
     public @NotNull List<Biome> getBiomes(@NotNull WorldInfo worldInfo) {
         if (chunkGenerator.requiresLoading()) chunkGenerator.load(worldInfo);
-        return chunkGenerator.getWorld().getDimension().distributor().getNativePossibleBiomes()
+        return chunkGenerator.getWorld().getDimension().distributor().getNativeBiomes()
                 .stream().map(Key::value).map(String::toUpperCase).map(Biome::valueOf).collect(Collectors.toList());
     }
 }

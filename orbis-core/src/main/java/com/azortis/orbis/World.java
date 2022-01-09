@@ -82,7 +82,8 @@ public abstract class World {
                 dimension = PackLoader.loadDimension(this);
                 engine = new SimpleEngine(this); // TODO create actual engine impl
                 loaded = true;
-            } catch (IOException | NoSuchFieldException | IllegalAccessException | InvocationTargetException e) {
+            } catch (IOException | NoSuchFieldException | IllegalAccessException | InvocationTargetException |
+                    NoSuchMethodException | InstantiationException e) {
                 e.printStackTrace(); // TODO catch these errors earlier in PackLoader for more constructive feedback
             }
         }

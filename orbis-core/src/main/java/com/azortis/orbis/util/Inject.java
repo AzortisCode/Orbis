@@ -22,6 +22,8 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
+import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * Used to annotate classes where the injector should look for fields to inject,
@@ -47,4 +49,25 @@ public @interface Inject {
      * @return The fieldName of a {@link String} typed {@link java.lang.reflect.Field}
      */
     String fieldName() default "";
+
+    /**
+     * The implementation of a {@link Collection} that should be used when initializing
+     * this {@link java.lang.reflect.Field}. Only works on fields that also have a fieldName that refers to a field
+     * that has a {@link Collection} of parameterized type {@link String}.
+     * Note the implementation must be a mutable one, if you need an immutable view use {@link Invoke} to change
+     * the implementation after injection has taken place!
+     *
+     * @return The implementation type of {@link Collection} that should be used to initialize the field
+     */
+    Class<? extends Collection> collectionType() default ArrayList.class;
+
+    /**
+     * The parameterized type of the {@link Collection} of the {@link java.lang.reflect.Field},
+     * this is necessary due to Java type erasure. Only works on fields that have a
+     * collectionType and fieldName specified.
+     *
+     * @return The parameterized type of the {@link java.lang.reflect.Field}
+     * @see <a href="https://docs.oracle.com/javase/tutorial/java/generics/erasure.html">Java type erasure</a>
+     */
+    Class<?> parameterizedType() default Object.class;
 }

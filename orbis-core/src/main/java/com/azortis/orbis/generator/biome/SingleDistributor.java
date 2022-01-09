@@ -39,7 +39,7 @@ public final class SingleDistributor extends Distributor {
     }
 
     @Override
-    public @NotNull Set<Biome> getPossibleBiomes() {
+    public @NotNull Set<Biome> getBiomes() {
         return Set.of(biome);
     }
 
@@ -49,7 +49,12 @@ public final class SingleDistributor extends Distributor {
     }
 
     @Override
-    public @NotNull Set<Key> getNativePossibleBiomes() {
+    public Biome getBiome(double x, double y, double z) {
+        return biome;
+    }
+
+    @Override
+    public @NotNull Set<Key> getNativeBiomes() {
         return Set.of(biome.derivative());
     }
 

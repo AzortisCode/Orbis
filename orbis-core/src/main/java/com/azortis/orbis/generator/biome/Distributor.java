@@ -66,11 +66,13 @@ public abstract class Distributor {
         return settingsFolder;
     }
 
-    public abstract @NotNull Set<Biome> getPossibleBiomes();
+    public abstract @NotNull Set<Biome> getBiomes();
 
     public abstract Biome getBiome(int x, int y, int z);
 
-    public abstract @NotNull Set<Key> getNativePossibleBiomes();
+    public abstract Biome getBiome(double x, double y, double z);
+
+    public abstract @NotNull Set<Key> getNativeBiomes();
 
     public abstract Key getNativeBiome(int x, int y, int z);
 

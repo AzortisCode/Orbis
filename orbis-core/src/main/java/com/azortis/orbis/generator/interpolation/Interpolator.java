@@ -18,21 +18,18 @@
 
 package com.azortis.orbis.generator.interpolation;
 
-/**
- * This class uses Cyberpwn his starcast algorithm, and the idea of using a HeightProvider also comes from them.
- */
 @SuppressWarnings("SameParameterValue")
 public class Interpolator {
 
-    private double lerp(double a, double b, double f) {
-        return a + (f * (b - a));
+    private static double lerp(double a, double b, double t) {
+        return a + (t * (b - a));
     }
 
-    private double blerp(double a, double b, double c, double d, double tx, double ty) {
-        return lerp(lerp(a, b, tx), lerp(c, d, tx), ty);
+    private static double blerp(double a, double b, double c, double d, double tx, double tz) {
+        return lerp(lerp(a, b, tx), lerp(c, d, tx), tz);
     }
 
-    private double getBilinearNoise(int x, int z, double scale, HeightProvider provider) {
+    private static double getBilinearNoise(int x, int z, double scale, HeightProvider provider) {
         int fx = (int) Math.floor(x / scale);
         int fz = (int) Math.floor(z / scale);
         int x1 = (int) Math.round(fx * scale);
@@ -51,11 +48,11 @@ public class Interpolator {
                 px, pz);
     }
 
-    private double rangeScale(double amin, double amax, double bmin, double bmax, double b) {
+    private static double rangeScale(double amin, double amax, double bmin, double bmax, double b) {
         return amin + ((amax - amin) * ((b - bmin) / (bmax - bmin)));
     }
 
-    private double getStarCast(int x, int z, double scale, HeightProvider provider) {
+    private static double getStarCast(int x, int z, double scale, HeightProvider provider) {
         double m = (360 / 9d);
         double v = 0;
 
@@ -69,7 +66,7 @@ public class Interpolator {
         return v / 9d;
     }
 
-    public int getFinalHeight(int x, int z, double scale, HeightProvider provider) {
+    public static int getFinalHeight(int x, int z, double scale, HeightProvider provider) {
         return (int) getStarCast(x, z, scale, (xx, zz) -> getBilinearNoise((int) xx, (int) zz, scale, provider));
     }
 

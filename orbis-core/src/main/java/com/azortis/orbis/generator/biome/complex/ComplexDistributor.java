@@ -30,6 +30,7 @@ import java.util.Set;
 @Inject
 public class ComplexDistributor extends Distributor {
 
+
     private ComplexDistributor(String name, Key providerKey) {
         super(name, providerKey);
     }
@@ -40,7 +41,7 @@ public class ComplexDistributor extends Distributor {
     }
 
     @Override
-    public @NotNull Set<Biome> getPossibleBiomes() {
+    public @NotNull Set<Biome> getBiomes() {
         return null;
     }
 
@@ -50,7 +51,12 @@ public class ComplexDistributor extends Distributor {
     }
 
     @Override
-    public @NotNull Set<Key> getNativePossibleBiomes() {
+    public Biome getBiome(double x, double y, double z) {
+        return null;
+    }
+
+    @Override
+    public @NotNull Set<Key> getNativeBiomes() {
         return null;
     }
 

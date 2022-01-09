@@ -20,13 +20,14 @@ package com.azortis.orbis.generator.noise;
 
 import com.azortis.orbis.util.Invoke;
 import net.kyori.adventure.key.Key;
+import org.jetbrains.annotations.Nullable;
 
 public final class OpenSimplex2 extends NoiseGenerator {
 
     private transient FastNoise noise;
 
-    public OpenSimplex2(Key type, long seed, double frequency) {
-        super(type, seed, frequency);
+    public OpenSimplex2(@Nullable String name, Key type, long seed, double frequency) {
+        super(name, type, seed, frequency);
     }
 
     @Invoke

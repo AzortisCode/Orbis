@@ -21,10 +21,12 @@ package com.azortis.orbis.generator.noise;
 import com.azortis.orbis.World;
 import com.azortis.orbis.util.Inject;
 import net.kyori.adventure.key.Key;
+import org.jetbrains.annotations.Nullable;
 
 @Inject
 public abstract class NoiseGenerator {
 
+    protected final String name;
     protected final Key type;
     protected final long seed;
     protected final double frequency;
@@ -32,10 +34,33 @@ public abstract class NoiseGenerator {
     @Inject
     private transient World world;
 
-    public NoiseGenerator(Key type, long seed, double frequency) {
+    protected NoiseGenerator(@Nullable String name, Key type, long seed, double frequency) {
+        this.name = name;
         this.type = type;
         this.seed = seed;
         this.frequency = frequency;
+    }
+
+    /**
+     * Noise generators can either be defined as fields or as a separate generator config file
+     * hence why name is an optional value.
+     *
+     * @return The name of the noise generator
+     */
+    public boolean hasName() {
+        return name != null;
+    }
+
+    public String name() {
+        return name;
+    }
+
+    public Key type() {
+        return type;
+    }
+
+    public long seed() {
+        return seed;
     }
 
     public abstract double noise(double x);

@@ -44,8 +44,10 @@ public final class PackLoader {
      * @return A loaded {@link Dimension} instance
      * @throws IOException If any file read operation fails
      */
+    @SuppressWarnings("unchecked")
     public static Dimension loadDimension(@NotNull World world)
-            throws IOException, IllegalAccessException, NoSuchFieldException, InvocationTargetException {
+            throws IOException, IllegalAccessException, NoSuchFieldException, InvocationTargetException,
+            NoSuchMethodException, InstantiationException {
         File packFolder = world.getSettingsFolder();
         WorldInfo worldInfo = world.getWorldInfo();
         postInjectionMethods.put(world, new HashMap<>());
@@ -65,14 +67,32 @@ public final class PackLoader {
                     if (!name.equalsIgnoreCase("")) {
                         Field configNameField = dimension.getClass().getDeclaredField(name);
                         configNameField.setAccessible(true);
-                        String configName = (String) configNameField.get(dimension);
-                        configNameField.setAccessible(false);
-                        File dataFile = world.getData().getDataFile(field.getType(), configName);
-                        Object fieldObject = Orbis.getGson().fromJson(new FileReader(dataFile), field.getType());
-                        setField(dimension, field, fieldObject);
+                        if (Collection.class.isAssignableFrom(field.getType())) { // TODO maybe add Array support?
+                            Collection<String> configNames = (Collection<String>) configNameField.get(dimension);
+                            configNameField.setAccessible(false);
+                            Inject inject = field.getAnnotation(Inject.class);
+                            Collection<Object> fieldObject = inject.collectionType().getConstructor().newInstance();
+                            for (String configName : configNames) {
+                                File dataFile = world.getData().getDataFile(inject.parameterizedType(), configName);
+                                Object collectionObject = Orbis.getGson().fromJson(new FileReader(dataFile), inject.parameterizedType());
+                                fieldObject.add(collectionObject);
+                            }
+                            setField(dimension, field, fieldObject);
+                            if (shouldInject(field.getGenericType().getClass())) {
+                                for (Object listObject : fieldObject) {
+                                    classInjection(world, dimension, dimension, listObject);
+                                }
+                            }
+                        } else {
+                            String configName = (String) configNameField.get(dimension);
+                            configNameField.setAccessible(false);
+                            File dataFile = world.getData().getDataFile(field.getType(), configName);
+                            Object fieldObject = Orbis.getGson().fromJson(new FileReader(dataFile), field.getType());
+                            setField(dimension, field, fieldObject);
 
-                        if (shouldInject(fieldObject.getClass())) {
-                            classInjection(world, dimension, dimension, fieldObject);
+                            if (shouldInject(fieldObject.getClass())) {
+                                classInjection(world, dimension, dimension, fieldObject);
+                            }
                         }
                     }
                 }
@@ -88,9 +108,11 @@ public final class PackLoader {
     }
 
     // Called if a Class has been annotated with @Inject
+    @SuppressWarnings("unchecked")
     private static void classInjection(@NotNull World world, @NotNull Dimension dimension,
                                        @NotNull Object parentObject, @NotNull Object rootObject)
-            throws NoSuchFieldException, IllegalAccessException, InvocationTargetException, IOException {
+            throws NoSuchFieldException, IllegalAccessException, InvocationTargetException,
+            IOException, NoSuchMethodException, InstantiationException {
         for (Method method : getAllMethods(rootObject.getClass())) {
             if (method.isAnnotationPresent(Invoke.class)) {
                 if (method.getAnnotation(Invoke.class).when() == Invoke.Order.PRE_INJECTION) {
@@ -127,7 +149,16 @@ public final class PackLoader {
         }
 
         for (Field field : getAllFields(rootObject.getClass())) {
-            if (shouldInject(field, rootObject)) {
+            if (Collection.class.isAssignableFrom(field.getType())) {
+                field.setAccessible(true);
+                Collection<Object> fieldObject = (Collection<Object>) field.get(rootObject);
+                field.setAccessible(false);
+                for (Object collectionObject : fieldObject) {
+                    if (shouldInject(collectionObject.getClass())) {
+                        classInjection(world, dimension, rootObject, collectionObject);
+                    }
+                }
+            } else if (shouldInject(field, rootObject)) {
                 defaultInjection(world, dimension, rootObject, field);
             }
         }
@@ -143,7 +174,8 @@ public final class PackLoader {
     // Called if a field in a class that is being injected its class has been annotated with @Inject
     private static void defaultInjection(@NotNull World world, @NotNull Dimension dimension,
                                          @NotNull Object rootObject, @NotNull Field field)
-            throws NoSuchFieldException, IllegalAccessException, InvocationTargetException, IOException {
+            throws NoSuchFieldException, IllegalAccessException, InvocationTargetException,
+            IOException, NoSuchMethodException, InstantiationException {
         field.setAccessible(true);
         Object fieldObject = field.get(rootObject);
         field.setAccessible(false);
@@ -152,16 +184,31 @@ public final class PackLoader {
 
     // Called if a field in a class that is being injected has been annotated with @Inject that specifies the name of
     // another field
+    @SuppressWarnings("unchecked")
     private static void nameInjection(@NotNull World world, @NotNull Object rootObject,
                                       @NotNull Field field, @NotNull String name)
-            throws NoSuchFieldException, IllegalAccessException, IOException {
+            throws NoSuchFieldException, IllegalAccessException, IOException,
+            NoSuchMethodException, InvocationTargetException, InstantiationException {
         Field configNameField = rootObject.getClass().getDeclaredField(name);
         configNameField.setAccessible(true);
-        String configName = (String) configNameField.get(rootObject);
-        configNameField.setAccessible(false);
-        File dataFile = world.getData().getDataFile(field.getType(), configName);
-        Object fieldObject = Orbis.getGson().fromJson(new FileReader(dataFile), field.getType());
-        setField(rootObject, field, fieldObject);
+        if (Collection.class.isAssignableFrom(field.getType())) {
+            Collection<String> configNames = (Collection<String>) configNameField.get(rootObject);
+            configNameField.setAccessible(false);
+            Inject inject = field.getAnnotation(Inject.class);
+            Collection<Object> fieldObject = inject.collectionType().getConstructor().newInstance();
+            for (String configName : configNames) {
+                File dataFile = world.getData().getDataFile(inject.parameterizedType(), configName);
+                Object collectionObject = Orbis.getGson().fromJson(new FileReader(dataFile), inject.parameterizedType());
+                fieldObject.add(collectionObject);
+            }
+            setField(rootObject, field, fieldObject);
+        } else {
+            String configName = (String) configNameField.get(rootObject);
+            configNameField.setAccessible(false);
+            File dataFile = world.getData().getDataFile(field.getType(), configName);
+            Object fieldObject = Orbis.getGson().fromJson(new FileReader(dataFile), field.getType());
+            setField(rootObject, field, fieldObject);
+        }
     }
 
     private static boolean shouldInject(final Field field, Object rootObject) throws IllegalAccessException {

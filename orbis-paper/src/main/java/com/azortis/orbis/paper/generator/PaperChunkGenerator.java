@@ -86,4 +86,14 @@ public class PaperChunkGenerator extends ChunkGenerator {
         return true;
     }
 
+    @Override
+    public boolean shouldGenerateCaves() {
+        return true;
+    }
+
+    @Override
+    public boolean shouldGenerateDecorations() {
+        return true;
+    }
+
 }

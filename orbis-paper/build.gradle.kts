@@ -54,7 +54,6 @@ java {
 
 tasks {
     named<ShadowJar>("shadowJar") {
-        archiveBaseName.set("Orbis")
         mergeServiceFiles()
     }
 }
