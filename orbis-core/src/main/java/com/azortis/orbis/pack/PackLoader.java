@@ -189,7 +189,7 @@ public final class PackLoader {
                                       @NotNull Field field, @NotNull String name)
             throws NoSuchFieldException, IllegalAccessException, IOException,
             NoSuchMethodException, InvocationTargetException, InstantiationException {
-        Field configNameField = rootObject.getClass().getDeclaredField(name);
+        Field configNameField = getDeclaredField(rootObject.getClass(), name);
         configNameField.setAccessible(true);
         if (Collection.class.isAssignableFrom(field.getType())) {
             Collection<String> configNames = (Collection<String>) configNameField.get(rootObject);
@@ -268,6 +268,18 @@ public final class PackLoader {
             }
         }
         return fields;
+    }
+
+    private static Field getDeclaredField(final Class<?> type, String fieldName) throws NoSuchFieldException {
+        Field declaredField = null;
+        for (Field field : getAllFields(type)) {
+            if (field.getName().equals(fieldName)) {
+                declaredField = field;
+                break;
+            }
+        }
+        if (declaredField == null) throw new NoSuchFieldException(fieldName);
+        return declaredField;
     }
 
     private static void invokeMethod(@NotNull Object instance, @NotNull Method method)

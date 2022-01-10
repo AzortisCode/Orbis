@@ -39,14 +39,15 @@ public class PaperBiomeProvider extends BiomeProvider {
     @Override
     public @NotNull Biome getBiome(@NotNull WorldInfo worldInfo, int x, int y, int z) {
         if (chunkGenerator.requiresLoading()) chunkGenerator.load(worldInfo);
-        return Biome.valueOf(chunkGenerator.getWorld().getDimension()
-                .distributor().getNativeBiome(x, y, z).value().toUpperCase(Locale.ROOT));
+        return Biome.valueOf(chunkGenerator.getWorld().getDimension().distributor()
+                .getBiome(x, y, z).derivative().value().toUpperCase(Locale.ROOT));
     }
 
     @Override
     public @NotNull List<Biome> getBiomes(@NotNull WorldInfo worldInfo) {
         if (chunkGenerator.requiresLoading()) chunkGenerator.load(worldInfo);
-        return chunkGenerator.getWorld().getDimension().distributor().getNativeBiomes()
-                .stream().map(Key::value).map(String::toUpperCase).map(Biome::valueOf).collect(Collectors.toList());
+        return chunkGenerator.getWorld().getDimension().distributor().biomes()
+                .stream().map(com.azortis.orbis.generator.biome.Biome::derivative).map(Key::value)
+                .map(String::toUpperCase).map(Biome::valueOf).collect(Collectors.toList());
     }
 }

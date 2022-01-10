@@ -32,7 +32,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-public class PackManager {
+public final class PackManager {
 
     private final Map<Pack, File> loadedPacks = new HashMap<>();
 

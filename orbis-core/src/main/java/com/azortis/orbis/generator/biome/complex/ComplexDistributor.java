@@ -23,9 +23,6 @@ import com.azortis.orbis.generator.biome.Distributor;
 import com.azortis.orbis.util.Inject;
 import com.azortis.orbis.util.Invoke;
 import net.kyori.adventure.key.Key;
-import org.jetbrains.annotations.NotNull;
-
-import java.util.Set;
 
 @Inject
 public class ComplexDistributor extends Distributor {
@@ -41,27 +38,12 @@ public class ComplexDistributor extends Distributor {
     }
 
     @Override
-    public @NotNull Set<Biome> getBiomes() {
-        return null;
-    }
-
-    @Override
     public Biome getBiome(int x, int y, int z) {
         return null;
     }
 
     @Override
     public Biome getBiome(double x, double y, double z) {
-        return null;
-    }
-
-    @Override
-    public @NotNull Set<Key> getNativeBiomes() {
-        return null;
-    }
-
-    @Override
-    public Key getNativeBiome(int x, int y, int z) {
         return null;
     }
 

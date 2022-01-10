@@ -22,10 +22,12 @@ import com.azortis.orbis.World;
 import com.azortis.orbis.pack.data.DataAccess;
 import com.azortis.orbis.util.Inject;
 import com.azortis.orbis.util.Invoke;
+import com.google.gson.annotations.SerializedName;
 import net.kyori.adventure.key.Key;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
+import java.util.HashSet;
 import java.util.Set;
 
 @Inject
@@ -33,6 +35,12 @@ public abstract class Distributor {
 
     protected final String name;
     protected final Key type;
+
+    // Every possible biome should be defined in the root of the distributor object
+    @SerializedName("biomes")
+    private Set<String> biomeNames;
+    @Inject(fieldName = "biomeNames", collectionType = HashSet.class, parameterizedType = Biome.class)
+    private transient Set<Biome> biomes;
 
     @Inject
     private transient World world;
@@ -48,6 +56,10 @@ public abstract class Distributor {
         // Set up the settings folder so that Distributor implementations can load their datafiles before injection
         this.settingsFolder = new File(world.getSettingsFolder() +
                 DataAccess.DISTRIBUTOR_FOLDER + "/" + name + "/");
+
+        // Make sets immutable
+        this.biomeNames = Set.copyOf(biomeNames);
+        this.biomes = Set.copyOf(biomes);
     }
 
     public String name() {
@@ -58,6 +70,14 @@ public abstract class Distributor {
         return type;
     }
 
+    public @NotNull Set<String> biomeNames() {
+        return biomeNames;
+    }
+
+    public @NotNull Set<Biome> biomes() {
+        return biomes;
+    }
+
     public World world() {
         return world;
     }
@@ -66,14 +86,8 @@ public abstract class Distributor {
         return settingsFolder;
     }
 
-    public abstract @NotNull Set<Biome> getBiomes();
-
     public abstract Biome getBiome(int x, int y, int z);
 
     public abstract Biome getBiome(double x, double y, double z);
-
-    public abstract @NotNull Set<Key> getNativeBiomes();
-
-    public abstract Key getNativeBiome(int x, int y, int z);
 
 }

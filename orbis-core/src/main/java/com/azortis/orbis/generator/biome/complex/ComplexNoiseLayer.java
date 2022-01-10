@@ -22,7 +22,7 @@ import com.azortis.orbis.generator.noise.NoiseGenerator;
 
 public class ComplexNoiseLayer {
 
-    private String name;
+    private String tag;
     private NoiseGenerator noise;
 
 

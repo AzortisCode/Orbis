@@ -18,48 +18,21 @@
 
 package com.azortis.orbis.generator.biome;
 
-import com.azortis.orbis.util.Inject;
-import com.google.gson.annotations.SerializedName;
 import net.kyori.adventure.key.Key;
-import org.jetbrains.annotations.NotNull;
-
-import java.util.Set;
 
 public final class SingleDistributor extends Distributor {
 
-    @SerializedName("biome")
-    private final String biomeName;
-
-    @Inject(fieldName = "biomeName")
-    private transient Biome biome;
-
-    private SingleDistributor(String name, Key providerKey, String biomeName) {
+    private SingleDistributor(String name, Key providerKey) {
         super(name, providerKey);
-        this.biomeName = biomeName;
-    }
-
-    @Override
-    public @NotNull Set<Biome> getBiomes() {
-        return Set.of(biome);
     }
 
     @Override
     public Biome getBiome(int x, int y, int z) {
-        return biome;
+        return biomes().iterator().next();
     }
 
     @Override
     public Biome getBiome(double x, double y, double z) {
-        return biome;
-    }
-
-    @Override
-    public @NotNull Set<Key> getNativeBiomes() {
-        return Set.of(biome.derivative());
-    }
-
-    @Override
-    public Key getNativeBiome(int x, int y, int z) {
-        return biome.derivative();
+        return biomes().iterator().next();
     }
 }
