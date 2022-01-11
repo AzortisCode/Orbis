@@ -16,7 +16,7 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.depend;
+package com.azortis.orbis.util.maven;
 
 import javax.annotation.Nonnull;
 import java.lang.reflect.Field;

@@ -41,15 +41,14 @@ repositories {
 
 dependencies {
     implementation(project(":orbis-core"))
-    implementation("io.github.jglrxavpok.hephaistos:common:2.2.0")
     paperDevBundle("1.18.1-R0.1-SNAPSHOT")
-    compileOnly("org.slf4j:slf4j-api:1.7.31")
+
+    // Compile
+    compileOnly("io.github.jglrxavpok.hephaistos:common:2.2.0")
 }
 
 java {
-    toolchain {
-        languageVersion.set(JavaLanguageVersion.of(17))
-    }
+    toolchain.languageVersion.set(JavaLanguageVersion.of(17))
 }
 
 tasks {

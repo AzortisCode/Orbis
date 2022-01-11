@@ -16,23 +16,28 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.depend;
+package com.azortis.orbis.util.maven;
 
 import javax.annotation.Nonnull;
-import java.lang.annotation.*;
+import java.lang.annotation.Documented;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
 
 /**
- * Representation of a repository.
+ * Annotation containing an array of {@link Dependency} for a plugin.
  */
 @Documented
-@Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.LOCAL_VARIABLE)
-public @interface Repository {
+@Target(ElementType.TYPE)
+@Retention(java.lang.annotation.RetentionPolicy.RUNTIME)
+public @interface Dependencies {
 
     /**
-     * The url of the repository.
-     * @return url of the repository
+     * The {@link Dependency}s for the plugin.
+     *
+     * @return The {@link Dependency}s for the plugin.
      */
     @Nonnull
-    String url();
+    Dependency[] value() default {};
+
 }

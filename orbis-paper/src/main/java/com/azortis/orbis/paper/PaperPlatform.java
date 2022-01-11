@@ -22,6 +22,7 @@ import com.azortis.orbis.Platform;
 import com.azortis.orbis.World;
 import com.azortis.orbis.item.ItemFactory;
 import com.azortis.orbis.paper.item.PaperItemFactory;
+import com.azortis.orbis.util.maven.Dependency;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
@@ -30,6 +31,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
 
+@Dependency(group = "io.github.jglrxavpok.hephaistos", artifact = "common", version = "2.2.0")
+@Dependency(group = "org.jetbrains.kotlin", artifact = "kotlin-stdlib", version = "1.6.10")
 public class PaperPlatform implements Platform {
 
     private final OrbisPlugin plugin;
