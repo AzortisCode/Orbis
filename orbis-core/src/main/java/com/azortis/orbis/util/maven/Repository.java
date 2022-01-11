@@ -16,21 +16,23 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis;
+package com.azortis.orbis.util.maven;
 
-import org.junit.jupiter.api.Test;
+import javax.annotation.Nonnull;
+import java.lang.annotation.*;
 
-public class BlocksTest {
+/**
+ * Representation of a repository.
+ */
+@Documented
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.LOCAL_VARIABLE)
+public @interface Repository {
 
-    @Test
-    public void testBlocks() {
-        /*Orbis.initialize(new MockPlatform());
-        assertTrue(BlockRegistry.isLoaded());
-        assertTrue(ItemRegistry.isLoaded());
-        assertNotNull(Blocks.ACACIA_DOOR);
-        assertSame(Properties.NOTE_BLOCK_INSTRUMENT.getValueFor("HARP"), NoteBlockInstrument.HARP);
-        assertSame(Blocks.GRASS_BLOCK.defaultState().setValue(Properties.SNOWY, true), BlockRegistry.fromStateId(8));
-        assertSame(Blocks.STONE.item(), Items.STONE);*/
-    }
-
+    /**
+     * The url of the repository.
+     * @return url of the repository
+     */
+    @Nonnull
+    String url();
 }

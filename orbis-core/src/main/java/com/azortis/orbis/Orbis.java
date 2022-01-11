@@ -28,6 +28,8 @@ import com.azortis.orbis.item.ItemFactory;
 import com.azortis.orbis.item.ItemRegistry;
 import com.azortis.orbis.pack.PackManager;
 import com.azortis.orbis.pack.adapter.*;
+import com.azortis.orbis.util.maven.Dependency;
+import com.azortis.orbis.util.maven.DependencyLoader;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import net.kyori.adventure.key.Key;
@@ -39,6 +41,9 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 
+@Dependency(group = "com.google.guava", artifact = "guava", version = "31.0.1-jre")
+@Dependency(group = "net.lingala.zip4j", artifact = "zip4j", version = "2.7.0")
+@Dependency(group = "org.projectlombok", artifact = "lombok", version = "1.18.20")
 public final class Orbis {
 
     public static final String SETTINGS_VERSION = "1";
@@ -64,6 +69,10 @@ public final class Orbis {
             Orbis.platform = platform;
             logger = platform.logger();
             logger.info("Initializing {} adaptation of Orbis", platform.adaptation());
+
+            logger.info("Loading libraries...");
+            DependencyLoader.loadAll(Orbis.class);
+            DependencyLoader.loadAll(platform.getClass());
 
             // Register the type adapters to use in the serialization/deserialization of settings in packs.
             gson = new GsonBuilder().disableHtmlEscaping().setPrettyPrinting()

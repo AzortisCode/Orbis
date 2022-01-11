@@ -51,9 +51,9 @@ repositories {
 
 dependencies {
     // No adapter contains this by default
-    implementation("com.google.guava:guava:31.0.1-jre")
-    implementation("net.lingala.zip4j:zip4j:2.7.0")
-    implementation("org.projectlombok:lombok:1.18.20")
+    compileOnly("com.google.guava:guava:31.0.1-jre")
+    compileOnly("net.lingala.zip4j:zip4j:2.7.0")
+    compileOnly("org.projectlombok:lombok:1.18.20")
 
     annotationProcessor("org.projectlombok:lombok:1.18.20")
 

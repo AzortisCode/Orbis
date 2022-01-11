@@ -40,4 +40,6 @@ public interface Platform {
 
     @NotNull Collection<World> worlds();
 
+    @NotNull Class<?> getMainClass();
+
 }
