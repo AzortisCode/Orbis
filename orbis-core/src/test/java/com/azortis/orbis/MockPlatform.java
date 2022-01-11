@@ -62,4 +62,10 @@ public class MockPlatform implements Platform {
     public @NotNull Collection<World> worlds() {
         return null;
     }
+
+    @Override
+    public @NotNull Class<?> getMainClass() {
+        // Broken for now, would not recommend using this.
+        return null;
+    }
 }

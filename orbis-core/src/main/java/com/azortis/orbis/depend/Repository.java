@@ -16,30 +16,23 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis;
+package com.azortis.orbis.depend;
 
-import com.azortis.orbis.item.ItemFactory;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-import org.slf4j.Logger;
+import javax.annotation.Nonnull;
+import java.lang.annotation.*;
 
-import java.io.File;
-import java.util.Collection;
+/**
+ * Representation of a repository.
+ */
+@Documented
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.LOCAL_VARIABLE)
+public @interface Repository {
 
-public interface Platform {
-
-    @NotNull String adaptation();
-
-    @NotNull Logger logger();
-
-    @NotNull File directory();
-
-    @NotNull ItemFactory itemFactory();
-
-    @Nullable World getWorld(String name);
-
-    @NotNull Collection<World> worlds();
-
-    @NotNull Class<?> getMainClass();
-
+    /**
+     * The url of the repository.
+     * @return url of the repository
+     */
+    @Nonnull
+    String url();
 }

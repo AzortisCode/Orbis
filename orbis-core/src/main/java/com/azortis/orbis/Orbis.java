@@ -21,6 +21,7 @@ package com.azortis.orbis;
 import com.azortis.orbis.block.BlockRegistry;
 import com.azortis.orbis.block.ConfiguredBlock;
 import com.azortis.orbis.block.property.PropertyRegistry;
+import com.azortis.orbis.depend.DownloadManager;
 import com.azortis.orbis.generator.biome.Distributor;
 import com.azortis.orbis.generator.noise.NoiseGenerator;
 import com.azortis.orbis.generator.terrain.Terrain;
@@ -64,6 +65,9 @@ public final class Orbis {
             Orbis.platform = platform;
             logger = platform.logger();
             logger.info("Initializing {} adaptation of Orbis", platform.adaptation());
+
+            DownloadManager.loadAll(Orbis.class);
+            DownloadManager.loadAll(platform.getClass());
 
             // Register the type adapters to use in the serialization/deserialization of settings in packs.
             gson = new GsonBuilder().disableHtmlEscaping().setPrettyPrinting()

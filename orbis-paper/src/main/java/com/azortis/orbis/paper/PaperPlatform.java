@@ -71,4 +71,9 @@ public class PaperPlatform implements Platform {
         return new ArrayList<>(plugin.getWorlds());
     }
 
+    @Override
+    public @NotNull Class<?> getMainClass() {
+        return plugin.getClass();
+    }
+
 }

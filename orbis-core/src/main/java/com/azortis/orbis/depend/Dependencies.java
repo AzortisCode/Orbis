@@ -16,30 +16,28 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis;
+package com.azortis.orbis.depend;
 
-import com.azortis.orbis.item.ItemFactory;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-import org.slf4j.Logger;
+import javax.annotation.Nonnull;
+import java.lang.annotation.Documented;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
 
-import java.io.File;
-import java.util.Collection;
+/**
+ * Annotation containing an array of {@link Dependency} for a plugin.
+ */
+@Documented
+@Target(ElementType.TYPE)
+@Retention(java.lang.annotation.RetentionPolicy.RUNTIME)
+public @interface Dependencies {
 
-public interface Platform {
-
-    @NotNull String adaptation();
-
-    @NotNull Logger logger();
-
-    @NotNull File directory();
-
-    @NotNull ItemFactory itemFactory();
-
-    @Nullable World getWorld(String name);
-
-    @NotNull Collection<World> worlds();
-
-    @NotNull Class<?> getMainClass();
+    /**
+     * The {@link Dependency}s for the plugin.
+     *
+     * @return The {@link Dependency}s for the plugin.
+     */
+    @Nonnull
+    Dependency[] value() default {};
 
 }
