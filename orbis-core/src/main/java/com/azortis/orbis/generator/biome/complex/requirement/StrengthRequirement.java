@@ -16,24 +16,35 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.util.maven;
+package com.azortis.orbis.generator.biome.complex.requirement;
 
-import javax.annotation.Nonnull;
-import java.lang.annotation.*;
+import net.kyori.adventure.key.Key;
+import org.jetbrains.annotations.NotNull;
 
-/**
- * Representation of a repository.
- */
-@Documented
-@Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.LOCAL_VARIABLE)
-public @interface Repository {
+import java.util.Map;
 
-    /**
-     * The url of the repository.
-     *
-     * @return url of the repository
-     */
-    @Nonnull
-    String url();
+public final class StrengthRequirement extends Requirement {
+
+    private final String tag;
+    private final double min;
+
+    public StrengthRequirement(Key type, String tag, double min) {
+        super(type);
+        this.tag = tag;
+        this.min = min;
+    }
+
+    @Override
+    public boolean isAchieved(Map<String, Double> context) {
+        if (context.containsKey(tag)) {
+            return context.get(tag) >= min;
+        } else {
+            throw new IllegalStateException("Tag " + tag + " wasn't found in context!");
+        }
+    }
+
+    @Override
+    public @NotNull Type getType() {
+        return Type.STRENGTH;
+    }
 }

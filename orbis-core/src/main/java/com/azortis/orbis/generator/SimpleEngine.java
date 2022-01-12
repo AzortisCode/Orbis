@@ -40,7 +40,7 @@ public final class SimpleEngine extends Engine {
                 int height = (int) Math.round(biome.terrain().getTerrainHeight(x, z, 1.0d));
 
                 for (int y = getDimension().minHeight(); y < getDimension().maxHeight(); y++) {
-                    if (y == 0) {
+                    if (y == getDimension().minHeight()) {
                         chunkData.setBlock(cx, y, cz, Blocks.BEDROCK);
                     } else {
                         if (y < height) {

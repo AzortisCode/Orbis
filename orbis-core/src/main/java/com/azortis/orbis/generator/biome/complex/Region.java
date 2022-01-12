@@ -16,24 +16,21 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.util.maven;
+package com.azortis.orbis.generator.biome.complex;
 
-import javax.annotation.Nonnull;
-import java.lang.annotation.*;
+import com.azortis.orbis.generator.biome.complex.layer.BiomeLayer;
+import com.azortis.orbis.generator.biome.complex.layer.NoiseLayer;
+import com.azortis.orbis.generator.biome.complex.layer.RegionLayer;
 
-/**
- * Representation of a repository.
- */
-@Documented
-@Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.LOCAL_VARIABLE)
-public @interface Repository {
+import java.util.Set;
 
-    /**
-     * The url of the repository.
-     *
-     * @return url of the repository
-     */
-    @Nonnull
-    String url();
+public final class Region {
+
+    private String name;
+    private Set<NoiseLayer> noiseLayers;
+    private Set<RegionLayer> regions;
+    private Set<BiomeLayer> biomes;
+    private RegionLayer fallbackRegion;
+    private BiomeLayer fallbackBiome;
+
 }
