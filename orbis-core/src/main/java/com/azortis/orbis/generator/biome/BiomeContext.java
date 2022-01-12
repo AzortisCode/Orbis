@@ -16,14 +16,17 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.generator.biome.complex;
+package com.azortis.orbis.generator.biome;
 
-import com.azortis.orbis.generator.noise.NoiseGenerator;
+import java.util.Map;
 
-public class ComplexNoiseLayer {
+public final class BiomeContext {
 
-    private String tag;
-    private NoiseGenerator noise;
+    private final double biomeStrength;
+    private final Map<String, Double> customTags;
 
-
+    public BiomeContext(double biomeStrength, Map<String, Double> customTags) {
+        this.biomeStrength = biomeStrength;
+        this.customTags = customTags;
+    }
 }

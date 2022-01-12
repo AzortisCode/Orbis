@@ -18,21 +18,41 @@
 
 package com.azortis.orbis.generator.biome.complex;
 
+import com.azortis.orbis.Registry;
 import com.azortis.orbis.generator.biome.Biome;
 import com.azortis.orbis.generator.biome.Distributor;
+import com.azortis.orbis.generator.biome.complex.layer.NoiseLayer;
+import com.azortis.orbis.generator.biome.complex.layer.RegionLayer;
+import com.azortis.orbis.generator.biome.complex.requirement.RangesRequirement;
+import com.azortis.orbis.generator.biome.complex.requirement.Requirement;
+import com.azortis.orbis.generator.biome.complex.requirement.StrengthRequirement;
 import com.azortis.orbis.util.Inject;
 import com.azortis.orbis.util.Invoke;
 import net.kyori.adventure.key.Key;
 
+import java.util.Map;
+import java.util.Set;
+
 @Inject
-public class ComplexDistributor extends Distributor {
+public final class ComplexDistributor extends Distributor {
 
+    public static Registry<Requirement> REGISTRY_REQUIREMENT = new Registry<>(Map.of(
+            Key.key("complex:noise_ranges"), RangesRequirement.class,
+            Key.key("complex:minimum_strength"), StrengthRequirement.class
+    ));
 
-    private ComplexDistributor(String name, Key providerKey) {
+    private final Set<NoiseLayer> globalNoiseLayers;
+    private final Set<RegionLayer> initialRegions;
+    private final RegionLayer fallbackRegion;
+
+    private ComplexDistributor(String name, Key providerKey, Set<NoiseLayer> globalNoiseLayers, Set<RegionLayer> initialRegions, RegionLayer fallbackRegion) {
         super(name, providerKey);
+        this.globalNoiseLayers = globalNoiseLayers;
+        this.initialRegions = initialRegions;
+        this.fallbackRegion = fallbackRegion;
     }
 
-    @Invoke(when = Invoke.Order.MID_INJECTION)
+    @Invoke(when = Invoke.Order.PRE_INJECTION)
     private void setup() {
 
     }
@@ -46,5 +66,6 @@ public class ComplexDistributor extends Distributor {
     public Biome getBiome(double x, double y, double z) {
         return null;
     }
+
 
 }

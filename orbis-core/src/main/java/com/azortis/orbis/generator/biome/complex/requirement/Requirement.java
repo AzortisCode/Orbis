@@ -16,24 +16,28 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.util.maven;
+package com.azortis.orbis.generator.biome.complex.requirement;
 
-import javax.annotation.Nonnull;
-import java.lang.annotation.*;
+import net.kyori.adventure.key.Key;
+import org.jetbrains.annotations.NotNull;
 
-/**
- * Representation of a repository.
- */
-@Documented
-@Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.LOCAL_VARIABLE)
-public @interface Repository {
+import java.util.Map;
 
-    /**
-     * The url of the repository.
-     *
-     * @return url of the repository
-     */
-    @Nonnull
-    String url();
+public abstract class Requirement {
+
+    protected final Key type;
+
+    protected Requirement(Key type) {
+        this.type = type;
+    }
+
+    public abstract boolean isAchieved(Map<String, Double> context);
+
+    public abstract @NotNull Type getType();
+
+    public enum Type {
+        NOISE,
+        STRENGTH
+    }
+
 }

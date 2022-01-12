@@ -47,7 +47,7 @@ public final class Registry<T> {
 
     private final Map<Key, Class<? extends T>> typeClasses = new HashMap<>();
 
-    private Registry(Map<Key, Class<? extends T>> defaultTypes) {
+    public Registry(Map<Key, Class<? extends T>> defaultTypes) {
         typeClasses.putAll(defaultTypes);
     }
 

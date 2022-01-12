@@ -116,8 +116,8 @@ public class DependencyLoader {
         File jarFile;
         jarFile = new File(Orbis.getPlatform().directory() + "/libs/");
         File libFolder = new File(jarFile.getParentFile(), "libs");
-        if (!libFolder.exists()) {
-            libFolder.mkdirs();
+        if (!libFolder.exists() && !libFolder.mkdirs()) {
+            logger.error("Failed to create /libs/ folder!");
         }
         return libFolder;
     }
