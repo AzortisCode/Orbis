@@ -47,7 +47,7 @@ import java.net.URL;
 public final class Orbis {
 
     public static final String SETTINGS_VERSION = "1";
-    public static final String MC_VERSION = "1_18_1";
+    public static final String MC_VERSION = "1_19";
     private static final String DOWNLOAD_URL = "https://raw.githubusercontent.com/Articdive/ArticData/" +
             MC_VERSION.replace("_", ".") + "/";
 

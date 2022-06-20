@@ -21,10 +21,13 @@ package com.azortis.orbis.paper.nms.block;
 import com.azortis.orbis.block.entity.BlockEntity;
 import com.azortis.orbis.util.BlockPos;
 import net.kyori.adventure.key.Key;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import org.jetbrains.annotations.NotNull;
 import org.jglrxavpok.hephaistos.nbt.NBT;
 import org.jglrxavpok.hephaistos.nbt.NBTCompound;
 import org.jglrxavpok.hephaistos.nbt.mutable.MutableNBTCompound;
+
+import java.util.Objects;
 
 public class PaperBlockEntity implements BlockEntity {
     private final net.minecraft.world.level.block.entity.BlockEntity handle;
@@ -34,7 +37,7 @@ public class PaperBlockEntity implements BlockEntity {
     @SuppressWarnings("PatternValidation")
     public PaperBlockEntity(net.minecraft.world.level.block.entity.BlockEntity handle) {
         this.handle = handle;
-        this.key = Key.key(handle.getMinecraftKeyString());
+        this.key = Key.key(Objects.requireNonNull(BlockEntityType.getKey(handle.getType())).toString());
         this.blockPos = new BlockPos(handle.getBlockPos().getX(), handle.getBlockPos().getY(), handle.getBlockPos().getZ());
     }
 

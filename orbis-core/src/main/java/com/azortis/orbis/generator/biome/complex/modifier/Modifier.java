@@ -16,28 +16,20 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.generator.biome.complex.layer;
+package com.azortis.orbis.generator.biome.complex.modifier;
 
-import com.azortis.orbis.generator.biome.complex.modifier.Modifier;
-import com.azortis.orbis.generator.biome.complex.requirement.Requirement;
+import net.kyori.adventure.key.Key;
 
-import java.util.Set;
+import java.util.Map;
 
-public sealed abstract class Layer<T> permits RegionLayer, BiomeLayer {
+public abstract class Modifier {
 
-    private final Set<Requirement> requirements;
-    private final boolean useDefaultModifier;
-    private final Set<Modifier> modifiers;
+    protected final Key type;
 
-    public Layer(Set<Requirement> requirements, boolean useDefaultModifier, Set<Modifier> modifiers) {
-        this.requirements = requirements;
-        this.useDefaultModifier = useDefaultModifier;
-        this.modifiers = modifiers;
+    protected Modifier(Key type) {
+        this.type = type;
     }
 
-
-    public abstract Class<T> getType();
-
-    public abstract T getObject();
+    public abstract double modify(double currentStrength, Map<String, Double> noiseContext, Map<String, Double> strengthContext);
 
 }

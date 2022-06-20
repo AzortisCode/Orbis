@@ -23,9 +23,12 @@ import com.azortis.orbis.generator.biome.Biome;
 import com.azortis.orbis.generator.biome.Distributor;
 import com.azortis.orbis.generator.biome.complex.layer.NoiseLayer;
 import com.azortis.orbis.generator.biome.complex.layer.RegionLayer;
-import com.azortis.orbis.generator.biome.complex.requirement.RangesRequirement;
+import com.azortis.orbis.generator.biome.complex.modifier.Modifier;
+import com.azortis.orbis.generator.biome.complex.modifier.RangedLinearModifier;
+import com.azortis.orbis.generator.biome.complex.requirement.MaxStrength;
+import com.azortis.orbis.generator.biome.complex.requirement.MinStrength;
+import com.azortis.orbis.generator.biome.complex.requirement.NoiseRanges;
 import com.azortis.orbis.generator.biome.complex.requirement.Requirement;
-import com.azortis.orbis.generator.biome.complex.requirement.StrengthRequirement;
 import com.azortis.orbis.util.Inject;
 import com.azortis.orbis.util.Invoke;
 import net.kyori.adventure.key.Key;
@@ -37,15 +40,20 @@ import java.util.Set;
 public final class ComplexDistributor extends Distributor {
 
     public static Registry<Requirement> REGISTRY_REQUIREMENT = new Registry<>(Map.of(
-            Key.key("complex:noise_ranges"), RangesRequirement.class,
-            Key.key("complex:minimum_strength"), StrengthRequirement.class
+            Key.key("complex:noise_ranges"), NoiseRanges.class,
+            Key.key("complex:minimum_strength"), MinStrength.class,
+            Key.key("complex:maximum_strength"), MaxStrength.class
+    ));
+    public static Registry<Modifier> REGISTRY_MODIFIER = new Registry<>(Map.of(
+            Key.key("complex:ranged_linear"), RangedLinearModifier.class
     ));
 
     private final Set<NoiseLayer> globalNoiseLayers;
     private final Set<RegionLayer> initialRegions;
     private final RegionLayer fallbackRegion;
 
-    private ComplexDistributor(String name, Key providerKey, Set<NoiseLayer> globalNoiseLayers, Set<RegionLayer> initialRegions, RegionLayer fallbackRegion) {
+    private ComplexDistributor(String name, Key providerKey, Set<NoiseLayer> globalNoiseLayers,
+                               Set<RegionLayer> initialRegions, RegionLayer fallbackRegion) {
         super(name, providerKey);
         this.globalNoiseLayers = globalNoiseLayers;
         this.initialRegions = initialRegions;

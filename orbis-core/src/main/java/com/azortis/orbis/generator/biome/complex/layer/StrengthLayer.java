@@ -16,35 +16,21 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.generator.biome.complex.requirement;
+package com.azortis.orbis.generator.biome.complex.layer;
 
-import net.kyori.adventure.key.Key;
-import org.jetbrains.annotations.NotNull;
+import com.azortis.orbis.generator.biome.complex.modifier.Modifier;
 
 import java.util.Map;
+import java.util.Set;
 
-public final class StrengthRequirement extends Requirement {
+public record StrengthLayer(String tag, Set<Modifier> modifiers, int precision) {
 
-    private final String tag;
-    private final double min;
-
-    public StrengthRequirement(Key type, String tag, double min) {
-        super(type);
-        this.tag = tag;
-        this.min = min;
-    }
-
-    @Override
-    public boolean isAchieved(Map<String, Double> context) {
-        if (context.containsKey(tag)) {
-            return context.get(tag) >= min;
-        } else {
-            throw new IllegalStateException("Tag " + tag + " wasn't found in context!");
+    public double calculate(Map<String, Double> noiseContext, Map<String, Double> strengthContext) {
+        double strength = 1.0d;
+        for (Modifier modifier : modifiers) {
+            strength = modifier.modify(strength, noiseContext, strengthContext);
         }
+        return (double) Math.round(precision * strength) / precision;
     }
 
-    @Override
-    public @NotNull Type getType() {
-        return Type.STRENGTH;
-    }
 }

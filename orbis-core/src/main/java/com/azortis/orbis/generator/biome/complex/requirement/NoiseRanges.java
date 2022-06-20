@@ -24,12 +24,12 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Map;
 import java.util.Set;
 
-public final class RangesRequirement extends Requirement {
+public final class NoiseRanges extends Requirement {
 
     private final String tag;
     private final Set<Range> ranges;
 
-    private RangesRequirement(Key type, String tag, Set<Range> ranges) {
+    private NoiseRanges(Key type, String tag, Set<Range> ranges) {
         super(type);
         this.tag = tag;
         this.ranges = ranges;
@@ -53,7 +53,7 @@ public final class RangesRequirement extends Requirement {
         return Type.NOISE;
     }
 
-    public static record Range(double min, double max) {
+    public record Range(double min, double max) {
     }
 
 }

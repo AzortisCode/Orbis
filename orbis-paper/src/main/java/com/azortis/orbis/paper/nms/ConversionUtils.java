@@ -25,8 +25,8 @@ import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import org.bukkit.Material;
 import org.bukkit.block.data.BlockData;
-import org.bukkit.craftbukkit.v1_18_R1.block.data.CraftBlockData;
-import org.bukkit.craftbukkit.v1_18_R1.util.CraftMagicNumbers;
+import org.bukkit.craftbukkit.v1_19_R1.block.data.CraftBlockData;
+import org.bukkit.craftbukkit.v1_19_R1.util.CraftMagicNumbers;
 import org.jetbrains.annotations.NotNull;
 
 public final class ConversionUtils {

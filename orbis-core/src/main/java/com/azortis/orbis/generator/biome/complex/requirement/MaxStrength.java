@@ -16,28 +16,35 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.generator.biome.complex.layer;
+package com.azortis.orbis.generator.biome.complex.requirement;
 
-import com.azortis.orbis.generator.biome.complex.modifier.Modifier;
-import com.azortis.orbis.generator.biome.complex.requirement.Requirement;
+import net.kyori.adventure.key.Key;
+import org.jetbrains.annotations.NotNull;
 
-import java.util.Set;
+import java.util.Map;
 
-public sealed abstract class Layer<T> permits RegionLayer, BiomeLayer {
+public final class MaxStrength extends Requirement {
 
-    private final Set<Requirement> requirements;
-    private final boolean useDefaultModifier;
-    private final Set<Modifier> modifiers;
+    private final String tag;
+    private final double max;
 
-    public Layer(Set<Requirement> requirements, boolean useDefaultModifier, Set<Modifier> modifiers) {
-        this.requirements = requirements;
-        this.useDefaultModifier = useDefaultModifier;
-        this.modifiers = modifiers;
+    public MaxStrength(Key type, String tag, double max) {
+        super(type);
+        this.tag = tag;
+        this.max = max;
     }
 
+    @Override
+    public boolean isAchieved(Map<String, Double> context) {
+        if (context.containsKey(tag)) {
+            return context.get(tag) <= max;
+        } else {
+            throw new IllegalStateException("Tag " + tag + " wasn't found in context!");
+        }
+    }
 
-    public abstract Class<T> getType();
-
-    public abstract T getObject();
-
+    @Override
+    public @NotNull Type getType() {
+        return Type.STRENGTH;
+    }
 }

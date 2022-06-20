@@ -21,7 +21,7 @@ import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 plugins {
     java
     id("com.github.johnrengelman.shadow") version "7.0.0"
-    id("io.papermc.paperweight.userdev") version "1.3.4-SNAPSHOT"
+    id("io.papermc.paperweight.userdev") version "1.3.7-SNAPSHOT"
 }
 
 group = "com.azortis"
@@ -41,7 +41,7 @@ repositories {
 
 dependencies {
     implementation(project(":orbis-core"))
-    paperDevBundle("1.18.1-R0.1-SNAPSHOT")
+    paperDevBundle("1.19-R0.1-SNAPSHOT")
 
     // Compile
     compileOnly("io.github.jglrxavpok.hephaistos:common:2.2.0")

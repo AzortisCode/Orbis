@@ -18,7 +18,9 @@
 
 package com.azortis.orbis.generator.biome.complex.layer;
 
+import com.azortis.orbis.generator.Dimension;
 import com.azortis.orbis.generator.biome.complex.Region;
+import com.azortis.orbis.generator.biome.complex.modifier.Modifier;
 import com.azortis.orbis.generator.biome.complex.requirement.Requirement;
 import com.azortis.orbis.util.Inject;
 import com.azortis.orbis.util.Invoke;
@@ -33,12 +35,15 @@ public final class RegionLayer extends Layer<Region> {
     private final String regionName;
     private transient Region region;
 
-    public RegionLayer(String regionName, Set<Requirement> requirements) {
-        super(requirements);
+    @Inject
+    private transient Dimension dimension;
+
+    public RegionLayer(String regionName, Set<Requirement> requirements, boolean useDefaultModifier, Set<Modifier> modifiers) {
+        super(requirements, useDefaultModifier, modifiers);
         this.regionName = regionName;
     }
 
-    @Invoke(when = Invoke.Order.PRE_INJECTION)
+    @Invoke(when = Invoke.Order.MID_INJECTION)
     private void loadRegion() {
 
     }
