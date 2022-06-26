@@ -18,29 +18,73 @@
 
 package com.azortis.orbis.paper;
 
+import cloud.commandframework.CommandManager;
+import cloud.commandframework.execution.CommandExecutionCoordinator;
+import cloud.commandframework.paper.PaperCommandManager;
 import com.azortis.orbis.Platform;
 import com.azortis.orbis.World;
+import com.azortis.orbis.command.CommandSender;
+import com.azortis.orbis.command.ConsoleSender;
 import com.azortis.orbis.item.ItemFactory;
 import com.azortis.orbis.paper.item.PaperItemFactory;
 import com.azortis.orbis.util.maven.Dependency;
+import org.bukkit.Bukkit;
+import org.bukkit.command.ConsoleCommandSender;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Collection;
+import java.util.*;
 
 @Dependency(group = "io.github.jglrxavpok.hephaistos", artifact = "common", version = "2.2.0")
 @Dependency(group = "org.jetbrains.kotlin", artifact = "kotlin-stdlib", version = "1.6.10")
-public class PaperPlatform implements Platform {
+@Dependency(group = "cloud.commandframework", artifact = "cloud-paper", version = "1.7.0")
+@Dependency(group = "cloud.commandframework", artifact = "cloud-bukkit", version = "1.7.0")
+@Dependency(group = "cloud.commandframework", artifact = "cloud-paper", version = "1.7.0")
+@Dependency(group = "cloud.commandframework", artifact = "cloud-tasks", version = "1.7.0")
+@Dependency(group = "cloud.commandframework", artifact = "cloud-brigadier", version = "1.7.0")
+public class PaperPlatform implements Platform, Listener {
 
     private final OrbisPlugin plugin;
     private final PaperItemFactory itemFactory;
+    private final PaperConsoleSender consoleSender = new PaperConsoleSender();
+    private final Map<UUID, com.azortis.orbis.Player> players = new HashMap<>();
+    private final PaperCommandManager<CommandSender> commandManager;
 
-    public PaperPlatform(OrbisPlugin plugin) {
+    public PaperPlatform(OrbisPlugin plugin) throws Exception {
         this.plugin = plugin;
         this.itemFactory = new PaperItemFactory();
+
+        // Register command paper command manager
+        this.commandManager = new PaperCommandManager<>(plugin, CommandExecutionCoordinator.simpleCoordinator(),
+                (commandSender -> {
+                    if (commandSender instanceof Player player) {
+                        return (CommandSender) getPlayer(player.getUniqueId());
+                    } else if (commandSender instanceof ConsoleCommandSender) {
+                        return consoleSender;
+                    }
+                    return null;
+                }), (commandSender -> {
+            if (commandSender instanceof PaperPlayer player) {
+                return player.handle();
+            } else if (commandSender instanceof ConsoleSender) {
+                return Bukkit.getConsoleSender();
+            }
+            return null;
+        }));
+        this.commandManager.registerBrigadier();
+        this.commandManager.registerAsynchronousCompletions();
+
+        // Register events to register player joins and quits to be able to map it to Orbis its player instance
+        // We do this on a global level since players are used for commands & aren't world specific like entities
+        Bukkit.getPluginManager().registerEvents(this, plugin);
     }
 
     @Override
@@ -59,6 +103,11 @@ public class PaperPlatform implements Platform {
     }
 
     @Override
+    public @NotNull CommandManager<CommandSender> commandManager() {
+        return this.commandManager;
+    }
+
+    @Override
     public @NotNull ItemFactory itemFactory() {
         return itemFactory;
     }
@@ -66,16 +115,36 @@ public class PaperPlatform implements Platform {
     @Nullable
     @Override
     public World getWorld(String name) {
-        return plugin.getWorld(name);
+        return OrbisPlugin.getWorld(name);
     }
 
     @Override
     public @NotNull Collection<World> worlds() {
-        return new ArrayList<>(plugin.getWorlds());
+        return new ArrayList<>(OrbisPlugin.getWorlds());
+    }
+
+    @EventHandler(priority = EventPriority.MONITOR)
+    public void onPlayerLogin(PlayerJoinEvent joinEvent) {
+        players.put(joinEvent.getPlayer().getUniqueId(), new PaperPlayer(joinEvent.getPlayer()));
+    }
+
+    @EventHandler(priority = EventPriority.MONITOR)
+    public void onPlayerQuit(PlayerQuitEvent quitEvent) {
+        players.remove(quitEvent.getPlayer().getUniqueId());
     }
 
     @Override
-    public @NotNull Class<?> getMainClass() {
+    public com.azortis.orbis.@Nullable Player getPlayer(UUID uuid) {
+        return players.get(uuid);
+    }
+
+    @Override
+    public @NotNull Collection<com.azortis.orbis.Player> getPlayers() {
+        return players.values();
+    }
+
+    @Override
+    public @Nullable Class<?> mainClass() {
         return plugin.getClass();
     }
 

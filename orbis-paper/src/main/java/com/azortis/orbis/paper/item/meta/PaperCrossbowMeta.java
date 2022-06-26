@@ -45,7 +45,7 @@ public class PaperCrossbowMeta extends PaperItemMeta implements CrossbowMeta {
 
     @Override
     public void addChargedProjectile(@NotNull ItemStack projectile) {
-        crossbowHandle.addChargedProjectile(((PaperItemStack) projectile).getHandle());
+        crossbowHandle.addChargedProjectile(((PaperItemStack) projectile).handle());
     }
 
     @Override
@@ -68,7 +68,7 @@ public class PaperCrossbowMeta extends PaperItemMeta implements CrossbowMeta {
         } else {
             List<org.bukkit.inventory.ItemStack> paperChargedProjectiles = chargedProjectiles.stream()
                     .map(itemStack -> (PaperItemStack) itemStack)
-                    .map(PaperItemStack::getHandle).collect(Collectors.toList());
+                    .map(PaperItemStack::handle).collect(Collectors.toList());
             crossbowHandle.setChargedProjectiles(paperChargedProjectiles);
         }
     }

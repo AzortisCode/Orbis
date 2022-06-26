@@ -16,39 +16,26 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis;
+package com.azortis.orbis.paper;
 
-import cloud.commandframework.CommandManager;
-import com.azortis.orbis.command.CommandSender;
-import com.azortis.orbis.item.ItemFactory;
+import com.azortis.orbis.Player;
+import net.kyori.adventure.audience.Audience;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-import org.slf4j.Logger;
 
-import java.io.File;
-import java.util.Collection;
-import java.util.UUID;
+public class PaperPlayer implements Player {
+    private final org.bukkit.entity.Player handle;
 
-public interface Platform {
+    PaperPlayer(org.bukkit.entity.Player handle) {
+        this.handle = handle;
+    }
 
-    @NotNull String adaptation();
+    @Override
+    public @NotNull Audience audience() {
+        return handle;
+    }
 
-    @NotNull Logger logger();
-
-    @NotNull File directory();
-
-    @NotNull CommandManager<CommandSender> commandManager();
-
-    @NotNull ItemFactory itemFactory();
-
-    @Nullable World getWorld(String name);
-
-    @NotNull Collection<World> worlds();
-
-    @Nullable Player getPlayer(UUID uuid);
-
-    @NotNull Collection<Player> getPlayers();
-
-    @Nullable Class<?> mainClass();
+    public org.bukkit.entity.Player handle() {
+        return handle;
+    }
 
 }

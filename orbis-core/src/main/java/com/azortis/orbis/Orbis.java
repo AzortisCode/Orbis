@@ -18,9 +18,12 @@
 
 package com.azortis.orbis;
 
+import cloud.commandframework.annotations.AnnotationParser;
+import cloud.commandframework.meta.SimpleCommandMeta;
 import com.azortis.orbis.block.BlockRegistry;
 import com.azortis.orbis.block.ConfiguredBlock;
 import com.azortis.orbis.block.property.PropertyRegistry;
+import com.azortis.orbis.command.CommandSender;
 import com.azortis.orbis.generator.biome.Distributor;
 import com.azortis.orbis.generator.noise.NoiseGenerator;
 import com.azortis.orbis.generator.terrain.Terrain;
@@ -33,6 +36,8 @@ import com.azortis.orbis.util.maven.DependencyLoader;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import net.kyori.adventure.key.Key;
+import net.kyori.adventure.text.minimessage.MiniMessage;
+import net.kyori.adventure.text.minimessage.tag.standard.StandardTags;
 import org.apache.commons.io.FileUtils;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
@@ -44,6 +49,10 @@ import java.net.URL;
 @Dependency(group = "com.google.guava", artifact = "guava", version = "31.0.1-jre")
 @Dependency(group = "net.lingala.zip4j", artifact = "zip4j", version = "2.7.0")
 @Dependency(group = "org.projectlombok", artifact = "lombok", version = "1.18.20")
+@Dependency(group = "cloud.commandframework", artifact = "cloud-core", version = "1.7.0")
+@Dependency(group = "cloud.commandframework", artifact = "cloud-annotations", version = "1.7.0")
+@Dependency(group = "cloud.commandframework", artifact = "cloud-services", version = "1.7.0")
+@Dependency(group = "io.leangen.geantyref", artifact = "geantyref", version = "1.3.13")
 public final class Orbis {
 
     public static final String SETTINGS_VERSION = "1";
@@ -55,6 +64,7 @@ public final class Orbis {
     private static Platform platform = null;
     private static Logger logger;
     private static Gson gson;
+    private static MiniMessage miniMessage;
 
     // Managers
     private static PackManager packManager;
@@ -70,9 +80,11 @@ public final class Orbis {
             logger = platform.logger();
             logger.info("Initializing {} adaptation of Orbis", platform.adaptation());
 
-            logger.info("Loading libraries...");
-            DependencyLoader.loadAll(Orbis.class);
-            DependencyLoader.loadAll(platform.getClass());
+            if (platform.mainClass() != null) {
+                logger.info("Loading libraries...");
+                DependencyLoader.loadAll(Orbis.class);
+                DependencyLoader.loadAll(platform.getClass());
+            }
 
             // Register the type adapters to use in the serialization/deserialization of settings in packs.
             gson = new GsonBuilder().disableHtmlEscaping().setPrettyPrinting()
@@ -87,8 +99,22 @@ public final class Orbis {
             BlockRegistry.init();
             ItemRegistry.init();
 
+            // Init message deserializer
+            miniMessage = MiniMessage.builder().tags(StandardTags.font()).build();
+
             // Load managers
             packManager = new PackManager(platform.directory());
+
+            // Load commands
+            AnnotationParser<CommandSender> annotationParser = new AnnotationParser<>(platform.commandManager(),
+                    CommandSender.class, parameters -> SimpleCommandMeta.empty());
+
+            try {
+                annotationParser.parseContainers();
+            } catch (Exception e) {
+                logger.error("Failed to parse command containers");
+                e.printStackTrace();
+            }
         }
     }
 
@@ -127,6 +153,10 @@ public final class Orbis {
 
     public static Logger getLogger() {
         return logger;
+    }
+
+    public static MiniMessage getMiniMessage() {
+        return miniMessage;
     }
 
     public static Gson getGson() {

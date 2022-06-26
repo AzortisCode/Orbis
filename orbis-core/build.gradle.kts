@@ -19,7 +19,6 @@
 plugins {
     java
     `maven-publish`
-    id("com.github.johnrengelman.shadow") version "7.0.0"
 }
 
 group = "com.azortis"
@@ -50,15 +49,19 @@ repositories {
 }
 
 dependencies {
-    // No adapter contains this by default
+    // Libraries downloaded in core package
     compileOnly("com.google.guava:guava:31.0.1-jre")
     compileOnly("net.lingala.zip4j:zip4j:2.7.0")
     compileOnly("org.projectlombok:lombok:1.18.20")
+    compileOnly("cloud.commandframework:cloud-core:1.7.0")
+    compileOnly("cloud.commandframework:cloud-annotations:1.7.0")
 
     annotationProcessor("org.projectlombok:lombok:1.18.20")
+    annotationProcessor("cloud.commandframework:cloud-annotations:1.7.0")
 
-    // Adapters should determine if it should be added to a shadow jar
+    // Adapters should determine if libraries should be downloaded, or if the platform already has them provided
     compileOnly("net.kyori:adventure-api:4.9.3")
+    compileOnly("net.kyori:adventure-text-minimessage:4.11.0")
     compileOnly("io.github.jglrxavpok.hephaistos:common:2.2.0")
     compileOnly("it.unimi.dsi:fastutil:8.5.6")
     compileOnly("com.google.code.gson:gson:2.8.9")
@@ -73,6 +76,7 @@ dependencies {
     testImplementation("org.jetbrains:annotations:16.0.1")
     testImplementation("com.google.code.gson:gson:2.8.9")
     testImplementation("commons-io:commons-io:2.8.0")
+    testImplementation("cloud.commandframework:cloud-core:1.7.0")
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1")
     testImplementation("org.apache.logging.log4j:log4j-core:2.14.1")
     testImplementation("org.apache.logging.log4j:log4j-slf4j-impl:2.14.1")
@@ -98,9 +102,6 @@ publishing {
 }
 
 tasks {
-    build {
-        dependsOn(shadowJar)
-    }
     test {
         useJUnitPlatform()
     }

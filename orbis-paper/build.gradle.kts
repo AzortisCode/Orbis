@@ -45,6 +45,7 @@ dependencies {
 
     // Compile
     compileOnly("io.github.jglrxavpok.hephaistos:common:2.2.0")
+    compileOnly("cloud.commandframework:cloud-paper:1.7.0")
 }
 
 java {

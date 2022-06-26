@@ -32,15 +32,13 @@ import java.util.Random;
 
 public class PaperChunkGenerator extends ChunkGenerator {
 
-    private final OrbisPlugin plugin;
     private final String worldName;
     private final Pack pack;
 
     private boolean loaded = false;
     private PaperWorld paperWorld;
 
-    public PaperChunkGenerator(OrbisPlugin plugin, String worldName, Pack pack) {
-        this.plugin = plugin;
+    public PaperChunkGenerator(String worldName, Pack pack) {
         this.worldName = worldName;
         this.pack = pack;
     }
@@ -49,13 +47,13 @@ public class PaperChunkGenerator extends ChunkGenerator {
     // can be registered with orbis, so this is our bypass
     synchronized void load(@NotNull WorldInfo worldInfo) {
         if (!loaded) {
-            paperWorld = plugin.getWorld(worldName);
+            paperWorld = OrbisPlugin.getWorld(worldName);
             if (paperWorld != null) {
                 if (paperWorld.isLoaded()) {
                     paperWorld.load(worldInfo.getSeed());
                 }
             } else {
-                paperWorld = plugin.loadWorld(worldInfo, pack);
+                paperWorld = OrbisPlugin.loadWorld(worldInfo, pack);
             }
             loaded = true;
         }

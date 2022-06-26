@@ -18,37 +18,7 @@
 
 package com.azortis.orbis;
 
-import cloud.commandframework.CommandManager;
 import com.azortis.orbis.command.CommandSender;
-import com.azortis.orbis.item.ItemFactory;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-import org.slf4j.Logger;
 
-import java.io.File;
-import java.util.Collection;
-import java.util.UUID;
-
-public interface Platform {
-
-    @NotNull String adaptation();
-
-    @NotNull Logger logger();
-
-    @NotNull File directory();
-
-    @NotNull CommandManager<CommandSender> commandManager();
-
-    @NotNull ItemFactory itemFactory();
-
-    @Nullable World getWorld(String name);
-
-    @NotNull Collection<World> worlds();
-
-    @Nullable Player getPlayer(UUID uuid);
-
-    @NotNull Collection<Player> getPlayers();
-
-    @Nullable Class<?> mainClass();
-
+public interface Player extends CommandSender {
 }

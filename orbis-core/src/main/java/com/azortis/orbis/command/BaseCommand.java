@@ -16,39 +16,21 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis;
+package com.azortis.orbis.command;
 
-import cloud.commandframework.CommandManager;
-import com.azortis.orbis.command.CommandSender;
-import com.azortis.orbis.item.ItemFactory;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-import org.slf4j.Logger;
+import cloud.commandframework.annotations.CommandMethod;
+import cloud.commandframework.annotations.CommandPermission;
+import cloud.commandframework.annotations.processing.CommandContainer;
 
-import java.io.File;
-import java.util.Collection;
-import java.util.UUID;
+@SuppressWarnings("unused")
+@CommandContainer
+@CommandPermission("orbis.admin")
+@CommandMethod(value = "orbis|o", requiredSender = CommandSender.class)
+public class BaseCommand {
 
-public interface Platform {
+    @CommandMethod("info")
+    public void info(CommandSender sender) {
 
-    @NotNull String adaptation();
-
-    @NotNull Logger logger();
-
-    @NotNull File directory();
-
-    @NotNull CommandManager<CommandSender> commandManager();
-
-    @NotNull ItemFactory itemFactory();
-
-    @Nullable World getWorld(String name);
-
-    @NotNull Collection<World> worlds();
-
-    @Nullable Player getPlayer(UUID uuid);
-
-    @NotNull Collection<Player> getPlayers();
-
-    @Nullable Class<?> mainClass();
+    }
 
 }

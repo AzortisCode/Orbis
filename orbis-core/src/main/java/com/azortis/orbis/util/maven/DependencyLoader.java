@@ -37,7 +37,7 @@ public class DependencyLoader {
     private static final Logger logger;
 
     static {
-        INJECTOR = AccessLoader.create((URLClassLoader) Orbis.getPlatform().getMainClass().getClassLoader());
+        INJECTOR = AccessLoader.create((URLClassLoader) Orbis.getPlatform().mainClass().getClassLoader());
         logger = Orbis.getLogger();
     }
 

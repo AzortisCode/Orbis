@@ -34,17 +34,25 @@ import java.util.Map;
 
 public class OrbisPlugin extends JavaPlugin {
 
-    private final Map<String, PaperWorld> worldMap = new HashMap<>();
+    private static final Map<String, PaperWorld> worldMap = new HashMap<>();
+    private static PaperPlatform platform;
     private Metrics metrics;
 
     @Override
     public void onLoad() {
         if (!Bukkit.getMinecraftVersion().replaceAll("\\.", "_").equalsIgnoreCase(Orbis.MC_VERSION)) {
-            this.getLog4JLogger().error("Unsupported minecraft version! Only works on {}", Orbis.MC_VERSION);
+            this.getSLF4JLogger().error("Unsupported minecraft version! Only works on {}", Orbis.MC_VERSION);
             return;
         }
         this.metrics = new Metrics(this, 10874);
-        Orbis.initialize(new PaperPlatform(this));
+        try {
+            platform = new PaperPlatform(this);
+        } catch (Exception e) {
+            this.getSLF4JLogger().error("Failed to create paper platform instance");
+            e.printStackTrace();
+            return;
+        }
+        Orbis.initialize(platform);
     }
 
     @Override
@@ -52,7 +60,7 @@ public class OrbisPlugin extends JavaPlugin {
         if (packName != null) {
             Pack pack = Orbis.getPackManager().getPack(packName);
             if (pack != null) {
-                return new PaperChunkGenerator(this, worldName, pack);
+                return new PaperChunkGenerator(worldName, pack);
             } else {
                 Orbis.getLogger().error("No pack by the fieldName {} exists!", packName);
                 return super.getDefaultWorldGenerator(worldName, packName);
@@ -63,7 +71,7 @@ public class OrbisPlugin extends JavaPlugin {
     }
 
     @NotNull
-    public PaperWorld loadWorld(@NotNull WorldInfo worldInfo, @NotNull Pack pack) {
+    public static PaperWorld loadWorld(@NotNull WorldInfo worldInfo, @NotNull Pack pack) {
         PaperWorld paperWorld = new PaperWorld(worldInfo);
         paperWorld.installPack(pack, false);
         if (!paperWorld.isLoaded()) paperWorld.load(worldInfo.getSeed());
@@ -72,17 +80,20 @@ public class OrbisPlugin extends JavaPlugin {
     }
 
     @Nullable
-    public PaperWorld getWorld(WorldInfo worldInfo) {
+    public static PaperWorld getWorld(WorldInfo worldInfo) {
         return worldMap.get(worldInfo.getName());
     }
 
     @Nullable
-    public PaperWorld getWorld(String worldName) {
+    public static PaperWorld getWorld(String worldName) {
         return worldMap.get(worldName);
     }
 
-    public Collection<PaperWorld> getWorlds() {
+    public static Collection<PaperWorld> getWorlds() {
         return worldMap.values();
     }
 
+    public static PaperPlatform getPlatform() {
+        return platform;
+    }
 }

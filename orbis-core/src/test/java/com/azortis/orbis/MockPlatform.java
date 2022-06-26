@@ -18,12 +18,16 @@
 
 package com.azortis.orbis;
 
+import cloud.commandframework.CommandManager;
+import com.azortis.orbis.command.CommandSender;
 import com.azortis.orbis.item.ItemFactory;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.util.Collection;
+import java.util.UUID;
 
 public class MockPlatform implements Platform {
 
@@ -49,6 +53,11 @@ public class MockPlatform implements Platform {
     }
 
     @Override
+    public @NotNull CommandManager<CommandSender> commandManager() {
+        return null;
+    }
+
+    @Override
     public @NotNull ItemFactory itemFactory() {
         return null; // Hella not making this lmao
     }
@@ -64,7 +73,17 @@ public class MockPlatform implements Platform {
     }
 
     @Override
-    public @NotNull Class<?> getMainClass() {
+    public @Nullable Player getPlayer(UUID uuid) {
+        return null;
+    }
+
+    @Override
+    public @NotNull Collection<Player> getPlayers() {
+        return null;
+    }
+
+    @Override
+    public @Nullable Class<?> mainClass() {
         // Broken for now, would not recommend using this.
         return null;
     }

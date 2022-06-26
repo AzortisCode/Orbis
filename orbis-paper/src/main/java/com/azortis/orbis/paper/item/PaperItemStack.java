@@ -97,7 +97,7 @@ public class PaperItemStack implements ItemStack {
         return compound.toCompound();
     }
 
-    public org.bukkit.inventory.ItemStack getHandle() {
+    public org.bukkit.inventory.ItemStack handle() {
         return handle;
     }
 
