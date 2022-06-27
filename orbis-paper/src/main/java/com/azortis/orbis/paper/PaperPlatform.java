@@ -18,9 +18,9 @@
 
 package com.azortis.orbis.paper;
 
-import cloud.commandframework.CommandManager;
 import cloud.commandframework.execution.CommandExecutionCoordinator;
 import cloud.commandframework.paper.PaperCommandManager;
+import com.azortis.orbis.Orbis;
 import com.azortis.orbis.Platform;
 import com.azortis.orbis.World;
 import com.azortis.orbis.command.CommandSender;
@@ -56,35 +56,10 @@ public class PaperPlatform implements Platform, Listener {
     private final PaperItemFactory itemFactory;
     private final PaperConsoleSender consoleSender = new PaperConsoleSender();
     private final Map<UUID, com.azortis.orbis.Player> players = new HashMap<>();
-    private final PaperCommandManager<CommandSender> commandManager;
 
     public PaperPlatform(OrbisPlugin plugin) throws Exception {
         this.plugin = plugin;
         this.itemFactory = new PaperItemFactory();
-
-        // Register command paper command manager
-        this.commandManager = new PaperCommandManager<>(plugin, CommandExecutionCoordinator.simpleCoordinator(),
-                (commandSender -> {
-                    if (commandSender instanceof Player player) {
-                        return (CommandSender) getPlayer(player.getUniqueId());
-                    } else if (commandSender instanceof ConsoleCommandSender) {
-                        return consoleSender;
-                    }
-                    return null;
-                }), (commandSender -> {
-            if (commandSender instanceof PaperPlayer player) {
-                return player.handle();
-            } else if (commandSender instanceof ConsoleSender) {
-                return Bukkit.getConsoleSender();
-            }
-            return null;
-        }));
-        this.commandManager.registerBrigadier();
-        this.commandManager.registerAsynchronousCompletions();
-
-        // Register events to register player joins and quits to be able to map it to Orbis its player instance
-        // We do this on a global level since players are used for commands & aren't world specific like entities
-        Bukkit.getPluginManager().registerEvents(this, plugin);
     }
 
     @Override
@@ -100,11 +75,6 @@ public class PaperPlatform implements Platform, Listener {
     @Override
     public @NotNull File directory() {
         return plugin.getDataFolder();
-    }
-
-    @Override
-    public @NotNull CommandManager<CommandSender> commandManager() {
-        return this.commandManager;
     }
 
     @Override
@@ -146,6 +116,35 @@ public class PaperPlatform implements Platform, Listener {
     @Override
     public @Nullable Class<?> mainClass() {
         return plugin.getClass();
+    }
+
+    void loadCommands() {
+        try {
+            Orbis.getLogger().info("Loading commands...");
+            PaperCommandManager<CommandSender> commandManager = new PaperCommandManager<>(plugin,
+                    CommandExecutionCoordinator.simpleCoordinator(),
+                    (commandSender -> {
+                        if (commandSender instanceof Player player) {
+                            return getPlayer(player.getUniqueId());
+                        } else if (commandSender instanceof ConsoleCommandSender) {
+                            return consoleSender;
+                        }
+                        return null;
+                    }), (commandSender -> {
+                if (commandSender instanceof PaperPlayer player) {
+                    return player.handle();
+                } else if (commandSender instanceof ConsoleSender) {
+                    return Bukkit.getConsoleSender();
+                }
+                return null;
+            }));
+            commandManager.registerBrigadier();
+            commandManager.registerAsynchronousCompletions();
+            Bukkit.getServer().getPluginManager().registerEvents(this, plugin);
+            Orbis.loadCommands(commandManager);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

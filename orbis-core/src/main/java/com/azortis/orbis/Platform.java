@@ -18,8 +18,6 @@
 
 package com.azortis.orbis;
 
-import cloud.commandframework.CommandManager;
-import com.azortis.orbis.command.CommandSender;
 import com.azortis.orbis.item.ItemFactory;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -36,8 +34,6 @@ public interface Platform {
     @NotNull Logger logger();
 
     @NotNull File directory();
-
-    @NotNull CommandManager<CommandSender> commandManager();
 
     @NotNull ItemFactory itemFactory();
 

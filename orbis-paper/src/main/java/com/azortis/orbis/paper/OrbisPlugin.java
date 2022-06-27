@@ -21,6 +21,7 @@ package com.azortis.orbis.paper;
 import com.azortis.orbis.Orbis;
 import com.azortis.orbis.pack.Pack;
 import com.azortis.orbis.paper.generator.PaperChunkGenerator;
+import com.azortis.orbis.util.maven.DependencyLoader;
 import org.bukkit.Bukkit;
 import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.generator.WorldInfo;
@@ -28,6 +29,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.io.File;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -45,14 +47,26 @@ public class OrbisPlugin extends JavaPlugin {
             return;
         }
         this.metrics = new Metrics(this, 10874);
+
+        // Libraries need to be loaded before Orbis gets initialized, since the Orbis class & PaperPlatform use them.
+        this.getSLF4JLogger().info("Loading libraries...");
+        DependencyLoader.initialize(this.getClass(), new File(this.getDataFolder() + "/libs/"), this.getSLF4JLogger());
+        DependencyLoader.loadAll(Orbis.class);
+        DependencyLoader.loadAll(PaperPlatform.class);
+
         try {
             platform = new PaperPlatform(this);
         } catch (Exception e) {
-            this.getSLF4JLogger().error("Failed to create paper platform instance");
+            this.getSLF4JLogger().error("Failed to instantiate paper platform!");
             e.printStackTrace();
             return;
         }
         Orbis.initialize(platform);
+    }
+
+    @Override
+    public void onEnable() {
+        platform.loadCommands();
     }
 
     @Override

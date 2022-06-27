@@ -18,6 +18,7 @@
 
 package com.azortis.orbis;
 
+import cloud.commandframework.CommandManager;
 import cloud.commandframework.annotations.AnnotationParser;
 import cloud.commandframework.meta.SimpleCommandMeta;
 import com.azortis.orbis.block.BlockRegistry;
@@ -36,7 +37,10 @@ import com.azortis.orbis.util.maven.DependencyLoader;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import net.kyori.adventure.key.Key;
+import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
+import net.kyori.adventure.text.minimessage.tag.Tag;
+import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import net.kyori.adventure.text.minimessage.tag.standard.StandardTags;
 import org.apache.commons.io.FileUtils;
 import org.jetbrains.annotations.NotNull;
@@ -55,6 +59,7 @@ import java.net.URL;
 @Dependency(group = "io.leangen.geantyref", artifact = "geantyref", version = "1.3.13")
 public final class Orbis {
 
+    public static final String VERSION = "0.2-ALPHA";
     public static final String SETTINGS_VERSION = "1";
     public static final String MC_VERSION = "1_19";
     private static final String DOWNLOAD_URL = "https://raw.githubusercontent.com/Articdive/ArticData/" +
@@ -62,6 +67,7 @@ public final class Orbis {
 
     private static boolean initialized = false;
     private static Platform platform = null;
+    private static CommandManager<CommandSender> commandManager = null;
     private static Logger logger;
     private static Gson gson;
     private static MiniMessage miniMessage;
@@ -72,6 +78,11 @@ public final class Orbis {
     private Orbis() {
     }
 
+    /**
+     * Initialize Orbis, internal use only!
+     *
+     * @param platform The platform instance.
+     */
     public static void initialize(Platform platform) {
         // Only initialize once.
         if (!initialized) {
@@ -81,9 +92,8 @@ public final class Orbis {
             logger.info("Initializing {} adaptation of Orbis", platform.adaptation());
 
             if (platform.mainClass() != null) {
-                logger.info("Loading libraries...");
+                logger.info("Loading core libraries...");
                 DependencyLoader.loadAll(Orbis.class);
-                DependencyLoader.loadAll(platform.getClass());
             }
 
             // Register the type adapters to use in the serialization/deserialization of settings in packs.
@@ -100,13 +110,31 @@ public final class Orbis {
             ItemRegistry.init();
 
             // Init message deserializer
-            miniMessage = MiniMessage.builder().tags(StandardTags.font()).build();
+            miniMessage = MiniMessage.builder()
+                    .tags(TagResolver.builder()
+                            .resolver(StandardTags.defaults())
+                            .resolver(TagResolver.resolver("prefix", Tag.selfClosingInserting(Orbis::getPrefixComponent))).build())
+                    .build();
 
             // Load managers
             packManager = new PackManager(platform.directory());
+        }
+    }
 
-            // Load commands
-            AnnotationParser<CommandSender> annotationParser = new AnnotationParser<>(platform.commandManager(),
+    private static @NotNull Component getPrefixComponent() {
+        String text = "<dark_gray>[<green>Orbis<dark_gray>]";
+        return MiniMessage.miniMessage().deserialize(text);
+    }
+
+    /**
+     * Initialize the Orbis command, internal use only!
+     *
+     * @param platformCommandManager The delegating platform command manager.
+     */
+    public static void loadCommands(CommandManager<CommandSender> platformCommandManager) {
+        if (initialized && commandManager == null) {
+            commandManager = platformCommandManager;
+            AnnotationParser<CommandSender> annotationParser = new AnnotationParser<>(commandManager,
                     CommandSender.class, parameters -> SimpleCommandMeta.empty());
 
             try {

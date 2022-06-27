@@ -36,7 +36,7 @@ import java.util.Objects;
 /**
  * A representation of a world/instance for core package
  */
-public abstract class World {
+public abstract class World implements WorldAccess {
     // TODO restructure fields, make it more clean, but this outta work for now
 
     private final String name;

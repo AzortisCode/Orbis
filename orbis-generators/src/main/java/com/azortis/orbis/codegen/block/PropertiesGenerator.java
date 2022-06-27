@@ -162,8 +162,7 @@ public class PropertiesGenerator extends OrbisCodeGenerator {
                 // If size of values > 60% of the possible enum constants then we use a predicate
                 if (values.size() >= Math.round(0.60D * enumClass.getEnumConstants().length)) {
                     builder.add(", (" + key + ") -> ");
-                    List<String> enumsToFilter = getEnumValues(enumClass).stream().filter(s -> !enumValues.contains(s))
-                            .collect(Collectors.toList());
+                    List<String> enumsToFilter = getEnumValues(enumClass).stream().filter(s -> !enumValues.contains(s)).toList();
                     boolean isFirst = true;
                     for (String enumName : enumsToFilter) {
                         if (isFirst) {

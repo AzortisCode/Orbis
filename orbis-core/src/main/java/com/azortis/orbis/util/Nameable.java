@@ -21,6 +21,5 @@ package com.azortis.orbis.util;
 import org.jetbrains.annotations.NotNull;
 
 public interface Nameable {
-
     @NotNull String getSerializedName();
 }

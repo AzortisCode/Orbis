@@ -18,7 +18,7 @@
 
 package com.azortis.orbis.util.maven;
 
-import com.azortis.orbis.Orbis;
+import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 
 import java.io.File;
@@ -33,12 +33,22 @@ import java.nio.file.Files;
  * A class that handles downloading of dependencies for the plugin as well as loading dependencies into the plugin.
  */
 public class DependencyLoader {
-    private static final AccessLoader INJECTOR;
-    private static final Logger logger;
+    private static boolean initialized = false;
+    private static AccessLoader injector;
+    private static File libFolder;
+    private static Logger logger;
 
-    static {
-        INJECTOR = AccessLoader.create((URLClassLoader) Orbis.getPlatform().mainClass().getClassLoader());
-        logger = Orbis.getLogger();
+    public static void initialize(@NotNull Class<?> mainClass, @NotNull File libraryFolder, @NotNull Logger platformLogger) {
+        if (!initialized) {
+            initialized = true;
+            injector = AccessLoader.create((URLClassLoader) mainClass.getClassLoader());
+            libFolder = libraryFolder;
+            if (!libFolder.exists()) {
+                platformLogger.info("Libs folder doesn't exist, creating...");
+                if (!libFolder.mkdirs()) platformLogger.error("Failed to create libs folder!");
+            }
+            logger = platformLogger;
+        }
     }
 
     /**
@@ -78,7 +88,7 @@ public class DependencyLoader {
                 dependency.artifact(), dependency.version(), dependency.repository().url()));
         String name = dependency.artifact() + "-" + dependency.version();
 
-        File saveLocation = new File(getLibFolder(), name + ".jar");
+        File saveLocation = new File(libFolder, name + ".jar");
         if (!saveLocation.exists()) {
             try {
                 logger.info(String.format("Dependency %s is not present in the libraries folder. Attempting to download...", name));
@@ -98,28 +108,12 @@ public class DependencyLoader {
         }
 
         try {
-            INJECTOR.addURL(saveLocation.toURI().toURL());
+            injector.addURL(saveLocation.toURI().toURL());
         } catch (MalformedURLException e) {
             throw new RuntimeException("Unable to load dependency: " + name, e);
         }
 
         logger.debug(String.format("Dependency %s has been loaded", name));
-    }
-
-
-    /**
-     * Get the {@link File} for the library folder.
-     *
-     * @return The {@link File} for the library folder.
-     */
-    public static File getLibFolder() {
-        File jarFile;
-        jarFile = new File(Orbis.getPlatform().directory() + "/libs/");
-        File libFolder = new File(jarFile.getParentFile(), "libs");
-        if (!libFolder.exists() && !libFolder.mkdirs()) {
-            logger.error("Failed to create /libs/ folder!");
-        }
-        return libFolder;
     }
 
     /**
