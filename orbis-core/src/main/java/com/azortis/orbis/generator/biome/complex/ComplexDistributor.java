@@ -29,6 +29,7 @@ import com.azortis.orbis.generator.biome.complex.requirement.MaxStrength;
 import com.azortis.orbis.generator.biome.complex.requirement.MinStrength;
 import com.azortis.orbis.generator.biome.complex.requirement.NoiseRanges;
 import com.azortis.orbis.generator.biome.complex.requirement.Requirement;
+import com.azortis.orbis.pack.data.Component;
 import com.azortis.orbis.util.Inject;
 import com.azortis.orbis.util.Invoke;
 import net.kyori.adventure.key.Key;
@@ -37,6 +38,7 @@ import java.util.Map;
 import java.util.Set;
 
 @Inject
+@Component(ComplexAccess.class)
 public final class ComplexDistributor extends Distributor {
 
     public static Registry<Requirement> REGISTRY_REQUIREMENT = new Registry<>(Map.of(
@@ -47,6 +49,11 @@ public final class ComplexDistributor extends Distributor {
     public static Registry<Modifier> REGISTRY_MODIFIER = new Registry<>(Map.of(
             Key.key("complex:ranged_linear"), RangedLinearModifier.class
     ));
+
+    static {
+        Registry.addRegistry(Requirement.class, REGISTRY_REQUIREMENT);
+        Registry.addRegistry(Modifier.class, REGISTRY_MODIFIER);
+    }
 
     private final Set<NoiseLayer> globalNoiseLayers;
     private final Set<RegionLayer> initialRegions;

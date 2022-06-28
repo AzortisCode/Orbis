@@ -22,58 +22,134 @@ import com.azortis.orbis.generator.biome.Biome;
 import com.azortis.orbis.generator.biome.Distributor;
 import com.azortis.orbis.generator.noise.NoiseGenerator;
 import com.azortis.orbis.generator.terrain.Terrain;
+import com.google.common.collect.HashBasedTable;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Table;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.List;
+import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 /**
- * Interface for fetching {@link com.azortis.orbis.generator.Dimension} datafiles.
+ * Abstract class for fetching {@link com.azortis.orbis.generator.Dimension} datafiles.
  */
-public interface DataAccess {
-    String BIOMES_FOLDER = "/biomes/";
-    String GENERATORS_FOLDER = "/generators/";
-    String NOISE_GENERATORS_FOLDER = GENERATORS_FOLDER + "/noise/";
-    String DISTRIBUTOR_FOLDER = GENERATORS_FOLDER + "/distributor/";
-    String TERRAIN_FOLDER = GENERATORS_FOLDER + "/terrain/";
+public abstract class DataAccess {
 
-    default File getDataFile(@NotNull Class<?> type, @NotNull String dataFileName)
-            throws FileNotFoundException, IllegalArgumentException {
+    public static final String BIOMES_PATH = "/biomes/**";
+    public static final String GENERATORS_PATH = "/generators/";
+    public static final String NOISE_GENERATORS_PATH = GENERATORS_PATH + "/noise/";
+    public static final String DISTRIBUTOR_PATH = GENERATORS_PATH + "/distributor/";
+    public static final String TERRAIN_PATH = GENERATORS_PATH + "/terrain/";
+    public static final Set<Class<?>> ROOT_TYPES = ImmutableSet.of(NoiseGenerator.class, Distributor.class, Terrain.class);
+
+    private final Map<ImmutableSet<Class<?>>, Class<? extends ComponentAccess>> componentTypes = new HashMap<>();
+    private final Table<Class<? extends ComponentAccess>, String, ComponentAccess> componentAccessTable = HashBasedTable.create();
+
+    public String getDataPath(@NotNull Class<?> type) throws IllegalArgumentException {
         if (type == Biome.class) {
-            return getBiomeFile(dataFileName);
+            return BIOMES_PATH;
         } else if (type == NoiseGenerator.class) {
-            return getNoiseGeneratorFile(dataFileName);
+            return NOISE_GENERATORS_PATH;
         } else if (type == Distributor.class) {
-            return getDistributorFile(dataFileName);
+            return DISTRIBUTOR_PATH;
         } else if (type == Terrain.class) {
-            return getTerrainFile(dataFileName);
+            return TERRAIN_PATH;
         }
         throw new IllegalArgumentException("Unsupported datatype " + type);
     }
 
-    File getBiomeFile(@NotNull String biomeFileName) throws FileNotFoundException;
+    public String getComponentDataPath(@NotNull Class<?> type, @NotNull String name) {
+        return getComponent(getComponentType(type), name).getDataPath(type);
+    }
 
-    @NotNull List<File> getBiomeFiles();
+    public void registerComponent(@NotNull Class<? extends ComponentAccess> type, @NotNull String name)
+            throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+        ComponentAccess componentAccess = type.getConstructor(String.class, DataAccess.class).newInstance(name, this);
+        if (ROOT_TYPES.contains(componentAccess.parentType)) {
+            if (!componentTypes.containsValue(type)) {
+                componentTypes.put(ImmutableSet.copyOf(componentAccess.dataTypes()), type);
+            }
+            if (!componentAccessTable.contains(type, name)) {
+                componentAccessTable.put(type, name, componentAccess);
+                return;
+            }
+            throw new IllegalArgumentException("Component of type " + type + " already has an instance by name " + name);
+        }
+        throw new IllegalArgumentException(componentAccess.parentType + " isn't a supported parent type.");
+    }
 
-    @NotNull List<String> getBiomes();
+    public ComponentAccess getComponent(@NotNull Class<? extends ComponentAccess> type, String name) throws IllegalArgumentException {
+        ComponentAccess componentAccess = componentAccessTable.get(type, name);
+        if (componentAccess != null) return componentAccess;
+        throw new IllegalArgumentException("Component of type " + type + " doesn't have an instance by name " + name);
+    }
 
-    File getNoiseGeneratorFile(@NotNull String noiseGeneratorFileName) throws FileNotFoundException;
+    public Class<? extends ComponentAccess> getComponentType(@NotNull Class<?> type) throws IllegalArgumentException {
+        for (ImmutableSet<Class<?>> set : componentTypes.keySet()) {
+            if (set.contains(type)) return componentTypes.get(set);
+        }
+        throw new IllegalArgumentException(type + " isn't a component type");
+    }
 
-    @NotNull List<File> getNoiseGeneratorFiles();
+    public boolean isComponentType(@NotNull Class<?> type) {
+        for (ImmutableSet<Class<?>> set : componentTypes.keySet()) {
+            if (set.contains(type)) return true;
+        }
+        return false;
+    }
 
-    @NotNull List<String> getNoiseGenerators();
+    @NotNull
+    public File getDataFile(@NotNull Class<?> type, @NotNull String entry)
+            throws FileNotFoundException, IllegalArgumentException {
+        return getFile(getDataPath(type), entry);
+    }
 
-    File getDistributorFile(@NotNull String distributorFileName) throws FileNotFoundException;
+    @NotNull
+    public File getComponentDataFile(@NotNull Class<?> type, @NotNull String name, @NotNull String entry)
+            throws FileNotFoundException, IllegalArgumentException {
+        if (isComponentType(type)) {
+            return getFile(getComponentDataPath(type, name), entry);
+        } else {
+            throw new IllegalArgumentException("Type " + type + " isn't a valid component type");
+        }
+    }
 
-    @NotNull List<File> getDistributorFiles();
+    @NotNull
+    public Set<File> getDataFiles(@NotNull Class<?> type) throws IllegalArgumentException {
+        return getFiles(getDataPath(type));
+    }
 
-    @NotNull List<String> getDistributors();
+    @NotNull
+    public Set<File> getComponentDataFiles(@NotNull Class<?> type, @NotNull String name) throws IllegalArgumentException {
+        if (isComponentType(type)) {
+            return getFiles(getComponentDataPath(type, name));
+        } else {
+            throw new IllegalArgumentException("Type " + type + " isn't a valid component type");
+        }
+    }
 
-    File getTerrainFile(@NotNull String terrainFileName) throws FileNotFoundException;
+    @NotNull
+    public Set<String> getDataEntries(@NotNull Class<?> type) throws IllegalArgumentException {
+        return getEntries(getDataPath(type));
+    }
 
-    @NotNull List<File> getTerrainFiles();
+    @NotNull
+    public Set<String> getComponentDataEntries(@NotNull Class<?> type, @NotNull String name) throws IllegalArgumentException {
+        if (isComponentType(type)) {
+            return getEntries(getComponentDataPath(type, name));
+        } else {
+            throw new IllegalArgumentException("Type " + type + " isn't a valid component type");
+        }
+    }
 
-    @NotNull List<String> getTerrainGenerators();
+    protected abstract @NotNull File getFile(@NotNull String dataPath, @NotNull String entryName) throws FileNotFoundException;
+
+    protected abstract @NotNull Set<File> getFiles(@NotNull String dataPath);
+
+    protected abstract @NotNull Set<String> getEntries(@NotNull String dataPath);
 
 }

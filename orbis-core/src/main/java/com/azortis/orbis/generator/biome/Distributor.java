@@ -20,6 +20,7 @@ package com.azortis.orbis.generator.biome;
 
 import com.azortis.orbis.World;
 import com.azortis.orbis.pack.data.DataAccess;
+import com.azortis.orbis.pack.studio.annotations.UseRegistry;
 import com.azortis.orbis.util.Inject;
 import com.azortis.orbis.util.Invoke;
 import com.google.gson.annotations.SerializedName;
@@ -30,6 +31,7 @@ import java.io.File;
 import java.util.HashSet;
 import java.util.Set;
 
+@UseRegistry
 @Inject
 public abstract class Distributor {
 
@@ -55,7 +57,7 @@ public abstract class Distributor {
     private void setup() {
         // Set up the settings folder so that Distributor implementations can load their datafiles before injection
         this.settingsFolder = new File(world.getSettingsFolder() +
-                DataAccess.DISTRIBUTOR_FOLDER + "/" + name + "/");
+                DataAccess.DISTRIBUTOR_PATH + "/" + name + "/");
 
         // Make sets immutable
         this.biomeNames = Set.copyOf(biomeNames);

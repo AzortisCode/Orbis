@@ -16,15 +16,29 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.pack.studio.annotations;
+package com.azortis.orbis.pack.data;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+/**
+ * Used to annotate classes that provide their own {@link ComponentAccess}.
+ * If the injector comes across a component annotated with this, it will construct the
+ * {@link ComponentAccess} instance and add it to the corresponding {@link DataAccess}.
+ * Only works on classes that are implementations of specified types defined in {@link DataAccess#ROOT_TYPES}.
+ * <p>
+ * It will also be used when looking for types to create a json schema for.
+ */
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.FIELD)
-public @interface Registry {
-    Class<?> type();
+@Target(ElementType.TYPE)
+public @interface Component {
+
+    /**
+     * The type of the {@link ComponentAccess} implementation.
+     *
+     * @return The type of the {@link ComponentAccess} implementation.
+     */
+    Class<? extends ComponentAccess> value();
 }

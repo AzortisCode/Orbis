@@ -211,7 +211,7 @@ public final class PackLoader {
         }
     }
 
-    private static boolean shouldInject(final Field field, Object rootObject) throws IllegalAccessException {
+    private static boolean shouldInject(final @NotNull Field field, Object rootObject) throws IllegalAccessException {
         field.setAccessible(true);
         Object fieldObject = field.get(rootObject);
         field.setAccessible(false);
@@ -224,7 +224,7 @@ public final class PackLoader {
         return shouldInject(fieldObject.getClass());
     }
 
-    private static boolean shouldInject(final Class<?> type) {
+    private static boolean shouldInject(final @NotNull Class<?> type) {
         boolean inject = type.isAnnotationPresent(Inject.class);
         if (inject) return true;
         Class<?> superType = type;
@@ -241,7 +241,7 @@ public final class PackLoader {
     }
 
     // Get all the methods from a class type, including ones its inheriting from superclasses
-    private static List<Method> getAllMethods(final Class<?> type) {
+    private static @NotNull List<Method> getAllMethods(final @NotNull Class<?> type) {
         List<Method> methods = new ArrayList<>(Arrays.asList(type.getDeclaredMethods()));
         Class<?> superType = type;
         while (superType != null) {
@@ -256,7 +256,7 @@ public final class PackLoader {
     }
 
     // Get all the fields from a class type, including ones its inheriting from superclasses
-    private static List<Field> getAllFields(final Class<?> type) {
+    private static @NotNull List<Field> getAllFields(final @NotNull Class<?> type) {
         List<Field> fields = new ArrayList<>(Arrays.asList(type.getDeclaredFields()));
         Class<?> superType = type;
         while (superType != null) {
@@ -270,7 +270,7 @@ public final class PackLoader {
         return fields;
     }
 
-    private static Field getDeclaredField(final Class<?> type, String fieldName) throws NoSuchFieldException {
+    private static @NotNull Field getDeclaredField(final Class<?> type, String fieldName) throws NoSuchFieldException {
         Field declaredField = null;
         for (Field field : getAllFields(type)) {
             if (field.getName().equals(fieldName)) {

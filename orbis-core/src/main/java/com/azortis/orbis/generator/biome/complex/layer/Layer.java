@@ -20,9 +20,11 @@ package com.azortis.orbis.generator.biome.complex.layer;
 
 import com.azortis.orbis.generator.biome.complex.modifier.Modifier;
 import com.azortis.orbis.generator.biome.complex.requirement.Requirement;
+import com.azortis.orbis.pack.studio.annotations.UseRegistry;
 
 import java.util.Set;
 
+@UseRegistry
 public sealed abstract class Layer<T> permits RegionLayer, BiomeLayer {
 
     private final Set<Requirement> requirements;

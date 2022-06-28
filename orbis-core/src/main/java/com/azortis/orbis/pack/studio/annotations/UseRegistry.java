@@ -23,7 +23,11 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+/**
+ * Used by the SchemaBuilder to detect if it should build a schema for the instance from an implementation
+ * defined in the corresponding {@link com.azortis.orbis.Registry} linked to annotated the class
+ */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-public @interface GeneratorType {
+public @interface UseRegistry {
 }

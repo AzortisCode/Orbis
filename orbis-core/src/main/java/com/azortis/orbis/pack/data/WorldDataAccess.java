@@ -24,12 +24,10 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
-public final class WorldDataAccess implements DataAccess {
+public final class WorldDataAccess extends DataAccess {
     private final World world;
 
     public WorldDataAccess(World world) {
@@ -37,99 +35,72 @@ public final class WorldDataAccess implements DataAccess {
     }
 
     @Override
-    public File getBiomeFile(@NotNull String biomeFileName) throws FileNotFoundException {
-        File biomeFile = new File(world.getSettingsFolder() + BIOMES_FOLDER,
-                biomeFileName + ".json");
-        if (biomeFile.exists()) {
-            return biomeFile;
+    protected @NotNull File getFile(@NotNull String dataPath, @NotNull String entryName) throws FileNotFoundException {
+        String trimmedDataPath = dataPath.replace("**", "").trim();
+        File file = new File(world.getSettingsFolder() + trimmedDataPath, entryName + ".json");
+        if (file.exists()) return file;
+        throw new FileNotFoundException("File: " + file.getPath() + " doesn't exist!");
+    }
+
+    @Override
+    public @NotNull Set<File> getFiles(@NotNull String dataPath) {
+        File directory;
+        boolean searchSubFolders = dataPath.endsWith("**");
+        if (searchSubFolders) {
+            directory = new File(world.getSettingsFolder() + dataPath.replace("**", "").trim());
+        } else {
+            directory = new File(world.getSettingsFolder() + dataPath.trim());
         }
-        throw new FileNotFoundException("No biome file by the name " + biomeFileName + " exists in " + world);
-    }
+        if (directory.exists()) {
+            if (!searchSubFolders) {
+                File[] files = directory.listFiles(File::isFile);
+                if (files != null) {
+                    return new HashSet<>(Arrays.asList(files));
+                }
+            } else {
+                File[] rootFiles = directory.listFiles(File::isFile);
+                Set<File> files = new HashSet<>();
+                if (rootFiles != null) files.addAll(Arrays.asList(rootFiles));
 
-    @Override
-    public @NotNull List<File> getBiomeFiles() {
-        return getFileEntries(BIOMES_FOLDER);
-    }
+                // Search all sub folders.
+                File[] rootSubFolders = directory.listFiles(File::isDirectory);
+                if (rootSubFolders != null) {
+                    List<File> subFolders = new ArrayList<>(Arrays.asList(rootSubFolders));
+                    ListIterator<File> folderIterator = subFolders.listIterator();
+                    while (folderIterator.hasNext()) {
+                        File subFolder = folderIterator.next();
 
-    @Override
-    public @NotNull List<String> getBiomes() {
-        return getEntries(getBiomeFiles());
-    }
+                        // First add all the files
+                        File[] subFolderFiles = subFolder.listFiles(File::isFile);
+                        if (subFolderFiles != null) files.addAll(Arrays.asList(subFolderFiles));
 
-    @Override
-    public File getNoiseGeneratorFile(@NotNull String noiseGeneratorFileName) throws FileNotFoundException {
-        File noiseGeneratorFile = new File(world.getSettingsFolder() + NOISE_GENERATORS_FOLDER,
-                noiseGeneratorFileName + ".json");
-        if (noiseGeneratorFile.exists()) {
-            return noiseGeneratorFile;
-        }
-        throw new FileNotFoundException("No noise generator file by the fieldName " + noiseGeneratorFileName + " exists in " + world);
-    }
-
-    @Override
-    public @NotNull List<File> getNoiseGeneratorFiles() {
-        return getFileEntries(NOISE_GENERATORS_FOLDER);
-    }
-
-    @Override
-    public @NotNull List<String> getNoiseGenerators() {
-        return getEntries(getNoiseGeneratorFiles());
-    }
-
-    @Override
-    public File getDistributorFile(@NotNull String distributorFileName) throws FileNotFoundException {
-        File distributorFile = new File(world.getSettingsFolder() + DISTRIBUTOR_FOLDER,
-                distributorFileName + ".json");
-        if (distributorFile.exists()) {
-            return distributorFile;
-        }
-        throw new FileNotFoundException("No distributor file by the fieldName " + distributorFileName + " exists in " + world);
-    }
-
-    @Override
-    public @NotNull List<File> getDistributorFiles() {
-        return getFileEntries(DISTRIBUTOR_FOLDER);
-    }
-
-    @Override
-    public @NotNull List<String> getDistributors() {
-        return getEntries(getDistributorFiles());
-    }
-
-    @Override
-    public File getTerrainFile(@NotNull String terrainFileName) throws FileNotFoundException {
-        File terrainFile = new File(world.getSettingsFolder() + TERRAIN_FOLDER,
-                terrainFileName + ".json");
-        if (terrainFile.exists()) {
-            return terrainFile;
-        }
-        throw new FileNotFoundException("No terrain file by the fieldName " + terrainFileName + " exists in " + world);
-    }
-
-    @Override
-    public @NotNull List<File> getTerrainFiles() {
-        return getFileEntries(TERRAIN_FOLDER);
-    }
-
-    @Override
-    public @NotNull List<String> getTerrainGenerators() {
-        return getEntries(getTerrainFiles());
-    }
-
-    private @NotNull List<File> getFileEntries(@NotNull String directory) {
-        File directoryFile = new File(world.getSettingsFolder() + directory);
-        if (directoryFile.exists()) {
-            File[] entryFiles = directoryFile.listFiles(File::isFile);
-            if (entryFiles != null) {
-                return Arrays.asList(entryFiles);
+                        // Add sub folders to the iterator
+                        File[] subFolderFolders = subFolder.listFiles(File::isDirectory);
+                        if (subFolderFolders != null) {
+                            Arrays.stream(subFolderFolders).forEach(folderIterator::add);
+                        }
+                    }
+                }
+                return files;
             }
         }
-        return Collections.emptyList();
+        return Collections.emptySet();
     }
 
-    private @NotNull List<String> getEntries(@NotNull List<File> entryFiles) {
-        return entryFiles.stream().map(File::getName).map(FilenameUtils::removeExtension)
-                .collect(Collectors.toList());
+    @Override
+    public @NotNull Set<String> getEntries(@NotNull String dataPath) {
+        Set<File> files = getFiles(dataPath);
+        if (!files.isEmpty()) {
+            if (!dataPath.endsWith("**")) {
+                return files.stream().map(File::getName).map(FilenameUtils::removeExtension).collect(Collectors.toSet());
+            } else {
+                final String trimmedDataPath = dataPath.replace("**", "").trim();
+                return files.stream().map(File::getPath)
+                        .map(entry -> entry.substring(entry.indexOf(entry.indexOf(trimmedDataPath))))
+                        .map(FilenameUtils::removeExtension).collect(Collectors.toSet());
+            }
+        }
+        return Collections.emptySet();
     }
 
 }
