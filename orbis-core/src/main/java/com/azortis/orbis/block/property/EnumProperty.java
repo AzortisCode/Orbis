@@ -41,19 +41,6 @@ public final class EnumProperty<T extends Enum<T> & Nameable> extends Property<T
         }
     }
 
-    @Override
-    public @Nullable T getValueFor(@NotNull String value) {
-        value = value.toLowerCase(Locale.ENGLISH);
-        if (!names.containsKey(value)) {
-            throw new IllegalArgumentException("Invalid value: " + value + ". Must be in " + names.keySet());
-        }
-        return names.get(value);
-    }
-
-    public Set<String> getNames() {
-        return Collections.unmodifiableSet(names.keySet());
-    }
-
     static <T extends Enum<T> & Nameable> EnumProperty<T> create(final @NotNull String key,
                                                                  final @NotNull Class<T> type) {
         return create(key, type, t -> true);
@@ -77,6 +64,19 @@ public final class EnumProperty<T extends Enum<T> & Nameable> extends Property<T
                                                                  final @NotNull Class<T> type,
                                                                  final @NotNull Set<T> values) {
         return new EnumProperty<>(key, type, values);
+    }
+
+    @Override
+    public @Nullable T getValueFor(@NotNull String value) {
+        value = value.toLowerCase(Locale.ENGLISH);
+        if (!names.containsKey(value)) {
+            throw new IllegalArgumentException("Invalid value: " + value + ". Must be in " + names.keySet());
+        }
+        return names.get(value);
+    }
+
+    public Set<String> getNames() {
+        return Collections.unmodifiableSet(names.keySet());
     }
 
 }

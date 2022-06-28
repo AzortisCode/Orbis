@@ -40,6 +40,14 @@ public final class Enchantment {
         this.minLevel = minLevel;
     }
 
+    public static Enchantment fromKey(@NotNull String key) {
+        return ItemRegistry.fromEnchantmentKey(key);
+    }
+
+    public static Enchantment fromKey(@NotNull Key key) {
+        return ItemRegistry.fromEnchantmentKey(key);
+    }
+
     public Key key() {
         return key;
     }
@@ -81,14 +89,6 @@ public final class Enchantment {
             }
         }
         return compatible;
-    }
-
-    public static Enchantment fromKey(@NotNull String key) {
-        return ItemRegistry.fromEnchantmentKey(key);
-    }
-
-    public static Enchantment fromKey(@NotNull Key key) {
-        return ItemRegistry.fromEnchantmentKey(key);
     }
 
 

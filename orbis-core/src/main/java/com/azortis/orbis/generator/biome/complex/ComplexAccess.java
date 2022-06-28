@@ -21,6 +21,7 @@ package com.azortis.orbis.generator.biome.complex;
 import com.azortis.orbis.generator.biome.Distributor;
 import com.azortis.orbis.generator.biome.complex.modifier.Modifier;
 import com.azortis.orbis.generator.biome.complex.requirement.Requirement;
+import com.azortis.orbis.pack.adapter.TypeAdapter;
 import com.azortis.orbis.pack.data.ComponentAccess;
 import com.azortis.orbis.pack.data.DataAccess;
 import com.google.gson.JsonDeserializer;
@@ -50,6 +51,9 @@ public final class ComplexAccess extends ComponentAccess {
 
     @Override
     public @NotNull Map<Class<?>, JsonDeserializer<?>> adapters() {
-        return null;
+        return Map.of(
+                Requirement.class, new TypeAdapter<>(Requirement.class),
+                Modifier.class, new TypeAdapter<>(Modifier.class)
+        );
     }
 }

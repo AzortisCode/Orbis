@@ -36,13 +36,11 @@ public final class Biome {
 
     @SerializedName("terrain")
     private final String terrainName;
-
-    @Inject(fieldName = "terrainName")
-    private transient Terrain terrain;
-
     private final int baseHeight;
     private final ConfiguredBlock surfaceBlock;
     private final ConfiguredBlock belowSurfaceBlock;
+    @Inject(fieldName = "terrainName")
+    private transient Terrain terrain;
 
     public Biome(String name, Key derivative, String terrainName, int baseHeight, ConfiguredBlock surfaceBlock,
                  ConfiguredBlock belowSurfaceBlock) {

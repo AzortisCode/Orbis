@@ -25,120 +25,120 @@ import org.jetbrains.annotations.NotNull;
  */
 @SuppressWarnings("all")
 public final class Enchantments {
-  @NotNull
-  public static final Enchantment ALL_DAMAGE_PROTECTION = ItemRegistry.fromEnchantmentKey("minecraft:protection");
+    @NotNull
+    public static final Enchantment ALL_DAMAGE_PROTECTION = ItemRegistry.fromEnchantmentKey("minecraft:protection");
 
-  @NotNull
-  public static final Enchantment FIRE_PROTECTION = ItemRegistry.fromEnchantmentKey("minecraft:fire_protection");
+    @NotNull
+    public static final Enchantment FIRE_PROTECTION = ItemRegistry.fromEnchantmentKey("minecraft:fire_protection");
 
-  @NotNull
-  public static final Enchantment FALL_PROTECTION = ItemRegistry.fromEnchantmentKey("minecraft:feather_falling");
+    @NotNull
+    public static final Enchantment FALL_PROTECTION = ItemRegistry.fromEnchantmentKey("minecraft:feather_falling");
 
-  @NotNull
-  public static final Enchantment BLAST_PROTECTION = ItemRegistry.fromEnchantmentKey("minecraft:blast_protection");
+    @NotNull
+    public static final Enchantment BLAST_PROTECTION = ItemRegistry.fromEnchantmentKey("minecraft:blast_protection");
 
-  @NotNull
-  public static final Enchantment PROJECTILE_PROTECTION = ItemRegistry.fromEnchantmentKey("minecraft:projectile_protection");
+    @NotNull
+    public static final Enchantment PROJECTILE_PROTECTION = ItemRegistry.fromEnchantmentKey("minecraft:projectile_protection");
 
-  @NotNull
-  public static final Enchantment RESPIRATION = ItemRegistry.fromEnchantmentKey("minecraft:respiration");
+    @NotNull
+    public static final Enchantment RESPIRATION = ItemRegistry.fromEnchantmentKey("minecraft:respiration");
 
-  @NotNull
-  public static final Enchantment AQUA_AFFINITY = ItemRegistry.fromEnchantmentKey("minecraft:aqua_affinity");
+    @NotNull
+    public static final Enchantment AQUA_AFFINITY = ItemRegistry.fromEnchantmentKey("minecraft:aqua_affinity");
 
-  @NotNull
-  public static final Enchantment THORNS = ItemRegistry.fromEnchantmentKey("minecraft:thorns");
+    @NotNull
+    public static final Enchantment THORNS = ItemRegistry.fromEnchantmentKey("minecraft:thorns");
 
-  @NotNull
-  public static final Enchantment DEPTH_STRIDER = ItemRegistry.fromEnchantmentKey("minecraft:depth_strider");
+    @NotNull
+    public static final Enchantment DEPTH_STRIDER = ItemRegistry.fromEnchantmentKey("minecraft:depth_strider");
 
-  @NotNull
-  public static final Enchantment FROST_WALKER = ItemRegistry.fromEnchantmentKey("minecraft:frost_walker");
+    @NotNull
+    public static final Enchantment FROST_WALKER = ItemRegistry.fromEnchantmentKey("minecraft:frost_walker");
 
-  @NotNull
-  public static final Enchantment BINDING_CURSE = ItemRegistry.fromEnchantmentKey("minecraft:binding_curse");
+    @NotNull
+    public static final Enchantment BINDING_CURSE = ItemRegistry.fromEnchantmentKey("minecraft:binding_curse");
 
-  @NotNull
-  public static final Enchantment SOUL_SPEED = ItemRegistry.fromEnchantmentKey("minecraft:soul_speed");
+    @NotNull
+    public static final Enchantment SOUL_SPEED = ItemRegistry.fromEnchantmentKey("minecraft:soul_speed");
 
-  @NotNull
-  public static final Enchantment SWIFT_SNEAK = ItemRegistry.fromEnchantmentKey("minecraft:swift_sneak");
+    @NotNull
+    public static final Enchantment SWIFT_SNEAK = ItemRegistry.fromEnchantmentKey("minecraft:swift_sneak");
 
-  @NotNull
-  public static final Enchantment SHARPNESS = ItemRegistry.fromEnchantmentKey("minecraft:sharpness");
+    @NotNull
+    public static final Enchantment SHARPNESS = ItemRegistry.fromEnchantmentKey("minecraft:sharpness");
 
-  @NotNull
-  public static final Enchantment SMITE = ItemRegistry.fromEnchantmentKey("minecraft:smite");
+    @NotNull
+    public static final Enchantment SMITE = ItemRegistry.fromEnchantmentKey("minecraft:smite");
 
-  @NotNull
-  public static final Enchantment BANE_OF_ARTHROPODS = ItemRegistry.fromEnchantmentKey("minecraft:bane_of_arthropods");
+    @NotNull
+    public static final Enchantment BANE_OF_ARTHROPODS = ItemRegistry.fromEnchantmentKey("minecraft:bane_of_arthropods");
 
-  @NotNull
-  public static final Enchantment KNOCKBACK = ItemRegistry.fromEnchantmentKey("minecraft:knockback");
+    @NotNull
+    public static final Enchantment KNOCKBACK = ItemRegistry.fromEnchantmentKey("minecraft:knockback");
 
-  @NotNull
-  public static final Enchantment FIRE_ASPECT = ItemRegistry.fromEnchantmentKey("minecraft:fire_aspect");
+    @NotNull
+    public static final Enchantment FIRE_ASPECT = ItemRegistry.fromEnchantmentKey("minecraft:fire_aspect");
 
-  @NotNull
-  public static final Enchantment MOB_LOOTING = ItemRegistry.fromEnchantmentKey("minecraft:looting");
+    @NotNull
+    public static final Enchantment MOB_LOOTING = ItemRegistry.fromEnchantmentKey("minecraft:looting");
 
-  @NotNull
-  public static final Enchantment SWEEPING_EDGE = ItemRegistry.fromEnchantmentKey("minecraft:sweeping");
+    @NotNull
+    public static final Enchantment SWEEPING_EDGE = ItemRegistry.fromEnchantmentKey("minecraft:sweeping");
 
-  @NotNull
-  public static final Enchantment BLOCK_EFFICIENCY = ItemRegistry.fromEnchantmentKey("minecraft:efficiency");
+    @NotNull
+    public static final Enchantment BLOCK_EFFICIENCY = ItemRegistry.fromEnchantmentKey("minecraft:efficiency");
 
-  @NotNull
-  public static final Enchantment SILK_TOUCH = ItemRegistry.fromEnchantmentKey("minecraft:silk_touch");
+    @NotNull
+    public static final Enchantment SILK_TOUCH = ItemRegistry.fromEnchantmentKey("minecraft:silk_touch");
 
-  @NotNull
-  public static final Enchantment UNBREAKING = ItemRegistry.fromEnchantmentKey("minecraft:unbreaking");
+    @NotNull
+    public static final Enchantment UNBREAKING = ItemRegistry.fromEnchantmentKey("minecraft:unbreaking");
 
-  @NotNull
-  public static final Enchantment BLOCK_FORTUNE = ItemRegistry.fromEnchantmentKey("minecraft:fortune");
+    @NotNull
+    public static final Enchantment BLOCK_FORTUNE = ItemRegistry.fromEnchantmentKey("minecraft:fortune");
 
-  @NotNull
-  public static final Enchantment POWER_ARROWS = ItemRegistry.fromEnchantmentKey("minecraft:power");
+    @NotNull
+    public static final Enchantment POWER_ARROWS = ItemRegistry.fromEnchantmentKey("minecraft:power");
 
-  @NotNull
-  public static final Enchantment PUNCH_ARROWS = ItemRegistry.fromEnchantmentKey("minecraft:punch");
+    @NotNull
+    public static final Enchantment PUNCH_ARROWS = ItemRegistry.fromEnchantmentKey("minecraft:punch");
 
-  @NotNull
-  public static final Enchantment FLAMING_ARROWS = ItemRegistry.fromEnchantmentKey("minecraft:flame");
+    @NotNull
+    public static final Enchantment FLAMING_ARROWS = ItemRegistry.fromEnchantmentKey("minecraft:flame");
 
-  @NotNull
-  public static final Enchantment INFINITY_ARROWS = ItemRegistry.fromEnchantmentKey("minecraft:infinity");
+    @NotNull
+    public static final Enchantment INFINITY_ARROWS = ItemRegistry.fromEnchantmentKey("minecraft:infinity");
 
-  @NotNull
-  public static final Enchantment FISHING_LUCK = ItemRegistry.fromEnchantmentKey("minecraft:luck_of_the_sea");
+    @NotNull
+    public static final Enchantment FISHING_LUCK = ItemRegistry.fromEnchantmentKey("minecraft:luck_of_the_sea");
 
-  @NotNull
-  public static final Enchantment FISHING_SPEED = ItemRegistry.fromEnchantmentKey("minecraft:lure");
+    @NotNull
+    public static final Enchantment FISHING_SPEED = ItemRegistry.fromEnchantmentKey("minecraft:lure");
 
-  @NotNull
-  public static final Enchantment LOYALTY = ItemRegistry.fromEnchantmentKey("minecraft:loyalty");
+    @NotNull
+    public static final Enchantment LOYALTY = ItemRegistry.fromEnchantmentKey("minecraft:loyalty");
 
-  @NotNull
-  public static final Enchantment IMPALING = ItemRegistry.fromEnchantmentKey("minecraft:impaling");
+    @NotNull
+    public static final Enchantment IMPALING = ItemRegistry.fromEnchantmentKey("minecraft:impaling");
 
-  @NotNull
-  public static final Enchantment RIPTIDE = ItemRegistry.fromEnchantmentKey("minecraft:riptide");
+    @NotNull
+    public static final Enchantment RIPTIDE = ItemRegistry.fromEnchantmentKey("minecraft:riptide");
 
-  @NotNull
-  public static final Enchantment CHANNELING = ItemRegistry.fromEnchantmentKey("minecraft:channeling");
+    @NotNull
+    public static final Enchantment CHANNELING = ItemRegistry.fromEnchantmentKey("minecraft:channeling");
 
-  @NotNull
-  public static final Enchantment MULTISHOT = ItemRegistry.fromEnchantmentKey("minecraft:multishot");
+    @NotNull
+    public static final Enchantment MULTISHOT = ItemRegistry.fromEnchantmentKey("minecraft:multishot");
 
-  @NotNull
-  public static final Enchantment QUICK_CHARGE = ItemRegistry.fromEnchantmentKey("minecraft:quick_charge");
+    @NotNull
+    public static final Enchantment QUICK_CHARGE = ItemRegistry.fromEnchantmentKey("minecraft:quick_charge");
 
-  @NotNull
-  public static final Enchantment PIERCING = ItemRegistry.fromEnchantmentKey("minecraft:piercing");
+    @NotNull
+    public static final Enchantment PIERCING = ItemRegistry.fromEnchantmentKey("minecraft:piercing");
 
-  @NotNull
-  public static final Enchantment MENDING = ItemRegistry.fromEnchantmentKey("minecraft:mending");
+    @NotNull
+    public static final Enchantment MENDING = ItemRegistry.fromEnchantmentKey("minecraft:mending");
 
-  @NotNull
-  public static final Enchantment VANISHING_CURSE = ItemRegistry.fromEnchantmentKey("minecraft:vanishing_curse");
+    @NotNull
+    public static final Enchantment VANISHING_CURSE = ItemRegistry.fromEnchantmentKey("minecraft:vanishing_curse");
 }

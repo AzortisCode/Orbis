@@ -40,6 +40,14 @@ public final class Item implements Keyed {
         this.blockKey = blockKey;
     }
 
+    public static Item fromKey(@NotNull String key) {
+        return ItemRegistry.fromItemKey(key);
+    }
+
+    public static Item fromKey(@NotNull Key key) {
+        return ItemRegistry.fromItemKey(key);
+    }
+
     @Override
     public @NotNull Key key() {
         return key;
@@ -75,14 +83,6 @@ public final class Item implements Keyed {
 
     public @Nullable Block block() {
         return blockKey == null ? null : Block.fromKey(blockKey);
-    }
-
-    public static Item fromKey(@NotNull String key) {
-        return ItemRegistry.fromItemKey(key);
-    }
-
-    public static Item fromKey(@NotNull Key key) {
-        return ItemRegistry.fromItemKey(key);
     }
 
 }

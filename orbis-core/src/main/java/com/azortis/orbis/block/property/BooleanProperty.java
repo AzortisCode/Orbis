@@ -30,6 +30,10 @@ public final class BooleanProperty extends Property<Boolean> {
         super(key, Boolean.class, VALUES);
     }
 
+    static BooleanProperty create(final @NotNull String key) {
+        return new BooleanProperty(key);
+    }
+
     @Override
     public @NotNull Boolean getValueFor(@NotNull String value) {
         final boolean val = Boolean.parseBoolean(value);
@@ -37,10 +41,6 @@ public final class BooleanProperty extends Property<Boolean> {
             throw new IllegalArgumentException("Invalid boolean value: " + value + ". Must be in " + getValues());
         }
         return val;
-    }
-
-    static BooleanProperty create(final @NotNull String key) {
-        return new BooleanProperty(key);
     }
 
 }

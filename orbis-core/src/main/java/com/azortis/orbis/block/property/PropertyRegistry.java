@@ -26,12 +26,12 @@ import java.util.Map;
 
 public final class PropertyRegistry {
 
-    private static final Map<String, Property<?>> PROPERTIES = new HashMap<>();
     public static final ImmutableMap<String, String> NAME_REWRITES = ImmutableMap.of(
             "ROTATION_16", "ROTATION",
             "MODE_COMPARATOR", "COMPARATOR_MODE",
             "STRUCTUREBLOCK_MODE", "STRUCTURE_BLOCK_MODE",
             "NOTEBLOCK_INSTRUMENT", "NOTE_BLOCK_INSTRUMENT");
+    private static final Map<String, Property<?>> PROPERTIES = new HashMap<>();
     private static volatile boolean loaded = false;
 
     public static void init() {

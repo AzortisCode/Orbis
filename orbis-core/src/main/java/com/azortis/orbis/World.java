@@ -45,13 +45,11 @@ public abstract class World implements WorldAccess {
 
     // WorldInfo
     private final File worldInfoFile;
+    private final DataAccess data;
     private WorldInfo worldInfo;
-
     // Status booleans
     private boolean loaded = false;
     private boolean installed = false;
-
-    private final DataAccess data;
     private Dimension dimension;
     private Engine engine;
 

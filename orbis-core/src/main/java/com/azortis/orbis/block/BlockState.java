@@ -51,6 +51,10 @@ public final class BlockState implements ConfiguredBlock {
         this.values = values;
     }
 
+    public static BlockState fromStateId(int stateId) {
+        return BlockRegistry.fromStateId(stateId);
+    }
+
     @Override
     public Block block() {
         return block;
@@ -146,10 +150,6 @@ public final class BlockState implements ConfiguredBlock {
     @Override
     public BlockState blockState() {
         return this;
-    }
-
-    public static BlockState fromStateId(int stateId) {
-        return BlockRegistry.fromStateId(stateId);
     }
 
 }

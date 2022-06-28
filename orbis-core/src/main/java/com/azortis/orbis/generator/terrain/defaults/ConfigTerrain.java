@@ -30,10 +30,9 @@ public class ConfigTerrain extends Terrain {
 
     @SerializedName("noise")
     private final String noiseName;
-
+    private final List<NoiseLayer> layers;
     @Inject(fieldName = "noiseName")
     private transient NoiseGenerator noise;
-    private final List<NoiseLayer> layers;
 
     private ConfigTerrain(String name, Key type, String noiseName, List<NoiseLayer> layers) {
         super(name, type);

@@ -32,11 +32,10 @@ public class PointGatherer<TTag> {
     private static final double SQRT_HALF = Math.sqrt(1.0 / 2.0);
     private static final double TRIANGLE_EDGE_LENGTH = Math.sqrt(2.0 / 3.0);
     private static final double TRIANGLE_HEIGHT = SQRT_HALF;
-    private static final double INVERSE_TRIANGLE_HEIGHT = SQRT_HALF * 2;
     private static final double TRIANGLE_CIRCUMRADIUS = TRIANGLE_HEIGHT * (2.0 / 3.0);
     private static final double JITTER_AMOUNT = TRIANGLE_HEIGHT;
     public static final double MAX_GRIDSCALE_DISTANCE_TO_CLOSEST_POINT = JITTER_AMOUNT + TRIANGLE_CIRCUMRADIUS;
-
+    private static final double INVERSE_TRIANGLE_HEIGHT = SQRT_HALF * 2;
     // Primes for jitter hash.
     private static final int PRIME_X = 7691;
     private static final int PRIME_Z = 30869;

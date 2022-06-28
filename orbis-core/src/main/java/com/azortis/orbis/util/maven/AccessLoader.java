@@ -29,16 +29,16 @@ import java.util.Collection;
  */
 public abstract class AccessLoader {
 
-    static AccessLoader create(URLClassLoader loader) {
-        if (Unsafe.isSupported()) return new Unsafe(loader);
-        else
-            throw new UnsupportedOperationException("Unsafe is not supported on this platform. Please use a supported version of java.");
-    }
-
     private final URLClassLoader classLoader;
 
     protected AccessLoader(URLClassLoader classLoader) {
         this.classLoader = classLoader;
+    }
+
+    static AccessLoader create(URLClassLoader loader) {
+        if (Unsafe.isSupported()) return new Unsafe(loader);
+        else
+            throw new UnsupportedOperationException("Unsafe is not supported on this platform. Please use a supported version of java.");
     }
 
     /**

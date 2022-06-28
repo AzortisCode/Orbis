@@ -54,6 +54,14 @@ public final class Block implements ConfiguredBlock {
         this.itemKey = itemKey;
     }
 
+    public static Block fromKey(@NotNull String key) {
+        return BlockRegistry.fromKey(key);
+    }
+
+    public static Block fromKey(@NotNull Key key) {
+        return BlockRegistry.fromKey(key);
+    }
+
     @Override
     public @NotNull Key key() {
         return key;
@@ -125,14 +133,6 @@ public final class Block implements ConfiguredBlock {
 
     public @Nullable Item item() {
         return itemKey == null ? null : Item.fromKey(itemKey);
-    }
-
-    public static Block fromKey(@NotNull String key) {
-        return BlockRegistry.fromKey(key);
-    }
-
-    public static Block fromKey(@NotNull Key key) {
-        return BlockRegistry.fromKey(key);
     }
 
 }

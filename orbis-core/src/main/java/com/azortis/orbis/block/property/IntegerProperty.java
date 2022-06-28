@@ -33,6 +33,18 @@ public final class IntegerProperty extends Property<Integer> {
         this.max = max;
     }
 
+    private static Set<Integer> createIntegerSet(int min, int max) {
+        Set<Integer> values = new TreeSet<>();
+        for (int i = min; i <= max; i++) {
+            values.add(i);
+        }
+        return values;
+    }
+
+    static IntegerProperty create(final @NotNull String key, final int min, final int max) {
+        return new IntegerProperty(key, min, max);
+    }
+
     @Override
     public @NotNull Integer getValueFor(@NotNull String value) {
         try {
@@ -52,18 +64,6 @@ public final class IntegerProperty extends Property<Integer> {
 
     public int getMax() {
         return max;
-    }
-
-    private static Set<Integer> createIntegerSet(int min, int max) {
-        Set<Integer> values = new TreeSet<>();
-        for (int i = min; i <= max; i++) {
-            values.add(i);
-        }
-        return values;
-    }
-
-    static IntegerProperty create(final @NotNull String key, final int min, final int max) {
-        return new IntegerProperty(key, min, max);
     }
 
 }

@@ -35,8 +35,6 @@ import java.util.Map;
 
 public final class Registry<T> {
 
-    private static final Map<Class<?>, Registry<?>> registries = new HashMap<>();
-
     public static final Registry<NoiseGenerator> NOISE_GENERATOR = new Registry<>(Map.of(
             Key.key("fastnoise:opensimplex2"), OpenSimplex2.class, Key.key("fastnoise:opensimplex2s"), OpenSimplex2S.class
     ));
@@ -46,6 +44,7 @@ public final class Registry<T> {
     public static final Registry<Terrain> TERRAIN = new Registry<>(Map.of(
             Key.key("orbis:config"), ConfigTerrain.class, Key.key("orbis:plains"), PlainsTerrain.class
     ));
+    private static final Map<Class<?>, Registry<?>> registries = new HashMap<>();
 
     static {
         addRegistry(NoiseGenerator.class, NOISE_GENERATOR);
@@ -53,18 +52,19 @@ public final class Registry<T> {
         addRegistry(Terrain.class, TERRAIN);
     }
 
-    public static Registry<?> getRegistry(@NotNull Class<?> type) {
-        return registries.get(type);
-    }
-
-    public static <K> void addRegistry(@NotNull Class<K> type, @NotNull Registry<K> registry) {
-        registries.put(type, registry);
-    }
-
     private final Map<Key, Class<? extends T>> typeClasses = new HashMap<>();
 
     public Registry(Map<Key, Class<? extends T>> defaultTypes) {
         typeClasses.putAll(defaultTypes);
+    }
+
+    @SuppressWarnings("unchecked")
+    public static <K> Registry<K> getRegistry(@NotNull Class<K> type) {
+        return (Registry<K>) registries.get(type);
+    }
+
+    public static <K> void addRegistry(@NotNull Class<K> type, @NotNull Registry<K> registry) {
+        registries.put(type, registry);
     }
 
     public Class<? extends T> getType(@NotNull Key key) {

@@ -31,7 +31,9 @@ import com.azortis.orbis.generator.terrain.Terrain;
 import com.azortis.orbis.item.ItemFactory;
 import com.azortis.orbis.item.ItemRegistry;
 import com.azortis.orbis.pack.PackManager;
-import com.azortis.orbis.pack.adapter.*;
+import com.azortis.orbis.pack.adapter.BlockAdapter;
+import com.azortis.orbis.pack.adapter.KeyAdapter;
+import com.azortis.orbis.pack.adapter.TypeAdapter;
 import com.azortis.orbis.util.maven.Dependency;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -94,9 +96,9 @@ public final class Orbis {
             gson = new GsonBuilder().disableHtmlEscaping().setPrettyPrinting()
                     .registerTypeAdapter(Key.class, new KeyAdapter())
                     .registerTypeAdapter(ConfiguredBlock.class, new BlockAdapter())
-                    .registerTypeAdapter(Terrain.class, new TerrainAdapter())
-                    .registerTypeAdapter(Distributor.class, new DistributorAdapter())
-                    .registerTypeAdapter(NoiseGenerator.class, new NoiseGeneratorAdapter()).create();
+                    .registerTypeAdapter(Terrain.class, new TypeAdapter<>(Terrain.class))
+                    .registerTypeAdapter(Distributor.class, new TypeAdapter<>(Distributor.class))
+                    .registerTypeAdapter(NoiseGenerator.class, new TypeAdapter<>(NoiseGenerator.class)).create();
 
             // Load minecraft data into memory
             PropertyRegistry.init();
