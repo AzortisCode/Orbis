@@ -18,11 +18,9 @@
 
 package com.azortis.orbis.generator.biome.complex;
 
-import com.azortis.orbis.block.ConfiguredBlock;
 import com.azortis.orbis.generator.biome.Distributor;
 import com.azortis.orbis.generator.biome.complex.modifier.Modifier;
 import com.azortis.orbis.generator.biome.complex.requirement.Requirement;
-import com.azortis.orbis.pack.adapter.BlockAdapter;
 import com.azortis.orbis.pack.adapter.TypeAdapter;
 import com.azortis.orbis.pack.data.ComponentAccess;
 import com.azortis.orbis.pack.data.DataAccess;
