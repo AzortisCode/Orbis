@@ -34,9 +34,12 @@ import com.azortis.orbis.pack.PackManager;
 import com.azortis.orbis.pack.adapter.BlockAdapter;
 import com.azortis.orbis.pack.adapter.KeyAdapter;
 import com.azortis.orbis.pack.adapter.TypeAdapter;
+import com.azortis.orbis.pack.data.ComponentAccess;
+import com.azortis.orbis.pack.data.DataAccess;
 import com.azortis.orbis.util.maven.Dependency;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonDeserializer;
 import net.kyori.adventure.key.Key;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
@@ -49,7 +52,12 @@ import org.slf4j.Logger;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 @Dependency(group = "com.google.guava", artifact = "guava", version = "31.0.1-jre")
 @Dependency(group = "net.lingala.zip4j", artifact = "zip4j", version = "2.7.0")
@@ -92,13 +100,19 @@ public final class Orbis {
             logger = platform.logger();
             logger.info("Initializing {} adaptation of Orbis", platform.adaptation());
 
+
             // Register the type adapters to use in the serialization/deserialization of settings in packs.
-            gson = new GsonBuilder().disableHtmlEscaping().setPrettyPrinting()
+            final GsonBuilder builder = new GsonBuilder().disableHtmlEscaping().setPrettyPrinting()
                     .registerTypeAdapter(Key.class, new KeyAdapter())
                     .registerTypeAdapter(ConfiguredBlock.class, new BlockAdapter())
                     .registerTypeAdapter(Terrain.class, new TypeAdapter<>(Terrain.class))
                     .registerTypeAdapter(Distributor.class, new TypeAdapter<>(Distributor.class))
-                    .registerTypeAdapter(NoiseGenerator.class, new TypeAdapter<>(NoiseGenerator.class)).create();
+                    .registerTypeAdapter(NoiseGenerator.class, new TypeAdapter<>(NoiseGenerator.class));
+
+            getRegistryAdapters().forEach(entry -> builder.registerTypeAdapter(entry.getKey(), entry.getValue()));
+
+            gson = builder.create();
+
 
             // Load minecraft data into memory
             PropertyRegistry.init();
@@ -115,6 +129,46 @@ public final class Orbis {
             // Load managers
             packManager = new PackManager(platform.directory());
         }
+    }
+
+    private static List<Map.Entry<Class<?>, JsonDeserializer<?>>> getRegistryAdapters() {
+        List<Map.Entry<Class<?>, JsonDeserializer<?>>> entryList = new ArrayList<>();
+        // Search and add type adapters for usage in serialization/deserialization of values to the gson
+        Registry.getImmutableRegistry().forEach((access, registry) -> {
+            // skip anything that is not a component
+            if (access.isAssignableFrom(ComponentAccess.class)) {
+                try {
+                    // Suppress the warning for unchecked cast of constructor, we checked it in the if statement.
+                    @SuppressWarnings("unchecked")
+                    // Get the constructor with parameters (String, DataAccess)
+                    Constructor<? extends ComponentAccess> constructor = (Constructor<? extends ComponentAccess>) access.getConstructor(String.class, DataAccess.class);
+
+                    // Get the component access class, but due to generics we must cast the access type to the instance to get the correct class
+                    // and then upcast it to component access object.
+                    ComponentAccess componentAccess = (ComponentAccess) (access.cast(constructor.newInstance(null, null)));
+
+                    // Add all adapters to the list
+                    entryList.addAll(componentAccess.adapters().entrySet());
+                } catch (NoSuchMethodException e) {
+                    logger.error("Class " + access.getTypeName() + " does not implement the public constructor (String.class, DataAccess.class) and its adapters cannot be retrieved");
+                    e.printStackTrace();
+                } catch (SecurityException e) {
+                    logger.error("Unable to access class " + access.getTypeName() + " for adapter retrieval");
+                    e.printStackTrace();
+                } catch (InvocationTargetException e) {
+                    logger.error("Class " + access.getTypeName() + " threw an error during initialization for adapter retrieval");
+                    e.printStackTrace();
+                } catch (InstantiationException e) {
+                    logger.error("Class " + access.getTypeName() + " is abstract and adapters cannot be retrieved.");
+                    e.printStackTrace();
+                } catch (IllegalAccessException e) {
+                    logger.error("Class " + access.getTypeName() + " could not be accessed during adapter retrieval.");
+                    e.printStackTrace();
+                }
+
+            }
+        });
+        return entryList;
     }
 
     private static @NotNull Component getPrefixComponent() {

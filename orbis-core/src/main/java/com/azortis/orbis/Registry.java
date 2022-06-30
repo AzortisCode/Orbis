@@ -27,6 +27,7 @@ import com.azortis.orbis.generator.noise.OpenSimplex2S;
 import com.azortis.orbis.generator.terrain.Terrain;
 import com.azortis.orbis.generator.terrain.defaults.ConfigTerrain;
 import com.azortis.orbis.generator.terrain.defaults.PlainsTerrain;
+import com.google.common.collect.ImmutableMap;
 import net.kyori.adventure.key.Key;
 import org.jetbrains.annotations.NotNull;
 
@@ -74,6 +75,10 @@ public final class Registry<T> {
     @SuppressWarnings("PatternValidation")
     public Class<? extends T> getType(@NotNull String key) {
         return typeClasses.get(Key.key(key));
+    }
+
+    public static Map<Class<?>, Registry<?>> getImmutableRegistry() {
+        return ImmutableMap.copyOf(registries);
     }
 
     public void registerType(Key key, Class<? extends T> type) {
