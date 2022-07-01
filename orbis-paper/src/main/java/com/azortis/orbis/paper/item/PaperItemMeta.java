@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2021  Azortis
+ *     Copyright (C) 2022 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -42,6 +42,37 @@ public class PaperItemMeta implements ItemMeta {
 
     public PaperItemMeta(org.bukkit.inventory.meta.ItemMeta handle) {
         this.handle = handle;
+    }
+
+    private static @NotNull org.bukkit.enchantments.Enchantment toPaper(Enchantment enchantment) {
+        org.bukkit.enchantments.Enchantment paperEnchant = org.bukkit.enchantments.Enchantment
+                .getByKey(NamespacedKey.fromString(enchantment.key().asString()));
+        assert paperEnchant != null;
+        return paperEnchant;
+    }
+
+    private static org.bukkit.inventory.ItemFlag toPaper(ItemFlag itemFlag) {
+        return switch (itemFlag) {
+            case HIDE_ENCHANTS -> org.bukkit.inventory.ItemFlag.HIDE_ENCHANTS;
+            case HIDE_ATTRIBUTES -> org.bukkit.inventory.ItemFlag.HIDE_ATTRIBUTES;
+            case HIDE_UNBREAKABLE -> org.bukkit.inventory.ItemFlag.HIDE_UNBREAKABLE;
+            case HIDE_CAN_DESTROY -> org.bukkit.inventory.ItemFlag.HIDE_DESTROYS;
+            case HIDE_CAN_PLACE -> org.bukkit.inventory.ItemFlag.HIDE_PLACED_ON;
+            case HIDE_MISCELLANEOUS -> org.bukkit.inventory.ItemFlag.HIDE_POTION_EFFECTS;
+            case HIDE_DYE -> org.bukkit.inventory.ItemFlag.HIDE_DYE;
+        };
+    }
+
+    private static ItemFlag fromPaper(org.bukkit.inventory.ItemFlag itemFlag) {
+        return switch (itemFlag) {
+            case HIDE_ENCHANTS -> ItemFlag.HIDE_ENCHANTS;
+            case HIDE_ATTRIBUTES -> ItemFlag.HIDE_ATTRIBUTES;
+            case HIDE_UNBREAKABLE -> ItemFlag.HIDE_UNBREAKABLE;
+            case HIDE_DESTROYS -> ItemFlag.HIDE_CAN_DESTROY;
+            case HIDE_PLACED_ON -> ItemFlag.HIDE_CAN_PLACE;
+            case HIDE_POTION_EFFECTS -> ItemFlag.HIDE_MISCELLANEOUS;
+            case HIDE_DYE -> ItemFlag.HIDE_DYE;
+        };
     }
 
     @Override
@@ -223,37 +254,6 @@ public class PaperItemMeta implements ItemMeta {
 
     public @NotNull org.bukkit.inventory.meta.ItemMeta getHandle() {
         return handle;
-    }
-
-    private static @NotNull org.bukkit.enchantments.Enchantment toPaper(Enchantment enchantment) {
-        org.bukkit.enchantments.Enchantment paperEnchant = org.bukkit.enchantments.Enchantment
-                .getByKey(NamespacedKey.fromString(enchantment.key().asString()));
-        assert paperEnchant != null;
-        return paperEnchant;
-    }
-
-    private static org.bukkit.inventory.ItemFlag toPaper(ItemFlag itemFlag) {
-        return switch (itemFlag) {
-            case HIDE_ENCHANTS -> org.bukkit.inventory.ItemFlag.HIDE_ENCHANTS;
-            case HIDE_ATTRIBUTES -> org.bukkit.inventory.ItemFlag.HIDE_ATTRIBUTES;
-            case HIDE_UNBREAKABLE -> org.bukkit.inventory.ItemFlag.HIDE_UNBREAKABLE;
-            case HIDE_CAN_DESTROY -> org.bukkit.inventory.ItemFlag.HIDE_DESTROYS;
-            case HIDE_CAN_PLACE -> org.bukkit.inventory.ItemFlag.HIDE_PLACED_ON;
-            case HIDE_MISCELLANEOUS -> org.bukkit.inventory.ItemFlag.HIDE_POTION_EFFECTS;
-            case HIDE_DYE -> org.bukkit.inventory.ItemFlag.HIDE_DYE;
-        };
-    }
-
-    private static ItemFlag fromPaper(org.bukkit.inventory.ItemFlag itemFlag) {
-        return switch (itemFlag) {
-            case HIDE_ENCHANTS -> ItemFlag.HIDE_ENCHANTS;
-            case HIDE_ATTRIBUTES -> ItemFlag.HIDE_ATTRIBUTES;
-            case HIDE_UNBREAKABLE -> ItemFlag.HIDE_UNBREAKABLE;
-            case HIDE_DESTROYS -> ItemFlag.HIDE_CAN_DESTROY;
-            case HIDE_PLACED_ON -> ItemFlag.HIDE_CAN_PLACE;
-            case HIDE_POTION_EFFECTS -> ItemFlag.HIDE_MISCELLANEOUS;
-            case HIDE_DYE -> ItemFlag.HIDE_DYE;
-        };
     }
 
 }

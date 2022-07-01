@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2021  Azortis
+ *     Copyright (C) 2022 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -85,6 +85,7 @@ public final class BlockBuilder extends SchemaBuilder {
                 oneOf.add(blockObject);
             }
         }
+        schema.add("oneOf", oneOf);
         return schema;
     }
 

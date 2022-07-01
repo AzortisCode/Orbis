@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2021  Azortis
+ *     Copyright (C) 2022 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -42,6 +42,10 @@ public class PaperItemStack implements ItemStack {
     public PaperItemStack(@NotNull Item item) {
         this.handle = new org.bukkit.inventory.ItemStack(ConversionUtils.getMaterial(item));
         this.item = item;
+    }
+
+    public static PaperItemStack fromPaper(org.bukkit.inventory.ItemStack itemStack) {
+        return new PaperItemStack(itemStack);
     }
 
     @Override
@@ -99,10 +103,6 @@ public class PaperItemStack implements ItemStack {
 
     public org.bukkit.inventory.ItemStack handle() {
         return handle;
-    }
-
-    public static PaperItemStack fromPaper(org.bukkit.inventory.ItemStack itemStack) {
-        return new PaperItemStack(itemStack);
     }
 
 }

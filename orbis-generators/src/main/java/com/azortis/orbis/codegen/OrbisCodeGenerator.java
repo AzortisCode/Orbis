@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2021  Azortis
+ *     Copyright (C) 2022 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -32,8 +32,8 @@ import java.util.List;
 import java.util.Locale;
 
 public abstract class OrbisCodeGenerator {
-    private static final Logger LOGGER = LoggerFactory.getLogger(OrbisCodeGenerator.class);
     protected static final Gson GSON = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
+    private static final Logger LOGGER = LoggerFactory.getLogger(OrbisCodeGenerator.class);
     protected final InputStream inputStream;
     protected final File outputFolder;
 

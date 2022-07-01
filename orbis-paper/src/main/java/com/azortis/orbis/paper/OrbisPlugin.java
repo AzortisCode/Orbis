@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2021  Azortis
+ *     Copyright (C) 2022 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -39,6 +39,33 @@ public class OrbisPlugin extends JavaPlugin {
     private static final Map<String, PaperWorld> worldMap = new HashMap<>();
     private static PaperPlatform platform;
     private Metrics metrics;
+
+    @NotNull
+    public static PaperWorld loadWorld(@NotNull WorldInfo worldInfo, @NotNull Pack pack) {
+        PaperWorld paperWorld = new PaperWorld(worldInfo);
+        paperWorld.installPack(pack, false);
+        if (!paperWorld.isLoaded()) paperWorld.load(worldInfo.getSeed());
+        worldMap.put(worldInfo.getName(), paperWorld);
+        return paperWorld;
+    }
+
+    @Nullable
+    public static PaperWorld getWorld(WorldInfo worldInfo) {
+        return worldMap.get(worldInfo.getName());
+    }
+
+    @Nullable
+    public static PaperWorld getWorld(String worldName) {
+        return worldMap.get(worldName);
+    }
+
+    public static Collection<PaperWorld> getWorlds() {
+        return worldMap.values();
+    }
+
+    public static PaperPlatform getPlatform() {
+        return platform;
+    }
 
     @Override
     public void onLoad() {
@@ -82,32 +109,5 @@ public class OrbisPlugin extends JavaPlugin {
         }
         Orbis.getLogger().error("No pack fieldName specified for world {}", worldName);
         return super.getDefaultWorldGenerator(worldName, null);
-    }
-
-    @NotNull
-    public static PaperWorld loadWorld(@NotNull WorldInfo worldInfo, @NotNull Pack pack) {
-        PaperWorld paperWorld = new PaperWorld(worldInfo);
-        paperWorld.installPack(pack, false);
-        if (!paperWorld.isLoaded()) paperWorld.load(worldInfo.getSeed());
-        worldMap.put(worldInfo.getName(), paperWorld);
-        return paperWorld;
-    }
-
-    @Nullable
-    public static PaperWorld getWorld(WorldInfo worldInfo) {
-        return worldMap.get(worldInfo.getName());
-    }
-
-    @Nullable
-    public static PaperWorld getWorld(String worldName) {
-        return worldMap.get(worldName);
-    }
-
-    public static Collection<PaperWorld> getWorlds() {
-        return worldMap.values();
-    }
-
-    public static PaperPlatform getPlatform() {
-        return platform;
     }
 }

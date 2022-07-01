@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2021  Azortis
+ *     Copyright (C) 2022 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -68,6 +68,10 @@ public final class Registry<T> {
         registries.put(type, registry);
     }
 
+    public static Map<Class<?>, Registry<?>> getImmutableRegistry() {
+        return ImmutableMap.copyOf(registries);
+    }
+
     public Class<? extends T> getType(@NotNull Key key) {
         return typeClasses.get(key);
     }
@@ -75,10 +79,6 @@ public final class Registry<T> {
     @SuppressWarnings("PatternValidation")
     public Class<? extends T> getType(@NotNull String key) {
         return typeClasses.get(Key.key(key));
-    }
-
-    public static Map<Class<?>, Registry<?>> getImmutableRegistry() {
-        return ImmutableMap.copyOf(registries);
     }
 
     public void registerType(Key key, Class<? extends T> type) {
