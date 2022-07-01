@@ -37,15 +37,15 @@ public sealed abstract class Property<T extends Comparable<T>> permits BooleanPr
         this.values = ImmutableSet.copyOf(values);
     }
 
-    public String getKey() {
+    public String key() {
         return key;
     }
 
-    public Class<T> getType() {
+    public Class<T> type() {
         return type;
     }
 
-    public ImmutableSet<T> getValues() {
+    public ImmutableSet<T> values() {
         return values;
     }
 

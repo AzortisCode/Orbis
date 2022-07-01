@@ -48,7 +48,7 @@ public final class Block implements ConfiguredBlock {
         // Build the property map
         ImmutableMap.Builder<String, Property<?>> builder = ImmutableMap.builder();
         for (Property<?> property : properties) {
-            builder.put(property.getKey(), property);
+            builder.put(property.key(), property);
         }
         this.propertyMap = builder.build();
         this.itemKey = itemKey;

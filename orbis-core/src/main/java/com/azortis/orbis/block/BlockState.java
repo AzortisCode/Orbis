@@ -86,13 +86,13 @@ public final class BlockState implements ConfiguredBlock {
         if (value == null) {
             throw new IllegalArgumentException("Cannot get property " + property + " because it doesn't exists in " + this);
         } else {
-            return property.getType().cast(value);
+            return property.type().cast(value);
         }
     }
 
     public @NotNull <T extends Comparable<T>> Optional<T> getValueOptional(Property<T> property) {
         Comparable<?> value = values.get(property);
-        return value == null ? Optional.empty() : Optional.of(property.getType().cast(value));
+        return value == null ? Optional.empty() : Optional.of(property.type().cast(value));
     }
 
     public @NotNull <T extends Comparable<T>, V extends T> BlockState setValue(Property<T> property, V value) {
@@ -119,7 +119,7 @@ public final class BlockState implements ConfiguredBlock {
             for (Map.Entry<Property<?>, Comparable<?>> entry : this.values.entrySet()) {
                 Property<?> property = entry.getKey();
 
-                for (Comparable<?> value : property.getValues()) {
+                for (Comparable<?> value : property.values()) {
                     if (value != entry.getValue()) {
                         table.put(property, value, states.get(createStateKey(property, value)));
                     }

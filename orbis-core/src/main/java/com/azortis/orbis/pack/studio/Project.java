@@ -18,6 +18,16 @@
 
 package com.azortis.orbis.pack.studio;
 
-public class Project {
+/**
+ * A representation of a studio project environment, manages all things from Schema generation and
+ * mapping the schema to the right files, and forces registry schema's to regenerate when a new config data file
+ * has been added, to make sure it can be referenced in other files.
+ */
+public final class Project {
 
+    private final StudioWorld world;
+
+    public Project(StudioWorld world) {
+        this.world = world;
+    }
 }

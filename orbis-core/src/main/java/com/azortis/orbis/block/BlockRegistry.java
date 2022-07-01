@@ -35,6 +35,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public final class BlockRegistry {
 
@@ -55,6 +56,14 @@ public final class BlockRegistry {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
+
+    public static Set<String> blockKeys() {
+        return Set.copyOf(KEY_BLOCK_MAP.keySet());
+    }
+
+    public static Set<Block> blocks() {
+        return Set.copyOf(KEY_BLOCK_MAP.values());
     }
 
     public static boolean containsKey(final String key) {
@@ -96,7 +105,7 @@ public final class BlockRegistry {
             for (JsonElement propertyElement : blockData.getAsJsonArray("properties")) {
                 String mojangName = propertyElement.getAsString();
                 Property<?> property = PropertyRegistry.getByMojangName(mojangName);
-                propertiesBuilder.put(property.getKey(), property);
+                propertiesBuilder.put(property.key(), property);
             }
             ImmutableBiMap<String, Property<?>> availableProperties = propertiesBuilder.build();
 

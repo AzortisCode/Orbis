@@ -49,8 +49,8 @@ public final class IntegerProperty extends Property<Integer> {
     public @NotNull Integer getValueFor(@NotNull String value) {
         try {
             final int val = Integer.parseInt(value);
-            if (!getValues().contains(val)) {
-                throw new IllegalArgumentException("Invalid int value: " + value + ". Must be in " + getValues());
+            if (!values().contains(val)) {
+                throw new IllegalArgumentException("Invalid int value: " + value + ". Must be in " + values());
             }
             return val;
         } catch (final NumberFormatException exception) {
@@ -58,11 +58,11 @@ public final class IntegerProperty extends Property<Integer> {
         }
     }
 
-    public int getMin() {
+    public int min() {
         return min;
     }
 
-    public int getMax() {
+    public int max() {
         return max;
     }
 

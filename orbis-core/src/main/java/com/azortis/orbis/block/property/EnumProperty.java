@@ -37,7 +37,7 @@ public final class EnumProperty<T extends Enum<T> & Nameable> extends Property<T
             if (names.containsKey(name)) {
                 throw new IllegalArgumentException("Multiple values have the same fieldName! Name: " + name);
             }
-            names.put(value.getSerializedName(), value);
+            names.put(value.getSerializedName().toLowerCase(Locale.ENGLISH), value);
         }
     }
 

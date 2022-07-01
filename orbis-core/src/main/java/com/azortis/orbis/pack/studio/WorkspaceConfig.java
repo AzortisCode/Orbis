@@ -16,31 +16,12 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.block.property;
+package com.azortis.orbis.pack.studio;
 
-import org.jetbrains.annotations.NotNull;
+/**
+ * Class representation of VSCode its *.code-workspace config file.
+ */
+public final class WorkspaceConfig {
 
-import java.util.Set;
-
-public final class BooleanProperty extends Property<Boolean> {
-
-    public static final Set<Boolean> VALUES = Set.of(true, false);
-
-    private BooleanProperty(final @NotNull String key) {
-        super(key, Boolean.class, VALUES);
-    }
-
-    static BooleanProperty create(final @NotNull String key) {
-        return new BooleanProperty(key);
-    }
-
-    @Override
-    public @NotNull Boolean getValueFor(@NotNull String value) {
-        final boolean val = Boolean.parseBoolean(value);
-        if (!values().contains(val)) {
-            throw new IllegalArgumentException("Invalid boolean value: " + value + ". Must be in " + values());
-        }
-        return val;
-    }
 
 }

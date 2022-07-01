@@ -16,31 +16,31 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.block.property;
+package com.azortis.orbis.pack.studio.schema;
 
+import com.azortis.orbis.pack.data.DataAccess;
+import com.azortis.orbis.pack.studio.Project;
+import com.google.gson.JsonObject;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Set;
+import java.io.File;
 
-public final class BooleanProperty extends Property<Boolean> {
+public sealed abstract class SchemaBuilder permits ClassBuilder, BlockBuilder, RegistryBuilder {
 
-    public static final Set<Boolean> VALUES = Set.of(true, false);
+    protected final Project project;
+    protected final DataAccess data;
+    private final File schemaFile;
 
-    private BooleanProperty(final @NotNull String key) {
-        super(key, Boolean.class, VALUES);
+    private JsonObject schema;
+
+    public SchemaBuilder(@NotNull Project project, @NotNull DataAccess data, @NotNull File schemaFile) {
+        this.project = project;
+        this.data = data;
+        this.schemaFile = schemaFile;
     }
 
-    static BooleanProperty create(final @NotNull String key) {
-        return new BooleanProperty(key);
-    }
+    protected abstract @NotNull JsonObject generateSchema();
 
-    @Override
-    public @NotNull Boolean getValueFor(@NotNull String value) {
-        final boolean val = Boolean.parseBoolean(value);
-        if (!values().contains(val)) {
-            throw new IllegalArgumentException("Invalid boolean value: " + value + ". Must be in " + values());
-        }
-        return val;
-    }
+    protected abstract boolean shouldRegenerate();
 
 }
