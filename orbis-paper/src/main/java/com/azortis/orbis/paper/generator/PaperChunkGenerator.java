@@ -26,11 +26,10 @@ import org.bukkit.generator.BiomeProvider;
 import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.generator.WorldInfo;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.Random;
 
-public class PaperChunkGenerator extends ChunkGenerator {
+public final class PaperChunkGenerator extends ChunkGenerator {
 
     private final String worldName;
     private final Pack pack;
@@ -75,7 +74,7 @@ public class PaperChunkGenerator extends ChunkGenerator {
     }
 
     @Override
-    public @Nullable BiomeProvider getDefaultBiomeProvider(@NotNull WorldInfo worldInfo) {
+    public @NotNull BiomeProvider getDefaultBiomeProvider(@NotNull WorldInfo worldInfo) {
         return new PaperBiomeProvider(this);
     }
 

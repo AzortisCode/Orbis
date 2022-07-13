@@ -19,13 +19,35 @@
 package com.azortis.orbis.pack.studio;
 
 import com.azortis.orbis.World;
+import com.azortis.orbis.WorldInfo;
+import com.azortis.orbis.pack.Pack;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 
+/**
+ * A world interface that is used to visualize settings when working on a project.
+ */
 public abstract class StudioWorld extends World {
 
-    public StudioWorld(String name, File folder) {
-        super(name, folder);
+    public StudioWorld(String name, File folder, Project project) {
+        super(name, folder, project);
     }
 
+    public void setSeed(long seed) {
+        this.worldInfo = new WorldInfo("null", "null", seed);
+        saveWorldInfo();
+    }
+
+    @Override
+    public void load(long seed) {
+        throw new UnsupportedOperationException("The normal loading mechanism cannot be used for a studio world!");
+    }
+
+    @Override
+    public void installPack(@NotNull Pack pack, boolean override) {
+        throw new UnsupportedOperationException("Cannot install a pack for a studio world!");
+    }
+
+    protected abstract void clearWorld();
 }

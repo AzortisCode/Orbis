@@ -16,31 +16,17 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.pack.studio.schema;
+package com.azortis.orbis.paper.studio;
 
-import com.azortis.orbis.pack.data.DataAccess;
 import com.azortis.orbis.pack.studio.Project;
-import com.google.gson.JsonObject;
+import org.bukkit.generator.ChunkGenerator;
 import org.jetbrains.annotations.NotNull;
 
-import java.io.File;
+public final class PaperStudioChunkGenerator extends ChunkGenerator {
 
-public sealed abstract class SchemaBuilder permits ClassBuilder, BlockBuilder, ReferenceBuilder {
+    private final Project project;
 
-    protected final Project project;
-    protected final DataAccess data;
-    private final File schemaFile;
-
-    private JsonObject schema;
-
-    public SchemaBuilder(@NotNull Project project, @NotNull DataAccess data, @NotNull File schemaFile) {
+    public PaperStudioChunkGenerator(@NotNull Project project) {
         this.project = project;
-        this.data = data;
-        this.schemaFile = schemaFile;
     }
-
-    protected abstract @NotNull JsonObject generateSchema();
-
-    protected abstract boolean shouldRegenerate();
-
 }

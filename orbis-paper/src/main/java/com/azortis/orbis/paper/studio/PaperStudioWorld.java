@@ -16,31 +16,35 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.pack.studio.schema;
+package com.azortis.orbis.paper.studio;
 
-import com.azortis.orbis.pack.data.DataAccess;
 import com.azortis.orbis.pack.studio.Project;
-import com.google.gson.JsonObject;
-import org.jetbrains.annotations.NotNull;
+import com.azortis.orbis.pack.studio.StudioWorld;
+import org.bukkit.Bukkit;
+import org.bukkit.World;
+import org.bukkit.entity.Player;
 
-import java.io.File;
+public final class PaperStudioWorld extends StudioWorld {
 
-public sealed abstract class SchemaBuilder permits ClassBuilder, BlockBuilder, ReferenceBuilder {
+    private World nativeWorld;
 
-    protected final Project project;
-    protected final DataAccess data;
-    private final File schemaFile;
-
-    private JsonObject schema;
-
-    public SchemaBuilder(@NotNull Project project, @NotNull DataAccess data, @NotNull File schemaFile) {
-        this.project = project;
-        this.data = data;
-        this.schemaFile = schemaFile;
+    public PaperStudioWorld(World nativeWorld, Project project) {
+        super(nativeWorld.getName(), nativeWorld.getWorldFolder(), project);
+        this.nativeWorld = nativeWorld;
     }
 
-    protected abstract @NotNull JsonObject generateSchema();
+    public World getNativeWorld() {
+        return nativeWorld;
+    }
 
-    protected abstract boolean shouldRegenerate();
+    @Override
+    protected void clearWorld() {
+        // Get all players out this world.
+        for (Player worldPlayer : nativeWorld.getPlayers()) {
 
+        }
+        // Unload the world
+        Bukkit.getServer().unloadWorld(nativeWorld, false);
+        this.nativeWorld = null;
+    }
 }

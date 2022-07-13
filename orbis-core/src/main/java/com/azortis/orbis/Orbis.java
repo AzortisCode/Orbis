@@ -36,6 +36,7 @@ import com.azortis.orbis.pack.adapter.KeyAdapter;
 import com.azortis.orbis.pack.adapter.TypeAdapter;
 import com.azortis.orbis.pack.data.ComponentAccess;
 import com.azortis.orbis.pack.data.DataAccess;
+import com.azortis.orbis.pack.studio.ProjectManager;
 import com.azortis.orbis.util.maven.Dependency;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -83,6 +84,7 @@ public final class Orbis {
 
     // Managers
     private static PackManager packManager;
+    private static ProjectManager projectManager;
 
     private Orbis() {
     }
@@ -128,6 +130,7 @@ public final class Orbis {
 
             // Load managers
             packManager = new PackManager(platform.directory());
+            projectManager = new ProjectManager(new File(platform.directory() + "/projects/"));
         }
     }
 
@@ -243,5 +246,9 @@ public final class Orbis {
 
     public static PackManager getPackManager() {
         return packManager;
+    }
+
+    public static ProjectManager getProjectManager() {
+        return projectManager;
     }
 }

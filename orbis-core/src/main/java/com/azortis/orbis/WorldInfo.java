@@ -32,7 +32,7 @@ public final class WorldInfo {
     private final String dimensionFile;
     private final long seed;
 
-    WorldInfo(@NotNull String packName, @NotNull String dimensionFile, long seed) {
+    public WorldInfo(@NotNull String packName, @NotNull String dimensionFile, long seed) {
         this.dataVersion = DATA_VERSION;
         this.packName = packName;
         this.dimensionFile = dimensionFile;

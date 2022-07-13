@@ -26,9 +26,15 @@ import com.azortis.orbis.World;
 import com.azortis.orbis.command.CommandSender;
 import com.azortis.orbis.command.ConsoleSender;
 import com.azortis.orbis.item.ItemFactory;
+import com.azortis.orbis.pack.studio.Project;
+import com.azortis.orbis.pack.studio.StudioWorld;
 import com.azortis.orbis.paper.item.PaperItemFactory;
+import com.azortis.orbis.paper.studio.PaperStudioBiomeProvider;
+import com.azortis.orbis.paper.studio.PaperStudioChunkGenerator;
+import com.azortis.orbis.paper.studio.PaperStudioWorld;
 import com.azortis.orbis.util.maven.Dependency;
 import org.bukkit.Bukkit;
+import org.bukkit.WorldCreator;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -91,6 +97,18 @@ public class PaperPlatform implements Platform, Listener {
     @Override
     public @NotNull Collection<World> worlds() {
         return new ArrayList<>(OrbisPlugin.getWorlds());
+    }
+
+    @Override
+    public @NotNull StudioWorld createStudioWorld(@NotNull Project project) {
+        WorldCreator worldCreator = new WorldCreator("orbis_studio")
+                .generator(new PaperStudioChunkGenerator(project))
+                .biomeProvider(new PaperStudioBiomeProvider(project))
+                .seed(new Random().nextLong())
+                .generateStructures(false);
+        org.bukkit.World nativeWorld = Bukkit.createWorld(worldCreator);
+        if (nativeWorld == null) throw new RuntimeException("Failed to create native world for Studio!");
+        return new PaperStudioWorld(nativeWorld, project);
     }
 
     @EventHandler(priority = EventPriority.MONITOR)

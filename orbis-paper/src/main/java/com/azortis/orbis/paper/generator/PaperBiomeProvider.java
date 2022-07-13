@@ -28,7 +28,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.stream.Collectors;
 
-public class PaperBiomeProvider extends BiomeProvider {
+public final class PaperBiomeProvider extends BiomeProvider {
 
     private final PaperChunkGenerator chunkGenerator;
 

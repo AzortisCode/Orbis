@@ -61,7 +61,7 @@ public abstract class ComponentAccess {
      * Return a folder data path, on where the configuration files for the specified type can be found.
      * Some examples may be:
      * <ul>
-     *     <li>"/" -> Every file in the root folder of this ComponentAccess is the specified type</li>
+     *     <li>"/" -> Every file in the directory folder of this ComponentAccess is the specified type</li>
      *     <li>"/**" -> Same as above, but sub folders may be searched as well.</li>
      *     <li>"/type/" -> Every file in this folder is the specified type</li>
      *     <li>"/type/**" -> Same as above, but sub folders may be searched as well.</li>

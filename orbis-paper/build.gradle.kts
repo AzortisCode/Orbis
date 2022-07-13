@@ -21,7 +21,7 @@ import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 plugins {
     java
     id("com.github.johnrengelman.shadow") version "7.0.0"
-    id("io.papermc.paperweight.userdev") version "1.3.7-SNAPSHOT"
+    id("io.papermc.paperweight.userdev") version "1.3.9-SNAPSHOT"
 }
 
 group = "com.azortis"

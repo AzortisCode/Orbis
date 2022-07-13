@@ -24,7 +24,8 @@ import com.azortis.orbis.generator.SimpleEngine;
 import com.azortis.orbis.pack.Pack;
 import com.azortis.orbis.pack.PackLoader;
 import com.azortis.orbis.pack.data.DataAccess;
-import com.azortis.orbis.pack.data.WorldDataAccess;
+import com.azortis.orbis.pack.data.DirectoryDataAccess;
+import com.azortis.orbis.pack.studio.Project;
 import org.jetbrains.annotations.NotNull;
 import org.jglrxavpok.hephaistos.nbt.*;
 
@@ -41,32 +42,53 @@ public abstract class World implements WorldAccess {
 
     private final String name;
     private final File directory;
-    private final File settingsFolder;
+    private final File settingsDirectory;
 
     // WorldInfo
     private final File worldInfoFile;
     private final DataAccess data;
-    private WorldInfo worldInfo;
+    protected WorldInfo worldInfo;
     // Status booleans
-    private boolean loaded = false;
+    protected boolean loaded = false;
     private boolean installed = false;
-    private Dimension dimension;
+    protected Dimension dimension;
     private Engine engine;
 
     public World(String name, File directory) {
         this.name = name;
         this.directory = directory;
-        this.settingsFolder = new File(directory, "/settings/");
-        if (settingsFolder.exists() && Objects.requireNonNull(settingsFolder.listFiles()).length > 0) installed = true;
-        this.data = new WorldDataAccess(this);
+        this.settingsDirectory = new File(directory, "/settings/");
+        if (settingsDirectory.exists() && Objects.requireNonNull(settingsDirectory.listFiles()).length > 0)
+            installed = true;
+        this.data = new DirectoryDataAccess(settingsDirectory);
         this.worldInfoFile = new File(directory, "world-info.dat");
         if (installed) {
             if (!worldInfoFile.exists()) {
-                Orbis.getLogger().error("Settings folder exists, but world-info.dat doesn't!");
+                Orbis.getLogger().error("Settings directory exists, but world-info.dat doesn't!");
             } else {
                 reloadWorldInfo();
             }
         }
+    }
+
+    /**
+     * Constructor for the StudioWorld to use.
+     *
+     * @param name      The name of the world
+     * @param directory The directory of the world
+     * @param project   The project of the studio world.
+     */
+    protected World(String name, File directory, Project project) {
+        this.name = name;
+        this.directory = directory;
+        this.settingsDirectory = project.directory();
+        this.installed = true;
+        this.data = new DirectoryDataAccess(project.directory());
+
+        // Still have to create and save the world info since it is used to get the seed.
+        this.worldInfoFile = new File(directory, "world-info.dat");
+        this.worldInfo = new WorldInfo("null", "null", 0L);
+        saveWorldInfo();
     }
 
     public void load(long seed) {
@@ -87,23 +109,23 @@ public abstract class World implements WorldAccess {
         }
     }
 
-    public String getName() {
+    public String name() {
         return name;
     }
 
-    public File getDirectory() {
+    public File directory() {
         return directory;
     }
 
-    public File getSettingsFolder() {
-        return settingsFolder;
+    public File settingsDirectory() {
+        return settingsDirectory;
     }
 
     public WorldInfo getWorldInfo() {
         return worldInfo;
     }
 
-    public DataAccess getData() {
+    public DataAccess data() {
         return data;
     }
 
@@ -157,13 +179,13 @@ public abstract class World implements WorldAccess {
     public void installPack(@NotNull Pack pack, boolean override) {
         if (!installed || override) {
             if (override) {
-                if (!settingsFolder.delete()) {
+                if (!settingsDirectory.delete()) {
                     Orbis.getLogger().error("Couldn't reinstall pack: {}, for world: {}", pack.getName(), name);
                     return;
                 }
             }
             Orbis.getLogger().info("Installing pack {} version {} for {}", pack.getName(), pack.getPackVersion(), name);
-            Orbis.getPackManager().extractPack(settingsFolder, pack);
+            Orbis.getPackManager().extractPack(settingsDirectory, pack);
             worldInfo = new WorldInfo(pack.getName(), pack.getDimensionFile(), 0L);
             installed = true;
         }

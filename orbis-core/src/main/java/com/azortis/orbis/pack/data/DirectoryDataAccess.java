@@ -18,7 +18,6 @@
 
 package com.azortis.orbis.pack.data;
 
-import com.azortis.orbis.World;
 import org.apache.commons.io.FilenameUtils;
 import org.jetbrains.annotations.NotNull;
 
@@ -27,17 +26,17 @@ import java.io.FileNotFoundException;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public final class WorldDataAccess extends DataAccess {
-    private final World world;
+public final class DirectoryDataAccess extends DataAccess {
+    private final File dataDirectory;
 
-    public WorldDataAccess(World world) {
-        this.world = world;
+    public DirectoryDataAccess(File dataDirectory) {
+        this.dataDirectory = dataDirectory;
     }
 
     @Override
     protected @NotNull File getFile(@NotNull String dataPath, @NotNull String entryName) throws FileNotFoundException {
         String trimmedDataPath = dataPath.replace("**", "").trim();
-        File file = new File(world.getSettingsFolder() + trimmedDataPath, entryName + ".json");
+        File file = new File(this.dataDirectory + trimmedDataPath, entryName + ".json");
         if (file.exists()) return file;
         throw new FileNotFoundException("File: " + file.getPath() + " doesn't exist!");
     }
@@ -45,14 +44,14 @@ public final class WorldDataAccess extends DataAccess {
     @Override
     public @NotNull Set<File> getFiles(@NotNull String dataPath) {
         File directory;
-        boolean searchSubFolders = dataPath.endsWith("**");
-        if (searchSubFolders) {
-            directory = new File(world.getSettingsFolder() + dataPath.replace("**", "").trim());
+        boolean searchSubDirs = dataPath.endsWith("**");
+        if (searchSubDirs) {
+            directory = new File(this.dataDirectory + dataPath.replace("**", "").trim());
         } else {
-            directory = new File(world.getSettingsFolder() + dataPath.trim());
+            directory = new File(this.dataDirectory + dataPath.trim());
         }
         if (directory.exists()) {
-            if (!searchSubFolders) {
+            if (!searchSubDirs) {
                 File[] files = directory.listFiles(File::isFile);
                 if (files != null) {
                     return new HashSet<>(Arrays.asList(files));
@@ -63,21 +62,21 @@ public final class WorldDataAccess extends DataAccess {
                 if (rootFiles != null) files.addAll(Arrays.asList(rootFiles));
 
                 // Search all sub folders.
-                File[] rootSubFolders = directory.listFiles(File::isDirectory);
-                if (rootSubFolders != null) {
-                    List<File> subFolders = new ArrayList<>(Arrays.asList(rootSubFolders));
-                    ListIterator<File> folderIterator = subFolders.listIterator();
-                    while (folderIterator.hasNext()) {
-                        File subFolder = folderIterator.next();
+                File[] rootSubDirs = directory.listFiles(File::isDirectory);
+                if (rootSubDirs != null) {
+                    List<File> subDirectories = new ArrayList<>(Arrays.asList(rootSubDirs));
+                    ListIterator<File> directoryIterator = subDirectories.listIterator();
+                    while (directoryIterator.hasNext()) {
+                        File subDirectory = directoryIterator.next();
 
                         // First add all the files
-                        File[] subFolderFiles = subFolder.listFiles(File::isFile);
-                        if (subFolderFiles != null) files.addAll(Arrays.asList(subFolderFiles));
+                        File[] subDirectoryFiles = subDirectory.listFiles(File::isFile);
+                        if (subDirectoryFiles != null) files.addAll(Arrays.asList(subDirectoryFiles));
 
                         // Add sub folders to the iterator
-                        File[] subFolderFolders = subFolder.listFiles(File::isDirectory);
-                        if (subFolderFolders != null) {
-                            Arrays.stream(subFolderFolders).forEach(folderIterator::add);
+                        File[] subDirectoryDirs = subDirectory.listFiles(File::isDirectory);
+                        if (subDirectoryDirs != null) {
+                            Arrays.stream(subDirectoryDirs).forEach(directoryIterator::add);
                         }
                     }
                 }

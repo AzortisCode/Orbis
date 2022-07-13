@@ -19,6 +19,8 @@
 package com.azortis.orbis;
 
 import com.azortis.orbis.item.ItemFactory;
+import com.azortis.orbis.pack.studio.Project;
+import com.azortis.orbis.pack.studio.StudioWorld;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.LoggerFactory;
@@ -62,6 +64,11 @@ public class MockPlatform implements Platform {
 
     @Override
     public @NotNull Collection<World> worlds() {
+        return null;
+    }
+
+    @Override
+    public @NotNull StudioWorld createStudioWorld(@NotNull Project project) {
         return null;
     }
 

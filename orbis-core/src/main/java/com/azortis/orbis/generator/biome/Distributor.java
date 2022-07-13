@@ -38,7 +38,7 @@ public abstract class Distributor {
     protected final String name;
     protected final Key type;
 
-    // Every possible biome should be defined in the root of the distributor object
+    // Every possible biome should be defined in the directory of the distributor object
     @SerializedName("biomes")
     private Set<String> biomeNames;
     @Inject(fieldName = "biomeNames", collectionType = HashSet.class, parameterizedType = Biome.class)
@@ -56,7 +56,7 @@ public abstract class Distributor {
     @Invoke(when = Invoke.Order.MID_INJECTION)
     private void setup() {
         // Set up the settings folder so that Distributor implementations can load their datafiles before injection
-        this.settingsFolder = new File(world.getSettingsFolder() +
+        this.settingsFolder = new File(world.settingsDirectory() +
                 DataAccess.DISTRIBUTOR_PATH + "/" + name + "/");
 
         // Make sets immutable

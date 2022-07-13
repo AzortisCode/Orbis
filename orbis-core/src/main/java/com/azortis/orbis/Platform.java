@@ -19,6 +19,8 @@
 package com.azortis.orbis;
 
 import com.azortis.orbis.item.ItemFactory;
+import com.azortis.orbis.pack.studio.Project;
+import com.azortis.orbis.pack.studio.StudioWorld;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
@@ -40,6 +42,8 @@ public interface Platform {
     @Nullable World getWorld(String name);
 
     @NotNull Collection<World> worlds();
+
+    @NotNull StudioWorld createStudioWorld(@NotNull Project project);
 
     @Nullable Player getPlayer(UUID uuid);
 

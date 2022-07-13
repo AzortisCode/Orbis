@@ -146,6 +146,11 @@ public abstract class DataAccess {
         }
     }
 
+    public void reset() {
+        componentTypes.clear();
+        componentAccessTable.clear();
+    }
+
     protected abstract @NotNull File getFile(@NotNull String dataPath, @NotNull String entryName) throws FileNotFoundException;
 
     protected abstract @NotNull Set<File> getFiles(@NotNull String dataPath);

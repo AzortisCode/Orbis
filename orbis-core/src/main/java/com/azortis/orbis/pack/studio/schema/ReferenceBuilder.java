@@ -27,14 +27,14 @@ import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
 
-public final class RegistryBuilder extends SchemaBuilder {
+public final class ReferenceBuilder extends SchemaBuilder {
 
     private final JsonObject schema = new JsonObject();
     private final Class<?> type;
     private final String name;
 
-    public RegistryBuilder(@NotNull Project project, @NotNull DataAccess data,
-                           @NotNull File schemaFile, @NotNull Class<?> type, @Nullable String name) {
+    public ReferenceBuilder(@NotNull Project project, @NotNull DataAccess data,
+                            @NotNull File schemaFile, @NotNull Class<?> type, @Nullable String name) {
         super(project, data, schemaFile);
         this.type = type;
         this.name = name;

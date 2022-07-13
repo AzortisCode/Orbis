@@ -34,7 +34,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-public class OrbisPlugin extends JavaPlugin {
+public final class OrbisPlugin extends JavaPlugin {
 
     private static final Map<String, PaperWorld> worldMap = new HashMap<>();
     private static PaperPlatform platform;

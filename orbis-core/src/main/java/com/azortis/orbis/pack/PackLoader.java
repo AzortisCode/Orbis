@@ -48,7 +48,7 @@ public final class PackLoader {
     public static Dimension loadDimension(@NotNull World world)
             throws IOException, IllegalAccessException, NoSuchFieldException, InvocationTargetException,
             NoSuchMethodException, InstantiationException {
-        File packFolder = world.getSettingsFolder();
+        File packFolder = world.settingsDirectory();
         WorldInfo worldInfo = world.getWorldInfo();
         postInjectionMethods.put(world, new HashMap<>());
 
@@ -73,7 +73,7 @@ public final class PackLoader {
                             Inject inject = field.getAnnotation(Inject.class);
                             Collection<Object> fieldObject = inject.collectionType().getConstructor().newInstance();
                             for (String configName : configNames) {
-                                File dataFile = world.getData().getDataFile(inject.parameterizedType(), configName);
+                                File dataFile = world.data().getDataFile(inject.parameterizedType(), configName);
                                 Object collectionObject = Orbis.getGson().fromJson(new FileReader(dataFile), inject.parameterizedType());
                                 fieldObject.add(collectionObject);
                             }
@@ -86,7 +86,7 @@ public final class PackLoader {
                         } else {
                             String configName = (String) configNameField.get(dimension);
                             configNameField.setAccessible(false);
-                            File dataFile = world.getData().getDataFile(field.getType(), configName);
+                            File dataFile = world.data().getDataFile(field.getType(), configName);
                             Object fieldObject = Orbis.getGson().fromJson(new FileReader(dataFile), field.getType());
                             setField(dimension, field, fieldObject);
 
@@ -197,7 +197,7 @@ public final class PackLoader {
             Inject inject = field.getAnnotation(Inject.class);
             Collection<Object> fieldObject = inject.collectionType().getConstructor().newInstance();
             for (String configName : configNames) {
-                File dataFile = world.getData().getDataFile(inject.parameterizedType(), configName);
+                File dataFile = world.data().getDataFile(inject.parameterizedType(), configName);
                 Object collectionObject = Orbis.getGson().fromJson(new FileReader(dataFile), inject.parameterizedType());
                 fieldObject.add(collectionObject);
             }
@@ -205,7 +205,7 @@ public final class PackLoader {
         } else {
             String configName = (String) configNameField.get(rootObject);
             configNameField.setAccessible(false);
-            File dataFile = world.getData().getDataFile(field.getType(), configName);
+            File dataFile = world.data().getDataFile(field.getType(), configName);
             Object fieldObject = Orbis.getGson().fromJson(new FileReader(dataFile), field.getType());
             setField(rootObject, field, fieldObject);
         }

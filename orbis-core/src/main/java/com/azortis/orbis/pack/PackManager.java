@@ -39,7 +39,7 @@ public final class PackManager {
     public PackManager(File rootDirectory) {
         File packsDirectory = new File(rootDirectory, "/packs/");
         if (!packsDirectory.exists()) {
-            if (!packsDirectory.mkdirs()) Orbis.getLogger().error("Couldn't create packs folder!");
+            if (!packsDirectory.mkdirs()) Orbis.getLogger().error("Failed to create packs folder!");
         }
 
         // Iterate through all folders and files(*.orbis).
