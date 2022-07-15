@@ -23,6 +23,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -74,10 +75,16 @@ public final class ProjectManager {
     public boolean openProject(@NotNull String projectName) {
         if (activeProject != null) {
             if (projects.contains(projectName)) {
-                activeProject = new Project(projectName, new File(projectsFolder + "/" + projectName + "/"));
+                try {
+                    activeProject = new Project(projectName, new File(projectsFolder + "/" + projectName + "/"));
+                } catch (IOException ex) {
+                    Orbis.getLogger().error("Something went wrong opening project {}", projectName);
+                    ex.printStackTrace();
+                    return false;
+                }
                 return true;
             } else {
-                Orbis.getLogger().error("Project by name: " + projectName + " doesn't exist!");
+                Orbis.getLogger().error("Project by name: {} doesn't exist!", projectName);
             }
         } else {
             Orbis.getLogger().error("Can't open a project while another one is open!");
@@ -100,14 +107,20 @@ public final class ProjectManager {
             if (!projects.contains(projectName)) {
                 File projectFolder = new File(projectsFolder + "/" + projectName + "/");
                 if (projectFolder.mkdirs()) {
+                    try {
+                        activeProject = new Project(projectName, projectFolder);
+                    } catch (IOException ex) {
+                        Orbis.getLogger().error("Something went wrong creating project {}", projectName);
+                        ex.printStackTrace();
+                        return false;
+                    }
                     reloadProjects();
-                    activeProject = new Project(projectName, projectFolder);
                     return true;
                 } else {
-                    Orbis.getLogger().error("Failed to create project folder for " + projectName);
+                    Orbis.getLogger().error("Failed to create project folder for {}", projectName);
                 }
             } else {
-                Orbis.getLogger().error("Project by name: " + projectName + " already exists!");
+                Orbis.getLogger().error("Project by name: {} already exists!", projectName);
             }
         } else {
             Orbis.getLogger().error("Can't create a project while another one is open!");

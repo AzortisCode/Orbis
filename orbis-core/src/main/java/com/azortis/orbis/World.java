@@ -84,11 +84,7 @@ public abstract class World implements WorldAccess {
         this.settingsDirectory = project.directory();
         this.installed = true;
         this.data = new DirectoryDataAccess(project.directory());
-
-        // Still have to create and save the world info since it is used to get the seed.
         this.worldInfoFile = new File(directory, "world-info.dat");
-        this.worldInfo = new WorldInfo("null", "null", 0L);
-        saveWorldInfo();
     }
 
     public void load(long seed) {

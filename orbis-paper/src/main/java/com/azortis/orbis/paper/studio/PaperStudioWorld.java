@@ -22,23 +22,42 @@ import com.azortis.orbis.pack.studio.Project;
 import com.azortis.orbis.pack.studio.StudioWorld;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
+import org.bukkit.WorldCreator;
 import org.bukkit.entity.Player;
+
+import java.io.File;
 
 public final class PaperStudioWorld extends StudioWorld {
 
     private World nativeWorld;
 
-    public PaperStudioWorld(World nativeWorld, Project project) {
-        super(nativeWorld.getName(), nativeWorld.getWorldFolder(), project);
-        this.nativeWorld = nativeWorld;
+    public PaperStudioWorld(Project project) {
+        super("orbis_studio", new File(Bukkit.getWorldContainer() + "/orbis_studio/"), project);
     }
 
-    public World getNativeWorld() {
+    public World nativeWorld() {
         return nativeWorld;
     }
 
     @Override
-    protected void clearWorld() {
+    public void hotReload() {
+
+    }
+
+    @Override
+    public void initialize() {
+        WorldCreator worldCreator = new WorldCreator(name())
+                .generator(new PaperStudioChunkGenerator(this.project))
+                .biomeProvider(new PaperStudioBiomeProvider(this.project))
+                .generateStructures(false)
+                .environment(World.Environment.NORMAL);
+        setSeed(worldCreator.seed());
+        nativeWorld = Bukkit.createWorld(worldCreator);
+        saveWorldInfo();
+    }
+
+    @Override
+    protected void unload() {
         // Get all players out this world.
         for (Player worldPlayer : nativeWorld.getPlayers()) {
 

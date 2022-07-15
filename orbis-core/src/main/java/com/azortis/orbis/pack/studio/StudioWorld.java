@@ -30,13 +30,24 @@ import java.io.File;
  */
 public abstract class StudioWorld extends World {
 
+    protected final Project project;
+
+    /**
+     * If the world should render, or just create void chunks.
+     */
+    private boolean shouldRender = false;
+
     public StudioWorld(String name, File folder, Project project) {
         super(name, folder, project);
+        this.project = project;
+    }
+
+    public Project project() {
+        return project;
     }
 
     public void setSeed(long seed) {
         this.worldInfo = new WorldInfo("null", "null", seed);
-        saveWorldInfo();
     }
 
     @Override
@@ -49,5 +60,22 @@ public abstract class StudioWorld extends World {
         throw new UnsupportedOperationException("Cannot install a pack for a studio world!");
     }
 
-    protected abstract void clearWorld();
+    /**
+     * Called everytime the render mode has updated or the configs have updated.
+     * Platform implementation should use this to clear the world, and regenerate chunks or update their
+     * biome registries.
+     */
+    public abstract void hotReload();
+
+    /**
+     * Called when the platform should initialize the rendering of the world.
+     */
+    public abstract void initialize();
+
+    /**
+     * Called when the StudioWorld is being unloaded.
+     * Platform implementations should use this to delete
+     * any native world they have in memory or on disk.
+     */
+    protected abstract void unload();
 }

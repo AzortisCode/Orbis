@@ -20,7 +20,10 @@ package com.azortis.orbis.paper.studio;
 
 import com.azortis.orbis.pack.studio.Project;
 import org.bukkit.generator.ChunkGenerator;
+import org.bukkit.generator.WorldInfo;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Random;
 
 public final class PaperStudioChunkGenerator extends ChunkGenerator {
 
@@ -29,4 +32,11 @@ public final class PaperStudioChunkGenerator extends ChunkGenerator {
     public PaperStudioChunkGenerator(@NotNull Project project) {
         this.project = project;
     }
+
+    @Override
+    public void generateNoise(@NotNull WorldInfo worldInfo, @NotNull Random random, int chunkX, int chunkZ, @NotNull ChunkData chunkData) {
+        super.generateNoise(worldInfo, random, chunkX, chunkZ, chunkData);
+    }
+
+
 }

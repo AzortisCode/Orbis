@@ -19,8 +19,11 @@
 package com.azortis.orbis.pack.studio;
 
 import com.azortis.orbis.Orbis;
+import com.google.gson.JsonObject;
 
 import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 
 /**
  * A representation of a studio project environment, manages all things from Schema generation and
@@ -33,11 +36,26 @@ public final class Project {
     private final File directory;
     private boolean closed = false;
 
+    private final WorkspaceConfig workspaceConfig;
+    private final File settingsDir;
     private final StudioWorld studioWorld;
 
-    Project(String name, File directory) {
+    Project(String name, File directory) throws IOException {
         this.name = name;
         this.directory = directory;
+
+        // Initialize code-workspace config for VSCode completions
+        File workspaceFile = new File(directory, name + ".code-workspace");
+        if (workspaceFile.exists()) {
+            JsonObject existingWorkspace = Orbis.getGson().fromJson(new FileReader(workspaceFile), JsonObject.class);
+            this.workspaceConfig = new WorkspaceConfig(existingWorkspace.getAsJsonObject("settings"), workspaceFile);
+        } else {
+            this.workspaceConfig = new WorkspaceConfig(WorkspaceConfig.DEFAULT_SETTINGS, workspaceFile);
+        }
+
+        this.settingsDir = new File(directory + "/.orbis/");
+        if (!settingsDir.exists() && !settingsDir.mkdirs())
+            Orbis.getLogger().error("Failed to create /.orbis/ settings directory for {}", name);
 
         // Create a studio world once everything for the project has been generated.
         this.studioWorld = Orbis.getPlatform().createStudioWorld(this);
@@ -53,6 +71,14 @@ public final class Project {
 
     public boolean isClosed() {
         return closed;
+    }
+
+    public WorkspaceConfig workspaceConfig() {
+        return workspaceConfig;
+    }
+
+    public File settingsDir() {
+        return settingsDir;
     }
 
     void close() {

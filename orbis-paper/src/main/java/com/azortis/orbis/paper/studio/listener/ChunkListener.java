@@ -16,32 +16,26 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.paper.studio;
+package com.azortis.orbis.paper.studio.listener;
 
-import com.azortis.orbis.pack.studio.Project;
-import org.bukkit.block.Biome;
-import org.bukkit.generator.BiomeProvider;
-import org.bukkit.generator.WorldInfo;
-import org.jetbrains.annotations.NotNull;
+import com.azortis.orbis.paper.studio.PaperStudioWorld;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.world.ChunkLoadEvent;
 
-import java.util.List;
+public class ChunkListener implements Listener {
 
-public final class PaperStudioBiomeProvider extends BiomeProvider {
+    private final PaperStudioWorld studioWorld;
 
-    private final Project project;
-
-    public PaperStudioBiomeProvider(Project project) {
-        this.project = project;
+    public ChunkListener(PaperStudioWorld studioWorld) {
+        this.studioWorld = studioWorld;
     }
 
-    @Override
-    public @NotNull Biome getBiome(@NotNull WorldInfo worldInfo, int x, int y, int z) {
-        return null;
-    }
+    @EventHandler
+    public void onChunkLoad(ChunkLoadEvent event) {
+        if (event.getWorld() == studioWorld.nativeWorld()) {
 
-    @Override
-    public @NotNull List<Biome> getBiomes(@NotNull WorldInfo worldInfo) {
-        return null;
+        }
     }
 
 }
