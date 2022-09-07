@@ -52,7 +52,7 @@ public abstract class World implements WorldAccess {
     protected boolean loaded = false;
     private boolean installed = false;
     protected Dimension dimension;
-    private Engine engine;
+    protected Engine engine;
 
     public World(String name, File directory) {
         this.name = name;
@@ -176,13 +176,13 @@ public abstract class World implements WorldAccess {
         if (!installed || override) {
             if (override) {
                 if (!settingsDirectory.delete()) {
-                    Orbis.getLogger().error("Couldn't reinstall pack: {}, for world: {}", pack.getName(), name);
+                    Orbis.getLogger().error("Couldn't reinstall pack: {}, for world: {}", pack.name(), name);
                     return;
                 }
             }
-            Orbis.getLogger().info("Installing pack {} version {} for {}", pack.getName(), pack.getPackVersion(), name);
+            Orbis.getLogger().info("Installing pack {} version {} for {}", pack.name(), pack.packVersion(), name);
             Orbis.getPackManager().extractPack(settingsDirectory, pack);
-            worldInfo = new WorldInfo(pack.getName(), pack.getDimensionFile(), 0L);
+            worldInfo = new WorldInfo(pack.name(), pack.dimensionFile(), 0L);
             installed = true;
         }
     }

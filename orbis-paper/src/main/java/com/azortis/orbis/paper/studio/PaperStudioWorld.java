@@ -48,12 +48,9 @@ public final class PaperStudioWorld extends StudioWorld {
     public void initialize() {
         WorldCreator worldCreator = new WorldCreator(name())
                 .generator(new PaperStudioChunkGenerator(this.project))
-                .biomeProvider(new PaperStudioBiomeProvider(this.project))
                 .generateStructures(false)
                 .environment(World.Environment.NORMAL);
-        setSeed(worldCreator.seed());
         nativeWorld = Bukkit.createWorld(worldCreator);
-        saveWorldInfo();
     }
 
     @Override

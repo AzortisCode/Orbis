@@ -18,33 +18,77 @@
 
 package com.azortis.orbis.pack;
 
+import com.azortis.orbis.pack.studio.annotations.ArrayType;
+import com.azortis.orbis.pack.studio.annotations.Description;
+import com.azortis.orbis.pack.studio.annotations.Required;
 import com.google.gson.annotations.SerializedName;
-import lombok.Getter;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
 import java.util.List;
 
-@Getter
-public class Pack {
+public final class Pack {
 
-    // Required
-    private String name;
-    private String author;
+    @Required
+    @Description("The name of the pack")
+    private final String name;
+
+    @Required
+    @Description("The name of the main author")
+    private final String author;
+
+    @Required
+    @Description("The name of the dimension config file without the *.json")
     @SerializedName("dimension")
-    private String dimensionFile;
-    private String packVersion;
+    private final String dimensionFile;
 
-    // Optional
-    private List<PackContributor> contributors;
-    private String description;
+    @Required
+    @Description("The version string version of the pack")
+    private final String packVersion;
 
-    // Used for gson deserialization
-    private Pack() {
-    }
+    @ArrayType(Contributor.class)
+    @Description("Additional pack contributors")
+    private final List<Contributor> contributors = new ArrayList<>();
 
-    public Pack(String name, String author, String dimensionFile, String packVersion) {
+    @Description("The description of the pack")
+    private final String description;
+
+    public Pack(@NotNull String name, @NotNull String author,
+                @NotNull String dimensionFile, @NotNull String packVersion, @Nullable String description) {
         this.name = name;
         this.author = author;
         this.dimensionFile = dimensionFile;
         this.packVersion = packVersion;
+        this.description = description;
     }
+
+    public String name() {
+        return name;
+    }
+
+    public String author() {
+        return author;
+    }
+
+    public String dimensionFile() {
+        return dimensionFile;
+    }
+
+    public String packVersion() {
+        return packVersion;
+    }
+
+    public List<Contributor> contributors() {
+        return contributors;
+    }
+
+    public String description() {
+        return description;
+    }
+
+    public record Contributor(@Required @Description("The name of the contributor") @NotNull String name,
+                              @Description("Description of the contribution made by user") @Nullable String contribution) {
+    }
+
 }

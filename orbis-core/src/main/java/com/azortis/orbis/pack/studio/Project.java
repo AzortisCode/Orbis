@@ -57,8 +57,13 @@ public final class Project {
         if (!settingsDir.exists() && !settingsDir.mkdirs())
             Orbis.getLogger().error("Failed to create /.orbis/ settings directory for {}", name);
 
-        // Create a studio world once everything for the project has been generated.
+        // Create a studio world, so we have a data access point.
         this.studioWorld = Orbis.getPlatform().createStudioWorld(this);
+
+        // Read pack.json in order to get the Dimension file name, if none is specified the project is deemed invalid,
+        // and so we cannot load a Dimension tree yet, this means Component schema's cannot be pointed yet.
+
+        this.studioWorld.initialize();
     }
 
     public String name() {
@@ -81,8 +86,13 @@ public final class Project {
         return settingsDir;
     }
 
+    public StudioWorld studioWorld() {
+        return studioWorld;
+    }
+
     void close() {
         if (!closed) {
+            studioWorld.unload();
             closed = true;
         }
     }

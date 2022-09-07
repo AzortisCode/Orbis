@@ -19,6 +19,33 @@
 package com.azortis.orbis;
 
 import com.azortis.orbis.command.CommandSender;
+import com.azortis.orbis.util.Location;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.concurrent.CompletableFuture;
 
 public interface Player extends CommandSender {
+
+    /**
+     * Teleports a player asynchronously to provided location.
+     *
+     * @param location The location to teleport the player to.
+     * @return A CompletableFuture boolean that marks success.
+     */
+    @NotNull CompletableFuture<Boolean> teleport(@NotNull Location location);
+
+    /**
+     * Get the current {@link Location} of the player.
+     *
+     * @return Current player location
+     */
+    @NotNull Location getLocation();
+
+    /**
+     * Get the {@link WorldAccess} instance of the world the player currently resides in.
+     *
+     * @return The current world the player is in.
+     */
+    @NotNull WorldAccess getWorld();
+
 }

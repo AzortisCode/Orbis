@@ -53,7 +53,7 @@ public final class PackManager {
     @Nullable
     public Pack getPack(String name) {
         for (Pack pack : loadedPacks.keySet()) {
-            if (pack.getName().equalsIgnoreCase(name)) return pack;
+            if (pack.name().equalsIgnoreCase(name)) return pack;
         }
         return null;
     }

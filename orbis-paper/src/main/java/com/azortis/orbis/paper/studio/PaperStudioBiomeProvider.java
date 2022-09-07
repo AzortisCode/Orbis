@@ -24,23 +24,30 @@ import org.bukkit.generator.BiomeProvider;
 import org.bukkit.generator.WorldInfo;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Collections;
 import java.util.List;
 
 public final class PaperStudioBiomeProvider extends BiomeProvider {
 
+    private final PaperStudioChunkGenerator chunkGenerator;
     private final Project project;
 
-    public PaperStudioBiomeProvider(Project project) {
+    public PaperStudioBiomeProvider(PaperStudioChunkGenerator chunkGenerator, Project project) {
+        this.chunkGenerator = chunkGenerator;
         this.project = project;
     }
 
     @Override
     public @NotNull Biome getBiome(@NotNull WorldInfo worldInfo, int x, int y, int z) {
+        if (chunkGenerator.requiresLoading()) chunkGenerator.load(worldInfo);
+        if (!project.studioWorld().shouldRender()) return Biome.PLAINS;
         return null;
     }
 
     @Override
     public @NotNull List<Biome> getBiomes(@NotNull WorldInfo worldInfo) {
+        if (chunkGenerator.requiresLoading()) chunkGenerator.load(worldInfo);
+        if (!project.studioWorld().shouldRender()) return Collections.singletonList(Biome.PLAINS);
         return null;
     }
 

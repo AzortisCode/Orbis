@@ -18,12 +18,17 @@
 
 package com.azortis.orbis.pack.studio;
 
+import com.azortis.orbis.Player;
 import com.azortis.orbis.World;
 import com.azortis.orbis.WorldInfo;
+import com.azortis.orbis.generator.Dimension;
 import com.azortis.orbis.pack.Pack;
+import com.azortis.orbis.util.Location;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * A world interface that is used to visualize settings when working on a project.
@@ -37,6 +42,11 @@ public abstract class StudioWorld extends World {
      */
     private boolean shouldRender = false;
 
+    /**
+     * Players viewing this world, with their last known location before entering it.
+     */
+    private final Map<Player, Location> viewers = new HashMap<>();
+
     public StudioWorld(String name, File folder, Project project) {
         super(name, folder, project);
         this.project = project;
@@ -46,13 +56,20 @@ public abstract class StudioWorld extends World {
         return project;
     }
 
-    public void setSeed(long seed) {
-        this.worldInfo = new WorldInfo("null", "null", seed);
+    public boolean shouldRender() {
+        return shouldRender;
     }
 
     @Override
     public void load(long seed) {
-        throw new UnsupportedOperationException("The normal loading mechanism cannot be used for a studio world!");
+        if (!loaded) {
+            this.worldInfo = new WorldInfo("null", "null", seed);
+            saveWorldInfo();
+        }
+    }
+
+    void setDimension(@NotNull Dimension dimension) {
+        this.dimension = dimension;
     }
 
     @Override

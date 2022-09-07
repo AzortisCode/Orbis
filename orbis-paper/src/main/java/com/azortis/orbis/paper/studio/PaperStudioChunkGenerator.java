@@ -19,6 +19,7 @@
 package com.azortis.orbis.paper.studio;
 
 import com.azortis.orbis.pack.studio.Project;
+import org.bukkit.generator.BiomeProvider;
 import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.generator.WorldInfo;
 import org.jetbrains.annotations.NotNull;
@@ -33,10 +34,26 @@ public final class PaperStudioChunkGenerator extends ChunkGenerator {
         this.project = project;
     }
 
-    @Override
-    public void generateNoise(@NotNull WorldInfo worldInfo, @NotNull Random random, int chunkX, int chunkZ, @NotNull ChunkData chunkData) {
-        super.generateNoise(worldInfo, random, chunkX, chunkZ, chunkData);
+    synchronized void load(WorldInfo worldInfo) {
+        if (requiresLoading()) {
+            project.studioWorld().load(worldInfo.getSeed());
+        }
     }
 
+    boolean requiresLoading() {
+        return !project.studioWorld().isLoaded();
+    }
 
+    @Override
+    public void generateNoise(@NotNull WorldInfo worldInfo, @NotNull Random random, int chunkX, int chunkZ, @NotNull ChunkData chunkData) {
+        if (requiresLoading()) load(worldInfo);
+        if (project.studioWorld().shouldRender()) {
+
+        }
+    }
+
+    @Override
+    public @NotNull BiomeProvider getDefaultBiomeProvider(@NotNull WorldInfo worldInfo) {
+        return new PaperStudioBiomeProvider(this, project);
+    }
 }

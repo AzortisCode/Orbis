@@ -19,14 +19,33 @@
 package com.azortis.orbis.paper;
 
 import com.azortis.orbis.Player;
+import com.azortis.orbis.WorldAccess;
+import com.azortis.orbis.util.Location;
 import net.kyori.adventure.audience.Audience;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.concurrent.CompletableFuture;
 
 public class PaperPlayer implements Player {
     private final org.bukkit.entity.Player handle;
 
     PaperPlayer(org.bukkit.entity.Player handle) {
         this.handle = handle;
+    }
+
+    @Override
+    public @NotNull CompletableFuture<Boolean> teleport(@NotNull Location location) {
+        return null;
+    }
+
+    @Override
+    public @NotNull Location getLocation() {
+        return null;
+    }
+
+    @Override
+    public @NotNull WorldAccess getWorld() {
+        return null;
     }
 
     @Override
