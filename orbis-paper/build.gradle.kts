@@ -41,7 +41,7 @@ repositories {
 
 dependencies {
     implementation(project(":orbis-core"))
-    paperDevBundle("1.19-R0.1-SNAPSHOT")
+    paperDevBundle("1.19.2-R0.1-SNAPSHOT")
 
     // Compile
     compileOnly("io.github.jglrxavpok.hephaistos:common:2.2.0")
@@ -56,11 +56,9 @@ tasks {
     named<ShadowJar>("shadowJar") {
         mergeServiceFiles()
     }
-}
-
-tasks {
     build {
         dependsOn(shadowJar)
         dependsOn(reobfJar)
     }
 }
+

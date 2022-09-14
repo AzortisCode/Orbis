@@ -21,7 +21,20 @@ package com.azortis.orbis.util;
 import com.azortis.orbis.WorldAccess;
 import org.jetbrains.annotations.NotNull;
 
-public record Location(double x, double y, double z, float yaw, float pitch, @NotNull WorldAccess world) {
+import java.lang.ref.WeakReference;
+
+public record Location(double x, double y, double z, float yaw, float pitch,
+                       @NotNull WeakReference<WorldAccess> world) {
+
+    public boolean isWorldLoaded() {
+        return world.get() != null;
+    }
+
+    public WorldAccess getWorld() {
+        WorldAccess world = this.world.get();
+        if (world == null) throw new IllegalStateException("World unloaded");
+        return world;
+    }
 
     public Location setX(double x) {
         return new Location(x, y, z, yaw, pitch, world);
@@ -52,7 +65,7 @@ public record Location(double x, double y, double z, float yaw, float pitch, @No
     }
 
     public Location setWorld(@NotNull WorldAccess world) {
-        return new Location(x, y, z, yaw, pitch, world);
+        return new Location(x, y, z, yaw, pitch, new WeakReference<>(world));
     }
 
     public Location copy() {

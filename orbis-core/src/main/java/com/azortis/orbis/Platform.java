@@ -39,13 +39,17 @@ public interface Platform {
 
     @NotNull ItemFactory itemFactory();
 
-    @Nullable World getWorld(String name);
+    @Nullable World getWorld(@NotNull String name);
 
     @NotNull Collection<World> worlds();
 
+    @Nullable WorldAccess getWorldAccess(@NotNull String name);
+
+    @NotNull Collection<WorldAccess> worldAccesses();
+
     @NotNull StudioWorld createStudioWorld(@NotNull Project project);
 
-    @Nullable Player getPlayer(UUID uuid);
+    @Nullable Player getPlayer(@NotNull UUID uuid);
 
     @NotNull Collection<Player> getPlayers();
 

@@ -45,7 +45,7 @@ public abstract class StudioWorld extends World {
     /**
      * Players viewing this world, with their last known location before entering it.
      */
-    private final Map<Player, Location> viewers = new HashMap<>();
+    protected final Map<Player, Location> viewers = new HashMap<>();
 
     public StudioWorld(String name, File folder, Project project) {
         super(name, folder, project);

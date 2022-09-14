@@ -46,13 +46,13 @@ public final class PaperChunkGenerator extends ChunkGenerator {
     // can be registered with orbis, so this is our bypass
     synchronized void load(@NotNull WorldInfo worldInfo) {
         if (!loaded) {
-            paperWorld = OrbisPlugin.getWorld(worldName);
+            paperWorld = OrbisPlugin.getPlatform().getWorld(worldInfo);
             if (paperWorld != null) {
                 if (paperWorld.isLoaded()) {
                     paperWorld.load(worldInfo.getSeed());
                 }
             } else {
-                paperWorld = OrbisPlugin.loadWorld(worldInfo, pack);
+                paperWorld = OrbisPlugin.getPlatform().loadWorld(worldInfo, pack);
             }
             loaded = true;
         }

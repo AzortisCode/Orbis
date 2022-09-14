@@ -19,41 +19,31 @@
 package com.azortis.orbis.paper;
 
 import com.azortis.orbis.Player;
-import com.azortis.orbis.World;
 import com.azortis.orbis.WorldAccess;
-import org.bukkit.Bukkit;
-import org.bukkit.generator.WorldInfo;
-import org.jetbrains.annotations.NotNull;
+import org.bukkit.World;
 
-import java.io.File;
+import java.util.HashSet;
 import java.util.Set;
 
-public class PaperWorld extends World {
+public class PaperWorldAccess implements WorldAccess {
 
-    private final WorldInfo worldInfo;
-    private WorldAccess worldAccess;
+    private static final PaperPlatform platform = OrbisPlugin.getPlatform();
+    private final World handle;
 
-    public PaperWorld(@NotNull WorldInfo worldInfo) {
-        super(worldInfo.getName(), new File(Bukkit.getWorldContainer() + "/" + worldInfo.getName() + "/"));
-        this.worldInfo = worldInfo;
+    public PaperWorldAccess(World handle) {
+        this.handle = handle;
     }
 
-    public WorldInfo getNativeWorldInfo() {
-        return worldInfo;
+    public World handle() {
+        return handle;
     }
-
-    void setWorldAccess(@NotNull WorldAccess worldAccess) {
-        if (this.worldAccess == null) {
-            this.worldAccess = worldAccess;
-        } else throw new IllegalStateException("WorldAccess for " + worldInfo.getName() + " has already been set!");
-    }
-
-    //
-    // WorldAccess
-    //
 
     @Override
     public Set<Player> getPlayers() {
-        return worldAccess.getPlayers();
+        Set<Player> players = new HashSet<>();
+        for (org.bukkit.entity.Player bukkitPlayer : handle.getPlayers()) {
+            players.add(platform.getPlayer(bukkitPlayer.getUniqueId()));
+        }
+        return players;
     }
 }

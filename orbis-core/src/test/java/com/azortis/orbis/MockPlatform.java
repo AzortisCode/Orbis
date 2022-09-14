@@ -20,6 +20,7 @@ package com.azortis.orbis;
 
 import com.azortis.orbis.item.ItemFactory;
 import com.azortis.orbis.pack.studio.Project;
+import com.azortis.orbis.pack.studio.StudioWorld;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.LoggerFactory;
@@ -53,11 +54,11 @@ public class MockPlatform implements Platform {
 
     @Override
     public @NotNull ItemFactory itemFactory() {
-        return null; // Hella not making this lmao
+        return null;
     }
 
     @Override
-    public @org.jetbrains.annotations.Nullable World getWorld(String name) {
+    public @Nullable World getWorld(@NotNull String name) {
         return null;
     }
 
@@ -67,11 +68,22 @@ public class MockPlatform implements Platform {
     }
 
     @Override
-    public void createStudioWorld(@NotNull Project project) {
+    public @Nullable WorldAccess getWorldAccess(@NotNull String name) {
+        return null;
     }
 
     @Override
-    public @Nullable Player getPlayer(UUID uuid) {
+    public @NotNull Collection<WorldAccess> worldAccesses() {
+        return null;
+    }
+
+    @Override
+    public @NotNull StudioWorld createStudioWorld(@NotNull Project project) {
+        return null;
+    }
+
+    @Override
+    public @Nullable Player getPlayer(@NotNull UUID uuid) {
         return null;
     }
 
@@ -82,7 +94,6 @@ public class MockPlatform implements Platform {
 
     @Override
     public @Nullable Class<?> mainClass() {
-        // Broken for now, would not recommend using this.
         return null;
     }
 }

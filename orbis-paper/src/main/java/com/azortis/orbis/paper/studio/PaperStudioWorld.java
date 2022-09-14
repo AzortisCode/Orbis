@@ -18,21 +18,34 @@
 
 package com.azortis.orbis.paper.studio;
 
+import com.azortis.orbis.Player;
+import com.azortis.orbis.WorldAccess;
 import com.azortis.orbis.pack.studio.Project;
 import com.azortis.orbis.pack.studio.StudioWorld;
+import com.azortis.orbis.paper.OrbisPlugin;
+import com.azortis.orbis.paper.PaperPlatform;
+import com.azortis.orbis.paper.PaperWorldAccess;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.WorldCreator;
-import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.HandlerList;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerTeleportEvent;
 
 import java.io.File;
+import java.util.Set;
 
-public final class PaperStudioWorld extends StudioWorld {
+public final class PaperStudioWorld extends StudioWorld implements Listener {
 
+    private static final PaperPlatform platform = OrbisPlugin.getPlatform();
     private World nativeWorld;
+    private WorldAccess worldAccess;
 
     public PaperStudioWorld(Project project) {
         super("orbis_studio", new File(Bukkit.getWorldContainer() + "/orbis_studio/"), project);
+        Bukkit.getServer().getPluginManager().registerEvents(this, OrbisPlugin.getPlugin());
     }
 
     public World nativeWorld() {
@@ -51,16 +64,44 @@ public final class PaperStudioWorld extends StudioWorld {
                 .generateStructures(false)
                 .environment(World.Environment.NORMAL);
         nativeWorld = Bukkit.createWorld(worldCreator);
+        worldAccess = new PaperWorldAccess(nativeWorld);
     }
 
     @Override
     protected void unload() {
-        // Get all players out this world.
-        for (Player worldPlayer : nativeWorld.getPlayers()) {
+        // Get all viewers out this world.
+        for (Player player : viewers.keySet()) {
 
         }
+
         // Unload the world
         Bukkit.getServer().unloadWorld(nativeWorld, false);
         this.nativeWorld = null;
+
+        // Unregister the events
+        HandlerList.unregisterAll(this);
+    }
+
+    //
+    // WorldAccess
+    //
+
+    @Override
+    public Set<com.azortis.orbis.Player> getPlayers() {
+        return worldAccess.getPlayers();
+    }
+
+    //
+    // Events
+    //
+
+    @EventHandler(priority = EventPriority.MONITOR)
+    public void onPlayerTeleport(PlayerTeleportEvent event) {
+        Player player = platform.getPlayer(event.getPlayer());
+        if (viewers.containsKey(player) && event.getTo().getWorld() != nativeWorld) {
+
+        } else if (!viewers.containsKey(player) && event.getTo().getWorld() == nativeWorld) {
+
+        }
     }
 }

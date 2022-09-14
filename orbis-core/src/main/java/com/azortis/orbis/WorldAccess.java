@@ -18,5 +18,13 @@
 
 package com.azortis.orbis;
 
+import java.util.Set;
+
+/**
+ * Interface to interact with the platforms world.
+ */
 public interface WorldAccess {
+
+    Set<Player> getPlayers();
+
 }

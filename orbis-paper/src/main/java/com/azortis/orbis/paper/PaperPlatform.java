@@ -23,9 +23,11 @@ import cloud.commandframework.paper.PaperCommandManager;
 import com.azortis.orbis.Orbis;
 import com.azortis.orbis.Platform;
 import com.azortis.orbis.World;
+import com.azortis.orbis.WorldAccess;
 import com.azortis.orbis.command.CommandSender;
 import com.azortis.orbis.command.ConsoleSender;
 import com.azortis.orbis.item.ItemFactory;
+import com.azortis.orbis.pack.Pack;
 import com.azortis.orbis.pack.studio.Project;
 import com.azortis.orbis.pack.studio.StudioWorld;
 import com.azortis.orbis.paper.item.PaperItemFactory;
@@ -39,6 +41,9 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.event.world.WorldLoadEvent;
+import org.bukkit.event.world.WorldUnloadEvent;
+import org.bukkit.generator.WorldInfo;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
@@ -56,6 +61,8 @@ import java.util.*;
 public class PaperPlatform implements Platform, Listener {
 
     private final OrbisPlugin plugin;
+    private final Map<String, PaperWorld> worldMap = new HashMap<>();
+    private final Map<String, WorldAccess> worldAccessMap = new HashMap<>();
     private final PaperItemFactory itemFactory;
     private final PaperConsoleSender consoleSender = new PaperConsoleSender();
     private final Map<UUID, com.azortis.orbis.Player> players = new HashMap<>();
@@ -65,6 +72,9 @@ public class PaperPlatform implements Platform, Listener {
         this.itemFactory = new PaperItemFactory();
     }
 
+    //
+    // Basic
+    //
     @Override
     public @NotNull String adaptation() {
         return "Bukkit";
@@ -80,20 +90,75 @@ public class PaperPlatform implements Platform, Listener {
         return plugin.getDataFolder();
     }
 
+    // Factories
+
     @Override
     public @NotNull ItemFactory itemFactory() {
         return itemFactory;
     }
 
-    @Nullable
+    //
+    // World
+    //
+
+    @EventHandler(priority = EventPriority.MONITOR)
+    public void onWorldLoad(@NotNull WorldLoadEvent event) {
+        org.bukkit.World world = event.getWorld();
+        PaperWorldAccess worldAccess = new PaperWorldAccess(world);
+        if (worldMap.containsKey(world.getName())) {
+            worldMap.get(world.getName()).setWorldAccess(worldAccess);
+            worldAccessMap.put(world.getName(), worldMap.get(world.getName()));
+        } else worldAccessMap.put(world.getName(), worldAccess);
+    }
+
+    @EventHandler(priority = EventPriority.MONITOR)
+    public void onWorldUnload(@NotNull WorldUnloadEvent event) {
+        org.bukkit.World world = event.getWorld();
+        worldMap.remove(world.getName());
+        worldAccessMap.remove(world.getName());
+    }
+
+    public PaperWorld loadWorld(@NotNull WorldInfo worldInfo, @NotNull Pack pack) {
+        PaperWorld paperWorld = new PaperWorld(worldInfo);
+        paperWorld.installPack(pack, false);
+        if (!paperWorld.isLoaded()) paperWorld.load(worldInfo.getSeed());
+        worldMap.put(worldInfo.getName(), paperWorld);
+
+        // If somehow the WorldLoad event got fired before this
+        if (worldAccessMap.containsKey(worldInfo.getName())) {
+            paperWorld.setWorldAccess(worldAccessMap.get(worldInfo.getName()));
+            worldAccessMap.remove(worldInfo.getName());
+            worldAccessMap.put(worldInfo.getName(), paperWorld);
+        }
+        return paperWorld;
+    }
+
+    public @Nullable PaperWorld getWorld(@NotNull WorldInfo worldInfo) {
+        return worldMap.get(worldInfo.getName());
+    }
+
     @Override
-    public World getWorld(String name) {
-        return OrbisPlugin.getWorld(name);
+    public @Nullable World getWorld(@NotNull String name) {
+        return worldMap.get(name);
     }
 
     @Override
     public @NotNull Collection<World> worlds() {
-        return new ArrayList<>(OrbisPlugin.getWorlds());
+        return new ArrayList<>(worldMap.values());
+    }
+
+    public @Nullable WorldAccess getWorldAccess(@NotNull WorldInfo worldInfo) {
+        return worldAccessMap.get(worldInfo.getName());
+    }
+
+    @Override
+    public @Nullable WorldAccess getWorldAccess(@NotNull String name) {
+        return worldAccessMap.get(name);
+    }
+
+    @Override
+    public @NotNull Collection<WorldAccess> worldAccesses() {
+        return new ArrayList<>(worldAccessMap.values());
     }
 
     @Override
@@ -101,18 +166,26 @@ public class PaperPlatform implements Platform, Listener {
         return new PaperStudioWorld(project);
     }
 
+    //
+    // Player
+    //
+
     @EventHandler(priority = EventPriority.MONITOR)
-    public void onPlayerLogin(PlayerJoinEvent joinEvent) {
+    public void onPlayerJoin(@NotNull PlayerJoinEvent joinEvent) {
         players.put(joinEvent.getPlayer().getUniqueId(), new PaperPlayer(joinEvent.getPlayer()));
     }
 
     @EventHandler(priority = EventPriority.MONITOR)
-    public void onPlayerQuit(PlayerQuitEvent quitEvent) {
+    public void onPlayerQuit(@NotNull PlayerQuitEvent quitEvent) {
         players.remove(quitEvent.getPlayer().getUniqueId());
     }
 
+    public @NotNull com.azortis.orbis.Player getPlayer(@NotNull Player player) {
+        return players.get(player.getUniqueId());
+    }
+
     @Override
-    public com.azortis.orbis.@Nullable Player getPlayer(UUID uuid) {
+    public @Nullable com.azortis.orbis.Player getPlayer(@NotNull UUID uuid) {
         return players.get(uuid);
     }
 

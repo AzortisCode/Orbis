@@ -27,6 +27,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.concurrent.CompletableFuture;
 
 public class PaperPlayer implements Player {
+
+    private static final PaperPlatform platform = OrbisPlugin.getPlatform();
     private final org.bukkit.entity.Player handle;
 
     PaperPlayer(org.bukkit.entity.Player handle) {
@@ -35,17 +37,21 @@ public class PaperPlayer implements Player {
 
     @Override
     public @NotNull CompletableFuture<Boolean> teleport(@NotNull Location location) {
-        return null;
+        org.bukkit.Location nativeLoc = ConversionUtils.toNative(location);
+        return handle.teleportAsync(nativeLoc);
     }
 
     @Override
     public @NotNull Location getLocation() {
-        return null;
+        return ConversionUtils.fromNative(handle.getLocation());
     }
 
     @Override
     public @NotNull WorldAccess getWorld() {
-        return null;
+        WorldAccess worldAccess = platform.getWorldAccess(handle.getWorld());
+        if (worldAccess == null)
+            throw new IllegalStateException("The world the player is in, does not have a WorldAccess instance loaded!");
+        return worldAccess;
     }
 
     @Override

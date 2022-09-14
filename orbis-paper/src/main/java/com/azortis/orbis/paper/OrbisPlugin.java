@@ -24,43 +24,21 @@ import com.azortis.orbis.paper.generator.PaperChunkGenerator;
 import com.azortis.orbis.util.maven.DependencyLoader;
 import org.bukkit.Bukkit;
 import org.bukkit.generator.ChunkGenerator;
-import org.bukkit.generator.WorldInfo;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
 public final class OrbisPlugin extends JavaPlugin {
 
-    private static final Map<String, PaperWorld> worldMap = new HashMap<>();
+    private static OrbisPlugin plugin;
     private static PaperPlatform platform;
     private Metrics metrics;
 
-    @NotNull
-    public static PaperWorld loadWorld(@NotNull WorldInfo worldInfo, @NotNull Pack pack) {
-        PaperWorld paperWorld = new PaperWorld(worldInfo);
-        paperWorld.installPack(pack, false);
-        if (!paperWorld.isLoaded()) paperWorld.load(worldInfo.getSeed());
-        worldMap.put(worldInfo.getName(), paperWorld);
-        return paperWorld;
-    }
 
-    @Nullable
-    public static PaperWorld getWorld(WorldInfo worldInfo) {
-        return worldMap.get(worldInfo.getName());
-    }
-
-    @Nullable
-    public static PaperWorld getWorld(String worldName) {
-        return worldMap.get(worldName);
-    }
-
-    public static Collection<PaperWorld> getWorlds() {
-        return worldMap.values();
+    public static OrbisPlugin getPlugin() {
+        return plugin;
     }
 
     public static PaperPlatform getPlatform() {
@@ -73,6 +51,7 @@ public final class OrbisPlugin extends JavaPlugin {
             this.getSLF4JLogger().error("Unsupported minecraft version! Only works on {}", Orbis.MC_VERSION);
             return;
         }
+        plugin = this;
         this.metrics = new Metrics(this, 10874);
 
         // Libraries need to be loaded before Orbis gets initialized, since the Orbis class & PaperPlatform use them.
