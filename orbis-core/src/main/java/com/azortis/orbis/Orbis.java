@@ -33,10 +33,12 @@ import com.azortis.orbis.item.ItemRegistry;
 import com.azortis.orbis.pack.PackManager;
 import com.azortis.orbis.pack.adapter.BlockAdapter;
 import com.azortis.orbis.pack.adapter.KeyAdapter;
+import com.azortis.orbis.pack.adapter.LocationAdapter;
 import com.azortis.orbis.pack.adapter.TypeAdapter;
 import com.azortis.orbis.pack.data.ComponentAccess;
 import com.azortis.orbis.pack.data.DataAccess;
 import com.azortis.orbis.pack.studio.ProjectManager;
+import com.azortis.orbis.util.Location;
 import com.azortis.orbis.util.maven.Dependency;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -52,10 +54,14 @@ import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -77,6 +83,8 @@ public final class Orbis {
 
     private static boolean initialized = false;
     private static Platform platform = null;
+    private static File settingsFile = null;
+    private static Settings settings = null;
     private static CommandManager<CommandSender> commandManager = null;
     private static Logger logger;
     private static Gson gson;
@@ -107,6 +115,7 @@ public final class Orbis {
             final GsonBuilder builder = new GsonBuilder().disableHtmlEscaping().setPrettyPrinting()
                     .registerTypeAdapter(Key.class, new KeyAdapter())
                     .registerTypeAdapter(ConfiguredBlock.class, new BlockAdapter())
+                    .registerTypeAdapter(Location.class, new LocationAdapter())
                     .registerTypeAdapter(Terrain.class, new TypeAdapter<>(Terrain.class))
                     .registerTypeAdapter(Distributor.class, new TypeAdapter<>(Distributor.class))
                     .registerTypeAdapter(NoiseGenerator.class, new TypeAdapter<>(NoiseGenerator.class));
@@ -115,6 +124,14 @@ public final class Orbis {
 
             gson = builder.create();
 
+            // Load settings
+            settingsFile = new File(platform.directory(), "settings.json");
+            if (!settingsFile.exists()) {
+                settings = platform.defaultSettings();
+                saveSettings();
+            } else {
+                reloadSettings();
+            }
 
             // Load minecraft data into memory
             PropertyRegistry.init();
@@ -230,6 +247,33 @@ public final class Orbis {
 
     public static Platform getPlatform() {
         return platform;
+    }
+
+    public static Settings getSettings() {
+        return settings;
+    }
+
+    public static void reloadSettings() {
+        try {
+            settings = gson.fromJson(new FileReader(settingsFile), platform.settingsClass());
+        } catch (FileNotFoundException e) {
+            logger.error("Settings file not found, creating default one...");
+            settings = platform.defaultSettings();
+            saveSettings();
+        }
+    }
+
+    public static void saveSettings() {
+        try {
+            if (!settingsFile.exists() && !settingsFile.createNewFile()) {
+                Orbis.getLogger().error("Failed to create settings file!");
+            } else {
+                final String json = gson.toJson(settings);
+                Files.writeString(settingsFile.toPath(), json, StandardOpenOption.WRITE, StandardOpenOption.TRUNCATE_EXISTING);
+            }
+        } catch (IOException e) {
+            Orbis.getLogger().error("Failed to save settings file!");
+        }
     }
 
     public static Logger getLogger() {

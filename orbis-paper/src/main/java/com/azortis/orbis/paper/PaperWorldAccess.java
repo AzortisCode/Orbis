@@ -20,7 +20,9 @@ package com.azortis.orbis.paper;
 
 import com.azortis.orbis.Player;
 import com.azortis.orbis.WorldAccess;
+import org.bukkit.Bukkit;
 import org.bukkit.World;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -39,7 +41,17 @@ public class PaperWorldAccess implements WorldAccess {
     }
 
     @Override
-    public Set<Player> getPlayers() {
+    public @NotNull String name() {
+        return handle.getName();
+    }
+
+    @Override
+    public boolean isWorldLoaded() {
+        return Bukkit.getWorlds().contains(handle);
+    }
+
+    @Override
+    public @NotNull Set<Player> getPlayers() {
         Set<Player> players = new HashSet<>();
         for (org.bukkit.entity.Player bukkitPlayer : handle.getPlayers()) {
             players.add(platform.getPlayer(bukkitPlayer.getUniqueId()));

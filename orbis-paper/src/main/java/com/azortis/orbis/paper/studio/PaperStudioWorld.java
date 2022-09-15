@@ -18,6 +18,7 @@
 
 package com.azortis.orbis.paper.studio;
 
+import com.azortis.orbis.Orbis;
 import com.azortis.orbis.Player;
 import com.azortis.orbis.WorldAccess;
 import com.azortis.orbis.pack.studio.Project;
@@ -33,6 +34,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerTeleportEvent;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.util.Set;
@@ -68,18 +70,27 @@ public final class PaperStudioWorld extends StudioWorld implements Listener {
     }
 
     @Override
-    protected void unload() {
-        // Get all viewers out this world.
-        for (Player player : viewers.keySet()) {
-
-        }
+    protected boolean unload() {
+        // Unregister all events
+        HandlerList.unregisterAll(this);
 
         // Unload the world
-        Bukkit.getServer().unloadWorld(nativeWorld, false);
-        this.nativeWorld = null;
+        if (Bukkit.getServer().unloadWorld(nativeWorld, false)) {
+            this.nativeWorld = null;
 
-        // Unregister the events
-        HandlerList.unregisterAll(this);
+            // Clear world files
+            File studioWorldDir = new File(Bukkit.getWorldContainer() + "/orbis_studio/");
+            if (!studioWorldDir.delete()) {
+                Orbis.getLogger().error("Failed to delete studio world directory! Shutting down server for safety...");
+                Bukkit.getServer().shutdown();
+                return false;
+            }
+        } else {
+            Orbis.getLogger().error("Failed to unload studio world! Shutting down server for safety...");
+            Bukkit.getServer().shutdown();
+            return false;
+        }
+        return true;
     }
 
     //
@@ -87,7 +98,12 @@ public final class PaperStudioWorld extends StudioWorld implements Listener {
     //
 
     @Override
-    public Set<com.azortis.orbis.Player> getPlayers() {
+    public boolean isWorldLoaded() {
+        return worldAccess.isWorldLoaded();
+    }
+
+    @Override
+    public @NotNull Set<com.azortis.orbis.Player> getPlayers() {
         return worldAccess.getPlayers();
     }
 
@@ -95,13 +111,21 @@ public final class PaperStudioWorld extends StudioWorld implements Listener {
     // Events
     //
 
-    @EventHandler(priority = EventPriority.MONITOR)
+    @EventHandler(priority = EventPriority.HIGHEST)
     public void onPlayerTeleport(PlayerTeleportEvent event) {
         Player player = platform.getPlayer(event.getPlayer());
-        if (viewers.containsKey(player) && event.getTo().getWorld() != nativeWorld) {
-
-        } else if (!viewers.containsKey(player) && event.getTo().getWorld() == nativeWorld) {
-
+        if (getViewers().contains(player) && event.getTo().getWorld() != nativeWorld) {
+            removeViewer(player);
+        } else if (!getViewers().contains(player) && event.getTo().getWorld() == nativeWorld) {
+            if (player.hasPermission("orbis.admin")) {
+                player.sendMessage(Orbis.getMiniMessage().deserialize("<prefix> <gray>Rerouting your teleport..."));
+                addViewer(player);
+                // Let the teleporting be done by the studioWorld
+                event.setCancelled(true);
+            } else {
+                player.sendMessage(Orbis.getMiniMessage().deserialize("<prefix> <red>You don't have the permission to enter the studio world!"));
+                event.setCancelled(true);
+            }
         }
     }
 }

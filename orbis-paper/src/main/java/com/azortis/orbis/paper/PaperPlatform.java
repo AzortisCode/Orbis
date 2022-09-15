@@ -20,10 +20,7 @@ package com.azortis.orbis.paper;
 
 import cloud.commandframework.execution.CommandExecutionCoordinator;
 import cloud.commandframework.paper.PaperCommandManager;
-import com.azortis.orbis.Orbis;
-import com.azortis.orbis.Platform;
-import com.azortis.orbis.World;
-import com.azortis.orbis.WorldAccess;
+import com.azortis.orbis.*;
 import com.azortis.orbis.command.CommandSender;
 import com.azortis.orbis.command.ConsoleSender;
 import com.azortis.orbis.item.ItemFactory;
@@ -197,6 +194,24 @@ public class PaperPlatform implements Platform, Listener {
     @Override
     public @Nullable Class<?> mainClass() {
         return plugin.getClass();
+    }
+
+    //
+    // Settings
+    //
+
+    public @NotNull PaperSettings settings() {
+        return (PaperSettings) Orbis.getSettings();
+    }
+
+    @Override
+    public @NotNull Class<? extends Settings> settingsClass() {
+        return PaperSettings.class; // Default for now
+    }
+
+    @Override
+    public @NotNull Settings defaultSettings() {
+        return PaperSettings.defaultSettings();
     }
 
     void loadCommands() {

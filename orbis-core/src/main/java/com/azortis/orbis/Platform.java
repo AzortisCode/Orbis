@@ -55,4 +55,8 @@ public interface Platform {
 
     @Nullable Class<?> mainClass();
 
+    @NotNull Class<? extends Settings> settingsClass();
+
+    @NotNull Settings defaultSettings();
+
 }

@@ -27,7 +27,7 @@ import com.azortis.orbis.Orbis;
 @CommandContainer
 @CommandPermission("orbis.admin")
 @CommandMethod(value = "orbis|o", requiredSender = CommandSender.class)
-public class BaseCommand {
+public class BaseCommands {
 
     @CommandMethod("info")
     public void info(CommandSender sender) {

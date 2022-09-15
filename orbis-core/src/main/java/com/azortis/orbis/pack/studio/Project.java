@@ -92,8 +92,13 @@ public final class Project {
 
     void close() {
         if (!closed) {
-            studioWorld.unload();
-            closed = true;
+            Orbis.getLogger().info("Closing project {}, clearing viewers...", name);
+            studioWorld.clearViewers();
+            Orbis.getLogger().info("Unloading studio world...");
+            if (studioWorld.unload()) {
+                Orbis.getLogger().info("Successfully closed project!");
+                closed = true;
+            }
         }
     }
 

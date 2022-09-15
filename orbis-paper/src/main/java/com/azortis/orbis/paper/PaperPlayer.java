@@ -22,6 +22,7 @@ import com.azortis.orbis.Player;
 import com.azortis.orbis.WorldAccess;
 import com.azortis.orbis.util.Location;
 import net.kyori.adventure.audience.Audience;
+import net.kyori.adventure.text.Component;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.CompletableFuture;
@@ -36,9 +37,34 @@ public class PaperPlayer implements Player {
     }
 
     @Override
+    public boolean hasPermission(@NotNull String permission) {
+        return handle.hasPermission(permission);
+    }
+
+    @Override
+    public void kick() {
+        handle.kick();
+    }
+
+    @Override
+    public void kick(@NotNull Component component) {
+        handle.kick(component);
+    }
+
+    @Override
     public @NotNull CompletableFuture<Boolean> teleport(@NotNull Location location) {
         org.bukkit.Location nativeLoc = ConversionUtils.toNative(location);
         return handle.teleportAsync(nativeLoc);
+    }
+
+    @Override
+    public GameMode getGameMode() {
+        return ConversionUtils.fromNative(handle.getGameMode());
+    }
+
+    @Override
+    public void setGameMode(@NotNull GameMode gameMode) {
+        handle.setGameMode(ConversionUtils.toNative(gameMode));
     }
 
     @Override

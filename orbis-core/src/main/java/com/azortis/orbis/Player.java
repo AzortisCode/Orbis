@@ -20,11 +20,32 @@ package com.azortis.orbis;
 
 import com.azortis.orbis.command.CommandSender;
 import com.azortis.orbis.util.Location;
+import net.kyori.adventure.text.Component;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.CompletableFuture;
 
 public interface Player extends CommandSender {
+
+    /**
+     * Check if player has the given permission.
+     *
+     * @param permission The permission to check.
+     * @return If the player has that permission.
+     */
+    boolean hasPermission(@NotNull String permission);
+
+    /**
+     * Kick the player of the server.
+     */
+    void kick();
+
+    /**
+     * Kick the player of the server with a reason.
+     *
+     * @param component Reasoning message.
+     */
+    void kick(@NotNull Component component);
 
     /**
      * Teleports a player asynchronously to provided location.
@@ -33,6 +54,20 @@ public interface Player extends CommandSender {
      * @return A CompletableFuture boolean that marks success.
      */
     @NotNull CompletableFuture<Boolean> teleport(@NotNull Location location);
+
+    /**
+     * Get the current {@link GameMode} pf the player.
+     *
+     * @return Current player game mode.
+     */
+    GameMode getGameMode();
+
+    /**
+     * Sets the player their game mode.
+     *
+     * @param gameMode The game mode to set the player in.
+     */
+    void setGameMode(@NotNull GameMode gameMode);
 
     /**
      * Get the current {@link Location} of the player.
@@ -47,5 +82,15 @@ public interface Player extends CommandSender {
      * @return The current world the player is in.
      */
     @NotNull WorldAccess getWorld();
+
+    /**
+     * Represents the 4 game mode states the player can be in.
+     */
+    enum GameMode {
+        CREATIVE,
+        SURVIVAL,
+        ADVENTURE,
+        SPECTATOR;
+    }
 
 }

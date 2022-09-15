@@ -16,21 +16,18 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis;
+package com.azortis.orbis.paper;
 
-import org.jetbrains.annotations.NotNull;
+import com.azortis.orbis.Settings;
 
-import java.util.Set;
+public class PaperSettings extends Settings {
 
-/**
- * Interface to interact with the platforms world.
- */
-public interface WorldAccess {
+    public PaperSettings(Settings settings) {
+        super(settings);
+    }
 
-    @NotNull String name();
-
-    boolean isWorldLoaded();
-
-    @NotNull Set<Player> getPlayers();
+    public static PaperSettings defaultSettings() {
+        return new PaperSettings(Settings.defaultSettings());
+    }
 
 }

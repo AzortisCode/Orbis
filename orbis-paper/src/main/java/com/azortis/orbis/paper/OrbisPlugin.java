@@ -54,6 +54,12 @@ public final class OrbisPlugin extends JavaPlugin {
         plugin = this;
         this.metrics = new Metrics(this, 10874);
 
+        File studioWorldDir = new File(Bukkit.getWorldContainer() + "/orbis_studio/");
+        if (studioWorldDir.exists()) {
+            this.getSLF4JLogger().info("Studio world directory still present! Deleting...");
+            if (!studioWorldDir.delete()) throw new RuntimeException("Failed to delete studio world directory!");
+        }
+
         // Libraries need to be loaded before Orbis gets initialized, since the Orbis class & PaperPlatform use them.
         this.getSLF4JLogger().info("Loading libraries...");
         DependencyLoader.initialize(this.getClass(), new File(this.getDataFolder() + "/libs/"), this.getSLF4JLogger());

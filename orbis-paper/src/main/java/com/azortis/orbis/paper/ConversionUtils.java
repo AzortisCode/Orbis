@@ -18,7 +18,9 @@
 
 package com.azortis.orbis.paper;
 
+import com.azortis.orbis.Player;
 import com.azortis.orbis.util.Location;
+import org.bukkit.GameMode;
 import org.jetbrains.annotations.NotNull;
 
 import java.lang.ref.WeakReference;
@@ -43,6 +45,26 @@ public final class ConversionUtils {
     public static org.bukkit.Location toNative(@NotNull Location location) {
         return new org.bukkit.Location(((PaperWorldAccess) location.getWorld()).handle(),
                 location.x(), location.y(), location.z(), location.yaw(), location.pitch());
+    }
+
+    @NotNull
+    public static Player.GameMode fromNative(@NotNull GameMode nativeMode) {
+        return switch (nativeMode) {
+            case CREATIVE -> Player.GameMode.CREATIVE;
+            case SURVIVAL -> Player.GameMode.SURVIVAL;
+            case ADVENTURE -> Player.GameMode.ADVENTURE;
+            case SPECTATOR -> Player.GameMode.SPECTATOR;
+        };
+    }
+
+    @NotNull
+    public static GameMode toNative(@NotNull Player.GameMode gameMode) {
+        return switch (gameMode) {
+            case CREATIVE -> GameMode.CREATIVE;
+            case SURVIVAL -> GameMode.SURVIVAL;
+            case ADVENTURE -> GameMode.ADVENTURE;
+            case SPECTATOR -> GameMode.SPECTATOR;
+        };
     }
 
 }

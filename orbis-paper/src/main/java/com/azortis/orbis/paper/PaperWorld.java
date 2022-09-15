@@ -52,8 +52,14 @@ public class PaperWorld extends World {
     // WorldAccess
     //
 
+
     @Override
-    public Set<Player> getPlayers() {
+    public boolean isWorldLoaded() {
+        return worldAccess.isWorldLoaded();
+    }
+
+    @Override
+    public @NotNull Set<Player> getPlayers() {
         return worldAccess.getPlayers();
     }
 }

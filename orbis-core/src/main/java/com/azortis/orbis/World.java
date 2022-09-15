@@ -105,7 +105,7 @@ public abstract class World implements WorldAccess {
         }
     }
 
-    public String name() {
+    public @NotNull String name() {
         return name;
     }
 

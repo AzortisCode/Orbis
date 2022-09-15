@@ -68,7 +68,6 @@ public final class WorkspaceConfig {
         DEFAULT_SETTINGS.addProperty("json.maxItemsComputed", 30000);
     }
 
-
     private final JsonArray folders = FOLDERS_ARRAY;
     private final JsonObject settings;
     private transient final File workspaceFile;

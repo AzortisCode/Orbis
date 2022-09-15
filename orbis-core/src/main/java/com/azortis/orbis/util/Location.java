@@ -27,7 +27,8 @@ public record Location(double x, double y, double z, float yaw, float pitch,
                        @NotNull WeakReference<WorldAccess> world) {
 
     public boolean isWorldLoaded() {
-        return world.get() != null;
+        WorldAccess world = world().get();
+        return world != null && world.isWorldLoaded();
     }
 
     public WorldAccess getWorld() {
