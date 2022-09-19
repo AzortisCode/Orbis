@@ -21,6 +21,7 @@ package com.azortis.orbis.paper;
 import com.azortis.orbis.Player;
 import com.azortis.orbis.World;
 import com.azortis.orbis.WorldAccess;
+import com.google.common.base.Preconditions;
 import org.bukkit.Bukkit;
 import org.bukkit.generator.WorldInfo;
 import org.jetbrains.annotations.NotNull;
@@ -31,6 +32,7 @@ import java.util.Set;
 public class PaperWorld extends World {
 
     private final WorldInfo worldInfo;
+    private org.bukkit.World nativeWorld;
     private WorldAccess worldAccess;
 
     public PaperWorld(@NotNull WorldInfo worldInfo) {
@@ -45,13 +47,18 @@ public class PaperWorld extends World {
     void setWorldAccess(@NotNull WorldAccess worldAccess) {
         if (this.worldAccess == null) {
             this.worldAccess = worldAccess;
+            this.nativeWorld = ((PaperWorldAccess) worldAccess).handle();
         } else throw new IllegalStateException("WorldAccess for " + worldInfo.getName() + " has already been set!");
+    }
+
+    public @NotNull org.bukkit.World nativeWorld() {
+        Preconditions.checkNotNull(nativeWorld, "Native world hasn't been set yet!");
+        return nativeWorld;
     }
 
     //
     // WorldAccess
     //
-
 
     @Override
     public boolean isWorldLoaded() {

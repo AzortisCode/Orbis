@@ -19,6 +19,7 @@
 package com.azortis.orbis.paper;
 
 import cloud.commandframework.execution.CommandExecutionCoordinator;
+import cloud.commandframework.minecraft.extras.MinecraftExceptionHandler;
 import cloud.commandframework.paper.PaperCommandManager;
 import com.azortis.orbis.*;
 import com.azortis.orbis.command.CommandSender;
@@ -30,13 +31,15 @@ import com.azortis.orbis.pack.studio.StudioWorld;
 import com.azortis.orbis.paper.item.PaperItemFactory;
 import com.azortis.orbis.paper.studio.PaperStudioWorld;
 import com.azortis.orbis.util.maven.Dependency;
+import net.kyori.adventure.audience.Audience;
+import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.world.WorldLoadEvent;
 import org.bukkit.event.world.WorldUnloadEvent;
@@ -50,11 +53,12 @@ import java.util.*;
 
 @Dependency(group = "io.github.jglrxavpok.hephaistos", artifact = "common", version = "2.2.0")
 @Dependency(group = "org.jetbrains.kotlin", artifact = "kotlin-stdlib", version = "1.6.10")
-@Dependency(group = "cloud.commandframework", artifact = "cloud-paper", version = "1.7.0")
-@Dependency(group = "cloud.commandframework", artifact = "cloud-bukkit", version = "1.7.0")
-@Dependency(group = "cloud.commandframework", artifact = "cloud-paper", version = "1.7.0")
-@Dependency(group = "cloud.commandframework", artifact = "cloud-tasks", version = "1.7.0")
-@Dependency(group = "cloud.commandframework", artifact = "cloud-brigadier", version = "1.7.0")
+@Dependency(group = "cloud.commandframework", artifact = "cloud-paper", version = "1.7.1")
+@Dependency(group = "cloud.commandframework", artifact = "cloud-bukkit", version = "1.7.1")
+@Dependency(group = "cloud.commandframework", artifact = "cloud-paper", version = "1.7.1")
+@Dependency(group = "cloud.commandframework", artifact = "cloud-tasks", version = "1.7.1")
+@Dependency(group = "cloud.commandframework", artifact = "cloud-brigadier", version = "1.7.1")
+@Dependency(group = "cloud.commandframework", artifact = "cloud-minecraft-extras", version = "1.7.1")
 public class PaperPlatform implements Platform, Listener {
 
     private final OrbisPlugin plugin;
@@ -168,8 +172,10 @@ public class PaperPlatform implements Platform, Listener {
     //
 
     @EventHandler(priority = EventPriority.MONITOR)
-    public void onPlayerJoin(@NotNull PlayerJoinEvent joinEvent) {
-        players.put(joinEvent.getPlayer().getUniqueId(), new PaperPlayer(joinEvent.getPlayer()));
+    public void onPlayerLogin(@NotNull PlayerLoginEvent loginEvent) {
+        if (loginEvent.getResult() == PlayerLoginEvent.Result.ALLOWED) {
+            players.put(loginEvent.getPlayer().getUniqueId(), new PaperPlayer(loginEvent.getPlayer()));
+        }
     }
 
     @EventHandler(priority = EventPriority.MONITOR)
@@ -236,6 +242,22 @@ public class PaperPlatform implements Platform, Listener {
             }));
             commandManager.registerBrigadier();
             commandManager.registerAsynchronousCompletions();
+            new MinecraftExceptionHandler<CommandSender>()
+                    .withArgumentParsingHandler()
+                    .withInvalidSenderHandler()
+                    .withInvalidSyntaxHandler()
+                    .withNoPermissionHandler()
+                    .withCommandExecutionHandler()
+                    .withDecorator(message -> Orbis.getPrefixComponent().append(Component.space()).append(message))
+                    .apply(commandManager, sender -> {
+                        if (sender instanceof PaperPlayer player) {
+                            return player.handle();
+                        } else if (sender instanceof PaperConsoleSender) {
+                            return Bukkit.getConsoleSender();
+                        } else {
+                            return Audience.empty();
+                        }
+                    });
             Bukkit.getServer().getPluginManager().registerEvents(this, plugin);
             Orbis.loadCommands(commandManager);
         } catch (Exception e) {

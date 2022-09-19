@@ -20,7 +20,9 @@ package com.azortis.orbis.pack.studio;
 
 import com.azortis.orbis.Orbis;
 import com.google.gson.JsonObject;
+import org.apache.commons.lang3.SystemUtils;
 
+import java.awt.*;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -51,6 +53,7 @@ public final class Project {
             this.workspaceConfig = new WorkspaceConfig(existingWorkspace.getAsJsonObject("settings"), workspaceFile);
         } else {
             this.workspaceConfig = new WorkspaceConfig(WorkspaceConfig.DEFAULT_SETTINGS, workspaceFile);
+            this.workspaceConfig.save();
         }
 
         this.settingsDir = new File(directory + "/.orbis/");
@@ -62,8 +65,14 @@ public final class Project {
 
         // Read pack.json in order to get the Dimension file name, if none is specified the project is deemed invalid,
         // and so we cannot load a Dimension tree yet, this means Component schema's cannot be pointed yet.
-
         this.studioWorld.initialize();
+
+
+        // Open VSCode environment if the user has it enabled.
+        if (Orbis.getSettings().studio().openVSCode() && SystemUtils.IS_OS_WINDOWS) {
+            Orbis.getLogger().info("Opening VSCode. You may see output from VSCode, just ignore it.");
+            Desktop.getDesktop().open(workspaceFile);
+        }
     }
 
     public String name() {
@@ -90,7 +99,7 @@ public final class Project {
         return studioWorld;
     }
 
-    void close() {
+    boolean close() {
         if (!closed) {
             Orbis.getLogger().info("Closing project {}, clearing viewers...", name);
             studioWorld.clearViewers();
@@ -98,8 +107,10 @@ public final class Project {
             if (studioWorld.unload()) {
                 Orbis.getLogger().info("Successfully closed project!");
                 closed = true;
+                return true;
             }
         }
+        return false;
     }
 
 }

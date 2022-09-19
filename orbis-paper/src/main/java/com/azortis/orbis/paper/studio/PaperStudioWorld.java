@@ -23,9 +23,13 @@ import com.azortis.orbis.Player;
 import com.azortis.orbis.WorldAccess;
 import com.azortis.orbis.pack.studio.Project;
 import com.azortis.orbis.pack.studio.StudioWorld;
+import com.azortis.orbis.paper.ConversionUtils;
 import com.azortis.orbis.paper.OrbisPlugin;
 import com.azortis.orbis.paper.PaperPlatform;
 import com.azortis.orbis.paper.PaperWorldAccess;
+import com.azortis.orbis.util.Location;
+import com.google.common.base.Preconditions;
+import org.apache.commons.io.FileUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.WorldCreator;
@@ -33,10 +37,14 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Set;
 
 public final class PaperStudioWorld extends StudioWorld implements Listener {
@@ -50,7 +58,8 @@ public final class PaperStudioWorld extends StudioWorld implements Listener {
         Bukkit.getServer().getPluginManager().registerEvents(this, OrbisPlugin.getPlugin());
     }
 
-    public World nativeWorld() {
+    public @NotNull World nativeWorld() {
+        Preconditions.checkNotNull(nativeWorld, "Native world hasn't been set yet!");
         return nativeWorld;
     }
 
@@ -80,7 +89,9 @@ public final class PaperStudioWorld extends StudioWorld implements Listener {
 
             // Clear world files
             File studioWorldDir = new File(Bukkit.getWorldContainer() + "/orbis_studio/");
-            if (!studioWorldDir.delete()) {
+            try {
+                FileUtils.deleteDirectory(studioWorldDir);
+            } catch (IOException ex) {
                 Orbis.getLogger().error("Failed to delete studio world directory! Shutting down server for safety...");
                 Bukkit.getServer().shutdown();
                 return false;
@@ -111,6 +122,35 @@ public final class PaperStudioWorld extends StudioWorld implements Listener {
     // Events
     //
 
+    @EventHandler(priority = EventPriority.MONITOR)
+    public void onPlayerJoin(PlayerJoinEvent event) {
+        Player player = platform.getPlayer(event.getPlayer());
+        if (player.getWorld() == this) {
+            Location fallBackLocation = Orbis.getSettings().studio().fallBackLocation();
+            if (player.hasPermission("orbis.admin")) {
+                viewers.put(player, fallBackLocation);
+                player.setGameMode(Player.GameMode.CREATIVE);
+                player.setAllowFlying(true);
+                player.sendMessage(Orbis.getMiniMessage().deserialize("<prefix> <gray>You're currently viewing the studio world."));
+            } else {
+                if (fallBackLocation.isWorldLoaded()) {
+                    player.teleportAsync(fallBackLocation);
+                } else {
+                    player.kick(Orbis.getMiniMessage().deserialize(
+                            "<red>Fallback location invalid, you cannot join in a studio world without the right permissions!"));
+                }
+            }
+        }
+    }
+
+    @EventHandler(priority = EventPriority.HIGHEST)
+    public void onPlayerQuit(PlayerQuitEvent event) {
+        Player player = platform.getPlayer(event.getPlayer());
+        if (getViewers().contains(player)) {
+            viewers.remove(player); // Prevent memory leaks by this player instance not being removed from the list
+        }
+    }
+
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onPlayerTeleport(PlayerTeleportEvent event) {
         Player player = platform.getPlayer(event.getPlayer());
@@ -118,14 +158,24 @@ public final class PaperStudioWorld extends StudioWorld implements Listener {
             removeViewer(player);
         } else if (!getViewers().contains(player) && event.getTo().getWorld() == nativeWorld) {
             if (player.hasPermission("orbis.admin")) {
-                player.sendMessage(Orbis.getMiniMessage().deserialize("<prefix> <gray>Rerouting your teleport..."));
-                addViewer(player);
-                // Let the teleporting be done by the studioWorld
-                event.setCancelled(true);
+                // The teleporting logic has already been done, so just force add the player to the viewers list
+                viewers.put(player, ConversionUtils.fromNative(event.getFrom()));
+                player.setGameMode(Player.GameMode.CREATIVE);
+                player.setAllowFlying(true);
+                player.sendMessage(Orbis.getMiniMessage().deserialize("<prefix> <gray>You're now viewing the studio world."));
             } else {
                 player.sendMessage(Orbis.getMiniMessage().deserialize("<prefix> <red>You don't have the permission to enter the studio world!"));
                 event.setCancelled(true);
             }
         }
     }
+
+    @EventHandler(priority = EventPriority.MONITOR)
+    public void onPlayerRespawn(PlayerRespawnEvent event) {
+        Player player = platform.getPlayer(event.getPlayer());
+        if (viewers.containsKey(player)) {
+            event.setRespawnLocation(ConversionUtils.toNative(Orbis.getSettings().studio().fallBackLocation()));
+        }
+    }
+
 }

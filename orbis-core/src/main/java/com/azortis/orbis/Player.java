@@ -48,12 +48,20 @@ public interface Player extends CommandSender {
     void kick(@NotNull Component component);
 
     /**
+     * Teleports a player synchronously to provided location.
+     *
+     * @param location The location to teleport the player to.
+     * @return If the teleport went successfully.
+     */
+    boolean teleport(@NotNull Location location);
+
+    /**
      * Teleports a player asynchronously to provided location.
      *
      * @param location The location to teleport the player to.
      * @return A CompletableFuture boolean that marks success.
      */
-    @NotNull CompletableFuture<Boolean> teleport(@NotNull Location location);
+    @NotNull CompletableFuture<Boolean> teleportAsync(@NotNull Location location);
 
     /**
      * Get the current {@link GameMode} pf the player.
@@ -68,6 +76,20 @@ public interface Player extends CommandSender {
      * @param gameMode The game mode to set the player in.
      */
     void setGameMode(@NotNull GameMode gameMode);
+
+    /**
+     * Checks if the player can fly.
+     *
+     * @return If the player can fly.
+     */
+    boolean canFly();
+
+    /**
+     * Sets if the player is able to fly.
+     *
+     * @param allowFlying If the player should be able to fly.
+     */
+    void setAllowFlying(boolean allowFlying);
 
     /**
      * Get the current {@link Location} of the player.

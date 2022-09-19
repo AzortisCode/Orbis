@@ -67,17 +67,18 @@ import java.util.List;
 import java.util.Map;
 
 @Dependency(group = "com.google.guava", artifact = "guava", version = "31.0.1-jre")
-@Dependency(group = "net.lingala.zip4j", artifact = "zip4j", version = "2.7.0")
-@Dependency(group = "org.projectlombok", artifact = "lombok", version = "1.18.20")
-@Dependency(group = "cloud.commandframework", artifact = "cloud-core", version = "1.7.0")
-@Dependency(group = "cloud.commandframework", artifact = "cloud-annotations", version = "1.7.0")
-@Dependency(group = "cloud.commandframework", artifact = "cloud-services", version = "1.7.0")
+@Dependency(group = "net.lingala.zip4j", artifact = "zip4j", version = "2.10.0")
+@Dependency(group = "org.projectlombok", artifact = "lombok", version = "1.18.24")
+@Dependency(group = "cloud.commandframework", artifact = "cloud-core", version = "1.7.1")
+@Dependency(group = "cloud.commandframework", artifact = "cloud-annotations", version = "1.7.1")
+@Dependency(group = "cloud.commandframework", artifact = "cloud-services", version = "1.7.1")
 @Dependency(group = "io.leangen.geantyref", artifact = "geantyref", version = "1.3.13")
+@Dependency(group = "org.apache.commons", artifact = "commons-lang3", version = "3.12.0")
 public final class Orbis {
 
     public static final String VERSION = "0.2-ALPHA";
     public static final String SETTINGS_VERSION = "1";
-    public static final String MC_VERSION = "1_19";
+    public static final String MC_VERSION = "1_19_2";
     private static final String DOWNLOAD_URL = "https://raw.githubusercontent.com/Articdive/ArticData/" +
             MC_VERSION.replace("_", ".") + "/";
 
@@ -151,6 +152,15 @@ public final class Orbis {
         }
     }
 
+    /**
+     * Shutdown Orbis, Internal use only!
+     */
+    public static void shutdown() {
+        if (initialized) {
+            projectManager.closeProject();
+        }
+    }
+
     private static List<Map.Entry<Class<?>, JsonDeserializer<?>>> getRegistryAdapters() {
         List<Map.Entry<Class<?>, JsonDeserializer<?>>> entryList = new ArrayList<>();
         // Search and add type adapters for usage in serialization/deserialization of values to the gson
@@ -191,7 +201,7 @@ public final class Orbis {
         return entryList;
     }
 
-    private static @NotNull Component getPrefixComponent() {
+    public static @NotNull Component getPrefixComponent() {
         String text = "<dark_gray>[<green>Orbis<dark_gray>]";
         return MiniMessage.miniMessage().deserialize(text);
     }

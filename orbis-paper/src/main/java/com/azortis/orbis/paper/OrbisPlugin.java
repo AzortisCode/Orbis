@@ -22,6 +22,7 @@ import com.azortis.orbis.Orbis;
 import com.azortis.orbis.pack.Pack;
 import com.azortis.orbis.paper.generator.PaperChunkGenerator;
 import com.azortis.orbis.util.maven.DependencyLoader;
+import org.apache.commons.io.FileUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -29,13 +30,13 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
+import java.io.IOException;
 
 public final class OrbisPlugin extends JavaPlugin {
 
     private static OrbisPlugin plugin;
     private static PaperPlatform platform;
     private Metrics metrics;
-
 
     public static OrbisPlugin getPlugin() {
         return plugin;
@@ -57,7 +58,11 @@ public final class OrbisPlugin extends JavaPlugin {
         File studioWorldDir = new File(Bukkit.getWorldContainer() + "/orbis_studio/");
         if (studioWorldDir.exists()) {
             this.getSLF4JLogger().info("Studio world directory still present! Deleting...");
-            if (!studioWorldDir.delete()) throw new RuntimeException("Failed to delete studio world directory!");
+            try {
+                FileUtils.deleteDirectory(studioWorldDir);
+            } catch (IOException ex) {
+                throw new RuntimeException("Failed to delete studio world directory!", ex);
+            }
         }
 
         // Libraries need to be loaded before Orbis gets initialized, since the Orbis class & PaperPlatform use them.
@@ -79,6 +84,11 @@ public final class OrbisPlugin extends JavaPlugin {
     @Override
     public void onEnable() {
         platform.loadCommands();
+    }
+
+    @Override
+    public void onDisable() {
+        Orbis.shutdown();
     }
 
     @Override

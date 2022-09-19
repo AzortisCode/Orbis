@@ -51,13 +51,13 @@ repositories {
 dependencies {
     // Libraries downloaded in core package
     compileOnly("com.google.guava:guava:31.0.1-jre")
-    compileOnly("net.lingala.zip4j:zip4j:2.7.0")
-    compileOnly("org.projectlombok:lombok:1.18.20")
-    compileOnly("cloud.commandframework:cloud-core:1.7.0")
-    compileOnly("cloud.commandframework:cloud-annotations:1.7.0")
+    compileOnly("net.lingala.zip4j:zip4j:2.10.0")
+    compileOnly("org.projectlombok:lombok:1.18.24")
+    compileOnly("cloud.commandframework:cloud-core:1.7.1")
+    compileOnly("cloud.commandframework:cloud-annotations:1.7.1")
 
     annotationProcessor("org.projectlombok:lombok:1.18.20")
-    annotationProcessor("cloud.commandframework:cloud-annotations:1.7.0")
+    annotationProcessor("cloud.commandframework:cloud-annotations:1.7.1")
 
     // Adapters should determine if libraries should be downloaded, or if the platform already has them provided
     compileOnly("net.kyori:adventure-api:4.9.3")
@@ -68,6 +68,8 @@ dependencies {
     compileOnly("org.slf4j:slf4j-api:1.7.31")
     compileOnly("commons-io:commons-io:2.8.0")
     compileOnly("org.jetbrains:annotations:16.0.1")
+    compileOnly("org.apache.commons:commons-lang3:3.12.0")
+
 
     // For testing
     testImplementation("net.kyori:adventure-api:4.9.3")
@@ -76,10 +78,11 @@ dependencies {
     testImplementation("org.jetbrains:annotations:16.0.1")
     testImplementation("com.google.code.gson:gson:2.8.9")
     testImplementation("commons-io:commons-io:2.8.0")
-    testImplementation("cloud.commandframework:cloud-core:1.7.0")
+    testImplementation("cloud.commandframework:cloud-core:1.7.1")
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1")
     testImplementation("org.apache.logging.log4j:log4j-core:2.14.1")
     testImplementation("org.apache.logging.log4j:log4j-slf4j-impl:2.14.1")
+    testImplementation("org.apache.commons:commons-lang3:3.12.0")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.1")
 }
 

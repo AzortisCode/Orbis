@@ -73,7 +73,7 @@ public final class ProjectManager {
     }
 
     public boolean openProject(@NotNull String projectName) {
-        if (activeProject != null) {
+        if (activeProject == null) {
             if (projects.contains(projectName)) {
                 try {
                     activeProject = new Project(projectName, new File(projectsFolder + "/" + projectName + "/"));
@@ -95,15 +95,16 @@ public final class ProjectManager {
     /**
      * Closes the current project gracefully.
      */
-    public void closeProject() {
-        if (activeProject != null) {
-            activeProject.close();
+    public boolean closeProject() {
+        if (activeProject != null && activeProject.close()) {
             activeProject = null;
+            return true;
         }
+        return false;
     }
 
     public boolean createProject(@NotNull String projectName) {
-        if (activeProject != null) {
+        if (activeProject == null) {
             if (!projects.contains(projectName)) {
                 File projectFolder = new File(projectsFolder + "/" + projectName + "/");
                 if (projectFolder.mkdirs()) {

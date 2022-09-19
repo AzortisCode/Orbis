@@ -26,6 +26,7 @@ import cloud.commandframework.annotations.processing.CommandContainer;
 import cloud.commandframework.annotations.suggestions.Suggestions;
 import cloud.commandframework.context.CommandContext;
 import com.azortis.orbis.Orbis;
+import com.azortis.orbis.Player;
 import com.azortis.orbis.pack.studio.ProjectManager;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
@@ -53,8 +54,8 @@ public class ProjectCommands {
 
             for (String projectName : manager.getProjects()) {
                 builder.append(miniMessage
-                        .deserialize("<newline><dark_grey>• <hover:show_text:'<grey>Click to <green>open<green>!'>"
-                                        + "<click:run_command:/orbis project open <project>><green><project></click></hover>",
+                        .deserialize("<newline><dark_grey>* <hover:show_text:'<grey>Click to <green>open</green><grey>!'>" +
+                                        "<click:run_command:/orbis project open " + projectName + "><green><project></click></hover>",
                                 TagResolver.resolver("project", Tag.selfClosingInserting(Component.text(projectName)))));
             }
             sender.sendMessage(builder.build());
@@ -73,7 +74,14 @@ public class ProjectCommands {
                 sender.sendMessage(miniMessage.deserialize("<prefix> <grey>Opening project..."));
                 if (!manager.openProject(project)) {
                     sender.sendMessage(miniMessage.deserialize("<prefix> <red>Failed to open project!"));
+                } else {
+                    sender.sendMessage(miniMessage.deserialize("<prefix> <green>Successfully opened project!"));
+                    if (sender instanceof Player player) {
+                        // Adding player who opened the project as viewer.
+                        manager.getActiveProject().studioWorld().addViewer(player);
+                    }
                 }
+                return;
             } else {
                 sender.sendMessage(miniMessage.deserialize("<prefix> <red>Project by name <dark_red>" + project + " <red>doesn't exist!"));
             }
@@ -87,7 +95,11 @@ public class ProjectCommands {
     public void closeProject(final @NotNull CommandSender sender) {
         if (manager.getActiveProject() != null) {
             sender.sendMessage(miniMessage.deserialize("<prefix> <grey>Closing project..."));
-            manager.closeProject();
+            if (manager.closeProject()) {
+                sender.sendMessage(miniMessage.deserialize("<prefix> <green>Project successfully closed!"));
+            } else {
+                sender.sendMessage(miniMessage.deserialize("<prefix> <red>Failed to close project!"));
+            }
             return;
         }
         sender.sendMessage(miniMessage.deserialize("<prefix> <red>There is no active project!"));
@@ -103,7 +115,14 @@ public class ProjectCommands {
                 sender.sendMessage(miniMessage.deserialize("<prefix> <grey>Creating and opening project..."));
                 if (!manager.createProject(projectName)) {
                     sender.sendMessage(miniMessage.deserialize("<prefix> <red>Failed to create project!"));
+                } else {
+                    sender.sendMessage(miniMessage.deserialize("<prefix> <green>Successfully created & opened project!"));
+                    if (sender instanceof Player player) {
+                        // Adding player who opened the project as viewer.
+                        manager.getActiveProject().studioWorld().addViewer(player);
+                    }
                 }
+                return;
             }
             sender.sendMessage(miniMessage.deserialize("<prefix> <red>Project by name <dark_red>" + projectName + " <red>already exists!"));
             return;

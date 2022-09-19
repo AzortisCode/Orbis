@@ -22,9 +22,13 @@ import com.azortis.orbis.Orbis;
 import com.azortis.orbis.World;
 import com.azortis.orbis.WorldInfo;
 import com.azortis.orbis.generator.Dimension;
+import com.azortis.orbis.pack.data.Component;
+import com.azortis.orbis.pack.data.DataAccess;
 import com.azortis.orbis.util.Inject;
 import com.azortis.orbis.util.Invoke;
+import org.apache.commons.io.FilenameUtils;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
 import java.io.FileReader;
@@ -65,39 +69,70 @@ public final class PackLoader {
                     // Root dimension object doesn't support children yet so do a less general injection
                     String name = field.getAnnotation(Inject.class).fieldName();
                     if (!name.equalsIgnoreCase("")) {
-                        Field configNameField = dimension.getClass().getDeclaredField(name);
-                        configNameField.setAccessible(true);
+                        Field dataPathNameField = dimension.getClass().getDeclaredField(name);
+                        dataPathNameField.setAccessible(true);
                         if (Collection.class.isAssignableFrom(field.getType())) { // TODO maybe add Array support?
-                            Collection<String> configNames = (Collection<String>) configNameField.get(dimension);
-                            configNameField.setAccessible(false);
+                            Collection<String> dataPaths = (Collection<String>) dataPathNameField.get(dimension);
+                            dataPathNameField.setAccessible(false);
                             Inject inject = field.getAnnotation(Inject.class);
                             Collection<Object> fieldObject = inject.collectionType().getConstructor().newInstance();
-                            for (String configName : configNames) {
-                                File dataFile = world.data().getDataFile(inject.parameterizedType(), configName);
+                            Map<Object, String> componentNames = new HashMap<>();
+                            boolean checkComponents = false;
+                            for (String dataPath : dataPaths) {
+                                File dataFile = world.data().getDataFile(inject.parameterizedType(), dataPath);
                                 Object collectionObject = Orbis.getGson().fromJson(new FileReader(dataFile), inject.parameterizedType());
                                 fieldObject.add(collectionObject);
+                                if (collectionObject.getClass().isAnnotationPresent(Component.class)
+                                        && DataAccess.ROOT_TYPES.contains(inject.parameterizedType())) {
+                                    componentNames.put(collectionObject, FilenameUtils.removeExtension(dataFile.getName()));
+                                    checkComponents = true;
+                                }
                             }
                             setField(dimension, field, fieldObject);
-                            if (shouldInject(field.getGenericType().getClass())) {
-                                for (Object listObject : fieldObject) {
-                                    classInjection(world, dimension, dimension, listObject);
+                            if (shouldInject(inject.parameterizedType())) {
+                                if (checkComponents) {
+                                    for (Object collectionObject : fieldObject) {
+                                        if (collectionObject.getClass().isAnnotationPresent(Component.class)) {
+                                            String componentName = componentNames.get(collectionObject);
+                                            world.data().registerComponent(collectionObject.getClass()
+                                                    .getAnnotation(Component.class).value(), componentName);
+                                            classInjection(world, dimension, dimension, collectionObject, componentName);
+                                        } else {
+                                            classInjection(world, dimension, dimension, collectionObject, null);
+                                        }
+                                    }
+                                } else {
+                                    for (Object collectionObject : fieldObject) {
+                                        classInjection(world, dimension, dimension, collectionObject, null);
+                                    }
                                 }
                             }
                         } else {
-                            String configName = (String) configNameField.get(dimension);
-                            configNameField.setAccessible(false);
-                            File dataFile = world.data().getDataFile(field.getType(), configName);
+                            String dataPath = (String) dataPathNameField.get(dimension);
+                            dataPathNameField.setAccessible(false);
+                            File dataFile = world.data().getDataFile(field.getType(), dataPath);
                             Object fieldObject = Orbis.getGson().fromJson(new FileReader(dataFile), field.getType());
                             setField(dimension, field, fieldObject);
 
                             if (shouldInject(fieldObject.getClass())) {
-                                classInjection(world, dimension, dimension, fieldObject);
+                                if (fieldObject.getClass().isAnnotationPresent(Component.class)
+                                        && DataAccess.ROOT_TYPES.contains(field.getType())) {
+                                    String componentName = FilenameUtils.removeExtension(dataFile.getName());
+                                    world.data().registerComponent(fieldObject.getClass()
+                                            .getAnnotation(Component.class).value(), componentName);
+                                    classInjection(world, dimension, dimension, fieldObject, componentName);
+                                } else {
+                                    classInjection(world, dimension, dimension, fieldObject, null);
+                                }
                             }
                         }
                     }
                 }
             } else if (shouldInject(field, dimension)) {
-                defaultInjection(world, dimension, dimension, field);
+                field.setAccessible(true);
+                Object fieldObject = field.get(dimension);
+                field.setAccessible(false);
+                classInjection(world, dimension, dimension, fieldObject, null);
             }
         }
         for (Map.Entry<Method, Object> entry : postInjectionMethods.get(world).entrySet()) {
@@ -110,7 +145,8 @@ public final class PackLoader {
     // Called if a Class has been annotated with @Inject
     @SuppressWarnings("unchecked")
     private static void classInjection(@NotNull World world, @NotNull Dimension dimension,
-                                       @NotNull Object parentObject, @NotNull Object rootObject)
+                                       @NotNull Object parentObject, @NotNull Object rootObject,
+                                       @Nullable String componentName)
             throws NoSuchFieldException, IllegalAccessException, InvocationTargetException,
             IOException, NoSuchMethodException, InstantiationException {
         for (Method method : getAllMethods(rootObject.getClass())) {
@@ -122,6 +158,8 @@ public final class PackLoader {
                 }
             }
         }
+
+        Map<Object, String> componentNames = new HashMap<>();
 
         for (Field field : getAllFields(rootObject.getClass())) {
             if (field.isAnnotationPresent(Inject.class)) {
@@ -135,7 +173,11 @@ public final class PackLoader {
                         setField(rootObject, field, parentObject);
                     } else if (!inject.fieldName().equalsIgnoreCase("")) {
                         String name = inject.fieldName();
-                        nameInjection(world, rootObject, field, name);
+                        if (componentName != null) {
+                            nameInjection(world, rootObject, field, name, componentName);
+                        } else {
+                            componentNames.putAll(nameInjection(world, rootObject, field, name, null));
+                        }
                     }
                 }
             }
@@ -148,6 +190,7 @@ public final class PackLoader {
             }
         }
 
+        boolean checkComponents = !componentNames.isEmpty();
         for (Field field : getAllFields(rootObject.getClass())) {
             if (Collection.class.isAssignableFrom(field.getType())) {
                 field.setAccessible(true);
@@ -155,11 +198,27 @@ public final class PackLoader {
                 field.setAccessible(false);
                 for (Object collectionObject : fieldObject) {
                     if (shouldInject(collectionObject.getClass())) {
-                        classInjection(world, dimension, rootObject, collectionObject);
+                        if (checkComponents && componentNames.containsKey(collectionObject)) {
+                            world.data().registerComponent(collectionObject.getClass().getAnnotation(Component.class).value(),
+                                    componentNames.get(collectionObject));
+                            classInjection(world, dimension, rootObject, collectionObject, componentNames.get(collectionObject));
+                        } else {
+                            classInjection(world, dimension, rootObject, collectionObject, componentName);
+                        }
                     }
                 }
             } else if (shouldInject(field, rootObject)) {
-                defaultInjection(world, dimension, rootObject, field);
+                field.setAccessible(true);
+                Object fieldObject = field.get(rootObject);
+                field.setAccessible(false);
+
+                if (checkComponents && componentNames.containsKey(fieldObject)) {
+                    world.data().registerComponent(fieldObject.getClass().getAnnotation(Component.class).value(),
+                            componentNames.get(fieldObject));
+                    classInjection(world, dimension, rootObject, fieldObject, componentNames.get(fieldObject));
+                } else {
+                    classInjection(world, dimension, rootObject, fieldObject, componentName);
+                }
             }
         }
 
@@ -171,44 +230,66 @@ public final class PackLoader {
         }
     }
 
-    // Called if a field in a class that is being injected its class has been annotated with @Inject
-    private static void defaultInjection(@NotNull World world, @NotNull Dimension dimension,
-                                         @NotNull Object rootObject, @NotNull Field field)
-            throws NoSuchFieldException, IllegalAccessException, InvocationTargetException,
-            IOException, NoSuchMethodException, InstantiationException {
-        field.setAccessible(true);
-        Object fieldObject = field.get(rootObject);
-        field.setAccessible(false);
-        classInjection(world, dimension, rootObject, fieldObject);
-    }
-
     // Called if a field in a class that is being injected has been annotated with @Inject that specifies the name of
     // another field
     @SuppressWarnings("unchecked")
-    private static void nameInjection(@NotNull World world, @NotNull Object rootObject,
-                                      @NotNull Field field, @NotNull String name)
+    private static @NotNull Map<Object, String> nameInjection(@NotNull World world, @NotNull Object rootObject,
+                                                              @NotNull Field field, @NotNull String name, @Nullable String componentName)
             throws NoSuchFieldException, IllegalAccessException, IOException,
             NoSuchMethodException, InvocationTargetException, InstantiationException {
-        Field configNameField = getDeclaredField(rootObject.getClass(), name);
-        configNameField.setAccessible(true);
+        Map<Object, String> componentNames = new HashMap<>();
+        Field dataPathNameField = getDeclaredField(rootObject.getClass(), name);
+        dataPathNameField.setAccessible(true);
         if (Collection.class.isAssignableFrom(field.getType())) {
-            Collection<String> configNames = (Collection<String>) configNameField.get(rootObject);
-            configNameField.setAccessible(false);
+            Collection<String> dataPaths = (Collection<String>) dataPathNameField.get(rootObject);
+            dataPathNameField.setAccessible(false);
             Inject inject = field.getAnnotation(Inject.class);
             Collection<Object> fieldObject = inject.collectionType().getConstructor().newInstance();
-            for (String configName : configNames) {
-                File dataFile = world.data().getDataFile(inject.parameterizedType(), configName);
-                Object collectionObject = Orbis.getGson().fromJson(new FileReader(dataFile), inject.parameterizedType());
-                fieldObject.add(collectionObject);
+            for (String dataPath : dataPaths) {
+                if (world.data().isComponentType(inject.parameterizedType())) {
+                    if (componentName != null) {
+                        File dataFile = world.data().getComponentDataFile(inject.parameterizedType(), componentName, dataPath);
+                        Object collectionObject = Orbis.getGson().fromJson(new FileReader(dataFile), inject.parameterizedType());
+                        fieldObject.add(collectionObject);
+                    } else
+                        throw new IllegalStateException("Parameterized type is a component type, but a name hasn't been passed down");
+                } else {
+                    File dataFile = world.data().getDataFile(inject.parameterizedType(), dataPath);
+                    Object collectionObject = Orbis.getGson().fromJson(new FileReader(dataFile), inject.parameterizedType());
+                    fieldObject.add(collectionObject);
+
+                    if (collectionObject.getClass().isAnnotationPresent(Component.class)
+                            && DataAccess.ROOT_TYPES.contains(inject.parameterizedType())) {
+                        String collectionComponentName = FilenameUtils.removeExtension(dataFile.getName());
+                        componentNames.put(collectionObject, collectionComponentName);
+                    }
+                }
             }
             setField(rootObject, field, fieldObject);
         } else {
-            String configName = (String) configNameField.get(rootObject);
-            configNameField.setAccessible(false);
-            File dataFile = world.data().getDataFile(field.getType(), configName);
-            Object fieldObject = Orbis.getGson().fromJson(new FileReader(dataFile), field.getType());
-            setField(rootObject, field, fieldObject);
+            String dataPath = (String) dataPathNameField.get(rootObject);
+            dataPathNameField.setAccessible(false);
+
+            if (world.data().isComponentType(field.getType())) {
+                if (componentName != null) {
+                    File dataFile = world.data().getComponentDataFile(field.getType(), componentName, dataPath);
+                    Object fieldObject = Orbis.getGson().fromJson(new FileReader(dataFile), field.getType());
+                    setField(rootObject, field, fieldObject);
+                } else
+                    throw new IllegalStateException("Field type is a component type, but a name hasn't been passed down");
+            } else {
+                File dataFile = world.data().getDataFile(field.getType(), dataPath);
+                Object fieldObject = Orbis.getGson().fromJson(new FileReader(dataFile), field.getType());
+                setField(rootObject, field, fieldObject);
+
+                if (fieldObject.getClass().isAnnotationPresent(Component.class)
+                        && DataAccess.ROOT_TYPES.contains(field.getType())) {
+                    String fieldComponentName = FilenameUtils.removeExtension(dataFile.getName());
+                    componentNames.put(fieldObject, fieldComponentName);
+                }
+            }
         }
+        return componentNames;
     }
 
     private static boolean shouldInject(final @NotNull Field field, Object rootObject) throws IllegalAccessException {
@@ -226,7 +307,8 @@ public final class PackLoader {
 
     private static boolean shouldInject(final @NotNull Class<?> type) {
         boolean inject = type.isAnnotationPresent(Inject.class);
-        if (inject) return true;
+        if (inject)
+            return true; // TODO check if searching superclasses is still necessary since @Inject has been annotated with @Inherited
         Class<?> superType = type;
         while (superType != null) {
             superType = superType.getSuperclass();
@@ -282,17 +364,17 @@ public final class PackLoader {
         return declaredField;
     }
 
-    private static void invokeMethod(@NotNull Object instance, @NotNull Method method)
+    private static void invokeMethod(@NotNull Object classInstance, @NotNull Method method)
             throws InvocationTargetException, IllegalAccessException {
         method.setAccessible(true);
-        method.invoke(instance);
+        method.invoke(classInstance);
         method.setAccessible(false);
     }
 
-    private static void setField(@NotNull Object instance, @NotNull Field field, @NotNull Object fieldInstance)
+    private static void setField(@NotNull Object classInstance, @NotNull Field field, @NotNull Object fieldInstance)
             throws IllegalAccessException {
         field.setAccessible(true);
-        field.set(instance, fieldInstance);
+        field.set(classInstance, fieldInstance);
         field.setAccessible(false);
     }
 

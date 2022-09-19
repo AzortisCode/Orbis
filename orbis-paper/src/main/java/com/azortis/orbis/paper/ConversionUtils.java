@@ -19,6 +19,8 @@
 package com.azortis.orbis.paper;
 
 import com.azortis.orbis.Player;
+import com.azortis.orbis.WorldAccess;
+import com.azortis.orbis.paper.studio.PaperStudioWorld;
 import com.azortis.orbis.util.Location;
 import org.bukkit.GameMode;
 import org.jetbrains.annotations.NotNull;
@@ -43,8 +45,20 @@ public final class ConversionUtils {
 
     @NotNull
     public static org.bukkit.Location toNative(@NotNull Location location) {
-        return new org.bukkit.Location(((PaperWorldAccess) location.getWorld()).handle(),
-                location.x(), location.y(), location.z(), location.yaw(), location.pitch());
+        return new org.bukkit.Location(toNative(location.getWorld()), location.x(), location.y(), location.z(), location.yaw(), location.pitch());
+    }
+
+    @NotNull
+    public static org.bukkit.World toNative(@NotNull WorldAccess worldAccess) {
+        org.bukkit.World nativeWorld = null;
+        if (worldAccess instanceof PaperWorld world) {
+            nativeWorld = world.nativeWorld();
+        } else if (worldAccess instanceof PaperStudioWorld studioWorld) {
+            nativeWorld = studioWorld.nativeWorld();
+        } else if (worldAccess instanceof PaperWorldAccess paperWorldAccess) {
+            nativeWorld = paperWorldAccess.handle();
+        } else throw new IllegalArgumentException(worldAccess + " isn't a valid implementation for the paper module!");
+        return nativeWorld;
     }
 
     @NotNull

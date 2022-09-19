@@ -52,9 +52,13 @@ public class PaperPlayer implements Player {
     }
 
     @Override
-    public @NotNull CompletableFuture<Boolean> teleport(@NotNull Location location) {
-        org.bukkit.Location nativeLoc = ConversionUtils.toNative(location);
-        return handle.teleportAsync(nativeLoc);
+    public boolean teleport(@NotNull Location location) {
+        return handle.teleport(ConversionUtils.toNative(location));
+    }
+
+    @Override
+    public @NotNull CompletableFuture<Boolean> teleportAsync(@NotNull Location location) {
+        return handle.teleportAsync(ConversionUtils.toNative(location));
     }
 
     @Override
@@ -65,6 +69,16 @@ public class PaperPlayer implements Player {
     @Override
     public void setGameMode(@NotNull GameMode gameMode) {
         handle.setGameMode(ConversionUtils.toNative(gameMode));
+    }
+
+    @Override
+    public boolean canFly() {
+        return handle.getAllowFlight();
+    }
+
+    @Override
+    public void setAllowFlying(boolean allowFlying) {
+        handle.setAllowFlight(allowFlying);
     }
 
     @Override

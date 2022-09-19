@@ -32,6 +32,7 @@ import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ExecutionException;
 
 /**
  * A world interface that is used to visualize settings when working on a project.
@@ -48,7 +49,7 @@ public abstract class StudioWorld extends World {
     /**
      * Players viewing this world, with their last known location before entering it.
      */
-    private final Map<Player, Location> viewers = new HashMap<>();
+    protected final Map<Player, Location> viewers = new HashMap<>();
 
     public StudioWorld(String name, File folder, Project project) {
         super(name, folder, project);
@@ -66,16 +67,14 @@ public abstract class StudioWorld extends World {
     public void addViewer(@NotNull Player viewer) {
         if (!viewers.containsKey(viewer) && viewer.hasPermission("orbis.admin") && this.isWorldLoaded()) {
             viewers.put(viewer, viewer.getLocation());
-            viewer.sendMessage(Orbis.getMiniMessage().deserialize("<prefix> <gray>Entering studio world..."));
-            viewer.teleport(new Location(0, 255, 0, 0f, 0f, new WeakReference<>(this))).thenApply(result -> {
+            viewer.teleportAsync(new Location(0, 255, 0, 0f, 0f, new WeakReference<>(this))).thenAccept(result -> {
                 if (!result) {
                     viewers.remove(viewer);
                     viewer.sendMessage(Orbis.getMiniMessage().deserialize("<prefix> <red>Failed to enter studio world!"));
-                    return false;
                 } else {
                     viewer.setGameMode(Player.GameMode.CREATIVE);
+                    viewer.setAllowFlying(true);
                     viewer.sendMessage(Orbis.getMiniMessage().deserialize("<prefix> <gray>You're now viewing the studio world."));
-                    return true;
                 }
             });
         } else {
@@ -93,11 +92,14 @@ public abstract class StudioWorld extends World {
 
             if (location.isWorldLoaded()) {
                 viewers.remove(viewer);
-                viewer.sendMessage(Orbis.getMiniMessage().deserialize("<prefix> <gray>Exiting studio world..."));
-                teleportOut(viewer, location);
+                try {
+                    teleportOut(viewer, location);
+                } catch (ExecutionException | InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
             } else {
                 viewers.remove(viewer);
-                viewer.kick(Orbis.getMiniMessage().deserialize("<red>Failed to teleport out of studio world, so kicking as last resort..."));
+                viewer.kick(Orbis.getMiniMessage().deserialize("<red>Failed to teleportAsync out of studio world, so kicking as last resort..."));
             }
         }
     }
@@ -108,28 +110,23 @@ public abstract class StudioWorld extends World {
         }
     }
 
-    private void teleportOut(@NotNull Player player, final Location location) {
-        player.teleport(location).thenApply(result -> {
-            if (!result) {
-                if (location != Orbis.getSettings().studio().fallBackLocation()) {
-                    return player.teleport(Orbis.getSettings().studio().fallBackLocation()).thenApply(result2 -> {
-                        if (!result2) {
-                            player.kick(Orbis.getMiniMessage().deserialize("<red>Failed to teleport out of studio world, so kicking as last resort..."));
-                            return false;
-                        } else {
-                            player.sendMessage(Orbis.getMiniMessage().deserialize("<prefix> <gray>You're no longer viewing the studio world."));
-                            return true;
-                        }
-                    });
+    private void teleportOut(@NotNull Player player, final Location location) throws ExecutionException, InterruptedException {
+        // We teleport the player sync, since this will also be called when unloading
+        // a studio world and if the result is unknown it will fail to unload and thus cause a server shutdown
+        // now we can intervene before that happens with kicking the player as a last resort.
+        if (player.teleport(location)) {
+            player.sendMessage(Orbis.getMiniMessage().deserialize("<prefix> <gray>You're no longer viewing the studio world."));
+        } else {
+            if (location != Orbis.getSettings().studio().fallBackLocation()) {
+                if (player.teleport(Orbis.getSettings().studio().fallBackLocation())) {
+                    player.sendMessage(Orbis.getMiniMessage().deserialize("<prefix> <gray>You're no longer viewing the studio world."));
                 } else {
                     player.kick(Orbis.getMiniMessage().deserialize("<red>Failed to teleport out of studio world, so kicking as last resort..."));
-                    return false;
                 }
             } else {
-                player.sendMessage(Orbis.getMiniMessage().deserialize("<prefix> <gray>You're no longer viewing the studio world."));
-                return true;
+                player.kick(Orbis.getMiniMessage().deserialize("<red>Failed to teleport out of studio world, so kicking as last resort..."));
             }
-        });
+        }
     }
 
     public @NotNull Set<Player> getViewers() {
@@ -141,6 +138,7 @@ public abstract class StudioWorld extends World {
         if (!loaded) {
             this.worldInfo = new WorldInfo("null", "null", seed);
             saveWorldInfo();
+            loaded = true;
         }
     }
 

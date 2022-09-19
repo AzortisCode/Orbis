@@ -64,7 +64,7 @@ public class LocationAdapter implements JsonDeserializer<Location>, JsonSerializ
         if (location.isWorldLoaded()) {
             locationObject.addProperty("world", location.getWorld().name());
         } else {
-            locationObject.addProperty("world", "null"); // To make it clear that this ain't valid
+            locationObject.addProperty("world", "world"); // Refer to default world I guess?
         }
 
         return locationObject;

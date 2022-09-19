@@ -18,17 +18,16 @@
 
 package com.azortis.orbis.util;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.lang.annotation.*;
 import java.util.ArrayList;
 import java.util.Collection;
 
 /**
  * Used to annotate classes where the injector should look for fields to inject,
- * and fields to inject instances in the {@link com.azortis.orbis.generator.Dimension} object tree
+ * and fields to inject instances in the {@link com.azortis.orbis.generator.Dimension} object tree.
+ * Subclasses will inherit this annotation.
  */
+@Inherited
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE, ElementType.FIELD})
 public @interface Inject {

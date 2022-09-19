@@ -20,7 +20,7 @@ import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 
 plugins {
     java
-    id("com.github.johnrengelman.shadow") version "7.0.0"
+    id("com.github.johnrengelman.shadow") version "7.1.2"
     id("io.papermc.paperweight.userdev") version "1.3.9-SNAPSHOT"
 }
 
@@ -45,7 +45,8 @@ dependencies {
 
     // Compile
     compileOnly("io.github.jglrxavpok.hephaistos:common:2.2.0")
-    compileOnly("cloud.commandframework:cloud-paper:1.7.0")
+    compileOnly("cloud.commandframework:cloud-paper:1.7.1")
+    compileOnly("cloud.commandframework:cloud-minecraft-extras:1.7.1")
 }
 
 java {

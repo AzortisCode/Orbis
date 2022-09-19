@@ -27,6 +27,7 @@ import java.lang.ref.WeakReference;
  * Settings class which may be extended by platforms for some basic
  * global settings that are not world/dimension dependent.
  */
+@SuppressWarnings("all")
 public class Settings {
 
     private final Studio studio;
@@ -48,9 +49,25 @@ public class Settings {
         return studio;
     }
 
-    public record Studio(boolean enabled, boolean useVSCode, @NotNull Location fallBackLocation) {
+    public static class Studio {
+        private final boolean openVSCode;
+        private final Location fallBackLocation;
+
+        public Studio(boolean openVSCode, @NotNull Location fallBackLocation) {
+            this.openVSCode = openVSCode;
+            this.fallBackLocation = fallBackLocation;
+        }
+
+        public boolean openVSCode() {
+            return openVSCode;
+        }
+
+        public @NotNull Location fallBackLocation() {
+            return fallBackLocation;
+        }
+
         public static Studio defaultStudioSettings() {
-            return new Studio(false, true, new Location(0, 0, 0, 0f, 0f, new WeakReference<>(null)));
+            return new Studio(false, new Location(0, 0, 0, 0f, 0f, new WeakReference<>(null)));
         }
     }
 
