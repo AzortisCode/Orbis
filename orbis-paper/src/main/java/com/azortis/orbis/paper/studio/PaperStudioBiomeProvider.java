@@ -19,6 +19,7 @@
 package com.azortis.orbis.paper.studio;
 
 import com.azortis.orbis.pack.studio.Project;
+import net.kyori.adventure.key.Key;
 import org.bukkit.block.Biome;
 import org.bukkit.generator.BiomeProvider;
 import org.bukkit.generator.WorldInfo;
@@ -26,6 +27,8 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
+import java.util.stream.Collectors;
 
 public final class PaperStudioBiomeProvider extends BiomeProvider {
 
@@ -41,14 +44,17 @@ public final class PaperStudioBiomeProvider extends BiomeProvider {
     public @NotNull Biome getBiome(@NotNull WorldInfo worldInfo, int x, int y, int z) {
         if (chunkGenerator.requiresLoading()) chunkGenerator.load(worldInfo);
         if (!project.studioWorld().shouldRender()) return Biome.PLAINS;
-        return null;
+        return Biome.valueOf(project.studioWorld().getDimension().distributor()
+                .getBiome(x, y, z).derivative().value().toUpperCase(Locale.ROOT));
     }
 
     @Override
     public @NotNull List<Biome> getBiomes(@NotNull WorldInfo worldInfo) {
         if (chunkGenerator.requiresLoading()) chunkGenerator.load(worldInfo);
         if (!project.studioWorld().shouldRender()) return Collections.singletonList(Biome.PLAINS);
-        return null;
+        return project.studioWorld().getDimension().distributor().biomes()
+                .stream().map(com.azortis.orbis.generator.biome.Biome::derivative).map(Key::value)
+                .map(String::toUpperCase).map(Biome::valueOf).collect(Collectors.toList());
     }
 
 }

@@ -18,10 +18,12 @@
 
 package com.azortis.orbis.generator.biome.complex.modifier;
 
+import com.azortis.orbis.pack.studio.annotations.GlobalDefinition;
 import net.kyori.adventure.key.Key;
 
 import java.util.Map;
 
+@GlobalDefinition("complex-distributor-modifier-ranged-linear")
 public final class RangedLinearModifier extends Modifier {
 
     private final String tag;

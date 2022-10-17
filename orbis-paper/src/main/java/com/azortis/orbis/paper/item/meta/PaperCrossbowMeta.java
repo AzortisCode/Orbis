@@ -26,15 +26,11 @@ import com.google.common.collect.ImmutableList;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.jglrxavpok.hephaistos.nbt.NBT;
-import org.jglrxavpok.hephaistos.nbt.NBTCompound;
-import org.jglrxavpok.hephaistos.nbt.NBTType;
-import org.jglrxavpok.hephaistos.nbt.mutable.MutableNBTCompound;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Deprecated
 public class PaperCrossbowMeta extends PaperItemMeta implements CrossbowMeta {
     private final org.bukkit.inventory.meta.CrossbowMeta crossbowHandle;
 
@@ -73,15 +69,18 @@ public class PaperCrossbowMeta extends PaperItemMeta implements CrossbowMeta {
         return crossbowHandle.hasChargedProjectiles();
     }
 
-    @Override
+    /*@Override
     protected MutableNBTCompound serialize() {
         MutableNBTCompound compound = super.serialize();
         List<NBTCompound> chargedProjectiles = new ArrayList<>();
         for (ItemStack chargedProjectile : getChargedProjectiles()) {
-            chargedProjectiles.add(chargedProjectile.serialize());
+            chargedProjectiles.add(chargedProjectile.toNBT());
         }
         compound.set("ChargedProjectiles", NBT.List(NBTType.TAG_Compound, chargedProjectiles));
         compound.set("Charged", NBT.Boolean(hasChargedProjectiles()));
         return compound;
-    }
+    }*/
+
+
+
 }

@@ -19,14 +19,14 @@
 package com.azortis.orbis.pack.adapter;
 
 import com.azortis.orbis.Orbis;
-import com.azortis.orbis.WorldAccess;
 import com.azortis.orbis.util.Location;
+import com.azortis.orbis.world.WorldAccess;
 import com.google.gson.*;
 
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Type;
 
-public class LocationAdapter implements JsonDeserializer<Location>, JsonSerializer<Location> {
+public final class LocationAdapter implements JsonDeserializer<Location>, JsonSerializer<Location> {
 
     @Override
     public Location deserialize(JsonElement json, Type type, JsonDeserializationContext context) throws JsonParseException {

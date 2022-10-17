@@ -19,137 +19,139 @@
 package com.azortis.orbis.block;
 
 import com.azortis.orbis.block.property.Property;
-import com.google.common.collect.ArrayTable;
-import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Table;
-import net.kyori.adventure.key.Key;
+import org.apiguardian.api.API;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Optional;
 
-public final class BlockState implements ConfiguredBlock {
+/**
+ * <p>A representation of a {@link Block} in a state based on the values of the block
+ * its properties. This will only affect visuals, for more advanced data see {@link com.azortis.orbis.block.entity.BlockEntity}</p>
+ *
+ * @since 0.3-Alpha
+ * @see <a href="https://minecraft.fandom.com/wiki/Block_states#:~:text=Block%20states%20(also%20known%20as,Metadata)%20to%20define%20a%20block.">BlockStates Wiki</a>
+ * for more information..
+ * @author Jake Nijssen
+ */
+@API(status = API.Status.STABLE, since = "0.3-Alpha")
+public non-sealed interface BlockState extends ConfiguredBlock {
 
-    private final Block block;
-    private final int stateId;
-    private final boolean isAir;
-    private final boolean isSolid;
-    private final boolean isLiquid;
-    private final ImmutableMap<Property<?>, Comparable<?>> values;
+    /**
+     * Check if this state is air.
+     *
+     * @return If the state is air.
+     * @since 0.3-Alpha
+     */
+    @Contract(pure = true)
+    boolean isAir();
 
-    // Populated by BlockRegistry
-    private Table<Property<?>, Comparable<?>, BlockState> neighbours;
+    /**
+     * Check if this state is flammable.
+     *
+     * @return If the state is flammable.
+     * @since 0.3-Alpha
+     */
+    @Contract(pure = true)
+    boolean isFlammable();
 
-    BlockState(Block block, int stateId, boolean isAir, boolean isSolid, boolean isLiquid, @NotNull ImmutableMap<Property<?>, Comparable<?>> values) {
-        this.block = block;
-        this.stateId = stateId;
-        this.isAir = isAir;
-        this.isSolid = isSolid;
-        this.isLiquid = isLiquid;
-        this.values = values;
-    }
+    /**
+     * Check if this state is liquid.
+     *
+     * @return If the state is liquid.
+     * @since 0.3-Alpha
+     */
+    @Contract(pure = true)
+    boolean isLiquid();
 
-    public static BlockState fromStateId(int stateId) {
-        return BlockRegistry.fromStateId(stateId);
-    }
+    /**
+     * Check if this state is replaceable.
+     *
+     * @return If the state is replaceable.
+     * @since 0.3-Alpha
+     */
+    @Contract(pure = true)
+    boolean isReplaceable();
 
-    @Override
-    public Block block() {
-        return block;
-    }
+    /**
+     * Check if the state is solid.
+     *
+     * @return If the state is solid.
+     * @since 0.3-Alpha
+     */
+    @Contract(pure = true)
+    boolean isSolid();
 
-    @Override
-    public int stateId() {
-        return stateId;
-    }
+    /**
+     * Check if the state is colliding.
+     *
+     * @return If the state is colliding.
+     * @since 0.3-Alpha
+     */
+    @Contract(pure = true)
+    boolean isColliding();
 
-    public boolean isAir() {
-        return isAir;
-    }
+    /**
+     * Get the values of this state for the {@link Block} its {@link Property}'s
+     *
+     * @return An immutable view of the properties and its values for this state.
+     * @since 0.3-Alpha
+     */
+    @Contract(" -> new")
+    @NotNull ImmutableMap<Property<?>, Comparable<?>> values();
 
-    public boolean isSolid() {
-        return isSolid;
-    }
+    /**
+     * Get the value of this {@link BlockState} of the given property.
+     * <p><b>NOTE</b> the specified property must be existent on this {@link BlockState#block()} otherwise
+     * this method will throw an {@link IllegalArgumentException}</p>
+     *
+     * @param property The property to get the value for.
+     * @param <T>      The type of the property.
+     * @return The value of the given property for this state.
+     * @since 0.3-Alpha
+     */
+    @Contract(pure = true)
+    <T extends Comparable<T>> @NotNull T get(@NotNull Property<T> property);
 
-    public boolean isLiquid() {
-        return isLiquid;
-    }
+    /**
+     * Get the value of this {@link BlockState} of the given property wrapped in a {@link Optional},
+     * which will be empty if the Block doesn't have this property.
+     *
+     * @param property The property to get the value for.
+     * @param <T>      The type of the property.
+     * @return The value of the given property for this state.
+     * @since 0.3-Alpha
+     */
+    @Contract(pure = true)
+    <T extends Comparable<T>> @NotNull Optional<T> getOptional(@NotNull Property<T> property);
 
-    public @NotNull ImmutableMap<Property<?>, Comparable<?>> getValues() {
-        return values;
-    }
+    /**
+     * Get the {@link BlockState} if specified {@link Property} is changed to the specified value.
+     * <p><b>NOTE</b> the specified property must be existent on this {@link BlockState#block()} & the property must contain
+     * specified value otherwise this method will throw an {@link IllegalArgumentException}</p>
+     *
+     * @param property The property to change.
+     * @param value    The value of the property.
+     * @param <T>      The type of the property.
+     * @param <V>      The type of the value.
+     * @return The BlockState for the legacyBlock after you set this value.
+     * @since 0.3-Alpha
+     */
+    @Contract(pure = true)
+    @NotNull <T extends Comparable<T>, V extends T> BlockState set(@NotNull Property<T> property, @NotNull V value);
 
-    public <T extends Comparable<T>> @NotNull T getValue(Property<T> property) {
-        Comparable<?> value = values.get(property);
-        if (value == null) {
-            throw new IllegalArgumentException("Cannot get property " + property + " because it doesn't exists in " + this);
-        } else {
-            return property.type().cast(value);
-        }
-    }
-
-    public @NotNull <T extends Comparable<T>> Optional<T> getValueOptional(Property<T> property) {
-        Comparable<?> value = values.get(property);
-        return value == null ? Optional.empty() : Optional.of(property.type().cast(value));
-    }
-
-    public @NotNull <T extends Comparable<T>, V extends T> BlockState setValue(Property<T> property, V value) {
-        BlockState state = this.neighbours.get(property, value);
-        if (state == null) {
-            throw new IllegalArgumentException("Cannot get " + property + " in " + this + " as it doesn't exist");
-        }
-        return state;
-    }
-
-    public @NotNull BlockState setValue(Property<?> property, String value) {
-        BlockState state = this.neighbours.get(property, property.getValueFor(value));
-        if (state == null) {
-            throw new IllegalArgumentException("Cannot get " + property + " in " + this + " as it doesn't exist");
-        }
-        return state;
-    }
-
-    @SuppressWarnings("UnstableApiUsage")
-    void populateNeighbours(Map<Map<Property<?>, Comparable<?>>, BlockState> states) {
-        if (neighbours == null) {
-            Table<Property<?>, Comparable<?>, BlockState> table = HashBasedTable.create();
-
-            for (Map.Entry<Property<?>, Comparable<?>> entry : this.values.entrySet()) {
-                Property<?> property = entry.getKey();
-
-                for (Comparable<?> value : property.values()) {
-                    if (value != entry.getValue()) {
-                        table.put(property, value, states.get(createStateKey(property, value)));
-                    }
-                }
-            }
-            this.neighbours = table.isEmpty() ? table : ArrayTable.create(table);
-        } else {
-            throw new IllegalStateException("Neighbours already populated in " + this);
-        }
-    }
-
-    private Map<Property<?>, Comparable<?>> createStateKey(Property<?> property, Comparable<?> value) {
-        Map<Property<?>, Comparable<?>> stateKey = new HashMap<>(values);
-        stateKey.replace(property, value);
-        return ImmutableMap.copyOf(stateKey);
-    }
-
-    @Override
-    public @NotNull Key key() {
-        return block.key();
-    }
-
-    @Override
-    public int id() {
-        return block.id();
-    }
-
-    @Override
-    public BlockState blockState() {
-        return this;
-    }
+    /**
+     * Get the {@link BlockState} if specified {@link Property} is changed to the specified value.
+     * <p><b>NOTE</b> the specified property must be existent on this {@link BlockState#block()} & the property must contain
+     * specified value otherwise this method will throw an {@link IllegalArgumentException}</p>
+     *
+     * @param property The property to change.
+     * @param value    A string representation of the property value.
+     * @return The BlockState for the legacyBlock after you set this value.
+     * @since 0.3-Alpha
+     */
+    @Contract(pure = true)
+    @NotNull BlockState set(@NotNull Property<?> property, @NotNull String value);
 
 }

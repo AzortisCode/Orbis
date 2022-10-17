@@ -18,5 +18,6 @@
 
 package com.azortis.orbis.command;
 
+@FunctionalInterface
 public interface ConsoleSender extends CommandSender {
 }

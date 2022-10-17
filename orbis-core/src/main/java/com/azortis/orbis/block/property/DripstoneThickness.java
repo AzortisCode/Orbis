@@ -40,7 +40,7 @@ public enum DripstoneThickness implements Nameable {
     }
 
     @Override
-    public @NotNull String getSerializedName() {
+    public @NotNull String serializedName() {
         return this.name;
     }
 

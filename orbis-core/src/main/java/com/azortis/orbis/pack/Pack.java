@@ -18,7 +18,7 @@
 
 package com.azortis.orbis.pack;
 
-import com.azortis.orbis.pack.studio.annotations.ArrayType;
+import com.azortis.orbis.pack.studio.annotations.CollectionType;
 import com.azortis.orbis.pack.studio.annotations.Description;
 import com.azortis.orbis.pack.studio.annotations.Required;
 import com.google.gson.annotations.SerializedName;
@@ -47,7 +47,7 @@ public final class Pack {
     @Description("The version string version of the pack")
     private final String packVersion;
 
-    @ArrayType(Contributor.class)
+    @CollectionType(Contributor.class)
     @Description("Additional pack contributors")
     private final List<Contributor> contributors = new ArrayList<>();
 

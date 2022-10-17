@@ -51,7 +51,7 @@ public enum NoteBlockInstrument implements Nameable {
     }
 
     @Override
-    public @NotNull String getSerializedName() {
+    public @NotNull String serializedName() {
         return this.name;
     }
 }

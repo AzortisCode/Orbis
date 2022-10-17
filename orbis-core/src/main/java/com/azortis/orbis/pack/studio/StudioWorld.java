@@ -19,12 +19,13 @@
 package com.azortis.orbis.pack.studio;
 
 import com.azortis.orbis.Orbis;
-import com.azortis.orbis.Player;
-import com.azortis.orbis.World;
-import com.azortis.orbis.WorldInfo;
+import com.azortis.orbis.entity.Player;
 import com.azortis.orbis.generator.Dimension;
+import com.azortis.orbis.generator.Engine;
 import com.azortis.orbis.pack.Pack;
 import com.azortis.orbis.util.Location;
+import com.azortis.orbis.world.World;
+import com.azortis.orbis.world.WorldInfo;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
@@ -32,7 +33,6 @@ import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.ExecutionException;
 
 /**
  * A world interface that is used to visualize settings when working on a project.
@@ -44,7 +44,7 @@ public abstract class StudioWorld extends World {
     /**
      * If the world should render, or just create void chunks.
      */
-    private boolean shouldRender = false;
+    private volatile boolean shouldRender = false;
 
     /**
      * Players viewing this world, with their last known location before entering it.
@@ -92,14 +92,10 @@ public abstract class StudioWorld extends World {
 
             if (location.isWorldLoaded()) {
                 viewers.remove(viewer);
-                try {
-                    teleportOut(viewer, location);
-                } catch (ExecutionException | InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
+                teleportOut(viewer, location);
             } else {
                 viewers.remove(viewer);
-                viewer.kick(Orbis.getMiniMessage().deserialize("<red>Failed to teleportAsync out of studio world, so kicking as last resort..."));
+                viewer.kick(Orbis.getMiniMessage().deserialize("<red>Failed to teleport out of studio world, so kicking as last resort..."));
             }
         }
     }
@@ -110,7 +106,7 @@ public abstract class StudioWorld extends World {
         }
     }
 
-    private void teleportOut(@NotNull Player player, final Location location) throws ExecutionException, InterruptedException {
+    private void teleportOut(@NotNull Player player, final Location location) {
         // We teleport the player sync, since this will also be called when unloading
         // a studio world and if the result is unknown it will fail to unload and thus cause a server shutdown
         // now we can intervene before that happens with kicking the player as a last resort.
@@ -142,8 +138,20 @@ public abstract class StudioWorld extends World {
         }
     }
 
-    void setDimension(@NotNull Dimension dimension) {
+    synchronized void setDimension(@NotNull Dimension dimension) {
         this.dimension = dimension;
+    }
+
+    @Override
+    public Dimension getDimension() {
+        if(!shouldRender) return null;
+        return super.getDimension();
+    }
+
+    @Override
+    public Engine getEngine() {
+        if(!shouldRender) return null;
+        return super.getEngine();
     }
 
     @Override
@@ -156,12 +164,12 @@ public abstract class StudioWorld extends World {
      * Platform implementation should use this to clear the world, and regenerate chunks or update their
      * biome registries.
      */
-    public abstract void hotReload();
+    protected abstract void hotReload();
 
     /**
      * Called when the platform should initialize the rendering of the world.
      */
-    public abstract void initialize();
+    protected abstract void initialize();
 
     /**
      * Called when the StudioWorld is being unloaded.

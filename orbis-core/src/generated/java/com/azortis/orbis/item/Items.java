@@ -26,3458 +26,3458 @@ import org.jetbrains.annotations.NotNull;
 @SuppressWarnings("all")
 public final class Items {
     @NotNull
-    public static final Item AIR = ItemRegistry.fromItemKey("minecraft:air");
+    public static final LegacyItem AIR = LegacyItemRegistry.fromItemKey("minecraft:air");
 
     @NotNull
-    public static final Item STONE = ItemRegistry.fromItemKey("minecraft:stone");
+    public static final LegacyItem STONE = LegacyItemRegistry.fromItemKey("minecraft:stone");
 
     @NotNull
-    public static final Item GRANITE = ItemRegistry.fromItemKey("minecraft:granite");
+    public static final LegacyItem GRANITE = LegacyItemRegistry.fromItemKey("minecraft:granite");
 
     @NotNull
-    public static final Item POLISHED_GRANITE = ItemRegistry.fromItemKey("minecraft:polished_granite");
+    public static final LegacyItem POLISHED_GRANITE = LegacyItemRegistry.fromItemKey("minecraft:polished_granite");
 
     @NotNull
-    public static final Item DIORITE = ItemRegistry.fromItemKey("minecraft:diorite");
+    public static final LegacyItem DIORITE = LegacyItemRegistry.fromItemKey("minecraft:diorite");
 
     @NotNull
-    public static final Item POLISHED_DIORITE = ItemRegistry.fromItemKey("minecraft:polished_diorite");
+    public static final LegacyItem POLISHED_DIORITE = LegacyItemRegistry.fromItemKey("minecraft:polished_diorite");
 
     @NotNull
-    public static final Item ANDESITE = ItemRegistry.fromItemKey("minecraft:andesite");
+    public static final LegacyItem ANDESITE = LegacyItemRegistry.fromItemKey("minecraft:andesite");
 
     @NotNull
-    public static final Item POLISHED_ANDESITE = ItemRegistry.fromItemKey("minecraft:polished_andesite");
+    public static final LegacyItem POLISHED_ANDESITE = LegacyItemRegistry.fromItemKey("minecraft:polished_andesite");
 
     @NotNull
-    public static final Item DEEPSLATE = ItemRegistry.fromItemKey("minecraft:deepslate");
+    public static final LegacyItem DEEPSLATE = LegacyItemRegistry.fromItemKey("minecraft:deepslate");
 
     @NotNull
-    public static final Item COBBLED_DEEPSLATE = ItemRegistry.fromItemKey("minecraft:cobbled_deepslate");
+    public static final LegacyItem COBBLED_DEEPSLATE = LegacyItemRegistry.fromItemKey("minecraft:cobbled_deepslate");
 
     @NotNull
-    public static final Item POLISHED_DEEPSLATE = ItemRegistry.fromItemKey("minecraft:polished_deepslate");
+    public static final LegacyItem POLISHED_DEEPSLATE = LegacyItemRegistry.fromItemKey("minecraft:polished_deepslate");
 
     @NotNull
-    public static final Item CALCITE = ItemRegistry.fromItemKey("minecraft:calcite");
+    public static final LegacyItem CALCITE = LegacyItemRegistry.fromItemKey("minecraft:calcite");
 
     @NotNull
-    public static final Item TUFF = ItemRegistry.fromItemKey("minecraft:tuff");
+    public static final LegacyItem TUFF = LegacyItemRegistry.fromItemKey("minecraft:tuff");
 
     @NotNull
-    public static final Item DRIPSTONE_BLOCK = ItemRegistry.fromItemKey("minecraft:dripstone_block");
+    public static final LegacyItem DRIPSTONE_BLOCK = LegacyItemRegistry.fromItemKey("minecraft:dripstone_block");
 
     @NotNull
-    public static final Item GRASS_BLOCK = ItemRegistry.fromItemKey("minecraft:grass_block");
+    public static final LegacyItem GRASS_BLOCK = LegacyItemRegistry.fromItemKey("minecraft:grass_block");
 
     @NotNull
-    public static final Item DIRT = ItemRegistry.fromItemKey("minecraft:dirt");
+    public static final LegacyItem DIRT = LegacyItemRegistry.fromItemKey("minecraft:dirt");
 
     @NotNull
-    public static final Item COARSE_DIRT = ItemRegistry.fromItemKey("minecraft:coarse_dirt");
+    public static final LegacyItem COARSE_DIRT = LegacyItemRegistry.fromItemKey("minecraft:coarse_dirt");
 
     @NotNull
-    public static final Item PODZOL = ItemRegistry.fromItemKey("minecraft:podzol");
+    public static final LegacyItem PODZOL = LegacyItemRegistry.fromItemKey("minecraft:podzol");
 
     @NotNull
-    public static final Item ROOTED_DIRT = ItemRegistry.fromItemKey("minecraft:rooted_dirt");
+    public static final LegacyItem ROOTED_DIRT = LegacyItemRegistry.fromItemKey("minecraft:rooted_dirt");
 
     @NotNull
-    public static final Item MUD = ItemRegistry.fromItemKey("minecraft:mud");
+    public static final LegacyItem MUD = LegacyItemRegistry.fromItemKey("minecraft:mud");
 
     @NotNull
-    public static final Item CRIMSON_NYLIUM = ItemRegistry.fromItemKey("minecraft:crimson_nylium");
+    public static final LegacyItem CRIMSON_NYLIUM = LegacyItemRegistry.fromItemKey("minecraft:crimson_nylium");
 
     @NotNull
-    public static final Item WARPED_NYLIUM = ItemRegistry.fromItemKey("minecraft:warped_nylium");
+    public static final LegacyItem WARPED_NYLIUM = LegacyItemRegistry.fromItemKey("minecraft:warped_nylium");
 
     @NotNull
-    public static final Item COBBLESTONE = ItemRegistry.fromItemKey("minecraft:cobblestone");
+    public static final LegacyItem COBBLESTONE = LegacyItemRegistry.fromItemKey("minecraft:cobblestone");
 
     @NotNull
-    public static final Item OAK_PLANKS = ItemRegistry.fromItemKey("minecraft:oak_planks");
+    public static final LegacyItem OAK_PLANKS = LegacyItemRegistry.fromItemKey("minecraft:oak_planks");
 
     @NotNull
-    public static final Item SPRUCE_PLANKS = ItemRegistry.fromItemKey("minecraft:spruce_planks");
+    public static final LegacyItem SPRUCE_PLANKS = LegacyItemRegistry.fromItemKey("minecraft:spruce_planks");
 
     @NotNull
-    public static final Item BIRCH_PLANKS = ItemRegistry.fromItemKey("minecraft:birch_planks");
+    public static final LegacyItem BIRCH_PLANKS = LegacyItemRegistry.fromItemKey("minecraft:birch_planks");
 
     @NotNull
-    public static final Item JUNGLE_PLANKS = ItemRegistry.fromItemKey("minecraft:jungle_planks");
+    public static final LegacyItem JUNGLE_PLANKS = LegacyItemRegistry.fromItemKey("minecraft:jungle_planks");
 
     @NotNull
-    public static final Item ACACIA_PLANKS = ItemRegistry.fromItemKey("minecraft:acacia_planks");
+    public static final LegacyItem ACACIA_PLANKS = LegacyItemRegistry.fromItemKey("minecraft:acacia_planks");
 
     @NotNull
-    public static final Item DARK_OAK_PLANKS = ItemRegistry.fromItemKey("minecraft:dark_oak_planks");
+    public static final LegacyItem DARK_OAK_PLANKS = LegacyItemRegistry.fromItemKey("minecraft:dark_oak_planks");
 
     @NotNull
-    public static final Item MANGROVE_PLANKS = ItemRegistry.fromItemKey("minecraft:mangrove_planks");
+    public static final LegacyItem MANGROVE_PLANKS = LegacyItemRegistry.fromItemKey("minecraft:mangrove_planks");
 
     @NotNull
-    public static final Item CRIMSON_PLANKS = ItemRegistry.fromItemKey("minecraft:crimson_planks");
+    public static final LegacyItem CRIMSON_PLANKS = LegacyItemRegistry.fromItemKey("minecraft:crimson_planks");
 
     @NotNull
-    public static final Item WARPED_PLANKS = ItemRegistry.fromItemKey("minecraft:warped_planks");
+    public static final LegacyItem WARPED_PLANKS = LegacyItemRegistry.fromItemKey("minecraft:warped_planks");
 
     @NotNull
-    public static final Item OAK_SAPLING = ItemRegistry.fromItemKey("minecraft:oak_sapling");
+    public static final LegacyItem OAK_SAPLING = LegacyItemRegistry.fromItemKey("minecraft:oak_sapling");
 
     @NotNull
-    public static final Item SPRUCE_SAPLING = ItemRegistry.fromItemKey("minecraft:spruce_sapling");
+    public static final LegacyItem SPRUCE_SAPLING = LegacyItemRegistry.fromItemKey("minecraft:spruce_sapling");
 
     @NotNull
-    public static final Item BIRCH_SAPLING = ItemRegistry.fromItemKey("minecraft:birch_sapling");
+    public static final LegacyItem BIRCH_SAPLING = LegacyItemRegistry.fromItemKey("minecraft:birch_sapling");
 
     @NotNull
-    public static final Item JUNGLE_SAPLING = ItemRegistry.fromItemKey("minecraft:jungle_sapling");
+    public static final LegacyItem JUNGLE_SAPLING = LegacyItemRegistry.fromItemKey("minecraft:jungle_sapling");
 
     @NotNull
-    public static final Item ACACIA_SAPLING = ItemRegistry.fromItemKey("minecraft:acacia_sapling");
+    public static final LegacyItem ACACIA_SAPLING = LegacyItemRegistry.fromItemKey("minecraft:acacia_sapling");
 
     @NotNull
-    public static final Item DARK_OAK_SAPLING = ItemRegistry.fromItemKey("minecraft:dark_oak_sapling");
+    public static final LegacyItem DARK_OAK_SAPLING = LegacyItemRegistry.fromItemKey("minecraft:dark_oak_sapling");
 
     @NotNull
-    public static final Item MANGROVE_PROPAGULE = ItemRegistry.fromItemKey("minecraft:mangrove_propagule");
+    public static final LegacyItem MANGROVE_PROPAGULE = LegacyItemRegistry.fromItemKey("minecraft:mangrove_propagule");
 
     @NotNull
-    public static final Item BEDROCK = ItemRegistry.fromItemKey("minecraft:bedrock");
+    public static final LegacyItem BEDROCK = LegacyItemRegistry.fromItemKey("minecraft:bedrock");
 
     @NotNull
-    public static final Item SAND = ItemRegistry.fromItemKey("minecraft:sand");
+    public static final LegacyItem SAND = LegacyItemRegistry.fromItemKey("minecraft:sand");
 
     @NotNull
-    public static final Item RED_SAND = ItemRegistry.fromItemKey("minecraft:red_sand");
+    public static final LegacyItem RED_SAND = LegacyItemRegistry.fromItemKey("minecraft:red_sand");
 
     @NotNull
-    public static final Item GRAVEL = ItemRegistry.fromItemKey("minecraft:gravel");
+    public static final LegacyItem GRAVEL = LegacyItemRegistry.fromItemKey("minecraft:gravel");
 
     @NotNull
-    public static final Item COAL_ORE = ItemRegistry.fromItemKey("minecraft:coal_ore");
+    public static final LegacyItem COAL_ORE = LegacyItemRegistry.fromItemKey("minecraft:coal_ore");
 
     @NotNull
-    public static final Item DEEPSLATE_COAL_ORE = ItemRegistry.fromItemKey("minecraft:deepslate_coal_ore");
+    public static final LegacyItem DEEPSLATE_COAL_ORE = LegacyItemRegistry.fromItemKey("minecraft:deepslate_coal_ore");
 
     @NotNull
-    public static final Item IRON_ORE = ItemRegistry.fromItemKey("minecraft:iron_ore");
+    public static final LegacyItem IRON_ORE = LegacyItemRegistry.fromItemKey("minecraft:iron_ore");
 
     @NotNull
-    public static final Item DEEPSLATE_IRON_ORE = ItemRegistry.fromItemKey("minecraft:deepslate_iron_ore");
+    public static final LegacyItem DEEPSLATE_IRON_ORE = LegacyItemRegistry.fromItemKey("minecraft:deepslate_iron_ore");
 
     @NotNull
-    public static final Item COPPER_ORE = ItemRegistry.fromItemKey("minecraft:copper_ore");
+    public static final LegacyItem COPPER_ORE = LegacyItemRegistry.fromItemKey("minecraft:copper_ore");
 
     @NotNull
-    public static final Item DEEPSLATE_COPPER_ORE = ItemRegistry.fromItemKey("minecraft:deepslate_copper_ore");
+    public static final LegacyItem DEEPSLATE_COPPER_ORE = LegacyItemRegistry.fromItemKey("minecraft:deepslate_copper_ore");
 
     @NotNull
-    public static final Item GOLD_ORE = ItemRegistry.fromItemKey("minecraft:gold_ore");
+    public static final LegacyItem GOLD_ORE = LegacyItemRegistry.fromItemKey("minecraft:gold_ore");
 
     @NotNull
-    public static final Item DEEPSLATE_GOLD_ORE = ItemRegistry.fromItemKey("minecraft:deepslate_gold_ore");
+    public static final LegacyItem DEEPSLATE_GOLD_ORE = LegacyItemRegistry.fromItemKey("minecraft:deepslate_gold_ore");
 
     @NotNull
-    public static final Item REDSTONE_ORE = ItemRegistry.fromItemKey("minecraft:redstone_ore");
+    public static final LegacyItem REDSTONE_ORE = LegacyItemRegistry.fromItemKey("minecraft:redstone_ore");
 
     @NotNull
-    public static final Item DEEPSLATE_REDSTONE_ORE = ItemRegistry.fromItemKey("minecraft:deepslate_redstone_ore");
+    public static final LegacyItem DEEPSLATE_REDSTONE_ORE = LegacyItemRegistry.fromItemKey("minecraft:deepslate_redstone_ore");
 
     @NotNull
-    public static final Item EMERALD_ORE = ItemRegistry.fromItemKey("minecraft:emerald_ore");
+    public static final LegacyItem EMERALD_ORE = LegacyItemRegistry.fromItemKey("minecraft:emerald_ore");
 
     @NotNull
-    public static final Item DEEPSLATE_EMERALD_ORE = ItemRegistry.fromItemKey("minecraft:deepslate_emerald_ore");
+    public static final LegacyItem DEEPSLATE_EMERALD_ORE = LegacyItemRegistry.fromItemKey("minecraft:deepslate_emerald_ore");
 
     @NotNull
-    public static final Item LAPIS_ORE = ItemRegistry.fromItemKey("minecraft:lapis_ore");
+    public static final LegacyItem LAPIS_ORE = LegacyItemRegistry.fromItemKey("minecraft:lapis_ore");
 
     @NotNull
-    public static final Item DEEPSLATE_LAPIS_ORE = ItemRegistry.fromItemKey("minecraft:deepslate_lapis_ore");
+    public static final LegacyItem DEEPSLATE_LAPIS_ORE = LegacyItemRegistry.fromItemKey("minecraft:deepslate_lapis_ore");
 
     @NotNull
-    public static final Item DIAMOND_ORE = ItemRegistry.fromItemKey("minecraft:diamond_ore");
+    public static final LegacyItem DIAMOND_ORE = LegacyItemRegistry.fromItemKey("minecraft:diamond_ore");
 
     @NotNull
-    public static final Item DEEPSLATE_DIAMOND_ORE = ItemRegistry.fromItemKey("minecraft:deepslate_diamond_ore");
+    public static final LegacyItem DEEPSLATE_DIAMOND_ORE = LegacyItemRegistry.fromItemKey("minecraft:deepslate_diamond_ore");
 
     @NotNull
-    public static final Item NETHER_GOLD_ORE = ItemRegistry.fromItemKey("minecraft:nether_gold_ore");
+    public static final LegacyItem NETHER_GOLD_ORE = LegacyItemRegistry.fromItemKey("minecraft:nether_gold_ore");
 
     @NotNull
-    public static final Item NETHER_QUARTZ_ORE = ItemRegistry.fromItemKey("minecraft:nether_quartz_ore");
+    public static final LegacyItem NETHER_QUARTZ_ORE = LegacyItemRegistry.fromItemKey("minecraft:nether_quartz_ore");
 
     @NotNull
-    public static final Item ANCIENT_DEBRIS = ItemRegistry.fromItemKey("minecraft:ancient_debris");
+    public static final LegacyItem ANCIENT_DEBRIS = LegacyItemRegistry.fromItemKey("minecraft:ancient_debris");
 
     @NotNull
-    public static final Item COAL_BLOCK = ItemRegistry.fromItemKey("minecraft:coal_block");
+    public static final LegacyItem COAL_BLOCK = LegacyItemRegistry.fromItemKey("minecraft:coal_block");
 
     @NotNull
-    public static final Item RAW_IRON_BLOCK = ItemRegistry.fromItemKey("minecraft:raw_iron_block");
+    public static final LegacyItem RAW_IRON_BLOCK = LegacyItemRegistry.fromItemKey("minecraft:raw_iron_block");
 
     @NotNull
-    public static final Item RAW_COPPER_BLOCK = ItemRegistry.fromItemKey("minecraft:raw_copper_block");
+    public static final LegacyItem RAW_COPPER_BLOCK = LegacyItemRegistry.fromItemKey("minecraft:raw_copper_block");
 
     @NotNull
-    public static final Item RAW_GOLD_BLOCK = ItemRegistry.fromItemKey("minecraft:raw_gold_block");
+    public static final LegacyItem RAW_GOLD_BLOCK = LegacyItemRegistry.fromItemKey("minecraft:raw_gold_block");
 
     @NotNull
-    public static final Item AMETHYST_BLOCK = ItemRegistry.fromItemKey("minecraft:amethyst_block");
+    public static final LegacyItem AMETHYST_BLOCK = LegacyItemRegistry.fromItemKey("minecraft:amethyst_block");
 
     @NotNull
-    public static final Item BUDDING_AMETHYST = ItemRegistry.fromItemKey("minecraft:budding_amethyst");
+    public static final LegacyItem BUDDING_AMETHYST = LegacyItemRegistry.fromItemKey("minecraft:budding_amethyst");
 
     @NotNull
-    public static final Item IRON_BLOCK = ItemRegistry.fromItemKey("minecraft:iron_block");
+    public static final LegacyItem IRON_BLOCK = LegacyItemRegistry.fromItemKey("minecraft:iron_block");
 
     @NotNull
-    public static final Item COPPER_BLOCK = ItemRegistry.fromItemKey("minecraft:copper_block");
+    public static final LegacyItem COPPER_BLOCK = LegacyItemRegistry.fromItemKey("minecraft:copper_block");
 
     @NotNull
-    public static final Item GOLD_BLOCK = ItemRegistry.fromItemKey("minecraft:gold_block");
+    public static final LegacyItem GOLD_BLOCK = LegacyItemRegistry.fromItemKey("minecraft:gold_block");
 
     @NotNull
-    public static final Item DIAMOND_BLOCK = ItemRegistry.fromItemKey("minecraft:diamond_block");
+    public static final LegacyItem DIAMOND_BLOCK = LegacyItemRegistry.fromItemKey("minecraft:diamond_block");
 
     @NotNull
-    public static final Item NETHERITE_BLOCK = ItemRegistry.fromItemKey("minecraft:netherite_block");
+    public static final LegacyItem NETHERITE_BLOCK = LegacyItemRegistry.fromItemKey("minecraft:netherite_block");
 
     @NotNull
-    public static final Item EXPOSED_COPPER = ItemRegistry.fromItemKey("minecraft:exposed_copper");
+    public static final LegacyItem EXPOSED_COPPER = LegacyItemRegistry.fromItemKey("minecraft:exposed_copper");
 
     @NotNull
-    public static final Item WEATHERED_COPPER = ItemRegistry.fromItemKey("minecraft:weathered_copper");
+    public static final LegacyItem WEATHERED_COPPER = LegacyItemRegistry.fromItemKey("minecraft:weathered_copper");
 
     @NotNull
-    public static final Item OXIDIZED_COPPER = ItemRegistry.fromItemKey("minecraft:oxidized_copper");
+    public static final LegacyItem OXIDIZED_COPPER = LegacyItemRegistry.fromItemKey("minecraft:oxidized_copper");
 
     @NotNull
-    public static final Item CUT_COPPER = ItemRegistry.fromItemKey("minecraft:cut_copper");
+    public static final LegacyItem CUT_COPPER = LegacyItemRegistry.fromItemKey("minecraft:cut_copper");
 
     @NotNull
-    public static final Item EXPOSED_CUT_COPPER = ItemRegistry.fromItemKey("minecraft:exposed_cut_copper");
+    public static final LegacyItem EXPOSED_CUT_COPPER = LegacyItemRegistry.fromItemKey("minecraft:exposed_cut_copper");
 
     @NotNull
-    public static final Item WEATHERED_CUT_COPPER = ItemRegistry.fromItemKey("minecraft:weathered_cut_copper");
+    public static final LegacyItem WEATHERED_CUT_COPPER = LegacyItemRegistry.fromItemKey("minecraft:weathered_cut_copper");
 
     @NotNull
-    public static final Item OXIDIZED_CUT_COPPER = ItemRegistry.fromItemKey("minecraft:oxidized_cut_copper");
+    public static final LegacyItem OXIDIZED_CUT_COPPER = LegacyItemRegistry.fromItemKey("minecraft:oxidized_cut_copper");
 
     @NotNull
-    public static final Item CUT_COPPER_STAIRS = ItemRegistry.fromItemKey("minecraft:cut_copper_stairs");
+    public static final LegacyItem CUT_COPPER_STAIRS = LegacyItemRegistry.fromItemKey("minecraft:cut_copper_stairs");
 
     @NotNull
-    public static final Item EXPOSED_CUT_COPPER_STAIRS = ItemRegistry.fromItemKey("minecraft:exposed_cut_copper_stairs");
+    public static final LegacyItem EXPOSED_CUT_COPPER_STAIRS = LegacyItemRegistry.fromItemKey("minecraft:exposed_cut_copper_stairs");
 
     @NotNull
-    public static final Item WEATHERED_CUT_COPPER_STAIRS = ItemRegistry.fromItemKey("minecraft:weathered_cut_copper_stairs");
+    public static final LegacyItem WEATHERED_CUT_COPPER_STAIRS = LegacyItemRegistry.fromItemKey("minecraft:weathered_cut_copper_stairs");
 
     @NotNull
-    public static final Item OXIDIZED_CUT_COPPER_STAIRS = ItemRegistry.fromItemKey("minecraft:oxidized_cut_copper_stairs");
+    public static final LegacyItem OXIDIZED_CUT_COPPER_STAIRS = LegacyItemRegistry.fromItemKey("minecraft:oxidized_cut_copper_stairs");
 
     @NotNull
-    public static final Item CUT_COPPER_SLAB = ItemRegistry.fromItemKey("minecraft:cut_copper_slab");
+    public static final LegacyItem CUT_COPPER_SLAB = LegacyItemRegistry.fromItemKey("minecraft:cut_copper_slab");
 
     @NotNull
-    public static final Item EXPOSED_CUT_COPPER_SLAB = ItemRegistry.fromItemKey("minecraft:exposed_cut_copper_slab");
+    public static final LegacyItem EXPOSED_CUT_COPPER_SLAB = LegacyItemRegistry.fromItemKey("minecraft:exposed_cut_copper_slab");
 
     @NotNull
-    public static final Item WEATHERED_CUT_COPPER_SLAB = ItemRegistry.fromItemKey("minecraft:weathered_cut_copper_slab");
+    public static final LegacyItem WEATHERED_CUT_COPPER_SLAB = LegacyItemRegistry.fromItemKey("minecraft:weathered_cut_copper_slab");
 
     @NotNull
-    public static final Item OXIDIZED_CUT_COPPER_SLAB = ItemRegistry.fromItemKey("minecraft:oxidized_cut_copper_slab");
+    public static final LegacyItem OXIDIZED_CUT_COPPER_SLAB = LegacyItemRegistry.fromItemKey("minecraft:oxidized_cut_copper_slab");
 
     @NotNull
-    public static final Item WAXED_COPPER_BLOCK = ItemRegistry.fromItemKey("minecraft:waxed_copper_block");
+    public static final LegacyItem WAXED_COPPER_BLOCK = LegacyItemRegistry.fromItemKey("minecraft:waxed_copper_block");
 
     @NotNull
-    public static final Item WAXED_EXPOSED_COPPER = ItemRegistry.fromItemKey("minecraft:waxed_exposed_copper");
+    public static final LegacyItem WAXED_EXPOSED_COPPER = LegacyItemRegistry.fromItemKey("minecraft:waxed_exposed_copper");
 
     @NotNull
-    public static final Item WAXED_WEATHERED_COPPER = ItemRegistry.fromItemKey("minecraft:waxed_weathered_copper");
+    public static final LegacyItem WAXED_WEATHERED_COPPER = LegacyItemRegistry.fromItemKey("minecraft:waxed_weathered_copper");
 
     @NotNull
-    public static final Item WAXED_OXIDIZED_COPPER = ItemRegistry.fromItemKey("minecraft:waxed_oxidized_copper");
+    public static final LegacyItem WAXED_OXIDIZED_COPPER = LegacyItemRegistry.fromItemKey("minecraft:waxed_oxidized_copper");
 
     @NotNull
-    public static final Item WAXED_CUT_COPPER = ItemRegistry.fromItemKey("minecraft:waxed_cut_copper");
+    public static final LegacyItem WAXED_CUT_COPPER = LegacyItemRegistry.fromItemKey("minecraft:waxed_cut_copper");
 
     @NotNull
-    public static final Item WAXED_EXPOSED_CUT_COPPER = ItemRegistry.fromItemKey("minecraft:waxed_exposed_cut_copper");
+    public static final LegacyItem WAXED_EXPOSED_CUT_COPPER = LegacyItemRegistry.fromItemKey("minecraft:waxed_exposed_cut_copper");
 
     @NotNull
-    public static final Item WAXED_WEATHERED_CUT_COPPER = ItemRegistry.fromItemKey("minecraft:waxed_weathered_cut_copper");
+    public static final LegacyItem WAXED_WEATHERED_CUT_COPPER = LegacyItemRegistry.fromItemKey("minecraft:waxed_weathered_cut_copper");
 
     @NotNull
-    public static final Item WAXED_OXIDIZED_CUT_COPPER = ItemRegistry.fromItemKey("minecraft:waxed_oxidized_cut_copper");
+    public static final LegacyItem WAXED_OXIDIZED_CUT_COPPER = LegacyItemRegistry.fromItemKey("minecraft:waxed_oxidized_cut_copper");
 
     @NotNull
-    public static final Item WAXED_CUT_COPPER_STAIRS = ItemRegistry.fromItemKey("minecraft:waxed_cut_copper_stairs");
+    public static final LegacyItem WAXED_CUT_COPPER_STAIRS = LegacyItemRegistry.fromItemKey("minecraft:waxed_cut_copper_stairs");
 
     @NotNull
-    public static final Item WAXED_EXPOSED_CUT_COPPER_STAIRS = ItemRegistry.fromItemKey("minecraft:waxed_exposed_cut_copper_stairs");
+    public static final LegacyItem WAXED_EXPOSED_CUT_COPPER_STAIRS = LegacyItemRegistry.fromItemKey("minecraft:waxed_exposed_cut_copper_stairs");
 
     @NotNull
-    public static final Item WAXED_WEATHERED_CUT_COPPER_STAIRS = ItemRegistry.fromItemKey("minecraft:waxed_weathered_cut_copper_stairs");
+    public static final LegacyItem WAXED_WEATHERED_CUT_COPPER_STAIRS = LegacyItemRegistry.fromItemKey("minecraft:waxed_weathered_cut_copper_stairs");
 
     @NotNull
-    public static final Item WAXED_OXIDIZED_CUT_COPPER_STAIRS = ItemRegistry.fromItemKey("minecraft:waxed_oxidized_cut_copper_stairs");
+    public static final LegacyItem WAXED_OXIDIZED_CUT_COPPER_STAIRS = LegacyItemRegistry.fromItemKey("minecraft:waxed_oxidized_cut_copper_stairs");
 
     @NotNull
-    public static final Item WAXED_CUT_COPPER_SLAB = ItemRegistry.fromItemKey("minecraft:waxed_cut_copper_slab");
+    public static final LegacyItem WAXED_CUT_COPPER_SLAB = LegacyItemRegistry.fromItemKey("minecraft:waxed_cut_copper_slab");
 
     @NotNull
-    public static final Item WAXED_EXPOSED_CUT_COPPER_SLAB = ItemRegistry.fromItemKey("minecraft:waxed_exposed_cut_copper_slab");
+    public static final LegacyItem WAXED_EXPOSED_CUT_COPPER_SLAB = LegacyItemRegistry.fromItemKey("minecraft:waxed_exposed_cut_copper_slab");
 
     @NotNull
-    public static final Item WAXED_WEATHERED_CUT_COPPER_SLAB = ItemRegistry.fromItemKey("minecraft:waxed_weathered_cut_copper_slab");
+    public static final LegacyItem WAXED_WEATHERED_CUT_COPPER_SLAB = LegacyItemRegistry.fromItemKey("minecraft:waxed_weathered_cut_copper_slab");
 
     @NotNull
-    public static final Item WAXED_OXIDIZED_CUT_COPPER_SLAB = ItemRegistry.fromItemKey("minecraft:waxed_oxidized_cut_copper_slab");
+    public static final LegacyItem WAXED_OXIDIZED_CUT_COPPER_SLAB = LegacyItemRegistry.fromItemKey("minecraft:waxed_oxidized_cut_copper_slab");
 
     @NotNull
-    public static final Item OAK_LOG = ItemRegistry.fromItemKey("minecraft:oak_log");
+    public static final LegacyItem OAK_LOG = LegacyItemRegistry.fromItemKey("minecraft:oak_log");
 
     @NotNull
-    public static final Item SPRUCE_LOG = ItemRegistry.fromItemKey("minecraft:spruce_log");
+    public static final LegacyItem SPRUCE_LOG = LegacyItemRegistry.fromItemKey("minecraft:spruce_log");
 
     @NotNull
-    public static final Item BIRCH_LOG = ItemRegistry.fromItemKey("minecraft:birch_log");
+    public static final LegacyItem BIRCH_LOG = LegacyItemRegistry.fromItemKey("minecraft:birch_log");
 
     @NotNull
-    public static final Item JUNGLE_LOG = ItemRegistry.fromItemKey("minecraft:jungle_log");
+    public static final LegacyItem JUNGLE_LOG = LegacyItemRegistry.fromItemKey("minecraft:jungle_log");
 
     @NotNull
-    public static final Item ACACIA_LOG = ItemRegistry.fromItemKey("minecraft:acacia_log");
+    public static final LegacyItem ACACIA_LOG = LegacyItemRegistry.fromItemKey("minecraft:acacia_log");
 
     @NotNull
-    public static final Item DARK_OAK_LOG = ItemRegistry.fromItemKey("minecraft:dark_oak_log");
+    public static final LegacyItem DARK_OAK_LOG = LegacyItemRegistry.fromItemKey("minecraft:dark_oak_log");
 
     @NotNull
-    public static final Item MANGROVE_LOG = ItemRegistry.fromItemKey("minecraft:mangrove_log");
+    public static final LegacyItem MANGROVE_LOG = LegacyItemRegistry.fromItemKey("minecraft:mangrove_log");
 
     @NotNull
-    public static final Item MANGROVE_ROOTS = ItemRegistry.fromItemKey("minecraft:mangrove_roots");
+    public static final LegacyItem MANGROVE_ROOTS = LegacyItemRegistry.fromItemKey("minecraft:mangrove_roots");
 
     @NotNull
-    public static final Item MUDDY_MANGROVE_ROOTS = ItemRegistry.fromItemKey("minecraft:muddy_mangrove_roots");
+    public static final LegacyItem MUDDY_MANGROVE_ROOTS = LegacyItemRegistry.fromItemKey("minecraft:muddy_mangrove_roots");
 
     @NotNull
-    public static final Item CRIMSON_STEM = ItemRegistry.fromItemKey("minecraft:crimson_stem");
+    public static final LegacyItem CRIMSON_STEM = LegacyItemRegistry.fromItemKey("minecraft:crimson_stem");
 
     @NotNull
-    public static final Item WARPED_STEM = ItemRegistry.fromItemKey("minecraft:warped_stem");
+    public static final LegacyItem WARPED_STEM = LegacyItemRegistry.fromItemKey("minecraft:warped_stem");
 
     @NotNull
-    public static final Item STRIPPED_OAK_LOG = ItemRegistry.fromItemKey("minecraft:stripped_oak_log");
+    public static final LegacyItem STRIPPED_OAK_LOG = LegacyItemRegistry.fromItemKey("minecraft:stripped_oak_log");
 
     @NotNull
-    public static final Item STRIPPED_SPRUCE_LOG = ItemRegistry.fromItemKey("minecraft:stripped_spruce_log");
+    public static final LegacyItem STRIPPED_SPRUCE_LOG = LegacyItemRegistry.fromItemKey("minecraft:stripped_spruce_log");
 
     @NotNull
-    public static final Item STRIPPED_BIRCH_LOG = ItemRegistry.fromItemKey("minecraft:stripped_birch_log");
+    public static final LegacyItem STRIPPED_BIRCH_LOG = LegacyItemRegistry.fromItemKey("minecraft:stripped_birch_log");
 
     @NotNull
-    public static final Item STRIPPED_JUNGLE_LOG = ItemRegistry.fromItemKey("minecraft:stripped_jungle_log");
+    public static final LegacyItem STRIPPED_JUNGLE_LOG = LegacyItemRegistry.fromItemKey("minecraft:stripped_jungle_log");
 
     @NotNull
-    public static final Item STRIPPED_ACACIA_LOG = ItemRegistry.fromItemKey("minecraft:stripped_acacia_log");
+    public static final LegacyItem STRIPPED_ACACIA_LOG = LegacyItemRegistry.fromItemKey("minecraft:stripped_acacia_log");
 
     @NotNull
-    public static final Item STRIPPED_DARK_OAK_LOG = ItemRegistry.fromItemKey("minecraft:stripped_dark_oak_log");
+    public static final LegacyItem STRIPPED_DARK_OAK_LOG = LegacyItemRegistry.fromItemKey("minecraft:stripped_dark_oak_log");
 
     @NotNull
-    public static final Item STRIPPED_MANGROVE_LOG = ItemRegistry.fromItemKey("minecraft:stripped_mangrove_log");
+    public static final LegacyItem STRIPPED_MANGROVE_LOG = LegacyItemRegistry.fromItemKey("minecraft:stripped_mangrove_log");
 
     @NotNull
-    public static final Item STRIPPED_CRIMSON_STEM = ItemRegistry.fromItemKey("minecraft:stripped_crimson_stem");
+    public static final LegacyItem STRIPPED_CRIMSON_STEM = LegacyItemRegistry.fromItemKey("minecraft:stripped_crimson_stem");
 
     @NotNull
-    public static final Item STRIPPED_WARPED_STEM = ItemRegistry.fromItemKey("minecraft:stripped_warped_stem");
+    public static final LegacyItem STRIPPED_WARPED_STEM = LegacyItemRegistry.fromItemKey("minecraft:stripped_warped_stem");
 
     @NotNull
-    public static final Item STRIPPED_OAK_WOOD = ItemRegistry.fromItemKey("minecraft:stripped_oak_wood");
+    public static final LegacyItem STRIPPED_OAK_WOOD = LegacyItemRegistry.fromItemKey("minecraft:stripped_oak_wood");
 
     @NotNull
-    public static final Item STRIPPED_SPRUCE_WOOD = ItemRegistry.fromItemKey("minecraft:stripped_spruce_wood");
+    public static final LegacyItem STRIPPED_SPRUCE_WOOD = LegacyItemRegistry.fromItemKey("minecraft:stripped_spruce_wood");
 
     @NotNull
-    public static final Item STRIPPED_BIRCH_WOOD = ItemRegistry.fromItemKey("minecraft:stripped_birch_wood");
+    public static final LegacyItem STRIPPED_BIRCH_WOOD = LegacyItemRegistry.fromItemKey("minecraft:stripped_birch_wood");
 
     @NotNull
-    public static final Item STRIPPED_JUNGLE_WOOD = ItemRegistry.fromItemKey("minecraft:stripped_jungle_wood");
+    public static final LegacyItem STRIPPED_JUNGLE_WOOD = LegacyItemRegistry.fromItemKey("minecraft:stripped_jungle_wood");
 
     @NotNull
-    public static final Item STRIPPED_ACACIA_WOOD = ItemRegistry.fromItemKey("minecraft:stripped_acacia_wood");
+    public static final LegacyItem STRIPPED_ACACIA_WOOD = LegacyItemRegistry.fromItemKey("minecraft:stripped_acacia_wood");
 
     @NotNull
-    public static final Item STRIPPED_DARK_OAK_WOOD = ItemRegistry.fromItemKey("minecraft:stripped_dark_oak_wood");
+    public static final LegacyItem STRIPPED_DARK_OAK_WOOD = LegacyItemRegistry.fromItemKey("minecraft:stripped_dark_oak_wood");
 
     @NotNull
-    public static final Item STRIPPED_MANGROVE_WOOD = ItemRegistry.fromItemKey("minecraft:stripped_mangrove_wood");
+    public static final LegacyItem STRIPPED_MANGROVE_WOOD = LegacyItemRegistry.fromItemKey("minecraft:stripped_mangrove_wood");
 
     @NotNull
-    public static final Item STRIPPED_CRIMSON_HYPHAE = ItemRegistry.fromItemKey("minecraft:stripped_crimson_hyphae");
+    public static final LegacyItem STRIPPED_CRIMSON_HYPHAE = LegacyItemRegistry.fromItemKey("minecraft:stripped_crimson_hyphae");
 
     @NotNull
-    public static final Item STRIPPED_WARPED_HYPHAE = ItemRegistry.fromItemKey("minecraft:stripped_warped_hyphae");
+    public static final LegacyItem STRIPPED_WARPED_HYPHAE = LegacyItemRegistry.fromItemKey("minecraft:stripped_warped_hyphae");
 
     @NotNull
-    public static final Item OAK_WOOD = ItemRegistry.fromItemKey("minecraft:oak_wood");
+    public static final LegacyItem OAK_WOOD = LegacyItemRegistry.fromItemKey("minecraft:oak_wood");
 
     @NotNull
-    public static final Item SPRUCE_WOOD = ItemRegistry.fromItemKey("minecraft:spruce_wood");
+    public static final LegacyItem SPRUCE_WOOD = LegacyItemRegistry.fromItemKey("minecraft:spruce_wood");
 
     @NotNull
-    public static final Item BIRCH_WOOD = ItemRegistry.fromItemKey("minecraft:birch_wood");
+    public static final LegacyItem BIRCH_WOOD = LegacyItemRegistry.fromItemKey("minecraft:birch_wood");
 
     @NotNull
-    public static final Item JUNGLE_WOOD = ItemRegistry.fromItemKey("minecraft:jungle_wood");
+    public static final LegacyItem JUNGLE_WOOD = LegacyItemRegistry.fromItemKey("minecraft:jungle_wood");
 
     @NotNull
-    public static final Item ACACIA_WOOD = ItemRegistry.fromItemKey("minecraft:acacia_wood");
+    public static final LegacyItem ACACIA_WOOD = LegacyItemRegistry.fromItemKey("minecraft:acacia_wood");
 
     @NotNull
-    public static final Item DARK_OAK_WOOD = ItemRegistry.fromItemKey("minecraft:dark_oak_wood");
+    public static final LegacyItem DARK_OAK_WOOD = LegacyItemRegistry.fromItemKey("minecraft:dark_oak_wood");
 
     @NotNull
-    public static final Item MANGROVE_WOOD = ItemRegistry.fromItemKey("minecraft:mangrove_wood");
+    public static final LegacyItem MANGROVE_WOOD = LegacyItemRegistry.fromItemKey("minecraft:mangrove_wood");
 
     @NotNull
-    public static final Item CRIMSON_HYPHAE = ItemRegistry.fromItemKey("minecraft:crimson_hyphae");
+    public static final LegacyItem CRIMSON_HYPHAE = LegacyItemRegistry.fromItemKey("minecraft:crimson_hyphae");
 
     @NotNull
-    public static final Item WARPED_HYPHAE = ItemRegistry.fromItemKey("minecraft:warped_hyphae");
+    public static final LegacyItem WARPED_HYPHAE = LegacyItemRegistry.fromItemKey("minecraft:warped_hyphae");
 
     @NotNull
-    public static final Item OAK_LEAVES = ItemRegistry.fromItemKey("minecraft:oak_leaves");
+    public static final LegacyItem OAK_LEAVES = LegacyItemRegistry.fromItemKey("minecraft:oak_leaves");
 
     @NotNull
-    public static final Item SPRUCE_LEAVES = ItemRegistry.fromItemKey("minecraft:spruce_leaves");
+    public static final LegacyItem SPRUCE_LEAVES = LegacyItemRegistry.fromItemKey("minecraft:spruce_leaves");
 
     @NotNull
-    public static final Item BIRCH_LEAVES = ItemRegistry.fromItemKey("minecraft:birch_leaves");
+    public static final LegacyItem BIRCH_LEAVES = LegacyItemRegistry.fromItemKey("minecraft:birch_leaves");
 
     @NotNull
-    public static final Item JUNGLE_LEAVES = ItemRegistry.fromItemKey("minecraft:jungle_leaves");
+    public static final LegacyItem JUNGLE_LEAVES = LegacyItemRegistry.fromItemKey("minecraft:jungle_leaves");
 
     @NotNull
-    public static final Item ACACIA_LEAVES = ItemRegistry.fromItemKey("minecraft:acacia_leaves");
+    public static final LegacyItem ACACIA_LEAVES = LegacyItemRegistry.fromItemKey("minecraft:acacia_leaves");
 
     @NotNull
-    public static final Item DARK_OAK_LEAVES = ItemRegistry.fromItemKey("minecraft:dark_oak_leaves");
+    public static final LegacyItem DARK_OAK_LEAVES = LegacyItemRegistry.fromItemKey("minecraft:dark_oak_leaves");
 
     @NotNull
-    public static final Item MANGROVE_LEAVES = ItemRegistry.fromItemKey("minecraft:mangrove_leaves");
+    public static final LegacyItem MANGROVE_LEAVES = LegacyItemRegistry.fromItemKey("minecraft:mangrove_leaves");
 
     @NotNull
-    public static final Item AZALEA_LEAVES = ItemRegistry.fromItemKey("minecraft:azalea_leaves");
+    public static final LegacyItem AZALEA_LEAVES = LegacyItemRegistry.fromItemKey("minecraft:azalea_leaves");
 
     @NotNull
-    public static final Item FLOWERING_AZALEA_LEAVES = ItemRegistry.fromItemKey("minecraft:flowering_azalea_leaves");
+    public static final LegacyItem FLOWERING_AZALEA_LEAVES = LegacyItemRegistry.fromItemKey("minecraft:flowering_azalea_leaves");
 
     @NotNull
-    public static final Item SPONGE = ItemRegistry.fromItemKey("minecraft:sponge");
+    public static final LegacyItem SPONGE = LegacyItemRegistry.fromItemKey("minecraft:sponge");
 
     @NotNull
-    public static final Item WET_SPONGE = ItemRegistry.fromItemKey("minecraft:wet_sponge");
+    public static final LegacyItem WET_SPONGE = LegacyItemRegistry.fromItemKey("minecraft:wet_sponge");
 
     @NotNull
-    public static final Item GLASS = ItemRegistry.fromItemKey("minecraft:glass");
+    public static final LegacyItem GLASS = LegacyItemRegistry.fromItemKey("minecraft:glass");
 
     @NotNull
-    public static final Item TINTED_GLASS = ItemRegistry.fromItemKey("minecraft:tinted_glass");
+    public static final LegacyItem TINTED_GLASS = LegacyItemRegistry.fromItemKey("minecraft:tinted_glass");
 
     @NotNull
-    public static final Item LAPIS_BLOCK = ItemRegistry.fromItemKey("minecraft:lapis_block");
+    public static final LegacyItem LAPIS_BLOCK = LegacyItemRegistry.fromItemKey("minecraft:lapis_block");
 
     @NotNull
-    public static final Item SANDSTONE = ItemRegistry.fromItemKey("minecraft:sandstone");
+    public static final LegacyItem SANDSTONE = LegacyItemRegistry.fromItemKey("minecraft:sandstone");
 
     @NotNull
-    public static final Item CHISELED_SANDSTONE = ItemRegistry.fromItemKey("minecraft:chiseled_sandstone");
+    public static final LegacyItem CHISELED_SANDSTONE = LegacyItemRegistry.fromItemKey("minecraft:chiseled_sandstone");
 
     @NotNull
-    public static final Item CUT_SANDSTONE = ItemRegistry.fromItemKey("minecraft:cut_sandstone");
+    public static final LegacyItem CUT_SANDSTONE = LegacyItemRegistry.fromItemKey("minecraft:cut_sandstone");
 
     @NotNull
-    public static final Item COBWEB = ItemRegistry.fromItemKey("minecraft:cobweb");
+    public static final LegacyItem COBWEB = LegacyItemRegistry.fromItemKey("minecraft:cobweb");
 
     @NotNull
-    public static final Item GRASS = ItemRegistry.fromItemKey("minecraft:grass");
+    public static final LegacyItem GRASS = LegacyItemRegistry.fromItemKey("minecraft:grass");
 
     @NotNull
-    public static final Item FERN = ItemRegistry.fromItemKey("minecraft:fern");
+    public static final LegacyItem FERN = LegacyItemRegistry.fromItemKey("minecraft:fern");
 
     @NotNull
-    public static final Item AZALEA = ItemRegistry.fromItemKey("minecraft:azalea");
+    public static final LegacyItem AZALEA = LegacyItemRegistry.fromItemKey("minecraft:azalea");
 
     @NotNull
-    public static final Item FLOWERING_AZALEA = ItemRegistry.fromItemKey("minecraft:flowering_azalea");
+    public static final LegacyItem FLOWERING_AZALEA = LegacyItemRegistry.fromItemKey("minecraft:flowering_azalea");
 
     @NotNull
-    public static final Item DEAD_BUSH = ItemRegistry.fromItemKey("minecraft:dead_bush");
+    public static final LegacyItem DEAD_BUSH = LegacyItemRegistry.fromItemKey("minecraft:dead_bush");
 
     @NotNull
-    public static final Item SEAGRASS = ItemRegistry.fromItemKey("minecraft:seagrass");
+    public static final LegacyItem SEAGRASS = LegacyItemRegistry.fromItemKey("minecraft:seagrass");
 
     @NotNull
-    public static final Item SEA_PICKLE = ItemRegistry.fromItemKey("minecraft:sea_pickle");
+    public static final LegacyItem SEA_PICKLE = LegacyItemRegistry.fromItemKey("minecraft:sea_pickle");
 
     @NotNull
-    public static final Item WHITE_WOOL = ItemRegistry.fromItemKey("minecraft:white_wool");
+    public static final LegacyItem WHITE_WOOL = LegacyItemRegistry.fromItemKey("minecraft:white_wool");
 
     @NotNull
-    public static final Item ORANGE_WOOL = ItemRegistry.fromItemKey("minecraft:orange_wool");
+    public static final LegacyItem ORANGE_WOOL = LegacyItemRegistry.fromItemKey("minecraft:orange_wool");
 
     @NotNull
-    public static final Item MAGENTA_WOOL = ItemRegistry.fromItemKey("minecraft:magenta_wool");
+    public static final LegacyItem MAGENTA_WOOL = LegacyItemRegistry.fromItemKey("minecraft:magenta_wool");
 
     @NotNull
-    public static final Item LIGHT_BLUE_WOOL = ItemRegistry.fromItemKey("minecraft:light_blue_wool");
+    public static final LegacyItem LIGHT_BLUE_WOOL = LegacyItemRegistry.fromItemKey("minecraft:light_blue_wool");
 
     @NotNull
-    public static final Item YELLOW_WOOL = ItemRegistry.fromItemKey("minecraft:yellow_wool");
+    public static final LegacyItem YELLOW_WOOL = LegacyItemRegistry.fromItemKey("minecraft:yellow_wool");
 
     @NotNull
-    public static final Item LIME_WOOL = ItemRegistry.fromItemKey("minecraft:lime_wool");
+    public static final LegacyItem LIME_WOOL = LegacyItemRegistry.fromItemKey("minecraft:lime_wool");
 
     @NotNull
-    public static final Item PINK_WOOL = ItemRegistry.fromItemKey("minecraft:pink_wool");
+    public static final LegacyItem PINK_WOOL = LegacyItemRegistry.fromItemKey("minecraft:pink_wool");
 
     @NotNull
-    public static final Item GRAY_WOOL = ItemRegistry.fromItemKey("minecraft:gray_wool");
+    public static final LegacyItem GRAY_WOOL = LegacyItemRegistry.fromItemKey("minecraft:gray_wool");
 
     @NotNull
-    public static final Item LIGHT_GRAY_WOOL = ItemRegistry.fromItemKey("minecraft:light_gray_wool");
+    public static final LegacyItem LIGHT_GRAY_WOOL = LegacyItemRegistry.fromItemKey("minecraft:light_gray_wool");
 
     @NotNull
-    public static final Item CYAN_WOOL = ItemRegistry.fromItemKey("minecraft:cyan_wool");
+    public static final LegacyItem CYAN_WOOL = LegacyItemRegistry.fromItemKey("minecraft:cyan_wool");
 
     @NotNull
-    public static final Item PURPLE_WOOL = ItemRegistry.fromItemKey("minecraft:purple_wool");
+    public static final LegacyItem PURPLE_WOOL = LegacyItemRegistry.fromItemKey("minecraft:purple_wool");
 
     @NotNull
-    public static final Item BLUE_WOOL = ItemRegistry.fromItemKey("minecraft:blue_wool");
+    public static final LegacyItem BLUE_WOOL = LegacyItemRegistry.fromItemKey("minecraft:blue_wool");
 
     @NotNull
-    public static final Item BROWN_WOOL = ItemRegistry.fromItemKey("minecraft:brown_wool");
+    public static final LegacyItem BROWN_WOOL = LegacyItemRegistry.fromItemKey("minecraft:brown_wool");
 
     @NotNull
-    public static final Item GREEN_WOOL = ItemRegistry.fromItemKey("minecraft:green_wool");
+    public static final LegacyItem GREEN_WOOL = LegacyItemRegistry.fromItemKey("minecraft:green_wool");
 
     @NotNull
-    public static final Item RED_WOOL = ItemRegistry.fromItemKey("minecraft:red_wool");
+    public static final LegacyItem RED_WOOL = LegacyItemRegistry.fromItemKey("minecraft:red_wool");
 
     @NotNull
-    public static final Item BLACK_WOOL = ItemRegistry.fromItemKey("minecraft:black_wool");
+    public static final LegacyItem BLACK_WOOL = LegacyItemRegistry.fromItemKey("minecraft:black_wool");
 
     @NotNull
-    public static final Item DANDELION = ItemRegistry.fromItemKey("minecraft:dandelion");
+    public static final LegacyItem DANDELION = LegacyItemRegistry.fromItemKey("minecraft:dandelion");
 
     @NotNull
-    public static final Item POPPY = ItemRegistry.fromItemKey("minecraft:poppy");
+    public static final LegacyItem POPPY = LegacyItemRegistry.fromItemKey("minecraft:poppy");
 
     @NotNull
-    public static final Item BLUE_ORCHID = ItemRegistry.fromItemKey("minecraft:blue_orchid");
+    public static final LegacyItem BLUE_ORCHID = LegacyItemRegistry.fromItemKey("minecraft:blue_orchid");
 
     @NotNull
-    public static final Item ALLIUM = ItemRegistry.fromItemKey("minecraft:allium");
+    public static final LegacyItem ALLIUM = LegacyItemRegistry.fromItemKey("minecraft:allium");
 
     @NotNull
-    public static final Item AZURE_BLUET = ItemRegistry.fromItemKey("minecraft:azure_bluet");
+    public static final LegacyItem AZURE_BLUET = LegacyItemRegistry.fromItemKey("minecraft:azure_bluet");
 
     @NotNull
-    public static final Item RED_TULIP = ItemRegistry.fromItemKey("minecraft:red_tulip");
+    public static final LegacyItem RED_TULIP = LegacyItemRegistry.fromItemKey("minecraft:red_tulip");
 
     @NotNull
-    public static final Item ORANGE_TULIP = ItemRegistry.fromItemKey("minecraft:orange_tulip");
+    public static final LegacyItem ORANGE_TULIP = LegacyItemRegistry.fromItemKey("minecraft:orange_tulip");
 
     @NotNull
-    public static final Item WHITE_TULIP = ItemRegistry.fromItemKey("minecraft:white_tulip");
+    public static final LegacyItem WHITE_TULIP = LegacyItemRegistry.fromItemKey("minecraft:white_tulip");
 
     @NotNull
-    public static final Item PINK_TULIP = ItemRegistry.fromItemKey("minecraft:pink_tulip");
+    public static final LegacyItem PINK_TULIP = LegacyItemRegistry.fromItemKey("minecraft:pink_tulip");
 
     @NotNull
-    public static final Item OXEYE_DAISY = ItemRegistry.fromItemKey("minecraft:oxeye_daisy");
+    public static final LegacyItem OXEYE_DAISY = LegacyItemRegistry.fromItemKey("minecraft:oxeye_daisy");
 
     @NotNull
-    public static final Item CORNFLOWER = ItemRegistry.fromItemKey("minecraft:cornflower");
+    public static final LegacyItem CORNFLOWER = LegacyItemRegistry.fromItemKey("minecraft:cornflower");
 
     @NotNull
-    public static final Item LILY_OF_THE_VALLEY = ItemRegistry.fromItemKey("minecraft:lily_of_the_valley");
+    public static final LegacyItem LILY_OF_THE_VALLEY = LegacyItemRegistry.fromItemKey("minecraft:lily_of_the_valley");
 
     @NotNull
-    public static final Item WITHER_ROSE = ItemRegistry.fromItemKey("minecraft:wither_rose");
+    public static final LegacyItem WITHER_ROSE = LegacyItemRegistry.fromItemKey("minecraft:wither_rose");
 
     @NotNull
-    public static final Item SPORE_BLOSSOM = ItemRegistry.fromItemKey("minecraft:spore_blossom");
+    public static final LegacyItem SPORE_BLOSSOM = LegacyItemRegistry.fromItemKey("minecraft:spore_blossom");
 
     @NotNull
-    public static final Item BROWN_MUSHROOM = ItemRegistry.fromItemKey("minecraft:brown_mushroom");
+    public static final LegacyItem BROWN_MUSHROOM = LegacyItemRegistry.fromItemKey("minecraft:brown_mushroom");
 
     @NotNull
-    public static final Item RED_MUSHROOM = ItemRegistry.fromItemKey("minecraft:red_mushroom");
+    public static final LegacyItem RED_MUSHROOM = LegacyItemRegistry.fromItemKey("minecraft:red_mushroom");
 
     @NotNull
-    public static final Item CRIMSON_FUNGUS = ItemRegistry.fromItemKey("minecraft:crimson_fungus");
+    public static final LegacyItem CRIMSON_FUNGUS = LegacyItemRegistry.fromItemKey("minecraft:crimson_fungus");
 
     @NotNull
-    public static final Item WARPED_FUNGUS = ItemRegistry.fromItemKey("minecraft:warped_fungus");
+    public static final LegacyItem WARPED_FUNGUS = LegacyItemRegistry.fromItemKey("minecraft:warped_fungus");
 
     @NotNull
-    public static final Item CRIMSON_ROOTS = ItemRegistry.fromItemKey("minecraft:crimson_roots");
+    public static final LegacyItem CRIMSON_ROOTS = LegacyItemRegistry.fromItemKey("minecraft:crimson_roots");
 
     @NotNull
-    public static final Item WARPED_ROOTS = ItemRegistry.fromItemKey("minecraft:warped_roots");
+    public static final LegacyItem WARPED_ROOTS = LegacyItemRegistry.fromItemKey("minecraft:warped_roots");
 
     @NotNull
-    public static final Item NETHER_SPROUTS = ItemRegistry.fromItemKey("minecraft:nether_sprouts");
+    public static final LegacyItem NETHER_SPROUTS = LegacyItemRegistry.fromItemKey("minecraft:nether_sprouts");
 
     @NotNull
-    public static final Item WEEPING_VINES = ItemRegistry.fromItemKey("minecraft:weeping_vines");
+    public static final LegacyItem WEEPING_VINES = LegacyItemRegistry.fromItemKey("minecraft:weeping_vines");
 
     @NotNull
-    public static final Item TWISTING_VINES = ItemRegistry.fromItemKey("minecraft:twisting_vines");
+    public static final LegacyItem TWISTING_VINES = LegacyItemRegistry.fromItemKey("minecraft:twisting_vines");
 
     @NotNull
-    public static final Item SUGAR_CANE = ItemRegistry.fromItemKey("minecraft:sugar_cane");
+    public static final LegacyItem SUGAR_CANE = LegacyItemRegistry.fromItemKey("minecraft:sugar_cane");
 
     @NotNull
-    public static final Item KELP = ItemRegistry.fromItemKey("minecraft:kelp");
+    public static final LegacyItem KELP = LegacyItemRegistry.fromItemKey("minecraft:kelp");
 
     @NotNull
-    public static final Item MOSS_CARPET = ItemRegistry.fromItemKey("minecraft:moss_carpet");
+    public static final LegacyItem MOSS_CARPET = LegacyItemRegistry.fromItemKey("minecraft:moss_carpet");
 
     @NotNull
-    public static final Item MOSS_BLOCK = ItemRegistry.fromItemKey("minecraft:moss_block");
+    public static final LegacyItem MOSS_BLOCK = LegacyItemRegistry.fromItemKey("minecraft:moss_block");
 
     @NotNull
-    public static final Item HANGING_ROOTS = ItemRegistry.fromItemKey("minecraft:hanging_roots");
+    public static final LegacyItem HANGING_ROOTS = LegacyItemRegistry.fromItemKey("minecraft:hanging_roots");
 
     @NotNull
-    public static final Item BIG_DRIPLEAF = ItemRegistry.fromItemKey("minecraft:big_dripleaf");
+    public static final LegacyItem BIG_DRIPLEAF = LegacyItemRegistry.fromItemKey("minecraft:big_dripleaf");
 
     @NotNull
-    public static final Item SMALL_DRIPLEAF = ItemRegistry.fromItemKey("minecraft:small_dripleaf");
+    public static final LegacyItem SMALL_DRIPLEAF = LegacyItemRegistry.fromItemKey("minecraft:small_dripleaf");
 
     @NotNull
-    public static final Item BAMBOO = ItemRegistry.fromItemKey("minecraft:bamboo");
+    public static final LegacyItem BAMBOO = LegacyItemRegistry.fromItemKey("minecraft:bamboo");
 
     @NotNull
-    public static final Item OAK_SLAB = ItemRegistry.fromItemKey("minecraft:oak_slab");
+    public static final LegacyItem OAK_SLAB = LegacyItemRegistry.fromItemKey("minecraft:oak_slab");
 
     @NotNull
-    public static final Item SPRUCE_SLAB = ItemRegistry.fromItemKey("minecraft:spruce_slab");
+    public static final LegacyItem SPRUCE_SLAB = LegacyItemRegistry.fromItemKey("minecraft:spruce_slab");
 
     @NotNull
-    public static final Item BIRCH_SLAB = ItemRegistry.fromItemKey("minecraft:birch_slab");
+    public static final LegacyItem BIRCH_SLAB = LegacyItemRegistry.fromItemKey("minecraft:birch_slab");
 
     @NotNull
-    public static final Item JUNGLE_SLAB = ItemRegistry.fromItemKey("minecraft:jungle_slab");
+    public static final LegacyItem JUNGLE_SLAB = LegacyItemRegistry.fromItemKey("minecraft:jungle_slab");
 
     @NotNull
-    public static final Item ACACIA_SLAB = ItemRegistry.fromItemKey("minecraft:acacia_slab");
+    public static final LegacyItem ACACIA_SLAB = LegacyItemRegistry.fromItemKey("minecraft:acacia_slab");
 
     @NotNull
-    public static final Item DARK_OAK_SLAB = ItemRegistry.fromItemKey("minecraft:dark_oak_slab");
+    public static final LegacyItem DARK_OAK_SLAB = LegacyItemRegistry.fromItemKey("minecraft:dark_oak_slab");
 
     @NotNull
-    public static final Item MANGROVE_SLAB = ItemRegistry.fromItemKey("minecraft:mangrove_slab");
+    public static final LegacyItem MANGROVE_SLAB = LegacyItemRegistry.fromItemKey("minecraft:mangrove_slab");
 
     @NotNull
-    public static final Item CRIMSON_SLAB = ItemRegistry.fromItemKey("minecraft:crimson_slab");
+    public static final LegacyItem CRIMSON_SLAB = LegacyItemRegistry.fromItemKey("minecraft:crimson_slab");
 
     @NotNull
-    public static final Item WARPED_SLAB = ItemRegistry.fromItemKey("minecraft:warped_slab");
+    public static final LegacyItem WARPED_SLAB = LegacyItemRegistry.fromItemKey("minecraft:warped_slab");
 
     @NotNull
-    public static final Item STONE_SLAB = ItemRegistry.fromItemKey("minecraft:stone_slab");
+    public static final LegacyItem STONE_SLAB = LegacyItemRegistry.fromItemKey("minecraft:stone_slab");
 
     @NotNull
-    public static final Item SMOOTH_STONE_SLAB = ItemRegistry.fromItemKey("minecraft:smooth_stone_slab");
+    public static final LegacyItem SMOOTH_STONE_SLAB = LegacyItemRegistry.fromItemKey("minecraft:smooth_stone_slab");
 
     @NotNull
-    public static final Item SANDSTONE_SLAB = ItemRegistry.fromItemKey("minecraft:sandstone_slab");
+    public static final LegacyItem SANDSTONE_SLAB = LegacyItemRegistry.fromItemKey("minecraft:sandstone_slab");
 
     @NotNull
-    public static final Item CUT_STANDSTONE_SLAB = ItemRegistry.fromItemKey("minecraft:cut_sandstone_slab");
+    public static final LegacyItem CUT_STANDSTONE_SLAB = LegacyItemRegistry.fromItemKey("minecraft:cut_sandstone_slab");
 
     @NotNull
-    public static final Item PETRIFIED_OAK_SLAB = ItemRegistry.fromItemKey("minecraft:petrified_oak_slab");
+    public static final LegacyItem PETRIFIED_OAK_SLAB = LegacyItemRegistry.fromItemKey("minecraft:petrified_oak_slab");
 
     @NotNull
-    public static final Item COBBLESTONE_SLAB = ItemRegistry.fromItemKey("minecraft:cobblestone_slab");
+    public static final LegacyItem COBBLESTONE_SLAB = LegacyItemRegistry.fromItemKey("minecraft:cobblestone_slab");
 
     @NotNull
-    public static final Item BRICK_SLAB = ItemRegistry.fromItemKey("minecraft:brick_slab");
+    public static final LegacyItem BRICK_SLAB = LegacyItemRegistry.fromItemKey("minecraft:brick_slab");
 
     @NotNull
-    public static final Item STONE_BRICK_SLAB = ItemRegistry.fromItemKey("minecraft:stone_brick_slab");
+    public static final LegacyItem STONE_BRICK_SLAB = LegacyItemRegistry.fromItemKey("minecraft:stone_brick_slab");
 
     @NotNull
-    public static final Item MUD_BRICK_SLAB = ItemRegistry.fromItemKey("minecraft:mud_brick_slab");
+    public static final LegacyItem MUD_BRICK_SLAB = LegacyItemRegistry.fromItemKey("minecraft:mud_brick_slab");
 
     @NotNull
-    public static final Item NETHER_BRICK_SLAB = ItemRegistry.fromItemKey("minecraft:nether_brick_slab");
+    public static final LegacyItem NETHER_BRICK_SLAB = LegacyItemRegistry.fromItemKey("minecraft:nether_brick_slab");
 
     @NotNull
-    public static final Item QUARTZ_SLAB = ItemRegistry.fromItemKey("minecraft:quartz_slab");
+    public static final LegacyItem QUARTZ_SLAB = LegacyItemRegistry.fromItemKey("minecraft:quartz_slab");
 
     @NotNull
-    public static final Item RED_SANDSTONE_SLAB = ItemRegistry.fromItemKey("minecraft:red_sandstone_slab");
+    public static final LegacyItem RED_SANDSTONE_SLAB = LegacyItemRegistry.fromItemKey("minecraft:red_sandstone_slab");
 
     @NotNull
-    public static final Item CUT_RED_SANDSTONE_SLAB = ItemRegistry.fromItemKey("minecraft:cut_red_sandstone_slab");
+    public static final LegacyItem CUT_RED_SANDSTONE_SLAB = LegacyItemRegistry.fromItemKey("minecraft:cut_red_sandstone_slab");
 
     @NotNull
-    public static final Item PURPUR_SLAB = ItemRegistry.fromItemKey("minecraft:purpur_slab");
+    public static final LegacyItem PURPUR_SLAB = LegacyItemRegistry.fromItemKey("minecraft:purpur_slab");
 
     @NotNull
-    public static final Item PRISMARINE_SLAB = ItemRegistry.fromItemKey("minecraft:prismarine_slab");
+    public static final LegacyItem PRISMARINE_SLAB = LegacyItemRegistry.fromItemKey("minecraft:prismarine_slab");
 
     @NotNull
-    public static final Item PRISMARINE_BRICK_SLAB = ItemRegistry.fromItemKey("minecraft:prismarine_brick_slab");
+    public static final LegacyItem PRISMARINE_BRICK_SLAB = LegacyItemRegistry.fromItemKey("minecraft:prismarine_brick_slab");
 
     @NotNull
-    public static final Item DARK_PRISMARINE_SLAB = ItemRegistry.fromItemKey("minecraft:dark_prismarine_slab");
+    public static final LegacyItem DARK_PRISMARINE_SLAB = LegacyItemRegistry.fromItemKey("minecraft:dark_prismarine_slab");
 
     @NotNull
-    public static final Item SMOOTH_QUARTZ = ItemRegistry.fromItemKey("minecraft:smooth_quartz");
+    public static final LegacyItem SMOOTH_QUARTZ = LegacyItemRegistry.fromItemKey("minecraft:smooth_quartz");
 
     @NotNull
-    public static final Item SMOOTH_RED_SANDSTONE = ItemRegistry.fromItemKey("minecraft:smooth_red_sandstone");
+    public static final LegacyItem SMOOTH_RED_SANDSTONE = LegacyItemRegistry.fromItemKey("minecraft:smooth_red_sandstone");
 
     @NotNull
-    public static final Item SMOOTH_SANDSTONE = ItemRegistry.fromItemKey("minecraft:smooth_sandstone");
+    public static final LegacyItem SMOOTH_SANDSTONE = LegacyItemRegistry.fromItemKey("minecraft:smooth_sandstone");
 
     @NotNull
-    public static final Item SMOOTH_STONE = ItemRegistry.fromItemKey("minecraft:smooth_stone");
+    public static final LegacyItem SMOOTH_STONE = LegacyItemRegistry.fromItemKey("minecraft:smooth_stone");
 
     @NotNull
-    public static final Item BRICKS = ItemRegistry.fromItemKey("minecraft:bricks");
+    public static final LegacyItem BRICKS = LegacyItemRegistry.fromItemKey("minecraft:bricks");
 
     @NotNull
-    public static final Item BOOKSHELF = ItemRegistry.fromItemKey("minecraft:bookshelf");
+    public static final LegacyItem BOOKSHELF = LegacyItemRegistry.fromItemKey("minecraft:bookshelf");
 
     @NotNull
-    public static final Item MOSSY_COBBLESTONE = ItemRegistry.fromItemKey("minecraft:mossy_cobblestone");
+    public static final LegacyItem MOSSY_COBBLESTONE = LegacyItemRegistry.fromItemKey("minecraft:mossy_cobblestone");
 
     @NotNull
-    public static final Item OBSIDIAN = ItemRegistry.fromItemKey("minecraft:obsidian");
+    public static final LegacyItem OBSIDIAN = LegacyItemRegistry.fromItemKey("minecraft:obsidian");
 
     @NotNull
-    public static final Item TORCH = ItemRegistry.fromItemKey("minecraft:torch");
+    public static final LegacyItem TORCH = LegacyItemRegistry.fromItemKey("minecraft:torch");
 
     @NotNull
-    public static final Item END_ROD = ItemRegistry.fromItemKey("minecraft:end_rod");
+    public static final LegacyItem END_ROD = LegacyItemRegistry.fromItemKey("minecraft:end_rod");
 
     @NotNull
-    public static final Item CHORUS_PLANT = ItemRegistry.fromItemKey("minecraft:chorus_plant");
+    public static final LegacyItem CHORUS_PLANT = LegacyItemRegistry.fromItemKey("minecraft:chorus_plant");
 
     @NotNull
-    public static final Item CHORUS_FLOWER = ItemRegistry.fromItemKey("minecraft:chorus_flower");
+    public static final LegacyItem CHORUS_FLOWER = LegacyItemRegistry.fromItemKey("minecraft:chorus_flower");
 
     @NotNull
-    public static final Item PURPUR_BLOCK = ItemRegistry.fromItemKey("minecraft:purpur_block");
+    public static final LegacyItem PURPUR_BLOCK = LegacyItemRegistry.fromItemKey("minecraft:purpur_block");
 
     @NotNull
-    public static final Item PURPUR_PILLAR = ItemRegistry.fromItemKey("minecraft:purpur_pillar");
+    public static final LegacyItem PURPUR_PILLAR = LegacyItemRegistry.fromItemKey("minecraft:purpur_pillar");
 
     @NotNull
-    public static final Item PURPUR_STAIRS = ItemRegistry.fromItemKey("minecraft:purpur_stairs");
+    public static final LegacyItem PURPUR_STAIRS = LegacyItemRegistry.fromItemKey("minecraft:purpur_stairs");
 
     @NotNull
-    public static final Item SPAWNER = ItemRegistry.fromItemKey("minecraft:spawner");
+    public static final LegacyItem SPAWNER = LegacyItemRegistry.fromItemKey("minecraft:spawner");
 
     @NotNull
-    public static final Item CHEST = ItemRegistry.fromItemKey("minecraft:chest");
+    public static final LegacyItem CHEST = LegacyItemRegistry.fromItemKey("minecraft:chest");
 
     @NotNull
-    public static final Item CRAFTING_TABLE = ItemRegistry.fromItemKey("minecraft:crafting_table");
+    public static final LegacyItem CRAFTING_TABLE = LegacyItemRegistry.fromItemKey("minecraft:crafting_table");
 
     @NotNull
-    public static final Item FARMLAND = ItemRegistry.fromItemKey("minecraft:farmland");
+    public static final LegacyItem FARMLAND = LegacyItemRegistry.fromItemKey("minecraft:farmland");
 
     @NotNull
-    public static final Item FURNACE = ItemRegistry.fromItemKey("minecraft:furnace");
+    public static final LegacyItem FURNACE = LegacyItemRegistry.fromItemKey("minecraft:furnace");
 
     @NotNull
-    public static final Item LADDER = ItemRegistry.fromItemKey("minecraft:ladder");
+    public static final LegacyItem LADDER = LegacyItemRegistry.fromItemKey("minecraft:ladder");
 
     @NotNull
-    public static final Item COBBLESTONE_STAIRS = ItemRegistry.fromItemKey("minecraft:cobblestone_stairs");
+    public static final LegacyItem COBBLESTONE_STAIRS = LegacyItemRegistry.fromItemKey("minecraft:cobblestone_stairs");
 
     @NotNull
-    public static final Item SNOW = ItemRegistry.fromItemKey("minecraft:snow");
+    public static final LegacyItem SNOW = LegacyItemRegistry.fromItemKey("minecraft:snow");
 
     @NotNull
-    public static final Item ICE = ItemRegistry.fromItemKey("minecraft:ice");
+    public static final LegacyItem ICE = LegacyItemRegistry.fromItemKey("minecraft:ice");
 
     @NotNull
-    public static final Item SNOW_BLOCK = ItemRegistry.fromItemKey("minecraft:snow_block");
+    public static final LegacyItem SNOW_BLOCK = LegacyItemRegistry.fromItemKey("minecraft:snow_block");
 
     @NotNull
-    public static final Item CACTUS = ItemRegistry.fromItemKey("minecraft:cactus");
+    public static final LegacyItem CACTUS = LegacyItemRegistry.fromItemKey("minecraft:cactus");
 
     @NotNull
-    public static final Item CLAY = ItemRegistry.fromItemKey("minecraft:clay");
+    public static final LegacyItem CLAY = LegacyItemRegistry.fromItemKey("minecraft:clay");
 
     @NotNull
-    public static final Item JUKEBOX = ItemRegistry.fromItemKey("minecraft:jukebox");
+    public static final LegacyItem JUKEBOX = LegacyItemRegistry.fromItemKey("minecraft:jukebox");
 
     @NotNull
-    public static final Item OAK_FENCE = ItemRegistry.fromItemKey("minecraft:oak_fence");
+    public static final LegacyItem OAK_FENCE = LegacyItemRegistry.fromItemKey("minecraft:oak_fence");
 
     @NotNull
-    public static final Item SPRUCE_FENCE = ItemRegistry.fromItemKey("minecraft:spruce_fence");
+    public static final LegacyItem SPRUCE_FENCE = LegacyItemRegistry.fromItemKey("minecraft:spruce_fence");
 
     @NotNull
-    public static final Item BIRCH_FENCE = ItemRegistry.fromItemKey("minecraft:birch_fence");
+    public static final LegacyItem BIRCH_FENCE = LegacyItemRegistry.fromItemKey("minecraft:birch_fence");
 
     @NotNull
-    public static final Item JUNGLE_FENCE = ItemRegistry.fromItemKey("minecraft:jungle_fence");
+    public static final LegacyItem JUNGLE_FENCE = LegacyItemRegistry.fromItemKey("minecraft:jungle_fence");
 
     @NotNull
-    public static final Item ACACIA_FENCE = ItemRegistry.fromItemKey("minecraft:acacia_fence");
+    public static final LegacyItem ACACIA_FENCE = LegacyItemRegistry.fromItemKey("minecraft:acacia_fence");
 
     @NotNull
-    public static final Item DARK_OAK_FENCE = ItemRegistry.fromItemKey("minecraft:dark_oak_fence");
+    public static final LegacyItem DARK_OAK_FENCE = LegacyItemRegistry.fromItemKey("minecraft:dark_oak_fence");
 
     @NotNull
-    public static final Item MANGROVE_FENCE = ItemRegistry.fromItemKey("minecraft:mangrove_fence");
+    public static final LegacyItem MANGROVE_FENCE = LegacyItemRegistry.fromItemKey("minecraft:mangrove_fence");
 
     @NotNull
-    public static final Item CRIMSON_FENCE = ItemRegistry.fromItemKey("minecraft:crimson_fence");
+    public static final LegacyItem CRIMSON_FENCE = LegacyItemRegistry.fromItemKey("minecraft:crimson_fence");
 
     @NotNull
-    public static final Item WARPED_FENCE = ItemRegistry.fromItemKey("minecraft:warped_fence");
+    public static final LegacyItem WARPED_FENCE = LegacyItemRegistry.fromItemKey("minecraft:warped_fence");
 
     @NotNull
-    public static final Item PUMPKIN = ItemRegistry.fromItemKey("minecraft:pumpkin");
+    public static final LegacyItem PUMPKIN = LegacyItemRegistry.fromItemKey("minecraft:pumpkin");
 
     @NotNull
-    public static final Item CARVED_PUMPKIN = ItemRegistry.fromItemKey("minecraft:carved_pumpkin");
+    public static final LegacyItem CARVED_PUMPKIN = LegacyItemRegistry.fromItemKey("minecraft:carved_pumpkin");
 
     @NotNull
-    public static final Item JACK_O_LANTERN = ItemRegistry.fromItemKey("minecraft:jack_o_lantern");
+    public static final LegacyItem JACK_O_LANTERN = LegacyItemRegistry.fromItemKey("minecraft:jack_o_lantern");
 
     @NotNull
-    public static final Item NETHERRACK = ItemRegistry.fromItemKey("minecraft:netherrack");
+    public static final LegacyItem NETHERRACK = LegacyItemRegistry.fromItemKey("minecraft:netherrack");
 
     @NotNull
-    public static final Item SOUL_SAND = ItemRegistry.fromItemKey("minecraft:soul_sand");
+    public static final LegacyItem SOUL_SAND = LegacyItemRegistry.fromItemKey("minecraft:soul_sand");
 
     @NotNull
-    public static final Item SOUL_SOIL = ItemRegistry.fromItemKey("minecraft:soul_soil");
+    public static final LegacyItem SOUL_SOIL = LegacyItemRegistry.fromItemKey("minecraft:soul_soil");
 
     @NotNull
-    public static final Item BASALT = ItemRegistry.fromItemKey("minecraft:basalt");
+    public static final LegacyItem BASALT = LegacyItemRegistry.fromItemKey("minecraft:basalt");
 
     @NotNull
-    public static final Item POLISHED_BASALT = ItemRegistry.fromItemKey("minecraft:polished_basalt");
+    public static final LegacyItem POLISHED_BASALT = LegacyItemRegistry.fromItemKey("minecraft:polished_basalt");
 
     @NotNull
-    public static final Item SMOOTH_BASALT = ItemRegistry.fromItemKey("minecraft:smooth_basalt");
+    public static final LegacyItem SMOOTH_BASALT = LegacyItemRegistry.fromItemKey("minecraft:smooth_basalt");
 
     @NotNull
-    public static final Item SOUL_TORCH = ItemRegistry.fromItemKey("minecraft:soul_torch");
+    public static final LegacyItem SOUL_TORCH = LegacyItemRegistry.fromItemKey("minecraft:soul_torch");
 
     @NotNull
-    public static final Item GLOWSTONE = ItemRegistry.fromItemKey("minecraft:glowstone");
+    public static final LegacyItem GLOWSTONE = LegacyItemRegistry.fromItemKey("minecraft:glowstone");
 
     @NotNull
-    public static final Item INFESTED_STONE = ItemRegistry.fromItemKey("minecraft:infested_stone");
+    public static final LegacyItem INFESTED_STONE = LegacyItemRegistry.fromItemKey("minecraft:infested_stone");
 
     @NotNull
-    public static final Item INFESTED_COBBLESTONE = ItemRegistry.fromItemKey("minecraft:infested_cobblestone");
+    public static final LegacyItem INFESTED_COBBLESTONE = LegacyItemRegistry.fromItemKey("minecraft:infested_cobblestone");
 
     @NotNull
-    public static final Item INFESTED_STONE_BRICKS = ItemRegistry.fromItemKey("minecraft:infested_stone_bricks");
+    public static final LegacyItem INFESTED_STONE_BRICKS = LegacyItemRegistry.fromItemKey("minecraft:infested_stone_bricks");
 
     @NotNull
-    public static final Item INFESTED_MOSSY_STONE_BRICKS = ItemRegistry.fromItemKey("minecraft:infested_mossy_stone_bricks");
+    public static final LegacyItem INFESTED_MOSSY_STONE_BRICKS = LegacyItemRegistry.fromItemKey("minecraft:infested_mossy_stone_bricks");
 
     @NotNull
-    public static final Item INFESTED_CRACKED_STONE_BRICKS = ItemRegistry.fromItemKey("minecraft:infested_cracked_stone_bricks");
+    public static final LegacyItem INFESTED_CRACKED_STONE_BRICKS = LegacyItemRegistry.fromItemKey("minecraft:infested_cracked_stone_bricks");
 
     @NotNull
-    public static final Item INFESTED_CHISELED_STONE_BRICKS = ItemRegistry.fromItemKey("minecraft:infested_chiseled_stone_bricks");
+    public static final LegacyItem INFESTED_CHISELED_STONE_BRICKS = LegacyItemRegistry.fromItemKey("minecraft:infested_chiseled_stone_bricks");
 
     @NotNull
-    public static final Item INFESTED_DEEPSLATE = ItemRegistry.fromItemKey("minecraft:infested_deepslate");
+    public static final LegacyItem INFESTED_DEEPSLATE = LegacyItemRegistry.fromItemKey("minecraft:infested_deepslate");
 
     @NotNull
-    public static final Item STONE_BRICKS = ItemRegistry.fromItemKey("minecraft:stone_bricks");
+    public static final LegacyItem STONE_BRICKS = LegacyItemRegistry.fromItemKey("minecraft:stone_bricks");
 
     @NotNull
-    public static final Item MOSSY_STONE_BRICKS = ItemRegistry.fromItemKey("minecraft:mossy_stone_bricks");
+    public static final LegacyItem MOSSY_STONE_BRICKS = LegacyItemRegistry.fromItemKey("minecraft:mossy_stone_bricks");
 
     @NotNull
-    public static final Item CRACKED_STONE_BRICKS = ItemRegistry.fromItemKey("minecraft:cracked_stone_bricks");
+    public static final LegacyItem CRACKED_STONE_BRICKS = LegacyItemRegistry.fromItemKey("minecraft:cracked_stone_bricks");
 
     @NotNull
-    public static final Item CHISELED_STONE_BRICKS = ItemRegistry.fromItemKey("minecraft:chiseled_stone_bricks");
+    public static final LegacyItem CHISELED_STONE_BRICKS = LegacyItemRegistry.fromItemKey("minecraft:chiseled_stone_bricks");
 
     @NotNull
-    public static final Item PACKED_MUD = ItemRegistry.fromItemKey("minecraft:packed_mud");
+    public static final LegacyItem PACKED_MUD = LegacyItemRegistry.fromItemKey("minecraft:packed_mud");
 
     @NotNull
-    public static final Item MUD_BRICKS = ItemRegistry.fromItemKey("minecraft:mud_bricks");
+    public static final LegacyItem MUD_BRICKS = LegacyItemRegistry.fromItemKey("minecraft:mud_bricks");
 
     @NotNull
-    public static final Item DEEPSLATE_BRICKS = ItemRegistry.fromItemKey("minecraft:deepslate_bricks");
+    public static final LegacyItem DEEPSLATE_BRICKS = LegacyItemRegistry.fromItemKey("minecraft:deepslate_bricks");
 
     @NotNull
-    public static final Item CRACKED_DEEPSLATE_BRICKS = ItemRegistry.fromItemKey("minecraft:cracked_deepslate_bricks");
+    public static final LegacyItem CRACKED_DEEPSLATE_BRICKS = LegacyItemRegistry.fromItemKey("minecraft:cracked_deepslate_bricks");
 
     @NotNull
-    public static final Item DEEPSLATE_TILES = ItemRegistry.fromItemKey("minecraft:deepslate_tiles");
+    public static final LegacyItem DEEPSLATE_TILES = LegacyItemRegistry.fromItemKey("minecraft:deepslate_tiles");
 
     @NotNull
-    public static final Item CRACKED_DEEPSLATE_TILES = ItemRegistry.fromItemKey("minecraft:cracked_deepslate_tiles");
+    public static final LegacyItem CRACKED_DEEPSLATE_TILES = LegacyItemRegistry.fromItemKey("minecraft:cracked_deepslate_tiles");
 
     @NotNull
-    public static final Item CHISELED_DEEPSLATE = ItemRegistry.fromItemKey("minecraft:chiseled_deepslate");
+    public static final LegacyItem CHISELED_DEEPSLATE = LegacyItemRegistry.fromItemKey("minecraft:chiseled_deepslate");
 
     @NotNull
-    public static final Item REINFORCED_DEEPSLATE = ItemRegistry.fromItemKey("minecraft:reinforced_deepslate");
+    public static final LegacyItem REINFORCED_DEEPSLATE = LegacyItemRegistry.fromItemKey("minecraft:reinforced_deepslate");
 
     @NotNull
-    public static final Item BROWN_MUSHROOM_BLOCK = ItemRegistry.fromItemKey("minecraft:brown_mushroom_block");
+    public static final LegacyItem BROWN_MUSHROOM_BLOCK = LegacyItemRegistry.fromItemKey("minecraft:brown_mushroom_block");
 
     @NotNull
-    public static final Item RED_MUSHROOM_BLOCK = ItemRegistry.fromItemKey("minecraft:red_mushroom_block");
+    public static final LegacyItem RED_MUSHROOM_BLOCK = LegacyItemRegistry.fromItemKey("minecraft:red_mushroom_block");
 
     @NotNull
-    public static final Item MUSHROOM_STEM = ItemRegistry.fromItemKey("minecraft:mushroom_stem");
+    public static final LegacyItem MUSHROOM_STEM = LegacyItemRegistry.fromItemKey("minecraft:mushroom_stem");
 
     @NotNull
-    public static final Item IRON_BARS = ItemRegistry.fromItemKey("minecraft:iron_bars");
+    public static final LegacyItem IRON_BARS = LegacyItemRegistry.fromItemKey("minecraft:iron_bars");
 
     @NotNull
-    public static final Item CHAIN = ItemRegistry.fromItemKey("minecraft:chain");
+    public static final LegacyItem CHAIN = LegacyItemRegistry.fromItemKey("minecraft:chain");
 
     @NotNull
-    public static final Item GLASS_PANE = ItemRegistry.fromItemKey("minecraft:glass_pane");
+    public static final LegacyItem GLASS_PANE = LegacyItemRegistry.fromItemKey("minecraft:glass_pane");
 
     @NotNull
-    public static final Item MELON = ItemRegistry.fromItemKey("minecraft:melon");
+    public static final LegacyItem MELON = LegacyItemRegistry.fromItemKey("minecraft:melon");
 
     @NotNull
-    public static final Item VINE = ItemRegistry.fromItemKey("minecraft:vine");
+    public static final LegacyItem VINE = LegacyItemRegistry.fromItemKey("minecraft:vine");
 
     @NotNull
-    public static final Item GLOW_LICHEN = ItemRegistry.fromItemKey("minecraft:glow_lichen");
+    public static final LegacyItem GLOW_LICHEN = LegacyItemRegistry.fromItemKey("minecraft:glow_lichen");
 
     @NotNull
-    public static final Item BRICK_STAIRS = ItemRegistry.fromItemKey("minecraft:brick_stairs");
+    public static final LegacyItem BRICK_STAIRS = LegacyItemRegistry.fromItemKey("minecraft:brick_stairs");
 
     @NotNull
-    public static final Item STONE_BRICK_STAIRS = ItemRegistry.fromItemKey("minecraft:stone_brick_stairs");
+    public static final LegacyItem STONE_BRICK_STAIRS = LegacyItemRegistry.fromItemKey("minecraft:stone_brick_stairs");
 
     @NotNull
-    public static final Item MUD_BRICK_STAIRS = ItemRegistry.fromItemKey("minecraft:mud_brick_stairs");
+    public static final LegacyItem MUD_BRICK_STAIRS = LegacyItemRegistry.fromItemKey("minecraft:mud_brick_stairs");
 
     @NotNull
-    public static final Item MYCELIUM = ItemRegistry.fromItemKey("minecraft:mycelium");
+    public static final LegacyItem MYCELIUM = LegacyItemRegistry.fromItemKey("minecraft:mycelium");
 
     @NotNull
-    public static final Item LILY_PAD = ItemRegistry.fromItemKey("minecraft:lily_pad");
+    public static final LegacyItem LILY_PAD = LegacyItemRegistry.fromItemKey("minecraft:lily_pad");
 
     @NotNull
-    public static final Item NETHER_BRICKS = ItemRegistry.fromItemKey("minecraft:nether_bricks");
+    public static final LegacyItem NETHER_BRICKS = LegacyItemRegistry.fromItemKey("minecraft:nether_bricks");
 
     @NotNull
-    public static final Item CRACKED_NETHER_BRICKS = ItemRegistry.fromItemKey("minecraft:cracked_nether_bricks");
+    public static final LegacyItem CRACKED_NETHER_BRICKS = LegacyItemRegistry.fromItemKey("minecraft:cracked_nether_bricks");
 
     @NotNull
-    public static final Item CHISELED_NETHER_BRICKS = ItemRegistry.fromItemKey("minecraft:chiseled_nether_bricks");
+    public static final LegacyItem CHISELED_NETHER_BRICKS = LegacyItemRegistry.fromItemKey("minecraft:chiseled_nether_bricks");
 
     @NotNull
-    public static final Item NETHER_BRICK_FENCE = ItemRegistry.fromItemKey("minecraft:nether_brick_fence");
+    public static final LegacyItem NETHER_BRICK_FENCE = LegacyItemRegistry.fromItemKey("minecraft:nether_brick_fence");
 
     @NotNull
-    public static final Item NETHER_BRICK_STAIRS = ItemRegistry.fromItemKey("minecraft:nether_brick_stairs");
+    public static final LegacyItem NETHER_BRICK_STAIRS = LegacyItemRegistry.fromItemKey("minecraft:nether_brick_stairs");
 
     @NotNull
-    public static final Item SCULK = ItemRegistry.fromItemKey("minecraft:sculk");
+    public static final LegacyItem SCULK = LegacyItemRegistry.fromItemKey("minecraft:sculk");
 
     @NotNull
-    public static final Item SCULK_VEIN = ItemRegistry.fromItemKey("minecraft:sculk_vein");
+    public static final LegacyItem SCULK_VEIN = LegacyItemRegistry.fromItemKey("minecraft:sculk_vein");
 
     @NotNull
-    public static final Item SCULK_CATALYST = ItemRegistry.fromItemKey("minecraft:sculk_catalyst");
+    public static final LegacyItem SCULK_CATALYST = LegacyItemRegistry.fromItemKey("minecraft:sculk_catalyst");
 
     @NotNull
-    public static final Item SCULK_SHRIEKER = ItemRegistry.fromItemKey("minecraft:sculk_shrieker");
+    public static final LegacyItem SCULK_SHRIEKER = LegacyItemRegistry.fromItemKey("minecraft:sculk_shrieker");
 
     @NotNull
-    public static final Item ENCHANTING_TABLE = ItemRegistry.fromItemKey("minecraft:enchanting_table");
+    public static final LegacyItem ENCHANTING_TABLE = LegacyItemRegistry.fromItemKey("minecraft:enchanting_table");
 
     @NotNull
-    public static final Item END_PORTAL_FRAME = ItemRegistry.fromItemKey("minecraft:end_portal_frame");
+    public static final LegacyItem END_PORTAL_FRAME = LegacyItemRegistry.fromItemKey("minecraft:end_portal_frame");
 
     @NotNull
-    public static final Item END_STONE = ItemRegistry.fromItemKey("minecraft:end_stone");
+    public static final LegacyItem END_STONE = LegacyItemRegistry.fromItemKey("minecraft:end_stone");
 
     @NotNull
-    public static final Item END_STONE_BRICKS = ItemRegistry.fromItemKey("minecraft:end_stone_bricks");
+    public static final LegacyItem END_STONE_BRICKS = LegacyItemRegistry.fromItemKey("minecraft:end_stone_bricks");
 
     @NotNull
-    public static final Item DRAGON_EGG = ItemRegistry.fromItemKey("minecraft:dragon_egg");
+    public static final LegacyItem DRAGON_EGG = LegacyItemRegistry.fromItemKey("minecraft:dragon_egg");
 
     @NotNull
-    public static final Item SANDSTONE_STAIRS = ItemRegistry.fromItemKey("minecraft:sandstone_stairs");
+    public static final LegacyItem SANDSTONE_STAIRS = LegacyItemRegistry.fromItemKey("minecraft:sandstone_stairs");
 
     @NotNull
-    public static final Item ENDER_CHEST = ItemRegistry.fromItemKey("minecraft:ender_chest");
+    public static final LegacyItem ENDER_CHEST = LegacyItemRegistry.fromItemKey("minecraft:ender_chest");
 
     @NotNull
-    public static final Item EMERALD_BLOCK = ItemRegistry.fromItemKey("minecraft:emerald_block");
+    public static final LegacyItem EMERALD_BLOCK = LegacyItemRegistry.fromItemKey("minecraft:emerald_block");
 
     @NotNull
-    public static final Item OAK_STAIRS = ItemRegistry.fromItemKey("minecraft:oak_stairs");
+    public static final LegacyItem OAK_STAIRS = LegacyItemRegistry.fromItemKey("minecraft:oak_stairs");
 
     @NotNull
-    public static final Item SPRUCE_STAIRS = ItemRegistry.fromItemKey("minecraft:spruce_stairs");
+    public static final LegacyItem SPRUCE_STAIRS = LegacyItemRegistry.fromItemKey("minecraft:spruce_stairs");
 
     @NotNull
-    public static final Item BIRCH_STAIRS = ItemRegistry.fromItemKey("minecraft:birch_stairs");
+    public static final LegacyItem BIRCH_STAIRS = LegacyItemRegistry.fromItemKey("minecraft:birch_stairs");
 
     @NotNull
-    public static final Item JUNGLE_STAIRS = ItemRegistry.fromItemKey("minecraft:jungle_stairs");
+    public static final LegacyItem JUNGLE_STAIRS = LegacyItemRegistry.fromItemKey("minecraft:jungle_stairs");
 
     @NotNull
-    public static final Item ACACIA_STAIRS = ItemRegistry.fromItemKey("minecraft:acacia_stairs");
+    public static final LegacyItem ACACIA_STAIRS = LegacyItemRegistry.fromItemKey("minecraft:acacia_stairs");
 
     @NotNull
-    public static final Item DARK_OAK_STAIRS = ItemRegistry.fromItemKey("minecraft:dark_oak_stairs");
+    public static final LegacyItem DARK_OAK_STAIRS = LegacyItemRegistry.fromItemKey("minecraft:dark_oak_stairs");
 
     @NotNull
-    public static final Item MANGROVE_STAIRS = ItemRegistry.fromItemKey("minecraft:mangrove_stairs");
+    public static final LegacyItem MANGROVE_STAIRS = LegacyItemRegistry.fromItemKey("minecraft:mangrove_stairs");
 
     @NotNull
-    public static final Item CRIMSON_STAIRS = ItemRegistry.fromItemKey("minecraft:crimson_stairs");
+    public static final LegacyItem CRIMSON_STAIRS = LegacyItemRegistry.fromItemKey("minecraft:crimson_stairs");
 
     @NotNull
-    public static final Item WARPED_STAIRS = ItemRegistry.fromItemKey("minecraft:warped_stairs");
+    public static final LegacyItem WARPED_STAIRS = LegacyItemRegistry.fromItemKey("minecraft:warped_stairs");
 
     @NotNull
-    public static final Item COMMAND_BLOCK = ItemRegistry.fromItemKey("minecraft:command_block");
+    public static final LegacyItem COMMAND_BLOCK = LegacyItemRegistry.fromItemKey("minecraft:command_block");
 
     @NotNull
-    public static final Item BEACON = ItemRegistry.fromItemKey("minecraft:beacon");
+    public static final LegacyItem BEACON = LegacyItemRegistry.fromItemKey("minecraft:beacon");
 
     @NotNull
-    public static final Item COBBLESTONE_WALL = ItemRegistry.fromItemKey("minecraft:cobblestone_wall");
+    public static final LegacyItem COBBLESTONE_WALL = LegacyItemRegistry.fromItemKey("minecraft:cobblestone_wall");
 
     @NotNull
-    public static final Item MOSSY_COBBLESTONE_WALL = ItemRegistry.fromItemKey("minecraft:mossy_cobblestone_wall");
+    public static final LegacyItem MOSSY_COBBLESTONE_WALL = LegacyItemRegistry.fromItemKey("minecraft:mossy_cobblestone_wall");
 
     @NotNull
-    public static final Item BRICK_WALL = ItemRegistry.fromItemKey("minecraft:brick_wall");
+    public static final LegacyItem BRICK_WALL = LegacyItemRegistry.fromItemKey("minecraft:brick_wall");
 
     @NotNull
-    public static final Item PRISMARINE_WALL = ItemRegistry.fromItemKey("minecraft:prismarine_wall");
+    public static final LegacyItem PRISMARINE_WALL = LegacyItemRegistry.fromItemKey("minecraft:prismarine_wall");
 
     @NotNull
-    public static final Item RED_SANDSTONE_WALL = ItemRegistry.fromItemKey("minecraft:red_sandstone_wall");
+    public static final LegacyItem RED_SANDSTONE_WALL = LegacyItemRegistry.fromItemKey("minecraft:red_sandstone_wall");
 
     @NotNull
-    public static final Item MOSSY_STONE_BRICK_WALL = ItemRegistry.fromItemKey("minecraft:mossy_stone_brick_wall");
+    public static final LegacyItem MOSSY_STONE_BRICK_WALL = LegacyItemRegistry.fromItemKey("minecraft:mossy_stone_brick_wall");
 
     @NotNull
-    public static final Item GRANITE_WALL = ItemRegistry.fromItemKey("minecraft:granite_wall");
+    public static final LegacyItem GRANITE_WALL = LegacyItemRegistry.fromItemKey("minecraft:granite_wall");
 
     @NotNull
-    public static final Item STONE_BRICK_WALL = ItemRegistry.fromItemKey("minecraft:stone_brick_wall");
+    public static final LegacyItem STONE_BRICK_WALL = LegacyItemRegistry.fromItemKey("minecraft:stone_brick_wall");
 
     @NotNull
-    public static final Item MUD_BRICK_WALL = ItemRegistry.fromItemKey("minecraft:mud_brick_wall");
+    public static final LegacyItem MUD_BRICK_WALL = LegacyItemRegistry.fromItemKey("minecraft:mud_brick_wall");
 
     @NotNull
-    public static final Item NETHER_BRICK_WALL = ItemRegistry.fromItemKey("minecraft:nether_brick_wall");
+    public static final LegacyItem NETHER_BRICK_WALL = LegacyItemRegistry.fromItemKey("minecraft:nether_brick_wall");
 
     @NotNull
-    public static final Item ANDESITE_WALL = ItemRegistry.fromItemKey("minecraft:andesite_wall");
+    public static final LegacyItem ANDESITE_WALL = LegacyItemRegistry.fromItemKey("minecraft:andesite_wall");
 
     @NotNull
-    public static final Item RED_NETHER_BRICK_WALL = ItemRegistry.fromItemKey("minecraft:red_nether_brick_wall");
+    public static final LegacyItem RED_NETHER_BRICK_WALL = LegacyItemRegistry.fromItemKey("minecraft:red_nether_brick_wall");
 
     @NotNull
-    public static final Item SANDSTONE_WALL = ItemRegistry.fromItemKey("minecraft:sandstone_wall");
+    public static final LegacyItem SANDSTONE_WALL = LegacyItemRegistry.fromItemKey("minecraft:sandstone_wall");
 
     @NotNull
-    public static final Item END_STONE_BRICK_WALL = ItemRegistry.fromItemKey("minecraft:end_stone_brick_wall");
+    public static final LegacyItem END_STONE_BRICK_WALL = LegacyItemRegistry.fromItemKey("minecraft:end_stone_brick_wall");
 
     @NotNull
-    public static final Item DIORITE_WALL = ItemRegistry.fromItemKey("minecraft:diorite_wall");
+    public static final LegacyItem DIORITE_WALL = LegacyItemRegistry.fromItemKey("minecraft:diorite_wall");
 
     @NotNull
-    public static final Item BLACKSTONE_WALL = ItemRegistry.fromItemKey("minecraft:blackstone_wall");
+    public static final LegacyItem BLACKSTONE_WALL = LegacyItemRegistry.fromItemKey("minecraft:blackstone_wall");
 
     @NotNull
-    public static final Item POLISHED_BLACKSTONE_WALL = ItemRegistry.fromItemKey("minecraft:polished_blackstone_wall");
+    public static final LegacyItem POLISHED_BLACKSTONE_WALL = LegacyItemRegistry.fromItemKey("minecraft:polished_blackstone_wall");
 
     @NotNull
-    public static final Item POLISHED_BLACKSTONE_BRICK_WALL = ItemRegistry.fromItemKey("minecraft:polished_blackstone_brick_wall");
+    public static final LegacyItem POLISHED_BLACKSTONE_BRICK_WALL = LegacyItemRegistry.fromItemKey("minecraft:polished_blackstone_brick_wall");
 
     @NotNull
-    public static final Item COBBLED_DEEPSLATE_WALL = ItemRegistry.fromItemKey("minecraft:cobbled_deepslate_wall");
+    public static final LegacyItem COBBLED_DEEPSLATE_WALL = LegacyItemRegistry.fromItemKey("minecraft:cobbled_deepslate_wall");
 
     @NotNull
-    public static final Item POLISHED_DEEPSLATE_WALL = ItemRegistry.fromItemKey("minecraft:polished_deepslate_wall");
+    public static final LegacyItem POLISHED_DEEPSLATE_WALL = LegacyItemRegistry.fromItemKey("minecraft:polished_deepslate_wall");
 
     @NotNull
-    public static final Item DEEPSLATE_BRICK_WALL = ItemRegistry.fromItemKey("minecraft:deepslate_brick_wall");
+    public static final LegacyItem DEEPSLATE_BRICK_WALL = LegacyItemRegistry.fromItemKey("minecraft:deepslate_brick_wall");
 
     @NotNull
-    public static final Item DEEPSLATE_TILE_WALL = ItemRegistry.fromItemKey("minecraft:deepslate_tile_wall");
+    public static final LegacyItem DEEPSLATE_TILE_WALL = LegacyItemRegistry.fromItemKey("minecraft:deepslate_tile_wall");
 
     @NotNull
-    public static final Item ANVIL = ItemRegistry.fromItemKey("minecraft:anvil");
+    public static final LegacyItem ANVIL = LegacyItemRegistry.fromItemKey("minecraft:anvil");
 
     @NotNull
-    public static final Item CHIPPED_ANVIL = ItemRegistry.fromItemKey("minecraft:chipped_anvil");
+    public static final LegacyItem CHIPPED_ANVIL = LegacyItemRegistry.fromItemKey("minecraft:chipped_anvil");
 
     @NotNull
-    public static final Item DAMAGED_ANVIL = ItemRegistry.fromItemKey("minecraft:damaged_anvil");
+    public static final LegacyItem DAMAGED_ANVIL = LegacyItemRegistry.fromItemKey("minecraft:damaged_anvil");
 
     @NotNull
-    public static final Item CHISELED_QUARTZ_BLOCK = ItemRegistry.fromItemKey("minecraft:chiseled_quartz_block");
+    public static final LegacyItem CHISELED_QUARTZ_BLOCK = LegacyItemRegistry.fromItemKey("minecraft:chiseled_quartz_block");
 
     @NotNull
-    public static final Item QUARTZ_BLOCK = ItemRegistry.fromItemKey("minecraft:quartz_block");
+    public static final LegacyItem QUARTZ_BLOCK = LegacyItemRegistry.fromItemKey("minecraft:quartz_block");
 
     @NotNull
-    public static final Item QUARTZ_BRICKS = ItemRegistry.fromItemKey("minecraft:quartz_bricks");
+    public static final LegacyItem QUARTZ_BRICKS = LegacyItemRegistry.fromItemKey("minecraft:quartz_bricks");
 
     @NotNull
-    public static final Item QUARTZ_PILLAR = ItemRegistry.fromItemKey("minecraft:quartz_pillar");
+    public static final LegacyItem QUARTZ_PILLAR = LegacyItemRegistry.fromItemKey("minecraft:quartz_pillar");
 
     @NotNull
-    public static final Item QUARTZ_STAIRS = ItemRegistry.fromItemKey("minecraft:quartz_stairs");
+    public static final LegacyItem QUARTZ_STAIRS = LegacyItemRegistry.fromItemKey("minecraft:quartz_stairs");
 
     @NotNull
-    public static final Item WHITE_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:white_terracotta");
+    public static final LegacyItem WHITE_TERRACOTTA = LegacyItemRegistry.fromItemKey("minecraft:white_terracotta");
 
     @NotNull
-    public static final Item ORANGE_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:orange_terracotta");
+    public static final LegacyItem ORANGE_TERRACOTTA = LegacyItemRegistry.fromItemKey("minecraft:orange_terracotta");
 
     @NotNull
-    public static final Item MAGENTA_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:magenta_terracotta");
+    public static final LegacyItem MAGENTA_TERRACOTTA = LegacyItemRegistry.fromItemKey("minecraft:magenta_terracotta");
 
     @NotNull
-    public static final Item LIGHT_BLUE_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:light_blue_terracotta");
+    public static final LegacyItem LIGHT_BLUE_TERRACOTTA = LegacyItemRegistry.fromItemKey("minecraft:light_blue_terracotta");
 
     @NotNull
-    public static final Item YELLOW_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:yellow_terracotta");
+    public static final LegacyItem YELLOW_TERRACOTTA = LegacyItemRegistry.fromItemKey("minecraft:yellow_terracotta");
 
     @NotNull
-    public static final Item LIME_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:lime_terracotta");
+    public static final LegacyItem LIME_TERRACOTTA = LegacyItemRegistry.fromItemKey("minecraft:lime_terracotta");
 
     @NotNull
-    public static final Item PINK_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:pink_terracotta");
+    public static final LegacyItem PINK_TERRACOTTA = LegacyItemRegistry.fromItemKey("minecraft:pink_terracotta");
 
     @NotNull
-    public static final Item GRAY_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:gray_terracotta");
+    public static final LegacyItem GRAY_TERRACOTTA = LegacyItemRegistry.fromItemKey("minecraft:gray_terracotta");
 
     @NotNull
-    public static final Item LIGHT_GRAY_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:light_gray_terracotta");
+    public static final LegacyItem LIGHT_GRAY_TERRACOTTA = LegacyItemRegistry.fromItemKey("minecraft:light_gray_terracotta");
 
     @NotNull
-    public static final Item CYAN_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:cyan_terracotta");
+    public static final LegacyItem CYAN_TERRACOTTA = LegacyItemRegistry.fromItemKey("minecraft:cyan_terracotta");
 
     @NotNull
-    public static final Item PURPLE_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:purple_terracotta");
+    public static final LegacyItem PURPLE_TERRACOTTA = LegacyItemRegistry.fromItemKey("minecraft:purple_terracotta");
 
     @NotNull
-    public static final Item BLUE_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:blue_terracotta");
+    public static final LegacyItem BLUE_TERRACOTTA = LegacyItemRegistry.fromItemKey("minecraft:blue_terracotta");
 
     @NotNull
-    public static final Item BROWN_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:brown_terracotta");
+    public static final LegacyItem BROWN_TERRACOTTA = LegacyItemRegistry.fromItemKey("minecraft:brown_terracotta");
 
     @NotNull
-    public static final Item GREEN_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:green_terracotta");
+    public static final LegacyItem GREEN_TERRACOTTA = LegacyItemRegistry.fromItemKey("minecraft:green_terracotta");
 
     @NotNull
-    public static final Item RED_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:red_terracotta");
+    public static final LegacyItem RED_TERRACOTTA = LegacyItemRegistry.fromItemKey("minecraft:red_terracotta");
 
     @NotNull
-    public static final Item BLACK_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:black_terracotta");
+    public static final LegacyItem BLACK_TERRACOTTA = LegacyItemRegistry.fromItemKey("minecraft:black_terracotta");
 
     @NotNull
-    public static final Item BARRIER = ItemRegistry.fromItemKey("minecraft:barrier");
+    public static final LegacyItem BARRIER = LegacyItemRegistry.fromItemKey("minecraft:barrier");
 
     @NotNull
-    public static final Item LIGHT = ItemRegistry.fromItemKey("minecraft:light");
+    public static final LegacyItem LIGHT = LegacyItemRegistry.fromItemKey("minecraft:light");
 
     @NotNull
-    public static final Item HAY_BLOCK = ItemRegistry.fromItemKey("minecraft:hay_block");
+    public static final LegacyItem HAY_BLOCK = LegacyItemRegistry.fromItemKey("minecraft:hay_block");
 
     @NotNull
-    public static final Item WHITE_CARPET = ItemRegistry.fromItemKey("minecraft:white_carpet");
+    public static final LegacyItem WHITE_CARPET = LegacyItemRegistry.fromItemKey("minecraft:white_carpet");
 
     @NotNull
-    public static final Item ORANGE_CARPET = ItemRegistry.fromItemKey("minecraft:orange_carpet");
+    public static final LegacyItem ORANGE_CARPET = LegacyItemRegistry.fromItemKey("minecraft:orange_carpet");
 
     @NotNull
-    public static final Item MAGENTA_CARPET = ItemRegistry.fromItemKey("minecraft:magenta_carpet");
+    public static final LegacyItem MAGENTA_CARPET = LegacyItemRegistry.fromItemKey("minecraft:magenta_carpet");
 
     @NotNull
-    public static final Item LIGHT_BLUE_CARPET = ItemRegistry.fromItemKey("minecraft:light_blue_carpet");
+    public static final LegacyItem LIGHT_BLUE_CARPET = LegacyItemRegistry.fromItemKey("minecraft:light_blue_carpet");
 
     @NotNull
-    public static final Item YELLOW_CARPET = ItemRegistry.fromItemKey("minecraft:yellow_carpet");
+    public static final LegacyItem YELLOW_CARPET = LegacyItemRegistry.fromItemKey("minecraft:yellow_carpet");
 
     @NotNull
-    public static final Item LIME_CARPET = ItemRegistry.fromItemKey("minecraft:lime_carpet");
+    public static final LegacyItem LIME_CARPET = LegacyItemRegistry.fromItemKey("minecraft:lime_carpet");
 
     @NotNull
-    public static final Item PINK_CARPET = ItemRegistry.fromItemKey("minecraft:pink_carpet");
+    public static final LegacyItem PINK_CARPET = LegacyItemRegistry.fromItemKey("minecraft:pink_carpet");
 
     @NotNull
-    public static final Item GRAY_CARPET = ItemRegistry.fromItemKey("minecraft:gray_carpet");
+    public static final LegacyItem GRAY_CARPET = LegacyItemRegistry.fromItemKey("minecraft:gray_carpet");
 
     @NotNull
-    public static final Item LIGHT_GRAY_CARPET = ItemRegistry.fromItemKey("minecraft:light_gray_carpet");
+    public static final LegacyItem LIGHT_GRAY_CARPET = LegacyItemRegistry.fromItemKey("minecraft:light_gray_carpet");
 
     @NotNull
-    public static final Item CYAN_CARPET = ItemRegistry.fromItemKey("minecraft:cyan_carpet");
+    public static final LegacyItem CYAN_CARPET = LegacyItemRegistry.fromItemKey("minecraft:cyan_carpet");
 
     @NotNull
-    public static final Item PURPLE_CARPET = ItemRegistry.fromItemKey("minecraft:purple_carpet");
+    public static final LegacyItem PURPLE_CARPET = LegacyItemRegistry.fromItemKey("minecraft:purple_carpet");
 
     @NotNull
-    public static final Item BLUE_CARPET = ItemRegistry.fromItemKey("minecraft:blue_carpet");
+    public static final LegacyItem BLUE_CARPET = LegacyItemRegistry.fromItemKey("minecraft:blue_carpet");
 
     @NotNull
-    public static final Item BROWN_CARPET = ItemRegistry.fromItemKey("minecraft:brown_carpet");
+    public static final LegacyItem BROWN_CARPET = LegacyItemRegistry.fromItemKey("minecraft:brown_carpet");
 
     @NotNull
-    public static final Item GREEN_CARPET = ItemRegistry.fromItemKey("minecraft:green_carpet");
+    public static final LegacyItem GREEN_CARPET = LegacyItemRegistry.fromItemKey("minecraft:green_carpet");
 
     @NotNull
-    public static final Item RED_CARPET = ItemRegistry.fromItemKey("minecraft:red_carpet");
+    public static final LegacyItem RED_CARPET = LegacyItemRegistry.fromItemKey("minecraft:red_carpet");
 
     @NotNull
-    public static final Item BLACK_CARPET = ItemRegistry.fromItemKey("minecraft:black_carpet");
+    public static final LegacyItem BLACK_CARPET = LegacyItemRegistry.fromItemKey("minecraft:black_carpet");
 
     @NotNull
-    public static final Item TERRACOTTA = ItemRegistry.fromItemKey("minecraft:terracotta");
+    public static final LegacyItem TERRACOTTA = LegacyItemRegistry.fromItemKey("minecraft:terracotta");
 
     @NotNull
-    public static final Item PACKED_ICE = ItemRegistry.fromItemKey("minecraft:packed_ice");
+    public static final LegacyItem PACKED_ICE = LegacyItemRegistry.fromItemKey("minecraft:packed_ice");
 
     @NotNull
-    public static final Item DIRT_PATH = ItemRegistry.fromItemKey("minecraft:dirt_path");
+    public static final LegacyItem DIRT_PATH = LegacyItemRegistry.fromItemKey("minecraft:dirt_path");
 
     @NotNull
-    public static final Item SUNFLOWER = ItemRegistry.fromItemKey("minecraft:sunflower");
+    public static final LegacyItem SUNFLOWER = LegacyItemRegistry.fromItemKey("minecraft:sunflower");
 
     @NotNull
-    public static final Item LILAC = ItemRegistry.fromItemKey("minecraft:lilac");
+    public static final LegacyItem LILAC = LegacyItemRegistry.fromItemKey("minecraft:lilac");
 
     @NotNull
-    public static final Item ROSE_BUSH = ItemRegistry.fromItemKey("minecraft:rose_bush");
+    public static final LegacyItem ROSE_BUSH = LegacyItemRegistry.fromItemKey("minecraft:rose_bush");
 
     @NotNull
-    public static final Item PEONY = ItemRegistry.fromItemKey("minecraft:peony");
+    public static final LegacyItem PEONY = LegacyItemRegistry.fromItemKey("minecraft:peony");
 
     @NotNull
-    public static final Item TALL_GRASS = ItemRegistry.fromItemKey("minecraft:tall_grass");
+    public static final LegacyItem TALL_GRASS = LegacyItemRegistry.fromItemKey("minecraft:tall_grass");
 
     @NotNull
-    public static final Item LARGE_FERN = ItemRegistry.fromItemKey("minecraft:large_fern");
+    public static final LegacyItem LARGE_FERN = LegacyItemRegistry.fromItemKey("minecraft:large_fern");
 
     @NotNull
-    public static final Item WHITE_STAINED_GLASS = ItemRegistry.fromItemKey("minecraft:white_stained_glass");
+    public static final LegacyItem WHITE_STAINED_GLASS = LegacyItemRegistry.fromItemKey("minecraft:white_stained_glass");
 
     @NotNull
-    public static final Item ORANGE_STAINED_GLASS = ItemRegistry.fromItemKey("minecraft:orange_stained_glass");
+    public static final LegacyItem ORANGE_STAINED_GLASS = LegacyItemRegistry.fromItemKey("minecraft:orange_stained_glass");
 
     @NotNull
-    public static final Item MAGENTA_STAINED_GLASS = ItemRegistry.fromItemKey("minecraft:magenta_stained_glass");
+    public static final LegacyItem MAGENTA_STAINED_GLASS = LegacyItemRegistry.fromItemKey("minecraft:magenta_stained_glass");
 
     @NotNull
-    public static final Item LIGHT_BLUE_STAINED_GLASS = ItemRegistry.fromItemKey("minecraft:light_blue_stained_glass");
+    public static final LegacyItem LIGHT_BLUE_STAINED_GLASS = LegacyItemRegistry.fromItemKey("minecraft:light_blue_stained_glass");
 
     @NotNull
-    public static final Item YELLOW_STAINED_GLASS = ItemRegistry.fromItemKey("minecraft:yellow_stained_glass");
+    public static final LegacyItem YELLOW_STAINED_GLASS = LegacyItemRegistry.fromItemKey("minecraft:yellow_stained_glass");
 
     @NotNull
-    public static final Item LIME_STAINED_GLASS = ItemRegistry.fromItemKey("minecraft:lime_stained_glass");
+    public static final LegacyItem LIME_STAINED_GLASS = LegacyItemRegistry.fromItemKey("minecraft:lime_stained_glass");
 
     @NotNull
-    public static final Item PINK_STAINED_GLASS = ItemRegistry.fromItemKey("minecraft:pink_stained_glass");
+    public static final LegacyItem PINK_STAINED_GLASS = LegacyItemRegistry.fromItemKey("minecraft:pink_stained_glass");
 
     @NotNull
-    public static final Item GRAY_STAINED_GLASS = ItemRegistry.fromItemKey("minecraft:gray_stained_glass");
+    public static final LegacyItem GRAY_STAINED_GLASS = LegacyItemRegistry.fromItemKey("minecraft:gray_stained_glass");
 
     @NotNull
-    public static final Item LIGHT_GRAY_STAINED_GLASS = ItemRegistry.fromItemKey("minecraft:light_gray_stained_glass");
+    public static final LegacyItem LIGHT_GRAY_STAINED_GLASS = LegacyItemRegistry.fromItemKey("minecraft:light_gray_stained_glass");
 
     @NotNull
-    public static final Item CYAN_STAINED_GLASS = ItemRegistry.fromItemKey("minecraft:cyan_stained_glass");
+    public static final LegacyItem CYAN_STAINED_GLASS = LegacyItemRegistry.fromItemKey("minecraft:cyan_stained_glass");
 
     @NotNull
-    public static final Item PURPLE_STAINED_GLASS = ItemRegistry.fromItemKey("minecraft:purple_stained_glass");
+    public static final LegacyItem PURPLE_STAINED_GLASS = LegacyItemRegistry.fromItemKey("minecraft:purple_stained_glass");
 
     @NotNull
-    public static final Item BLUE_STAINED_GLASS = ItemRegistry.fromItemKey("minecraft:blue_stained_glass");
+    public static final LegacyItem BLUE_STAINED_GLASS = LegacyItemRegistry.fromItemKey("minecraft:blue_stained_glass");
 
     @NotNull
-    public static final Item BROWN_STAINED_GLASS = ItemRegistry.fromItemKey("minecraft:brown_stained_glass");
+    public static final LegacyItem BROWN_STAINED_GLASS = LegacyItemRegistry.fromItemKey("minecraft:brown_stained_glass");
 
     @NotNull
-    public static final Item GREEN_STAINED_GLASS = ItemRegistry.fromItemKey("minecraft:green_stained_glass");
+    public static final LegacyItem GREEN_STAINED_GLASS = LegacyItemRegistry.fromItemKey("minecraft:green_stained_glass");
 
     @NotNull
-    public static final Item RED_STAINED_GLASS = ItemRegistry.fromItemKey("minecraft:red_stained_glass");
+    public static final LegacyItem RED_STAINED_GLASS = LegacyItemRegistry.fromItemKey("minecraft:red_stained_glass");
 
     @NotNull
-    public static final Item BLACK_STAINED_GLASS = ItemRegistry.fromItemKey("minecraft:black_stained_glass");
+    public static final LegacyItem BLACK_STAINED_GLASS = LegacyItemRegistry.fromItemKey("minecraft:black_stained_glass");
 
     @NotNull
-    public static final Item WHITE_STAINED_GLASS_PANE = ItemRegistry.fromItemKey("minecraft:white_stained_glass_pane");
+    public static final LegacyItem WHITE_STAINED_GLASS_PANE = LegacyItemRegistry.fromItemKey("minecraft:white_stained_glass_pane");
 
     @NotNull
-    public static final Item ORANGE_STAINED_GLASS_PANE = ItemRegistry.fromItemKey("minecraft:orange_stained_glass_pane");
+    public static final LegacyItem ORANGE_STAINED_GLASS_PANE = LegacyItemRegistry.fromItemKey("minecraft:orange_stained_glass_pane");
 
     @NotNull
-    public static final Item MAGENTA_STAINED_GLASS_PANE = ItemRegistry.fromItemKey("minecraft:magenta_stained_glass_pane");
+    public static final LegacyItem MAGENTA_STAINED_GLASS_PANE = LegacyItemRegistry.fromItemKey("minecraft:magenta_stained_glass_pane");
 
     @NotNull
-    public static final Item LIGHT_BLUE_STAINED_GLASS_PANE = ItemRegistry.fromItemKey("minecraft:light_blue_stained_glass_pane");
+    public static final LegacyItem LIGHT_BLUE_STAINED_GLASS_PANE = LegacyItemRegistry.fromItemKey("minecraft:light_blue_stained_glass_pane");
 
     @NotNull
-    public static final Item YELLOW_STAINED_GLASS_PANE = ItemRegistry.fromItemKey("minecraft:yellow_stained_glass_pane");
+    public static final LegacyItem YELLOW_STAINED_GLASS_PANE = LegacyItemRegistry.fromItemKey("minecraft:yellow_stained_glass_pane");
 
     @NotNull
-    public static final Item LIME_STAINED_GLASS_PANE = ItemRegistry.fromItemKey("minecraft:lime_stained_glass_pane");
+    public static final LegacyItem LIME_STAINED_GLASS_PANE = LegacyItemRegistry.fromItemKey("minecraft:lime_stained_glass_pane");
 
     @NotNull
-    public static final Item PINK_STAINED_GLASS_PANE = ItemRegistry.fromItemKey("minecraft:pink_stained_glass_pane");
+    public static final LegacyItem PINK_STAINED_GLASS_PANE = LegacyItemRegistry.fromItemKey("minecraft:pink_stained_glass_pane");
 
     @NotNull
-    public static final Item GRAY_STAINED_GLASS_PANE = ItemRegistry.fromItemKey("minecraft:gray_stained_glass_pane");
+    public static final LegacyItem GRAY_STAINED_GLASS_PANE = LegacyItemRegistry.fromItemKey("minecraft:gray_stained_glass_pane");
 
     @NotNull
-    public static final Item LIGHT_GRAY_STAINED_GLASS_PANE = ItemRegistry.fromItemKey("minecraft:light_gray_stained_glass_pane");
+    public static final LegacyItem LIGHT_GRAY_STAINED_GLASS_PANE = LegacyItemRegistry.fromItemKey("minecraft:light_gray_stained_glass_pane");
 
     @NotNull
-    public static final Item CYAN_STAINED_GLASS_PANE = ItemRegistry.fromItemKey("minecraft:cyan_stained_glass_pane");
+    public static final LegacyItem CYAN_STAINED_GLASS_PANE = LegacyItemRegistry.fromItemKey("minecraft:cyan_stained_glass_pane");
 
     @NotNull
-    public static final Item PURPLE_STAINED_GLASS_PANE = ItemRegistry.fromItemKey("minecraft:purple_stained_glass_pane");
+    public static final LegacyItem PURPLE_STAINED_GLASS_PANE = LegacyItemRegistry.fromItemKey("minecraft:purple_stained_glass_pane");
 
     @NotNull
-    public static final Item BLUE_STAINED_GLASS_PANE = ItemRegistry.fromItemKey("minecraft:blue_stained_glass_pane");
+    public static final LegacyItem BLUE_STAINED_GLASS_PANE = LegacyItemRegistry.fromItemKey("minecraft:blue_stained_glass_pane");
 
     @NotNull
-    public static final Item BROWN_STAINED_GLASS_PANE = ItemRegistry.fromItemKey("minecraft:brown_stained_glass_pane");
+    public static final LegacyItem BROWN_STAINED_GLASS_PANE = LegacyItemRegistry.fromItemKey("minecraft:brown_stained_glass_pane");
 
     @NotNull
-    public static final Item GREEN_STAINED_GLASS_PANE = ItemRegistry.fromItemKey("minecraft:green_stained_glass_pane");
+    public static final LegacyItem GREEN_STAINED_GLASS_PANE = LegacyItemRegistry.fromItemKey("minecraft:green_stained_glass_pane");
 
     @NotNull
-    public static final Item RED_STAINED_GLASS_PANE = ItemRegistry.fromItemKey("minecraft:red_stained_glass_pane");
+    public static final LegacyItem RED_STAINED_GLASS_PANE = LegacyItemRegistry.fromItemKey("minecraft:red_stained_glass_pane");
 
     @NotNull
-    public static final Item BLACK_STAINED_GLASS_PANE = ItemRegistry.fromItemKey("minecraft:black_stained_glass_pane");
+    public static final LegacyItem BLACK_STAINED_GLASS_PANE = LegacyItemRegistry.fromItemKey("minecraft:black_stained_glass_pane");
 
     @NotNull
-    public static final Item PRISMARINE = ItemRegistry.fromItemKey("minecraft:prismarine");
+    public static final LegacyItem PRISMARINE = LegacyItemRegistry.fromItemKey("minecraft:prismarine");
 
     @NotNull
-    public static final Item PRISMARINE_BRICKS = ItemRegistry.fromItemKey("minecraft:prismarine_bricks");
+    public static final LegacyItem PRISMARINE_BRICKS = LegacyItemRegistry.fromItemKey("minecraft:prismarine_bricks");
 
     @NotNull
-    public static final Item DARK_PRISMARINE = ItemRegistry.fromItemKey("minecraft:dark_prismarine");
+    public static final LegacyItem DARK_PRISMARINE = LegacyItemRegistry.fromItemKey("minecraft:dark_prismarine");
 
     @NotNull
-    public static final Item PRISMARINE_STAIRS = ItemRegistry.fromItemKey("minecraft:prismarine_stairs");
+    public static final LegacyItem PRISMARINE_STAIRS = LegacyItemRegistry.fromItemKey("minecraft:prismarine_stairs");
 
     @NotNull
-    public static final Item PRISMARINE_BRICK_STAIRS = ItemRegistry.fromItemKey("minecraft:prismarine_brick_stairs");
+    public static final LegacyItem PRISMARINE_BRICK_STAIRS = LegacyItemRegistry.fromItemKey("minecraft:prismarine_brick_stairs");
 
     @NotNull
-    public static final Item DARK_PRISMARINE_STAIRS = ItemRegistry.fromItemKey("minecraft:dark_prismarine_stairs");
+    public static final LegacyItem DARK_PRISMARINE_STAIRS = LegacyItemRegistry.fromItemKey("minecraft:dark_prismarine_stairs");
 
     @NotNull
-    public static final Item SEA_LANTERN = ItemRegistry.fromItemKey("minecraft:sea_lantern");
+    public static final LegacyItem SEA_LANTERN = LegacyItemRegistry.fromItemKey("minecraft:sea_lantern");
 
     @NotNull
-    public static final Item RED_SANDSTONE = ItemRegistry.fromItemKey("minecraft:red_sandstone");
+    public static final LegacyItem RED_SANDSTONE = LegacyItemRegistry.fromItemKey("minecraft:red_sandstone");
 
     @NotNull
-    public static final Item CHISELED_RED_SANDSTONE = ItemRegistry.fromItemKey("minecraft:chiseled_red_sandstone");
+    public static final LegacyItem CHISELED_RED_SANDSTONE = LegacyItemRegistry.fromItemKey("minecraft:chiseled_red_sandstone");
 
     @NotNull
-    public static final Item CUT_RED_SANDSTONE = ItemRegistry.fromItemKey("minecraft:cut_red_sandstone");
+    public static final LegacyItem CUT_RED_SANDSTONE = LegacyItemRegistry.fromItemKey("minecraft:cut_red_sandstone");
 
     @NotNull
-    public static final Item RED_SANDSTONE_STAIRS = ItemRegistry.fromItemKey("minecraft:red_sandstone_stairs");
+    public static final LegacyItem RED_SANDSTONE_STAIRS = LegacyItemRegistry.fromItemKey("minecraft:red_sandstone_stairs");
 
     @NotNull
-    public static final Item REPEATING_COMMAND_BLOCK = ItemRegistry.fromItemKey("minecraft:repeating_command_block");
+    public static final LegacyItem REPEATING_COMMAND_BLOCK = LegacyItemRegistry.fromItemKey("minecraft:repeating_command_block");
 
     @NotNull
-    public static final Item CHAIN_COMMAND_BLOCK = ItemRegistry.fromItemKey("minecraft:chain_command_block");
+    public static final LegacyItem CHAIN_COMMAND_BLOCK = LegacyItemRegistry.fromItemKey("minecraft:chain_command_block");
 
     @NotNull
-    public static final Item MAGMA_BLOCK = ItemRegistry.fromItemKey("minecraft:magma_block");
+    public static final LegacyItem MAGMA_BLOCK = LegacyItemRegistry.fromItemKey("minecraft:magma_block");
 
     @NotNull
-    public static final Item NETHER_WART_BLOCK = ItemRegistry.fromItemKey("minecraft:nether_wart_block");
+    public static final LegacyItem NETHER_WART_BLOCK = LegacyItemRegistry.fromItemKey("minecraft:nether_wart_block");
 
     @NotNull
-    public static final Item WARPED_WART_BLOCK = ItemRegistry.fromItemKey("minecraft:warped_wart_block");
+    public static final LegacyItem WARPED_WART_BLOCK = LegacyItemRegistry.fromItemKey("minecraft:warped_wart_block");
 
     @NotNull
-    public static final Item RED_NETHER_BRICKS = ItemRegistry.fromItemKey("minecraft:red_nether_bricks");
+    public static final LegacyItem RED_NETHER_BRICKS = LegacyItemRegistry.fromItemKey("minecraft:red_nether_bricks");
 
     @NotNull
-    public static final Item BONE_BLOCK = ItemRegistry.fromItemKey("minecraft:bone_block");
+    public static final LegacyItem BONE_BLOCK = LegacyItemRegistry.fromItemKey("minecraft:bone_block");
 
     @NotNull
-    public static final Item STRUCTURE_VOID = ItemRegistry.fromItemKey("minecraft:structure_void");
+    public static final LegacyItem STRUCTURE_VOID = LegacyItemRegistry.fromItemKey("minecraft:structure_void");
 
     @NotNull
-    public static final Item SHULKER_BOX = ItemRegistry.fromItemKey("minecraft:shulker_box");
+    public static final LegacyItem SHULKER_BOX = LegacyItemRegistry.fromItemKey("minecraft:shulker_box");
 
     @NotNull
-    public static final Item WHITE_SHULKER_BOX = ItemRegistry.fromItemKey("minecraft:white_shulker_box");
+    public static final LegacyItem WHITE_SHULKER_BOX = LegacyItemRegistry.fromItemKey("minecraft:white_shulker_box");
 
     @NotNull
-    public static final Item ORANGE_SHULKER_BOX = ItemRegistry.fromItemKey("minecraft:orange_shulker_box");
+    public static final LegacyItem ORANGE_SHULKER_BOX = LegacyItemRegistry.fromItemKey("minecraft:orange_shulker_box");
 
     @NotNull
-    public static final Item MAGENTA_SHULKER_BOX = ItemRegistry.fromItemKey("minecraft:magenta_shulker_box");
+    public static final LegacyItem MAGENTA_SHULKER_BOX = LegacyItemRegistry.fromItemKey("minecraft:magenta_shulker_box");
 
     @NotNull
-    public static final Item LIGHT_BLUE_SHULKER_BOX = ItemRegistry.fromItemKey("minecraft:light_blue_shulker_box");
+    public static final LegacyItem LIGHT_BLUE_SHULKER_BOX = LegacyItemRegistry.fromItemKey("minecraft:light_blue_shulker_box");
 
     @NotNull
-    public static final Item YELLOW_SHULKER_BOX = ItemRegistry.fromItemKey("minecraft:yellow_shulker_box");
+    public static final LegacyItem YELLOW_SHULKER_BOX = LegacyItemRegistry.fromItemKey("minecraft:yellow_shulker_box");
 
     @NotNull
-    public static final Item LIME_SHULKER_BOX = ItemRegistry.fromItemKey("minecraft:lime_shulker_box");
+    public static final LegacyItem LIME_SHULKER_BOX = LegacyItemRegistry.fromItemKey("minecraft:lime_shulker_box");
 
     @NotNull
-    public static final Item PINK_SHULKER_BOX = ItemRegistry.fromItemKey("minecraft:pink_shulker_box");
+    public static final LegacyItem PINK_SHULKER_BOX = LegacyItemRegistry.fromItemKey("minecraft:pink_shulker_box");
 
     @NotNull
-    public static final Item GRAY_SHULKER_BOX = ItemRegistry.fromItemKey("minecraft:gray_shulker_box");
+    public static final LegacyItem GRAY_SHULKER_BOX = LegacyItemRegistry.fromItemKey("minecraft:gray_shulker_box");
 
     @NotNull
-    public static final Item LIGHT_GRAY_SHULKER_BOX = ItemRegistry.fromItemKey("minecraft:light_gray_shulker_box");
+    public static final LegacyItem LIGHT_GRAY_SHULKER_BOX = LegacyItemRegistry.fromItemKey("minecraft:light_gray_shulker_box");
 
     @NotNull
-    public static final Item CYAN_SHULKER_BOX = ItemRegistry.fromItemKey("minecraft:cyan_shulker_box");
+    public static final LegacyItem CYAN_SHULKER_BOX = LegacyItemRegistry.fromItemKey("minecraft:cyan_shulker_box");
 
     @NotNull
-    public static final Item PURPLE_SHULKER_BOX = ItemRegistry.fromItemKey("minecraft:purple_shulker_box");
+    public static final LegacyItem PURPLE_SHULKER_BOX = LegacyItemRegistry.fromItemKey("minecraft:purple_shulker_box");
 
     @NotNull
-    public static final Item BLUE_SHULKER_BOX = ItemRegistry.fromItemKey("minecraft:blue_shulker_box");
+    public static final LegacyItem BLUE_SHULKER_BOX = LegacyItemRegistry.fromItemKey("minecraft:blue_shulker_box");
 
     @NotNull
-    public static final Item BROWN_SHULKER_BOX = ItemRegistry.fromItemKey("minecraft:brown_shulker_box");
+    public static final LegacyItem BROWN_SHULKER_BOX = LegacyItemRegistry.fromItemKey("minecraft:brown_shulker_box");
 
     @NotNull
-    public static final Item GREEN_SHULKER_BOX = ItemRegistry.fromItemKey("minecraft:green_shulker_box");
+    public static final LegacyItem GREEN_SHULKER_BOX = LegacyItemRegistry.fromItemKey("minecraft:green_shulker_box");
 
     @NotNull
-    public static final Item RED_SHULKER_BOX = ItemRegistry.fromItemKey("minecraft:red_shulker_box");
+    public static final LegacyItem RED_SHULKER_BOX = LegacyItemRegistry.fromItemKey("minecraft:red_shulker_box");
 
     @NotNull
-    public static final Item BLACK_SHULKER_BOX = ItemRegistry.fromItemKey("minecraft:black_shulker_box");
+    public static final LegacyItem BLACK_SHULKER_BOX = LegacyItemRegistry.fromItemKey("minecraft:black_shulker_box");
 
     @NotNull
-    public static final Item WHITE_GLAZED_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:white_glazed_terracotta");
+    public static final LegacyItem WHITE_GLAZED_TERRACOTTA = LegacyItemRegistry.fromItemKey("minecraft:white_glazed_terracotta");
 
     @NotNull
-    public static final Item ORANGE_GLAZED_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:orange_glazed_terracotta");
+    public static final LegacyItem ORANGE_GLAZED_TERRACOTTA = LegacyItemRegistry.fromItemKey("minecraft:orange_glazed_terracotta");
 
     @NotNull
-    public static final Item MAGENTA_GLAZED_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:magenta_glazed_terracotta");
+    public static final LegacyItem MAGENTA_GLAZED_TERRACOTTA = LegacyItemRegistry.fromItemKey("minecraft:magenta_glazed_terracotta");
 
     @NotNull
-    public static final Item LIGHT_BLUE_GLAZED_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:light_blue_glazed_terracotta");
+    public static final LegacyItem LIGHT_BLUE_GLAZED_TERRACOTTA = LegacyItemRegistry.fromItemKey("minecraft:light_blue_glazed_terracotta");
 
     @NotNull
-    public static final Item YELLOW_GLAZED_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:yellow_glazed_terracotta");
+    public static final LegacyItem YELLOW_GLAZED_TERRACOTTA = LegacyItemRegistry.fromItemKey("minecraft:yellow_glazed_terracotta");
 
     @NotNull
-    public static final Item LIME_GLAZED_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:lime_glazed_terracotta");
+    public static final LegacyItem LIME_GLAZED_TERRACOTTA = LegacyItemRegistry.fromItemKey("minecraft:lime_glazed_terracotta");
 
     @NotNull
-    public static final Item PINK_GLAZED_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:pink_glazed_terracotta");
+    public static final LegacyItem PINK_GLAZED_TERRACOTTA = LegacyItemRegistry.fromItemKey("minecraft:pink_glazed_terracotta");
 
     @NotNull
-    public static final Item GRAY_GLAZED_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:gray_glazed_terracotta");
+    public static final LegacyItem GRAY_GLAZED_TERRACOTTA = LegacyItemRegistry.fromItemKey("minecraft:gray_glazed_terracotta");
 
     @NotNull
-    public static final Item LIGHT_GRAY_GLAZED_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:light_gray_glazed_terracotta");
+    public static final LegacyItem LIGHT_GRAY_GLAZED_TERRACOTTA = LegacyItemRegistry.fromItemKey("minecraft:light_gray_glazed_terracotta");
 
     @NotNull
-    public static final Item CYAN_GLAZED_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:cyan_glazed_terracotta");
+    public static final LegacyItem CYAN_GLAZED_TERRACOTTA = LegacyItemRegistry.fromItemKey("minecraft:cyan_glazed_terracotta");
 
     @NotNull
-    public static final Item PURPLE_GLAZED_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:purple_glazed_terracotta");
+    public static final LegacyItem PURPLE_GLAZED_TERRACOTTA = LegacyItemRegistry.fromItemKey("minecraft:purple_glazed_terracotta");
 
     @NotNull
-    public static final Item BLUE_GLAZED_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:blue_glazed_terracotta");
+    public static final LegacyItem BLUE_GLAZED_TERRACOTTA = LegacyItemRegistry.fromItemKey("minecraft:blue_glazed_terracotta");
 
     @NotNull
-    public static final Item BROWN_GLAZED_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:brown_glazed_terracotta");
+    public static final LegacyItem BROWN_GLAZED_TERRACOTTA = LegacyItemRegistry.fromItemKey("minecraft:brown_glazed_terracotta");
 
     @NotNull
-    public static final Item GREEN_GLAZED_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:green_glazed_terracotta");
+    public static final LegacyItem GREEN_GLAZED_TERRACOTTA = LegacyItemRegistry.fromItemKey("minecraft:green_glazed_terracotta");
 
     @NotNull
-    public static final Item RED_GLAZED_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:red_glazed_terracotta");
+    public static final LegacyItem RED_GLAZED_TERRACOTTA = LegacyItemRegistry.fromItemKey("minecraft:red_glazed_terracotta");
 
     @NotNull
-    public static final Item BLACK_GLAZED_TERRACOTTA = ItemRegistry.fromItemKey("minecraft:black_glazed_terracotta");
+    public static final LegacyItem BLACK_GLAZED_TERRACOTTA = LegacyItemRegistry.fromItemKey("minecraft:black_glazed_terracotta");
 
     @NotNull
-    public static final Item WHITE_CONCRETE = ItemRegistry.fromItemKey("minecraft:white_concrete");
+    public static final LegacyItem WHITE_CONCRETE = LegacyItemRegistry.fromItemKey("minecraft:white_concrete");
 
     @NotNull
-    public static final Item ORANGE_CONCRETE = ItemRegistry.fromItemKey("minecraft:orange_concrete");
+    public static final LegacyItem ORANGE_CONCRETE = LegacyItemRegistry.fromItemKey("minecraft:orange_concrete");
 
     @NotNull
-    public static final Item MAGENTA_CONCRETE = ItemRegistry.fromItemKey("minecraft:magenta_concrete");
+    public static final LegacyItem MAGENTA_CONCRETE = LegacyItemRegistry.fromItemKey("minecraft:magenta_concrete");
 
     @NotNull
-    public static final Item LIGHT_BLUE_CONCRETE = ItemRegistry.fromItemKey("minecraft:light_blue_concrete");
+    public static final LegacyItem LIGHT_BLUE_CONCRETE = LegacyItemRegistry.fromItemKey("minecraft:light_blue_concrete");
 
     @NotNull
-    public static final Item YELLOW_CONCRETE = ItemRegistry.fromItemKey("minecraft:yellow_concrete");
+    public static final LegacyItem YELLOW_CONCRETE = LegacyItemRegistry.fromItemKey("minecraft:yellow_concrete");
 
     @NotNull
-    public static final Item LIME_CONCRETE = ItemRegistry.fromItemKey("minecraft:lime_concrete");
+    public static final LegacyItem LIME_CONCRETE = LegacyItemRegistry.fromItemKey("minecraft:lime_concrete");
 
     @NotNull
-    public static final Item PINK_CONCRETE = ItemRegistry.fromItemKey("minecraft:pink_concrete");
+    public static final LegacyItem PINK_CONCRETE = LegacyItemRegistry.fromItemKey("minecraft:pink_concrete");
 
     @NotNull
-    public static final Item GRAY_CONCRETE = ItemRegistry.fromItemKey("minecraft:gray_concrete");
+    public static final LegacyItem GRAY_CONCRETE = LegacyItemRegistry.fromItemKey("minecraft:gray_concrete");
 
     @NotNull
-    public static final Item LIGHT_GRAY_CONCRETE = ItemRegistry.fromItemKey("minecraft:light_gray_concrete");
+    public static final LegacyItem LIGHT_GRAY_CONCRETE = LegacyItemRegistry.fromItemKey("minecraft:light_gray_concrete");
 
     @NotNull
-    public static final Item CYAN_CONCRETE = ItemRegistry.fromItemKey("minecraft:cyan_concrete");
+    public static final LegacyItem CYAN_CONCRETE = LegacyItemRegistry.fromItemKey("minecraft:cyan_concrete");
 
     @NotNull
-    public static final Item PURPLE_CONCRETE = ItemRegistry.fromItemKey("minecraft:purple_concrete");
+    public static final LegacyItem PURPLE_CONCRETE = LegacyItemRegistry.fromItemKey("minecraft:purple_concrete");
 
     @NotNull
-    public static final Item BLUE_CONCRETE = ItemRegistry.fromItemKey("minecraft:blue_concrete");
+    public static final LegacyItem BLUE_CONCRETE = LegacyItemRegistry.fromItemKey("minecraft:blue_concrete");
 
     @NotNull
-    public static final Item BROWN_CONCRETE = ItemRegistry.fromItemKey("minecraft:brown_concrete");
+    public static final LegacyItem BROWN_CONCRETE = LegacyItemRegistry.fromItemKey("minecraft:brown_concrete");
 
     @NotNull
-    public static final Item GREEN_CONCRETE = ItemRegistry.fromItemKey("minecraft:green_concrete");
+    public static final LegacyItem GREEN_CONCRETE = LegacyItemRegistry.fromItemKey("minecraft:green_concrete");
 
     @NotNull
-    public static final Item RED_CONCRETE = ItemRegistry.fromItemKey("minecraft:red_concrete");
+    public static final LegacyItem RED_CONCRETE = LegacyItemRegistry.fromItemKey("minecraft:red_concrete");
 
     @NotNull
-    public static final Item BLACK_CONCRETE = ItemRegistry.fromItemKey("minecraft:black_concrete");
+    public static final LegacyItem BLACK_CONCRETE = LegacyItemRegistry.fromItemKey("minecraft:black_concrete");
 
     @NotNull
-    public static final Item WHITE_CONCRETE_POWDER = ItemRegistry.fromItemKey("minecraft:white_concrete_powder");
+    public static final LegacyItem WHITE_CONCRETE_POWDER = LegacyItemRegistry.fromItemKey("minecraft:white_concrete_powder");
 
     @NotNull
-    public static final Item ORANGE_CONCRETE_POWDER = ItemRegistry.fromItemKey("minecraft:orange_concrete_powder");
+    public static final LegacyItem ORANGE_CONCRETE_POWDER = LegacyItemRegistry.fromItemKey("minecraft:orange_concrete_powder");
 
     @NotNull
-    public static final Item MAGENTA_CONCRETE_POWDER = ItemRegistry.fromItemKey("minecraft:magenta_concrete_powder");
+    public static final LegacyItem MAGENTA_CONCRETE_POWDER = LegacyItemRegistry.fromItemKey("minecraft:magenta_concrete_powder");
 
     @NotNull
-    public static final Item LIGHT_BLUE_CONCRETE_POWDER = ItemRegistry.fromItemKey("minecraft:light_blue_concrete_powder");
+    public static final LegacyItem LIGHT_BLUE_CONCRETE_POWDER = LegacyItemRegistry.fromItemKey("minecraft:light_blue_concrete_powder");
 
     @NotNull
-    public static final Item YELLOW_CONCRETE_POWDER = ItemRegistry.fromItemKey("minecraft:yellow_concrete_powder");
+    public static final LegacyItem YELLOW_CONCRETE_POWDER = LegacyItemRegistry.fromItemKey("minecraft:yellow_concrete_powder");
 
     @NotNull
-    public static final Item LIME_CONCRETE_POWDER = ItemRegistry.fromItemKey("minecraft:lime_concrete_powder");
+    public static final LegacyItem LIME_CONCRETE_POWDER = LegacyItemRegistry.fromItemKey("minecraft:lime_concrete_powder");
 
     @NotNull
-    public static final Item PINK_CONCRETE_POWDER = ItemRegistry.fromItemKey("minecraft:pink_concrete_powder");
+    public static final LegacyItem PINK_CONCRETE_POWDER = LegacyItemRegistry.fromItemKey("minecraft:pink_concrete_powder");
 
     @NotNull
-    public static final Item GRAY_CONCRETE_POWDER = ItemRegistry.fromItemKey("minecraft:gray_concrete_powder");
+    public static final LegacyItem GRAY_CONCRETE_POWDER = LegacyItemRegistry.fromItemKey("minecraft:gray_concrete_powder");
 
     @NotNull
-    public static final Item LIGHT_GRAY_CONCRETE_POWDER = ItemRegistry.fromItemKey("minecraft:light_gray_concrete_powder");
+    public static final LegacyItem LIGHT_GRAY_CONCRETE_POWDER = LegacyItemRegistry.fromItemKey("minecraft:light_gray_concrete_powder");
 
     @NotNull
-    public static final Item CYAN_CONCRETE_POWDER = ItemRegistry.fromItemKey("minecraft:cyan_concrete_powder");
+    public static final LegacyItem CYAN_CONCRETE_POWDER = LegacyItemRegistry.fromItemKey("minecraft:cyan_concrete_powder");
 
     @NotNull
-    public static final Item PURPLE_CONCRETE_POWDER = ItemRegistry.fromItemKey("minecraft:purple_concrete_powder");
+    public static final LegacyItem PURPLE_CONCRETE_POWDER = LegacyItemRegistry.fromItemKey("minecraft:purple_concrete_powder");
 
     @NotNull
-    public static final Item BLUE_CONCRETE_POWDER = ItemRegistry.fromItemKey("minecraft:blue_concrete_powder");
+    public static final LegacyItem BLUE_CONCRETE_POWDER = LegacyItemRegistry.fromItemKey("minecraft:blue_concrete_powder");
 
     @NotNull
-    public static final Item BROWN_CONCRETE_POWDER = ItemRegistry.fromItemKey("minecraft:brown_concrete_powder");
+    public static final LegacyItem BROWN_CONCRETE_POWDER = LegacyItemRegistry.fromItemKey("minecraft:brown_concrete_powder");
 
     @NotNull
-    public static final Item GREEN_CONCRETE_POWDER = ItemRegistry.fromItemKey("minecraft:green_concrete_powder");
+    public static final LegacyItem GREEN_CONCRETE_POWDER = LegacyItemRegistry.fromItemKey("minecraft:green_concrete_powder");
 
     @NotNull
-    public static final Item RED_CONCRETE_POWDER = ItemRegistry.fromItemKey("minecraft:red_concrete_powder");
+    public static final LegacyItem RED_CONCRETE_POWDER = LegacyItemRegistry.fromItemKey("minecraft:red_concrete_powder");
 
     @NotNull
-    public static final Item BLACK_CONCRETE_POWDER = ItemRegistry.fromItemKey("minecraft:black_concrete_powder");
+    public static final LegacyItem BLACK_CONCRETE_POWDER = LegacyItemRegistry.fromItemKey("minecraft:black_concrete_powder");
 
     @NotNull
-    public static final Item TURTLE_EGG = ItemRegistry.fromItemKey("minecraft:turtle_egg");
+    public static final LegacyItem TURTLE_EGG = LegacyItemRegistry.fromItemKey("minecraft:turtle_egg");
 
     @NotNull
-    public static final Item DEAD_TUBE_CORAL_BLOCK = ItemRegistry.fromItemKey("minecraft:dead_tube_coral_block");
+    public static final LegacyItem DEAD_TUBE_CORAL_BLOCK = LegacyItemRegistry.fromItemKey("minecraft:dead_tube_coral_block");
 
     @NotNull
-    public static final Item DEAD_BRAIN_CORAL_BLOCK = ItemRegistry.fromItemKey("minecraft:dead_brain_coral_block");
+    public static final LegacyItem DEAD_BRAIN_CORAL_BLOCK = LegacyItemRegistry.fromItemKey("minecraft:dead_brain_coral_block");
 
     @NotNull
-    public static final Item DEAD_BUBBLE_CORAL_BLOCK = ItemRegistry.fromItemKey("minecraft:dead_bubble_coral_block");
+    public static final LegacyItem DEAD_BUBBLE_CORAL_BLOCK = LegacyItemRegistry.fromItemKey("minecraft:dead_bubble_coral_block");
 
     @NotNull
-    public static final Item DEAD_FIRE_CORAL_BLOCK = ItemRegistry.fromItemKey("minecraft:dead_fire_coral_block");
+    public static final LegacyItem DEAD_FIRE_CORAL_BLOCK = LegacyItemRegistry.fromItemKey("minecraft:dead_fire_coral_block");
 
     @NotNull
-    public static final Item DEAD_HORN_CORAL_BLOCK = ItemRegistry.fromItemKey("minecraft:dead_horn_coral_block");
+    public static final LegacyItem DEAD_HORN_CORAL_BLOCK = LegacyItemRegistry.fromItemKey("minecraft:dead_horn_coral_block");
 
     @NotNull
-    public static final Item TUBE_CORAL_BLOCK = ItemRegistry.fromItemKey("minecraft:tube_coral_block");
+    public static final LegacyItem TUBE_CORAL_BLOCK = LegacyItemRegistry.fromItemKey("minecraft:tube_coral_block");
 
     @NotNull
-    public static final Item BRAIN_CORAL_BLOCK = ItemRegistry.fromItemKey("minecraft:brain_coral_block");
+    public static final LegacyItem BRAIN_CORAL_BLOCK = LegacyItemRegistry.fromItemKey("minecraft:brain_coral_block");
 
     @NotNull
-    public static final Item BUBBLE_CORAL_BLOCK = ItemRegistry.fromItemKey("minecraft:bubble_coral_block");
+    public static final LegacyItem BUBBLE_CORAL_BLOCK = LegacyItemRegistry.fromItemKey("minecraft:bubble_coral_block");
 
     @NotNull
-    public static final Item FIRE_CORAL_BLOCK = ItemRegistry.fromItemKey("minecraft:fire_coral_block");
+    public static final LegacyItem FIRE_CORAL_BLOCK = LegacyItemRegistry.fromItemKey("minecraft:fire_coral_block");
 
     @NotNull
-    public static final Item HORN_CORAL_BLOCK = ItemRegistry.fromItemKey("minecraft:horn_coral_block");
+    public static final LegacyItem HORN_CORAL_BLOCK = LegacyItemRegistry.fromItemKey("minecraft:horn_coral_block");
 
     @NotNull
-    public static final Item TUBE_CORAL = ItemRegistry.fromItemKey("minecraft:tube_coral");
+    public static final LegacyItem TUBE_CORAL = LegacyItemRegistry.fromItemKey("minecraft:tube_coral");
 
     @NotNull
-    public static final Item BRAIN_CORAL = ItemRegistry.fromItemKey("minecraft:brain_coral");
+    public static final LegacyItem BRAIN_CORAL = LegacyItemRegistry.fromItemKey("minecraft:brain_coral");
 
     @NotNull
-    public static final Item BUBBLE_CORAL = ItemRegistry.fromItemKey("minecraft:bubble_coral");
+    public static final LegacyItem BUBBLE_CORAL = LegacyItemRegistry.fromItemKey("minecraft:bubble_coral");
 
     @NotNull
-    public static final Item FIRE_CORAL = ItemRegistry.fromItemKey("minecraft:fire_coral");
+    public static final LegacyItem FIRE_CORAL = LegacyItemRegistry.fromItemKey("minecraft:fire_coral");
 
     @NotNull
-    public static final Item HORN_CORAL = ItemRegistry.fromItemKey("minecraft:horn_coral");
+    public static final LegacyItem HORN_CORAL = LegacyItemRegistry.fromItemKey("minecraft:horn_coral");
 
     @NotNull
-    public static final Item DEAD_BRAIN_CORAL = ItemRegistry.fromItemKey("minecraft:dead_brain_coral");
+    public static final LegacyItem DEAD_BRAIN_CORAL = LegacyItemRegistry.fromItemKey("minecraft:dead_brain_coral");
 
     @NotNull
-    public static final Item DEAD_BUBBLE_CORAL = ItemRegistry.fromItemKey("minecraft:dead_bubble_coral");
+    public static final LegacyItem DEAD_BUBBLE_CORAL = LegacyItemRegistry.fromItemKey("minecraft:dead_bubble_coral");
 
     @NotNull
-    public static final Item DEAD_FIRE_CORAL = ItemRegistry.fromItemKey("minecraft:dead_fire_coral");
+    public static final LegacyItem DEAD_FIRE_CORAL = LegacyItemRegistry.fromItemKey("minecraft:dead_fire_coral");
 
     @NotNull
-    public static final Item DEAD_HORN_CORAL = ItemRegistry.fromItemKey("minecraft:dead_horn_coral");
+    public static final LegacyItem DEAD_HORN_CORAL = LegacyItemRegistry.fromItemKey("minecraft:dead_horn_coral");
 
     @NotNull
-    public static final Item DEAD_TUBE_CORAL = ItemRegistry.fromItemKey("minecraft:dead_tube_coral");
+    public static final LegacyItem DEAD_TUBE_CORAL = LegacyItemRegistry.fromItemKey("minecraft:dead_tube_coral");
 
     @NotNull
-    public static final Item TUBE_CORAL_FAN = ItemRegistry.fromItemKey("minecraft:tube_coral_fan");
+    public static final LegacyItem TUBE_CORAL_FAN = LegacyItemRegistry.fromItemKey("minecraft:tube_coral_fan");
 
     @NotNull
-    public static final Item BRAIN_CORAL_FAN = ItemRegistry.fromItemKey("minecraft:brain_coral_fan");
+    public static final LegacyItem BRAIN_CORAL_FAN = LegacyItemRegistry.fromItemKey("minecraft:brain_coral_fan");
 
     @NotNull
-    public static final Item BUBBLE_CORAL_FAN = ItemRegistry.fromItemKey("minecraft:bubble_coral_fan");
+    public static final LegacyItem BUBBLE_CORAL_FAN = LegacyItemRegistry.fromItemKey("minecraft:bubble_coral_fan");
 
     @NotNull
-    public static final Item FIRE_CORAL_FAN = ItemRegistry.fromItemKey("minecraft:fire_coral_fan");
+    public static final LegacyItem FIRE_CORAL_FAN = LegacyItemRegistry.fromItemKey("minecraft:fire_coral_fan");
 
     @NotNull
-    public static final Item HORN_CORAL_FAN = ItemRegistry.fromItemKey("minecraft:horn_coral_fan");
+    public static final LegacyItem HORN_CORAL_FAN = LegacyItemRegistry.fromItemKey("minecraft:horn_coral_fan");
 
     @NotNull
-    public static final Item DEAD_TUBE_CORAL_FAN = ItemRegistry.fromItemKey("minecraft:dead_tube_coral_fan");
+    public static final LegacyItem DEAD_TUBE_CORAL_FAN = LegacyItemRegistry.fromItemKey("minecraft:dead_tube_coral_fan");
 
     @NotNull
-    public static final Item DEAD_BRAIN_CORAL_FAN = ItemRegistry.fromItemKey("minecraft:dead_brain_coral_fan");
+    public static final LegacyItem DEAD_BRAIN_CORAL_FAN = LegacyItemRegistry.fromItemKey("minecraft:dead_brain_coral_fan");
 
     @NotNull
-    public static final Item DEAD_BUBBLE_CORAL_FAN = ItemRegistry.fromItemKey("minecraft:dead_bubble_coral_fan");
+    public static final LegacyItem DEAD_BUBBLE_CORAL_FAN = LegacyItemRegistry.fromItemKey("minecraft:dead_bubble_coral_fan");
 
     @NotNull
-    public static final Item DEAD_FIRE_CORAL_FAN = ItemRegistry.fromItemKey("minecraft:dead_fire_coral_fan");
+    public static final LegacyItem DEAD_FIRE_CORAL_FAN = LegacyItemRegistry.fromItemKey("minecraft:dead_fire_coral_fan");
 
     @NotNull
-    public static final Item DEAD_HORN_CORAL_FAN = ItemRegistry.fromItemKey("minecraft:dead_horn_coral_fan");
+    public static final LegacyItem DEAD_HORN_CORAL_FAN = LegacyItemRegistry.fromItemKey("minecraft:dead_horn_coral_fan");
 
     @NotNull
-    public static final Item BLUE_ICE = ItemRegistry.fromItemKey("minecraft:blue_ice");
+    public static final LegacyItem BLUE_ICE = LegacyItemRegistry.fromItemKey("minecraft:blue_ice");
 
     @NotNull
-    public static final Item CONDUIT = ItemRegistry.fromItemKey("minecraft:conduit");
+    public static final LegacyItem CONDUIT = LegacyItemRegistry.fromItemKey("minecraft:conduit");
 
     @NotNull
-    public static final Item POLISHED_GRANITE_STAIRS = ItemRegistry.fromItemKey("minecraft:polished_granite_stairs");
+    public static final LegacyItem POLISHED_GRANITE_STAIRS = LegacyItemRegistry.fromItemKey("minecraft:polished_granite_stairs");
 
     @NotNull
-    public static final Item SMOOTH_RED_SANDSTONE_STAIRS = ItemRegistry.fromItemKey("minecraft:smooth_red_sandstone_stairs");
+    public static final LegacyItem SMOOTH_RED_SANDSTONE_STAIRS = LegacyItemRegistry.fromItemKey("minecraft:smooth_red_sandstone_stairs");
 
     @NotNull
-    public static final Item MOSSY_STONE_BRICK_STAIRS = ItemRegistry.fromItemKey("minecraft:mossy_stone_brick_stairs");
+    public static final LegacyItem MOSSY_STONE_BRICK_STAIRS = LegacyItemRegistry.fromItemKey("minecraft:mossy_stone_brick_stairs");
 
     @NotNull
-    public static final Item POLISHED_DIORITE_STAIRS = ItemRegistry.fromItemKey("minecraft:polished_diorite_stairs");
+    public static final LegacyItem POLISHED_DIORITE_STAIRS = LegacyItemRegistry.fromItemKey("minecraft:polished_diorite_stairs");
 
     @NotNull
-    public static final Item MOSSY_COBBLESTONE_STAIRS = ItemRegistry.fromItemKey("minecraft:mossy_cobblestone_stairs");
+    public static final LegacyItem MOSSY_COBBLESTONE_STAIRS = LegacyItemRegistry.fromItemKey("minecraft:mossy_cobblestone_stairs");
 
     @NotNull
-    public static final Item END_STONE_BRICK_STAIRS = ItemRegistry.fromItemKey("minecraft:end_stone_brick_stairs");
+    public static final LegacyItem END_STONE_BRICK_STAIRS = LegacyItemRegistry.fromItemKey("minecraft:end_stone_brick_stairs");
 
     @NotNull
-    public static final Item STONE_STAIRS = ItemRegistry.fromItemKey("minecraft:stone_stairs");
+    public static final LegacyItem STONE_STAIRS = LegacyItemRegistry.fromItemKey("minecraft:stone_stairs");
 
     @NotNull
-    public static final Item SMOOTH_SANDSTONE_STAIRS = ItemRegistry.fromItemKey("minecraft:smooth_sandstone_stairs");
+    public static final LegacyItem SMOOTH_SANDSTONE_STAIRS = LegacyItemRegistry.fromItemKey("minecraft:smooth_sandstone_stairs");
 
     @NotNull
-    public static final Item SMOOTH_QUARTZ_STAIRS = ItemRegistry.fromItemKey("minecraft:smooth_quartz_stairs");
+    public static final LegacyItem SMOOTH_QUARTZ_STAIRS = LegacyItemRegistry.fromItemKey("minecraft:smooth_quartz_stairs");
 
     @NotNull
-    public static final Item GRANITE_STAIRS = ItemRegistry.fromItemKey("minecraft:granite_stairs");
+    public static final LegacyItem GRANITE_STAIRS = LegacyItemRegistry.fromItemKey("minecraft:granite_stairs");
 
     @NotNull
-    public static final Item ANDESITE_STAIRS = ItemRegistry.fromItemKey("minecraft:andesite_stairs");
+    public static final LegacyItem ANDESITE_STAIRS = LegacyItemRegistry.fromItemKey("minecraft:andesite_stairs");
 
     @NotNull
-    public static final Item RED_NETHER_BRICK_STAIRS = ItemRegistry.fromItemKey("minecraft:red_nether_brick_stairs");
+    public static final LegacyItem RED_NETHER_BRICK_STAIRS = LegacyItemRegistry.fromItemKey("minecraft:red_nether_brick_stairs");
 
     @NotNull
-    public static final Item POLISHED_ANDESITE_STAIRS = ItemRegistry.fromItemKey("minecraft:polished_andesite_stairs");
+    public static final LegacyItem POLISHED_ANDESITE_STAIRS = LegacyItemRegistry.fromItemKey("minecraft:polished_andesite_stairs");
 
     @NotNull
-    public static final Item DIORITE_STAIRS = ItemRegistry.fromItemKey("minecraft:diorite_stairs");
+    public static final LegacyItem DIORITE_STAIRS = LegacyItemRegistry.fromItemKey("minecraft:diorite_stairs");
 
     @NotNull
-    public static final Item COBBLED_DEEPSLATE_STAIRS = ItemRegistry.fromItemKey("minecraft:cobbled_deepslate_stairs");
+    public static final LegacyItem COBBLED_DEEPSLATE_STAIRS = LegacyItemRegistry.fromItemKey("minecraft:cobbled_deepslate_stairs");
 
     @NotNull
-    public static final Item POLISHED_DEEPSLATE_STAIRS = ItemRegistry.fromItemKey("minecraft:polished_deepslate_stairs");
+    public static final LegacyItem POLISHED_DEEPSLATE_STAIRS = LegacyItemRegistry.fromItemKey("minecraft:polished_deepslate_stairs");
 
     @NotNull
-    public static final Item DEEPSLATE_BRICK_STAIRS = ItemRegistry.fromItemKey("minecraft:deepslate_brick_stairs");
+    public static final LegacyItem DEEPSLATE_BRICK_STAIRS = LegacyItemRegistry.fromItemKey("minecraft:deepslate_brick_stairs");
 
     @NotNull
-    public static final Item DEEPSLATE_TILE_STAIRS = ItemRegistry.fromItemKey("minecraft:deepslate_tile_stairs");
+    public static final LegacyItem DEEPSLATE_TILE_STAIRS = LegacyItemRegistry.fromItemKey("minecraft:deepslate_tile_stairs");
 
     @NotNull
-    public static final Item POLISHED_GRANITE_SLAB = ItemRegistry.fromItemKey("minecraft:polished_granite_slab");
+    public static final LegacyItem POLISHED_GRANITE_SLAB = LegacyItemRegistry.fromItemKey("minecraft:polished_granite_slab");
 
     @NotNull
-    public static final Item SMOOTH_RED_SANDSTONE_SLAB = ItemRegistry.fromItemKey("minecraft:smooth_red_sandstone_slab");
+    public static final LegacyItem SMOOTH_RED_SANDSTONE_SLAB = LegacyItemRegistry.fromItemKey("minecraft:smooth_red_sandstone_slab");
 
     @NotNull
-    public static final Item MOSSY_STONE_BRICK_SLAB = ItemRegistry.fromItemKey("minecraft:mossy_stone_brick_slab");
+    public static final LegacyItem MOSSY_STONE_BRICK_SLAB = LegacyItemRegistry.fromItemKey("minecraft:mossy_stone_brick_slab");
 
     @NotNull
-    public static final Item POLISHED_DIORITE_SLAB = ItemRegistry.fromItemKey("minecraft:polished_diorite_slab");
+    public static final LegacyItem POLISHED_DIORITE_SLAB = LegacyItemRegistry.fromItemKey("minecraft:polished_diorite_slab");
 
     @NotNull
-    public static final Item MOSSY_COBBLESTONE_SLAB = ItemRegistry.fromItemKey("minecraft:mossy_cobblestone_slab");
+    public static final LegacyItem MOSSY_COBBLESTONE_SLAB = LegacyItemRegistry.fromItemKey("minecraft:mossy_cobblestone_slab");
 
     @NotNull
-    public static final Item END_STONE_BRICK_SLAB = ItemRegistry.fromItemKey("minecraft:end_stone_brick_slab");
+    public static final LegacyItem END_STONE_BRICK_SLAB = LegacyItemRegistry.fromItemKey("minecraft:end_stone_brick_slab");
 
     @NotNull
-    public static final Item SMOOTH_SANDSTONE_SLAB = ItemRegistry.fromItemKey("minecraft:smooth_sandstone_slab");
+    public static final LegacyItem SMOOTH_SANDSTONE_SLAB = LegacyItemRegistry.fromItemKey("minecraft:smooth_sandstone_slab");
 
     @NotNull
-    public static final Item SMOOTH_QUARTZ_SLAB = ItemRegistry.fromItemKey("minecraft:smooth_quartz_slab");
+    public static final LegacyItem SMOOTH_QUARTZ_SLAB = LegacyItemRegistry.fromItemKey("minecraft:smooth_quartz_slab");
 
     @NotNull
-    public static final Item GRANITE_SLAB = ItemRegistry.fromItemKey("minecraft:granite_slab");
+    public static final LegacyItem GRANITE_SLAB = LegacyItemRegistry.fromItemKey("minecraft:granite_slab");
 
     @NotNull
-    public static final Item ANDESITE_SLAB = ItemRegistry.fromItemKey("minecraft:andesite_slab");
+    public static final LegacyItem ANDESITE_SLAB = LegacyItemRegistry.fromItemKey("minecraft:andesite_slab");
 
     @NotNull
-    public static final Item RED_NETHER_BRICK_SLAB = ItemRegistry.fromItemKey("minecraft:red_nether_brick_slab");
+    public static final LegacyItem RED_NETHER_BRICK_SLAB = LegacyItemRegistry.fromItemKey("minecraft:red_nether_brick_slab");
 
     @NotNull
-    public static final Item POLISHED_ANDESITE_SLAB = ItemRegistry.fromItemKey("minecraft:polished_andesite_slab");
+    public static final LegacyItem POLISHED_ANDESITE_SLAB = LegacyItemRegistry.fromItemKey("minecraft:polished_andesite_slab");
 
     @NotNull
-    public static final Item DIORITE_SLAB = ItemRegistry.fromItemKey("minecraft:diorite_slab");
+    public static final LegacyItem DIORITE_SLAB = LegacyItemRegistry.fromItemKey("minecraft:diorite_slab");
 
     @NotNull
-    public static final Item COBBLED_DEEPSLATE_SLAB = ItemRegistry.fromItemKey("minecraft:cobbled_deepslate_slab");
+    public static final LegacyItem COBBLED_DEEPSLATE_SLAB = LegacyItemRegistry.fromItemKey("minecraft:cobbled_deepslate_slab");
 
     @NotNull
-    public static final Item POLISHED_DEEPSLATE_SLAB = ItemRegistry.fromItemKey("minecraft:polished_deepslate_slab");
+    public static final LegacyItem POLISHED_DEEPSLATE_SLAB = LegacyItemRegistry.fromItemKey("minecraft:polished_deepslate_slab");
 
     @NotNull
-    public static final Item DEEPSLATE_BRICK_SLAB = ItemRegistry.fromItemKey("minecraft:deepslate_brick_slab");
+    public static final LegacyItem DEEPSLATE_BRICK_SLAB = LegacyItemRegistry.fromItemKey("minecraft:deepslate_brick_slab");
 
     @NotNull
-    public static final Item DEEPSLATE_TILE_SLAB = ItemRegistry.fromItemKey("minecraft:deepslate_tile_slab");
+    public static final LegacyItem DEEPSLATE_TILE_SLAB = LegacyItemRegistry.fromItemKey("minecraft:deepslate_tile_slab");
 
     @NotNull
-    public static final Item SCAFFOLDING = ItemRegistry.fromItemKey("minecraft:scaffolding");
+    public static final LegacyItem SCAFFOLDING = LegacyItemRegistry.fromItemKey("minecraft:scaffolding");
 
     @NotNull
-    public static final Item REDSTONE = ItemRegistry.fromItemKey("minecraft:redstone");
+    public static final LegacyItem REDSTONE = LegacyItemRegistry.fromItemKey("minecraft:redstone");
 
     @NotNull
-    public static final Item REDSTONE_TORCH = ItemRegistry.fromItemKey("minecraft:redstone_torch");
+    public static final LegacyItem REDSTONE_TORCH = LegacyItemRegistry.fromItemKey("minecraft:redstone_torch");
 
     @NotNull
-    public static final Item REDSTONE_BLOCK = ItemRegistry.fromItemKey("minecraft:redstone_block");
+    public static final LegacyItem REDSTONE_BLOCK = LegacyItemRegistry.fromItemKey("minecraft:redstone_block");
 
     @NotNull
-    public static final Item REPEATER = ItemRegistry.fromItemKey("minecraft:repeater");
+    public static final LegacyItem REPEATER = LegacyItemRegistry.fromItemKey("minecraft:repeater");
 
     @NotNull
-    public static final Item COMPARATOR = ItemRegistry.fromItemKey("minecraft:comparator");
+    public static final LegacyItem COMPARATOR = LegacyItemRegistry.fromItemKey("minecraft:comparator");
 
     @NotNull
-    public static final Item PISTON = ItemRegistry.fromItemKey("minecraft:piston");
+    public static final LegacyItem PISTON = LegacyItemRegistry.fromItemKey("minecraft:piston");
 
     @NotNull
-    public static final Item STICKY_PISTON = ItemRegistry.fromItemKey("minecraft:sticky_piston");
+    public static final LegacyItem STICKY_PISTON = LegacyItemRegistry.fromItemKey("minecraft:sticky_piston");
 
     @NotNull
-    public static final Item SLIME_BLOCK = ItemRegistry.fromItemKey("minecraft:slime_block");
+    public static final LegacyItem SLIME_BLOCK = LegacyItemRegistry.fromItemKey("minecraft:slime_block");
 
     @NotNull
-    public static final Item HONEY_BLOCK = ItemRegistry.fromItemKey("minecraft:honey_block");
+    public static final LegacyItem HONEY_BLOCK = LegacyItemRegistry.fromItemKey("minecraft:honey_block");
 
     @NotNull
-    public static final Item OBSERVER = ItemRegistry.fromItemKey("minecraft:observer");
+    public static final LegacyItem OBSERVER = LegacyItemRegistry.fromItemKey("minecraft:observer");
 
     @NotNull
-    public static final Item HOPPER = ItemRegistry.fromItemKey("minecraft:hopper");
+    public static final LegacyItem HOPPER = LegacyItemRegistry.fromItemKey("minecraft:hopper");
 
     @NotNull
-    public static final Item DISPENSER = ItemRegistry.fromItemKey("minecraft:dispenser");
+    public static final LegacyItem DISPENSER = LegacyItemRegistry.fromItemKey("minecraft:dispenser");
 
     @NotNull
-    public static final Item DROPPER = ItemRegistry.fromItemKey("minecraft:dropper");
+    public static final LegacyItem DROPPER = LegacyItemRegistry.fromItemKey("minecraft:dropper");
 
     @NotNull
-    public static final Item LECTERN = ItemRegistry.fromItemKey("minecraft:lectern");
+    public static final LegacyItem LECTERN = LegacyItemRegistry.fromItemKey("minecraft:lectern");
 
     @NotNull
-    public static final Item TARGET = ItemRegistry.fromItemKey("minecraft:target");
+    public static final LegacyItem TARGET = LegacyItemRegistry.fromItemKey("minecraft:target");
 
     @NotNull
-    public static final Item LEVER = ItemRegistry.fromItemKey("minecraft:lever");
+    public static final LegacyItem LEVER = LegacyItemRegistry.fromItemKey("minecraft:lever");
 
     @NotNull
-    public static final Item LIGHTNING_ROD = ItemRegistry.fromItemKey("minecraft:lightning_rod");
+    public static final LegacyItem LIGHTNING_ROD = LegacyItemRegistry.fromItemKey("minecraft:lightning_rod");
 
     @NotNull
-    public static final Item DAYLIGHT_DETECTOR = ItemRegistry.fromItemKey("minecraft:daylight_detector");
+    public static final LegacyItem DAYLIGHT_DETECTOR = LegacyItemRegistry.fromItemKey("minecraft:daylight_detector");
 
     @NotNull
-    public static final Item SCULK_SENSOR = ItemRegistry.fromItemKey("minecraft:sculk_sensor");
+    public static final LegacyItem SCULK_SENSOR = LegacyItemRegistry.fromItemKey("minecraft:sculk_sensor");
 
     @NotNull
-    public static final Item TRIPWIRE_HOOK = ItemRegistry.fromItemKey("minecraft:tripwire_hook");
+    public static final LegacyItem TRIPWIRE_HOOK = LegacyItemRegistry.fromItemKey("minecraft:tripwire_hook");
 
     @NotNull
-    public static final Item TRAPPED_CHEST = ItemRegistry.fromItemKey("minecraft:trapped_chest");
+    public static final LegacyItem TRAPPED_CHEST = LegacyItemRegistry.fromItemKey("minecraft:trapped_chest");
 
     @NotNull
-    public static final Item TNT = ItemRegistry.fromItemKey("minecraft:tnt");
+    public static final LegacyItem TNT = LegacyItemRegistry.fromItemKey("minecraft:tnt");
 
     @NotNull
-    public static final Item REDSTONE_LAMP = ItemRegistry.fromItemKey("minecraft:redstone_lamp");
+    public static final LegacyItem REDSTONE_LAMP = LegacyItemRegistry.fromItemKey("minecraft:redstone_lamp");
 
     @NotNull
-    public static final Item NOTE_BLOCK = ItemRegistry.fromItemKey("minecraft:note_block");
+    public static final LegacyItem NOTE_BLOCK = LegacyItemRegistry.fromItemKey("minecraft:note_block");
 
     @NotNull
-    public static final Item STONE_BUTTON = ItemRegistry.fromItemKey("minecraft:stone_button");
+    public static final LegacyItem STONE_BUTTON = LegacyItemRegistry.fromItemKey("minecraft:stone_button");
 
     @NotNull
-    public static final Item POLISHED_BLACKSTONE_BUTTON = ItemRegistry.fromItemKey("minecraft:polished_blackstone_button");
+    public static final LegacyItem POLISHED_BLACKSTONE_BUTTON = LegacyItemRegistry.fromItemKey("minecraft:polished_blackstone_button");
 
     @NotNull
-    public static final Item OAK_BUTTON = ItemRegistry.fromItemKey("minecraft:oak_button");
+    public static final LegacyItem OAK_BUTTON = LegacyItemRegistry.fromItemKey("minecraft:oak_button");
 
     @NotNull
-    public static final Item SPRUCE_BUTTON = ItemRegistry.fromItemKey("minecraft:spruce_button");
+    public static final LegacyItem SPRUCE_BUTTON = LegacyItemRegistry.fromItemKey("minecraft:spruce_button");
 
     @NotNull
-    public static final Item BIRCH_BUTTON = ItemRegistry.fromItemKey("minecraft:birch_button");
+    public static final LegacyItem BIRCH_BUTTON = LegacyItemRegistry.fromItemKey("minecraft:birch_button");
 
     @NotNull
-    public static final Item JUNGLE_BUTTON = ItemRegistry.fromItemKey("minecraft:jungle_button");
+    public static final LegacyItem JUNGLE_BUTTON = LegacyItemRegistry.fromItemKey("minecraft:jungle_button");
 
     @NotNull
-    public static final Item ACACIA_BUTTON = ItemRegistry.fromItemKey("minecraft:acacia_button");
+    public static final LegacyItem ACACIA_BUTTON = LegacyItemRegistry.fromItemKey("minecraft:acacia_button");
 
     @NotNull
-    public static final Item DARK_OAK_BUTTON = ItemRegistry.fromItemKey("minecraft:dark_oak_button");
+    public static final LegacyItem DARK_OAK_BUTTON = LegacyItemRegistry.fromItemKey("minecraft:dark_oak_button");
 
     @NotNull
-    public static final Item MANGROVE_BUTTON = ItemRegistry.fromItemKey("minecraft:mangrove_button");
+    public static final LegacyItem MANGROVE_BUTTON = LegacyItemRegistry.fromItemKey("minecraft:mangrove_button");
 
     @NotNull
-    public static final Item CRIMSON_BUTTON = ItemRegistry.fromItemKey("minecraft:crimson_button");
+    public static final LegacyItem CRIMSON_BUTTON = LegacyItemRegistry.fromItemKey("minecraft:crimson_button");
 
     @NotNull
-    public static final Item WARPED_BUTTON = ItemRegistry.fromItemKey("minecraft:warped_button");
+    public static final LegacyItem WARPED_BUTTON = LegacyItemRegistry.fromItemKey("minecraft:warped_button");
 
     @NotNull
-    public static final Item STONE_PRESSURE_PLATE = ItemRegistry.fromItemKey("minecraft:stone_pressure_plate");
+    public static final LegacyItem STONE_PRESSURE_PLATE = LegacyItemRegistry.fromItemKey("minecraft:stone_pressure_plate");
 
     @NotNull
-    public static final Item POLISHED_BLACKSTONE_PRESSURE_PLATE = ItemRegistry.fromItemKey("minecraft:polished_blackstone_pressure_plate");
+    public static final LegacyItem POLISHED_BLACKSTONE_PRESSURE_PLATE = LegacyItemRegistry.fromItemKey("minecraft:polished_blackstone_pressure_plate");
 
     @NotNull
-    public static final Item LIGHT_WEIGHTED_PRESSURE_PLATE = ItemRegistry.fromItemKey("minecraft:light_weighted_pressure_plate");
+    public static final LegacyItem LIGHT_WEIGHTED_PRESSURE_PLATE = LegacyItemRegistry.fromItemKey("minecraft:light_weighted_pressure_plate");
 
     @NotNull
-    public static final Item HEAVY_WEIGHTED_PRESSURE_PLATE = ItemRegistry.fromItemKey("minecraft:heavy_weighted_pressure_plate");
+    public static final LegacyItem HEAVY_WEIGHTED_PRESSURE_PLATE = LegacyItemRegistry.fromItemKey("minecraft:heavy_weighted_pressure_plate");
 
     @NotNull
-    public static final Item OAK_PRESSURE_PLATE = ItemRegistry.fromItemKey("minecraft:oak_pressure_plate");
+    public static final LegacyItem OAK_PRESSURE_PLATE = LegacyItemRegistry.fromItemKey("minecraft:oak_pressure_plate");
 
     @NotNull
-    public static final Item SPRUCE_PRESSURE_PLATE = ItemRegistry.fromItemKey("minecraft:spruce_pressure_plate");
+    public static final LegacyItem SPRUCE_PRESSURE_PLATE = LegacyItemRegistry.fromItemKey("minecraft:spruce_pressure_plate");
 
     @NotNull
-    public static final Item BIRCH_PRESSURE_PLATE = ItemRegistry.fromItemKey("minecraft:birch_pressure_plate");
+    public static final LegacyItem BIRCH_PRESSURE_PLATE = LegacyItemRegistry.fromItemKey("minecraft:birch_pressure_plate");
 
     @NotNull
-    public static final Item JUNGLE_PRESSURE_PLATE = ItemRegistry.fromItemKey("minecraft:jungle_pressure_plate");
+    public static final LegacyItem JUNGLE_PRESSURE_PLATE = LegacyItemRegistry.fromItemKey("minecraft:jungle_pressure_plate");
 
     @NotNull
-    public static final Item ACACIA_PRESSURE_PLATE = ItemRegistry.fromItemKey("minecraft:acacia_pressure_plate");
+    public static final LegacyItem ACACIA_PRESSURE_PLATE = LegacyItemRegistry.fromItemKey("minecraft:acacia_pressure_plate");
 
     @NotNull
-    public static final Item DARK_OAK_PRESSURE_PLATE = ItemRegistry.fromItemKey("minecraft:dark_oak_pressure_plate");
+    public static final LegacyItem DARK_OAK_PRESSURE_PLATE = LegacyItemRegistry.fromItemKey("minecraft:dark_oak_pressure_plate");
 
     @NotNull
-    public static final Item MANGROVE_PRESSURE_PLATE = ItemRegistry.fromItemKey("minecraft:mangrove_pressure_plate");
+    public static final LegacyItem MANGROVE_PRESSURE_PLATE = LegacyItemRegistry.fromItemKey("minecraft:mangrove_pressure_plate");
 
     @NotNull
-    public static final Item CRIMSON_PRESSURE_PLATE = ItemRegistry.fromItemKey("minecraft:crimson_pressure_plate");
+    public static final LegacyItem CRIMSON_PRESSURE_PLATE = LegacyItemRegistry.fromItemKey("minecraft:crimson_pressure_plate");
 
     @NotNull
-    public static final Item WARPED_PRESSURE_PLATE = ItemRegistry.fromItemKey("minecraft:warped_pressure_plate");
+    public static final LegacyItem WARPED_PRESSURE_PLATE = LegacyItemRegistry.fromItemKey("minecraft:warped_pressure_plate");
 
     @NotNull
-    public static final Item IRON_DOOR = ItemRegistry.fromItemKey("minecraft:iron_door");
+    public static final LegacyItem IRON_DOOR = LegacyItemRegistry.fromItemKey("minecraft:iron_door");
 
     @NotNull
-    public static final Item OAK_DOOR = ItemRegistry.fromItemKey("minecraft:oak_door");
+    public static final LegacyItem OAK_DOOR = LegacyItemRegistry.fromItemKey("minecraft:oak_door");
 
     @NotNull
-    public static final Item SPRUCE_DOOR = ItemRegistry.fromItemKey("minecraft:spruce_door");
+    public static final LegacyItem SPRUCE_DOOR = LegacyItemRegistry.fromItemKey("minecraft:spruce_door");
 
     @NotNull
-    public static final Item BIRCH_DOOR = ItemRegistry.fromItemKey("minecraft:birch_door");
+    public static final LegacyItem BIRCH_DOOR = LegacyItemRegistry.fromItemKey("minecraft:birch_door");
 
     @NotNull
-    public static final Item JUNGLE_DOOR = ItemRegistry.fromItemKey("minecraft:jungle_door");
+    public static final LegacyItem JUNGLE_DOOR = LegacyItemRegistry.fromItemKey("minecraft:jungle_door");
 
     @NotNull
-    public static final Item ACACIA_DOOR = ItemRegistry.fromItemKey("minecraft:acacia_door");
+    public static final LegacyItem ACACIA_DOOR = LegacyItemRegistry.fromItemKey("minecraft:acacia_door");
 
     @NotNull
-    public static final Item DARK_OAK_DOOR = ItemRegistry.fromItemKey("minecraft:dark_oak_door");
+    public static final LegacyItem DARK_OAK_DOOR = LegacyItemRegistry.fromItemKey("minecraft:dark_oak_door");
 
     @NotNull
-    public static final Item MANGROVE_DOOR = ItemRegistry.fromItemKey("minecraft:mangrove_door");
+    public static final LegacyItem MANGROVE_DOOR = LegacyItemRegistry.fromItemKey("minecraft:mangrove_door");
 
     @NotNull
-    public static final Item CRIMSON_DOOR = ItemRegistry.fromItemKey("minecraft:crimson_door");
+    public static final LegacyItem CRIMSON_DOOR = LegacyItemRegistry.fromItemKey("minecraft:crimson_door");
 
     @NotNull
-    public static final Item WARPED_DOOR = ItemRegistry.fromItemKey("minecraft:warped_door");
+    public static final LegacyItem WARPED_DOOR = LegacyItemRegistry.fromItemKey("minecraft:warped_door");
 
     @NotNull
-    public static final Item IRON_TRAPDOOR = ItemRegistry.fromItemKey("minecraft:iron_trapdoor");
+    public static final LegacyItem IRON_TRAPDOOR = LegacyItemRegistry.fromItemKey("minecraft:iron_trapdoor");
 
     @NotNull
-    public static final Item OAK_TRAPDOOR = ItemRegistry.fromItemKey("minecraft:oak_trapdoor");
+    public static final LegacyItem OAK_TRAPDOOR = LegacyItemRegistry.fromItemKey("minecraft:oak_trapdoor");
 
     @NotNull
-    public static final Item SPRUCE_TRAPDOOR = ItemRegistry.fromItemKey("minecraft:spruce_trapdoor");
+    public static final LegacyItem SPRUCE_TRAPDOOR = LegacyItemRegistry.fromItemKey("minecraft:spruce_trapdoor");
 
     @NotNull
-    public static final Item BIRCH_TRAPDOOR = ItemRegistry.fromItemKey("minecraft:birch_trapdoor");
+    public static final LegacyItem BIRCH_TRAPDOOR = LegacyItemRegistry.fromItemKey("minecraft:birch_trapdoor");
 
     @NotNull
-    public static final Item JUNGLE_TRAPDOOR = ItemRegistry.fromItemKey("minecraft:jungle_trapdoor");
+    public static final LegacyItem JUNGLE_TRAPDOOR = LegacyItemRegistry.fromItemKey("minecraft:jungle_trapdoor");
 
     @NotNull
-    public static final Item ACACIA_TRAPDOOR = ItemRegistry.fromItemKey("minecraft:acacia_trapdoor");
+    public static final LegacyItem ACACIA_TRAPDOOR = LegacyItemRegistry.fromItemKey("minecraft:acacia_trapdoor");
 
     @NotNull
-    public static final Item DARK_OAK_TRAPDOOR = ItemRegistry.fromItemKey("minecraft:dark_oak_trapdoor");
+    public static final LegacyItem DARK_OAK_TRAPDOOR = LegacyItemRegistry.fromItemKey("minecraft:dark_oak_trapdoor");
 
     @NotNull
-    public static final Item MANGROVE_TRAPDOOR = ItemRegistry.fromItemKey("minecraft:mangrove_trapdoor");
+    public static final LegacyItem MANGROVE_TRAPDOOR = LegacyItemRegistry.fromItemKey("minecraft:mangrove_trapdoor");
 
     @NotNull
-    public static final Item CRIMSON_TRAPDOOR = ItemRegistry.fromItemKey("minecraft:crimson_trapdoor");
+    public static final LegacyItem CRIMSON_TRAPDOOR = LegacyItemRegistry.fromItemKey("minecraft:crimson_trapdoor");
 
     @NotNull
-    public static final Item WARPED_TRAPDOOR = ItemRegistry.fromItemKey("minecraft:warped_trapdoor");
+    public static final LegacyItem WARPED_TRAPDOOR = LegacyItemRegistry.fromItemKey("minecraft:warped_trapdoor");
 
     @NotNull
-    public static final Item OAK_FENCE_GATE = ItemRegistry.fromItemKey("minecraft:oak_fence_gate");
+    public static final LegacyItem OAK_FENCE_GATE = LegacyItemRegistry.fromItemKey("minecraft:oak_fence_gate");
 
     @NotNull
-    public static final Item SPRUCE_FENCE_GATE = ItemRegistry.fromItemKey("minecraft:spruce_fence_gate");
+    public static final LegacyItem SPRUCE_FENCE_GATE = LegacyItemRegistry.fromItemKey("minecraft:spruce_fence_gate");
 
     @NotNull
-    public static final Item BIRCH_FENCE_GATE = ItemRegistry.fromItemKey("minecraft:birch_fence_gate");
+    public static final LegacyItem BIRCH_FENCE_GATE = LegacyItemRegistry.fromItemKey("minecraft:birch_fence_gate");
 
     @NotNull
-    public static final Item JUNGLE_FENCE_GATE = ItemRegistry.fromItemKey("minecraft:jungle_fence_gate");
+    public static final LegacyItem JUNGLE_FENCE_GATE = LegacyItemRegistry.fromItemKey("minecraft:jungle_fence_gate");
 
     @NotNull
-    public static final Item ACACIA_FENCE_GATE = ItemRegistry.fromItemKey("minecraft:acacia_fence_gate");
+    public static final LegacyItem ACACIA_FENCE_GATE = LegacyItemRegistry.fromItemKey("minecraft:acacia_fence_gate");
 
     @NotNull
-    public static final Item DARK_OAK_FENCE_GATE = ItemRegistry.fromItemKey("minecraft:dark_oak_fence_gate");
+    public static final LegacyItem DARK_OAK_FENCE_GATE = LegacyItemRegistry.fromItemKey("minecraft:dark_oak_fence_gate");
 
     @NotNull
-    public static final Item MANGROVE_FENCE_GATE = ItemRegistry.fromItemKey("minecraft:mangrove_fence_gate");
+    public static final LegacyItem MANGROVE_FENCE_GATE = LegacyItemRegistry.fromItemKey("minecraft:mangrove_fence_gate");
 
     @NotNull
-    public static final Item CRIMSON_FENCE_GATE = ItemRegistry.fromItemKey("minecraft:crimson_fence_gate");
+    public static final LegacyItem CRIMSON_FENCE_GATE = LegacyItemRegistry.fromItemKey("minecraft:crimson_fence_gate");
 
     @NotNull
-    public static final Item WARPED_FENCE_GATE = ItemRegistry.fromItemKey("minecraft:warped_fence_gate");
+    public static final LegacyItem WARPED_FENCE_GATE = LegacyItemRegistry.fromItemKey("minecraft:warped_fence_gate");
 
     @NotNull
-    public static final Item POWERED_RAIL = ItemRegistry.fromItemKey("minecraft:powered_rail");
+    public static final LegacyItem POWERED_RAIL = LegacyItemRegistry.fromItemKey("minecraft:powered_rail");
 
     @NotNull
-    public static final Item DETECTOR_RAIL = ItemRegistry.fromItemKey("minecraft:detector_rail");
+    public static final LegacyItem DETECTOR_RAIL = LegacyItemRegistry.fromItemKey("minecraft:detector_rail");
 
     @NotNull
-    public static final Item RAIL = ItemRegistry.fromItemKey("minecraft:rail");
+    public static final LegacyItem RAIL = LegacyItemRegistry.fromItemKey("minecraft:rail");
 
     @NotNull
-    public static final Item ACTIVATOR_RAIL = ItemRegistry.fromItemKey("minecraft:activator_rail");
+    public static final LegacyItem ACTIVATOR_RAIL = LegacyItemRegistry.fromItemKey("minecraft:activator_rail");
 
     @NotNull
-    public static final Item SADDLE = ItemRegistry.fromItemKey("minecraft:saddle");
+    public static final LegacyItem SADDLE = LegacyItemRegistry.fromItemKey("minecraft:saddle");
 
     @NotNull
-    public static final Item MINECART = ItemRegistry.fromItemKey("minecraft:minecart");
+    public static final LegacyItem MINECART = LegacyItemRegistry.fromItemKey("minecraft:minecart");
 
     @NotNull
-    public static final Item CHEST_MINECART = ItemRegistry.fromItemKey("minecraft:chest_minecart");
+    public static final LegacyItem CHEST_MINECART = LegacyItemRegistry.fromItemKey("minecraft:chest_minecart");
 
     @NotNull
-    public static final Item FURNACE_MINECART = ItemRegistry.fromItemKey("minecraft:furnace_minecart");
+    public static final LegacyItem FURNACE_MINECART = LegacyItemRegistry.fromItemKey("minecraft:furnace_minecart");
 
     @NotNull
-    public static final Item TNT_MINECART = ItemRegistry.fromItemKey("minecraft:tnt_minecart");
+    public static final LegacyItem TNT_MINECART = LegacyItemRegistry.fromItemKey("minecraft:tnt_minecart");
 
     @NotNull
-    public static final Item HOPPER_MINECART = ItemRegistry.fromItemKey("minecraft:hopper_minecart");
+    public static final LegacyItem HOPPER_MINECART = LegacyItemRegistry.fromItemKey("minecraft:hopper_minecart");
 
     @NotNull
-    public static final Item CARROT_ON_A_STICK = ItemRegistry.fromItemKey("minecraft:carrot_on_a_stick");
+    public static final LegacyItem CARROT_ON_A_STICK = LegacyItemRegistry.fromItemKey("minecraft:carrot_on_a_stick");
 
     @NotNull
-    public static final Item WARPED_FUNGUS_ON_A_STICK = ItemRegistry.fromItemKey("minecraft:warped_fungus_on_a_stick");
+    public static final LegacyItem WARPED_FUNGUS_ON_A_STICK = LegacyItemRegistry.fromItemKey("minecraft:warped_fungus_on_a_stick");
 
     @NotNull
-    public static final Item ELYTRA = ItemRegistry.fromItemKey("minecraft:elytra");
+    public static final LegacyItem ELYTRA = LegacyItemRegistry.fromItemKey("minecraft:elytra");
 
     @NotNull
-    public static final Item OAK_BOAT = ItemRegistry.fromItemKey("minecraft:oak_boat");
+    public static final LegacyItem OAK_BOAT = LegacyItemRegistry.fromItemKey("minecraft:oak_boat");
 
     @NotNull
-    public static final Item OAK_CHEST_BOAT = ItemRegistry.fromItemKey("minecraft:oak_chest_boat");
+    public static final LegacyItem OAK_CHEST_BOAT = LegacyItemRegistry.fromItemKey("minecraft:oak_chest_boat");
 
     @NotNull
-    public static final Item SPRUCE_BOAT = ItemRegistry.fromItemKey("minecraft:spruce_boat");
+    public static final LegacyItem SPRUCE_BOAT = LegacyItemRegistry.fromItemKey("minecraft:spruce_boat");
 
     @NotNull
-    public static final Item SPRUCE_CHEST_BOAT = ItemRegistry.fromItemKey("minecraft:spruce_chest_boat");
+    public static final LegacyItem SPRUCE_CHEST_BOAT = LegacyItemRegistry.fromItemKey("minecraft:spruce_chest_boat");
 
     @NotNull
-    public static final Item BIRCH_BOAT = ItemRegistry.fromItemKey("minecraft:birch_boat");
+    public static final LegacyItem BIRCH_BOAT = LegacyItemRegistry.fromItemKey("minecraft:birch_boat");
 
     @NotNull
-    public static final Item BIRCH_CHEST_BOAT = ItemRegistry.fromItemKey("minecraft:birch_chest_boat");
+    public static final LegacyItem BIRCH_CHEST_BOAT = LegacyItemRegistry.fromItemKey("minecraft:birch_chest_boat");
 
     @NotNull
-    public static final Item JUNGLE_BOAT = ItemRegistry.fromItemKey("minecraft:jungle_boat");
+    public static final LegacyItem JUNGLE_BOAT = LegacyItemRegistry.fromItemKey("minecraft:jungle_boat");
 
     @NotNull
-    public static final Item JUNGLE_CHEST_BOAT = ItemRegistry.fromItemKey("minecraft:jungle_chest_boat");
+    public static final LegacyItem JUNGLE_CHEST_BOAT = LegacyItemRegistry.fromItemKey("minecraft:jungle_chest_boat");
 
     @NotNull
-    public static final Item ACACIA_BOAT = ItemRegistry.fromItemKey("minecraft:acacia_boat");
+    public static final LegacyItem ACACIA_BOAT = LegacyItemRegistry.fromItemKey("minecraft:acacia_boat");
 
     @NotNull
-    public static final Item ACACIA_CHEST_BOAT = ItemRegistry.fromItemKey("minecraft:acacia_chest_boat");
+    public static final LegacyItem ACACIA_CHEST_BOAT = LegacyItemRegistry.fromItemKey("minecraft:acacia_chest_boat");
 
     @NotNull
-    public static final Item DARK_OAK_BOAT = ItemRegistry.fromItemKey("minecraft:dark_oak_boat");
+    public static final LegacyItem DARK_OAK_BOAT = LegacyItemRegistry.fromItemKey("minecraft:dark_oak_boat");
 
     @NotNull
-    public static final Item DARK_OAK_CHEST_BOAT = ItemRegistry.fromItemKey("minecraft:dark_oak_chest_boat");
+    public static final LegacyItem DARK_OAK_CHEST_BOAT = LegacyItemRegistry.fromItemKey("minecraft:dark_oak_chest_boat");
 
     @NotNull
-    public static final Item MANGROVE_BOAT = ItemRegistry.fromItemKey("minecraft:mangrove_boat");
+    public static final LegacyItem MANGROVE_BOAT = LegacyItemRegistry.fromItemKey("minecraft:mangrove_boat");
 
     @NotNull
-    public static final Item MANGROVE_CHEST_BOAT = ItemRegistry.fromItemKey("minecraft:mangrove_chest_boat");
+    public static final LegacyItem MANGROVE_CHEST_BOAT = LegacyItemRegistry.fromItemKey("minecraft:mangrove_chest_boat");
 
     @NotNull
-    public static final Item STRUCTURE_BLOCK = ItemRegistry.fromItemKey("minecraft:structure_block");
+    public static final LegacyItem STRUCTURE_BLOCK = LegacyItemRegistry.fromItemKey("minecraft:structure_block");
 
     @NotNull
-    public static final Item JIGSAW = ItemRegistry.fromItemKey("minecraft:jigsaw");
+    public static final LegacyItem JIGSAW = LegacyItemRegistry.fromItemKey("minecraft:jigsaw");
 
     @NotNull
-    public static final Item TURTLE_HELMET = ItemRegistry.fromItemKey("minecraft:turtle_helmet");
+    public static final LegacyItem TURTLE_HELMET = LegacyItemRegistry.fromItemKey("minecraft:turtle_helmet");
 
     @NotNull
-    public static final Item SCUTE = ItemRegistry.fromItemKey("minecraft:scute");
+    public static final LegacyItem SCUTE = LegacyItemRegistry.fromItemKey("minecraft:scute");
 
     @NotNull
-    public static final Item FLINT_AND_STEEL = ItemRegistry.fromItemKey("minecraft:flint_and_steel");
+    public static final LegacyItem FLINT_AND_STEEL = LegacyItemRegistry.fromItemKey("minecraft:flint_and_steel");
 
     @NotNull
-    public static final Item APPLE = ItemRegistry.fromItemKey("minecraft:apple");
+    public static final LegacyItem APPLE = LegacyItemRegistry.fromItemKey("minecraft:apple");
 
     @NotNull
-    public static final Item BOW = ItemRegistry.fromItemKey("minecraft:bow");
+    public static final LegacyItem BOW = LegacyItemRegistry.fromItemKey("minecraft:bow");
 
     @NotNull
-    public static final Item ARROW = ItemRegistry.fromItemKey("minecraft:arrow");
+    public static final LegacyItem ARROW = LegacyItemRegistry.fromItemKey("minecraft:arrow");
 
     @NotNull
-    public static final Item COAL = ItemRegistry.fromItemKey("minecraft:coal");
+    public static final LegacyItem COAL = LegacyItemRegistry.fromItemKey("minecraft:coal");
 
     @NotNull
-    public static final Item CHARCOAL = ItemRegistry.fromItemKey("minecraft:charcoal");
+    public static final LegacyItem CHARCOAL = LegacyItemRegistry.fromItemKey("minecraft:charcoal");
 
     @NotNull
-    public static final Item DIAMOND = ItemRegistry.fromItemKey("minecraft:diamond");
+    public static final LegacyItem DIAMOND = LegacyItemRegistry.fromItemKey("minecraft:diamond");
 
     @NotNull
-    public static final Item EMERALD = ItemRegistry.fromItemKey("minecraft:emerald");
+    public static final LegacyItem EMERALD = LegacyItemRegistry.fromItemKey("minecraft:emerald");
 
     @NotNull
-    public static final Item LAPIS_LAZULI = ItemRegistry.fromItemKey("minecraft:lapis_lazuli");
+    public static final LegacyItem LAPIS_LAZULI = LegacyItemRegistry.fromItemKey("minecraft:lapis_lazuli");
 
     @NotNull
-    public static final Item QUARTZ = ItemRegistry.fromItemKey("minecraft:quartz");
+    public static final LegacyItem QUARTZ = LegacyItemRegistry.fromItemKey("minecraft:quartz");
 
     @NotNull
-    public static final Item AMETHYST_SHARD = ItemRegistry.fromItemKey("minecraft:amethyst_shard");
+    public static final LegacyItem AMETHYST_SHARD = LegacyItemRegistry.fromItemKey("minecraft:amethyst_shard");
 
     @NotNull
-    public static final Item RAW_IRON = ItemRegistry.fromItemKey("minecraft:raw_iron");
+    public static final LegacyItem RAW_IRON = LegacyItemRegistry.fromItemKey("minecraft:raw_iron");
 
     @NotNull
-    public static final Item IRON_INGOT = ItemRegistry.fromItemKey("minecraft:iron_ingot");
+    public static final LegacyItem IRON_INGOT = LegacyItemRegistry.fromItemKey("minecraft:iron_ingot");
 
     @NotNull
-    public static final Item RAW_COPPER = ItemRegistry.fromItemKey("minecraft:raw_copper");
+    public static final LegacyItem RAW_COPPER = LegacyItemRegistry.fromItemKey("minecraft:raw_copper");
 
     @NotNull
-    public static final Item COPPER_INGOT = ItemRegistry.fromItemKey("minecraft:copper_ingot");
+    public static final LegacyItem COPPER_INGOT = LegacyItemRegistry.fromItemKey("minecraft:copper_ingot");
 
     @NotNull
-    public static final Item RAW_GOLD = ItemRegistry.fromItemKey("minecraft:raw_gold");
+    public static final LegacyItem RAW_GOLD = LegacyItemRegistry.fromItemKey("minecraft:raw_gold");
 
     @NotNull
-    public static final Item GOLD_INGOT = ItemRegistry.fromItemKey("minecraft:gold_ingot");
+    public static final LegacyItem GOLD_INGOT = LegacyItemRegistry.fromItemKey("minecraft:gold_ingot");
 
     @NotNull
-    public static final Item NETHERITE_INGOT = ItemRegistry.fromItemKey("minecraft:netherite_ingot");
+    public static final LegacyItem NETHERITE_INGOT = LegacyItemRegistry.fromItemKey("minecraft:netherite_ingot");
 
     @NotNull
-    public static final Item NETHERITE_SCRAP = ItemRegistry.fromItemKey("minecraft:netherite_scrap");
+    public static final LegacyItem NETHERITE_SCRAP = LegacyItemRegistry.fromItemKey("minecraft:netherite_scrap");
 
     @NotNull
-    public static final Item WOODEN_SWORD = ItemRegistry.fromItemKey("minecraft:wooden_sword");
+    public static final LegacyItem WOODEN_SWORD = LegacyItemRegistry.fromItemKey("minecraft:wooden_sword");
 
     @NotNull
-    public static final Item WOODEN_SHOVEL = ItemRegistry.fromItemKey("minecraft:wooden_shovel");
+    public static final LegacyItem WOODEN_SHOVEL = LegacyItemRegistry.fromItemKey("minecraft:wooden_shovel");
 
     @NotNull
-    public static final Item WOODEN_PICKAXE = ItemRegistry.fromItemKey("minecraft:wooden_pickaxe");
+    public static final LegacyItem WOODEN_PICKAXE = LegacyItemRegistry.fromItemKey("minecraft:wooden_pickaxe");
 
     @NotNull
-    public static final Item WOODEN_AXE = ItemRegistry.fromItemKey("minecraft:wooden_axe");
+    public static final LegacyItem WOODEN_AXE = LegacyItemRegistry.fromItemKey("minecraft:wooden_axe");
 
     @NotNull
-    public static final Item WOODEN_HOE = ItemRegistry.fromItemKey("minecraft:wooden_hoe");
+    public static final LegacyItem WOODEN_HOE = LegacyItemRegistry.fromItemKey("minecraft:wooden_hoe");
 
     @NotNull
-    public static final Item STONE_SWORD = ItemRegistry.fromItemKey("minecraft:stone_sword");
+    public static final LegacyItem STONE_SWORD = LegacyItemRegistry.fromItemKey("minecraft:stone_sword");
 
     @NotNull
-    public static final Item STONE_SHOVEL = ItemRegistry.fromItemKey("minecraft:stone_shovel");
+    public static final LegacyItem STONE_SHOVEL = LegacyItemRegistry.fromItemKey("minecraft:stone_shovel");
 
     @NotNull
-    public static final Item STONE_PICKAXE = ItemRegistry.fromItemKey("minecraft:stone_pickaxe");
+    public static final LegacyItem STONE_PICKAXE = LegacyItemRegistry.fromItemKey("minecraft:stone_pickaxe");
 
     @NotNull
-    public static final Item STONE_AXE = ItemRegistry.fromItemKey("minecraft:stone_axe");
+    public static final LegacyItem STONE_AXE = LegacyItemRegistry.fromItemKey("minecraft:stone_axe");
 
     @NotNull
-    public static final Item STONE_HOE = ItemRegistry.fromItemKey("minecraft:stone_hoe");
+    public static final LegacyItem STONE_HOE = LegacyItemRegistry.fromItemKey("minecraft:stone_hoe");
 
     @NotNull
-    public static final Item GOLDEN_SWORD = ItemRegistry.fromItemKey("minecraft:golden_sword");
+    public static final LegacyItem GOLDEN_SWORD = LegacyItemRegistry.fromItemKey("minecraft:golden_sword");
 
     @NotNull
-    public static final Item GOLDEN_SHOVEL = ItemRegistry.fromItemKey("minecraft:golden_shovel");
+    public static final LegacyItem GOLDEN_SHOVEL = LegacyItemRegistry.fromItemKey("minecraft:golden_shovel");
 
     @NotNull
-    public static final Item GOLDEN_PICKAXE = ItemRegistry.fromItemKey("minecraft:golden_pickaxe");
+    public static final LegacyItem GOLDEN_PICKAXE = LegacyItemRegistry.fromItemKey("minecraft:golden_pickaxe");
 
     @NotNull
-    public static final Item GOLDEN_AXE = ItemRegistry.fromItemKey("minecraft:golden_axe");
+    public static final LegacyItem GOLDEN_AXE = LegacyItemRegistry.fromItemKey("minecraft:golden_axe");
 
     @NotNull
-    public static final Item GOLDEN_HOE = ItemRegistry.fromItemKey("minecraft:golden_hoe");
+    public static final LegacyItem GOLDEN_HOE = LegacyItemRegistry.fromItemKey("minecraft:golden_hoe");
 
     @NotNull
-    public static final Item IRON_SWORD = ItemRegistry.fromItemKey("minecraft:iron_sword");
+    public static final LegacyItem IRON_SWORD = LegacyItemRegistry.fromItemKey("minecraft:iron_sword");
 
     @NotNull
-    public static final Item IRON_SHOVEL = ItemRegistry.fromItemKey("minecraft:iron_shovel");
+    public static final LegacyItem IRON_SHOVEL = LegacyItemRegistry.fromItemKey("minecraft:iron_shovel");
 
     @NotNull
-    public static final Item IRON_PICKAXE = ItemRegistry.fromItemKey("minecraft:iron_pickaxe");
+    public static final LegacyItem IRON_PICKAXE = LegacyItemRegistry.fromItemKey("minecraft:iron_pickaxe");
 
     @NotNull
-    public static final Item IRON_AXE = ItemRegistry.fromItemKey("minecraft:iron_axe");
+    public static final LegacyItem IRON_AXE = LegacyItemRegistry.fromItemKey("minecraft:iron_axe");
 
     @NotNull
-    public static final Item IRON_HOE = ItemRegistry.fromItemKey("minecraft:iron_hoe");
+    public static final LegacyItem IRON_HOE = LegacyItemRegistry.fromItemKey("minecraft:iron_hoe");
 
     @NotNull
-    public static final Item DIAMOND_SWORD = ItemRegistry.fromItemKey("minecraft:diamond_sword");
+    public static final LegacyItem DIAMOND_SWORD = LegacyItemRegistry.fromItemKey("minecraft:diamond_sword");
 
     @NotNull
-    public static final Item DIAMOND_SHOVEL = ItemRegistry.fromItemKey("minecraft:diamond_shovel");
+    public static final LegacyItem DIAMOND_SHOVEL = LegacyItemRegistry.fromItemKey("minecraft:diamond_shovel");
 
     @NotNull
-    public static final Item DIAMOND_PICKAXE = ItemRegistry.fromItemKey("minecraft:diamond_pickaxe");
+    public static final LegacyItem DIAMOND_PICKAXE = LegacyItemRegistry.fromItemKey("minecraft:diamond_pickaxe");
 
     @NotNull
-    public static final Item DIAMOND_AXE = ItemRegistry.fromItemKey("minecraft:diamond_axe");
+    public static final LegacyItem DIAMOND_AXE = LegacyItemRegistry.fromItemKey("minecraft:diamond_axe");
 
     @NotNull
-    public static final Item DIAMOND_HOE = ItemRegistry.fromItemKey("minecraft:diamond_hoe");
+    public static final LegacyItem DIAMOND_HOE = LegacyItemRegistry.fromItemKey("minecraft:diamond_hoe");
 
     @NotNull
-    public static final Item NETHERITE_SWORD = ItemRegistry.fromItemKey("minecraft:netherite_sword");
+    public static final LegacyItem NETHERITE_SWORD = LegacyItemRegistry.fromItemKey("minecraft:netherite_sword");
 
     @NotNull
-    public static final Item NETHERITE_SHOVEL = ItemRegistry.fromItemKey("minecraft:netherite_shovel");
+    public static final LegacyItem NETHERITE_SHOVEL = LegacyItemRegistry.fromItemKey("minecraft:netherite_shovel");
 
     @NotNull
-    public static final Item NETHERITE_PICKAXE = ItemRegistry.fromItemKey("minecraft:netherite_pickaxe");
+    public static final LegacyItem NETHERITE_PICKAXE = LegacyItemRegistry.fromItemKey("minecraft:netherite_pickaxe");
 
     @NotNull
-    public static final Item NETHERITE_AXE = ItemRegistry.fromItemKey("minecraft:netherite_axe");
+    public static final LegacyItem NETHERITE_AXE = LegacyItemRegistry.fromItemKey("minecraft:netherite_axe");
 
     @NotNull
-    public static final Item NETHERITE_HOE = ItemRegistry.fromItemKey("minecraft:netherite_hoe");
+    public static final LegacyItem NETHERITE_HOE = LegacyItemRegistry.fromItemKey("minecraft:netherite_hoe");
 
     @NotNull
-    public static final Item STICK = ItemRegistry.fromItemKey("minecraft:stick");
+    public static final LegacyItem STICK = LegacyItemRegistry.fromItemKey("minecraft:stick");
 
     @NotNull
-    public static final Item BOWL = ItemRegistry.fromItemKey("minecraft:bowl");
+    public static final LegacyItem BOWL = LegacyItemRegistry.fromItemKey("minecraft:bowl");
 
     @NotNull
-    public static final Item MUSHROOM_STEW = ItemRegistry.fromItemKey("minecraft:mushroom_stew");
+    public static final LegacyItem MUSHROOM_STEW = LegacyItemRegistry.fromItemKey("minecraft:mushroom_stew");
 
     @NotNull
-    public static final Item STRING = ItemRegistry.fromItemKey("minecraft:string");
+    public static final LegacyItem STRING = LegacyItemRegistry.fromItemKey("minecraft:string");
 
     @NotNull
-    public static final Item FEATHER = ItemRegistry.fromItemKey("minecraft:feather");
+    public static final LegacyItem FEATHER = LegacyItemRegistry.fromItemKey("minecraft:feather");
 
     @NotNull
-    public static final Item GUNPOWDER = ItemRegistry.fromItemKey("minecraft:gunpowder");
+    public static final LegacyItem GUNPOWDER = LegacyItemRegistry.fromItemKey("minecraft:gunpowder");
 
     @NotNull
-    public static final Item WHEAT_SEEDS = ItemRegistry.fromItemKey("minecraft:wheat_seeds");
+    public static final LegacyItem WHEAT_SEEDS = LegacyItemRegistry.fromItemKey("minecraft:wheat_seeds");
 
     @NotNull
-    public static final Item WHEAT = ItemRegistry.fromItemKey("minecraft:wheat");
+    public static final LegacyItem WHEAT = LegacyItemRegistry.fromItemKey("minecraft:wheat");
 
     @NotNull
-    public static final Item BREAD = ItemRegistry.fromItemKey("minecraft:bread");
+    public static final LegacyItem BREAD = LegacyItemRegistry.fromItemKey("minecraft:bread");
 
     @NotNull
-    public static final Item LEATHER_HELMET = ItemRegistry.fromItemKey("minecraft:leather_helmet");
+    public static final LegacyItem LEATHER_HELMET = LegacyItemRegistry.fromItemKey("minecraft:leather_helmet");
 
     @NotNull
-    public static final Item LEATHER_CHESTPLATE = ItemRegistry.fromItemKey("minecraft:leather_chestplate");
+    public static final LegacyItem LEATHER_CHESTPLATE = LegacyItemRegistry.fromItemKey("minecraft:leather_chestplate");
 
     @NotNull
-    public static final Item LEATHER_LEGGINGS = ItemRegistry.fromItemKey("minecraft:leather_leggings");
+    public static final LegacyItem LEATHER_LEGGINGS = LegacyItemRegistry.fromItemKey("minecraft:leather_leggings");
 
     @NotNull
-    public static final Item LEATHER_BOOTS = ItemRegistry.fromItemKey("minecraft:leather_boots");
+    public static final LegacyItem LEATHER_BOOTS = LegacyItemRegistry.fromItemKey("minecraft:leather_boots");
 
     @NotNull
-    public static final Item CHAINMAIL_HELMET = ItemRegistry.fromItemKey("minecraft:chainmail_helmet");
+    public static final LegacyItem CHAINMAIL_HELMET = LegacyItemRegistry.fromItemKey("minecraft:chainmail_helmet");
 
     @NotNull
-    public static final Item CHAINMAIL_CHESTPLATE = ItemRegistry.fromItemKey("minecraft:chainmail_chestplate");
+    public static final LegacyItem CHAINMAIL_CHESTPLATE = LegacyItemRegistry.fromItemKey("minecraft:chainmail_chestplate");
 
     @NotNull
-    public static final Item CHAINMAIL_LEGGINGS = ItemRegistry.fromItemKey("minecraft:chainmail_leggings");
+    public static final LegacyItem CHAINMAIL_LEGGINGS = LegacyItemRegistry.fromItemKey("minecraft:chainmail_leggings");
 
     @NotNull
-    public static final Item CHAINMAIL_BOOTS = ItemRegistry.fromItemKey("minecraft:chainmail_boots");
+    public static final LegacyItem CHAINMAIL_BOOTS = LegacyItemRegistry.fromItemKey("minecraft:chainmail_boots");
 
     @NotNull
-    public static final Item IRON_HELMET = ItemRegistry.fromItemKey("minecraft:iron_helmet");
+    public static final LegacyItem IRON_HELMET = LegacyItemRegistry.fromItemKey("minecraft:iron_helmet");
 
     @NotNull
-    public static final Item IRON_CHESTPLATE = ItemRegistry.fromItemKey("minecraft:iron_chestplate");
+    public static final LegacyItem IRON_CHESTPLATE = LegacyItemRegistry.fromItemKey("minecraft:iron_chestplate");
 
     @NotNull
-    public static final Item IRON_LEGGINGS = ItemRegistry.fromItemKey("minecraft:iron_leggings");
+    public static final LegacyItem IRON_LEGGINGS = LegacyItemRegistry.fromItemKey("minecraft:iron_leggings");
 
     @NotNull
-    public static final Item IRON_BOOTS = ItemRegistry.fromItemKey("minecraft:iron_boots");
+    public static final LegacyItem IRON_BOOTS = LegacyItemRegistry.fromItemKey("minecraft:iron_boots");
 
     @NotNull
-    public static final Item DIAMOND_HELMET = ItemRegistry.fromItemKey("minecraft:diamond_helmet");
+    public static final LegacyItem DIAMOND_HELMET = LegacyItemRegistry.fromItemKey("minecraft:diamond_helmet");
 
     @NotNull
-    public static final Item DIAMOND_CHESTPLATE = ItemRegistry.fromItemKey("minecraft:diamond_chestplate");
+    public static final LegacyItem DIAMOND_CHESTPLATE = LegacyItemRegistry.fromItemKey("minecraft:diamond_chestplate");
 
     @NotNull
-    public static final Item DIAMOND_LEGGINGS = ItemRegistry.fromItemKey("minecraft:diamond_leggings");
+    public static final LegacyItem DIAMOND_LEGGINGS = LegacyItemRegistry.fromItemKey("minecraft:diamond_leggings");
 
     @NotNull
-    public static final Item DIAMOND_BOOTS = ItemRegistry.fromItemKey("minecraft:diamond_boots");
+    public static final LegacyItem DIAMOND_BOOTS = LegacyItemRegistry.fromItemKey("minecraft:diamond_boots");
 
     @NotNull
-    public static final Item GOLDEN_HELMET = ItemRegistry.fromItemKey("minecraft:golden_helmet");
+    public static final LegacyItem GOLDEN_HELMET = LegacyItemRegistry.fromItemKey("minecraft:golden_helmet");
 
     @NotNull
-    public static final Item GOLDEN_CHESTPLATE = ItemRegistry.fromItemKey("minecraft:golden_chestplate");
+    public static final LegacyItem GOLDEN_CHESTPLATE = LegacyItemRegistry.fromItemKey("minecraft:golden_chestplate");
 
     @NotNull
-    public static final Item GOLDEN_LEGGINGS = ItemRegistry.fromItemKey("minecraft:golden_leggings");
+    public static final LegacyItem GOLDEN_LEGGINGS = LegacyItemRegistry.fromItemKey("minecraft:golden_leggings");
 
     @NotNull
-    public static final Item GOLDEN_BOOTS = ItemRegistry.fromItemKey("minecraft:golden_boots");
+    public static final LegacyItem GOLDEN_BOOTS = LegacyItemRegistry.fromItemKey("minecraft:golden_boots");
 
     @NotNull
-    public static final Item NETHERITE_HELMET = ItemRegistry.fromItemKey("minecraft:netherite_helmet");
+    public static final LegacyItem NETHERITE_HELMET = LegacyItemRegistry.fromItemKey("minecraft:netherite_helmet");
 
     @NotNull
-    public static final Item NETHERITE_CHESTPLATE = ItemRegistry.fromItemKey("minecraft:netherite_chestplate");
+    public static final LegacyItem NETHERITE_CHESTPLATE = LegacyItemRegistry.fromItemKey("minecraft:netherite_chestplate");
 
     @NotNull
-    public static final Item NETHERITE_LEGGINGS = ItemRegistry.fromItemKey("minecraft:netherite_leggings");
+    public static final LegacyItem NETHERITE_LEGGINGS = LegacyItemRegistry.fromItemKey("minecraft:netherite_leggings");
 
     @NotNull
-    public static final Item NETHERITE_BOOTS = ItemRegistry.fromItemKey("minecraft:netherite_boots");
+    public static final LegacyItem NETHERITE_BOOTS = LegacyItemRegistry.fromItemKey("minecraft:netherite_boots");
 
     @NotNull
-    public static final Item FLINT = ItemRegistry.fromItemKey("minecraft:flint");
+    public static final LegacyItem FLINT = LegacyItemRegistry.fromItemKey("minecraft:flint");
 
     @NotNull
-    public static final Item PORKCHOP = ItemRegistry.fromItemKey("minecraft:porkchop");
+    public static final LegacyItem PORKCHOP = LegacyItemRegistry.fromItemKey("minecraft:porkchop");
 
     @NotNull
-    public static final Item COOKED_PORKCHOP = ItemRegistry.fromItemKey("minecraft:cooked_porkchop");
+    public static final LegacyItem COOKED_PORKCHOP = LegacyItemRegistry.fromItemKey("minecraft:cooked_porkchop");
 
     @NotNull
-    public static final Item PAINTING = ItemRegistry.fromItemKey("minecraft:painting");
+    public static final LegacyItem PAINTING = LegacyItemRegistry.fromItemKey("minecraft:painting");
 
     @NotNull
-    public static final Item GOLDEN_APPLE = ItemRegistry.fromItemKey("minecraft:golden_apple");
+    public static final LegacyItem GOLDEN_APPLE = LegacyItemRegistry.fromItemKey("minecraft:golden_apple");
 
     @NotNull
-    public static final Item ENCHANTED_GOLDEN_APPLE = ItemRegistry.fromItemKey("minecraft:enchanted_golden_apple");
+    public static final LegacyItem ENCHANTED_GOLDEN_APPLE = LegacyItemRegistry.fromItemKey("minecraft:enchanted_golden_apple");
 
     @NotNull
-    public static final Item OAK_SIGN = ItemRegistry.fromItemKey("minecraft:oak_sign");
+    public static final LegacyItem OAK_SIGN = LegacyItemRegistry.fromItemKey("minecraft:oak_sign");
 
     @NotNull
-    public static final Item SPRUCE_SIGN = ItemRegistry.fromItemKey("minecraft:spruce_sign");
+    public static final LegacyItem SPRUCE_SIGN = LegacyItemRegistry.fromItemKey("minecraft:spruce_sign");
 
     @NotNull
-    public static final Item BIRCH_SIGN = ItemRegistry.fromItemKey("minecraft:birch_sign");
+    public static final LegacyItem BIRCH_SIGN = LegacyItemRegistry.fromItemKey("minecraft:birch_sign");
 
     @NotNull
-    public static final Item JUNGLE_SIGN = ItemRegistry.fromItemKey("minecraft:jungle_sign");
+    public static final LegacyItem JUNGLE_SIGN = LegacyItemRegistry.fromItemKey("minecraft:jungle_sign");
 
     @NotNull
-    public static final Item ACACIA_SIGN = ItemRegistry.fromItemKey("minecraft:acacia_sign");
+    public static final LegacyItem ACACIA_SIGN = LegacyItemRegistry.fromItemKey("minecraft:acacia_sign");
 
     @NotNull
-    public static final Item DARK_OAK_SIGN = ItemRegistry.fromItemKey("minecraft:dark_oak_sign");
+    public static final LegacyItem DARK_OAK_SIGN = LegacyItemRegistry.fromItemKey("minecraft:dark_oak_sign");
 
     @NotNull
-    public static final Item MANGROVE_SIGN = ItemRegistry.fromItemKey("minecraft:mangrove_sign");
+    public static final LegacyItem MANGROVE_SIGN = LegacyItemRegistry.fromItemKey("minecraft:mangrove_sign");
 
     @NotNull
-    public static final Item CRIMSON_SIGN = ItemRegistry.fromItemKey("minecraft:crimson_sign");
+    public static final LegacyItem CRIMSON_SIGN = LegacyItemRegistry.fromItemKey("minecraft:crimson_sign");
 
     @NotNull
-    public static final Item WARPED_SIGN = ItemRegistry.fromItemKey("minecraft:warped_sign");
+    public static final LegacyItem WARPED_SIGN = LegacyItemRegistry.fromItemKey("minecraft:warped_sign");
 
     @NotNull
-    public static final Item BUCKET = ItemRegistry.fromItemKey("minecraft:bucket");
+    public static final LegacyItem BUCKET = LegacyItemRegistry.fromItemKey("minecraft:bucket");
 
     @NotNull
-    public static final Item WATER_BUCKET = ItemRegistry.fromItemKey("minecraft:water_bucket");
+    public static final LegacyItem WATER_BUCKET = LegacyItemRegistry.fromItemKey("minecraft:water_bucket");
 
     @NotNull
-    public static final Item LAVA_BUCKET = ItemRegistry.fromItemKey("minecraft:lava_bucket");
+    public static final LegacyItem LAVA_BUCKET = LegacyItemRegistry.fromItemKey("minecraft:lava_bucket");
 
     @NotNull
-    public static final Item POWDER_SNOW_BUCKET = ItemRegistry.fromItemKey("minecraft:powder_snow_bucket");
+    public static final LegacyItem POWDER_SNOW_BUCKET = LegacyItemRegistry.fromItemKey("minecraft:powder_snow_bucket");
 
     @NotNull
-    public static final Item SNOWBALL = ItemRegistry.fromItemKey("minecraft:snowball");
+    public static final LegacyItem SNOWBALL = LegacyItemRegistry.fromItemKey("minecraft:snowball");
 
     @NotNull
-    public static final Item LEATHER = ItemRegistry.fromItemKey("minecraft:leather");
+    public static final LegacyItem LEATHER = LegacyItemRegistry.fromItemKey("minecraft:leather");
 
     @NotNull
-    public static final Item MILK_BUCKET = ItemRegistry.fromItemKey("minecraft:milk_bucket");
+    public static final LegacyItem MILK_BUCKET = LegacyItemRegistry.fromItemKey("minecraft:milk_bucket");
 
     @NotNull
-    public static final Item PUFFERFISH_BUCKET = ItemRegistry.fromItemKey("minecraft:pufferfish_bucket");
+    public static final LegacyItem PUFFERFISH_BUCKET = LegacyItemRegistry.fromItemKey("minecraft:pufferfish_bucket");
 
     @NotNull
-    public static final Item SALMON_BUCKET = ItemRegistry.fromItemKey("minecraft:salmon_bucket");
+    public static final LegacyItem SALMON_BUCKET = LegacyItemRegistry.fromItemKey("minecraft:salmon_bucket");
 
     @NotNull
-    public static final Item COD_BUCKET = ItemRegistry.fromItemKey("minecraft:cod_bucket");
+    public static final LegacyItem COD_BUCKET = LegacyItemRegistry.fromItemKey("minecraft:cod_bucket");
 
     @NotNull
-    public static final Item TROPICAL_FISH_BUCKET = ItemRegistry.fromItemKey("minecraft:tropical_fish_bucket");
+    public static final LegacyItem TROPICAL_FISH_BUCKET = LegacyItemRegistry.fromItemKey("minecraft:tropical_fish_bucket");
 
     @NotNull
-    public static final Item AXOLOTL_BUCKET = ItemRegistry.fromItemKey("minecraft:axolotl_bucket");
+    public static final LegacyItem AXOLOTL_BUCKET = LegacyItemRegistry.fromItemKey("minecraft:axolotl_bucket");
 
     @NotNull
-    public static final Item TADPOLE_BUCKET = ItemRegistry.fromItemKey("minecraft:tadpole_bucket");
+    public static final LegacyItem TADPOLE_BUCKET = LegacyItemRegistry.fromItemKey("minecraft:tadpole_bucket");
 
     @NotNull
-    public static final Item BRICK = ItemRegistry.fromItemKey("minecraft:brick");
+    public static final LegacyItem BRICK = LegacyItemRegistry.fromItemKey("minecraft:brick");
 
     @NotNull
-    public static final Item CLAY_BALL = ItemRegistry.fromItemKey("minecraft:clay_ball");
+    public static final LegacyItem CLAY_BALL = LegacyItemRegistry.fromItemKey("minecraft:clay_ball");
 
     @NotNull
-    public static final Item DRIED_KELP_BLOCK = ItemRegistry.fromItemKey("minecraft:dried_kelp_block");
+    public static final LegacyItem DRIED_KELP_BLOCK = LegacyItemRegistry.fromItemKey("minecraft:dried_kelp_block");
 
     @NotNull
-    public static final Item PAPER = ItemRegistry.fromItemKey("minecraft:paper");
+    public static final LegacyItem PAPER = LegacyItemRegistry.fromItemKey("minecraft:paper");
 
     @NotNull
-    public static final Item BOOK = ItemRegistry.fromItemKey("minecraft:book");
+    public static final LegacyItem BOOK = LegacyItemRegistry.fromItemKey("minecraft:book");
 
     @NotNull
-    public static final Item SLIME_BALL = ItemRegistry.fromItemKey("minecraft:slime_ball");
+    public static final LegacyItem SLIME_BALL = LegacyItemRegistry.fromItemKey("minecraft:slime_ball");
 
     @NotNull
-    public static final Item EGG = ItemRegistry.fromItemKey("minecraft:egg");
+    public static final LegacyItem EGG = LegacyItemRegistry.fromItemKey("minecraft:egg");
 
     @NotNull
-    public static final Item COMPASS = ItemRegistry.fromItemKey("minecraft:compass");
+    public static final LegacyItem COMPASS = LegacyItemRegistry.fromItemKey("minecraft:compass");
 
     @NotNull
-    public static final Item RECOVERY_COMPASS = ItemRegistry.fromItemKey("minecraft:recovery_compass");
+    public static final LegacyItem RECOVERY_COMPASS = LegacyItemRegistry.fromItemKey("minecraft:recovery_compass");
 
     @NotNull
-    public static final Item BUNDLE = ItemRegistry.fromItemKey("minecraft:bundle");
+    public static final LegacyItem BUNDLE = LegacyItemRegistry.fromItemKey("minecraft:bundle");
 
     @NotNull
-    public static final Item FISHING_ROD = ItemRegistry.fromItemKey("minecraft:fishing_rod");
+    public static final LegacyItem FISHING_ROD = LegacyItemRegistry.fromItemKey("minecraft:fishing_rod");
 
     @NotNull
-    public static final Item CLOCK = ItemRegistry.fromItemKey("minecraft:clock");
+    public static final LegacyItem CLOCK = LegacyItemRegistry.fromItemKey("minecraft:clock");
 
     @NotNull
-    public static final Item SPYGLASS = ItemRegistry.fromItemKey("minecraft:spyglass");
+    public static final LegacyItem SPYGLASS = LegacyItemRegistry.fromItemKey("minecraft:spyglass");
 
     @NotNull
-    public static final Item GLOWSTONE_DUST = ItemRegistry.fromItemKey("minecraft:glowstone_dust");
+    public static final LegacyItem GLOWSTONE_DUST = LegacyItemRegistry.fromItemKey("minecraft:glowstone_dust");
 
     @NotNull
-    public static final Item COD = ItemRegistry.fromItemKey("minecraft:cod");
+    public static final LegacyItem COD = LegacyItemRegistry.fromItemKey("minecraft:cod");
 
     @NotNull
-    public static final Item SALMON = ItemRegistry.fromItemKey("minecraft:salmon");
+    public static final LegacyItem SALMON = LegacyItemRegistry.fromItemKey("minecraft:salmon");
 
     @NotNull
-    public static final Item TROPICAL_FISH = ItemRegistry.fromItemKey("minecraft:tropical_fish");
+    public static final LegacyItem TROPICAL_FISH = LegacyItemRegistry.fromItemKey("minecraft:tropical_fish");
 
     @NotNull
-    public static final Item PUFFERFISH = ItemRegistry.fromItemKey("minecraft:pufferfish");
+    public static final LegacyItem PUFFERFISH = LegacyItemRegistry.fromItemKey("minecraft:pufferfish");
 
     @NotNull
-    public static final Item COOKED_COD = ItemRegistry.fromItemKey("minecraft:cooked_cod");
+    public static final LegacyItem COOKED_COD = LegacyItemRegistry.fromItemKey("minecraft:cooked_cod");
 
     @NotNull
-    public static final Item COOKED_SALMON = ItemRegistry.fromItemKey("minecraft:cooked_salmon");
+    public static final LegacyItem COOKED_SALMON = LegacyItemRegistry.fromItemKey("minecraft:cooked_salmon");
 
     @NotNull
-    public static final Item INK_SAC = ItemRegistry.fromItemKey("minecraft:ink_sac");
+    public static final LegacyItem INK_SAC = LegacyItemRegistry.fromItemKey("minecraft:ink_sac");
 
     @NotNull
-    public static final Item GLOW_INK_SAC = ItemRegistry.fromItemKey("minecraft:glow_ink_sac");
+    public static final LegacyItem GLOW_INK_SAC = LegacyItemRegistry.fromItemKey("minecraft:glow_ink_sac");
 
     @NotNull
-    public static final Item COCOA_BEANS = ItemRegistry.fromItemKey("minecraft:cocoa_beans");
+    public static final LegacyItem COCOA_BEANS = LegacyItemRegistry.fromItemKey("minecraft:cocoa_beans");
 
     @NotNull
-    public static final Item WHITE_DYE = ItemRegistry.fromItemKey("minecraft:white_dye");
+    public static final LegacyItem WHITE_DYE = LegacyItemRegistry.fromItemKey("minecraft:white_dye");
 
     @NotNull
-    public static final Item ORANGE_DYE = ItemRegistry.fromItemKey("minecraft:orange_dye");
+    public static final LegacyItem ORANGE_DYE = LegacyItemRegistry.fromItemKey("minecraft:orange_dye");
 
     @NotNull
-    public static final Item MAGENTA_DYE = ItemRegistry.fromItemKey("minecraft:magenta_dye");
+    public static final LegacyItem MAGENTA_DYE = LegacyItemRegistry.fromItemKey("minecraft:magenta_dye");
 
     @NotNull
-    public static final Item LIGHT_BLUE_DYE = ItemRegistry.fromItemKey("minecraft:light_blue_dye");
+    public static final LegacyItem LIGHT_BLUE_DYE = LegacyItemRegistry.fromItemKey("minecraft:light_blue_dye");
 
     @NotNull
-    public static final Item YELLOW_DYE = ItemRegistry.fromItemKey("minecraft:yellow_dye");
+    public static final LegacyItem YELLOW_DYE = LegacyItemRegistry.fromItemKey("minecraft:yellow_dye");
 
     @NotNull
-    public static final Item LIME_DYE = ItemRegistry.fromItemKey("minecraft:lime_dye");
+    public static final LegacyItem LIME_DYE = LegacyItemRegistry.fromItemKey("minecraft:lime_dye");
 
     @NotNull
-    public static final Item PINK_DYE = ItemRegistry.fromItemKey("minecraft:pink_dye");
+    public static final LegacyItem PINK_DYE = LegacyItemRegistry.fromItemKey("minecraft:pink_dye");
 
     @NotNull
-    public static final Item GRAY_DYE = ItemRegistry.fromItemKey("minecraft:gray_dye");
+    public static final LegacyItem GRAY_DYE = LegacyItemRegistry.fromItemKey("minecraft:gray_dye");
 
     @NotNull
-    public static final Item LIGHT_GRAY_DYE = ItemRegistry.fromItemKey("minecraft:light_gray_dye");
+    public static final LegacyItem LIGHT_GRAY_DYE = LegacyItemRegistry.fromItemKey("minecraft:light_gray_dye");
 
     @NotNull
-    public static final Item CYAN_DYE = ItemRegistry.fromItemKey("minecraft:cyan_dye");
+    public static final LegacyItem CYAN_DYE = LegacyItemRegistry.fromItemKey("minecraft:cyan_dye");
 
     @NotNull
-    public static final Item PURPLE_DYE = ItemRegistry.fromItemKey("minecraft:purple_dye");
+    public static final LegacyItem PURPLE_DYE = LegacyItemRegistry.fromItemKey("minecraft:purple_dye");
 
     @NotNull
-    public static final Item BLUE_DYE = ItemRegistry.fromItemKey("minecraft:blue_dye");
+    public static final LegacyItem BLUE_DYE = LegacyItemRegistry.fromItemKey("minecraft:blue_dye");
 
     @NotNull
-    public static final Item BROWN_DYE = ItemRegistry.fromItemKey("minecraft:brown_dye");
+    public static final LegacyItem BROWN_DYE = LegacyItemRegistry.fromItemKey("minecraft:brown_dye");
 
     @NotNull
-    public static final Item GREEN_DYE = ItemRegistry.fromItemKey("minecraft:green_dye");
+    public static final LegacyItem GREEN_DYE = LegacyItemRegistry.fromItemKey("minecraft:green_dye");
 
     @NotNull
-    public static final Item RED_DYE = ItemRegistry.fromItemKey("minecraft:red_dye");
+    public static final LegacyItem RED_DYE = LegacyItemRegistry.fromItemKey("minecraft:red_dye");
 
     @NotNull
-    public static final Item BLACK_DYE = ItemRegistry.fromItemKey("minecraft:black_dye");
+    public static final LegacyItem BLACK_DYE = LegacyItemRegistry.fromItemKey("minecraft:black_dye");
 
     @NotNull
-    public static final Item BONE_MEAL = ItemRegistry.fromItemKey("minecraft:bone_meal");
+    public static final LegacyItem BONE_MEAL = LegacyItemRegistry.fromItemKey("minecraft:bone_meal");
 
     @NotNull
-    public static final Item BONE = ItemRegistry.fromItemKey("minecraft:bone");
+    public static final LegacyItem BONE = LegacyItemRegistry.fromItemKey("minecraft:bone");
 
     @NotNull
-    public static final Item SUGAR = ItemRegistry.fromItemKey("minecraft:sugar");
+    public static final LegacyItem SUGAR = LegacyItemRegistry.fromItemKey("minecraft:sugar");
 
     @NotNull
-    public static final Item CAKE = ItemRegistry.fromItemKey("minecraft:cake");
+    public static final LegacyItem CAKE = LegacyItemRegistry.fromItemKey("minecraft:cake");
 
     @NotNull
-    public static final Item WHITE_BED = ItemRegistry.fromItemKey("minecraft:white_bed");
+    public static final LegacyItem WHITE_BED = LegacyItemRegistry.fromItemKey("minecraft:white_bed");
 
     @NotNull
-    public static final Item ORANGE_BED = ItemRegistry.fromItemKey("minecraft:orange_bed");
+    public static final LegacyItem ORANGE_BED = LegacyItemRegistry.fromItemKey("minecraft:orange_bed");
 
     @NotNull
-    public static final Item MAGENTA_BED = ItemRegistry.fromItemKey("minecraft:magenta_bed");
+    public static final LegacyItem MAGENTA_BED = LegacyItemRegistry.fromItemKey("minecraft:magenta_bed");
 
     @NotNull
-    public static final Item LIGHT_BLUE_BED = ItemRegistry.fromItemKey("minecraft:light_blue_bed");
+    public static final LegacyItem LIGHT_BLUE_BED = LegacyItemRegistry.fromItemKey("minecraft:light_blue_bed");
 
     @NotNull
-    public static final Item YELLOW_BED = ItemRegistry.fromItemKey("minecraft:yellow_bed");
+    public static final LegacyItem YELLOW_BED = LegacyItemRegistry.fromItemKey("minecraft:yellow_bed");
 
     @NotNull
-    public static final Item LIME_BED = ItemRegistry.fromItemKey("minecraft:lime_bed");
+    public static final LegacyItem LIME_BED = LegacyItemRegistry.fromItemKey("minecraft:lime_bed");
 
     @NotNull
-    public static final Item PINK_BED = ItemRegistry.fromItemKey("minecraft:pink_bed");
+    public static final LegacyItem PINK_BED = LegacyItemRegistry.fromItemKey("minecraft:pink_bed");
 
     @NotNull
-    public static final Item GRAY_BED = ItemRegistry.fromItemKey("minecraft:gray_bed");
+    public static final LegacyItem GRAY_BED = LegacyItemRegistry.fromItemKey("minecraft:gray_bed");
 
     @NotNull
-    public static final Item LIGHT_GRAY_BED = ItemRegistry.fromItemKey("minecraft:light_gray_bed");
+    public static final LegacyItem LIGHT_GRAY_BED = LegacyItemRegistry.fromItemKey("minecraft:light_gray_bed");
 
     @NotNull
-    public static final Item CYAN_BED = ItemRegistry.fromItemKey("minecraft:cyan_bed");
+    public static final LegacyItem CYAN_BED = LegacyItemRegistry.fromItemKey("minecraft:cyan_bed");
 
     @NotNull
-    public static final Item PURPLE_BED = ItemRegistry.fromItemKey("minecraft:purple_bed");
+    public static final LegacyItem PURPLE_BED = LegacyItemRegistry.fromItemKey("minecraft:purple_bed");
 
     @NotNull
-    public static final Item BLUE_BED = ItemRegistry.fromItemKey("minecraft:blue_bed");
+    public static final LegacyItem BLUE_BED = LegacyItemRegistry.fromItemKey("minecraft:blue_bed");
 
     @NotNull
-    public static final Item BROWN_BED = ItemRegistry.fromItemKey("minecraft:brown_bed");
+    public static final LegacyItem BROWN_BED = LegacyItemRegistry.fromItemKey("minecraft:brown_bed");
 
     @NotNull
-    public static final Item GREEN_BED = ItemRegistry.fromItemKey("minecraft:green_bed");
+    public static final LegacyItem GREEN_BED = LegacyItemRegistry.fromItemKey("minecraft:green_bed");
 
     @NotNull
-    public static final Item RED_BED = ItemRegistry.fromItemKey("minecraft:red_bed");
+    public static final LegacyItem RED_BED = LegacyItemRegistry.fromItemKey("minecraft:red_bed");
 
     @NotNull
-    public static final Item BLACK_BED = ItemRegistry.fromItemKey("minecraft:black_bed");
+    public static final LegacyItem BLACK_BED = LegacyItemRegistry.fromItemKey("minecraft:black_bed");
 
     @NotNull
-    public static final Item COOKIE = ItemRegistry.fromItemKey("minecraft:cookie");
+    public static final LegacyItem COOKIE = LegacyItemRegistry.fromItemKey("minecraft:cookie");
 
     @NotNull
-    public static final Item FILLED_MAP = ItemRegistry.fromItemKey("minecraft:filled_map");
+    public static final LegacyItem FILLED_MAP = LegacyItemRegistry.fromItemKey("minecraft:filled_map");
 
     @NotNull
-    public static final Item SHEARS = ItemRegistry.fromItemKey("minecraft:shears");
+    public static final LegacyItem SHEARS = LegacyItemRegistry.fromItemKey("minecraft:shears");
 
     @NotNull
-    public static final Item MELON_SLICE = ItemRegistry.fromItemKey("minecraft:melon_slice");
+    public static final LegacyItem MELON_SLICE = LegacyItemRegistry.fromItemKey("minecraft:melon_slice");
 
     @NotNull
-    public static final Item DRIED_KELP = ItemRegistry.fromItemKey("minecraft:dried_kelp");
+    public static final LegacyItem DRIED_KELP = LegacyItemRegistry.fromItemKey("minecraft:dried_kelp");
 
     @NotNull
-    public static final Item PUMPKIN_SEEDS = ItemRegistry.fromItemKey("minecraft:pumpkin_seeds");
+    public static final LegacyItem PUMPKIN_SEEDS = LegacyItemRegistry.fromItemKey("minecraft:pumpkin_seeds");
 
     @NotNull
-    public static final Item MELON_SEEDS = ItemRegistry.fromItemKey("minecraft:melon_seeds");
+    public static final LegacyItem MELON_SEEDS = LegacyItemRegistry.fromItemKey("minecraft:melon_seeds");
 
     @NotNull
-    public static final Item BEEF = ItemRegistry.fromItemKey("minecraft:beef");
+    public static final LegacyItem BEEF = LegacyItemRegistry.fromItemKey("minecraft:beef");
 
     @NotNull
-    public static final Item COOKED_BEEF = ItemRegistry.fromItemKey("minecraft:cooked_beef");
+    public static final LegacyItem COOKED_BEEF = LegacyItemRegistry.fromItemKey("minecraft:cooked_beef");
 
     @NotNull
-    public static final Item CHICKEN = ItemRegistry.fromItemKey("minecraft:chicken");
+    public static final LegacyItem CHICKEN = LegacyItemRegistry.fromItemKey("minecraft:chicken");
 
     @NotNull
-    public static final Item COOKED_CHICKEN = ItemRegistry.fromItemKey("minecraft:cooked_chicken");
+    public static final LegacyItem COOKED_CHICKEN = LegacyItemRegistry.fromItemKey("minecraft:cooked_chicken");
 
     @NotNull
-    public static final Item ROTTEN_FLESH = ItemRegistry.fromItemKey("minecraft:rotten_flesh");
+    public static final LegacyItem ROTTEN_FLESH = LegacyItemRegistry.fromItemKey("minecraft:rotten_flesh");
 
     @NotNull
-    public static final Item ENDER_PEARL = ItemRegistry.fromItemKey("minecraft:ender_pearl");
+    public static final LegacyItem ENDER_PEARL = LegacyItemRegistry.fromItemKey("minecraft:ender_pearl");
 
     @NotNull
-    public static final Item BLAZE_ROD = ItemRegistry.fromItemKey("minecraft:blaze_rod");
+    public static final LegacyItem BLAZE_ROD = LegacyItemRegistry.fromItemKey("minecraft:blaze_rod");
 
     @NotNull
-    public static final Item GHAST_TEAR = ItemRegistry.fromItemKey("minecraft:ghast_tear");
+    public static final LegacyItem GHAST_TEAR = LegacyItemRegistry.fromItemKey("minecraft:ghast_tear");
 
     @NotNull
-    public static final Item GOLD_NUGGET = ItemRegistry.fromItemKey("minecraft:gold_nugget");
+    public static final LegacyItem GOLD_NUGGET = LegacyItemRegistry.fromItemKey("minecraft:gold_nugget");
 
     @NotNull
-    public static final Item NETHER_WART = ItemRegistry.fromItemKey("minecraft:nether_wart");
+    public static final LegacyItem NETHER_WART = LegacyItemRegistry.fromItemKey("minecraft:nether_wart");
 
     @NotNull
-    public static final Item POTION = ItemRegistry.fromItemKey("minecraft:potion");
+    public static final LegacyItem POTION = LegacyItemRegistry.fromItemKey("minecraft:potion");
 
     @NotNull
-    public static final Item GLASS_BOTTLE = ItemRegistry.fromItemKey("minecraft:glass_bottle");
+    public static final LegacyItem GLASS_BOTTLE = LegacyItemRegistry.fromItemKey("minecraft:glass_bottle");
 
     @NotNull
-    public static final Item SPIDER_EYE = ItemRegistry.fromItemKey("minecraft:spider_eye");
+    public static final LegacyItem SPIDER_EYE = LegacyItemRegistry.fromItemKey("minecraft:spider_eye");
 
     @NotNull
-    public static final Item FERMENTED_SPIDER_EYE = ItemRegistry.fromItemKey("minecraft:fermented_spider_eye");
+    public static final LegacyItem FERMENTED_SPIDER_EYE = LegacyItemRegistry.fromItemKey("minecraft:fermented_spider_eye");
 
     @NotNull
-    public static final Item BLAZE_POWDER = ItemRegistry.fromItemKey("minecraft:blaze_powder");
+    public static final LegacyItem BLAZE_POWDER = LegacyItemRegistry.fromItemKey("minecraft:blaze_powder");
 
     @NotNull
-    public static final Item MAGMA_CREAM = ItemRegistry.fromItemKey("minecraft:magma_cream");
+    public static final LegacyItem MAGMA_CREAM = LegacyItemRegistry.fromItemKey("minecraft:magma_cream");
 
     @NotNull
-    public static final Item BREWING_STAND = ItemRegistry.fromItemKey("minecraft:brewing_stand");
+    public static final LegacyItem BREWING_STAND = LegacyItemRegistry.fromItemKey("minecraft:brewing_stand");
 
     @NotNull
-    public static final Item CAULDRON = ItemRegistry.fromItemKey("minecraft:cauldron");
+    public static final LegacyItem CAULDRON = LegacyItemRegistry.fromItemKey("minecraft:cauldron");
 
     @NotNull
-    public static final Item ENDER_EYE = ItemRegistry.fromItemKey("minecraft:ender_eye");
+    public static final LegacyItem ENDER_EYE = LegacyItemRegistry.fromItemKey("minecraft:ender_eye");
 
     @NotNull
-    public static final Item GLISTERING_MELON_SLICE = ItemRegistry.fromItemKey("minecraft:glistering_melon_slice");
+    public static final LegacyItem GLISTERING_MELON_SLICE = LegacyItemRegistry.fromItemKey("minecraft:glistering_melon_slice");
 
     @NotNull
-    public static final Item ALLAY_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:allay_spawn_egg");
+    public static final LegacyItem ALLAY_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:allay_spawn_egg");
 
     @NotNull
-    public static final Item AXOLOTL_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:axolotl_spawn_egg");
+    public static final LegacyItem AXOLOTL_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:axolotl_spawn_egg");
 
     @NotNull
-    public static final Item BAT_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:bat_spawn_egg");
+    public static final LegacyItem BAT_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:bat_spawn_egg");
 
     @NotNull
-    public static final Item BEE_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:bee_spawn_egg");
+    public static final LegacyItem BEE_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:bee_spawn_egg");
 
     @NotNull
-    public static final Item BLAZE_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:blaze_spawn_egg");
+    public static final LegacyItem BLAZE_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:blaze_spawn_egg");
 
     @NotNull
-    public static final Item CAT_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:cat_spawn_egg");
+    public static final LegacyItem CAT_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:cat_spawn_egg");
 
     @NotNull
-    public static final Item CAVE_SPIDER_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:cave_spider_spawn_egg");
+    public static final LegacyItem CAVE_SPIDER_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:cave_spider_spawn_egg");
 
     @NotNull
-    public static final Item CHICKEN_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:chicken_spawn_egg");
+    public static final LegacyItem CHICKEN_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:chicken_spawn_egg");
 
     @NotNull
-    public static final Item COD_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:cod_spawn_egg");
+    public static final LegacyItem COD_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:cod_spawn_egg");
 
     @NotNull
-    public static final Item COW_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:cow_spawn_egg");
+    public static final LegacyItem COW_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:cow_spawn_egg");
 
     @NotNull
-    public static final Item CREEPER_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:creeper_spawn_egg");
+    public static final LegacyItem CREEPER_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:creeper_spawn_egg");
 
     @NotNull
-    public static final Item DOLPHIN_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:dolphin_spawn_egg");
+    public static final LegacyItem DOLPHIN_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:dolphin_spawn_egg");
 
     @NotNull
-    public static final Item DONKEY_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:donkey_spawn_egg");
+    public static final LegacyItem DONKEY_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:donkey_spawn_egg");
 
     @NotNull
-    public static final Item DROWNED_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:drowned_spawn_egg");
+    public static final LegacyItem DROWNED_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:drowned_spawn_egg");
 
     @NotNull
-    public static final Item ELDER_GUARDIAN_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:elder_guardian_spawn_egg");
+    public static final LegacyItem ELDER_GUARDIAN_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:elder_guardian_spawn_egg");
 
     @NotNull
-    public static final Item ENDERMAN_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:enderman_spawn_egg");
+    public static final LegacyItem ENDERMAN_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:enderman_spawn_egg");
 
     @NotNull
-    public static final Item ENDERMITE_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:endermite_spawn_egg");
+    public static final LegacyItem ENDERMITE_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:endermite_spawn_egg");
 
     @NotNull
-    public static final Item EVOKER_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:evoker_spawn_egg");
+    public static final LegacyItem EVOKER_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:evoker_spawn_egg");
 
     @NotNull
-    public static final Item FOX_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:fox_spawn_egg");
+    public static final LegacyItem FOX_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:fox_spawn_egg");
 
     @NotNull
-    public static final Item FROG_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:frog_spawn_egg");
+    public static final LegacyItem FROG_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:frog_spawn_egg");
 
     @NotNull
-    public static final Item GHAST_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:ghast_spawn_egg");
+    public static final LegacyItem GHAST_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:ghast_spawn_egg");
 
     @NotNull
-    public static final Item GLOW_SQUID_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:glow_squid_spawn_egg");
+    public static final LegacyItem GLOW_SQUID_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:glow_squid_spawn_egg");
 
     @NotNull
-    public static final Item GOAT_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:goat_spawn_egg");
+    public static final LegacyItem GOAT_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:goat_spawn_egg");
 
     @NotNull
-    public static final Item GUARDIAN_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:guardian_spawn_egg");
+    public static final LegacyItem GUARDIAN_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:guardian_spawn_egg");
 
     @NotNull
-    public static final Item HOGLIN_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:hoglin_spawn_egg");
+    public static final LegacyItem HOGLIN_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:hoglin_spawn_egg");
 
     @NotNull
-    public static final Item HORSE_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:horse_spawn_egg");
+    public static final LegacyItem HORSE_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:horse_spawn_egg");
 
     @NotNull
-    public static final Item HUSK_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:husk_spawn_egg");
+    public static final LegacyItem HUSK_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:husk_spawn_egg");
 
     @NotNull
-    public static final Item LLAMA_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:llama_spawn_egg");
+    public static final LegacyItem LLAMA_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:llama_spawn_egg");
 
     @NotNull
-    public static final Item MAGMA_CUBE_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:magma_cube_spawn_egg");
+    public static final LegacyItem MAGMA_CUBE_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:magma_cube_spawn_egg");
 
     @NotNull
-    public static final Item MOOSHROOM_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:mooshroom_spawn_egg");
+    public static final LegacyItem MOOSHROOM_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:mooshroom_spawn_egg");
 
     @NotNull
-    public static final Item MULE_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:mule_spawn_egg");
+    public static final LegacyItem MULE_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:mule_spawn_egg");
 
     @NotNull
-    public static final Item OCELOT_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:ocelot_spawn_egg");
+    public static final LegacyItem OCELOT_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:ocelot_spawn_egg");
 
     @NotNull
-    public static final Item PANDA_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:panda_spawn_egg");
+    public static final LegacyItem PANDA_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:panda_spawn_egg");
 
     @NotNull
-    public static final Item PARROT_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:parrot_spawn_egg");
+    public static final LegacyItem PARROT_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:parrot_spawn_egg");
 
     @NotNull
-    public static final Item PHANTOM_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:phantom_spawn_egg");
+    public static final LegacyItem PHANTOM_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:phantom_spawn_egg");
 
     @NotNull
-    public static final Item PIG_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:pig_spawn_egg");
+    public static final LegacyItem PIG_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:pig_spawn_egg");
 
     @NotNull
-    public static final Item PIGLIN_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:piglin_spawn_egg");
+    public static final LegacyItem PIGLIN_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:piglin_spawn_egg");
 
     @NotNull
-    public static final Item PIGLIN_BRUTE_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:piglin_brute_spawn_egg");
+    public static final LegacyItem PIGLIN_BRUTE_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:piglin_brute_spawn_egg");
 
     @NotNull
-    public static final Item PILLAGER_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:pillager_spawn_egg");
+    public static final LegacyItem PILLAGER_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:pillager_spawn_egg");
 
     @NotNull
-    public static final Item POLAR_BEAR_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:polar_bear_spawn_egg");
+    public static final LegacyItem POLAR_BEAR_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:polar_bear_spawn_egg");
 
     @NotNull
-    public static final Item PUFFERFISH_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:pufferfish_spawn_egg");
+    public static final LegacyItem PUFFERFISH_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:pufferfish_spawn_egg");
 
     @NotNull
-    public static final Item RABBIT_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:rabbit_spawn_egg");
+    public static final LegacyItem RABBIT_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:rabbit_spawn_egg");
 
     @NotNull
-    public static final Item RAVAGER_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:ravager_spawn_egg");
+    public static final LegacyItem RAVAGER_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:ravager_spawn_egg");
 
     @NotNull
-    public static final Item SALMON_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:salmon_spawn_egg");
+    public static final LegacyItem SALMON_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:salmon_spawn_egg");
 
     @NotNull
-    public static final Item SHEEP_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:sheep_spawn_egg");
+    public static final LegacyItem SHEEP_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:sheep_spawn_egg");
 
     @NotNull
-    public static final Item SHULKER_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:shulker_spawn_egg");
+    public static final LegacyItem SHULKER_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:shulker_spawn_egg");
 
     @NotNull
-    public static final Item SILVERFISH_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:silverfish_spawn_egg");
+    public static final LegacyItem SILVERFISH_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:silverfish_spawn_egg");
 
     @NotNull
-    public static final Item SKELETON_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:skeleton_spawn_egg");
+    public static final LegacyItem SKELETON_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:skeleton_spawn_egg");
 
     @NotNull
-    public static final Item SKELETON_HORSE_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:skeleton_horse_spawn_egg");
+    public static final LegacyItem SKELETON_HORSE_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:skeleton_horse_spawn_egg");
 
     @NotNull
-    public static final Item SLIME_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:slime_spawn_egg");
+    public static final LegacyItem SLIME_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:slime_spawn_egg");
 
     @NotNull
-    public static final Item SPIDER_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:spider_spawn_egg");
+    public static final LegacyItem SPIDER_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:spider_spawn_egg");
 
     @NotNull
-    public static final Item SQUID_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:squid_spawn_egg");
+    public static final LegacyItem SQUID_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:squid_spawn_egg");
 
     @NotNull
-    public static final Item STRAY_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:stray_spawn_egg");
+    public static final LegacyItem STRAY_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:stray_spawn_egg");
 
     @NotNull
-    public static final Item STRIDER_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:strider_spawn_egg");
+    public static final LegacyItem STRIDER_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:strider_spawn_egg");
 
     @NotNull
-    public static final Item TADPOLE_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:tadpole_spawn_egg");
+    public static final LegacyItem TADPOLE_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:tadpole_spawn_egg");
 
     @NotNull
-    public static final Item TRADER_LLAMA_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:trader_llama_spawn_egg");
+    public static final LegacyItem TRADER_LLAMA_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:trader_llama_spawn_egg");
 
     @NotNull
-    public static final Item TROPICAL_FISH_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:tropical_fish_spawn_egg");
+    public static final LegacyItem TROPICAL_FISH_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:tropical_fish_spawn_egg");
 
     @NotNull
-    public static final Item TURTLE_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:turtle_spawn_egg");
+    public static final LegacyItem TURTLE_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:turtle_spawn_egg");
 
     @NotNull
-    public static final Item VEX_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:vex_spawn_egg");
+    public static final LegacyItem VEX_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:vex_spawn_egg");
 
     @NotNull
-    public static final Item VILLAGER_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:villager_spawn_egg");
+    public static final LegacyItem VILLAGER_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:villager_spawn_egg");
 
     @NotNull
-    public static final Item VINDICATOR_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:vindicator_spawn_egg");
+    public static final LegacyItem VINDICATOR_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:vindicator_spawn_egg");
 
     @NotNull
-    public static final Item WANDERING_TRADER_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:wandering_trader_spawn_egg");
+    public static final LegacyItem WANDERING_TRADER_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:wandering_trader_spawn_egg");
 
     @NotNull
-    public static final Item WARDEN_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:warden_spawn_egg");
+    public static final LegacyItem WARDEN_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:warden_spawn_egg");
 
     @NotNull
-    public static final Item WITCH_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:witch_spawn_egg");
+    public static final LegacyItem WITCH_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:witch_spawn_egg");
 
     @NotNull
-    public static final Item WITHER_SKELETON_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:wither_skeleton_spawn_egg");
+    public static final LegacyItem WITHER_SKELETON_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:wither_skeleton_spawn_egg");
 
     @NotNull
-    public static final Item WOLF_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:wolf_spawn_egg");
+    public static final LegacyItem WOLF_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:wolf_spawn_egg");
 
     @NotNull
-    public static final Item ZOGLIN_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:zoglin_spawn_egg");
+    public static final LegacyItem ZOGLIN_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:zoglin_spawn_egg");
 
     @NotNull
-    public static final Item ZOMBIE_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:zombie_spawn_egg");
+    public static final LegacyItem ZOMBIE_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:zombie_spawn_egg");
 
     @NotNull
-    public static final Item ZOMBIE_HORSE_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:zombie_horse_spawn_egg");
+    public static final LegacyItem ZOMBIE_HORSE_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:zombie_horse_spawn_egg");
 
     @NotNull
-    public static final Item ZOMBIE_VILLAGER_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:zombie_villager_spawn_egg");
+    public static final LegacyItem ZOMBIE_VILLAGER_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:zombie_villager_spawn_egg");
 
     @NotNull
-    public static final Item ZOMBIFIED_PIGLIN_SPAWN_EGG = ItemRegistry.fromItemKey("minecraft:zombified_piglin_spawn_egg");
+    public static final LegacyItem ZOMBIFIED_PIGLIN_SPAWN_EGG = LegacyItemRegistry.fromItemKey("minecraft:zombified_piglin_spawn_egg");
 
     @NotNull
-    public static final Item EXPERIENCE_BOTTLE = ItemRegistry.fromItemKey("minecraft:experience_bottle");
+    public static final LegacyItem EXPERIENCE_BOTTLE = LegacyItemRegistry.fromItemKey("minecraft:experience_bottle");
 
     @NotNull
-    public static final Item FIRE_CHARGE = ItemRegistry.fromItemKey("minecraft:fire_charge");
+    public static final LegacyItem FIRE_CHARGE = LegacyItemRegistry.fromItemKey("minecraft:fire_charge");
 
     @NotNull
-    public static final Item WRITABLE_BOOK = ItemRegistry.fromItemKey("minecraft:writable_book");
+    public static final LegacyItem WRITABLE_BOOK = LegacyItemRegistry.fromItemKey("minecraft:writable_book");
 
     @NotNull
-    public static final Item WRITTEN_BOOK = ItemRegistry.fromItemKey("minecraft:written_book");
+    public static final LegacyItem WRITTEN_BOOK = LegacyItemRegistry.fromItemKey("minecraft:written_book");
 
     @NotNull
-    public static final Item ITEM_FRAME = ItemRegistry.fromItemKey("minecraft:item_frame");
+    public static final LegacyItem LEGACY_ITEM_FRAME = LegacyItemRegistry.fromItemKey("minecraft:item_frame");
 
     @NotNull
-    public static final Item GLOW_ITEM_FRAME = ItemRegistry.fromItemKey("minecraft:glow_item_frame");
+    public static final LegacyItem GLOW_LEGACY_ITEM_FRAME = LegacyItemRegistry.fromItemKey("minecraft:glow_item_frame");
 
     @NotNull
-    public static final Item FLOWER_POT = ItemRegistry.fromItemKey("minecraft:flower_pot");
+    public static final LegacyItem FLOWER_POT = LegacyItemRegistry.fromItemKey("minecraft:flower_pot");
 
     @NotNull
-    public static final Item CARROT = ItemRegistry.fromItemKey("minecraft:carrot");
+    public static final LegacyItem CARROT = LegacyItemRegistry.fromItemKey("minecraft:carrot");
 
     @NotNull
-    public static final Item POTATO = ItemRegistry.fromItemKey("minecraft:potato");
+    public static final LegacyItem POTATO = LegacyItemRegistry.fromItemKey("minecraft:potato");
 
     @NotNull
-    public static final Item BAKED_POTATO = ItemRegistry.fromItemKey("minecraft:baked_potato");
+    public static final LegacyItem BAKED_POTATO = LegacyItemRegistry.fromItemKey("minecraft:baked_potato");
 
     @NotNull
-    public static final Item POISONOUS_POTATO = ItemRegistry.fromItemKey("minecraft:poisonous_potato");
+    public static final LegacyItem POISONOUS_POTATO = LegacyItemRegistry.fromItemKey("minecraft:poisonous_potato");
 
     @NotNull
-    public static final Item MAP = ItemRegistry.fromItemKey("minecraft:map");
+    public static final LegacyItem MAP = LegacyItemRegistry.fromItemKey("minecraft:map");
 
     @NotNull
-    public static final Item GOLDEN_CARROT = ItemRegistry.fromItemKey("minecraft:golden_carrot");
+    public static final LegacyItem GOLDEN_CARROT = LegacyItemRegistry.fromItemKey("minecraft:golden_carrot");
 
     @NotNull
-    public static final Item SKELETON_SKULL = ItemRegistry.fromItemKey("minecraft:skeleton_skull");
+    public static final LegacyItem SKELETON_SKULL = LegacyItemRegistry.fromItemKey("minecraft:skeleton_skull");
 
     @NotNull
-    public static final Item WITHER_SKELETON_SKULL = ItemRegistry.fromItemKey("minecraft:wither_skeleton_skull");
+    public static final LegacyItem WITHER_SKELETON_SKULL = LegacyItemRegistry.fromItemKey("minecraft:wither_skeleton_skull");
 
     @NotNull
-    public static final Item PLAYER_HEAD = ItemRegistry.fromItemKey("minecraft:player_head");
+    public static final LegacyItem PLAYER_HEAD = LegacyItemRegistry.fromItemKey("minecraft:player_head");
 
     @NotNull
-    public static final Item ZOMBIE_HEAD = ItemRegistry.fromItemKey("minecraft:zombie_head");
+    public static final LegacyItem ZOMBIE_HEAD = LegacyItemRegistry.fromItemKey("minecraft:zombie_head");
 
     @NotNull
-    public static final Item CREEPER_HEAD = ItemRegistry.fromItemKey("minecraft:creeper_head");
+    public static final LegacyItem CREEPER_HEAD = LegacyItemRegistry.fromItemKey("minecraft:creeper_head");
 
     @NotNull
-    public static final Item DRAGON_HEAD = ItemRegistry.fromItemKey("minecraft:dragon_head");
+    public static final LegacyItem DRAGON_HEAD = LegacyItemRegistry.fromItemKey("minecraft:dragon_head");
 
     @NotNull
-    public static final Item NETHER_STAR = ItemRegistry.fromItemKey("minecraft:nether_star");
+    public static final LegacyItem NETHER_STAR = LegacyItemRegistry.fromItemKey("minecraft:nether_star");
 
     @NotNull
-    public static final Item PUMPKIN_PIE = ItemRegistry.fromItemKey("minecraft:pumpkin_pie");
+    public static final LegacyItem PUMPKIN_PIE = LegacyItemRegistry.fromItemKey("minecraft:pumpkin_pie");
 
     @NotNull
-    public static final Item FIREWORK_ROCKET = ItemRegistry.fromItemKey("minecraft:firework_rocket");
+    public static final LegacyItem FIREWORK_ROCKET = LegacyItemRegistry.fromItemKey("minecraft:firework_rocket");
 
     @NotNull
-    public static final Item FIREWORK_STAR = ItemRegistry.fromItemKey("minecraft:firework_star");
+    public static final LegacyItem FIREWORK_STAR = LegacyItemRegistry.fromItemKey("minecraft:firework_star");
 
     @NotNull
-    public static final Item ENCHANTED_BOOK = ItemRegistry.fromItemKey("minecraft:enchanted_book");
+    public static final LegacyItem ENCHANTED_BOOK = LegacyItemRegistry.fromItemKey("minecraft:enchanted_book");
 
     @NotNull
-    public static final Item NETHER_BRICK = ItemRegistry.fromItemKey("minecraft:nether_brick");
+    public static final LegacyItem NETHER_BRICK = LegacyItemRegistry.fromItemKey("minecraft:nether_brick");
 
     @NotNull
-    public static final Item PRISMARINE_SHARD = ItemRegistry.fromItemKey("minecraft:prismarine_shard");
+    public static final LegacyItem PRISMARINE_SHARD = LegacyItemRegistry.fromItemKey("minecraft:prismarine_shard");
 
     @NotNull
-    public static final Item PRISMARINE_CRYSTALS = ItemRegistry.fromItemKey("minecraft:prismarine_crystals");
+    public static final LegacyItem PRISMARINE_CRYSTALS = LegacyItemRegistry.fromItemKey("minecraft:prismarine_crystals");
 
     @NotNull
-    public static final Item RABBIT = ItemRegistry.fromItemKey("minecraft:rabbit");
+    public static final LegacyItem RABBIT = LegacyItemRegistry.fromItemKey("minecraft:rabbit");
 
     @NotNull
-    public static final Item COOKED_RABBIT = ItemRegistry.fromItemKey("minecraft:cooked_rabbit");
+    public static final LegacyItem COOKED_RABBIT = LegacyItemRegistry.fromItemKey("minecraft:cooked_rabbit");
 
     @NotNull
-    public static final Item RABBIT_STEW = ItemRegistry.fromItemKey("minecraft:rabbit_stew");
+    public static final LegacyItem RABBIT_STEW = LegacyItemRegistry.fromItemKey("minecraft:rabbit_stew");
 
     @NotNull
-    public static final Item RABBIT_FOOT = ItemRegistry.fromItemKey("minecraft:rabbit_foot");
+    public static final LegacyItem RABBIT_FOOT = LegacyItemRegistry.fromItemKey("minecraft:rabbit_foot");
 
     @NotNull
-    public static final Item RABBIT_HIDE = ItemRegistry.fromItemKey("minecraft:rabbit_hide");
+    public static final LegacyItem RABBIT_HIDE = LegacyItemRegistry.fromItemKey("minecraft:rabbit_hide");
 
     @NotNull
-    public static final Item ARMOR_STAND = ItemRegistry.fromItemKey("minecraft:armor_stand");
+    public static final LegacyItem ARMOR_STAND = LegacyItemRegistry.fromItemKey("minecraft:armor_stand");
 
     @NotNull
-    public static final Item IRON_HORSE_ARMOR = ItemRegistry.fromItemKey("minecraft:iron_horse_armor");
+    public static final LegacyItem IRON_HORSE_ARMOR = LegacyItemRegistry.fromItemKey("minecraft:iron_horse_armor");
 
     @NotNull
-    public static final Item GOLDEN_HORSE_ARMOR = ItemRegistry.fromItemKey("minecraft:golden_horse_armor");
+    public static final LegacyItem GOLDEN_HORSE_ARMOR = LegacyItemRegistry.fromItemKey("minecraft:golden_horse_armor");
 
     @NotNull
-    public static final Item DIAMOND_HORSE_ARMOR = ItemRegistry.fromItemKey("minecraft:diamond_horse_armor");
+    public static final LegacyItem DIAMOND_HORSE_ARMOR = LegacyItemRegistry.fromItemKey("minecraft:diamond_horse_armor");
 
     @NotNull
-    public static final Item LEATHER_HORSE_ARMOR = ItemRegistry.fromItemKey("minecraft:leather_horse_armor");
+    public static final LegacyItem LEATHER_HORSE_ARMOR = LegacyItemRegistry.fromItemKey("minecraft:leather_horse_armor");
 
     @NotNull
-    public static final Item LEAD = ItemRegistry.fromItemKey("minecraft:lead");
+    public static final LegacyItem LEAD = LegacyItemRegistry.fromItemKey("minecraft:lead");
 
     @NotNull
-    public static final Item NAME_TAG = ItemRegistry.fromItemKey("minecraft:name_tag");
+    public static final LegacyItem NAME_TAG = LegacyItemRegistry.fromItemKey("minecraft:name_tag");
 
     @NotNull
-    public static final Item COMMAND_BLOCK_MINECART = ItemRegistry.fromItemKey("minecraft:command_block_minecart");
+    public static final LegacyItem COMMAND_BLOCK_MINECART = LegacyItemRegistry.fromItemKey("minecraft:command_block_minecart");
 
     @NotNull
-    public static final Item MUTTON = ItemRegistry.fromItemKey("minecraft:mutton");
+    public static final LegacyItem MUTTON = LegacyItemRegistry.fromItemKey("minecraft:mutton");
 
     @NotNull
-    public static final Item COOKED_MUTTON = ItemRegistry.fromItemKey("minecraft:cooked_mutton");
+    public static final LegacyItem COOKED_MUTTON = LegacyItemRegistry.fromItemKey("minecraft:cooked_mutton");
 
     @NotNull
-    public static final Item WHITE_BANNER = ItemRegistry.fromItemKey("minecraft:white_banner");
+    public static final LegacyItem WHITE_BANNER = LegacyItemRegistry.fromItemKey("minecraft:white_banner");
 
     @NotNull
-    public static final Item ORANGE_BANNER = ItemRegistry.fromItemKey("minecraft:orange_banner");
+    public static final LegacyItem ORANGE_BANNER = LegacyItemRegistry.fromItemKey("minecraft:orange_banner");
 
     @NotNull
-    public static final Item MAGENTA_BANNER = ItemRegistry.fromItemKey("minecraft:magenta_banner");
+    public static final LegacyItem MAGENTA_BANNER = LegacyItemRegistry.fromItemKey("minecraft:magenta_banner");
 
     @NotNull
-    public static final Item LIGHT_BLUE_BANNER = ItemRegistry.fromItemKey("minecraft:light_blue_banner");
+    public static final LegacyItem LIGHT_BLUE_BANNER = LegacyItemRegistry.fromItemKey("minecraft:light_blue_banner");
 
     @NotNull
-    public static final Item YELLOW_BANNER = ItemRegistry.fromItemKey("minecraft:yellow_banner");
+    public static final LegacyItem YELLOW_BANNER = LegacyItemRegistry.fromItemKey("minecraft:yellow_banner");
 
     @NotNull
-    public static final Item LIME_BANNER = ItemRegistry.fromItemKey("minecraft:lime_banner");
+    public static final LegacyItem LIME_BANNER = LegacyItemRegistry.fromItemKey("minecraft:lime_banner");
 
     @NotNull
-    public static final Item PINK_BANNER = ItemRegistry.fromItemKey("minecraft:pink_banner");
+    public static final LegacyItem PINK_BANNER = LegacyItemRegistry.fromItemKey("minecraft:pink_banner");
 
     @NotNull
-    public static final Item GRAY_BANNER = ItemRegistry.fromItemKey("minecraft:gray_banner");
+    public static final LegacyItem GRAY_BANNER = LegacyItemRegistry.fromItemKey("minecraft:gray_banner");
 
     @NotNull
-    public static final Item LIGHT_GRAY_BANNER = ItemRegistry.fromItemKey("minecraft:light_gray_banner");
+    public static final LegacyItem LIGHT_GRAY_BANNER = LegacyItemRegistry.fromItemKey("minecraft:light_gray_banner");
 
     @NotNull
-    public static final Item CYAN_BANNER = ItemRegistry.fromItemKey("minecraft:cyan_banner");
+    public static final LegacyItem CYAN_BANNER = LegacyItemRegistry.fromItemKey("minecraft:cyan_banner");
 
     @NotNull
-    public static final Item PURPLE_BANNER = ItemRegistry.fromItemKey("minecraft:purple_banner");
+    public static final LegacyItem PURPLE_BANNER = LegacyItemRegistry.fromItemKey("minecraft:purple_banner");
 
     @NotNull
-    public static final Item BLUE_BANNER = ItemRegistry.fromItemKey("minecraft:blue_banner");
+    public static final LegacyItem BLUE_BANNER = LegacyItemRegistry.fromItemKey("minecraft:blue_banner");
 
     @NotNull
-    public static final Item BROWN_BANNER = ItemRegistry.fromItemKey("minecraft:brown_banner");
+    public static final LegacyItem BROWN_BANNER = LegacyItemRegistry.fromItemKey("minecraft:brown_banner");
 
     @NotNull
-    public static final Item GREEN_BANNER = ItemRegistry.fromItemKey("minecraft:green_banner");
+    public static final LegacyItem GREEN_BANNER = LegacyItemRegistry.fromItemKey("minecraft:green_banner");
 
     @NotNull
-    public static final Item RED_BANNER = ItemRegistry.fromItemKey("minecraft:red_banner");
+    public static final LegacyItem RED_BANNER = LegacyItemRegistry.fromItemKey("minecraft:red_banner");
 
     @NotNull
-    public static final Item BLACK_BANNER = ItemRegistry.fromItemKey("minecraft:black_banner");
+    public static final LegacyItem BLACK_BANNER = LegacyItemRegistry.fromItemKey("minecraft:black_banner");
 
     @NotNull
-    public static final Item END_CRYSTAL = ItemRegistry.fromItemKey("minecraft:end_crystal");
+    public static final LegacyItem END_CRYSTAL = LegacyItemRegistry.fromItemKey("minecraft:end_crystal");
 
     @NotNull
-    public static final Item CHORUS_FRUIT = ItemRegistry.fromItemKey("minecraft:chorus_fruit");
+    public static final LegacyItem CHORUS_FRUIT = LegacyItemRegistry.fromItemKey("minecraft:chorus_fruit");
 
     @NotNull
-    public static final Item POPPED_CHORUS_FRUIT = ItemRegistry.fromItemKey("minecraft:popped_chorus_fruit");
+    public static final LegacyItem POPPED_CHORUS_FRUIT = LegacyItemRegistry.fromItemKey("minecraft:popped_chorus_fruit");
 
     @NotNull
-    public static final Item BEETROOT = ItemRegistry.fromItemKey("minecraft:beetroot");
+    public static final LegacyItem BEETROOT = LegacyItemRegistry.fromItemKey("minecraft:beetroot");
 
     @NotNull
-    public static final Item BEETROOT_SEEDS = ItemRegistry.fromItemKey("minecraft:beetroot_seeds");
+    public static final LegacyItem BEETROOT_SEEDS = LegacyItemRegistry.fromItemKey("minecraft:beetroot_seeds");
 
     @NotNull
-    public static final Item BEETROOT_SOUP = ItemRegistry.fromItemKey("minecraft:beetroot_soup");
+    public static final LegacyItem BEETROOT_SOUP = LegacyItemRegistry.fromItemKey("minecraft:beetroot_soup");
 
     @NotNull
-    public static final Item DRAGON_BREATH = ItemRegistry.fromItemKey("minecraft:dragon_breath");
+    public static final LegacyItem DRAGON_BREATH = LegacyItemRegistry.fromItemKey("minecraft:dragon_breath");
 
     @NotNull
-    public static final Item SPLASH_POTION = ItemRegistry.fromItemKey("minecraft:splash_potion");
+    public static final LegacyItem SPLASH_POTION = LegacyItemRegistry.fromItemKey("minecraft:splash_potion");
 
     @NotNull
-    public static final Item SPECTRAL_ARROW = ItemRegistry.fromItemKey("minecraft:spectral_arrow");
+    public static final LegacyItem SPECTRAL_ARROW = LegacyItemRegistry.fromItemKey("minecraft:spectral_arrow");
 
     @NotNull
-    public static final Item TIPPED_ARROW = ItemRegistry.fromItemKey("minecraft:tipped_arrow");
+    public static final LegacyItem TIPPED_ARROW = LegacyItemRegistry.fromItemKey("minecraft:tipped_arrow");
 
     @NotNull
-    public static final Item LINGERING_POTION = ItemRegistry.fromItemKey("minecraft:lingering_potion");
+    public static final LegacyItem LINGERING_POTION = LegacyItemRegistry.fromItemKey("minecraft:lingering_potion");
 
     @NotNull
-    public static final Item SHIELD = ItemRegistry.fromItemKey("minecraft:shield");
+    public static final LegacyItem SHIELD = LegacyItemRegistry.fromItemKey("minecraft:shield");
 
     @NotNull
-    public static final Item TOTEM_OF_UNDYING = ItemRegistry.fromItemKey("minecraft:totem_of_undying");
+    public static final LegacyItem TOTEM_OF_UNDYING = LegacyItemRegistry.fromItemKey("minecraft:totem_of_undying");
 
     @NotNull
-    public static final Item SHULKER_SHELL = ItemRegistry.fromItemKey("minecraft:shulker_shell");
+    public static final LegacyItem SHULKER_SHELL = LegacyItemRegistry.fromItemKey("minecraft:shulker_shell");
 
     @NotNull
-    public static final Item IRON_NUGGET = ItemRegistry.fromItemKey("minecraft:iron_nugget");
+    public static final LegacyItem IRON_NUGGET = LegacyItemRegistry.fromItemKey("minecraft:iron_nugget");
 
     @NotNull
-    public static final Item KNOWLEDGE_BOOK = ItemRegistry.fromItemKey("minecraft:knowledge_book");
+    public static final LegacyItem KNOWLEDGE_BOOK = LegacyItemRegistry.fromItemKey("minecraft:knowledge_book");
 
     @NotNull
-    public static final Item DEBUG_STICK = ItemRegistry.fromItemKey("minecraft:debug_stick");
+    public static final LegacyItem DEBUG_STICK = LegacyItemRegistry.fromItemKey("minecraft:debug_stick");
 
     @NotNull
-    public static final Item MUSIC_DISC_13 = ItemRegistry.fromItemKey("minecraft:music_disc_13");
+    public static final LegacyItem MUSIC_DISC_13 = LegacyItemRegistry.fromItemKey("minecraft:music_disc_13");
 
     @NotNull
-    public static final Item MUSIC_DISC_CAT = ItemRegistry.fromItemKey("minecraft:music_disc_cat");
+    public static final LegacyItem MUSIC_DISC_CAT = LegacyItemRegistry.fromItemKey("minecraft:music_disc_cat");
 
     @NotNull
-    public static final Item MUSIC_DISC_BLOCKS = ItemRegistry.fromItemKey("minecraft:music_disc_blocks");
+    public static final LegacyItem MUSIC_DISC_BLOCKS = LegacyItemRegistry.fromItemKey("minecraft:music_disc_blocks");
 
     @NotNull
-    public static final Item MUSIC_DISC_CHIRP = ItemRegistry.fromItemKey("minecraft:music_disc_chirp");
+    public static final LegacyItem MUSIC_DISC_CHIRP = LegacyItemRegistry.fromItemKey("minecraft:music_disc_chirp");
 
     @NotNull
-    public static final Item MUSIC_DISC_FAR = ItemRegistry.fromItemKey("minecraft:music_disc_far");
+    public static final LegacyItem MUSIC_DISC_FAR = LegacyItemRegistry.fromItemKey("minecraft:music_disc_far");
 
     @NotNull
-    public static final Item MUSIC_DISC_MALL = ItemRegistry.fromItemKey("minecraft:music_disc_mall");
+    public static final LegacyItem MUSIC_DISC_MALL = LegacyItemRegistry.fromItemKey("minecraft:music_disc_mall");
 
     @NotNull
-    public static final Item MUSIC_DISC_MELLOHI = ItemRegistry.fromItemKey("minecraft:music_disc_mellohi");
+    public static final LegacyItem MUSIC_DISC_MELLOHI = LegacyItemRegistry.fromItemKey("minecraft:music_disc_mellohi");
 
     @NotNull
-    public static final Item MUSIC_DISC_STAL = ItemRegistry.fromItemKey("minecraft:music_disc_stal");
+    public static final LegacyItem MUSIC_DISC_STAL = LegacyItemRegistry.fromItemKey("minecraft:music_disc_stal");
 
     @NotNull
-    public static final Item MUSIC_DISC_STRAD = ItemRegistry.fromItemKey("minecraft:music_disc_strad");
+    public static final LegacyItem MUSIC_DISC_STRAD = LegacyItemRegistry.fromItemKey("minecraft:music_disc_strad");
 
     @NotNull
-    public static final Item MUSIC_DISC_WARD = ItemRegistry.fromItemKey("minecraft:music_disc_ward");
+    public static final LegacyItem MUSIC_DISC_WARD = LegacyItemRegistry.fromItemKey("minecraft:music_disc_ward");
 
     @NotNull
-    public static final Item MUSIC_DISC_11 = ItemRegistry.fromItemKey("minecraft:music_disc_11");
+    public static final LegacyItem MUSIC_DISC_11 = LegacyItemRegistry.fromItemKey("minecraft:music_disc_11");
 
     @NotNull
-    public static final Item MUSIC_DISC_WAIT = ItemRegistry.fromItemKey("minecraft:music_disc_wait");
+    public static final LegacyItem MUSIC_DISC_WAIT = LegacyItemRegistry.fromItemKey("minecraft:music_disc_wait");
 
     @NotNull
-    public static final Item MUSIC_DISC_OTHERSIDE = ItemRegistry.fromItemKey("minecraft:music_disc_otherside");
+    public static final LegacyItem MUSIC_DISC_OTHERSIDE = LegacyItemRegistry.fromItemKey("minecraft:music_disc_otherside");
 
     @NotNull
-    public static final Item MUSIC_DISC_5 = ItemRegistry.fromItemKey("minecraft:music_disc_5");
+    public static final LegacyItem MUSIC_DISC_5 = LegacyItemRegistry.fromItemKey("minecraft:music_disc_5");
 
     @NotNull
-    public static final Item MUSIC_DISC_PIGSTEP = ItemRegistry.fromItemKey("minecraft:music_disc_pigstep");
+    public static final LegacyItem MUSIC_DISC_PIGSTEP = LegacyItemRegistry.fromItemKey("minecraft:music_disc_pigstep");
 
     @NotNull
-    public static final Item DISC_FRAGMENT_5 = ItemRegistry.fromItemKey("minecraft:disc_fragment_5");
+    public static final LegacyItem DISC_FRAGMENT_5 = LegacyItemRegistry.fromItemKey("minecraft:disc_fragment_5");
 
     @NotNull
-    public static final Item TRIDENT = ItemRegistry.fromItemKey("minecraft:trident");
+    public static final LegacyItem TRIDENT = LegacyItemRegistry.fromItemKey("minecraft:trident");
 
     @NotNull
-    public static final Item PHANTOM_MEMBRANE = ItemRegistry.fromItemKey("minecraft:phantom_membrane");
+    public static final LegacyItem PHANTOM_MEMBRANE = LegacyItemRegistry.fromItemKey("minecraft:phantom_membrane");
 
     @NotNull
-    public static final Item NAUTILUS_SHELL = ItemRegistry.fromItemKey("minecraft:nautilus_shell");
+    public static final LegacyItem NAUTILUS_SHELL = LegacyItemRegistry.fromItemKey("minecraft:nautilus_shell");
 
     @NotNull
-    public static final Item HEART_OF_THE_SEA = ItemRegistry.fromItemKey("minecraft:heart_of_the_sea");
+    public static final LegacyItem HEART_OF_THE_SEA = LegacyItemRegistry.fromItemKey("minecraft:heart_of_the_sea");
 
     @NotNull
-    public static final Item CROSSBOW = ItemRegistry.fromItemKey("minecraft:crossbow");
+    public static final LegacyItem CROSSBOW = LegacyItemRegistry.fromItemKey("minecraft:crossbow");
 
     @NotNull
-    public static final Item SUSPICIOUS_STEW = ItemRegistry.fromItemKey("minecraft:suspicious_stew");
+    public static final LegacyItem SUSPICIOUS_STEW = LegacyItemRegistry.fromItemKey("minecraft:suspicious_stew");
 
     @NotNull
-    public static final Item LOOM = ItemRegistry.fromItemKey("minecraft:loom");
+    public static final LegacyItem LOOM = LegacyItemRegistry.fromItemKey("minecraft:loom");
 
     @NotNull
-    public static final Item FLOWER_BANNER_PATTERN = ItemRegistry.fromItemKey("minecraft:flower_banner_pattern");
+    public static final LegacyItem FLOWER_BANNER_PATTERN = LegacyItemRegistry.fromItemKey("minecraft:flower_banner_pattern");
 
     @NotNull
-    public static final Item CREEPER_BANNER_PATTERN = ItemRegistry.fromItemKey("minecraft:creeper_banner_pattern");
+    public static final LegacyItem CREEPER_BANNER_PATTERN = LegacyItemRegistry.fromItemKey("minecraft:creeper_banner_pattern");
 
     @NotNull
-    public static final Item SKULL_BANNER_PATTERN = ItemRegistry.fromItemKey("minecraft:skull_banner_pattern");
+    public static final LegacyItem SKULL_BANNER_PATTERN = LegacyItemRegistry.fromItemKey("minecraft:skull_banner_pattern");
 
     @NotNull
-    public static final Item MOJANG_BANNER_PATTERN = ItemRegistry.fromItemKey("minecraft:mojang_banner_pattern");
+    public static final LegacyItem MOJANG_BANNER_PATTERN = LegacyItemRegistry.fromItemKey("minecraft:mojang_banner_pattern");
 
     @NotNull
-    public static final Item GLOBE_BANNER_PATTERN = ItemRegistry.fromItemKey("minecraft:globe_banner_pattern");
+    public static final LegacyItem GLOBE_BANNER_PATTERN = LegacyItemRegistry.fromItemKey("minecraft:globe_banner_pattern");
 
     @NotNull
-    public static final Item PIGLIN_BANNER_PATTERN = ItemRegistry.fromItemKey("minecraft:piglin_banner_pattern");
+    public static final LegacyItem PIGLIN_BANNER_PATTERN = LegacyItemRegistry.fromItemKey("minecraft:piglin_banner_pattern");
 
     @NotNull
-    public static final Item GOAT_HORN = ItemRegistry.fromItemKey("minecraft:goat_horn");
+    public static final LegacyItem GOAT_HORN = LegacyItemRegistry.fromItemKey("minecraft:goat_horn");
 
     @NotNull
-    public static final Item COMPOSTER = ItemRegistry.fromItemKey("minecraft:composter");
+    public static final LegacyItem COMPOSTER = LegacyItemRegistry.fromItemKey("minecraft:composter");
 
     @NotNull
-    public static final Item BARREL = ItemRegistry.fromItemKey("minecraft:barrel");
+    public static final LegacyItem BARREL = LegacyItemRegistry.fromItemKey("minecraft:barrel");
 
     @NotNull
-    public static final Item SMOKER = ItemRegistry.fromItemKey("minecraft:smoker");
+    public static final LegacyItem SMOKER = LegacyItemRegistry.fromItemKey("minecraft:smoker");
 
     @NotNull
-    public static final Item BLAST_FURNACE = ItemRegistry.fromItemKey("minecraft:blast_furnace");
+    public static final LegacyItem BLAST_FURNACE = LegacyItemRegistry.fromItemKey("minecraft:blast_furnace");
 
     @NotNull
-    public static final Item CARTOGRAPHY_TABLE = ItemRegistry.fromItemKey("minecraft:cartography_table");
+    public static final LegacyItem CARTOGRAPHY_TABLE = LegacyItemRegistry.fromItemKey("minecraft:cartography_table");
 
     @NotNull
-    public static final Item FLETCHING_TABLE = ItemRegistry.fromItemKey("minecraft:fletching_table");
+    public static final LegacyItem FLETCHING_TABLE = LegacyItemRegistry.fromItemKey("minecraft:fletching_table");
 
     @NotNull
-    public static final Item GRINDSTONE = ItemRegistry.fromItemKey("minecraft:grindstone");
+    public static final LegacyItem GRINDSTONE = LegacyItemRegistry.fromItemKey("minecraft:grindstone");
 
     @NotNull
-    public static final Item SMITHING_TABLE = ItemRegistry.fromItemKey("minecraft:smithing_table");
+    public static final LegacyItem SMITHING_TABLE = LegacyItemRegistry.fromItemKey("minecraft:smithing_table");
 
     @NotNull
-    public static final Item STONECUTTER = ItemRegistry.fromItemKey("minecraft:stonecutter");
+    public static final LegacyItem STONECUTTER = LegacyItemRegistry.fromItemKey("minecraft:stonecutter");
 
     @NotNull
-    public static final Item BELL = ItemRegistry.fromItemKey("minecraft:bell");
+    public static final LegacyItem BELL = LegacyItemRegistry.fromItemKey("minecraft:bell");
 
     @NotNull
-    public static final Item LANTERN = ItemRegistry.fromItemKey("minecraft:lantern");
+    public static final LegacyItem LANTERN = LegacyItemRegistry.fromItemKey("minecraft:lantern");
 
     @NotNull
-    public static final Item SOUL_LANTERN = ItemRegistry.fromItemKey("minecraft:soul_lantern");
+    public static final LegacyItem SOUL_LANTERN = LegacyItemRegistry.fromItemKey("minecraft:soul_lantern");
 
     @NotNull
-    public static final Item SWEET_BERRIES = ItemRegistry.fromItemKey("minecraft:sweet_berries");
+    public static final LegacyItem SWEET_BERRIES = LegacyItemRegistry.fromItemKey("minecraft:sweet_berries");
 
     @NotNull
-    public static final Item GLOW_BERRIES = ItemRegistry.fromItemKey("minecraft:glow_berries");
+    public static final LegacyItem GLOW_BERRIES = LegacyItemRegistry.fromItemKey("minecraft:glow_berries");
 
     @NotNull
-    public static final Item CAMPFIRE = ItemRegistry.fromItemKey("minecraft:campfire");
+    public static final LegacyItem CAMPFIRE = LegacyItemRegistry.fromItemKey("minecraft:campfire");
 
     @NotNull
-    public static final Item SOUL_CAMPFIRE = ItemRegistry.fromItemKey("minecraft:soul_campfire");
+    public static final LegacyItem SOUL_CAMPFIRE = LegacyItemRegistry.fromItemKey("minecraft:soul_campfire");
 
     @NotNull
-    public static final Item SHROOMLIGHT = ItemRegistry.fromItemKey("minecraft:shroomlight");
+    public static final LegacyItem SHROOMLIGHT = LegacyItemRegistry.fromItemKey("minecraft:shroomlight");
 
     @NotNull
-    public static final Item HONEYCOMB = ItemRegistry.fromItemKey("minecraft:honeycomb");
+    public static final LegacyItem HONEYCOMB = LegacyItemRegistry.fromItemKey("minecraft:honeycomb");
 
     @NotNull
-    public static final Item BEE_NEST = ItemRegistry.fromItemKey("minecraft:bee_nest");
+    public static final LegacyItem BEE_NEST = LegacyItemRegistry.fromItemKey("minecraft:bee_nest");
 
     @NotNull
-    public static final Item BEEHIVE = ItemRegistry.fromItemKey("minecraft:beehive");
+    public static final LegacyItem BEEHIVE = LegacyItemRegistry.fromItemKey("minecraft:beehive");
 
     @NotNull
-    public static final Item HONEY_BOTTLE = ItemRegistry.fromItemKey("minecraft:honey_bottle");
+    public static final LegacyItem HONEY_BOTTLE = LegacyItemRegistry.fromItemKey("minecraft:honey_bottle");
 
     @NotNull
-    public static final Item HONEYCOMB_BLOCK = ItemRegistry.fromItemKey("minecraft:honeycomb_block");
+    public static final LegacyItem HONEYCOMB_BLOCK = LegacyItemRegistry.fromItemKey("minecraft:honeycomb_block");
 
     @NotNull
-    public static final Item LODESTONE = ItemRegistry.fromItemKey("minecraft:lodestone");
+    public static final LegacyItem LODESTONE = LegacyItemRegistry.fromItemKey("minecraft:lodestone");
 
     @NotNull
-    public static final Item CRYING_OBSIDIAN = ItemRegistry.fromItemKey("minecraft:crying_obsidian");
+    public static final LegacyItem CRYING_OBSIDIAN = LegacyItemRegistry.fromItemKey("minecraft:crying_obsidian");
 
     @NotNull
-    public static final Item BLACKSTONE = ItemRegistry.fromItemKey("minecraft:blackstone");
+    public static final LegacyItem BLACKSTONE = LegacyItemRegistry.fromItemKey("minecraft:blackstone");
 
     @NotNull
-    public static final Item BLACKSTONE_SLAB = ItemRegistry.fromItemKey("minecraft:blackstone_slab");
+    public static final LegacyItem BLACKSTONE_SLAB = LegacyItemRegistry.fromItemKey("minecraft:blackstone_slab");
 
     @NotNull
-    public static final Item BLACKSTONE_STAIRS = ItemRegistry.fromItemKey("minecraft:blackstone_stairs");
+    public static final LegacyItem BLACKSTONE_STAIRS = LegacyItemRegistry.fromItemKey("minecraft:blackstone_stairs");
 
     @NotNull
-    public static final Item GILDED_BLACKSTONE = ItemRegistry.fromItemKey("minecraft:gilded_blackstone");
+    public static final LegacyItem GILDED_BLACKSTONE = LegacyItemRegistry.fromItemKey("minecraft:gilded_blackstone");
 
     @NotNull
-    public static final Item POLISHED_BLACKSTONE = ItemRegistry.fromItemKey("minecraft:polished_blackstone");
+    public static final LegacyItem POLISHED_BLACKSTONE = LegacyItemRegistry.fromItemKey("minecraft:polished_blackstone");
 
     @NotNull
-    public static final Item POLISHED_BLACKSTONE_SLAB = ItemRegistry.fromItemKey("minecraft:polished_blackstone_slab");
+    public static final LegacyItem POLISHED_BLACKSTONE_SLAB = LegacyItemRegistry.fromItemKey("minecraft:polished_blackstone_slab");
 
     @NotNull
-    public static final Item POLISHED_BLACKSTONE_STAIRS = ItemRegistry.fromItemKey("minecraft:polished_blackstone_stairs");
+    public static final LegacyItem POLISHED_BLACKSTONE_STAIRS = LegacyItemRegistry.fromItemKey("minecraft:polished_blackstone_stairs");
 
     @NotNull
-    public static final Item CHISELED_POLISHED_BLACKSTONE = ItemRegistry.fromItemKey("minecraft:chiseled_polished_blackstone");
+    public static final LegacyItem CHISELED_POLISHED_BLACKSTONE = LegacyItemRegistry.fromItemKey("minecraft:chiseled_polished_blackstone");
 
     @NotNull
-    public static final Item POLISHED_BLACKSTONE_BRICKS = ItemRegistry.fromItemKey("minecraft:polished_blackstone_bricks");
+    public static final LegacyItem POLISHED_BLACKSTONE_BRICKS = LegacyItemRegistry.fromItemKey("minecraft:polished_blackstone_bricks");
 
     @NotNull
-    public static final Item POLISHED_BLACKSTONE_BRICK_SLAB = ItemRegistry.fromItemKey("minecraft:polished_blackstone_brick_slab");
+    public static final LegacyItem POLISHED_BLACKSTONE_BRICK_SLAB = LegacyItemRegistry.fromItemKey("minecraft:polished_blackstone_brick_slab");
 
     @NotNull
-    public static final Item POLISHED_BLACKSTONE_BRICK_STAIRS = ItemRegistry.fromItemKey("minecraft:polished_blackstone_brick_stairs");
+    public static final LegacyItem POLISHED_BLACKSTONE_BRICK_STAIRS = LegacyItemRegistry.fromItemKey("minecraft:polished_blackstone_brick_stairs");
 
     @NotNull
-    public static final Item CRACKED_POLISHED_BLACKSTONE_BRICKS = ItemRegistry.fromItemKey("minecraft:cracked_polished_blackstone_bricks");
+    public static final LegacyItem CRACKED_POLISHED_BLACKSTONE_BRICKS = LegacyItemRegistry.fromItemKey("minecraft:cracked_polished_blackstone_bricks");
 
     @NotNull
-    public static final Item RESPAWN_ANCHOR = ItemRegistry.fromItemKey("minecraft:respawn_anchor");
+    public static final LegacyItem RESPAWN_ANCHOR = LegacyItemRegistry.fromItemKey("minecraft:respawn_anchor");
 
     @NotNull
-    public static final Item CANDLE = ItemRegistry.fromItemKey("minecraft:candle");
+    public static final LegacyItem CANDLE = LegacyItemRegistry.fromItemKey("minecraft:candle");
 
     @NotNull
-    public static final Item WHITE_CANDLE = ItemRegistry.fromItemKey("minecraft:white_candle");
+    public static final LegacyItem WHITE_CANDLE = LegacyItemRegistry.fromItemKey("minecraft:white_candle");
 
     @NotNull
-    public static final Item ORANGE_CANDLE = ItemRegistry.fromItemKey("minecraft:orange_candle");
+    public static final LegacyItem ORANGE_CANDLE = LegacyItemRegistry.fromItemKey("minecraft:orange_candle");
 
     @NotNull
-    public static final Item MAGENTA_CANDLE = ItemRegistry.fromItemKey("minecraft:magenta_candle");
+    public static final LegacyItem MAGENTA_CANDLE = LegacyItemRegistry.fromItemKey("minecraft:magenta_candle");
 
     @NotNull
-    public static final Item LIGHT_BLUE_CANDLE = ItemRegistry.fromItemKey("minecraft:light_blue_candle");
+    public static final LegacyItem LIGHT_BLUE_CANDLE = LegacyItemRegistry.fromItemKey("minecraft:light_blue_candle");
 
     @NotNull
-    public static final Item YELLOW_CANDLE = ItemRegistry.fromItemKey("minecraft:yellow_candle");
+    public static final LegacyItem YELLOW_CANDLE = LegacyItemRegistry.fromItemKey("minecraft:yellow_candle");
 
     @NotNull
-    public static final Item LIME_CANDLE = ItemRegistry.fromItemKey("minecraft:lime_candle");
+    public static final LegacyItem LIME_CANDLE = LegacyItemRegistry.fromItemKey("minecraft:lime_candle");
 
     @NotNull
-    public static final Item PINK_CANDLE = ItemRegistry.fromItemKey("minecraft:pink_candle");
+    public static final LegacyItem PINK_CANDLE = LegacyItemRegistry.fromItemKey("minecraft:pink_candle");
 
     @NotNull
-    public static final Item GRAY_CANDLE = ItemRegistry.fromItemKey("minecraft:gray_candle");
+    public static final LegacyItem GRAY_CANDLE = LegacyItemRegistry.fromItemKey("minecraft:gray_candle");
 
     @NotNull
-    public static final Item LIGHT_GRAY_CANDLE = ItemRegistry.fromItemKey("minecraft:light_gray_candle");
+    public static final LegacyItem LIGHT_GRAY_CANDLE = LegacyItemRegistry.fromItemKey("minecraft:light_gray_candle");
 
     @NotNull
-    public static final Item CYAN_CANDLE = ItemRegistry.fromItemKey("minecraft:cyan_candle");
+    public static final LegacyItem CYAN_CANDLE = LegacyItemRegistry.fromItemKey("minecraft:cyan_candle");
 
     @NotNull
-    public static final Item PURPLE_CANDLE = ItemRegistry.fromItemKey("minecraft:purple_candle");
+    public static final LegacyItem PURPLE_CANDLE = LegacyItemRegistry.fromItemKey("minecraft:purple_candle");
 
     @NotNull
-    public static final Item BLUE_CANDLE = ItemRegistry.fromItemKey("minecraft:blue_candle");
+    public static final LegacyItem BLUE_CANDLE = LegacyItemRegistry.fromItemKey("minecraft:blue_candle");
 
     @NotNull
-    public static final Item BROWN_CANDLE = ItemRegistry.fromItemKey("minecraft:brown_candle");
+    public static final LegacyItem BROWN_CANDLE = LegacyItemRegistry.fromItemKey("minecraft:brown_candle");
 
     @NotNull
-    public static final Item GREEN_CANDLE = ItemRegistry.fromItemKey("minecraft:green_candle");
+    public static final LegacyItem GREEN_CANDLE = LegacyItemRegistry.fromItemKey("minecraft:green_candle");
 
     @NotNull
-    public static final Item RED_CANDLE = ItemRegistry.fromItemKey("minecraft:red_candle");
+    public static final LegacyItem RED_CANDLE = LegacyItemRegistry.fromItemKey("minecraft:red_candle");
 
     @NotNull
-    public static final Item BLACK_CANDLE = ItemRegistry.fromItemKey("minecraft:black_candle");
+    public static final LegacyItem BLACK_CANDLE = LegacyItemRegistry.fromItemKey("minecraft:black_candle");
 
     @NotNull
-    public static final Item SMALL_AMETHYST_BUD = ItemRegistry.fromItemKey("minecraft:small_amethyst_bud");
+    public static final LegacyItem SMALL_AMETHYST_BUD = LegacyItemRegistry.fromItemKey("minecraft:small_amethyst_bud");
 
     @NotNull
-    public static final Item MEDIUM_AMETHYST_BUD = ItemRegistry.fromItemKey("minecraft:medium_amethyst_bud");
+    public static final LegacyItem MEDIUM_AMETHYST_BUD = LegacyItemRegistry.fromItemKey("minecraft:medium_amethyst_bud");
 
     @NotNull
-    public static final Item LARGE_AMETHYST_BUD = ItemRegistry.fromItemKey("minecraft:large_amethyst_bud");
+    public static final LegacyItem LARGE_AMETHYST_BUD = LegacyItemRegistry.fromItemKey("minecraft:large_amethyst_bud");
 
     @NotNull
-    public static final Item AMETHYST_CLUSTER = ItemRegistry.fromItemKey("minecraft:amethyst_cluster");
+    public static final LegacyItem AMETHYST_CLUSTER = LegacyItemRegistry.fromItemKey("minecraft:amethyst_cluster");
 
     @NotNull
-    public static final Item POINTED_DRIPSTONE = ItemRegistry.fromItemKey("minecraft:pointed_dripstone");
+    public static final LegacyItem POINTED_DRIPSTONE = LegacyItemRegistry.fromItemKey("minecraft:pointed_dripstone");
 
     @NotNull
-    public static final Item OCHRE_FROGLIGHT = ItemRegistry.fromItemKey("minecraft:ochre_froglight");
+    public static final LegacyItem OCHRE_FROGLIGHT = LegacyItemRegistry.fromItemKey("minecraft:ochre_froglight");
 
     @NotNull
-    public static final Item VERDANT_FROGLIGHT = ItemRegistry.fromItemKey("minecraft:verdant_froglight");
+    public static final LegacyItem VERDANT_FROGLIGHT = LegacyItemRegistry.fromItemKey("minecraft:verdant_froglight");
 
     @NotNull
-    public static final Item PEARLESCENT_FROGLIGHT = ItemRegistry.fromItemKey("minecraft:pearlescent_froglight");
+    public static final LegacyItem PEARLESCENT_FROGLIGHT = LegacyItemRegistry.fromItemKey("minecraft:pearlescent_froglight");
 
     @NotNull
-    public static final Item FROGSPAWN = ItemRegistry.fromItemKey("minecraft:frogspawn");
+    public static final LegacyItem FROGSPAWN = LegacyItemRegistry.fromItemKey("minecraft:frogspawn");
 
     @NotNull
-    public static final Item ECHO_SHARD = ItemRegistry.fromItemKey("minecraft:echo_shard");
+    public static final LegacyItem ECHO_SHARD = LegacyItemRegistry.fromItemKey("minecraft:echo_shard");
 }

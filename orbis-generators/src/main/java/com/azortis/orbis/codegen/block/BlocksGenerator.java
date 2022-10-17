@@ -19,7 +19,6 @@
 package com.azortis.orbis.codegen.block;
 
 import com.azortis.orbis.block.Block;
-import com.azortis.orbis.block.BlockRegistry;
 import com.azortis.orbis.codegen.OrbisCodeGenerator;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -56,7 +55,6 @@ public class BlocksGenerator extends OrbisCodeGenerator {
         JsonObject blocks = GSON.fromJson(new InputStreamReader(inputStream), JsonObject.class);
 
         ClassName block = ClassName.get(Block.class);
-        ClassName blockRegistry = ClassName.get(BlockRegistry.class);
 
         ClassName blocksClassName = ClassName.get("com.azortis.orbis.block", "Blocks");
         AnnotationSpec suppressAll =
@@ -74,7 +72,7 @@ public class BlocksGenerator extends OrbisCodeGenerator {
                     FieldSpec.builder(block, name)
                             .addModifiers(Modifier.PUBLIC, Modifier.STATIC, Modifier.FINAL)
                             .addAnnotation(NotNull.class)
-                            .initializer("$T.fromKey($S)", blockRegistry, key)
+                            .initializer("$T.fromKey($S)", block, key)
                             .build());
         }
         JavaFile blocksFile = JavaFile.builder("com.azortis.orbis.block", blocksClass.build()).build();

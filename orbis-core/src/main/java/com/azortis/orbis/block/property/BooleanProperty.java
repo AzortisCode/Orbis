@@ -18,24 +18,39 @@
 
 package com.azortis.orbis.block.property;
 
+import org.apiguardian.api.API;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Set;
 
+/**
+ * A {@link Property} that can be either true or false.
+ *
+ * @since 0.3-Alpha
+ * @author Jake Nijssen
+ */
+@API(status = API.Status.STABLE, since = "0.3-Alpha")
 public final class BooleanProperty extends Property<Boolean> {
 
     public static final Set<Boolean> VALUES = Set.of(true, false);
 
+    @API(status = API.Status.INTERNAL, since = "0.3-Alpha", consumers = "com.azortis.orbis.block.property")
     private BooleanProperty(final @NotNull String key) {
         super(key, Boolean.class, VALUES);
     }
 
-    static BooleanProperty create(final @NotNull String key) {
+    @Contract("_ -> new")
+    @API(status = API.Status.INTERNAL, since = "0.3-Alpha", consumers = "com.azortis.orbis.block.property")
+    static @NotNull BooleanProperty create(final @NotNull String key) {
         return new BooleanProperty(key);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public @NotNull Boolean getValueFor(@NotNull String value) {
+    public @NotNull Boolean getValue(@NotNull String value) {
         final boolean val = Boolean.parseBoolean(value);
         if (!values().contains(val)) {
             throw new IllegalArgumentException("Invalid boolean value: " + value + ". Must be in " + values());

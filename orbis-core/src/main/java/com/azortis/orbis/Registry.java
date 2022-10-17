@@ -27,7 +27,9 @@ import com.azortis.orbis.generator.noise.OpenSimplex2S;
 import com.azortis.orbis.generator.terrain.Terrain;
 import com.azortis.orbis.generator.terrain.defaults.ConfigTerrain;
 import com.azortis.orbis.generator.terrain.defaults.PlainsTerrain;
+import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
 import net.kyori.adventure.key.Key;
 import org.jetbrains.annotations.NotNull;
 
@@ -68,17 +70,31 @@ public final class Registry<T> {
         registries.put(type, registry);
     }
 
-    public static Map<Class<?>, Registry<?>> getImmutableRegistry() {
+    public static ImmutableMap<Class<?>, Registry<?>> getRegistries() {
         return ImmutableMap.copyOf(registries);
     }
 
-    public Class<? extends T> getType(@NotNull Key key) {
+    public boolean hasType(@NotNull Key key) {
+        return typeClasses.containsKey(key);
+    }
+
+    @SuppressWarnings("PatternValidation")
+    public boolean hasType(@NotNull String key) {
+        return hasType(Key.key(key));
+    }
+
+    public @NotNull Class<? extends T> getType(@NotNull Key key) {
+        Preconditions.checkArgument(typeClasses.containsKey(key), "Registry doesnt contain " + key.asString());
         return typeClasses.get(key);
     }
 
     @SuppressWarnings("PatternValidation")
-    public Class<? extends T> getType(@NotNull String key) {
+    public @NotNull Class<? extends T> getType(@NotNull String key) {
         return typeClasses.get(Key.key(key));
+    }
+
+    public @NotNull ImmutableSet<Class<?>> getTypes() {
+        return ImmutableSet.copyOf(typeClasses.values());
     }
 
     public void registerType(Key key, Class<? extends T> type) {

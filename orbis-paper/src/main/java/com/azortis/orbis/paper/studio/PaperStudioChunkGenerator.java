@@ -19,6 +19,7 @@
 package com.azortis.orbis.paper.studio;
 
 import com.azortis.orbis.pack.studio.Project;
+import com.azortis.orbis.paper.generator.PaperChunkData;
 import org.bukkit.generator.BiomeProvider;
 import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.generator.WorldInfo;
@@ -45,10 +46,12 @@ public final class PaperStudioChunkGenerator extends ChunkGenerator {
     }
 
     @Override
-    public void generateNoise(@NotNull WorldInfo worldInfo, @NotNull Random random, int chunkX, int chunkZ, @NotNull ChunkData chunkData) {
+    public void generateNoise(@NotNull WorldInfo worldInfo, @NotNull Random ignored, int chunkX, int chunkZ, @NotNull ChunkData chunkData) {
         if (requiresLoading()) load(worldInfo);
-        if (project.studioWorld().shouldRender()) {
-
+        if (project.studioWorld().shouldRender() && project.studioWorld().getDimension() != null
+                && project.studioWorld().getEngine() != null) {
+            project.studioWorld().getEngine().generateChunk(chunkX, chunkZ,
+                    new PaperChunkData(project.studioWorld().getDimension(), chunkData));
         }
     }
 

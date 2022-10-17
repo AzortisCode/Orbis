@@ -18,140 +18,105 @@
 
 package com.azortis.orbis.block;
 
-import com.azortis.orbis.Orbis;
-import com.azortis.orbis.block.property.Property;
-import com.azortis.orbis.block.property.PropertyRegistry;
-import com.google.common.collect.ImmutableBiMap;
-import com.google.common.collect.ImmutableMap;
+import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableSet;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.kyori.adventure.key.Key;
+import org.apiguardian.api.API;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 
-import java.io.File;
-import java.io.FileReader;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-
+/**
+ * A registry responsible for retrieving {@link Block} and {@link BlockState} from the platform,
+ * internally using {@link IBlockRegistry}. This class is also used for creating {@link com.azortis.orbis.block.entity.BlockEntity}'s
+ *
+ * @since 0.3-Alpha
+ * @author Jake Nijssen
+ */
+@API(status = API.Status.STABLE, since = "0.3-Alpha")
 public final class BlockRegistry {
 
-    private static final Map<String, Block> KEY_BLOCK_MAP = new HashMap<>();
-    private static final Int2ObjectMap<BlockState> ID_STATE_MAP = new Int2ObjectOpenHashMap<>();
-    private static final String BLOCKS_DATA = "blocks.json";
-    private static volatile boolean loaded = false;
+    private static IBlockRegistry REGISTRY = null;
 
-    public static void init() {
-        try {
-            if (!loaded) {
-                File blocksDataFile = Orbis.getDataFile(BLOCKS_DATA);
-                assert blocksDataFile != null;
-                final JsonObject data = Orbis.getGson().fromJson(new FileReader(blocksDataFile), JsonObject.class);
-                load(data);
-                loaded = true;
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace();
+    private BlockRegistry(){}
+
+    /**
+     * Sets the internal {@link IBlockRegistry} for this registry to delegate to.
+     *
+     * @param registry The platform implementation of the internal registry.
+     * @since 0.3-Alpha
+     */
+    @API(status = API.Status.INTERNAL, since = "0.3-Alpha", consumers = {"com.azortis.orbis.paper"})
+    public static void init(@NotNull IBlockRegistry registry) {
+        if(REGISTRY == null) {
+            REGISTRY = registry;
         }
     }
 
-    public static Set<String> blockKeys() {
-        return Set.copyOf(KEY_BLOCK_MAP.keySet());
+    /**
+     * Returns an immutable set of all the possible block {@link Key}'s.
+     *
+     * @return Immutable set of block keys.
+     * @since 0.3-Alpha
+     */
+    @Contract(pure = true)
+    public static @NotNull ImmutableSet<Key> blockKeys() {
+        return REGISTRY.blockKeys();
     }
 
-    public static Set<Block> blocks() {
-        return Set.copyOf(KEY_BLOCK_MAP.values());
+    /**
+     * Returns an immutable set view of all the {@link Block} on the platform.
+     *
+     * @return Immutable set view of all the blocks.
+     * @since 0.3-Alpha
+     */
+    @Contract(" -> new")
+    public static @NotNull ImmutableSet<Block> blocks() {
+        return REGISTRY.blocks();
     }
 
-    public static boolean containsKey(final String key) {
-        final String id = key.indexOf(':') == -1 ? "minecraft:" + key : key;
-        return KEY_BLOCK_MAP.containsKey(id);
+    /**
+     * Returns an immutable set view of all the {@link BlockState} on the platform.
+     *
+     * @return Immutable set view of all the blockStates.
+     * @since 0.3-Alpha
+     */
+    @Contract(" -> new")
+    public static @NotNull ImmutableSet<BlockState> states() {
+        return REGISTRY.states();
     }
 
-    public static Block fromKey(final String key) {
-        final String id = key.indexOf(':') == -1 ? "minecraft:" + key : key;
-        return KEY_BLOCK_MAP.get(id);
+    @Contract(pure = true)
+    public static boolean containsKey(@NotNull Key key){
+        return REGISTRY.containsKey(key);
     }
 
-    public static boolean containsKey(final Key key) {
-        return KEY_BLOCK_MAP.containsKey(key.asString());
+    @Contract(pure = true)
+    public static @NotNull Block fromKey(@NotNull Key key) {
+        return REGISTRY.fromKey(key);
     }
 
-    public static Block fromKey(final Key key) {
-        return KEY_BLOCK_MAP.get(key.asString());
-    }
-
-    public static BlockState fromStateId(final int stateId) {
-        return ID_STATE_MAP.get(stateId);
-    }
-
-    public static boolean isLoaded() {
-        return loaded;
-    }
-
+    @Contract(pure = true)
     @SuppressWarnings("PatternValidation")
-    private static void load(final JsonObject data) {
-        data.entrySet().forEach(entry -> {
-            final Key key = Key.key(entry.getKey());
-            final JsonObject blockData = entry.getValue().getAsJsonObject();
-            final int id = blockData.get("id").getAsInt();
-            final int defaultStateId = blockData.get("defaultStateId").getAsInt();
-
-
-            ImmutableBiMap.Builder<String, Property<?>> propertiesBuilder = ImmutableBiMap.builder();
-            for (JsonElement propertyElement : blockData.getAsJsonArray("properties")) {
-                String mojangName = propertyElement.getAsString();
-                Property<?> property = PropertyRegistry.getByMojangName(mojangName);
-                propertiesBuilder.put(property.key(), property);
-            }
-            ImmutableBiMap<String, Property<?>> availableProperties = propertiesBuilder.build();
-
-            Key itemKey = null;
-            if (blockData.has("correspondingItem")) {
-                itemKey = Key.key(blockData.get("correspondingItem").getAsString());
-            }
-
-            Block block = new Block(key, id, availableProperties.values(), itemKey);
-            Map<Map<Property<?>, Comparable<?>>, BlockState> blockStates = new HashMap<>();
-            JsonArray states = blockData.getAsJsonArray("states");
-            for (JsonElement stateElement : states) {
-                final JsonObject state = stateElement.getAsJsonObject();
-                final int stateId = state.get("stateId").getAsInt();
-                final ImmutableMap<Property<?>, Comparable<?>> values = getValues(availableProperties, state);
-
-                BlockState blockState = new BlockState(block,
-                        stateId,
-                        state.get("air").getAsBoolean(),
-                        state.get("solid").getAsBoolean(),
-                        state.get("liquid").getAsBoolean(),
-                        values);
-                if (stateId == defaultStateId) block.setDefaultState(blockState);
-                blockStates.put(values, blockState);
-            }
-            block.setStates(ImmutableSet.copyOf(blockStates.values()));
-            blockStates.values().forEach(blockState -> {
-                blockState.populateNeighbours(blockStates);
-                ID_STATE_MAP.put(blockState.stateId(), blockState);
-            });
-            KEY_BLOCK_MAP.put(key.asString(), block);
-        });
+    public static boolean containsKey(@NotNull String key) {
+        Preconditions.checkArgument(key.matches("([a-z0-9_\\-.]+:)?[a-z0-9_\\-./]+"), "Invalid key string!");
+        return REGISTRY.containsKey(Key.key(key));
     }
 
-    private static ImmutableMap<Property<?>, Comparable<?>> getValues(Map<String, Property<?>> availableProperties,
-                                                                      final JsonObject state) {
-        JsonObject properties = state.getAsJsonObject("properties");
-        ImmutableMap.Builder<Property<?>, Comparable<?>> builder = ImmutableMap.builder();
-        for (Map.Entry<String, Property<?>> entry : availableProperties.entrySet()) {
-            String stringValue = properties.get(entry.getKey()).getAsJsonPrimitive().getAsString();
-            Comparable<?> value = entry.getValue().getValueFor(stringValue);
-            if (value != null) {
-                builder.put(entry.getValue(), value);
-            }
-        }
-        return builder.build();
+    @Contract(pure = true)
+    @SuppressWarnings("PatternValidation")
+    public static @NotNull Block fromKey(@NotNull String key) {
+        Preconditions.checkArgument(key.matches("([a-z0-9_\\-.]+:)?[a-z0-9_\\-./]+"), "Invalid key string!");
+        return REGISTRY.fromKey(Key.key(key));
+    }
+
+    @Contract(pure = true)
+    public static @NotNull Block fromId(final int id) {
+        return REGISTRY.fromId(id);
+    }
+
+    @Contract(pure = true)
+    public static @NotNull BlockState fromStateId(final int stateId) {
+        return REGISTRY.fromStateId(stateId);
     }
 
 }

@@ -18,13 +18,15 @@
 
 package com.azortis.orbis.generator.terrain;
 
-import com.azortis.orbis.World;
 import com.azortis.orbis.generator.biome.Biome;
+import com.azortis.orbis.pack.studio.annotations.Typed;
 import com.azortis.orbis.util.Inject;
+import com.azortis.orbis.world.World;
 import lombok.Getter;
 import net.kyori.adventure.key.Key;
 
 @Getter
+@Typed
 @Inject
 public abstract class Terrain {
 

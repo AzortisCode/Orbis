@@ -20,12 +20,17 @@ package com.azortis.orbis.pack.adapter;
 
 import com.azortis.orbis.block.Block;
 import com.azortis.orbis.block.ConfiguredBlock;
+import com.azortis.orbis.block.property.BooleanProperty;
+import com.azortis.orbis.block.property.EnumProperty;
+import com.azortis.orbis.block.property.IntegerProperty;
+import com.azortis.orbis.block.property.Property;
+import com.azortis.orbis.util.Nameable;
 import com.google.gson.*;
 
 import java.lang.reflect.Type;
 import java.util.Map;
 
-public class BlockAdapter implements JsonSerializer<ConfiguredBlock>, JsonDeserializer<ConfiguredBlock> {
+public final class BlockAdapter implements JsonSerializer<ConfiguredBlock>, JsonDeserializer<ConfiguredBlock> {
 
     @Override
     public ConfiguredBlock deserialize(JsonElement json, Type type, JsonDeserializationContext context) throws JsonParseException {
@@ -36,16 +41,27 @@ public class BlockAdapter implements JsonSerializer<ConfiguredBlock>, JsonDeseri
         final JsonObject blockObject = json.getAsJsonObject();
         final Block block = Block.fromKey(blockObject.getAsJsonPrimitive("type").getAsString());
         final Map<String, String> properties = context.deserialize(json.getAsJsonObject().getAsJsonObject("properties"), Map.class);
-        return block.withProperties(properties);
+        return block.with(properties);
     }
 
     @Override
     public JsonElement serialize(ConfiguredBlock configuredBlock, Type typeOfSrc, JsonSerializationContext context) {
-        if (configuredBlock.blockState() == configuredBlock.block().defaultState()) {
+        if (configuredBlock.state() == configuredBlock.block().defaultState()) {
             return context.serialize(configuredBlock.key());
         }
         JsonObject blockObject = new JsonObject();
         blockObject.add("type", context.serialize(configuredBlock.key()));
+        JsonObject propertiesObject = new JsonObject();
+        for (Map.Entry<Property<?>, Comparable<?>> entry : configuredBlock.state().values().entrySet()) {
+            if(entry.getKey() instanceof BooleanProperty) {
+                propertiesObject.addProperty(entry.getKey().key(), (Boolean) entry.getValue());
+            } else if (entry.getKey() instanceof IntegerProperty) {
+                propertiesObject.addProperty(entry.getKey().key(), (Integer) entry.getValue());
+            } else if (entry.getKey() instanceof EnumProperty<?>) {
+                propertiesObject.addProperty(entry.getKey().key(), ((Nameable)entry.getValue()).serializedName());
+            }
+        }
+        blockObject.add("properties", propertiesObject);
         return blockObject;
     }
 }

@@ -23,7 +23,7 @@ import cloud.commandframework.annotations.CommandMethod;
 import cloud.commandframework.annotations.CommandPermission;
 import cloud.commandframework.annotations.processing.CommandContainer;
 import com.azortis.orbis.Orbis;
-import com.azortis.orbis.Player;
+import com.azortis.orbis.entity.Player;
 import com.azortis.orbis.pack.studio.ProjectManager;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.jetbrains.annotations.NotNull;
@@ -60,6 +60,20 @@ public class StudioCommands {
                 projectManager.getActiveProject().studioWorld().removeViewer(player);
             } else {
                 player.sendMessage(miniMessage.deserialize("<prefix> <red>You cannot exit the studio world, since you're not in it!"));
+            }
+        }
+    }
+
+    @CommandDescription("Forces the loaded chunks to regenerate")
+    @CommandMethod(value = "regen")
+    public void forceRegen(final @NotNull CommandSender sender){
+        if(projectCheck(sender)) {
+            assert projectManager.getActiveProject() != null;
+            if(projectManager.getActiveProject().studioWorld().shouldRender()) {
+                //projectManager.getActiveProject().studioWorld().hotReload();
+                // TODO schedule a hot reload.
+            } else {
+
             }
         }
     }

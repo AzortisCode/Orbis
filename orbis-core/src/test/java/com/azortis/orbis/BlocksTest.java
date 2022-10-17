@@ -28,7 +28,7 @@ public class BlocksTest {
         assertTrue(BlockRegistry.isLoaded());
         assertTrue(ItemRegistry.isLoaded());
         assertNotNull(Blocks.ACACIA_DOOR);
-        assertSame(Properties.NOTE_BLOCK_INSTRUMENT.getValueFor("HARP"), NoteBlockInstrument.HARP);
+        assertSame(Properties.NOTE_BLOCK_INSTRUMENT.getValue("HARP"), NoteBlockInstrument.HARP);
         assertSame(Blocks.GRASS_BLOCK.defaultState().setValue(Properties.SNOWY, true), BlockRegistry.fromStateId(8));
         assertSame(Blocks.STONE.item(), Items.STONE);*/
     }

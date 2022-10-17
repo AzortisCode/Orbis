@@ -27,7 +27,7 @@ import java.lang.annotation.Target;
  * Used to annotate classes that provide their own {@link ComponentAccess}.
  * If the injector comes across a component annotated with this, it will construct the
  * {@link ComponentAccess} instance and add it to the corresponding {@link DataAccess}.
- * Only works on classes that are implementations of specified types defined in {@link DataAccess#ROOT_TYPES}.
+ * Only works on classes that are implementations of specified types defined in {@link DataAccess#GENERATOR_TYPES}.
  * <p>
  * It will also be used when looking for types to create a json schema for.
  */

@@ -18,25 +18,20 @@
 
 package com.azortis.orbis.paper.item;
 
-import com.azortis.orbis.item.Enchantment;
 import com.azortis.orbis.item.ItemFlag;
+import com.azortis.orbis.item.LegacyEnchantment;
 import com.azortis.orbis.item.meta.ItemMeta;
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.serializer.gson.GsonComponentSerializer;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.meta.Damageable;
 import org.bukkit.inventory.meta.Repairable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.jglrxavpok.hephaistos.nbt.NBT;
-import org.jglrxavpok.hephaistos.nbt.NBTCompound;
-import org.jglrxavpok.hephaistos.nbt.NBTString;
-import org.jglrxavpok.hephaistos.nbt.NBTType;
-import org.jglrxavpok.hephaistos.nbt.mutable.MutableNBTCompound;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
+@Deprecated
 public class PaperItemMeta implements ItemMeta {
     protected final org.bukkit.inventory.meta.ItemMeta handle;
 
@@ -44,9 +39,9 @@ public class PaperItemMeta implements ItemMeta {
         this.handle = handle;
     }
 
-    private static @NotNull org.bukkit.enchantments.Enchantment toPaper(Enchantment enchantment) {
+    private static @NotNull org.bukkit.enchantments.Enchantment toPaper(LegacyEnchantment legacyEnchantment) {
         org.bukkit.enchantments.Enchantment paperEnchant = org.bukkit.enchantments.Enchantment
-                .getByKey(NamespacedKey.fromString(enchantment.key().asString()));
+                .getByKey(NamespacedKey.fromString(legacyEnchantment.key().asString()));
         assert paperEnchant != null;
         return paperEnchant;
     }
@@ -121,32 +116,32 @@ public class PaperItemMeta implements ItemMeta {
     }
 
     @Override
-    public boolean hasEnchant(@NotNull Enchantment enchantment) {
-        return handle.hasEnchant(toPaper(enchantment));
+    public boolean hasEnchant(@NotNull LegacyEnchantment legacyEnchantment) {
+        return handle.hasEnchant(toPaper(legacyEnchantment));
     }
 
     @Override
-    public int getEnchantLevel(@NotNull Enchantment enchantment) {
-        return handle.getEnchantLevel(toPaper(enchantment));
+    public int getEnchantLevel(@NotNull LegacyEnchantment legacyEnchantment) {
+        return handle.getEnchantLevel(toPaper(legacyEnchantment));
     }
 
     @Override
-    public @NotNull Map<Enchantment, Integer> getEnchants() {
-        Map<Enchantment, Integer> enchantMap = new HashMap<>();
+    public @NotNull Map<LegacyEnchantment, Integer> getEnchants() {
+        Map<LegacyEnchantment, Integer> enchantMap = new HashMap<>();
         for (Map.Entry<org.bukkit.enchantments.Enchantment, Integer> entry : handle.getEnchants().entrySet()) {
-            enchantMap.put(Enchantment.fromKey(entry.getKey().getKey()), entry.getValue());
+            enchantMap.put(LegacyEnchantment.fromKey(entry.getKey().getKey()), entry.getValue());
         }
         return enchantMap;
     }
 
     @Override
-    public boolean addEnchant(@NotNull Enchantment enchantment, int level, boolean ignoreLevelRestriction) {
-        return handle.addEnchant(toPaper(enchantment), level, ignoreLevelRestriction);
+    public boolean addEnchant(@NotNull LegacyEnchantment legacyEnchantment, int level, boolean ignoreLevelRestriction) {
+        return handle.addEnchant(toPaper(legacyEnchantment), level, ignoreLevelRestriction);
     }
 
     @Override
-    public boolean removeEnchant(@NotNull Enchantment enchantment) {
-        return handle.removeEnchant(toPaper(enchantment));
+    public boolean removeEnchant(@NotNull LegacyEnchantment legacyEnchantment) {
+        return handle.removeEnchant(toPaper(legacyEnchantment));
     }
 
     @Override
@@ -203,7 +198,7 @@ public class PaperItemMeta implements ItemMeta {
         handle.setUnbreakable(unbreakable);
     }
 
-    protected MutableNBTCompound serialize() {
+    /*protected MutableNBTCompound serialize() {
         MutableNBTCompound tag = new MutableNBTCompound();
         MutableNBTCompound displayTag = new MutableNBTCompound();
         if (hasDisplayName()) {
@@ -227,7 +222,7 @@ public class PaperItemMeta implements ItemMeta {
         }
         if (!getEnchants().isEmpty()) {
             List<NBTCompound> enchants = new ArrayList<>();
-            for (Map.Entry<Enchantment, Integer> entry : getEnchants().entrySet()) {
+            for (Map.Entry<LegacyEnchantment, Integer> entry : getEnchants().entrySet()) {
                 MutableNBTCompound enchant = new MutableNBTCompound();
                 enchant.set("id", NBT.String(entry.getKey().key().asString()));
                 enchant.set("lvl", NBT.Int(entry.getValue()));
@@ -246,6 +241,11 @@ public class PaperItemMeta implements ItemMeta {
             tag.set("CustomModelData", NBT.Int(getCustomModelData()));
         }
         return tag;
+    }*/
+
+    @Override
+    public boolean hasConflictingEnchant(@NotNull LegacyEnchantment legacyEnchantment) {
+        return ItemMeta.super.hasConflictingEnchant(legacyEnchantment);
     }
 
     private byte getBitModifier(ItemFlag itemFlag) {

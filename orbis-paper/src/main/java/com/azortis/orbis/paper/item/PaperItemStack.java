@@ -18,30 +18,29 @@
 
 package com.azortis.orbis.paper.item;
 
-import com.azortis.orbis.item.Item;
 import com.azortis.orbis.item.ItemStack;
+import com.azortis.orbis.item.LegacyItem;
 import com.azortis.orbis.item.meta.ItemMeta;
 import com.azortis.orbis.paper.item.meta.PaperCrossbowMeta;
-import com.azortis.orbis.paper.nms.ConversionUtils;
+import com.azortis.orbis.paper.util.ConversionUtils;
+import net.kyori.adventure.nbt.CompoundBinaryTag;
 import org.bukkit.inventory.meta.CrossbowMeta;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.jglrxavpok.hephaistos.nbt.NBT;
-import org.jglrxavpok.hephaistos.nbt.NBTCompound;
-import org.jglrxavpok.hephaistos.nbt.mutable.MutableNBTCompound;
 
+@Deprecated
 public class PaperItemStack implements ItemStack {
     private final org.bukkit.inventory.ItemStack handle;
-    private final Item item;
+    private final LegacyItem legacyItem;
 
     public PaperItemStack(@NotNull org.bukkit.inventory.ItemStack handle) {
         this.handle = handle;
-        this.item = ConversionUtils.getItem(handle.getType());
+        this.legacyItem = ConversionUtils.getItem(handle.getType());
     }
 
-    public PaperItemStack(@NotNull Item item) {
-        this.handle = new org.bukkit.inventory.ItemStack(ConversionUtils.getMaterial(item));
-        this.item = item;
+    public PaperItemStack(@NotNull LegacyItem legacyItem) {
+        this.handle = new org.bukkit.inventory.ItemStack(ConversionUtils.getMaterial(legacyItem));
+        this.legacyItem = legacyItem;
     }
 
     public static PaperItemStack fromPaper(org.bukkit.inventory.ItemStack itemStack) {
@@ -49,8 +48,8 @@ public class PaperItemStack implements ItemStack {
     }
 
     @Override
-    public Item item() {
-        return item;
+    public LegacyItem item() {
+        return legacyItem;
     }
 
     @Override
@@ -90,15 +89,20 @@ public class PaperItemStack implements ItemStack {
         return new PaperItemStack(handle.clone());
     }
 
-    @Override
-    public @NotNull NBTCompound serialize() {
+    /*@Override
+    public @NotNull NBTCompound toNBT() {
         MutableNBTCompound compound = new MutableNBTCompound();
-        compound.set("id", NBT.String(item.key().asString()));
+        compound.set("id", NBT.String(legacyItem.key().asString()));
         compound.set("Count", NBT.Int(getAmount()));
         if (hasItemMeta()) {
             compound.set("tag", ((PaperItemMeta) getItemMeta()).serialize().toCompound());
         }
         return compound.toCompound();
+    }*/
+
+    @Override
+    public @NotNull CompoundBinaryTag toNBT() {
+        return null;
     }
 
     public org.bukkit.inventory.ItemStack handle() {

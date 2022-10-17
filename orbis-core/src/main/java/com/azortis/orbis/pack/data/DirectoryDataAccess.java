@@ -19,6 +19,7 @@
 package com.azortis.orbis.pack.data;
 
 import org.apache.commons.io.FilenameUtils;
+import org.apiguardian.api.API;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
@@ -26,8 +27,15 @@ import java.io.FileNotFoundException;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public final class DirectoryDataAccess extends DataAccess {
-    private final File dataDirectory;
+/**
+ * A directory based {@link DataAccess}, which uses local directories and its data root.
+ *
+ * @since 0.3-Alpha
+ * @author Jake Nijssen
+ */
+@API(status = API.Status.INTERNAL, since = "0.3-Alpha", consumers = "com.azortis.orbis.pack")
+public class DirectoryDataAccess extends DataAccess {
+    protected final File dataDirectory;
 
     public DirectoryDataAccess(File dataDirectory) {
         this.dataDirectory = dataDirectory;

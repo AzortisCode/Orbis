@@ -23,6 +23,7 @@ import com.azortis.orbis.generator.terrain.Terrain;
 import com.azortis.orbis.util.Inject;
 import com.google.gson.annotations.SerializedName;
 import net.kyori.adventure.key.Key;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -34,7 +35,8 @@ public class ConfigTerrain extends Terrain {
     @Inject(fieldName = "noiseName")
     private transient NoiseGenerator noise;
 
-    private ConfigTerrain(String name, Key type, String noiseName, List<NoiseLayer> layers) {
+    private ConfigTerrain(@NotNull String name, @NotNull Key type,
+                          @NotNull String noiseName, @NotNull List<NoiseLayer> layers) {
         super(name, type);
         this.noiseName = noiseName;
         this.layers = layers;

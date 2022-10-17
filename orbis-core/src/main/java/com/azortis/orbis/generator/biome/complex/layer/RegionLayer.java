@@ -22,6 +22,7 @@ import com.azortis.orbis.generator.Dimension;
 import com.azortis.orbis.generator.biome.complex.Region;
 import com.azortis.orbis.generator.biome.complex.modifier.Modifier;
 import com.azortis.orbis.generator.biome.complex.requirement.Requirement;
+import com.azortis.orbis.pack.studio.annotations.Entries;
 import com.azortis.orbis.util.Inject;
 import com.azortis.orbis.util.Invoke;
 import com.google.gson.annotations.SerializedName;
@@ -31,8 +32,11 @@ import java.util.Set;
 @Inject
 public final class RegionLayer extends Layer<Region> {
 
+    @Entries(Region.class)
     @SerializedName("region")
     private final String regionName;
+
+    @Inject(fieldName = "regionName")
     private transient Region region;
 
     @Inject

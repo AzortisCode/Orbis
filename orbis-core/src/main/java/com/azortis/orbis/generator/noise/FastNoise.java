@@ -1,24 +1,41 @@
-/*
- * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
- *
- *     This program is free software: you can redistribute it and/or modify
- *     it under the terms of the GNU General Public License as published by
- *     the Free Software Foundation, either version 3 of the License, or
- *     (at your option) any later version.
- *
- *     This program is distributed in the hope that it will be useful,
- *     but WITHOUT ANY WARRANTY; without even the implied warranty of
- *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *     GNU General Public License for more details.
- *
- *     You should have received a copy of the GNU General Public License
- *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
+/**
+ * MIT License
+ * Copyright(c) 2020 Jordan Peck (jordan.me2@gmail.com)
+ * Copyright(c) 2020 Contributors
+ * <p>
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files(the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and / or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions :
+ * <p>
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ * <p>
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
  */
 
 package com.azortis.orbis.generator.noise;
 
+import org.apiguardian.api.API;
+
+/**
+ * An utilities class for generating noise for the generator to use.
+ *
+ * @since 0.3-Alpha
+ * @see <a href="https://github.com/Auburn/FastNoiseLite">FastNoise Github</a>
+ * @author Auburn
+ * @version 1.0.1
+ */
 @SuppressWarnings("all")
+@API(status = API.Status.INTERNAL, since = "0.3-Alpha", consumers = "com.azortis.orbis.generator.noise")
 public final class FastNoise {
     private static final double[] Gradients2D = {
             0.130526192220052f, 0.99144486137381f, 0.38268343236509f, 0.923879532511287f, 0.608761429008721f, 0.793353340291235f, 0.793353340291235f, 0.608761429008721f,

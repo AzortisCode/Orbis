@@ -18,12 +18,14 @@
 
 package com.azortis.orbis.generator.biome.complex.modifier;
 
-import com.azortis.orbis.pack.studio.annotations.UseRegistry;
+import com.azortis.orbis.pack.studio.annotations.GlobalDefinition;
+import com.azortis.orbis.pack.studio.annotations.Typed;
 import net.kyori.adventure.key.Key;
 
 import java.util.Map;
 
-@UseRegistry
+@Typed
+@GlobalDefinition("complex-distributor-modifier")
 public abstract class Modifier {
 
     protected final Key type;

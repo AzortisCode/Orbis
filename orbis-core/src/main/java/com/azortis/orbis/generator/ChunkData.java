@@ -22,6 +22,10 @@ import com.azortis.orbis.block.Block;
 import com.azortis.orbis.block.BlockState;
 import com.azortis.orbis.block.ConfiguredBlock;
 
+/**
+ * @deprecated Use {@link com.azortis.orbis.world.ChunkAccess}
+ */
+@Deprecated
 public abstract class ChunkData {
     protected final Dimension dimension;
 
@@ -38,7 +42,7 @@ public abstract class ChunkData {
     public abstract BlockState getBlock(final int x, final int y, final int z);
 
     public final void setBlock(final int x, final int y, final int z, final ConfiguredBlock configuredBlock) {
-        setBlock(x, y, z, configuredBlock.blockState());
+        setBlock(x, y, z, configuredBlock.state());
     }
 
     public final void setBlock(final int x, final int y, final int z, final Block block) {
@@ -46,12 +50,12 @@ public abstract class ChunkData {
     }
 
     /**
-     * Stores a block in the chunk. The specified coordinates are chunk positions.
+     * Stores a legacyBlock in the chunk. The specified coordinates are chunk positions.
      *
      * @param x          The x-coordinate in the chunk. Ranges from 0-15
      * @param y          The y-coordinate in the chunk Ranges from heightMin and heightMax
      * @param z          The z-coordinate in the chunk. Ranges from 0-15
-     * @param blockState The block to put at the specified position.
+     * @param blockState The legacyBlock to put at the specified position.
      */
     public final void setBlock(final int x, final int y, final int z, final BlockState blockState) {
         setBlock(x, y, z, blockState.stateId());

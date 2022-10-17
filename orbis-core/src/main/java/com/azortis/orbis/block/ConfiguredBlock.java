@@ -19,15 +19,57 @@
 package com.azortis.orbis.block;
 
 import net.kyori.adventure.key.Keyed;
+import org.apiguardian.api.API;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 
-public interface ConfiguredBlock extends Keyed {
+/**
+ * Represents a captured block(state) configured in a dimension object json datafile.
+ * This is (de)serialized by {@link com.azortis.orbis.pack.adapter.BlockAdapter}
+ *
+ * @since 0.3-Alpha
+ * @author Jake Nijssen
+ */
+@API(status = API.Status.STABLE, since = "0.3-Alpha")
+public sealed interface ConfiguredBlock extends Keyed permits Block, BlockState {
 
+    /**
+     * <p>Gets the internal id of the platform for the block.</p>
+     * <p><b>NOTE</b> this id should never be used for persistence purposes, use {@link ConfiguredBlock#key()} instead!</p>
+     *
+     * @return The platform internal blockId for this block.
+     * @since 0.3-Alpha
+     */
+    @Contract(pure = true)
     int id();
 
+    /**
+     * Get the captured {@link Block} for this configured block.
+     *
+     * @return The captured block.
+     * @since 0.3-Alpha
+     */
+    @Contract(pure = true)
+    @NotNull Block block();
+
+    /**
+     * <p>Gets the internal stateId of the platform for the blockState.</p>
+     * <p><b>NOTE</b> this id should never be used for persistence purposes, use {@link BlockState#values()} instead!</p>
+     *
+     * @return The platform internal blockId for this blockState.
+     * @since 0.3-Alpha
+     */
+    @Contract(pure = true)
     int stateId();
 
-    Block block();
-
-    BlockState blockState();
+    /**
+     * Gets the captured {@link BlockState} for this configured block.
+     * This will be {@link Block#defaultState()} when the instance backing this interface is a {@link Block}.
+     *
+     * @return The captured blockState.
+     * @since 0.3-Alpha
+     */
+    @Contract(pure = true)
+    @NotNull BlockState state();
 
 }

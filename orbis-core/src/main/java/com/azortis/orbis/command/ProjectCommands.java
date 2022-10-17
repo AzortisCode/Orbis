@@ -26,7 +26,7 @@ import cloud.commandframework.annotations.processing.CommandContainer;
 import cloud.commandframework.annotations.suggestions.Suggestions;
 import cloud.commandframework.context.CommandContext;
 import com.azortis.orbis.Orbis;
-import com.azortis.orbis.Player;
+import com.azortis.orbis.entity.Player;
 import com.azortis.orbis.pack.studio.ProjectManager;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;

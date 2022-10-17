@@ -19,13 +19,13 @@
 package com.azortis.orbis.pack;
 
 import com.azortis.orbis.Orbis;
-import com.azortis.orbis.World;
-import com.azortis.orbis.WorldInfo;
 import com.azortis.orbis.generator.Dimension;
 import com.azortis.orbis.pack.data.Component;
 import com.azortis.orbis.pack.data.DataAccess;
 import com.azortis.orbis.util.Inject;
 import com.azortis.orbis.util.Invoke;
+import com.azortis.orbis.world.World;
+import com.azortis.orbis.world.WorldInfo;
 import org.apache.commons.io.FilenameUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -60,6 +60,9 @@ public final class PackLoader {
         File dimensionFile = new File(packFolder, worldInfo.dimensionFile() + ".json");
         Dimension dimension = Orbis.getGson().fromJson(new FileReader(dimensionFile), Dimension.class);
 
+        // Reset the data access.
+        world.data().reset();
+
         // Loop through all fields of the Dimension class, and build out the object tree.
         for (Field field : dimension.getClass().getDeclaredFields()) {
             if (field.isAnnotationPresent(Inject.class)) {
@@ -83,7 +86,7 @@ public final class PackLoader {
                                 Object collectionObject = Orbis.getGson().fromJson(new FileReader(dataFile), inject.parameterizedType());
                                 fieldObject.add(collectionObject);
                                 if (collectionObject.getClass().isAnnotationPresent(Component.class)
-                                        && DataAccess.ROOT_TYPES.contains(inject.parameterizedType())) {
+                                        && DataAccess.GENERATOR_TYPES.containsKey(inject.parameterizedType())) {
                                     componentNames.put(collectionObject, FilenameUtils.removeExtension(dataFile.getName()));
                                     checkComponents = true;
                                 }
@@ -116,7 +119,7 @@ public final class PackLoader {
 
                             if (shouldInject(fieldObject.getClass())) {
                                 if (fieldObject.getClass().isAnnotationPresent(Component.class)
-                                        && DataAccess.ROOT_TYPES.contains(field.getType())) {
+                                        && DataAccess.GENERATOR_TYPES.containsKey(field.getType())) {
                                     String componentName = FilenameUtils.removeExtension(dataFile.getName());
                                     world.data().registerComponent(fieldObject.getClass()
                                             .getAnnotation(Component.class).value(), componentName);
@@ -259,7 +262,7 @@ public final class PackLoader {
                     fieldObject.add(collectionObject);
 
                     if (collectionObject.getClass().isAnnotationPresent(Component.class)
-                            && DataAccess.ROOT_TYPES.contains(inject.parameterizedType())) {
+                            && DataAccess.GENERATOR_TYPES.containsKey(inject.parameterizedType())) {
                         String collectionComponentName = FilenameUtils.removeExtension(dataFile.getName());
                         componentNames.put(collectionObject, collectionComponentName);
                     }
@@ -283,7 +286,7 @@ public final class PackLoader {
                 setField(rootObject, field, fieldObject);
 
                 if (fieldObject.getClass().isAnnotationPresent(Component.class)
-                        && DataAccess.ROOT_TYPES.contains(field.getType())) {
+                        && DataAccess.GENERATOR_TYPES.containsKey(field.getType())) {
                     String fieldComponentName = FilenameUtils.removeExtension(dataFile.getName());
                     componentNames.put(fieldObject, fieldComponentName);
                 }

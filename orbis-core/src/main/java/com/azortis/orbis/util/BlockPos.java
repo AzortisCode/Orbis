@@ -18,16 +18,35 @@
 
 package com.azortis.orbis.util;
 
+import org.apiguardian.api.API;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+
+/**
+ * A 3 dimensional integer Vector that resembles the position of a legacyBlock.
+ *
+ * @since 0.3-Alpha
+ * @author Jake Nijssen
+ * @param x The x-coordinate of the position.
+ * @param y The y-coordinate of the position.
+ * @param z The z-coordinate of the position.
+ */
+@API(status = API.Status.STABLE, since = "0.3-Alpha")
 public record BlockPos(int x, int y, int z) {
-    public int getX() {
-        return x;
+
+    @Contract("_ -> new")
+    public @NotNull BlockPos setX(final int x) {
+        return new BlockPos(x, y, z);
     }
 
-    public int getY() {
-        return y;
+    @Contract("_ -> new")
+    public @NotNull BlockPos setY(final int y) {
+        return new BlockPos(x, y, z);
     }
 
-    public int getZ() {
-        return z;
+    @Contract("_ -> new")
+    public @NotNull BlockPos setZ(final int z) {
+        return new BlockPos(x, y, z);
     }
+
 }

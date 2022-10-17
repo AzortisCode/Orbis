@@ -18,9 +18,9 @@
 
 package com.azortis.orbis.generator;
 
-import com.azortis.orbis.World;
 import com.azortis.orbis.generator.biome.Distributor;
 import com.azortis.orbis.util.Inject;
+import com.azortis.orbis.world.World;
 import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
 import lombok.experimental.Accessors;

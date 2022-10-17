@@ -20,6 +20,7 @@ package com.azortis.orbis.pack.studio.schema;
 
 import com.azortis.orbis.pack.data.DataAccess;
 import com.azortis.orbis.pack.studio.Project;
+import com.azortis.orbis.pack.studio.annotations.Typed;
 import com.google.gson.JsonObject;
 import org.jetbrains.annotations.NotNull;
 
@@ -28,20 +29,17 @@ import java.io.File;
 public final class ClassBuilder extends SchemaBuilder {
 
     private final Class<?> type;
+    private final boolean typed;
 
-    public ClassBuilder(@NotNull Project project, @NotNull DataAccess data,
+    ClassBuilder(@NotNull Project project, @NotNull DataAccess data,
                         @NotNull File schemaFile, @NotNull Class<?> type) {
         super(project, data, schemaFile);
         this.type = type;
+        this.typed = type.isAnnotationPresent(Typed.class);
     }
 
     @Override
     protected @NotNull JsonObject generateSchema() {
         return null;
-    }
-
-    @Override
-    protected boolean shouldRegenerate() {
-        return false;
     }
 }

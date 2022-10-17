@@ -18,40 +18,76 @@
 
 package com.azortis.orbis.block.property;
 
+import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableMap;
+import org.apiguardian.api.API;
+import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.Field;
-import java.util.HashMap;
-import java.util.Map;
 
+/**
+ * A registry that keeps track of all {@link Property} in {@link Properties} and
+ * the original Mojang name associated with it, if changed.
+ *
+ * @since 0.3-Alpha
+ * @author Jake Nijssen
+ */
+@API(status = API.Status.STABLE, since = "0.3-Alpha")
 public final class PropertyRegistry {
 
+    /**
+     * A collection mapping each Mojang property name to ours if we'd like the name
+     * to be written to something else.
+     */
     public static final ImmutableMap<String, String> NAME_REWRITES = ImmutableMap.of(
             "ROTATION_16", "ROTATION",
             "MODE_COMPARATOR", "COMPARATOR_MODE",
             "STRUCTUREBLOCK_MODE", "STRUCTURE_BLOCK_MODE",
             "NOTEBLOCK_INSTRUMENT", "NOTE_BLOCK_INSTRUMENT");
-    private static final Map<String, Property<?>> PROPERTIES = new HashMap<>();
-    private static volatile boolean loaded = false;
 
-    public static void init() {
-        if (!loaded) {
-            for (final Field field : Properties.class.getDeclaredFields()) {
-                try {
-                    PROPERTIES.put(field.getName(), (Property<?>) field.get(Property.class));
-                } catch (final IllegalAccessException exception) {
-                    exception.printStackTrace();
-                }
+    /**
+     * A collection mapping each {@link Property} its field name in {@link Properties}
+     * to its instance.
+     */
+    public static final ImmutableMap<String, Property<?>> PROPERTIES;
+
+    static {
+        // Lazily map all the property names from Properties when this class is called.
+        ImmutableMap.Builder<String, Property<?>> builder = ImmutableMap.builder();
+        for (final Field field : Properties.class.getDeclaredFields()) {
+            try {
+                builder.put(field.getName(), (Property<?>) field.get(Property.class));
+            } catch (final IllegalAccessException exception) {
+                exception.printStackTrace();
             }
-            loaded = true;
         }
+        PROPERTIES = builder.build();
     }
 
-    public static Property<?> getByName(String name) {
+    /**
+     * Gets a {@link Property} by its name defined in {@link Properties}.
+     *
+     * @param name The name of the property.
+     * @return The corresponding property.
+     * @since 0.3-Alpha
+     */
+    @API(status = API.Status.STABLE, since = "0.3-Alpha")
+    public static @NotNull Property<?> getByName(@NotNull String name) {
+        Preconditions.checkArgument(PROPERTIES.containsKey(name), "Invalid property name!");
         return PROPERTIES.get(name);
     }
 
-    public static Property<?> getByMojangName(String mojangName) {
+    /**
+     * Gets a {@link Property} by its Mojang name.
+     *
+     * @param mojangName The mojang name of the property.
+     * @return The corresponding property.
+     * @since 0.3-Alpha
+     */
+    @API(status = API.Status.STABLE, since = "0.3-Alpha")
+    public static @NotNull Property<?> getByMojangName(@NotNull String mojangName) {
+        Preconditions.checkArgument(PROPERTIES.containsKey(NAME_REWRITES.getOrDefault(mojangName, mojangName)),
+                "Invalid mojang property name!");
         return PROPERTIES.get(NAME_REWRITES.getOrDefault(mojangName, mojangName));
     }
 

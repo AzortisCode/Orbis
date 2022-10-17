@@ -18,9 +18,9 @@
 
 package com.azortis.orbis.generator;
 
-import com.azortis.orbis.World;
 import com.azortis.orbis.block.Blocks;
 import com.azortis.orbis.generator.biome.Biome;
+import com.azortis.orbis.world.World;
 import org.jetbrains.annotations.NotNull;
 
 public final class SimpleEngine extends Engine {
@@ -36,11 +36,11 @@ public final class SimpleEngine extends Engine {
                 final int x = cx + (chunkX << 4);
                 final int z = cz + (chunkZ << 4);
 
-                Biome biome = getDimension().distributor().getBiome(x, 0, z);
+                Biome biome = dimension().distributor().getBiome(x, 0, z);
                 int height = (int) Math.round(biome.terrain().getTerrainHeight(x, z, 1.0d));
 
-                for (int y = getDimension().minHeight(); y < getDimension().maxHeight(); y++) {
-                    if (y == getDimension().minHeight()) {
+                for (int y = dimension().minHeight(); y < dimension().maxHeight(); y++) {
+                    if (y == dimension().minHeight()) {
                         chunkData.setBlock(cx, y, cz, Blocks.BEDROCK);
                     } else {
                         if (y < height) {

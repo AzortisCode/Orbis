@@ -18,12 +18,17 @@
 
 package com.azortis.orbis.generator.noise;
 
-import com.azortis.orbis.World;
+import com.azortis.orbis.pack.studio.annotations.SupportAnonymous;
+import com.azortis.orbis.pack.studio.annotations.Typed;
 import com.azortis.orbis.util.Inject;
+import com.azortis.orbis.world.World;
 import net.kyori.adventure.key.Key;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 @Inject
+@Typed
+@SupportAnonymous
 public abstract class NoiseGenerator {
 
     protected final String name;
@@ -34,7 +39,7 @@ public abstract class NoiseGenerator {
     @Inject
     private transient World world;
 
-    protected NoiseGenerator(@Nullable String name, Key type, long seed, double frequency) {
+    protected NoiseGenerator(@Nullable String name, @NotNull Key type, long seed, double frequency) {
         this.name = name;
         this.type = type;
         this.seed = seed;

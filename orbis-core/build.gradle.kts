@@ -22,7 +22,7 @@ plugins {
 }
 
 group = "com.azortis"
-version = "1.0-SNAPSHOT"
+version = "0.3-ALPHA"
 
 sourceSets.main {
     java.setSrcDirs(listOf("src/main/java", "src/generated/java"))
@@ -60,9 +60,9 @@ dependencies {
     annotationProcessor("cloud.commandframework:cloud-annotations:1.7.1")
 
     // Adapters should determine if libraries should be downloaded, or if the platform already has them provided
-    compileOnly("net.kyori:adventure-api:4.9.3")
+    compileOnly("net.kyori:adventure-api:4.11.0")
+    compileOnly("net.kyori:adventure-nbt:4.11.0")
     compileOnly("net.kyori:adventure-text-minimessage:4.11.0")
-    compileOnly("io.github.jglrxavpok.hephaistos:common:2.2.0")
     compileOnly("it.unimi.dsi:fastutil:8.5.6")
     compileOnly("com.google.code.gson:gson:2.8.9")
     compileOnly("org.slf4j:slf4j-api:1.7.31")
@@ -105,6 +105,13 @@ publishing {
 }
 
 tasks {
+    compileJava {
+        options.encoding = Charsets.UTF_8.name()
+        options.release.set(17)
+    }
+    javadoc {
+        options.encoding = Charsets.UTF_8.name()
+    }
     test {
         useJUnitPlatform()
     }

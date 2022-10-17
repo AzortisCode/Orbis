@@ -19,8 +19,8 @@
 package com.azortis.orbis.codegen.item;
 
 import com.azortis.orbis.codegen.OrbisCodeGenerator;
-import com.azortis.orbis.item.Enchantment;
-import com.azortis.orbis.item.ItemRegistry;
+import com.azortis.orbis.item.LegacyEnchantment;
+import com.azortis.orbis.item.LegacyItemRegistry;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.squareup.javapoet.*;
@@ -55,8 +55,8 @@ public class EnchantmentsGenerator extends OrbisCodeGenerator {
 
         JsonObject enchantments = GSON.fromJson(new InputStreamReader(inputStream), JsonObject.class);
 
-        ClassName enchantment = ClassName.get(Enchantment.class);
-        ClassName itemRegistry = ClassName.get(ItemRegistry.class);
+        ClassName enchantment = ClassName.get(LegacyEnchantment.class);
+        ClassName itemRegistry = ClassName.get(LegacyItemRegistry.class);
 
         ClassName enchantmentsClassName = ClassName.get("com.azortis.orbis.item", "Enchantments");
         AnnotationSpec suppressAll =

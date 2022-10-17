@@ -20,8 +20,8 @@ package com.azortis.orbis.block.entity;
 
 import com.azortis.orbis.util.BlockPos;
 import net.kyori.adventure.key.Keyed;
+import net.kyori.adventure.nbt.CompoundBinaryTag;
 import org.jetbrains.annotations.NotNull;
-import org.jglrxavpok.hephaistos.nbt.NBTCompound;
 
 public interface BlockEntity extends Keyed {
 
@@ -33,6 +33,6 @@ public interface BlockEntity extends Keyed {
 
     @NotNull BlockPos blockPos();
 
-    @NotNull NBTCompound save(boolean includeMeta);
+    @NotNull CompoundBinaryTag toNBT();
 
 }

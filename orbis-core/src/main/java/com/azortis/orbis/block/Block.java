@@ -19,120 +19,114 @@
 package com.azortis.orbis.block;
 
 import com.azortis.orbis.block.property.Property;
-import com.azortis.orbis.item.Item;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import net.kyori.adventure.key.Key;
+import org.apiguardian.api.API;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.Map;
 
-public final class Block implements ConfiguredBlock {
+/**
+ * A representation of a Block that contains a {@link BlockState} for each property/value combination.
+ * In order to get an instance of a block refer to {@link Blocks} or {@link BlockRegistry}
+ *
+ * @since 0.3-Alpha
+ * @author Jake Nijssen
+ */
+@API(status = API.Status.STABLE, since = "0.3-Alpha")
+public non-sealed interface Block extends ConfiguredBlock {
 
-    private final Key key;
-    private final int id;
-    private final ImmutableSet<Property<?>> properties;
-    private final ImmutableMap<String, Property<?>> propertyMap;
-    private final Key itemKey;
+    /**
+     * Get the properties this legacyBlock has.
+     *
+     * @return Immutable set view of the block properties.
+     * @since 0.3-Alpha
+     */
+    @Contract(pure = true)
+    @NotNull ImmutableSet<Property<?>> properties();
 
-    // Populated in BlockRegistry
-    private BlockState defaultState;
-    private ImmutableSet<BlockState> states;
+    /**
+     * Checks if the {@link Block} has said property that can be modified.
+     *
+     * @param property The {@link Property} to check.
+     * @return If the block contains this property.
+     * @since 0.3-Alpha
+     */
+    @Contract(pure = true)
+    boolean hasProperty(@NotNull Property<?> property);
 
-    Block(@NotNull Key key, int id, @NotNull ImmutableSet<Property<?>> properties, @Nullable Key itemKey) {
-        this.key = key;
-        this.id = id;
-        this.properties = properties;
+    /**
+     * Get an immutable view of property names and their {@link Property}.
+     *
+     * @return An immutable propertyName/Property view.
+     * @since 0.3-Alpha
+     */
+    @Contract(pure = true)
+    @NotNull ImmutableMap<String, Property<?>> propertyMap();
 
-        // Build the property map
-        ImmutableMap.Builder<String, Property<?>> builder = ImmutableMap.builder();
-        for (Property<?> property : properties) {
-            builder.put(property.key(), property);
-        }
-        this.propertyMap = builder.build();
-        this.itemKey = itemKey;
-    }
+    /**
+     * Get the default {@link BlockState} of this block.
+     *
+     * @return The default state of this block.
+     * @since 0.3-Alpha
+     */
+    @Contract(pure = true)
+    @NotNull BlockState defaultState();
 
-    public static Block fromKey(@NotNull String key) {
+    /**
+     * Get an immutable view of the possible {@link BlockState}'s.
+     * This set always contains at least one state.
+     *
+     * @return Immutable view of the possible states.
+     * @since 0.3-Alpha
+     */
+    @Contract(pure = true)
+    @NotNull ImmutableSet<BlockState> states();
+
+    /**
+     * Get the {@link BlockState} of this block for the specified properties.
+     *
+     * @param properties The properties of the state.
+     * @return The BlockState of given properties.
+     * @since 0.3-Alpha
+     */
+    @Contract(pure = true)
+    @NotNull BlockState with(@NotNull Map<String, String> properties);
+
+    /**
+     * Check if this block also contains a {@link com.azortis.orbis.block.entity.BlockEntity}
+     *
+     * @return If the block has an entity.
+     * @since 0.3-Alpha
+     */
+    @API(status = API.Status.EXPERIMENTAL, since = "0.3-Alpha")
+    @Contract(pure = true)
+    boolean hasEntity();
+
+    /**
+     * Gets a block from specified {@link Key}.
+     *
+     * @param key The block resource key.
+     * @return The corresponding Block.
+     * @since 0.3-Alpha
+     */
+    @Contract(pure = true)
+    static @NotNull Block fromKey(@NotNull Key key) {
         return BlockRegistry.fromKey(key);
     }
 
-    public static Block fromKey(@NotNull Key key) {
+    /**
+     * Gets a block from specified key string.
+     *
+     * @param key The block resource key string.
+     * @return The corresponding Block.
+     * @since 0.3-Alpha
+     */
+    @Contract(pure = true)
+    static @NotNull Block fromKey(@NotNull String key) {
         return BlockRegistry.fromKey(key);
-    }
-
-    @Override
-    public @NotNull Key key() {
-        return key;
-    }
-
-    @Override
-    public int id() {
-        return id;
-    }
-
-    public @NotNull ImmutableSet<Property<?>> properties() {
-        return properties;
-    }
-
-    public @NotNull ImmutableMap<String, Property<?>> propertyMap() {
-        return propertyMap;
-    }
-
-    public boolean hasProperty(Property<?> property) {
-        return properties.contains(property);
-    }
-
-    void setDefaultState(BlockState state) {
-        if (defaultState == null) defaultState = state;
-    }
-
-    public @NotNull BlockState defaultState() {
-        return defaultState;
-    }
-
-    void setStates(ImmutableSet<BlockState> states) {
-        if (this.states == null) this.states = states;
-    }
-
-    public ImmutableSet<BlockState> states() {
-        return states;
-    }
-
-    public @NotNull BlockState withProperties(@NotNull Map<String, String> properties) {
-        BlockState state = this.defaultState;
-        for (Map.Entry<String, String> entry : properties.entrySet()) {
-            state = state.setValue(propertyMap.get(entry.getKey()), entry.getValue());
-        }
-        return state;
-    }
-
-    @Override
-    public int stateId() {
-        return defaultState.stateId();
-    }
-
-    @Override
-    public Block block() {
-        return this;
-    }
-
-    @Override
-    public BlockState blockState() {
-        return defaultState;
-    }
-
-    public boolean hasItem() {
-        return itemKey != null;
-    }
-
-    public @Nullable Key itemKey() {
-        return itemKey;
-    }
-
-    public @Nullable Item item() {
-        return itemKey == null ? null : Item.fromKey(itemKey);
     }
 
 }

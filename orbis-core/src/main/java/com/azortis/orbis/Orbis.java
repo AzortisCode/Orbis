@@ -21,15 +21,11 @@ package com.azortis.orbis;
 import cloud.commandframework.CommandManager;
 import cloud.commandframework.annotations.AnnotationParser;
 import cloud.commandframework.meta.SimpleCommandMeta;
-import com.azortis.orbis.block.BlockRegistry;
 import com.azortis.orbis.block.ConfiguredBlock;
-import com.azortis.orbis.block.property.PropertyRegistry;
 import com.azortis.orbis.command.CommandSender;
 import com.azortis.orbis.generator.biome.Distributor;
 import com.azortis.orbis.generator.noise.NoiseGenerator;
 import com.azortis.orbis.generator.terrain.Terrain;
-import com.azortis.orbis.item.ItemFactory;
-import com.azortis.orbis.item.ItemRegistry;
 import com.azortis.orbis.pack.PackManager;
 import com.azortis.orbis.pack.adapter.BlockAdapter;
 import com.azortis.orbis.pack.adapter.KeyAdapter;
@@ -50,6 +46,7 @@ import net.kyori.adventure.text.minimessage.tag.Tag;
 import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import net.kyori.adventure.text.minimessage.tag.standard.StandardTags;
 import org.apache.commons.io.FileUtils;
+import org.apiguardian.api.API;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 
@@ -66,6 +63,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * The main entry point for the Orbis dimension "library".
+ *
+ * @since 0.3-Alpha
+ * @author Jake Nijssen
+ */
 @Dependency(group = "com.google.guava", artifact = "guava", version = "31.0.1-jre")
 @Dependency(group = "net.lingala.zip4j", artifact = "zip4j", version = "2.10.0")
 @Dependency(group = "org.projectlombok", artifact = "lombok", version = "1.18.24")
@@ -74,9 +77,10 @@ import java.util.Map;
 @Dependency(group = "cloud.commandframework", artifact = "cloud-services", version = "1.7.1")
 @Dependency(group = "io.leangen.geantyref", artifact = "geantyref", version = "1.3.13")
 @Dependency(group = "org.apache.commons", artifact = "commons-lang3", version = "3.12.0")
+@API(status = API.Status.MAINTAINED, since = "0.3-Alpha")
 public final class Orbis {
 
-    public static final String VERSION = "0.2-ALPHA";
+    public static final String VERSION = "0.3-Alpha";
     public static final String SETTINGS_VERSION = "1";
     public static final String MC_VERSION = "1_19_2";
     private static final String DOWNLOAD_URL = "https://raw.githubusercontent.com/Articdive/ArticData/" +
@@ -99,10 +103,12 @@ public final class Orbis {
     }
 
     /**
-     * Initialize Orbis, internal use only!
+     * Initialize Orbis with the specified {@link Platform} implementation.
      *
      * @param platform The platform instance.
+     * @since 0.3-Alpha
      */
+    @API(status = API.Status.INTERNAL, since = "0.3-Alpha", consumers = {"com.azortis.orbis.paper"})
     public static void initialize(Platform platform) {
         // Only initialize once.
         if (!initialized) {
@@ -134,11 +140,6 @@ public final class Orbis {
                 reloadSettings();
             }
 
-            // Load minecraft data into memory
-            PropertyRegistry.init();
-            BlockRegistry.init();
-            ItemRegistry.init();
-
             // Init message deserializer
             miniMessage = MiniMessage.builder()
                     .tags(TagResolver.builder()
@@ -148,69 +149,85 @@ public final class Orbis {
 
             // Load managers
             packManager = new PackManager(platform.directory());
-            projectManager = new ProjectManager(new File(platform.directory() + "/projects/"));
+            projectManager = new ProjectManager(platform.directory());
         }
     }
 
     /**
-     * Shutdown Orbis, Internal use only!
+     * Shutdowns Orbis.
+     *
+     * @since 0.3-Alpha
      */
+    @API(status = API.Status.INTERNAL, since = "0.3-Alpha", consumers = {"com.azortis.orbis.paper"})
     public static void shutdown() {
         if (initialized) {
             projectManager.closeProject();
         }
     }
 
+    /**
+     * Registers all the {@link JsonDeserializer} of each {@link DataAccess#GENERATOR_TYPES} its implementation
+     * {@link ComponentAccess} with the global {@link Gson} instance.
+     *
+     * @return A collection containing each class type and associated JsonDeserializer.
+     * @since 0.3-Alpha
+     */
+    @API(status = API.Status.INTERNAL, since = "0.3-Alpha", consumers = {"com.azortis.orbis"})
     private static List<Map.Entry<Class<?>, JsonDeserializer<?>>> getRegistryAdapters() {
         List<Map.Entry<Class<?>, JsonDeserializer<?>>> entryList = new ArrayList<>();
         // Search and add type adapters for usage in serialization/deserialization of values to the gson
-        Registry.getImmutableRegistry().forEach((access, registry) -> {
-            // skip anything that is not a component
-            if (access.isAssignableFrom(ComponentAccess.class)) {
-                try {
-                    // Suppress the warning for unchecked cast of constructor, we checked it in the if statement.
-                    @SuppressWarnings("unchecked")
-                    // Get the constructor with parameters (String, DataAccess)
-                    Constructor<? extends ComponentAccess> constructor = (Constructor<? extends ComponentAccess>) access.getConstructor(String.class, DataAccess.class);
+        Registry.getRegistries().forEach((type, registry) -> {
+            // skip anything that does not support components
+            if (DataAccess.GENERATOR_TYPES.containsKey(type)) {
+                for (Class<?> implementationType : registry.getTypes()) {
+                    if (implementationType.isAnnotationPresent(com.azortis.orbis.pack.data.Component.class)) {
+                        Class<?> accessClass = implementationType.getAnnotation(com.azortis.orbis.pack.data.Component.class).value();
+                        try {
+                            // Suppress the warning for unchecked cast of constructor, we checked it in the if statement.
+                            @SuppressWarnings("unchecked")
+                            // Get the constructor with parameters (String, DataAccess)
+                            Constructor<? extends ComponentAccess> constructor = (Constructor<? extends ComponentAccess>) accessClass.getConstructor(String.class, DataAccess.class);
 
-                    // Get the component access class, but due to generics we must cast the access type to the instance to get the correct class
-                    // and then upcast it to component access object.
-                    ComponentAccess componentAccess = (ComponentAccess) (access.cast(constructor.newInstance(null, null)));
+                            // Get the component access class, but due to generics we must cast the access type to the instance to get the correct class
+                            // and then upcast it to component access object.
+                            ComponentAccess componentAccess = (ComponentAccess) (accessClass.cast(constructor.newInstance(null, null)));
 
-                    // Add all adapters to the list
-                    entryList.addAll(componentAccess.adapters().entrySet());
-                } catch (NoSuchMethodException e) {
-                    logger.error("Class " + access.getTypeName() + " does not implement the public constructor (String.class, DataAccess.class) and its adapters cannot be retrieved");
-                    e.printStackTrace();
-                } catch (SecurityException e) {
-                    logger.error("Unable to access class " + access.getTypeName() + " for adapter retrieval");
-                    e.printStackTrace();
-                } catch (InvocationTargetException e) {
-                    logger.error("Class " + access.getTypeName() + " threw an error during initialization for adapter retrieval");
-                    e.printStackTrace();
-                } catch (InstantiationException e) {
-                    logger.error("Class " + access.getTypeName() + " is abstract and adapters cannot be retrieved.");
-                    e.printStackTrace();
-                } catch (IllegalAccessException e) {
-                    logger.error("Class " + access.getTypeName() + " could not be accessed during adapter retrieval.");
-                    e.printStackTrace();
+                            // Add all adapters to the list
+                            entryList.addAll(componentAccess.adapters().entrySet());
+                        } catch (NoSuchMethodException e) {
+                            logger.error("Class " + accessClass.getTypeName() + " does not implement the public constructor (String.class, DataAccess.class) and its adapters cannot be retrieved");
+                            e.printStackTrace();
+                        } catch (SecurityException e) {
+                            logger.error("Unable to access class " + accessClass.getTypeName() + " for adapter retrieval");
+                            e.printStackTrace();
+                        } catch (InvocationTargetException e) {
+                            logger.error("Class " + accessClass.getTypeName() + " threw an error during initialization for adapter retrieval");
+                            e.printStackTrace();
+                        } catch (InstantiationException e) {
+                            logger.error("Class " + accessClass.getTypeName() + " is abstract and adapters cannot be retrieved.");
+                            e.printStackTrace();
+                        } catch (IllegalAccessException e) {
+                            logger.error("Class " + accessClass.getTypeName() + " could not be accessed during adapter retrieval.");
+                            e.printStackTrace();
+                        }
+
+                    }
                 }
-
             }
         });
         return entryList;
     }
 
     public static @NotNull Component getPrefixComponent() {
-        String text = "<dark_gray>[<green>Orbis<dark_gray>]";
-        return MiniMessage.miniMessage().deserialize(text);
+        return MiniMessage.miniMessage().deserialize("<dark_gray>[<green>Orbis<dark_gray>]");
     }
 
     /**
-     * Initialize the Orbis command, internal use only!
+     * Initialize the Orbis commands.
      *
      * @param platformCommandManager The delegating platform command manager.
      */
+    @API(status = API.Status.INTERNAL, since = "0.3-Alpha", consumers = {"com.azortis.orbis.paper"})
     public static void loadCommands(CommandManager<CommandSender> platformCommandManager) {
         if (initialized && commandManager == null) {
             commandManager = platformCommandManager;
@@ -226,6 +243,7 @@ public final class Orbis {
         }
     }
 
+    @Deprecated
     public static File getDataFile(String dateFileName) {
         if (initialized) {
             try {
@@ -250,19 +268,17 @@ public final class Orbis {
         return null;
     }
 
-    @NotNull
-    public static ItemFactory getItemFactory() {
-        return platform.itemFactory();
-    }
-
+    @API(status = API.Status.STABLE, since = "0.3-Alpha")
     public static Platform getPlatform() {
         return platform;
     }
 
+    @API(status = API.Status.EXPERIMENTAL, since = "0.3-Alpha")
     public static Settings getSettings() {
         return settings;
     }
 
+    @API(status = API.Status.EXPERIMENTAL, since = "0.3-Alpha")
     public static void reloadSettings() {
         try {
             settings = gson.fromJson(new FileReader(settingsFile), platform.settingsClass());
@@ -273,14 +289,15 @@ public final class Orbis {
         }
     }
 
+    @API(status = API.Status.EXPERIMENTAL, since = "0.3-Alpha")
     public static void saveSettings() {
         try {
             if (!settingsFile.exists() && !settingsFile.createNewFile()) {
                 Orbis.getLogger().error("Failed to create settings file!");
-            } else {
-                final String json = gson.toJson(settings);
-                Files.writeString(settingsFile.toPath(), json, StandardOpenOption.WRITE, StandardOpenOption.TRUNCATE_EXISTING);
+                return;
             }
+            final String json = gson.toJson(settings);
+            Files.writeString(settingsFile.toPath(), json, StandardOpenOption.WRITE, StandardOpenOption.TRUNCATE_EXISTING);
         } catch (IOException e) {
             Orbis.getLogger().error("Failed to save settings file!");
         }
@@ -290,18 +307,22 @@ public final class Orbis {
         return logger;
     }
 
+    @API(status = API.Status.EXPERIMENTAL, since = "0.3-Alpha")
     public static MiniMessage getMiniMessage() {
         return miniMessage;
     }
 
+    @API(status = API.Status.STABLE, since = "0.3-Alpha")
     public static Gson getGson() {
         return gson;
     }
 
+    @API(status = API.Status.STABLE, since = "0.3-Alpha")
     public static PackManager getPackManager() {
         return packManager;
     }
 
+    @API(status = API.Status.STABLE, since = "0.3-Alpha")
     public static ProjectManager getProjectManager() {
         return projectManager;
     }

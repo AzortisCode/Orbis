@@ -19,11 +19,21 @@
 package com.azortis.orbis.block.property;
 
 import com.google.common.collect.ImmutableSet;
+import org.apiguardian.api.API;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.Set;
 
+/**
+ * Represents a property that exists on Blocks which alter the looks of that legacyBlock.
+ *
+ * @author Jake Nijssen
+ * @see <a href="https://minecraft.fandom.com/wiki/Block_states#:~:text=Block%20states%20(also%20known%20as,Metadata)%20to%20define%20a%20block.">Properties</a> for more information.
+ * @since 0.3-Alpha
+ * @param <T> The type of property.
+ */
+@API(status = API.Status.STABLE, since = "0.3-Alpha")
 public sealed abstract class Property<T extends Comparable<T>> permits BooleanProperty,
         IntegerProperty, EnumProperty {
 
@@ -31,24 +41,63 @@ public sealed abstract class Property<T extends Comparable<T>> permits BooleanPr
     private final Class<T> type;
     private final ImmutableSet<T> values;
 
-    public Property(String key, Class<T> type, Set<T> values) {
+    /**
+     * Constructs a property with specified key, type and values.
+     *
+     * @param key The key of the property.
+     * @param type The type of the property.
+     * @param values The possible values of the property.
+     * @since 0.3-Alpha
+     */
+    @API(status = API.Status.INTERNAL, since = "0.3-Alpha", consumers = "com.azortis.orbis.block.property")
+    protected Property(@NotNull String key, @NotNull Class<T> type, @NotNull Set<T> values) {
         this.key = key;
         this.type = type;
         this.values = ImmutableSet.copyOf(values);
     }
 
-    public String key() {
+    /**
+     * Gets the key of the property.
+     *
+     * @return The property key.
+     * @since 0.3-Alpha
+     */
+    @Contract(pure = true)
+    public @NotNull String key() {
         return key;
     }
 
-    public Class<T> type() {
+    /**
+     * Gets the type of the property.
+     *
+     * @return The property type.
+     * @since 0.3-Alpha
+     */
+    @Contract(pure = true)
+    public @NotNull Class<T> type() {
         return type;
     }
 
-    public ImmutableSet<T> values() {
+    /**
+     * Gets an immutable set of the possible values of the property.
+     *
+     * @return Immutable set of possible values.
+     * @since 0.3-Alpha
+     */
+    @Contract(pure = true)
+    public @NotNull ImmutableSet<T> values() {
         return values;
     }
 
-    public abstract @Nullable T getValueFor(final @NotNull String value);
+    /**
+     * Gets the typed value for the given string.
+     *
+     * @param value The string of the value.
+     * @return The typed value.
+     * @throws IllegalArgumentException If no value is found for given string.
+     * @since 0.3-Alpha
+     */
+    @Contract(pure = true)
+    public abstract @NotNull T getValue(final @NotNull String value) throws IllegalArgumentException;
 
 }

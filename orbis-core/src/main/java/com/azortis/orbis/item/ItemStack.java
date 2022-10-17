@@ -19,13 +19,14 @@
 package com.azortis.orbis.item;
 
 import com.azortis.orbis.item.meta.ItemMeta;
+import net.kyori.adventure.nbt.CompoundBinaryTag;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.jglrxavpok.hephaistos.nbt.NBTCompound;
 
+@Deprecated
 public interface ItemStack extends Cloneable {
 
-    Item item();
+    LegacyItem item();
 
     int getAmount();
 
@@ -39,6 +40,6 @@ public interface ItemStack extends Cloneable {
 
     @NotNull ItemStack clone();
 
-    @NotNull NBTCompound serialize();
+    @NotNull CompoundBinaryTag toNBT();
 
 }

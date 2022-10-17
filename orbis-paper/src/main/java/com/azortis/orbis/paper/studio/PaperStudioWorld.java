@@ -19,20 +19,33 @@
 package com.azortis.orbis.paper.studio;
 
 import com.azortis.orbis.Orbis;
-import com.azortis.orbis.Player;
-import com.azortis.orbis.WorldAccess;
+import com.azortis.orbis.block.Blocks;
+import com.azortis.orbis.entity.Player;
 import com.azortis.orbis.pack.studio.Project;
 import com.azortis.orbis.pack.studio.StudioWorld;
-import com.azortis.orbis.paper.ConversionUtils;
 import com.azortis.orbis.paper.OrbisPlugin;
 import com.azortis.orbis.paper.PaperPlatform;
-import com.azortis.orbis.paper.PaperWorldAccess;
+import com.azortis.orbis.paper.util.ConversionUtils;
+import com.azortis.orbis.paper.world.PaperWorldAccess;
 import com.azortis.orbis.util.Location;
+import com.azortis.orbis.world.WorldAccess;
 import com.google.common.base.Preconditions;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
+import net.minecraft.core.Registry;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.BiomeSource;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.chunk.ChunkAccess;
 import org.apache.commons.io.FileUtils;
 import org.bukkit.Bukkit;
+import org.bukkit.Chunk;
 import org.bukkit.World;
 import org.bukkit.WorldCreator;
+import org.bukkit.craftbukkit.v1_19_R1.CraftWorld;
+import org.bukkit.craftbukkit.v1_19_R1.block.CraftBlock;
+import org.bukkit.craftbukkit.v1_19_R1.generator.CraftChunkData;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.HandlerList;
@@ -41,11 +54,18 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
+import org.bukkit.event.world.ChunkLoadEvent;
+import org.bukkit.event.world.ChunkUnloadEvent;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Field;
+import java.util.Arrays;
+import java.util.Objects;
+import java.util.Random;
 import java.util.Set;
+import java.util.concurrent.CompletableFuture;
 
 public final class PaperStudioWorld extends StudioWorld implements Listener {
 
@@ -63,9 +83,29 @@ public final class PaperStudioWorld extends StudioWorld implements Listener {
         return nativeWorld;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public void hotReload() {
+        // Start NMS
+        ServerLevel level = ((CraftWorld) nativeWorld).getHandle();
 
+        // Update possible biomes.
+        try {
+            BiomeSource biomeSource = level.getChunkSource().getGenerator().getBiomeSource();
+            Field biomesField = biomeSource.getClass().getField("possibleBiomes");
+            biomesField.setAccessible(true);
+            Set<Holder<Biome>> possibleBiomes = (Set<Holder<Biome>>) biomesField.get(biomesField);
+            possibleBiomes.clear();
+            for (org.bukkit.block.Biome paperBiome : Objects.requireNonNull(nativeWorld.getBiomeProvider()).getBiomes(nativeWorld)) {
+                possibleBiomes.add(CraftBlock.biomeToBiomeBase(level.getServer().registryHolder.registryOrThrow(Registry.BIOME_REGISTRY), paperBiome));
+            }
+            biomesField.set(biomeSource, possibleBiomes);
+            biomesField.setAccessible(false);
+        } catch (IllegalAccessException | NoSuchFieldException ex) {
+            Orbis.getLogger().error("Failed to reset the possible biomes for studio world!", ex);
+        }
+        // End NMS
+        Arrays.stream(nativeWorld.getLoadedChunks()).parallel().forEach(this::regenChunk);
     }
 
     @Override
@@ -104,6 +144,30 @@ public final class PaperStudioWorld extends StudioWorld implements Listener {
         return true;
     }
 
+    private CompletableFuture<Boolean> regenChunk(@NotNull final Chunk chunk) {
+        return CompletableFuture.supplyAsync(() -> {
+            ChunkAccess access = ((CraftWorld)nativeWorld).getHandle().getChunk(chunk.getX(), chunk.getZ());
+
+            // Set all blocks in chunk to air and reset the biome
+            for (int cx = 0; cx <= 15; cx++) {
+                for (int cz = 0; cz <= 15; cz++) {
+                    for (int y = nativeWorld.getMinHeight(); y < nativeWorld.getMaxHeight(); y++) {
+                        BlockPos blockPos = new BlockPos(access.getPos().getMinBlockX() + cx, y,
+                                access.getPos().getMinBlockZ() + cz);
+                        int x = access.getPos().getMinBlockX() + cx;
+                        int z = access.getPos().getMinBlockZ() + cz;
+                        access.setBiome(x >> 2, y >> 2, z >> 2, access.getNoiseBiome(x,y,z));
+                        access.setBlockState(blockPos, Block.stateById(Blocks.AIR.stateId()), false);
+                    }
+                }
+            }
+            // Regenerate the chunk by passing a ChunkAccess into the generator like normal, we know which method needs to be called
+            Objects.requireNonNull(nativeWorld.getGenerator())
+                    .generateNoise(nativeWorld, new Random(), chunk.getX(), chunk.getZ(), new CraftChunkData(nativeWorld, access));
+            return true;
+        });
+    }
+
     //
     // WorldAccess
     //
@@ -114,7 +178,7 @@ public final class PaperStudioWorld extends StudioWorld implements Listener {
     }
 
     @Override
-    public @NotNull Set<com.azortis.orbis.Player> getPlayers() {
+    public @NotNull Set<Player> getPlayers() {
         return worldAccess.getPlayers();
     }
 
@@ -122,8 +186,24 @@ public final class PaperStudioWorld extends StudioWorld implements Listener {
     // Events
     //
 
+    @EventHandler(priority = EventPriority.LOWEST)
+    private void onChunkLoad(ChunkLoadEvent event) {
+        if(event.getWorld() == nativeWorld && !event.isNewChunk()) {
+            // Regenerate each chunk that gets loaded, in case something changed
+            regenChunk(event.getChunk());
+        }
+    }
+
+    @EventHandler(priority = EventPriority.HIGHEST)
+    private void onChunkUnload(ChunkUnloadEvent event) {
+        if(event.getWorld() == nativeWorld) {
+            // Don't bother saving chunks, since they won't stay anyway.
+            event.setSaveChunk(false);
+        }
+    }
+
     @EventHandler(priority = EventPriority.MONITOR)
-    public void onPlayerJoin(PlayerJoinEvent event) {
+    private void onPlayerJoin(PlayerJoinEvent event) {
         Player player = platform.getPlayer(event.getPlayer());
         if (player.getWorld() == this) {
             Location fallBackLocation = Orbis.getSettings().studio().fallBackLocation();
@@ -144,7 +224,7 @@ public final class PaperStudioWorld extends StudioWorld implements Listener {
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)
-    public void onPlayerQuit(PlayerQuitEvent event) {
+    private void onPlayerQuit(PlayerQuitEvent event) {
         Player player = platform.getPlayer(event.getPlayer());
         if (getViewers().contains(player)) {
             viewers.remove(player); // Prevent memory leaks by this player instance not being removed from the list
@@ -152,14 +232,14 @@ public final class PaperStudioWorld extends StudioWorld implements Listener {
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)
-    public void onPlayerTeleport(PlayerTeleportEvent event) {
+    private void onPlayerTeleport(PlayerTeleportEvent event) {
         Player player = platform.getPlayer(event.getPlayer());
         if (getViewers().contains(player) && event.getTo().getWorld() != nativeWorld) {
             removeViewer(player);
         } else if (!getViewers().contains(player) && event.getTo().getWorld() == nativeWorld) {
             if (player.hasPermission("orbis.admin")) {
                 // The teleporting logic has already been done, so just force add the player to the viewers list
-                viewers.put(player, ConversionUtils.fromNative(event.getFrom()));
+                viewers.put(player, ConversionUtils.fromPaper(event.getFrom()));
                 player.setGameMode(Player.GameMode.CREATIVE);
                 player.setAllowFlying(true);
                 player.sendMessage(Orbis.getMiniMessage().deserialize("<prefix> <gray>You're now viewing the studio world."));
@@ -171,10 +251,10 @@ public final class PaperStudioWorld extends StudioWorld implements Listener {
     }
 
     @EventHandler(priority = EventPriority.MONITOR)
-    public void onPlayerRespawn(PlayerRespawnEvent event) {
+    private void onPlayerRespawn(PlayerRespawnEvent event) {
         Player player = platform.getPlayer(event.getPlayer());
         if (viewers.containsKey(player)) {
-            event.setRespawnLocation(ConversionUtils.toNative(Orbis.getSettings().studio().fallBackLocation()));
+            event.setRespawnLocation(ConversionUtils.toPaper(Orbis.getSettings().studio().fallBackLocation()));
         }
     }
 

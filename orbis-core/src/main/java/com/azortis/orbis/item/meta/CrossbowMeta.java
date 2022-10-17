@@ -24,6 +24,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
+@Deprecated
 public interface CrossbowMeta extends ItemMeta {
 
     void addChargedProjectile(@NotNull ItemStack projectile);

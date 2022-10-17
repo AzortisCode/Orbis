@@ -45,7 +45,7 @@ public enum RailShape implements Nameable {
     }
 
     @Override
-    public @NotNull String getSerializedName() {
+    public @NotNull String serializedName() {
         return this.name;
     }
 

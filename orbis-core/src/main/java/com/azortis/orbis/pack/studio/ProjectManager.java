@@ -34,8 +34,8 @@ public final class ProjectManager {
 
     private Project activeProject = null;
 
-    public ProjectManager(@NotNull File projectsFolder) {
-        this.projectsFolder = projectsFolder;
+    public ProjectManager(@NotNull File rootDirectory) {
+        this.projectsFolder = new File(rootDirectory + "/projects/");
         if (!projectsFolder.exists()) {
             if (!projectsFolder.mkdirs()) Orbis.getLogger().error("Failed to create projects folder!");
         } else {
@@ -57,6 +57,7 @@ public final class ProjectManager {
      * Returns a set of project names that are present in the projects' folder.
      *
      * @return An immutable view of project names.
+     * @since 0.3-Alpha
      */
     public Set<String> getProjects() {
         return Set.copyOf(projects);
@@ -66,6 +67,7 @@ public final class ProjectManager {
      * Gets the current active project being worked on.
      *
      * @return The current {@link Project}, null if none is active.
+     * @since 0.3-Alpha
      */
     @Nullable
     public Project getActiveProject() {
@@ -94,6 +96,8 @@ public final class ProjectManager {
 
     /**
      * Closes the current project gracefully.
+     *
+     * @since 0.3-Alpha
      */
     public boolean closeProject() {
         if (activeProject != null && activeProject.close()) {

@@ -21,16 +21,26 @@ package com.azortis.orbis.paper;
 import cloud.commandframework.execution.CommandExecutionCoordinator;
 import cloud.commandframework.minecraft.extras.MinecraftExceptionHandler;
 import cloud.commandframework.paper.PaperCommandManager;
-import com.azortis.orbis.*;
+import com.azortis.orbis.Orbis;
+import com.azortis.orbis.Platform;
+import com.azortis.orbis.Settings;
+import com.azortis.orbis.block.BlockRegistry;
 import com.azortis.orbis.command.CommandSender;
 import com.azortis.orbis.command.ConsoleSender;
-import com.azortis.orbis.item.ItemFactory;
 import com.azortis.orbis.pack.Pack;
 import com.azortis.orbis.pack.studio.Project;
 import com.azortis.orbis.pack.studio.StudioWorld;
-import com.azortis.orbis.paper.item.PaperItemFactory;
+import com.azortis.orbis.paper.block.PaperBlockRegistry;
+import com.azortis.orbis.paper.entity.PaperPlayer;
 import com.azortis.orbis.paper.studio.PaperStudioWorld;
+import com.azortis.orbis.paper.util.PaperScheduler;
+import com.azortis.orbis.paper.world.PaperWorld;
+import com.azortis.orbis.paper.world.PaperWorldAccess;
+import com.azortis.orbis.util.Scheduler;
 import com.azortis.orbis.util.maven.Dependency;
+import com.azortis.orbis.world.World;
+import com.azortis.orbis.world.WorldAccess;
+import com.google.common.collect.ImmutableSet;
 import net.kyori.adventure.audience.Audience;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
@@ -49,53 +59,65 @@ import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 
 import java.io.File;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
-@Dependency(group = "io.github.jglrxavpok.hephaistos", artifact = "common", version = "2.2.0")
-@Dependency(group = "org.jetbrains.kotlin", artifact = "kotlin-stdlib", version = "1.6.10")
 @Dependency(group = "cloud.commandframework", artifact = "cloud-paper", version = "1.7.1")
 @Dependency(group = "cloud.commandframework", artifact = "cloud-bukkit", version = "1.7.1")
 @Dependency(group = "cloud.commandframework", artifact = "cloud-paper", version = "1.7.1")
 @Dependency(group = "cloud.commandframework", artifact = "cloud-tasks", version = "1.7.1")
 @Dependency(group = "cloud.commandframework", artifact = "cloud-brigadier", version = "1.7.1")
 @Dependency(group = "cloud.commandframework", artifact = "cloud-minecraft-extras", version = "1.7.1")
+@Dependency(group = "net.kyori", artifact = "adventure-nbt", version = "4.11.0")
 public class PaperPlatform implements Platform, Listener {
 
     private final OrbisPlugin plugin;
+    private final PaperScheduler scheduler = new PaperScheduler();
     private final Map<String, PaperWorld> worldMap = new HashMap<>();
     private final Map<String, WorldAccess> worldAccessMap = new HashMap<>();
-    private final PaperItemFactory itemFactory;
-    private final PaperConsoleSender consoleSender = new PaperConsoleSender();
-    private final Map<UUID, com.azortis.orbis.Player> players = new HashMap<>();
+    private final Map<UUID, com.azortis.orbis.entity.Player> players = new HashMap<>();
 
-    public PaperPlatform(OrbisPlugin plugin) throws Exception {
+    PaperPlatform(OrbisPlugin plugin) {
         this.plugin = plugin;
-        this.itemFactory = new PaperItemFactory();
+
+        BlockRegistry.init(new PaperBlockRegistry());
     }
 
     //
     // Basic
     //
+
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public @NotNull String adaptation() {
         return "Bukkit";
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public @NotNull Logger logger() {
         return plugin.getSLF4JLogger();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public @NotNull File directory() {
         return plugin.getDataFolder();
     }
 
-    // Factories
-
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public @NotNull ItemFactory itemFactory() {
-        return itemFactory;
+    public @NotNull Scheduler scheduler() {
+        return scheduler;
     }
 
     //
@@ -103,7 +125,7 @@ public class PaperPlatform implements Platform, Listener {
     //
 
     @EventHandler(priority = EventPriority.MONITOR)
-    public void onWorldLoad(@NotNull WorldLoadEvent event) {
+    private void onWorldLoad(@NotNull WorldLoadEvent event) {
         org.bukkit.World world = event.getWorld();
         PaperWorldAccess worldAccess = new PaperWorldAccess(world);
         if (worldMap.containsKey(world.getName())) {
@@ -113,7 +135,7 @@ public class PaperPlatform implements Platform, Listener {
     }
 
     @EventHandler(priority = EventPriority.MONITOR)
-    public void onWorldUnload(@NotNull WorldUnloadEvent event) {
+    private void onWorldUnload(@NotNull WorldUnloadEvent event) {
         org.bukkit.World world = event.getWorld();
         worldMap.remove(world.getName());
         worldAccessMap.remove(world.getName());
@@ -138,30 +160,48 @@ public class PaperPlatform implements Platform, Listener {
         return worldMap.get(worldInfo.getName());
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public @Nullable World getWorld(@NotNull String name) {
         return worldMap.get(name);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public @NotNull Collection<World> worlds() {
-        return new ArrayList<>(worldMap.values());
+    public @NotNull ImmutableSet<World> worlds() {
+        return ImmutableSet.copyOf(worldMap.values());
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public @Nullable WorldAccess getWorldAccess(@NotNull WorldInfo worldInfo) {
         return worldAccessMap.get(worldInfo.getName());
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public @Nullable WorldAccess getWorldAccess(@NotNull String name) {
         return worldAccessMap.get(name);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public @NotNull Collection<WorldAccess> worldAccesses() {
-        return new ArrayList<>(worldAccessMap.values());
+    public @NotNull ImmutableSet<WorldAccess> worldAccesses() {
+        return ImmutableSet.copyOf(worldAccessMap.values());
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public @NotNull StudioWorld createStudioWorld(@NotNull Project project) {
         return new PaperStudioWorld(project);
@@ -172,31 +212,40 @@ public class PaperPlatform implements Platform, Listener {
     //
 
     @EventHandler(priority = EventPriority.MONITOR)
-    public void onPlayerLogin(@NotNull PlayerLoginEvent loginEvent) {
+    private void onPlayerLogin(@NotNull PlayerLoginEvent loginEvent) {
         if (loginEvent.getResult() == PlayerLoginEvent.Result.ALLOWED) {
             players.put(loginEvent.getPlayer().getUniqueId(), new PaperPlayer(loginEvent.getPlayer()));
         }
     }
 
     @EventHandler(priority = EventPriority.MONITOR)
-    public void onPlayerQuit(@NotNull PlayerQuitEvent quitEvent) {
+    private void onPlayerQuit(@NotNull PlayerQuitEvent quitEvent) {
         players.remove(quitEvent.getPlayer().getUniqueId());
     }
 
-    public @NotNull com.azortis.orbis.Player getPlayer(@NotNull Player player) {
+    public @NotNull com.azortis.orbis.entity.Player getPlayer(@NotNull Player player) {
         return players.get(player.getUniqueId());
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public @Nullable com.azortis.orbis.Player getPlayer(@NotNull UUID uuid) {
+    public @Nullable com.azortis.orbis.entity.Player getPlayer(@NotNull UUID uuid) {
         return players.get(uuid);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public @NotNull Collection<com.azortis.orbis.Player> getPlayers() {
-        return players.values();
+    public @NotNull ImmutableSet<com.azortis.orbis.entity.Player> getPlayers() {
+        return ImmutableSet.copyOf(players.values());
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public @Nullable Class<?> mainClass() {
         return plugin.getClass();
@@ -210,16 +259,25 @@ public class PaperPlatform implements Platform, Listener {
         return (PaperSettings) Orbis.getSettings();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public @NotNull Class<? extends Settings> settingsClass() {
         return PaperSettings.class; // Default for now
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public @NotNull Settings defaultSettings() {
         return PaperSettings.defaultSettings();
     }
 
+    /**
+     * Creates and initializes a command manager for the {@link Orbis} to register the commands in the core.
+     */
     void loadCommands() {
         try {
             Orbis.getLogger().info("Loading commands...");
@@ -229,17 +287,18 @@ public class PaperPlatform implements Platform, Listener {
                         if (commandSender instanceof Player player) {
                             return getPlayer(player.getUniqueId());
                         } else if (commandSender instanceof ConsoleCommandSender) {
-                            return consoleSender;
+                            return Bukkit::getConsoleSender;
                         }
                         return null;
-                    }), (commandSender -> {
-                if (commandSender instanceof PaperPlayer player) {
-                    return player.handle();
-                } else if (commandSender instanceof ConsoleSender) {
-                    return Bukkit.getConsoleSender();
-                }
-                return null;
-            }));
+                    }),
+                    (commandSender -> {
+                        if (commandSender instanceof PaperPlayer player) {
+                            return player.handle();
+                        } else if (commandSender instanceof ConsoleSender) {
+                            return Bukkit.getConsoleSender();
+                        }
+                        return null;
+                    }));
             commandManager.registerBrigadier();
             commandManager.registerAsynchronousCompletions();
             new MinecraftExceptionHandler<CommandSender>()
@@ -252,7 +311,7 @@ public class PaperPlatform implements Platform, Listener {
                     .apply(commandManager, sender -> {
                         if (sender instanceof PaperPlayer player) {
                             return player.handle();
-                        } else if (sender instanceof PaperConsoleSender) {
+                        } else if (sender instanceof ConsoleSender) {
                             return Bukkit.getConsoleSender();
                         } else {
                             return Audience.empty();

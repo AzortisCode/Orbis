@@ -23,6 +23,7 @@ import com.azortis.orbis.generator.biome.Distributor;
 import com.azortis.orbis.generator.noise.NoiseGenerator;
 import com.azortis.orbis.generator.terrain.Terrain;
 import com.google.common.collect.HashBasedTable;
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Table;
 import org.jetbrains.annotations.NotNull;
@@ -35,21 +36,57 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Abstract class for fetching {@link com.azortis.orbis.generator.Dimension} datafiles.
+ * Datasource for fetching {@link com.azortis.orbis.generator.Dimension} datafiles.
+ * It uses a {@link String} based system for data paths, which specify where a resource of said {@link Class} type
+ * is located. Refer to {@link ComponentAccess} on how to register your own data paths.
+ *
+ * @since 0.3-Alpha
+ * @author Jake Nijssen
  */
 public abstract class DataAccess {
 
+    /**
+     * The data path for {@link Biome}.
+     */
     public static final String BIOMES_PATH = "/biomes/**";
+
+    /**
+     * The root data path for all generators.
+     */
     public static final String GENERATORS_PATH = "/generators/";
-    public static final String NOISE_GENERATORS_PATH = GENERATORS_PATH + "/noise/";
-    public static final String DISTRIBUTOR_PATH = GENERATORS_PATH + "/distributor/";
-    public static final String TERRAIN_PATH = GENERATORS_PATH + "/terrain/";
-    public static final Set<Class<?>> ROOT_TYPES = ImmutableSet.of(NoiseGenerator.class, Distributor.class, Terrain.class);
+
+    /**
+     * The data path for {@link NoiseGenerator}.
+     */
+    public static final String NOISE_GENERATORS_PATH = GENERATORS_PATH + "noise/";
+
+    /**
+     * The data path for {@link Distributor}.
+     */
+    public static final String DISTRIBUTOR_PATH = GENERATORS_PATH + "distributor/";
+
+    /**
+     * The data path for {@link Terrain}
+     */
+    public static final String TERRAIN_PATH = GENERATORS_PATH + "terrain/";
+
+    /**
+     * Types that support {@link Component}'s, and can have multiple implementations.
+     * Root types never have a subdirectory wildcard(**) because those directories should be reserved for components.
+     */
+    public static final ImmutableMap<Class<?>, String> GENERATOR_TYPES = ImmutableMap.of(
+            NoiseGenerator.class, NOISE_GENERATORS_PATH, Distributor.class, DISTRIBUTOR_PATH,
+            Terrain.class, TERRAIN_PATH);
+
+    /**
+     * Types that do not support {@link Component} and have one implementation.
+     */
+    public static final ImmutableMap<Class<?>, String> DATA_TYPES = ImmutableMap.of(Biome.class, BIOMES_PATH);
 
     private final Map<ImmutableSet<Class<?>>, Class<? extends ComponentAccess>> componentTypes = new HashMap<>();
     private final Table<Class<? extends ComponentAccess>, String, ComponentAccess> componentAccessTable = HashBasedTable.create();
 
-    public String getDataPath(@NotNull Class<?> type) throws IllegalArgumentException {
+    public @NotNull String getDataPath(@NotNull Class<?> type) throws IllegalArgumentException {
         if (type == Biome.class) {
             return BIOMES_PATH;
         } else if (type == NoiseGenerator.class) {
@@ -69,7 +106,7 @@ public abstract class DataAccess {
     public void registerComponent(@NotNull Class<? extends ComponentAccess> type, @NotNull String name)
             throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         ComponentAccess componentAccess = type.getConstructor(String.class, DataAccess.class).newInstance(name, this);
-        if (ROOT_TYPES.contains(componentAccess.parentType)) {
+        if (GENERATOR_TYPES.containsKey(componentAccess.parentType)) {
             if (!componentTypes.containsValue(type)) {
                 componentTypes.put(ImmutableSet.copyOf(componentAccess.dataTypes()), type);
             }

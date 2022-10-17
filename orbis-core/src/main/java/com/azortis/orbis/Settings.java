@@ -19,6 +19,7 @@
 package com.azortis.orbis;
 
 import com.azortis.orbis.util.Location;
+import org.apiguardian.api.API;
 import org.jetbrains.annotations.NotNull;
 
 import java.lang.ref.WeakReference;
@@ -26,8 +27,12 @@ import java.lang.ref.WeakReference;
 /**
  * Settings class which may be extended by platforms for some basic
  * global settings that are not world/dimension dependent.
+ *
+ * @since 0.3-Alpha
+ * @author Jake Nijssen
  */
 @SuppressWarnings("all")
+@API(status = API.Status.EXPERIMENTAL, since = "0.3-Alpha")
 public class Settings {
 
     private final Studio studio;

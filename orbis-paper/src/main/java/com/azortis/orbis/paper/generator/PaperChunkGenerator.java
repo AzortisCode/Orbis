@@ -20,8 +20,7 @@ package com.azortis.orbis.paper.generator;
 
 import com.azortis.orbis.pack.Pack;
 import com.azortis.orbis.paper.OrbisPlugin;
-import com.azortis.orbis.paper.PaperWorld;
-import com.azortis.orbis.paper.nms.PaperChunkData;
+import com.azortis.orbis.paper.world.PaperWorld;
 import org.bukkit.generator.BiomeProvider;
 import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.generator.WorldInfo;

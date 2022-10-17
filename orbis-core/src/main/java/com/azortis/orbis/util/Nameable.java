@@ -18,8 +18,26 @@
 
 package com.azortis.orbis.util;
 
+import org.apiguardian.api.API;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * An interface that marks an object that has a specific serialized name string.
+ *
+ * @since 0.3-Alpha
+ * @author Jake Nijssen
+ */
+@API(status = API.Status.STABLE, since = "0.3-Alpha")
 public interface Nameable {
-    @NotNull String getSerializedName();
+
+    /**
+     * Get the serialized name for this object.
+     *
+     * @return The serialized name of the object.
+     * @since 0.3-Alpha
+     */
+    @Contract(pure = true)
+    @API(status = API.Status.STABLE, since = "0.3-Alpha")
+    @NotNull String serializedName();
 }

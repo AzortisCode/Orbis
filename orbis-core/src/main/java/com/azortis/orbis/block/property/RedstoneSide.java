@@ -34,11 +34,11 @@ public enum RedstoneSide implements Nameable {
 
     @Override
     public String toString() {
-        return this.getSerializedName();
+        return this.serializedName();
     }
 
     @Override
-    public @NotNull String getSerializedName() {
+    public @NotNull String serializedName() {
         return this.name;
     }
 

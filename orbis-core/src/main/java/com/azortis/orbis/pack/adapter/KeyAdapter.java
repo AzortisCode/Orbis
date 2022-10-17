@@ -23,7 +23,7 @@ import net.kyori.adventure.key.Key;
 
 import java.lang.reflect.Type;
 
-public class KeyAdapter implements JsonSerializer<Key>, JsonDeserializer<Key> {
+public final class KeyAdapter implements JsonSerializer<Key>, JsonDeserializer<Key> {
 
     @Override
     public JsonElement serialize(Key key, Type type, JsonSerializationContext context) {

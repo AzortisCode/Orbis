@@ -24,17 +24,16 @@ import com.azortis.orbis.generator.biome.complex.requirement.Requirement;
 import com.azortis.orbis.pack.adapter.TypeAdapter;
 import com.azortis.orbis.pack.data.ComponentAccess;
 import com.azortis.orbis.pack.data.DataAccess;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
 import com.google.gson.JsonDeserializer;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.Map;
-import java.util.Set;
 
 public final class ComplexAccess extends ComponentAccess {
 
     public static final String REGION_FOLDER = "/**";
 
-    public ComplexAccess(String name, DataAccess dataAccess) {
+    public ComplexAccess(@NotNull String name, @NotNull DataAccess dataAccess) {
         super(name, Distributor.class, dataAccess);
     }
 
@@ -45,13 +44,13 @@ public final class ComplexAccess extends ComponentAccess {
     }
 
     @Override
-    public @NotNull Set<Class<?>> dataTypes() {
-        return Set.of(Region.class, Requirement.class, Modifier.class);
+    public @NotNull ImmutableSet<Class<?>> dataTypes() {
+        return ImmutableSet.of(Region.class);
     }
 
     @Override
-    public @NotNull Map<Class<?>, JsonDeserializer<?>> adapters() {
-        return Map.of(
+    public @NotNull ImmutableMap<Class<?>, JsonDeserializer<?>> adapters() {
+        return ImmutableMap.of(
                 Requirement.class, new TypeAdapter<>(Requirement.class),
                 Modifier.class, new TypeAdapter<>(Modifier.class)
         );

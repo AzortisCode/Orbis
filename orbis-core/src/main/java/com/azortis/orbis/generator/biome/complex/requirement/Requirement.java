@@ -18,12 +18,27 @@
 
 package com.azortis.orbis.generator.biome.complex.requirement;
 
+import com.azortis.orbis.Registry;
+import com.azortis.orbis.pack.studio.annotations.GlobalDefinition;
+import com.azortis.orbis.pack.studio.annotations.Typed;
 import net.kyori.adventure.key.Key;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
 
+@Typed
+@GlobalDefinition("complex-distributor-requirement")
 public abstract class Requirement {
+
+    public static final Registry<Requirement> REGISTRY = new Registry<>(Map.of(
+            Key.key("complex:max-strength"), MaxStrength.class,
+            Key.key("complex:min-strength"), MinStrength.class,
+            Key.key("complex:noise-ranges"), NoiseRanges.class
+    ));
+
+    static {
+        Registry.addRegistry(Requirement.class, REGISTRY);
+    }
 
     protected final Key type;
 

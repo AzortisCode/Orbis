@@ -18,9 +18,12 @@
 
 package com.azortis.orbis;
 
-import com.azortis.orbis.item.ItemFactory;
+import com.azortis.orbis.entity.Player;
+import com.azortis.orbis.item.LegeacyIItemRegistry;
 import com.azortis.orbis.pack.studio.Project;
 import com.azortis.orbis.pack.studio.StudioWorld;
+import com.azortis.orbis.world.World;
+import com.azortis.orbis.world.WorldAccess;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.LoggerFactory;
@@ -53,7 +56,7 @@ public class MockPlatform implements Platform {
     }
 
     @Override
-    public @NotNull ItemFactory itemFactory() {
+    public @NotNull LegeacyIItemRegistry itemFactory() {
         return null;
     }
 

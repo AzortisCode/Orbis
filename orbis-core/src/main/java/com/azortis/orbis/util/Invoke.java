@@ -26,12 +26,17 @@ import java.lang.annotation.Target;
 /**
  * Used to annotate a method in a {@link Class} that has been annotated with {@link Inject}
  * this method will be called before depending on {@link Order}
+ *
+ * @since 0.3-Alpha
+ * @author Jake Nijssen
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
 public @interface Invoke {
     /**
      * When the method should be invoked, see {@link Order}
+     *
+     * @since 0.3-Alpha
      */
     Order when() default Order.POST_CLASS_INJECTION;
 

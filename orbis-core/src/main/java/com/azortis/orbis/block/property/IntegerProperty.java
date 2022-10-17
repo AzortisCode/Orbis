@@ -18,35 +18,40 @@
 
 package com.azortis.orbis.block.property;
 
+import it.unimi.dsi.fastutil.ints.IntSets;
+import org.apiguardian.api.API;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Set;
-import java.util.TreeSet;
-
+/**
+ * A {@link Property} that can be a value between given integers.
+ *
+ * @since 0.3-Alpha
+ * @author Jake Nijssen
+ */
+@API(status = API.Status.STABLE, since = "0.3-Alpha")
 public final class IntegerProperty extends Property<Integer> {
 
     private final int min, max;
 
+    @API(status = API.Status.INTERNAL, since = "0.3-Alpha", consumers = "com.azortis.orbis.block.property")
     private IntegerProperty(final @NotNull String key, final int min, final int max) {
-        super(key, Integer.class, createIntegerSet(min, max));
+        super(key, Integer.class, IntSets.fromTo(min, max));
         this.min = min;
         this.max = max;
     }
 
-    private static Set<Integer> createIntegerSet(int min, int max) {
-        Set<Integer> values = new TreeSet<>();
-        for (int i = min; i <= max; i++) {
-            values.add(i);
-        }
-        return values;
-    }
-
-    static IntegerProperty create(final @NotNull String key, final int min, final int max) {
+    @Contract("_,_,_ -> new")
+    @API(status = API.Status.INTERNAL, since = "0.3-Alpha", consumers = "com.azortis.orbis.block.property")
+    static @NotNull IntegerProperty create(final @NotNull String key, final int min, final int max) {
         return new IntegerProperty(key, min, max);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public @NotNull Integer getValueFor(@NotNull String value) {
+    public @NotNull Integer getValue(@NotNull String value) {
         try {
             final int val = Integer.parseInt(value);
             if (!values().contains(val)) {
@@ -58,10 +63,12 @@ public final class IntegerProperty extends Property<Integer> {
         }
     }
 
+    @Contract(pure = true)
     public int min() {
         return min;
     }
 
+    @Contract(pure = true)
     public int max() {
         return max;
     }

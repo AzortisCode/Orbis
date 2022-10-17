@@ -31,6 +31,7 @@ public final class OpenSimplex2 extends NoiseGenerator {
     }
 
     @Invoke
+    @SuppressWarnings("unused")
     private void setupNoise() {
         noise = new FastNoise();
         noise.setNoiseType(FastNoise.NoiseType.OpenSimplex2);

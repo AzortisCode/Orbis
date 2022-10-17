@@ -22,7 +22,7 @@ plugins {
 }
 
 group = "com.azortis"
-version = "1.0-SNAPSHOT"
+version = project(":orbis-core").version;
 
 application {
     mainClass.set("com.azortis.orbis.codegen.Generators")
@@ -44,6 +44,7 @@ dependencies {
     implementation("com.google.guava:guava:31.0.1-jre")
     implementation("org.apache.logging.log4j:log4j-core:2.14.1")
     implementation("org.apache.logging.log4j:log4j-slf4j-impl:2.14.1")
+    implementation("it.unimi.dsi:fastutil:8.5.6")
 }
 
 java {

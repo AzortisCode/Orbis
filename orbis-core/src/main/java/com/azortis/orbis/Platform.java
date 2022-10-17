@@ -18,40 +18,67 @@
 
 package com.azortis.orbis;
 
-import com.azortis.orbis.item.ItemFactory;
+import com.azortis.orbis.entity.Player;
 import com.azortis.orbis.pack.studio.Project;
 import com.azortis.orbis.pack.studio.StudioWorld;
+import com.azortis.orbis.util.Scheduler;
+import com.azortis.orbis.world.World;
+import com.azortis.orbis.world.WorldAccess;
+import com.google.common.collect.ImmutableSet;
+import org.apiguardian.api.API;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 
 import java.io.File;
-import java.util.Collection;
 import java.util.UUID;
 
+/**
+ * The entry point for everything that is implemented on the platform.
+ *
+ * @since 0.3-Alpha
+ * @author Jake Nijssen
+ */
+@API(status = API.Status.STABLE, since = "0.3-Alpha")
 public interface Platform {
 
+    /**
+     * Get the name of the platform adaptation. i.e. "Paper" for the PaperMC adaptation.
+     *
+     * @return The platform adaptation name.
+     */
     @NotNull String adaptation();
 
     @NotNull Logger logger();
 
+    /**
+     * Get the directory where Orbis is located.
+     *
+     * @return The orbis root directory.
+     */
     @NotNull File directory();
 
-    @NotNull ItemFactory itemFactory();
+    /**
+     * Get the instance of the platform {@link Scheduler}.
+     *
+     * @return The platform scheduler.
+     * @since 0.3-Alpha
+     */
+    @NotNull Scheduler scheduler();
 
     @Nullable World getWorld(@NotNull String name);
 
-    @NotNull Collection<World> worlds();
+    @NotNull ImmutableSet<World> worlds();
 
     @Nullable WorldAccess getWorldAccess(@NotNull String name);
 
-    @NotNull Collection<WorldAccess> worldAccesses();
+    @NotNull ImmutableSet<WorldAccess> worldAccesses();
 
     @NotNull StudioWorld createStudioWorld(@NotNull Project project);
 
     @Nullable Player getPlayer(@NotNull UUID uuid);
 
-    @NotNull Collection<Player> getPlayers();
+    @NotNull ImmutableSet<Player> getPlayers();
 
     @Nullable Class<?> mainClass();
 

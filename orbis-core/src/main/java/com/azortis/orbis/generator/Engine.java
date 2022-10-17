@@ -18,8 +18,8 @@
 
 package com.azortis.orbis.generator;
 
-import com.azortis.orbis.World;
 import com.azortis.orbis.generator.biome.Distributor;
+import com.azortis.orbis.world.World;
 import org.jetbrains.annotations.NotNull;
 
 public abstract class Engine {
@@ -30,17 +30,18 @@ public abstract class Engine {
         this.world = world;
     }
 
+    @Deprecated
     public abstract void generateChunk(int chunkX, int chunkZ, @NotNull ChunkData chunkData);
 
-    public World getWorld() {
+    public World world() {
         return world;
     }
 
-    public Dimension getDimension() {
+    public Dimension dimension() {
         return world.getDimension();
     }
 
-    public Distributor getDistributor() {
+    public Distributor distributor() {
         return world.getDimension().distributor();
     }
 

@@ -26,6 +26,9 @@ import java.util.Collection;
  * Used to annotate classes where the injector should look for fields to inject,
  * and fields to inject instances in the {@link com.azortis.orbis.generator.Dimension} object tree.
  * Subclasses will inherit this annotation.
+ *
+ * @since 0.3-Alpha
+ * @author Jake Nijssen
  */
 @Inherited
 @Retention(RetentionPolicy.RUNTIME)
@@ -43,7 +46,7 @@ public @interface Inject {
      * The fieldName of a {@link String} typed {@link java.lang.reflect.Field} whose value will be used to
      * find the correct configuration file in the {@link com.azortis.orbis.pack.Pack} being loaded to construct
      * an instance of the annotated field. Only works on fields with a type
-     * supported by {@link com.azortis.orbis.Registry}!
+     * registered by {@link com.azortis.orbis.Registry}!
      *
      * @return The fieldName of a {@link String} typed {@link java.lang.reflect.Field}
      */

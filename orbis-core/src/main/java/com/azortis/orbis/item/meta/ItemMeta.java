@@ -18,8 +18,8 @@
 
 package com.azortis.orbis.item.meta;
 
-import com.azortis.orbis.item.Enchantment;
 import com.azortis.orbis.item.ItemFlag;
+import com.azortis.orbis.item.LegacyEnchantment;
 import net.kyori.adventure.text.Component;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -28,6 +28,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+@Deprecated
 public interface ItemMeta {
 
     boolean hasDisplayName();
@@ -48,21 +49,21 @@ public interface ItemMeta {
 
     boolean hasEnchants();
 
-    boolean hasEnchant(@NotNull Enchantment enchantment);
+    boolean hasEnchant(@NotNull LegacyEnchantment legacyEnchantment);
 
-    int getEnchantLevel(@NotNull Enchantment enchantment);
+    int getEnchantLevel(@NotNull LegacyEnchantment legacyEnchantment);
 
-    @NotNull Map<Enchantment, Integer> getEnchants();
+    @NotNull Map<LegacyEnchantment, Integer> getEnchants();
 
-    boolean addEnchant(@NotNull Enchantment enchantment, int level, boolean ignoreLevelRestriction);
+    boolean addEnchant(@NotNull LegacyEnchantment legacyEnchantment, int level, boolean ignoreLevelRestriction);
 
-    boolean removeEnchant(@NotNull Enchantment enchantment);
+    boolean removeEnchant(@NotNull LegacyEnchantment legacyEnchantment);
 
-    default boolean hasConflictingEnchant(@NotNull Enchantment enchantment) {
-        Set<Enchantment> enchantments = getEnchants().keySet();
+    default boolean hasConflictingEnchant(@NotNull LegacyEnchantment legacyEnchantment) {
+        Set<LegacyEnchantment> legacyEnchantments = getEnchants().keySet();
         boolean isConflicting = false;
-        for (Enchantment enchantment1 : enchantments) {
-            if (enchantment.isCompatibleWith(enchantment)) {
+        for (LegacyEnchantment legacyEnchantment1 : legacyEnchantments) {
+            if (legacyEnchantment.isCompatibleWith(legacyEnchantment)) {
                 isConflicting = true;
                 break;
             }

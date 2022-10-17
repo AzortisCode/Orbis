@@ -24,7 +24,7 @@ import net.kyori.adventure.key.Key;
 
 import java.lang.reflect.Type;
 
-public class TypeAdapter<T> implements JsonDeserializer<T> {
+public final class TypeAdapter<T> implements JsonDeserializer<T> {
 
     private final Class<T> clazz;
 

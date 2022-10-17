@@ -18,11 +18,12 @@
 
 package com.azortis.orbis.generator.biome;
 
-import com.azortis.orbis.World;
 import com.azortis.orbis.pack.data.DataAccess;
-import com.azortis.orbis.pack.studio.annotations.UseRegistry;
+import com.azortis.orbis.pack.studio.annotations.Entries;
+import com.azortis.orbis.pack.studio.annotations.Typed;
 import com.azortis.orbis.util.Inject;
 import com.azortis.orbis.util.Invoke;
+import com.azortis.orbis.world.World;
 import com.google.gson.annotations.SerializedName;
 import net.kyori.adventure.key.Key;
 import org.jetbrains.annotations.NotNull;
@@ -31,7 +32,7 @@ import java.io.File;
 import java.util.HashSet;
 import java.util.Set;
 
-@UseRegistry
+@Typed
 @Inject
 public abstract class Distributor {
 
@@ -39,6 +40,7 @@ public abstract class Distributor {
     protected final Key type;
 
     // Every possible biome should be defined in the directory of the distributor object
+    @Entries(Biome.class)
     @SerializedName("biomes")
     private Set<String> biomeNames;
     @Inject(fieldName = "biomeNames", collectionType = HashSet.class, parameterizedType = Biome.class)

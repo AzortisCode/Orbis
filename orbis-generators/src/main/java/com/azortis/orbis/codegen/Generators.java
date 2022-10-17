@@ -21,8 +21,6 @@ package com.azortis.orbis.codegen;
 import com.azortis.orbis.Orbis;
 import com.azortis.orbis.codegen.block.BlocksGenerator;
 import com.azortis.orbis.codegen.block.PropertiesGenerator;
-import com.azortis.orbis.codegen.item.EnchantmentsGenerator;
-import com.azortis.orbis.codegen.item.ItemsGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -47,8 +45,8 @@ public final class Generators {
         final File outputFolder = new File(outputBuilder.toString().trim());
         new PropertiesGenerator(getInputStream("block_properties.json"), outputFolder).generate();
         new BlocksGenerator(getInputStream("blocks.json"), outputFolder).generate();
-        new ItemsGenerator(getInputStream("items.json"), outputFolder).generate();
-        new EnchantmentsGenerator(getInputStream("enchantments.json"), outputFolder).generate();
+        //new ItemsGenerator(getInputStream("items.json"), outputFolder).generate();
+        //new EnchantmentsGenerator(getInputStream("enchantments.json"), outputFolder).generate();
     }
 
     private static InputStream getInputStream(String fileName) {

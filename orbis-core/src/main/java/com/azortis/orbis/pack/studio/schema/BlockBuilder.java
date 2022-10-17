@@ -34,27 +34,27 @@ import java.io.File;
 
 public final class BlockBuilder extends SchemaBuilder {
 
-    public BlockBuilder(@NotNull Project project, @NotNull DataAccess data, @NotNull File schemaFile) {
+    BlockBuilder(@NotNull Project project, @NotNull DataAccess data, @NotNull File schemaFile) {
         super(project, data, schemaFile);
     }
 
     @Override
     protected @NotNull JsonObject generateSchema() {
         JsonObject schema = new JsonObject();
-        schema.addProperty("$schema", "http://json-schema.org/draft-07/schema");
+        schema.addProperty("$schema", "https://json-schema.org/draft/2020-12/schema");
 
-        // The Configured Block type is either just a string of the block type, or one that supports a blocks properties
+        // The Configured Block type is either just a string of the legacyBlock type, or one that supports a blocks properties
         JsonArray oneOf = new JsonArray();
 
-        // The type object that is just purely a string, and an enum with all the possible block keys
+        // The type object that is just purely a string, and an enum with all the possible legacyBlock keys
         JsonObject blockKeyOnly = new JsonObject();
         blockKeyOnly.addProperty("type", "string");
         JsonArray blockKeys = new JsonArray();
-        BlockRegistry.blockKeys().forEach(blockKeys::add);
+        BlockRegistry.blockKeys().forEach(key -> blockKeys.add(key.asString()));
         blockKeyOnly.add("enum", blockKeys);
         oneOf.add(blockKeyOnly);
 
-        // Add an object that maps each block key with its properties if it has one.
+        // Add an object that maps each legacyBlock key with its properties if it has one.
         JsonArray requiredObject = new JsonArray();
         requiredObject.add("type");
         requiredObject.add("properties");
@@ -76,7 +76,7 @@ public final class BlockBuilder extends SchemaBuilder {
                     } else if (property instanceof EnumProperty<?> enumProperty) {
                         propertyObject.addProperty("type", "string");
                         JsonArray enumNameArray = new JsonArray();
-                        enumProperty.getNames().forEach(enumNameArray::add);
+                        enumProperty.names().forEach(enumNameArray::add);
                         propertyObject.add("enum", enumNameArray);
                     }
                     propertiesObject.add(property.key(), propertyObject);
@@ -89,8 +89,4 @@ public final class BlockBuilder extends SchemaBuilder {
         return schema;
     }
 
-    @Override
-    protected boolean shouldRegenerate() {
-        return false;
-    }
 }

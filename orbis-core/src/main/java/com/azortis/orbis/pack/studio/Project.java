@@ -19,18 +19,25 @@
 package com.azortis.orbis.pack.studio;
 
 import com.azortis.orbis.Orbis;
+import com.azortis.orbis.pack.studio.schema.SchemaManager;
 import com.google.gson.JsonObject;
 import org.apache.commons.lang3.SystemUtils;
+import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.util.concurrent.Semaphore;
 
 /**
  * A representation of a studio project environment, manages all things from Schema generation and
- * mapping the schema to the right files, and forces registry schema's to regenerate when a new config data file
+ * mapping the schema to the right files, and forces entries schema's to regenerate when a new config data file
  * has been added, to make sure it can be referenced in other files.
+ *
+ * @since 0.3-Alpha
+ * @author Jake Nijssen
  */
 public final class Project {
 
@@ -38,22 +45,26 @@ public final class Project {
     private final File directory;
     private boolean closed = false;
 
+    private final SchemaManager schemaManager;
+    private final StudioDataAccess dataAccess;
     private final WorkspaceConfig workspaceConfig;
     private final File settingsDir;
+    private final ProjectWatcher watcher;
     private final StudioWorld studioWorld;
 
     Project(String name, File directory) throws IOException {
         this.name = name;
         this.directory = directory;
+        this.schemaManager = new SchemaManager(this);
+        this.dataAccess = new StudioDataAccess(directory);
 
         // Initialize code-workspace config for VSCode completions
-        File workspaceFile = new File(directory, name + ".code-workspace");
+        File workspaceFile = new File(directory + "/" + name + ".code-workspace");
         if (workspaceFile.exists()) {
             JsonObject existingWorkspace = Orbis.getGson().fromJson(new FileReader(workspaceFile), JsonObject.class);
-            this.workspaceConfig = new WorkspaceConfig(existingWorkspace.getAsJsonObject("settings"), workspaceFile);
+            this.workspaceConfig = new WorkspaceConfig(existingWorkspace.getAsJsonObject("settings"), this, workspaceFile);
         } else {
-            this.workspaceConfig = new WorkspaceConfig(WorkspaceConfig.DEFAULT_SETTINGS, workspaceFile);
-            this.workspaceConfig.save();
+            this.workspaceConfig = new WorkspaceConfig(WorkspaceConfig.DEFAULT_SETTINGS, this, workspaceFile);
         }
 
         this.settingsDir = new File(directory + "/.orbis/");
@@ -64,9 +75,10 @@ public final class Project {
         this.studioWorld = Orbis.getPlatform().createStudioWorld(this);
 
         // Read pack.json in order to get the Dimension file name, if none is specified the project is deemed invalid,
-        // and so we cannot load a Dimension tree yet, this means Component schema's cannot be pointed yet.
+        // and so we cannot load a Dimension tree yet, and thus not spin up a visualization.
         this.studioWorld.initialize();
 
+        this.watcher = new ProjectWatcher(this);
 
         // Open VSCode environment if the user has it enabled.
         if (Orbis.getSettings().studio().openVSCode() && SystemUtils.IS_OS_WINDOWS) {
@@ -87,6 +99,14 @@ public final class Project {
         return closed;
     }
 
+    public SchemaManager schemaManager(){
+        return schemaManager;
+    }
+
+    public StudioDataAccess dataAccess() {
+        return dataAccess;
+    }
+
     public WorkspaceConfig workspaceConfig() {
         return workspaceConfig;
     }
@@ -101,6 +121,7 @@ public final class Project {
 
     boolean close() {
         if (!closed) {
+            watcher.terminate();
             Orbis.getLogger().info("Closing project {}, clearing viewers...", name);
             studioWorld.clearViewers();
             Orbis.getLogger().info("Unloading studio world...");
@@ -111,6 +132,65 @@ public final class Project {
             }
         }
         return false;
+    }
+
+    //
+    // File change events
+    //
+
+    // To make sure only one call happens at a time.
+    private final Semaphore lock = new Semaphore(1);
+
+    /**
+     * Called when a new directory has been created.
+     *
+     * @param path The path of the directory.
+     */
+    void onDirectoryCreate(@NotNull Path path) throws InterruptedException {
+        lock.acquire();
+        // We have to re-index the entirety of the DataAccess, but not WorkspaceConfig
+        // This is because created directories do not influence existing matching rules.
+        dataAccess.reset();
+
+        doHotReload();
+        lock.release();
+    }
+
+    void onFileCreate(@NotNull Path path) throws InterruptedException {
+        lock.acquire(); // Requires only re-indexing of a Registry definition
+
+        doHotReload();
+        lock.release();
+    }
+
+    void onFileModify(@NotNull Path path) throws InterruptedException {
+        lock.acquire();
+        doHotReload(); // Just queue a hot reload.
+        lock.release();
+    }
+
+    void onDirectoryDelete(@NotNull Path path) throws InterruptedException {
+        lock.acquire();
+        // We have to re-index the entirety of DataAccess and WorkspaceConfig,
+        // because we do not know how many directories or files were deleted.
+        dataAccess.reset();
+
+        doHotReload();
+        lock.release();
+    }
+
+    void onFileDelete(@NotNull Path path) throws InterruptedException {
+        lock.acquire(); // Requires only re-indexing of a Registry definition
+
+
+        doHotReload();
+        lock.release();
+    }
+
+    private void doHotReload(){
+        if(lock.getQueueLength() == 0) {
+            studioWorld.hotReload();
+        }
     }
 
 }

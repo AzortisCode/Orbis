@@ -18,15 +18,19 @@
 
 package com.azortis.orbis.pack.data;
 
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
 import com.google.gson.JsonDeserializer;
+import org.apiguardian.api.API;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.Map;
-import java.util.Set;
 
 /**
  * A class that manages implementation specific data types that aren't used globally.
+ *
+ * @since 0.3-Alpha
+ * @author Jake Nijssen
  */
+@API(status = API.Status.EXPERIMENTAL, since = "0.3-Alpha")
 public abstract class ComponentAccess {
 
     protected final String name;
@@ -34,13 +38,16 @@ public abstract class ComponentAccess {
     protected final DataAccess dataAccess;
 
     /**
-     * Construct a ComponentAccess object.
+     * Construct a ComponentAccess object. You should never check on the nullity of name or dataAccess.
+     * As for indexing/registering purposes a dummy instance of the ComponentAccess may be created, in order to call
+     * {@link ComponentAccess#dataTypes()} & {@link ComponentAccess#adapters()}.
      *
      * @param name       The name of the instance
-     * @param parentType The type of component, must be from {@link DataAccess#ROOT_TYPES}
+     * @param parentType The type of component, must be from {@link DataAccess#GENERATOR_TYPES}
      * @param dataAccess The {@link DataAccess} instance used in the tree
+     * @since 0.3-Alpha
      */
-    protected ComponentAccess(String name, Class<?> parentType, DataAccess dataAccess) {
+    protected ComponentAccess(@NotNull String name, @NotNull Class<?> parentType, @NotNull DataAccess dataAccess) {
         this.name = name;
         this.parentType = parentType;
         this.dataAccess = dataAccess;
@@ -51,6 +58,7 @@ public abstract class ComponentAccess {
      *
      * @param type The {@link Class} of the requested type.
      * @return A full data path on where to find the requested type.
+     * @since 0.3-Alpha
      */
     @NotNull
     public String getDataPath(@NotNull Class<?> type) {
@@ -70,26 +78,32 @@ public abstract class ComponentAccess {
      * Core limitation is that no <b>single</b> path can contain multiple type of files. If using sub folders it assumes
      * that those only contain the specified type as well. Every path must begin and end with a "/" except if
      * the sub folders are searched as well.
+     * <p>
+     * All types passed here must be included in {@link ComponentAccess#dataTypes()}.
      *
      * @param type The {@link Class} of the requested type.
      * @return The data path where the specified type config files can be found.
      * @throws IllegalArgumentException If the type doesn't have a data path.
+     * @since 0.3-Alpha
      */
     protected abstract @NotNull String getTypeDataPath(@NotNull Class<?> type) throws IllegalArgumentException;
 
     /**
-     * Return a set of classes that are handled by this {@link ComponentAccess}
+     * Return a set of classes that are handled by this {@link ComponentAccess}. Should only contain
+     * types that are hosted in separate files and have their own data path.
      *
-     * @return A {@link Set} of classes that are handled in this {@link ComponentAccess}
+     * @return A {@link ImmutableSet} of classes that are handled in this {@link ComponentAccess}
+     * @since 0.3-Alpha
      */
-    public abstract @NotNull Set<Class<?>> dataTypes();
+    public abstract @NotNull ImmutableSet<Class<?>> dataTypes();
 
     /**
      * A map of {@link JsonDeserializer} that need to be added to support typed based objects
      * on component data level.
      *
      * @return A map with the {@link Class} key as the type deserialized by the specified JsonDeserializer.
+     * @since 0.3-Alpha
      */
-    public abstract @NotNull Map<Class<?>, JsonDeserializer<?>> adapters();
+    public abstract @NotNull ImmutableMap<Class<?>, JsonDeserializer<?>> adapters();
 
 }
