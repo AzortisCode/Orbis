@@ -66,8 +66,8 @@ import java.util.Map;
 /**
  * The main entry point for the Orbis dimension "library".
  *
- * @since 0.3-Alpha
  * @author Jake Nijssen
+ * @since 0.3-Alpha
  */
 @Dependency(group = "com.google.guava", artifact = "guava", version = "31.0.1-jre")
 @Dependency(group = "net.lingala.zip4j", artifact = "zip4j", version = "2.10.0")

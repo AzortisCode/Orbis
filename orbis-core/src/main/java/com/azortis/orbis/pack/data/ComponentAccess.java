@@ -27,8 +27,8 @@ import org.jetbrains.annotations.NotNull;
 /**
  * A class that manages implementation specific data types that aren't used globally.
  *
- * @since 0.3-Alpha
  * @author Jake Nijssen
+ * @since 0.3-Alpha
  */
 @API(status = API.Status.EXPERIMENTAL, since = "0.3-Alpha")
 public abstract class ComponentAccess {

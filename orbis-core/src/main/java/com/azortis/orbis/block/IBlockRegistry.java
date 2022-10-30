@@ -34,7 +34,8 @@ public interface IBlockRegistry {
      * @since 0.3-Alpha
      */
     @Contract(pure = true)
-    @NotNull ImmutableSet<Key> blockKeys();
+    @NotNull
+    ImmutableSet<Key> blockKeys();
 
     /**
      * Returns an immutable set view of all the {@link Block} on the platform.
@@ -43,7 +44,8 @@ public interface IBlockRegistry {
      * @since 0.3-Alpha
      */
     @Contract(" -> new")
-    @NotNull ImmutableSet<Block> blocks();
+    @NotNull
+    ImmutableSet<Block> blocks();
 
     /**
      * Returns an immutable set view of all the {@link BlockState} on the platform.
@@ -52,18 +54,22 @@ public interface IBlockRegistry {
      * @since 0.3-Alpha
      */
     @Contract(" -> new")
-    @NotNull ImmutableSet<BlockState> states();
+    @NotNull
+    ImmutableSet<BlockState> states();
 
     @Contract(pure = true)
     boolean containsKey(@NotNull Key key);
 
     @Contract(pure = true)
-    @NotNull Block fromKey(@NotNull Key key);
+    @NotNull
+    Block fromKey(@NotNull Key key);
 
     @Contract(pure = true)
-    @NotNull Block fromId(final int id);
+    @NotNull
+    Block fromId(final int id);
 
     @Contract(pure = true)
-    @NotNull BlockState fromStateId(final int stateId);
+    @NotNull
+    BlockState fromStateId(final int stateId);
 
 }

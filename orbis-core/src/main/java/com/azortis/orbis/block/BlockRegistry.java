@@ -29,15 +29,16 @@ import org.jetbrains.annotations.NotNull;
  * A registry responsible for retrieving {@link Block} and {@link BlockState} from the platform,
  * internally using {@link IBlockRegistry}. This class is also used for creating {@link com.azortis.orbis.block.entity.BlockEntity}'s
  *
- * @since 0.3-Alpha
  * @author Jake Nijssen
+ * @since 0.3-Alpha
  */
 @API(status = API.Status.STABLE, since = "0.3-Alpha")
 public final class BlockRegistry {
 
     private static IBlockRegistry REGISTRY = null;
 
-    private BlockRegistry(){}
+    private BlockRegistry() {
+    }
 
     /**
      * Sets the internal {@link IBlockRegistry} for this registry to delegate to.
@@ -47,7 +48,7 @@ public final class BlockRegistry {
      */
     @API(status = API.Status.INTERNAL, since = "0.3-Alpha", consumers = {"com.azortis.orbis.paper"})
     public static void init(@NotNull IBlockRegistry registry) {
-        if(REGISTRY == null) {
+        if (REGISTRY == null) {
             REGISTRY = registry;
         }
     }
@@ -86,36 +87,39 @@ public final class BlockRegistry {
     }
 
     @Contract(pure = true)
-    public static boolean containsKey(@NotNull Key key){
+    public static boolean containsKey(@NotNull Key key) {
         return REGISTRY.containsKey(key);
     }
 
     @Contract(pure = true)
-    public static @NotNull Block fromKey(@NotNull Key key) {
+    public static @NotNull Block fromKey(@NotNull Key key) throws IllegalArgumentException {
+        Preconditions.checkArgument(REGISTRY.containsKey(key), "Invalid block key!");
         return REGISTRY.fromKey(key);
     }
 
     @Contract(pure = true)
     @SuppressWarnings("PatternValidation")
-    public static boolean containsKey(@NotNull String key) {
+    public static boolean containsKey(@NotNull String key) throws IllegalArgumentException {
         Preconditions.checkArgument(key.matches("([a-z0-9_\\-.]+:)?[a-z0-9_\\-./]+"), "Invalid key string!");
         return REGISTRY.containsKey(Key.key(key));
     }
 
     @Contract(pure = true)
     @SuppressWarnings("PatternValidation")
-    public static @NotNull Block fromKey(@NotNull String key) {
+    public static @NotNull Block fromKey(@NotNull String key) throws IllegalArgumentException {
         Preconditions.checkArgument(key.matches("([a-z0-9_\\-.]+:)?[a-z0-9_\\-./]+"), "Invalid key string!");
-        return REGISTRY.fromKey(Key.key(key));
+        return fromKey(Key.key(key));
     }
 
     @Contract(pure = true)
-    public static @NotNull Block fromId(final int id) {
+    public static @NotNull Block fromId(final int id) throws IllegalArgumentException {
+        // TODO add check if id exists.
         return REGISTRY.fromId(id);
     }
 
     @Contract(pure = true)
-    public static @NotNull BlockState fromStateId(final int stateId) {
+    public static @NotNull BlockState fromStateId(final int stateId) throws IllegalArgumentException {
+        // TODO add check if state id exists.
         return REGISTRY.fromStateId(stateId);
     }
 

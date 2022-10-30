@@ -51,9 +51,9 @@ public abstract class World implements WorldAccess {
     protected WorldInfo worldInfo;
     // Status booleans
     protected boolean loaded = false;
-    private boolean installed = false;
     protected Dimension dimension;
     protected Engine engine;
+    private boolean installed = false;
 
     public World(String name, File directory) {
         this.name = name;
@@ -101,7 +101,7 @@ public abstract class World implements WorldAccess {
                 engine = new SimpleEngine(this); // TODO create actual engine impl
                 loaded = true;
             } catch (IOException | NoSuchFieldException | IllegalAccessException | InvocationTargetException |
-                    NoSuchMethodException | InstantiationException e) {
+                     NoSuchMethodException | InstantiationException e) {
                 e.printStackTrace(); // TODO catch these errors earlier in PackLoader for more constructive feedback
             }
         }

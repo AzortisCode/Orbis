@@ -33,14 +33,14 @@ import java.lang.ref.WeakReference;
  * <p><b>Note</b> uses a {@link WeakReference} to a world, if the world is not present, this location will be
  * invalid for operations.</p>
  *
- * @since 0.3-Alpha
- * @author Jake Nijssen
- * @param x The x-coordinate.
- * @param y The y-coordinate.
- * @param z The z-coordinate.
- * @param yaw The yaw rotation.
+ * @param x     The x-coordinate.
+ * @param y     The y-coordinate.
+ * @param z     The z-coordinate.
+ * @param yaw   The yaw rotation.
  * @param pitch The pitch rotation.
  * @param world The WorldAccess instance of the location.
+ * @author Jake Nijssen
+ * @since 0.3-Alpha
  */
 @API(status = API.Status.STABLE, since = "0.3-Alpha")
 public record Location(double x, double y, double z, float yaw, float pitch,
@@ -70,6 +70,17 @@ public record Location(double x, double y, double z, float yaw, float pitch,
         WorldAccess world = this.world.get();
         if (world == null) throw new IllegalStateException("World not loaded.");
         return world;
+    }
+
+    /**
+     * Get a new {@link Location} from this instance with the specified {@link WorldAccess}.
+     *
+     * @param world The world to change.
+     * @return A new Location object from this one with specified world.
+     */
+    @Contract("_ -> new")
+    public @NotNull Location setWorld(@NotNull WorldAccess world) {
+        return new Location(x, y, z, yaw, pitch, new WeakReference<>(world));
     }
 
     /**
@@ -143,24 +154,13 @@ public record Location(double x, double y, double z, float yaw, float pitch,
     /**
      * Get a new {@link Location} from this instance with the specified rotations.
      *
-     * @param yaw The yow rotation to change.
+     * @param yaw   The yow rotation to change.
      * @param pitch The pitch rotation to change.
      * @return A new Location object from this one with specified rotations.
      */
     @Contract("_, _ -> new")
     public @NotNull Location setRotation(float yaw, float pitch) {
         return new Location(x, y, z, yaw, pitch, world);
-    }
-
-    /**
-     * Get a new {@link Location} from this instance with the specified {@link WorldAccess}.
-     *
-     * @param world The world to change.
-     * @return A new Location object from this one with specified world.
-     */
-    @Contract("_ -> new")
-    public @NotNull Location setWorld(@NotNull WorldAccess world) {
-        return new Location(x, y, z, yaw, pitch, new WeakReference<>(world));
     }
 
     /**

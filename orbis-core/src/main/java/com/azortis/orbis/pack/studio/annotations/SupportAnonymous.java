@@ -28,8 +28,8 @@ import java.lang.annotation.*;
  * meaning that that field won't be required in embedded environments, but still will be in environments where it is a
  * standalone file.
  *
- * @since 0.3-Alpha
  * @author Jake Nijssen
+ * @since 0.3-Alpha
  */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)

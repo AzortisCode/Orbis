@@ -82,5 +82,4 @@ public class PaperCrossbowMeta extends PaperItemMeta implements CrossbowMeta {
     }*/
 
 
-
 }

@@ -16,14 +16,9 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.item;
+package com.azortis.orbis.inventory;
 
-public enum ItemFlag {
-    HIDE_ENCHANTS,
-    HIDE_ATTRIBUTES,
-    HIDE_UNBREAKABLE,
-    HIDE_CAN_DESTROY,
-    HIDE_CAN_PLACE,
-    HIDE_MISCELLANEOUS,
-    HIDE_DYE
+public interface Item {
+
+
 }

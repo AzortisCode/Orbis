@@ -36,8 +36,8 @@ import java.util.concurrent.Semaphore;
  * mapping the schema to the right files, and forces entries schema's to regenerate when a new config data file
  * has been added, to make sure it can be referenced in other files.
  *
- * @since 0.3-Alpha
  * @author Jake Nijssen
+ * @since 0.3-Alpha
  */
 public final class Project {
 
@@ -99,7 +99,7 @@ public final class Project {
         return closed;
     }
 
-    public SchemaManager schemaManager(){
+    public SchemaManager schemaManager() {
         return schemaManager;
     }
 
@@ -187,8 +187,8 @@ public final class Project {
         lock.release();
     }
 
-    private void doHotReload(){
-        if(lock.getQueueLength() == 0) {
+    private void doHotReload() {
+        if (lock.getQueueLength() == 0) {
             studioWorld.hotReload();
         }
     }

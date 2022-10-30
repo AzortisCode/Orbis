@@ -27,8 +27,8 @@ import org.jetbrains.annotations.NotNull;
 /**
  * The Paper platform implementation for {@link Scheduler}.
  *
- * @since 0.3-Alpha
  * @author Jake Nijssen
+ * @since 0.3-Alpha
  */
 public final class PaperScheduler implements Scheduler {
 
@@ -51,8 +51,8 @@ public final class PaperScheduler implements Scheduler {
     /**
      * The Paper platform implementation for {@link Scheduler.Task}.
      *
-     * @since 0.3-Alpha
      * @author Jake Nijssen
+     * @since 0.3-Alpha
      */
     public static final class Task implements Scheduler.Task {
         private final int id;

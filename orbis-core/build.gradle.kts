@@ -64,7 +64,7 @@ dependencies {
     compileOnly("net.kyori:adventure-nbt:4.11.0")
     compileOnly("net.kyori:adventure-text-minimessage:4.11.0")
     compileOnly("it.unimi.dsi:fastutil:8.5.6")
-    compileOnly("com.google.code.gson:gson:2.8.9")
+    compileOnly("com.google.code.gson:gson:2.10")
     compileOnly("org.slf4j:slf4j-api:1.7.31")
     compileOnly("commons-io:commons-io:2.8.0")
     compileOnly("org.jetbrains:annotations:16.0.1")

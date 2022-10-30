@@ -25,2802 +25,2802 @@ import org.jetbrains.annotations.NotNull;
  */
 @SuppressWarnings("all")
 public final class Blocks {
-  @NotNull
-  public static final Block AIR = Block.fromKey("minecraft:air");
+    @NotNull
+    public static final Block AIR = Block.fromKey("minecraft:air");
 
-  @NotNull
-  public static final Block STONE = Block.fromKey("minecraft:stone");
+    @NotNull
+    public static final Block STONE = Block.fromKey("minecraft:stone");
 
-  @NotNull
-  public static final Block GRANITE = Block.fromKey("minecraft:granite");
+    @NotNull
+    public static final Block GRANITE = Block.fromKey("minecraft:granite");
 
-  @NotNull
-  public static final Block POLISHED_GRANITE = Block.fromKey("minecraft:polished_granite");
+    @NotNull
+    public static final Block POLISHED_GRANITE = Block.fromKey("minecraft:polished_granite");
 
-  @NotNull
-  public static final Block DIORITE = Block.fromKey("minecraft:diorite");
+    @NotNull
+    public static final Block DIORITE = Block.fromKey("minecraft:diorite");
 
-  @NotNull
-  public static final Block POLISHED_DIORITE = Block.fromKey("minecraft:polished_diorite");
+    @NotNull
+    public static final Block POLISHED_DIORITE = Block.fromKey("minecraft:polished_diorite");
 
-  @NotNull
-  public static final Block ANDESITE = Block.fromKey("minecraft:andesite");
+    @NotNull
+    public static final Block ANDESITE = Block.fromKey("minecraft:andesite");
 
-  @NotNull
-  public static final Block POLISHED_ANDESITE = Block.fromKey("minecraft:polished_andesite");
+    @NotNull
+    public static final Block POLISHED_ANDESITE = Block.fromKey("minecraft:polished_andesite");
 
-  @NotNull
-  public static final Block GRASS_BLOCK = Block.fromKey("minecraft:grass_block");
+    @NotNull
+    public static final Block GRASS_BLOCK = Block.fromKey("minecraft:grass_block");
 
-  @NotNull
-  public static final Block DIRT = Block.fromKey("minecraft:dirt");
+    @NotNull
+    public static final Block DIRT = Block.fromKey("minecraft:dirt");
 
-  @NotNull
-  public static final Block COARSE_DIRT = Block.fromKey("minecraft:coarse_dirt");
+    @NotNull
+    public static final Block COARSE_DIRT = Block.fromKey("minecraft:coarse_dirt");
 
-  @NotNull
-  public static final Block PODZOL = Block.fromKey("minecraft:podzol");
+    @NotNull
+    public static final Block PODZOL = Block.fromKey("minecraft:podzol");
 
-  @NotNull
-  public static final Block COBBLESTONE = Block.fromKey("minecraft:cobblestone");
+    @NotNull
+    public static final Block COBBLESTONE = Block.fromKey("minecraft:cobblestone");
 
-  @NotNull
-  public static final Block OAK_PLANKS = Block.fromKey("minecraft:oak_planks");
+    @NotNull
+    public static final Block OAK_PLANKS = Block.fromKey("minecraft:oak_planks");
 
-  @NotNull
-  public static final Block SPRUCE_PLANKS = Block.fromKey("minecraft:spruce_planks");
+    @NotNull
+    public static final Block SPRUCE_PLANKS = Block.fromKey("minecraft:spruce_planks");
 
-  @NotNull
-  public static final Block BIRCH_PLANKS = Block.fromKey("minecraft:birch_planks");
+    @NotNull
+    public static final Block BIRCH_PLANKS = Block.fromKey("minecraft:birch_planks");
 
-  @NotNull
-  public static final Block JUNGLE_PLANKS = Block.fromKey("minecraft:jungle_planks");
+    @NotNull
+    public static final Block JUNGLE_PLANKS = Block.fromKey("minecraft:jungle_planks");
 
-  @NotNull
-  public static final Block ACACIA_PLANKS = Block.fromKey("minecraft:acacia_planks");
+    @NotNull
+    public static final Block ACACIA_PLANKS = Block.fromKey("minecraft:acacia_planks");
 
-  @NotNull
-  public static final Block DARK_OAK_PLANKS = Block.fromKey("minecraft:dark_oak_planks");
+    @NotNull
+    public static final Block DARK_OAK_PLANKS = Block.fromKey("minecraft:dark_oak_planks");
 
-  @NotNull
-  public static final Block MANGROVE_PLANKS = Block.fromKey("minecraft:mangrove_planks");
+    @NotNull
+    public static final Block MANGROVE_PLANKS = Block.fromKey("minecraft:mangrove_planks");
 
-  @NotNull
-  public static final Block OAK_SAPLING = Block.fromKey("minecraft:oak_sapling");
+    @NotNull
+    public static final Block OAK_SAPLING = Block.fromKey("minecraft:oak_sapling");
 
-  @NotNull
-  public static final Block SPRUCE_SAPLING = Block.fromKey("minecraft:spruce_sapling");
+    @NotNull
+    public static final Block SPRUCE_SAPLING = Block.fromKey("minecraft:spruce_sapling");
 
-  @NotNull
-  public static final Block BIRCH_SAPLING = Block.fromKey("minecraft:birch_sapling");
+    @NotNull
+    public static final Block BIRCH_SAPLING = Block.fromKey("minecraft:birch_sapling");
 
-  @NotNull
-  public static final Block JUNGLE_SAPLING = Block.fromKey("minecraft:jungle_sapling");
+    @NotNull
+    public static final Block JUNGLE_SAPLING = Block.fromKey("minecraft:jungle_sapling");
 
-  @NotNull
-  public static final Block ACACIA_SAPLING = Block.fromKey("minecraft:acacia_sapling");
+    @NotNull
+    public static final Block ACACIA_SAPLING = Block.fromKey("minecraft:acacia_sapling");
 
-  @NotNull
-  public static final Block DARK_OAK_SAPLING = Block.fromKey("minecraft:dark_oak_sapling");
+    @NotNull
+    public static final Block DARK_OAK_SAPLING = Block.fromKey("minecraft:dark_oak_sapling");
 
-  @NotNull
-  public static final Block MANGROVE_PROPAGULE = Block.fromKey("minecraft:mangrove_propagule");
+    @NotNull
+    public static final Block MANGROVE_PROPAGULE = Block.fromKey("minecraft:mangrove_propagule");
 
-  @NotNull
-  public static final Block BEDROCK = Block.fromKey("minecraft:bedrock");
+    @NotNull
+    public static final Block BEDROCK = Block.fromKey("minecraft:bedrock");
 
-  @NotNull
-  public static final Block WATER = Block.fromKey("minecraft:water");
+    @NotNull
+    public static final Block WATER = Block.fromKey("minecraft:water");
 
-  @NotNull
-  public static final Block LAVA = Block.fromKey("minecraft:lava");
+    @NotNull
+    public static final Block LAVA = Block.fromKey("minecraft:lava");
 
-  @NotNull
-  public static final Block SAND = Block.fromKey("minecraft:sand");
+    @NotNull
+    public static final Block SAND = Block.fromKey("minecraft:sand");
 
-  @NotNull
-  public static final Block RED_SAND = Block.fromKey("minecraft:red_sand");
+    @NotNull
+    public static final Block RED_SAND = Block.fromKey("minecraft:red_sand");
 
-  @NotNull
-  public static final Block GRAVEL = Block.fromKey("minecraft:gravel");
+    @NotNull
+    public static final Block GRAVEL = Block.fromKey("minecraft:gravel");
 
-  @NotNull
-  public static final Block GOLD_ORE = Block.fromKey("minecraft:gold_ore");
+    @NotNull
+    public static final Block GOLD_ORE = Block.fromKey("minecraft:gold_ore");
 
-  @NotNull
-  public static final Block DEEPSLATE_GOLD_ORE = Block.fromKey("minecraft:deepslate_gold_ore");
+    @NotNull
+    public static final Block DEEPSLATE_GOLD_ORE = Block.fromKey("minecraft:deepslate_gold_ore");
 
-  @NotNull
-  public static final Block IRON_ORE = Block.fromKey("minecraft:iron_ore");
+    @NotNull
+    public static final Block IRON_ORE = Block.fromKey("minecraft:iron_ore");
 
-  @NotNull
-  public static final Block DEEPSLATE_IRON_ORE = Block.fromKey("minecraft:deepslate_iron_ore");
+    @NotNull
+    public static final Block DEEPSLATE_IRON_ORE = Block.fromKey("minecraft:deepslate_iron_ore");
 
-  @NotNull
-  public static final Block COAL_ORE = Block.fromKey("minecraft:coal_ore");
+    @NotNull
+    public static final Block COAL_ORE = Block.fromKey("minecraft:coal_ore");
 
-  @NotNull
-  public static final Block DEEPSLATE_COAL_ORE = Block.fromKey("minecraft:deepslate_coal_ore");
+    @NotNull
+    public static final Block DEEPSLATE_COAL_ORE = Block.fromKey("minecraft:deepslate_coal_ore");
 
-  @NotNull
-  public static final Block NETHER_GOLD_ORE = Block.fromKey("minecraft:nether_gold_ore");
+    @NotNull
+    public static final Block NETHER_GOLD_ORE = Block.fromKey("minecraft:nether_gold_ore");
 
-  @NotNull
-  public static final Block OAK_LOG = Block.fromKey("minecraft:oak_log");
+    @NotNull
+    public static final Block OAK_LOG = Block.fromKey("minecraft:oak_log");
 
-  @NotNull
-  public static final Block SPRUCE_LOG = Block.fromKey("minecraft:spruce_log");
+    @NotNull
+    public static final Block SPRUCE_LOG = Block.fromKey("minecraft:spruce_log");
 
-  @NotNull
-  public static final Block BIRCH_LOG = Block.fromKey("minecraft:birch_log");
+    @NotNull
+    public static final Block BIRCH_LOG = Block.fromKey("minecraft:birch_log");
 
-  @NotNull
-  public static final Block JUNGLE_LOG = Block.fromKey("minecraft:jungle_log");
+    @NotNull
+    public static final Block JUNGLE_LOG = Block.fromKey("minecraft:jungle_log");
 
-  @NotNull
-  public static final Block ACACIA_LOG = Block.fromKey("minecraft:acacia_log");
+    @NotNull
+    public static final Block ACACIA_LOG = Block.fromKey("minecraft:acacia_log");
 
-  @NotNull
-  public static final Block DARK_OAK_LOG = Block.fromKey("minecraft:dark_oak_log");
+    @NotNull
+    public static final Block DARK_OAK_LOG = Block.fromKey("minecraft:dark_oak_log");
 
-  @NotNull
-  public static final Block MANGROVE_LOG = Block.fromKey("minecraft:mangrove_log");
+    @NotNull
+    public static final Block MANGROVE_LOG = Block.fromKey("minecraft:mangrove_log");
 
-  @NotNull
-  public static final Block MANGROVE_ROOTS = Block.fromKey("minecraft:mangrove_roots");
+    @NotNull
+    public static final Block MANGROVE_ROOTS = Block.fromKey("minecraft:mangrove_roots");
 
-  @NotNull
-  public static final Block MUDDY_MANGROVE_ROOTS = Block.fromKey("minecraft:muddy_mangrove_roots");
+    @NotNull
+    public static final Block MUDDY_MANGROVE_ROOTS = Block.fromKey("minecraft:muddy_mangrove_roots");
 
-  @NotNull
-  public static final Block STRIPPED_SPRUCE_LOG = Block.fromKey("minecraft:stripped_spruce_log");
+    @NotNull
+    public static final Block STRIPPED_SPRUCE_LOG = Block.fromKey("minecraft:stripped_spruce_log");
 
-  @NotNull
-  public static final Block STRIPPED_BIRCH_LOG = Block.fromKey("minecraft:stripped_birch_log");
+    @NotNull
+    public static final Block STRIPPED_BIRCH_LOG = Block.fromKey("minecraft:stripped_birch_log");
 
-  @NotNull
-  public static final Block STRIPPED_JUNGLE_LOG = Block.fromKey("minecraft:stripped_jungle_log");
+    @NotNull
+    public static final Block STRIPPED_JUNGLE_LOG = Block.fromKey("minecraft:stripped_jungle_log");
 
-  @NotNull
-  public static final Block STRIPPED_ACACIA_LOG = Block.fromKey("minecraft:stripped_acacia_log");
+    @NotNull
+    public static final Block STRIPPED_ACACIA_LOG = Block.fromKey("minecraft:stripped_acacia_log");
 
-  @NotNull
-  public static final Block STRIPPED_DARK_OAK_LOG = Block.fromKey("minecraft:stripped_dark_oak_log");
+    @NotNull
+    public static final Block STRIPPED_DARK_OAK_LOG = Block.fromKey("minecraft:stripped_dark_oak_log");
 
-  @NotNull
-  public static final Block STRIPPED_OAK_LOG = Block.fromKey("minecraft:stripped_oak_log");
+    @NotNull
+    public static final Block STRIPPED_OAK_LOG = Block.fromKey("minecraft:stripped_oak_log");
 
-  @NotNull
-  public static final Block STRIPPED_MANGROVE_LOG = Block.fromKey("minecraft:stripped_mangrove_log");
+    @NotNull
+    public static final Block STRIPPED_MANGROVE_LOG = Block.fromKey("minecraft:stripped_mangrove_log");
 
-  @NotNull
-  public static final Block OAK_WOOD = Block.fromKey("minecraft:oak_wood");
+    @NotNull
+    public static final Block OAK_WOOD = Block.fromKey("minecraft:oak_wood");
 
-  @NotNull
-  public static final Block SPRUCE_WOOD = Block.fromKey("minecraft:spruce_wood");
+    @NotNull
+    public static final Block SPRUCE_WOOD = Block.fromKey("minecraft:spruce_wood");
 
-  @NotNull
-  public static final Block BIRCH_WOOD = Block.fromKey("minecraft:birch_wood");
+    @NotNull
+    public static final Block BIRCH_WOOD = Block.fromKey("minecraft:birch_wood");
 
-  @NotNull
-  public static final Block JUNGLE_WOOD = Block.fromKey("minecraft:jungle_wood");
+    @NotNull
+    public static final Block JUNGLE_WOOD = Block.fromKey("minecraft:jungle_wood");
 
-  @NotNull
-  public static final Block ACACIA_WOOD = Block.fromKey("minecraft:acacia_wood");
+    @NotNull
+    public static final Block ACACIA_WOOD = Block.fromKey("minecraft:acacia_wood");
 
-  @NotNull
-  public static final Block DARK_OAK_WOOD = Block.fromKey("minecraft:dark_oak_wood");
+    @NotNull
+    public static final Block DARK_OAK_WOOD = Block.fromKey("minecraft:dark_oak_wood");
 
-  @NotNull
-  public static final Block MANGROVE_WOOD = Block.fromKey("minecraft:mangrove_wood");
+    @NotNull
+    public static final Block MANGROVE_WOOD = Block.fromKey("minecraft:mangrove_wood");
 
-  @NotNull
-  public static final Block STRIPPED_OAK_WOOD = Block.fromKey("minecraft:stripped_oak_wood");
+    @NotNull
+    public static final Block STRIPPED_OAK_WOOD = Block.fromKey("minecraft:stripped_oak_wood");
 
-  @NotNull
-  public static final Block STRIPPED_SPRUCE_WOOD = Block.fromKey("minecraft:stripped_spruce_wood");
+    @NotNull
+    public static final Block STRIPPED_SPRUCE_WOOD = Block.fromKey("minecraft:stripped_spruce_wood");
 
-  @NotNull
-  public static final Block STRIPPED_BIRCH_WOOD = Block.fromKey("minecraft:stripped_birch_wood");
+    @NotNull
+    public static final Block STRIPPED_BIRCH_WOOD = Block.fromKey("minecraft:stripped_birch_wood");
 
-  @NotNull
-  public static final Block STRIPPED_JUNGLE_WOOD = Block.fromKey("minecraft:stripped_jungle_wood");
+    @NotNull
+    public static final Block STRIPPED_JUNGLE_WOOD = Block.fromKey("minecraft:stripped_jungle_wood");
 
-  @NotNull
-  public static final Block STRIPPED_ACACIA_WOOD = Block.fromKey("minecraft:stripped_acacia_wood");
+    @NotNull
+    public static final Block STRIPPED_ACACIA_WOOD = Block.fromKey("minecraft:stripped_acacia_wood");
 
-  @NotNull
-  public static final Block STRIPPED_DARK_OAK_WOOD = Block.fromKey("minecraft:stripped_dark_oak_wood");
+    @NotNull
+    public static final Block STRIPPED_DARK_OAK_WOOD = Block.fromKey("minecraft:stripped_dark_oak_wood");
 
-  @NotNull
-  public static final Block STRIPPED_MANGROVE_WOOD = Block.fromKey("minecraft:stripped_mangrove_wood");
+    @NotNull
+    public static final Block STRIPPED_MANGROVE_WOOD = Block.fromKey("minecraft:stripped_mangrove_wood");
 
-  @NotNull
-  public static final Block OAK_LEAVES = Block.fromKey("minecraft:oak_leaves");
+    @NotNull
+    public static final Block OAK_LEAVES = Block.fromKey("minecraft:oak_leaves");
 
-  @NotNull
-  public static final Block SPRUCE_LEAVES = Block.fromKey("minecraft:spruce_leaves");
+    @NotNull
+    public static final Block SPRUCE_LEAVES = Block.fromKey("minecraft:spruce_leaves");
 
-  @NotNull
-  public static final Block BIRCH_LEAVES = Block.fromKey("minecraft:birch_leaves");
+    @NotNull
+    public static final Block BIRCH_LEAVES = Block.fromKey("minecraft:birch_leaves");
 
-  @NotNull
-  public static final Block JUNGLE_LEAVES = Block.fromKey("minecraft:jungle_leaves");
+    @NotNull
+    public static final Block JUNGLE_LEAVES = Block.fromKey("minecraft:jungle_leaves");
 
-  @NotNull
-  public static final Block ACACIA_LEAVES = Block.fromKey("minecraft:acacia_leaves");
+    @NotNull
+    public static final Block ACACIA_LEAVES = Block.fromKey("minecraft:acacia_leaves");
 
-  @NotNull
-  public static final Block DARK_OAK_LEAVES = Block.fromKey("minecraft:dark_oak_leaves");
+    @NotNull
+    public static final Block DARK_OAK_LEAVES = Block.fromKey("minecraft:dark_oak_leaves");
 
-  @NotNull
-  public static final Block MANGROVE_LEAVES = Block.fromKey("minecraft:mangrove_leaves");
+    @NotNull
+    public static final Block MANGROVE_LEAVES = Block.fromKey("minecraft:mangrove_leaves");
 
-  @NotNull
-  public static final Block AZALEA_LEAVES = Block.fromKey("minecraft:azalea_leaves");
+    @NotNull
+    public static final Block AZALEA_LEAVES = Block.fromKey("minecraft:azalea_leaves");
 
-  @NotNull
-  public static final Block FLOWERING_AZALEA_LEAVES = Block.fromKey("minecraft:flowering_azalea_leaves");
+    @NotNull
+    public static final Block FLOWERING_AZALEA_LEAVES = Block.fromKey("minecraft:flowering_azalea_leaves");
 
-  @NotNull
-  public static final Block SPONGE = Block.fromKey("minecraft:sponge");
+    @NotNull
+    public static final Block SPONGE = Block.fromKey("minecraft:sponge");
 
-  @NotNull
-  public static final Block WET_SPONGE = Block.fromKey("minecraft:wet_sponge");
+    @NotNull
+    public static final Block WET_SPONGE = Block.fromKey("minecraft:wet_sponge");
 
-  @NotNull
-  public static final Block GLASS = Block.fromKey("minecraft:glass");
+    @NotNull
+    public static final Block GLASS = Block.fromKey("minecraft:glass");
 
-  @NotNull
-  public static final Block LAPIS_ORE = Block.fromKey("minecraft:lapis_ore");
+    @NotNull
+    public static final Block LAPIS_ORE = Block.fromKey("minecraft:lapis_ore");
 
-  @NotNull
-  public static final Block DEEPSLATE_LAPIS_ORE = Block.fromKey("minecraft:deepslate_lapis_ore");
+    @NotNull
+    public static final Block DEEPSLATE_LAPIS_ORE = Block.fromKey("minecraft:deepslate_lapis_ore");
 
-  @NotNull
-  public static final Block LAPIS_BLOCK = Block.fromKey("minecraft:lapis_block");
+    @NotNull
+    public static final Block LAPIS_BLOCK = Block.fromKey("minecraft:lapis_block");
 
-  @NotNull
-  public static final Block DISPENSER = Block.fromKey("minecraft:dispenser");
+    @NotNull
+    public static final Block DISPENSER = Block.fromKey("minecraft:dispenser");
 
-  @NotNull
-  public static final Block SANDSTONE = Block.fromKey("minecraft:sandstone");
+    @NotNull
+    public static final Block SANDSTONE = Block.fromKey("minecraft:sandstone");
 
-  @NotNull
-  public static final Block CHISELED_SANDSTONE = Block.fromKey("minecraft:chiseled_sandstone");
+    @NotNull
+    public static final Block CHISELED_SANDSTONE = Block.fromKey("minecraft:chiseled_sandstone");
 
-  @NotNull
-  public static final Block CUT_SANDSTONE = Block.fromKey("minecraft:cut_sandstone");
+    @NotNull
+    public static final Block CUT_SANDSTONE = Block.fromKey("minecraft:cut_sandstone");
 
-  @NotNull
-  public static final Block NOTE_BLOCK = Block.fromKey("minecraft:note_block");
+    @NotNull
+    public static final Block NOTE_BLOCK = Block.fromKey("minecraft:note_block");
 
-  @NotNull
-  public static final Block WHITE_BED = Block.fromKey("minecraft:white_bed");
+    @NotNull
+    public static final Block WHITE_BED = Block.fromKey("minecraft:white_bed");
 
-  @NotNull
-  public static final Block ORANGE_BED = Block.fromKey("minecraft:orange_bed");
+    @NotNull
+    public static final Block ORANGE_BED = Block.fromKey("minecraft:orange_bed");
 
-  @NotNull
-  public static final Block MAGENTA_BED = Block.fromKey("minecraft:magenta_bed");
+    @NotNull
+    public static final Block MAGENTA_BED = Block.fromKey("minecraft:magenta_bed");
 
-  @NotNull
-  public static final Block LIGHT_BLUE_BED = Block.fromKey("minecraft:light_blue_bed");
+    @NotNull
+    public static final Block LIGHT_BLUE_BED = Block.fromKey("minecraft:light_blue_bed");
 
-  @NotNull
-  public static final Block YELLOW_BED = Block.fromKey("minecraft:yellow_bed");
+    @NotNull
+    public static final Block YELLOW_BED = Block.fromKey("minecraft:yellow_bed");
 
-  @NotNull
-  public static final Block LIME_BED = Block.fromKey("minecraft:lime_bed");
+    @NotNull
+    public static final Block LIME_BED = Block.fromKey("minecraft:lime_bed");
 
-  @NotNull
-  public static final Block PINK_BED = Block.fromKey("minecraft:pink_bed");
+    @NotNull
+    public static final Block PINK_BED = Block.fromKey("minecraft:pink_bed");
 
-  @NotNull
-  public static final Block GRAY_BED = Block.fromKey("minecraft:gray_bed");
+    @NotNull
+    public static final Block GRAY_BED = Block.fromKey("minecraft:gray_bed");
 
-  @NotNull
-  public static final Block LIGHT_GRAY_BED = Block.fromKey("minecraft:light_gray_bed");
+    @NotNull
+    public static final Block LIGHT_GRAY_BED = Block.fromKey("minecraft:light_gray_bed");
 
-  @NotNull
-  public static final Block CYAN_BED = Block.fromKey("minecraft:cyan_bed");
+    @NotNull
+    public static final Block CYAN_BED = Block.fromKey("minecraft:cyan_bed");
 
-  @NotNull
-  public static final Block PURPLE_BED = Block.fromKey("minecraft:purple_bed");
+    @NotNull
+    public static final Block PURPLE_BED = Block.fromKey("minecraft:purple_bed");
 
-  @NotNull
-  public static final Block BLUE_BED = Block.fromKey("minecraft:blue_bed");
+    @NotNull
+    public static final Block BLUE_BED = Block.fromKey("minecraft:blue_bed");
 
-  @NotNull
-  public static final Block BROWN_BED = Block.fromKey("minecraft:brown_bed");
+    @NotNull
+    public static final Block BROWN_BED = Block.fromKey("minecraft:brown_bed");
 
-  @NotNull
-  public static final Block GREEN_BED = Block.fromKey("minecraft:green_bed");
+    @NotNull
+    public static final Block GREEN_BED = Block.fromKey("minecraft:green_bed");
 
-  @NotNull
-  public static final Block RED_BED = Block.fromKey("minecraft:red_bed");
+    @NotNull
+    public static final Block RED_BED = Block.fromKey("minecraft:red_bed");
 
-  @NotNull
-  public static final Block BLACK_BED = Block.fromKey("minecraft:black_bed");
+    @NotNull
+    public static final Block BLACK_BED = Block.fromKey("minecraft:black_bed");
 
-  @NotNull
-  public static final Block POWERED_RAIL = Block.fromKey("minecraft:powered_rail");
+    @NotNull
+    public static final Block POWERED_RAIL = Block.fromKey("minecraft:powered_rail");
 
-  @NotNull
-  public static final Block DETECTOR_RAIL = Block.fromKey("minecraft:detector_rail");
+    @NotNull
+    public static final Block DETECTOR_RAIL = Block.fromKey("minecraft:detector_rail");
 
-  @NotNull
-  public static final Block STICKY_PISTON = Block.fromKey("minecraft:sticky_piston");
+    @NotNull
+    public static final Block STICKY_PISTON = Block.fromKey("minecraft:sticky_piston");
 
-  @NotNull
-  public static final Block COBWEB = Block.fromKey("minecraft:cobweb");
+    @NotNull
+    public static final Block COBWEB = Block.fromKey("minecraft:cobweb");
 
-  @NotNull
-  public static final Block GRASS = Block.fromKey("minecraft:grass");
+    @NotNull
+    public static final Block GRASS = Block.fromKey("minecraft:grass");
 
-  @NotNull
-  public static final Block FERN = Block.fromKey("minecraft:fern");
+    @NotNull
+    public static final Block FERN = Block.fromKey("minecraft:fern");
 
-  @NotNull
-  public static final Block DEAD_BUSH = Block.fromKey("minecraft:dead_bush");
+    @NotNull
+    public static final Block DEAD_BUSH = Block.fromKey("minecraft:dead_bush");
 
-  @NotNull
-  public static final Block SEAGRASS = Block.fromKey("minecraft:seagrass");
+    @NotNull
+    public static final Block SEAGRASS = Block.fromKey("minecraft:seagrass");
 
-  @NotNull
-  public static final Block TALL_SEAGRASS = Block.fromKey("minecraft:tall_seagrass");
+    @NotNull
+    public static final Block TALL_SEAGRASS = Block.fromKey("minecraft:tall_seagrass");
 
-  @NotNull
-  public static final Block PISTON = Block.fromKey("minecraft:piston");
+    @NotNull
+    public static final Block PISTON = Block.fromKey("minecraft:piston");
 
-  @NotNull
-  public static final Block PISTON_HEAD = Block.fromKey("minecraft:piston_head");
+    @NotNull
+    public static final Block PISTON_HEAD = Block.fromKey("minecraft:piston_head");
 
-  @NotNull
-  public static final Block WHITE_WOOL = Block.fromKey("minecraft:white_wool");
+    @NotNull
+    public static final Block WHITE_WOOL = Block.fromKey("minecraft:white_wool");
 
-  @NotNull
-  public static final Block ORANGE_WOOL = Block.fromKey("minecraft:orange_wool");
+    @NotNull
+    public static final Block ORANGE_WOOL = Block.fromKey("minecraft:orange_wool");
 
-  @NotNull
-  public static final Block MAGENTA_WOOL = Block.fromKey("minecraft:magenta_wool");
+    @NotNull
+    public static final Block MAGENTA_WOOL = Block.fromKey("minecraft:magenta_wool");
 
-  @NotNull
-  public static final Block LIGHT_BLUE_WOOL = Block.fromKey("minecraft:light_blue_wool");
+    @NotNull
+    public static final Block LIGHT_BLUE_WOOL = Block.fromKey("minecraft:light_blue_wool");
 
-  @NotNull
-  public static final Block YELLOW_WOOL = Block.fromKey("minecraft:yellow_wool");
+    @NotNull
+    public static final Block YELLOW_WOOL = Block.fromKey("minecraft:yellow_wool");
 
-  @NotNull
-  public static final Block LIME_WOOL = Block.fromKey("minecraft:lime_wool");
+    @NotNull
+    public static final Block LIME_WOOL = Block.fromKey("minecraft:lime_wool");
 
-  @NotNull
-  public static final Block PINK_WOOL = Block.fromKey("minecraft:pink_wool");
+    @NotNull
+    public static final Block PINK_WOOL = Block.fromKey("minecraft:pink_wool");
 
-  @NotNull
-  public static final Block GRAY_WOOL = Block.fromKey("minecraft:gray_wool");
+    @NotNull
+    public static final Block GRAY_WOOL = Block.fromKey("minecraft:gray_wool");
 
-  @NotNull
-  public static final Block LIGHT_GRAY_WOOL = Block.fromKey("minecraft:light_gray_wool");
+    @NotNull
+    public static final Block LIGHT_GRAY_WOOL = Block.fromKey("minecraft:light_gray_wool");
 
-  @NotNull
-  public static final Block CYAN_WOOL = Block.fromKey("minecraft:cyan_wool");
+    @NotNull
+    public static final Block CYAN_WOOL = Block.fromKey("minecraft:cyan_wool");
 
-  @NotNull
-  public static final Block PURPLE_WOOL = Block.fromKey("minecraft:purple_wool");
+    @NotNull
+    public static final Block PURPLE_WOOL = Block.fromKey("minecraft:purple_wool");
 
-  @NotNull
-  public static final Block BLUE_WOOL = Block.fromKey("minecraft:blue_wool");
+    @NotNull
+    public static final Block BLUE_WOOL = Block.fromKey("minecraft:blue_wool");
 
-  @NotNull
-  public static final Block BROWN_WOOL = Block.fromKey("minecraft:brown_wool");
+    @NotNull
+    public static final Block BROWN_WOOL = Block.fromKey("minecraft:brown_wool");
 
-  @NotNull
-  public static final Block GREEN_WOOL = Block.fromKey("minecraft:green_wool");
+    @NotNull
+    public static final Block GREEN_WOOL = Block.fromKey("minecraft:green_wool");
 
-  @NotNull
-  public static final Block RED_WOOL = Block.fromKey("minecraft:red_wool");
+    @NotNull
+    public static final Block RED_WOOL = Block.fromKey("minecraft:red_wool");
 
-  @NotNull
-  public static final Block BLACK_WOOL = Block.fromKey("minecraft:black_wool");
+    @NotNull
+    public static final Block BLACK_WOOL = Block.fromKey("minecraft:black_wool");
 
-  @NotNull
-  public static final Block MOVING_PISTON = Block.fromKey("minecraft:moving_piston");
+    @NotNull
+    public static final Block MOVING_PISTON = Block.fromKey("minecraft:moving_piston");
 
-  @NotNull
-  public static final Block DANDELION = Block.fromKey("minecraft:dandelion");
+    @NotNull
+    public static final Block DANDELION = Block.fromKey("minecraft:dandelion");
 
-  @NotNull
-  public static final Block POPPY = Block.fromKey("minecraft:poppy");
+    @NotNull
+    public static final Block POPPY = Block.fromKey("minecraft:poppy");
 
-  @NotNull
-  public static final Block BLUE_ORCHID = Block.fromKey("minecraft:blue_orchid");
+    @NotNull
+    public static final Block BLUE_ORCHID = Block.fromKey("minecraft:blue_orchid");
 
-  @NotNull
-  public static final Block ALLIUM = Block.fromKey("minecraft:allium");
+    @NotNull
+    public static final Block ALLIUM = Block.fromKey("minecraft:allium");
 
-  @NotNull
-  public static final Block AZURE_BLUET = Block.fromKey("minecraft:azure_bluet");
+    @NotNull
+    public static final Block AZURE_BLUET = Block.fromKey("minecraft:azure_bluet");
 
-  @NotNull
-  public static final Block RED_TULIP = Block.fromKey("minecraft:red_tulip");
+    @NotNull
+    public static final Block RED_TULIP = Block.fromKey("minecraft:red_tulip");
 
-  @NotNull
-  public static final Block ORANGE_TULIP = Block.fromKey("minecraft:orange_tulip");
+    @NotNull
+    public static final Block ORANGE_TULIP = Block.fromKey("minecraft:orange_tulip");
 
-  @NotNull
-  public static final Block WHITE_TULIP = Block.fromKey("minecraft:white_tulip");
+    @NotNull
+    public static final Block WHITE_TULIP = Block.fromKey("minecraft:white_tulip");
 
-  @NotNull
-  public static final Block PINK_TULIP = Block.fromKey("minecraft:pink_tulip");
+    @NotNull
+    public static final Block PINK_TULIP = Block.fromKey("minecraft:pink_tulip");
 
-  @NotNull
-  public static final Block OXEYE_DAISY = Block.fromKey("minecraft:oxeye_daisy");
+    @NotNull
+    public static final Block OXEYE_DAISY = Block.fromKey("minecraft:oxeye_daisy");
 
-  @NotNull
-  public static final Block CORNFLOWER = Block.fromKey("minecraft:cornflower");
+    @NotNull
+    public static final Block CORNFLOWER = Block.fromKey("minecraft:cornflower");
 
-  @NotNull
-  public static final Block WITHER_ROSE = Block.fromKey("minecraft:wither_rose");
+    @NotNull
+    public static final Block WITHER_ROSE = Block.fromKey("minecraft:wither_rose");
 
-  @NotNull
-  public static final Block LILY_OF_THE_VALLEY = Block.fromKey("minecraft:lily_of_the_valley");
+    @NotNull
+    public static final Block LILY_OF_THE_VALLEY = Block.fromKey("minecraft:lily_of_the_valley");
 
-  @NotNull
-  public static final Block BROWN_MUSHROOM = Block.fromKey("minecraft:brown_mushroom");
+    @NotNull
+    public static final Block BROWN_MUSHROOM = Block.fromKey("minecraft:brown_mushroom");
 
-  @NotNull
-  public static final Block RED_MUSHROOM = Block.fromKey("minecraft:red_mushroom");
+    @NotNull
+    public static final Block RED_MUSHROOM = Block.fromKey("minecraft:red_mushroom");
 
-  @NotNull
-  public static final Block GOLD_BLOCK = Block.fromKey("minecraft:gold_block");
+    @NotNull
+    public static final Block GOLD_BLOCK = Block.fromKey("minecraft:gold_block");
 
-  @NotNull
-  public static final Block IRON_BLOCK = Block.fromKey("minecraft:iron_block");
+    @NotNull
+    public static final Block IRON_BLOCK = Block.fromKey("minecraft:iron_block");
 
-  @NotNull
-  public static final Block BRICKS = Block.fromKey("minecraft:bricks");
+    @NotNull
+    public static final Block BRICKS = Block.fromKey("minecraft:bricks");
 
-  @NotNull
-  public static final Block TNT = Block.fromKey("minecraft:tnt");
+    @NotNull
+    public static final Block TNT = Block.fromKey("minecraft:tnt");
 
-  @NotNull
-  public static final Block BOOKSHELF = Block.fromKey("minecraft:bookshelf");
+    @NotNull
+    public static final Block BOOKSHELF = Block.fromKey("minecraft:bookshelf");
 
-  @NotNull
-  public static final Block MOSSY_COBBLESTONE = Block.fromKey("minecraft:mossy_cobblestone");
+    @NotNull
+    public static final Block MOSSY_COBBLESTONE = Block.fromKey("minecraft:mossy_cobblestone");
 
-  @NotNull
-  public static final Block OBSIDIAN = Block.fromKey("minecraft:obsidian");
+    @NotNull
+    public static final Block OBSIDIAN = Block.fromKey("minecraft:obsidian");
 
-  @NotNull
-  public static final Block TORCH = Block.fromKey("minecraft:torch");
+    @NotNull
+    public static final Block TORCH = Block.fromKey("minecraft:torch");
 
-  @NotNull
-  public static final Block WALL_TORCH = Block.fromKey("minecraft:wall_torch");
+    @NotNull
+    public static final Block WALL_TORCH = Block.fromKey("minecraft:wall_torch");
 
-  @NotNull
-  public static final Block FIRE = Block.fromKey("minecraft:fire");
+    @NotNull
+    public static final Block FIRE = Block.fromKey("minecraft:fire");
 
-  @NotNull
-  public static final Block SOUL_FIRE = Block.fromKey("minecraft:soul_fire");
+    @NotNull
+    public static final Block SOUL_FIRE = Block.fromKey("minecraft:soul_fire");
 
-  @NotNull
-  public static final Block SPAWNER = Block.fromKey("minecraft:spawner");
+    @NotNull
+    public static final Block SPAWNER = Block.fromKey("minecraft:spawner");
 
-  @NotNull
-  public static final Block OAK_STAIRS = Block.fromKey("minecraft:oak_stairs");
+    @NotNull
+    public static final Block OAK_STAIRS = Block.fromKey("minecraft:oak_stairs");
 
-  @NotNull
-  public static final Block CHEST = Block.fromKey("minecraft:chest");
+    @NotNull
+    public static final Block CHEST = Block.fromKey("minecraft:chest");
 
-  @NotNull
-  public static final Block REDSTONE_WIRE = Block.fromKey("minecraft:redstone_wire");
+    @NotNull
+    public static final Block REDSTONE_WIRE = Block.fromKey("minecraft:redstone_wire");
 
-  @NotNull
-  public static final Block DIAMOND_ORE = Block.fromKey("minecraft:diamond_ore");
+    @NotNull
+    public static final Block DIAMOND_ORE = Block.fromKey("minecraft:diamond_ore");
 
-  @NotNull
-  public static final Block DEEPSLATE_DIAMOND_ORE = Block.fromKey("minecraft:deepslate_diamond_ore");
+    @NotNull
+    public static final Block DEEPSLATE_DIAMOND_ORE = Block.fromKey("minecraft:deepslate_diamond_ore");
 
-  @NotNull
-  public static final Block DIAMOND_BLOCK = Block.fromKey("minecraft:diamond_block");
+    @NotNull
+    public static final Block DIAMOND_BLOCK = Block.fromKey("minecraft:diamond_block");
 
-  @NotNull
-  public static final Block CRAFTING_TABLE = Block.fromKey("minecraft:crafting_table");
+    @NotNull
+    public static final Block CRAFTING_TABLE = Block.fromKey("minecraft:crafting_table");
 
-  @NotNull
-  public static final Block WHEAT = Block.fromKey("minecraft:wheat");
+    @NotNull
+    public static final Block WHEAT = Block.fromKey("minecraft:wheat");
 
-  @NotNull
-  public static final Block FARMLAND = Block.fromKey("minecraft:farmland");
+    @NotNull
+    public static final Block FARMLAND = Block.fromKey("minecraft:farmland");
 
-  @NotNull
-  public static final Block FURNACE = Block.fromKey("minecraft:furnace");
+    @NotNull
+    public static final Block FURNACE = Block.fromKey("minecraft:furnace");
 
-  @NotNull
-  public static final Block OAK_SIGN = Block.fromKey("minecraft:oak_sign");
+    @NotNull
+    public static final Block OAK_SIGN = Block.fromKey("minecraft:oak_sign");
 
-  @NotNull
-  public static final Block SPRUCE_SIGN = Block.fromKey("minecraft:spruce_sign");
+    @NotNull
+    public static final Block SPRUCE_SIGN = Block.fromKey("minecraft:spruce_sign");
 
-  @NotNull
-  public static final Block BIRCH_SIGN = Block.fromKey("minecraft:birch_sign");
+    @NotNull
+    public static final Block BIRCH_SIGN = Block.fromKey("minecraft:birch_sign");
 
-  @NotNull
-  public static final Block ACACIA_SIGN = Block.fromKey("minecraft:acacia_sign");
+    @NotNull
+    public static final Block ACACIA_SIGN = Block.fromKey("minecraft:acacia_sign");
 
-  @NotNull
-  public static final Block JUNGLE_SIGN = Block.fromKey("minecraft:jungle_sign");
+    @NotNull
+    public static final Block JUNGLE_SIGN = Block.fromKey("minecraft:jungle_sign");
 
-  @NotNull
-  public static final Block DARK_OAK_SIGN = Block.fromKey("minecraft:dark_oak_sign");
+    @NotNull
+    public static final Block DARK_OAK_SIGN = Block.fromKey("minecraft:dark_oak_sign");
 
-  @NotNull
-  public static final Block MANGROVE_SIGN = Block.fromKey("minecraft:mangrove_sign");
+    @NotNull
+    public static final Block MANGROVE_SIGN = Block.fromKey("minecraft:mangrove_sign");
 
-  @NotNull
-  public static final Block OAK_DOOR = Block.fromKey("minecraft:oak_door");
+    @NotNull
+    public static final Block OAK_DOOR = Block.fromKey("minecraft:oak_door");
 
-  @NotNull
-  public static final Block LADDER = Block.fromKey("minecraft:ladder");
+    @NotNull
+    public static final Block LADDER = Block.fromKey("minecraft:ladder");
 
-  @NotNull
-  public static final Block RAIL = Block.fromKey("minecraft:rail");
+    @NotNull
+    public static final Block RAIL = Block.fromKey("minecraft:rail");
 
-  @NotNull
-  public static final Block COBBLESTONE_STAIRS = Block.fromKey("minecraft:cobblestone_stairs");
+    @NotNull
+    public static final Block COBBLESTONE_STAIRS = Block.fromKey("minecraft:cobblestone_stairs");
 
-  @NotNull
-  public static final Block OAK_WALL_SIGN = Block.fromKey("minecraft:oak_wall_sign");
+    @NotNull
+    public static final Block OAK_WALL_SIGN = Block.fromKey("minecraft:oak_wall_sign");
 
-  @NotNull
-  public static final Block SPRUCE_WALL_SIGN = Block.fromKey("minecraft:spruce_wall_sign");
+    @NotNull
+    public static final Block SPRUCE_WALL_SIGN = Block.fromKey("minecraft:spruce_wall_sign");
 
-  @NotNull
-  public static final Block BIRCH_WALL_SIGN = Block.fromKey("minecraft:birch_wall_sign");
+    @NotNull
+    public static final Block BIRCH_WALL_SIGN = Block.fromKey("minecraft:birch_wall_sign");
 
-  @NotNull
-  public static final Block ACACIA_WALL_SIGN = Block.fromKey("minecraft:acacia_wall_sign");
+    @NotNull
+    public static final Block ACACIA_WALL_SIGN = Block.fromKey("minecraft:acacia_wall_sign");
 
-  @NotNull
-  public static final Block JUNGLE_WALL_SIGN = Block.fromKey("minecraft:jungle_wall_sign");
+    @NotNull
+    public static final Block JUNGLE_WALL_SIGN = Block.fromKey("minecraft:jungle_wall_sign");
 
-  @NotNull
-  public static final Block DARK_OAK_WALL_SIGN = Block.fromKey("minecraft:dark_oak_wall_sign");
+    @NotNull
+    public static final Block DARK_OAK_WALL_SIGN = Block.fromKey("minecraft:dark_oak_wall_sign");
 
-  @NotNull
-  public static final Block MANGROVE_WALL_SIGN = Block.fromKey("minecraft:mangrove_wall_sign");
+    @NotNull
+    public static final Block MANGROVE_WALL_SIGN = Block.fromKey("minecraft:mangrove_wall_sign");
 
-  @NotNull
-  public static final Block LEVER = Block.fromKey("minecraft:lever");
+    @NotNull
+    public static final Block LEVER = Block.fromKey("minecraft:lever");
 
-  @NotNull
-  public static final Block STONE_PRESSURE_PLATE = Block.fromKey("minecraft:stone_pressure_plate");
+    @NotNull
+    public static final Block STONE_PRESSURE_PLATE = Block.fromKey("minecraft:stone_pressure_plate");
 
-  @NotNull
-  public static final Block IRON_DOOR = Block.fromKey("minecraft:iron_door");
+    @NotNull
+    public static final Block IRON_DOOR = Block.fromKey("minecraft:iron_door");
 
-  @NotNull
-  public static final Block OAK_PRESSURE_PLATE = Block.fromKey("minecraft:oak_pressure_plate");
+    @NotNull
+    public static final Block OAK_PRESSURE_PLATE = Block.fromKey("minecraft:oak_pressure_plate");
 
-  @NotNull
-  public static final Block SPRUCE_PRESSURE_PLATE = Block.fromKey("minecraft:spruce_pressure_plate");
+    @NotNull
+    public static final Block SPRUCE_PRESSURE_PLATE = Block.fromKey("minecraft:spruce_pressure_plate");
 
-  @NotNull
-  public static final Block BIRCH_PRESSURE_PLATE = Block.fromKey("minecraft:birch_pressure_plate");
+    @NotNull
+    public static final Block BIRCH_PRESSURE_PLATE = Block.fromKey("minecraft:birch_pressure_plate");
 
-  @NotNull
-  public static final Block JUNGLE_PRESSURE_PLATE = Block.fromKey("minecraft:jungle_pressure_plate");
+    @NotNull
+    public static final Block JUNGLE_PRESSURE_PLATE = Block.fromKey("minecraft:jungle_pressure_plate");
 
-  @NotNull
-  public static final Block ACACIA_PRESSURE_PLATE = Block.fromKey("minecraft:acacia_pressure_plate");
+    @NotNull
+    public static final Block ACACIA_PRESSURE_PLATE = Block.fromKey("minecraft:acacia_pressure_plate");
 
-  @NotNull
-  public static final Block DARK_OAK_PRESSURE_PLATE = Block.fromKey("minecraft:dark_oak_pressure_plate");
+    @NotNull
+    public static final Block DARK_OAK_PRESSURE_PLATE = Block.fromKey("minecraft:dark_oak_pressure_plate");
 
-  @NotNull
-  public static final Block MANGROVE_PRESSURE_PLATE = Block.fromKey("minecraft:mangrove_pressure_plate");
+    @NotNull
+    public static final Block MANGROVE_PRESSURE_PLATE = Block.fromKey("minecraft:mangrove_pressure_plate");
 
-  @NotNull
-  public static final Block REDSTONE_ORE = Block.fromKey("minecraft:redstone_ore");
+    @NotNull
+    public static final Block REDSTONE_ORE = Block.fromKey("minecraft:redstone_ore");
 
-  @NotNull
-  public static final Block DEEPSLATE_REDSTONE_ORE = Block.fromKey("minecraft:deepslate_redstone_ore");
+    @NotNull
+    public static final Block DEEPSLATE_REDSTONE_ORE = Block.fromKey("minecraft:deepslate_redstone_ore");
 
-  @NotNull
-  public static final Block REDSTONE_TORCH = Block.fromKey("minecraft:redstone_torch");
+    @NotNull
+    public static final Block REDSTONE_TORCH = Block.fromKey("minecraft:redstone_torch");
 
-  @NotNull
-  public static final Block REDSTONE_WALL_TORCH = Block.fromKey("minecraft:redstone_wall_torch");
+    @NotNull
+    public static final Block REDSTONE_WALL_TORCH = Block.fromKey("minecraft:redstone_wall_torch");
 
-  @NotNull
-  public static final Block STONE_BUTTON = Block.fromKey("minecraft:stone_button");
+    @NotNull
+    public static final Block STONE_BUTTON = Block.fromKey("minecraft:stone_button");
 
-  @NotNull
-  public static final Block SNOW = Block.fromKey("minecraft:snow");
+    @NotNull
+    public static final Block SNOW = Block.fromKey("minecraft:snow");
 
-  @NotNull
-  public static final Block ICE = Block.fromKey("minecraft:ice");
+    @NotNull
+    public static final Block ICE = Block.fromKey("minecraft:ice");
 
-  @NotNull
-  public static final Block SNOW_BLOCK = Block.fromKey("minecraft:snow_block");
+    @NotNull
+    public static final Block SNOW_BLOCK = Block.fromKey("minecraft:snow_block");
 
-  @NotNull
-  public static final Block CACTUS = Block.fromKey("minecraft:cactus");
+    @NotNull
+    public static final Block CACTUS = Block.fromKey("minecraft:cactus");
 
-  @NotNull
-  public static final Block CLAY = Block.fromKey("minecraft:clay");
+    @NotNull
+    public static final Block CLAY = Block.fromKey("minecraft:clay");
 
-  @NotNull
-  public static final Block SUGAR_CANE = Block.fromKey("minecraft:sugar_cane");
+    @NotNull
+    public static final Block SUGAR_CANE = Block.fromKey("minecraft:sugar_cane");
 
-  @NotNull
-  public static final Block JUKEBOX = Block.fromKey("minecraft:jukebox");
+    @NotNull
+    public static final Block JUKEBOX = Block.fromKey("minecraft:jukebox");
 
-  @NotNull
-  public static final Block OAK_FENCE = Block.fromKey("minecraft:oak_fence");
+    @NotNull
+    public static final Block OAK_FENCE = Block.fromKey("minecraft:oak_fence");
 
-  @NotNull
-  public static final Block PUMPKIN = Block.fromKey("minecraft:pumpkin");
+    @NotNull
+    public static final Block PUMPKIN = Block.fromKey("minecraft:pumpkin");
 
-  @NotNull
-  public static final Block NETHERRACK = Block.fromKey("minecraft:netherrack");
+    @NotNull
+    public static final Block NETHERRACK = Block.fromKey("minecraft:netherrack");
 
-  @NotNull
-  public static final Block SOUL_SAND = Block.fromKey("minecraft:soul_sand");
+    @NotNull
+    public static final Block SOUL_SAND = Block.fromKey("minecraft:soul_sand");
 
-  @NotNull
-  public static final Block SOUL_SOIL = Block.fromKey("minecraft:soul_soil");
+    @NotNull
+    public static final Block SOUL_SOIL = Block.fromKey("minecraft:soul_soil");
 
-  @NotNull
-  public static final Block BASALT = Block.fromKey("minecraft:basalt");
+    @NotNull
+    public static final Block BASALT = Block.fromKey("minecraft:basalt");
 
-  @NotNull
-  public static final Block POLISHED_BASALT = Block.fromKey("minecraft:polished_basalt");
+    @NotNull
+    public static final Block POLISHED_BASALT = Block.fromKey("minecraft:polished_basalt");
 
-  @NotNull
-  public static final Block SOUL_TORCH = Block.fromKey("minecraft:soul_torch");
+    @NotNull
+    public static final Block SOUL_TORCH = Block.fromKey("minecraft:soul_torch");
 
-  @NotNull
-  public static final Block SOUL_WALL_TORCH = Block.fromKey("minecraft:soul_wall_torch");
+    @NotNull
+    public static final Block SOUL_WALL_TORCH = Block.fromKey("minecraft:soul_wall_torch");
 
-  @NotNull
-  public static final Block GLOWSTONE = Block.fromKey("minecraft:glowstone");
+    @NotNull
+    public static final Block GLOWSTONE = Block.fromKey("minecraft:glowstone");
 
-  @NotNull
-  public static final Block NETHER_PORTAL = Block.fromKey("minecraft:nether_portal");
+    @NotNull
+    public static final Block NETHER_PORTAL = Block.fromKey("minecraft:nether_portal");
 
-  @NotNull
-  public static final Block CARVED_PUMPKIN = Block.fromKey("minecraft:carved_pumpkin");
+    @NotNull
+    public static final Block CARVED_PUMPKIN = Block.fromKey("minecraft:carved_pumpkin");
 
-  @NotNull
-  public static final Block JACK_O_LANTERN = Block.fromKey("minecraft:jack_o_lantern");
+    @NotNull
+    public static final Block JACK_O_LANTERN = Block.fromKey("minecraft:jack_o_lantern");
 
-  @NotNull
-  public static final Block CAKE = Block.fromKey("minecraft:cake");
+    @NotNull
+    public static final Block CAKE = Block.fromKey("minecraft:cake");
 
-  @NotNull
-  public static final Block REPEATER = Block.fromKey("minecraft:repeater");
+    @NotNull
+    public static final Block REPEATER = Block.fromKey("minecraft:repeater");
 
-  @NotNull
-  public static final Block WHITE_STAINED_GLASS = Block.fromKey("minecraft:white_stained_glass");
+    @NotNull
+    public static final Block WHITE_STAINED_GLASS = Block.fromKey("minecraft:white_stained_glass");
 
-  @NotNull
-  public static final Block ORANGE_STAINED_GLASS = Block.fromKey("minecraft:orange_stained_glass");
+    @NotNull
+    public static final Block ORANGE_STAINED_GLASS = Block.fromKey("minecraft:orange_stained_glass");
 
-  @NotNull
-  public static final Block MAGENTA_STAINED_GLASS = Block.fromKey("minecraft:magenta_stained_glass");
+    @NotNull
+    public static final Block MAGENTA_STAINED_GLASS = Block.fromKey("minecraft:magenta_stained_glass");
 
-  @NotNull
-  public static final Block LIGHT_BLUE_STAINED_GLASS = Block.fromKey("minecraft:light_blue_stained_glass");
+    @NotNull
+    public static final Block LIGHT_BLUE_STAINED_GLASS = Block.fromKey("minecraft:light_blue_stained_glass");
 
-  @NotNull
-  public static final Block YELLOW_STAINED_GLASS = Block.fromKey("minecraft:yellow_stained_glass");
+    @NotNull
+    public static final Block YELLOW_STAINED_GLASS = Block.fromKey("minecraft:yellow_stained_glass");
 
-  @NotNull
-  public static final Block LIME_STAINED_GLASS = Block.fromKey("minecraft:lime_stained_glass");
+    @NotNull
+    public static final Block LIME_STAINED_GLASS = Block.fromKey("minecraft:lime_stained_glass");
 
-  @NotNull
-  public static final Block PINK_STAINED_GLASS = Block.fromKey("minecraft:pink_stained_glass");
+    @NotNull
+    public static final Block PINK_STAINED_GLASS = Block.fromKey("minecraft:pink_stained_glass");
 
-  @NotNull
-  public static final Block GRAY_STAINED_GLASS = Block.fromKey("minecraft:gray_stained_glass");
+    @NotNull
+    public static final Block GRAY_STAINED_GLASS = Block.fromKey("minecraft:gray_stained_glass");
 
-  @NotNull
-  public static final Block LIGHT_GRAY_STAINED_GLASS = Block.fromKey("minecraft:light_gray_stained_glass");
+    @NotNull
+    public static final Block LIGHT_GRAY_STAINED_GLASS = Block.fromKey("minecraft:light_gray_stained_glass");
 
-  @NotNull
-  public static final Block CYAN_STAINED_GLASS = Block.fromKey("minecraft:cyan_stained_glass");
+    @NotNull
+    public static final Block CYAN_STAINED_GLASS = Block.fromKey("minecraft:cyan_stained_glass");
 
-  @NotNull
-  public static final Block PURPLE_STAINED_GLASS = Block.fromKey("minecraft:purple_stained_glass");
+    @NotNull
+    public static final Block PURPLE_STAINED_GLASS = Block.fromKey("minecraft:purple_stained_glass");
 
-  @NotNull
-  public static final Block BLUE_STAINED_GLASS = Block.fromKey("minecraft:blue_stained_glass");
+    @NotNull
+    public static final Block BLUE_STAINED_GLASS = Block.fromKey("minecraft:blue_stained_glass");
 
-  @NotNull
-  public static final Block BROWN_STAINED_GLASS = Block.fromKey("minecraft:brown_stained_glass");
+    @NotNull
+    public static final Block BROWN_STAINED_GLASS = Block.fromKey("minecraft:brown_stained_glass");
 
-  @NotNull
-  public static final Block GREEN_STAINED_GLASS = Block.fromKey("minecraft:green_stained_glass");
+    @NotNull
+    public static final Block GREEN_STAINED_GLASS = Block.fromKey("minecraft:green_stained_glass");
 
-  @NotNull
-  public static final Block RED_STAINED_GLASS = Block.fromKey("minecraft:red_stained_glass");
+    @NotNull
+    public static final Block RED_STAINED_GLASS = Block.fromKey("minecraft:red_stained_glass");
 
-  @NotNull
-  public static final Block BLACK_STAINED_GLASS = Block.fromKey("minecraft:black_stained_glass");
+    @NotNull
+    public static final Block BLACK_STAINED_GLASS = Block.fromKey("minecraft:black_stained_glass");
 
-  @NotNull
-  public static final Block OAK_TRAPDOOR = Block.fromKey("minecraft:oak_trapdoor");
+    @NotNull
+    public static final Block OAK_TRAPDOOR = Block.fromKey("minecraft:oak_trapdoor");
 
-  @NotNull
-  public static final Block SPRUCE_TRAPDOOR = Block.fromKey("minecraft:spruce_trapdoor");
+    @NotNull
+    public static final Block SPRUCE_TRAPDOOR = Block.fromKey("minecraft:spruce_trapdoor");
 
-  @NotNull
-  public static final Block BIRCH_TRAPDOOR = Block.fromKey("minecraft:birch_trapdoor");
+    @NotNull
+    public static final Block BIRCH_TRAPDOOR = Block.fromKey("minecraft:birch_trapdoor");
 
-  @NotNull
-  public static final Block JUNGLE_TRAPDOOR = Block.fromKey("minecraft:jungle_trapdoor");
+    @NotNull
+    public static final Block JUNGLE_TRAPDOOR = Block.fromKey("minecraft:jungle_trapdoor");
 
-  @NotNull
-  public static final Block ACACIA_TRAPDOOR = Block.fromKey("minecraft:acacia_trapdoor");
+    @NotNull
+    public static final Block ACACIA_TRAPDOOR = Block.fromKey("minecraft:acacia_trapdoor");
 
-  @NotNull
-  public static final Block DARK_OAK_TRAPDOOR = Block.fromKey("minecraft:dark_oak_trapdoor");
+    @NotNull
+    public static final Block DARK_OAK_TRAPDOOR = Block.fromKey("minecraft:dark_oak_trapdoor");
 
-  @NotNull
-  public static final Block MANGROVE_TRAPDOOR = Block.fromKey("minecraft:mangrove_trapdoor");
+    @NotNull
+    public static final Block MANGROVE_TRAPDOOR = Block.fromKey("minecraft:mangrove_trapdoor");
 
-  @NotNull
-  public static final Block STONE_BRICKS = Block.fromKey("minecraft:stone_bricks");
+    @NotNull
+    public static final Block STONE_BRICKS = Block.fromKey("minecraft:stone_bricks");
 
-  @NotNull
-  public static final Block MOSSY_STONE_BRICKS = Block.fromKey("minecraft:mossy_stone_bricks");
+    @NotNull
+    public static final Block MOSSY_STONE_BRICKS = Block.fromKey("minecraft:mossy_stone_bricks");
 
-  @NotNull
-  public static final Block CRACKED_STONE_BRICKS = Block.fromKey("minecraft:cracked_stone_bricks");
+    @NotNull
+    public static final Block CRACKED_STONE_BRICKS = Block.fromKey("minecraft:cracked_stone_bricks");
 
-  @NotNull
-  public static final Block CHISELED_STONE_BRICKS = Block.fromKey("minecraft:chiseled_stone_bricks");
+    @NotNull
+    public static final Block CHISELED_STONE_BRICKS = Block.fromKey("minecraft:chiseled_stone_bricks");
 
-  @NotNull
-  public static final Block PACKED_MUD = Block.fromKey("minecraft:packed_mud");
+    @NotNull
+    public static final Block PACKED_MUD = Block.fromKey("minecraft:packed_mud");
 
-  @NotNull
-  public static final Block MUD_BRICKS = Block.fromKey("minecraft:mud_bricks");
+    @NotNull
+    public static final Block MUD_BRICKS = Block.fromKey("minecraft:mud_bricks");
 
-  @NotNull
-  public static final Block INFESTED_STONE = Block.fromKey("minecraft:infested_stone");
+    @NotNull
+    public static final Block INFESTED_STONE = Block.fromKey("minecraft:infested_stone");
 
-  @NotNull
-  public static final Block INFESTED_COBBLESTONE = Block.fromKey("minecraft:infested_cobblestone");
+    @NotNull
+    public static final Block INFESTED_COBBLESTONE = Block.fromKey("minecraft:infested_cobblestone");
 
-  @NotNull
-  public static final Block INFESTED_STONE_BRICKS = Block.fromKey("minecraft:infested_stone_bricks");
+    @NotNull
+    public static final Block INFESTED_STONE_BRICKS = Block.fromKey("minecraft:infested_stone_bricks");
 
-  @NotNull
-  public static final Block INFESTED_MOSSY_STONE_BRICKS = Block.fromKey("minecraft:infested_mossy_stone_bricks");
+    @NotNull
+    public static final Block INFESTED_MOSSY_STONE_BRICKS = Block.fromKey("minecraft:infested_mossy_stone_bricks");
 
-  @NotNull
-  public static final Block INFESTED_CRACKED_STONE_BRICKS = Block.fromKey("minecraft:infested_cracked_stone_bricks");
+    @NotNull
+    public static final Block INFESTED_CRACKED_STONE_BRICKS = Block.fromKey("minecraft:infested_cracked_stone_bricks");
 
-  @NotNull
-  public static final Block INFESTED_CHISELED_STONE_BRICKS = Block.fromKey("minecraft:infested_chiseled_stone_bricks");
+    @NotNull
+    public static final Block INFESTED_CHISELED_STONE_BRICKS = Block.fromKey("minecraft:infested_chiseled_stone_bricks");
 
-  @NotNull
-  public static final Block BROWN_MUSHROOM_BLOCK = Block.fromKey("minecraft:brown_mushroom_block");
+    @NotNull
+    public static final Block BROWN_MUSHROOM_BLOCK = Block.fromKey("minecraft:brown_mushroom_block");
 
-  @NotNull
-  public static final Block RED_MUSHROOM_BLOCK = Block.fromKey("minecraft:red_mushroom_block");
+    @NotNull
+    public static final Block RED_MUSHROOM_BLOCK = Block.fromKey("minecraft:red_mushroom_block");
 
-  @NotNull
-  public static final Block MUSHROOM_STEM = Block.fromKey("minecraft:mushroom_stem");
+    @NotNull
+    public static final Block MUSHROOM_STEM = Block.fromKey("minecraft:mushroom_stem");
 
-  @NotNull
-  public static final Block IRON_BARS = Block.fromKey("minecraft:iron_bars");
+    @NotNull
+    public static final Block IRON_BARS = Block.fromKey("minecraft:iron_bars");
 
-  @NotNull
-  public static final Block CHAIN = Block.fromKey("minecraft:chain");
+    @NotNull
+    public static final Block CHAIN = Block.fromKey("minecraft:chain");
 
-  @NotNull
-  public static final Block GLASS_PANE = Block.fromKey("minecraft:glass_pane");
+    @NotNull
+    public static final Block GLASS_PANE = Block.fromKey("minecraft:glass_pane");
 
-  @NotNull
-  public static final Block MELON = Block.fromKey("minecraft:melon");
+    @NotNull
+    public static final Block MELON = Block.fromKey("minecraft:melon");
 
-  @NotNull
-  public static final Block ATTACHED_PUMPKIN_STEM = Block.fromKey("minecraft:attached_pumpkin_stem");
+    @NotNull
+    public static final Block ATTACHED_PUMPKIN_STEM = Block.fromKey("minecraft:attached_pumpkin_stem");
 
-  @NotNull
-  public static final Block ATTACHED_MELON_STEM = Block.fromKey("minecraft:attached_melon_stem");
+    @NotNull
+    public static final Block ATTACHED_MELON_STEM = Block.fromKey("minecraft:attached_melon_stem");
 
-  @NotNull
-  public static final Block PUMPKIN_STEM = Block.fromKey("minecraft:pumpkin_stem");
+    @NotNull
+    public static final Block PUMPKIN_STEM = Block.fromKey("minecraft:pumpkin_stem");
 
-  @NotNull
-  public static final Block MELON_STEM = Block.fromKey("minecraft:melon_stem");
+    @NotNull
+    public static final Block MELON_STEM = Block.fromKey("minecraft:melon_stem");
 
-  @NotNull
-  public static final Block VINE = Block.fromKey("minecraft:vine");
+    @NotNull
+    public static final Block VINE = Block.fromKey("minecraft:vine");
 
-  @NotNull
-  public static final Block GLOW_LICHEN = Block.fromKey("minecraft:glow_lichen");
+    @NotNull
+    public static final Block GLOW_LICHEN = Block.fromKey("minecraft:glow_lichen");
 
-  @NotNull
-  public static final Block OAK_FENCE_GATE = Block.fromKey("minecraft:oak_fence_gate");
+    @NotNull
+    public static final Block OAK_FENCE_GATE = Block.fromKey("minecraft:oak_fence_gate");
 
-  @NotNull
-  public static final Block BRICK_STAIRS = Block.fromKey("minecraft:brick_stairs");
+    @NotNull
+    public static final Block BRICK_STAIRS = Block.fromKey("minecraft:brick_stairs");
 
-  @NotNull
-  public static final Block STONE_BRICK_STAIRS = Block.fromKey("minecraft:stone_brick_stairs");
+    @NotNull
+    public static final Block STONE_BRICK_STAIRS = Block.fromKey("minecraft:stone_brick_stairs");
 
-  @NotNull
-  public static final Block MUD_BRICK_STAIRS = Block.fromKey("minecraft:mud_brick_stairs");
+    @NotNull
+    public static final Block MUD_BRICK_STAIRS = Block.fromKey("minecraft:mud_brick_stairs");
 
-  @NotNull
-  public static final Block MYCELIUM = Block.fromKey("minecraft:mycelium");
+    @NotNull
+    public static final Block MYCELIUM = Block.fromKey("minecraft:mycelium");
 
-  @NotNull
-  public static final Block LILY_PAD = Block.fromKey("minecraft:lily_pad");
+    @NotNull
+    public static final Block LILY_PAD = Block.fromKey("minecraft:lily_pad");
 
-  @NotNull
-  public static final Block NETHER_BRICKS = Block.fromKey("minecraft:nether_bricks");
+    @NotNull
+    public static final Block NETHER_BRICKS = Block.fromKey("minecraft:nether_bricks");
 
-  @NotNull
-  public static final Block NETHER_BRICK_FENCE = Block.fromKey("minecraft:nether_brick_fence");
+    @NotNull
+    public static final Block NETHER_BRICK_FENCE = Block.fromKey("minecraft:nether_brick_fence");
 
-  @NotNull
-  public static final Block NETHER_BRICK_STAIRS = Block.fromKey("minecraft:nether_brick_stairs");
+    @NotNull
+    public static final Block NETHER_BRICK_STAIRS = Block.fromKey("minecraft:nether_brick_stairs");
 
-  @NotNull
-  public static final Block NETHER_WART = Block.fromKey("minecraft:nether_wart");
+    @NotNull
+    public static final Block NETHER_WART = Block.fromKey("minecraft:nether_wart");
 
-  @NotNull
-  public static final Block ENCHANTING_TABLE = Block.fromKey("minecraft:enchanting_table");
+    @NotNull
+    public static final Block ENCHANTING_TABLE = Block.fromKey("minecraft:enchanting_table");
 
-  @NotNull
-  public static final Block BREWING_STAND = Block.fromKey("minecraft:brewing_stand");
+    @NotNull
+    public static final Block BREWING_STAND = Block.fromKey("minecraft:brewing_stand");
 
-  @NotNull
-  public static final Block CAULDRON = Block.fromKey("minecraft:cauldron");
+    @NotNull
+    public static final Block CAULDRON = Block.fromKey("minecraft:cauldron");
 
-  @NotNull
-  public static final Block WATER_CAULDRON = Block.fromKey("minecraft:water_cauldron");
+    @NotNull
+    public static final Block WATER_CAULDRON = Block.fromKey("minecraft:water_cauldron");
 
-  @NotNull
-  public static final Block LAVA_CAULDRON = Block.fromKey("minecraft:lava_cauldron");
+    @NotNull
+    public static final Block LAVA_CAULDRON = Block.fromKey("minecraft:lava_cauldron");
 
-  @NotNull
-  public static final Block POWDER_SNOW_CAULDRON = Block.fromKey("minecraft:powder_snow_cauldron");
+    @NotNull
+    public static final Block POWDER_SNOW_CAULDRON = Block.fromKey("minecraft:powder_snow_cauldron");
 
-  @NotNull
-  public static final Block END_PORTAL = Block.fromKey("minecraft:end_portal");
+    @NotNull
+    public static final Block END_PORTAL = Block.fromKey("minecraft:end_portal");
 
-  @NotNull
-  public static final Block END_PORTAL_FRAME = Block.fromKey("minecraft:end_portal_frame");
+    @NotNull
+    public static final Block END_PORTAL_FRAME = Block.fromKey("minecraft:end_portal_frame");
 
-  @NotNull
-  public static final Block END_STONE = Block.fromKey("minecraft:end_stone");
+    @NotNull
+    public static final Block END_STONE = Block.fromKey("minecraft:end_stone");
 
-  @NotNull
-  public static final Block DRAGON_EGG = Block.fromKey("minecraft:dragon_egg");
+    @NotNull
+    public static final Block DRAGON_EGG = Block.fromKey("minecraft:dragon_egg");
 
-  @NotNull
-  public static final Block REDSTONE_LAMP = Block.fromKey("minecraft:redstone_lamp");
+    @NotNull
+    public static final Block REDSTONE_LAMP = Block.fromKey("minecraft:redstone_lamp");
 
-  @NotNull
-  public static final Block COCOA = Block.fromKey("minecraft:cocoa");
+    @NotNull
+    public static final Block COCOA = Block.fromKey("minecraft:cocoa");
 
-  @NotNull
-  public static final Block SANDSTONE_STAIRS = Block.fromKey("minecraft:sandstone_stairs");
+    @NotNull
+    public static final Block SANDSTONE_STAIRS = Block.fromKey("minecraft:sandstone_stairs");
 
-  @NotNull
-  public static final Block EMERALD_ORE = Block.fromKey("minecraft:emerald_ore");
+    @NotNull
+    public static final Block EMERALD_ORE = Block.fromKey("minecraft:emerald_ore");
 
-  @NotNull
-  public static final Block DEEPSLATE_EMERALD_ORE = Block.fromKey("minecraft:deepslate_emerald_ore");
+    @NotNull
+    public static final Block DEEPSLATE_EMERALD_ORE = Block.fromKey("minecraft:deepslate_emerald_ore");
 
-  @NotNull
-  public static final Block ENDER_CHEST = Block.fromKey("minecraft:ender_chest");
+    @NotNull
+    public static final Block ENDER_CHEST = Block.fromKey("minecraft:ender_chest");
 
-  @NotNull
-  public static final Block TRIPWIRE_HOOK = Block.fromKey("minecraft:tripwire_hook");
+    @NotNull
+    public static final Block TRIPWIRE_HOOK = Block.fromKey("minecraft:tripwire_hook");
 
-  @NotNull
-  public static final Block TRIPWIRE = Block.fromKey("minecraft:tripwire");
+    @NotNull
+    public static final Block TRIPWIRE = Block.fromKey("minecraft:tripwire");
 
-  @NotNull
-  public static final Block EMERALD_BLOCK = Block.fromKey("minecraft:emerald_block");
+    @NotNull
+    public static final Block EMERALD_BLOCK = Block.fromKey("minecraft:emerald_block");
 
-  @NotNull
-  public static final Block SPRUCE_STAIRS = Block.fromKey("minecraft:spruce_stairs");
+    @NotNull
+    public static final Block SPRUCE_STAIRS = Block.fromKey("minecraft:spruce_stairs");
 
-  @NotNull
-  public static final Block BIRCH_STAIRS = Block.fromKey("minecraft:birch_stairs");
+    @NotNull
+    public static final Block BIRCH_STAIRS = Block.fromKey("minecraft:birch_stairs");
 
-  @NotNull
-  public static final Block JUNGLE_STAIRS = Block.fromKey("minecraft:jungle_stairs");
+    @NotNull
+    public static final Block JUNGLE_STAIRS = Block.fromKey("minecraft:jungle_stairs");
 
-  @NotNull
-  public static final Block COMMAND_BLOCK = Block.fromKey("minecraft:command_block");
+    @NotNull
+    public static final Block COMMAND_BLOCK = Block.fromKey("minecraft:command_block");
 
-  @NotNull
-  public static final Block BEACON = Block.fromKey("minecraft:beacon");
+    @NotNull
+    public static final Block BEACON = Block.fromKey("minecraft:beacon");
 
-  @NotNull
-  public static final Block COBBLESTONE_WALL = Block.fromKey("minecraft:cobblestone_wall");
+    @NotNull
+    public static final Block COBBLESTONE_WALL = Block.fromKey("minecraft:cobblestone_wall");
 
-  @NotNull
-  public static final Block MOSSY_COBBLESTONE_WALL = Block.fromKey("minecraft:mossy_cobblestone_wall");
+    @NotNull
+    public static final Block MOSSY_COBBLESTONE_WALL = Block.fromKey("minecraft:mossy_cobblestone_wall");
 
-  @NotNull
-  public static final Block FLOWER_POT = Block.fromKey("minecraft:flower_pot");
+    @NotNull
+    public static final Block FLOWER_POT = Block.fromKey("minecraft:flower_pot");
 
-  @NotNull
-  public static final Block POTTED_OAK_SAPLING = Block.fromKey("minecraft:potted_oak_sapling");
+    @NotNull
+    public static final Block POTTED_OAK_SAPLING = Block.fromKey("minecraft:potted_oak_sapling");
 
-  @NotNull
-  public static final Block POTTED_SPRUCE_SAPLING = Block.fromKey("minecraft:potted_spruce_sapling");
+    @NotNull
+    public static final Block POTTED_SPRUCE_SAPLING = Block.fromKey("minecraft:potted_spruce_sapling");
 
-  @NotNull
-  public static final Block POTTED_BIRCH_SAPLING = Block.fromKey("minecraft:potted_birch_sapling");
+    @NotNull
+    public static final Block POTTED_BIRCH_SAPLING = Block.fromKey("minecraft:potted_birch_sapling");
 
-  @NotNull
-  public static final Block POTTED_JUNGLE_SAPLING = Block.fromKey("minecraft:potted_jungle_sapling");
+    @NotNull
+    public static final Block POTTED_JUNGLE_SAPLING = Block.fromKey("minecraft:potted_jungle_sapling");
 
-  @NotNull
-  public static final Block POTTED_ACACIA_SAPLING = Block.fromKey("minecraft:potted_acacia_sapling");
+    @NotNull
+    public static final Block POTTED_ACACIA_SAPLING = Block.fromKey("minecraft:potted_acacia_sapling");
 
-  @NotNull
-  public static final Block POTTED_DARK_OAK_SAPLING = Block.fromKey("minecraft:potted_dark_oak_sapling");
+    @NotNull
+    public static final Block POTTED_DARK_OAK_SAPLING = Block.fromKey("minecraft:potted_dark_oak_sapling");
 
-  @NotNull
-  public static final Block POTTED_MANGROVE_PROPAGULE = Block.fromKey("minecraft:potted_mangrove_propagule");
+    @NotNull
+    public static final Block POTTED_MANGROVE_PROPAGULE = Block.fromKey("minecraft:potted_mangrove_propagule");
 
-  @NotNull
-  public static final Block POTTED_FERN = Block.fromKey("minecraft:potted_fern");
+    @NotNull
+    public static final Block POTTED_FERN = Block.fromKey("minecraft:potted_fern");
 
-  @NotNull
-  public static final Block POTTED_DANDELION = Block.fromKey("minecraft:potted_dandelion");
+    @NotNull
+    public static final Block POTTED_DANDELION = Block.fromKey("minecraft:potted_dandelion");
 
-  @NotNull
-  public static final Block POTTED_POPPY = Block.fromKey("minecraft:potted_poppy");
+    @NotNull
+    public static final Block POTTED_POPPY = Block.fromKey("minecraft:potted_poppy");
 
-  @NotNull
-  public static final Block POTTED_BLUE_ORCHID = Block.fromKey("minecraft:potted_blue_orchid");
+    @NotNull
+    public static final Block POTTED_BLUE_ORCHID = Block.fromKey("minecraft:potted_blue_orchid");
 
-  @NotNull
-  public static final Block POTTED_ALLIUM = Block.fromKey("minecraft:potted_allium");
+    @NotNull
+    public static final Block POTTED_ALLIUM = Block.fromKey("minecraft:potted_allium");
 
-  @NotNull
-  public static final Block POTTED_AZURE_BLUET = Block.fromKey("minecraft:potted_azure_bluet");
+    @NotNull
+    public static final Block POTTED_AZURE_BLUET = Block.fromKey("minecraft:potted_azure_bluet");
 
-  @NotNull
-  public static final Block POTTED_RED_TULIP = Block.fromKey("minecraft:potted_red_tulip");
+    @NotNull
+    public static final Block POTTED_RED_TULIP = Block.fromKey("minecraft:potted_red_tulip");
 
-  @NotNull
-  public static final Block POTTED_ORANGE_TULIP = Block.fromKey("minecraft:potted_orange_tulip");
+    @NotNull
+    public static final Block POTTED_ORANGE_TULIP = Block.fromKey("minecraft:potted_orange_tulip");
 
-  @NotNull
-  public static final Block POTTED_WHITE_TULIP = Block.fromKey("minecraft:potted_white_tulip");
+    @NotNull
+    public static final Block POTTED_WHITE_TULIP = Block.fromKey("minecraft:potted_white_tulip");
 
-  @NotNull
-  public static final Block POTTED_PINK_TULIP = Block.fromKey("minecraft:potted_pink_tulip");
+    @NotNull
+    public static final Block POTTED_PINK_TULIP = Block.fromKey("minecraft:potted_pink_tulip");
 
-  @NotNull
-  public static final Block POTTED_OXEYE_DAISY = Block.fromKey("minecraft:potted_oxeye_daisy");
+    @NotNull
+    public static final Block POTTED_OXEYE_DAISY = Block.fromKey("minecraft:potted_oxeye_daisy");
 
-  @NotNull
-  public static final Block POTTED_CORNFLOWER = Block.fromKey("minecraft:potted_cornflower");
+    @NotNull
+    public static final Block POTTED_CORNFLOWER = Block.fromKey("minecraft:potted_cornflower");
 
-  @NotNull
-  public static final Block POTTED_LILY_OF_THE_VALLEY = Block.fromKey("minecraft:potted_lily_of_the_valley");
+    @NotNull
+    public static final Block POTTED_LILY_OF_THE_VALLEY = Block.fromKey("minecraft:potted_lily_of_the_valley");
 
-  @NotNull
-  public static final Block POTTED_WITHER_ROSE = Block.fromKey("minecraft:potted_wither_rose");
+    @NotNull
+    public static final Block POTTED_WITHER_ROSE = Block.fromKey("minecraft:potted_wither_rose");
 
-  @NotNull
-  public static final Block POTTED_RED_MUSHROOM = Block.fromKey("minecraft:potted_red_mushroom");
+    @NotNull
+    public static final Block POTTED_RED_MUSHROOM = Block.fromKey("minecraft:potted_red_mushroom");
 
-  @NotNull
-  public static final Block POTTED_BROWN_MUSHROOM = Block.fromKey("minecraft:potted_brown_mushroom");
+    @NotNull
+    public static final Block POTTED_BROWN_MUSHROOM = Block.fromKey("minecraft:potted_brown_mushroom");
 
-  @NotNull
-  public static final Block POTTED_DEAD_BUSH = Block.fromKey("minecraft:potted_dead_bush");
+    @NotNull
+    public static final Block POTTED_DEAD_BUSH = Block.fromKey("minecraft:potted_dead_bush");
 
-  @NotNull
-  public static final Block POTTED_CACTUS = Block.fromKey("minecraft:potted_cactus");
+    @NotNull
+    public static final Block POTTED_CACTUS = Block.fromKey("minecraft:potted_cactus");
 
-  @NotNull
-  public static final Block CARROTS = Block.fromKey("minecraft:carrots");
+    @NotNull
+    public static final Block CARROTS = Block.fromKey("minecraft:carrots");
 
-  @NotNull
-  public static final Block POTATOES = Block.fromKey("minecraft:potatoes");
+    @NotNull
+    public static final Block POTATOES = Block.fromKey("minecraft:potatoes");
 
-  @NotNull
-  public static final Block OAK_BUTTON = Block.fromKey("minecraft:oak_button");
+    @NotNull
+    public static final Block OAK_BUTTON = Block.fromKey("minecraft:oak_button");
 
-  @NotNull
-  public static final Block SPRUCE_BUTTON = Block.fromKey("minecraft:spruce_button");
+    @NotNull
+    public static final Block SPRUCE_BUTTON = Block.fromKey("minecraft:spruce_button");
 
-  @NotNull
-  public static final Block BIRCH_BUTTON = Block.fromKey("minecraft:birch_button");
+    @NotNull
+    public static final Block BIRCH_BUTTON = Block.fromKey("minecraft:birch_button");
 
-  @NotNull
-  public static final Block JUNGLE_BUTTON = Block.fromKey("minecraft:jungle_button");
+    @NotNull
+    public static final Block JUNGLE_BUTTON = Block.fromKey("minecraft:jungle_button");
 
-  @NotNull
-  public static final Block ACACIA_BUTTON = Block.fromKey("minecraft:acacia_button");
+    @NotNull
+    public static final Block ACACIA_BUTTON = Block.fromKey("minecraft:acacia_button");
 
-  @NotNull
-  public static final Block DARK_OAK_BUTTON = Block.fromKey("minecraft:dark_oak_button");
+    @NotNull
+    public static final Block DARK_OAK_BUTTON = Block.fromKey("minecraft:dark_oak_button");
 
-  @NotNull
-  public static final Block MANGROVE_BUTTON = Block.fromKey("minecraft:mangrove_button");
+    @NotNull
+    public static final Block MANGROVE_BUTTON = Block.fromKey("minecraft:mangrove_button");
 
-  @NotNull
-  public static final Block SKELETON_SKULL = Block.fromKey("minecraft:skeleton_skull");
+    @NotNull
+    public static final Block SKELETON_SKULL = Block.fromKey("minecraft:skeleton_skull");
 
-  @NotNull
-  public static final Block SKELETON_WALL_SKULL = Block.fromKey("minecraft:skeleton_wall_skull");
+    @NotNull
+    public static final Block SKELETON_WALL_SKULL = Block.fromKey("minecraft:skeleton_wall_skull");
 
-  @NotNull
-  public static final Block WITHER_SKELETON_SKULL = Block.fromKey("minecraft:wither_skeleton_skull");
+    @NotNull
+    public static final Block WITHER_SKELETON_SKULL = Block.fromKey("minecraft:wither_skeleton_skull");
 
-  @NotNull
-  public static final Block WITHER_SKELETON_WALL_SKULL = Block.fromKey("minecraft:wither_skeleton_wall_skull");
+    @NotNull
+    public static final Block WITHER_SKELETON_WALL_SKULL = Block.fromKey("minecraft:wither_skeleton_wall_skull");
 
-  @NotNull
-  public static final Block ZOMBIE_HEAD = Block.fromKey("minecraft:zombie_head");
+    @NotNull
+    public static final Block ZOMBIE_HEAD = Block.fromKey("minecraft:zombie_head");
 
-  @NotNull
-  public static final Block ZOMBIE_WALL_HEAD = Block.fromKey("minecraft:zombie_wall_head");
+    @NotNull
+    public static final Block ZOMBIE_WALL_HEAD = Block.fromKey("minecraft:zombie_wall_head");
 
-  @NotNull
-  public static final Block PLAYER_HEAD = Block.fromKey("minecraft:player_head");
+    @NotNull
+    public static final Block PLAYER_HEAD = Block.fromKey("minecraft:player_head");
 
-  @NotNull
-  public static final Block PLAYER_WALL_HEAD = Block.fromKey("minecraft:player_wall_head");
+    @NotNull
+    public static final Block PLAYER_WALL_HEAD = Block.fromKey("minecraft:player_wall_head");
 
-  @NotNull
-  public static final Block CREEPER_HEAD = Block.fromKey("minecraft:creeper_head");
+    @NotNull
+    public static final Block CREEPER_HEAD = Block.fromKey("minecraft:creeper_head");
 
-  @NotNull
-  public static final Block CREEPER_WALL_HEAD = Block.fromKey("minecraft:creeper_wall_head");
+    @NotNull
+    public static final Block CREEPER_WALL_HEAD = Block.fromKey("minecraft:creeper_wall_head");
 
-  @NotNull
-  public static final Block DRAGON_HEAD = Block.fromKey("minecraft:dragon_head");
+    @NotNull
+    public static final Block DRAGON_HEAD = Block.fromKey("minecraft:dragon_head");
 
-  @NotNull
-  public static final Block DRAGON_WALL_HEAD = Block.fromKey("minecraft:dragon_wall_head");
+    @NotNull
+    public static final Block DRAGON_WALL_HEAD = Block.fromKey("minecraft:dragon_wall_head");
 
-  @NotNull
-  public static final Block ANVIL = Block.fromKey("minecraft:anvil");
+    @NotNull
+    public static final Block ANVIL = Block.fromKey("minecraft:anvil");
 
-  @NotNull
-  public static final Block CHIPPED_ANVIL = Block.fromKey("minecraft:chipped_anvil");
+    @NotNull
+    public static final Block CHIPPED_ANVIL = Block.fromKey("minecraft:chipped_anvil");
 
-  @NotNull
-  public static final Block DAMAGED_ANVIL = Block.fromKey("minecraft:damaged_anvil");
+    @NotNull
+    public static final Block DAMAGED_ANVIL = Block.fromKey("minecraft:damaged_anvil");
 
-  @NotNull
-  public static final Block TRAPPED_CHEST = Block.fromKey("minecraft:trapped_chest");
+    @NotNull
+    public static final Block TRAPPED_CHEST = Block.fromKey("minecraft:trapped_chest");
 
-  @NotNull
-  public static final Block LIGHT_WEIGHTED_PRESSURE_PLATE = Block.fromKey("minecraft:light_weighted_pressure_plate");
+    @NotNull
+    public static final Block LIGHT_WEIGHTED_PRESSURE_PLATE = Block.fromKey("minecraft:light_weighted_pressure_plate");
 
-  @NotNull
-  public static final Block HEAVY_WEIGHTED_PRESSURE_PLATE = Block.fromKey("minecraft:heavy_weighted_pressure_plate");
+    @NotNull
+    public static final Block HEAVY_WEIGHTED_PRESSURE_PLATE = Block.fromKey("minecraft:heavy_weighted_pressure_plate");
 
-  @NotNull
-  public static final Block COMPARATOR = Block.fromKey("minecraft:comparator");
+    @NotNull
+    public static final Block COMPARATOR = Block.fromKey("minecraft:comparator");
 
-  @NotNull
-  public static final Block DAYLIGHT_DETECTOR = Block.fromKey("minecraft:daylight_detector");
+    @NotNull
+    public static final Block DAYLIGHT_DETECTOR = Block.fromKey("minecraft:daylight_detector");
 
-  @NotNull
-  public static final Block REDSTONE_BLOCK = Block.fromKey("minecraft:redstone_block");
+    @NotNull
+    public static final Block REDSTONE_BLOCK = Block.fromKey("minecraft:redstone_block");
 
-  @NotNull
-  public static final Block NETHER_QUARTZ_ORE = Block.fromKey("minecraft:nether_quartz_ore");
+    @NotNull
+    public static final Block NETHER_QUARTZ_ORE = Block.fromKey("minecraft:nether_quartz_ore");
 
-  @NotNull
-  public static final Block HOPPER = Block.fromKey("minecraft:hopper");
+    @NotNull
+    public static final Block HOPPER = Block.fromKey("minecraft:hopper");
 
-  @NotNull
-  public static final Block QUARTZ_BLOCK = Block.fromKey("minecraft:quartz_block");
+    @NotNull
+    public static final Block QUARTZ_BLOCK = Block.fromKey("minecraft:quartz_block");
 
-  @NotNull
-  public static final Block CHISELED_QUARTZ_BLOCK = Block.fromKey("minecraft:chiseled_quartz_block");
+    @NotNull
+    public static final Block CHISELED_QUARTZ_BLOCK = Block.fromKey("minecraft:chiseled_quartz_block");
 
-  @NotNull
-  public static final Block QUARTZ_PILLAR = Block.fromKey("minecraft:quartz_pillar");
+    @NotNull
+    public static final Block QUARTZ_PILLAR = Block.fromKey("minecraft:quartz_pillar");
 
-  @NotNull
-  public static final Block QUARTZ_STAIRS = Block.fromKey("minecraft:quartz_stairs");
+    @NotNull
+    public static final Block QUARTZ_STAIRS = Block.fromKey("minecraft:quartz_stairs");
 
-  @NotNull
-  public static final Block ACTIVATOR_RAIL = Block.fromKey("minecraft:activator_rail");
+    @NotNull
+    public static final Block ACTIVATOR_RAIL = Block.fromKey("minecraft:activator_rail");
 
-  @NotNull
-  public static final Block DROPPER = Block.fromKey("minecraft:dropper");
+    @NotNull
+    public static final Block DROPPER = Block.fromKey("minecraft:dropper");
 
-  @NotNull
-  public static final Block WHITE_TERRACOTTA = Block.fromKey("minecraft:white_terracotta");
+    @NotNull
+    public static final Block WHITE_TERRACOTTA = Block.fromKey("minecraft:white_terracotta");
 
-  @NotNull
-  public static final Block ORANGE_TERRACOTTA = Block.fromKey("minecraft:orange_terracotta");
+    @NotNull
+    public static final Block ORANGE_TERRACOTTA = Block.fromKey("minecraft:orange_terracotta");
 
-  @NotNull
-  public static final Block MAGENTA_TERRACOTTA = Block.fromKey("minecraft:magenta_terracotta");
+    @NotNull
+    public static final Block MAGENTA_TERRACOTTA = Block.fromKey("minecraft:magenta_terracotta");
 
-  @NotNull
-  public static final Block LIGHT_BLUE_TERRACOTTA = Block.fromKey("minecraft:light_blue_terracotta");
+    @NotNull
+    public static final Block LIGHT_BLUE_TERRACOTTA = Block.fromKey("minecraft:light_blue_terracotta");
 
-  @NotNull
-  public static final Block YELLOW_TERRACOTTA = Block.fromKey("minecraft:yellow_terracotta");
+    @NotNull
+    public static final Block YELLOW_TERRACOTTA = Block.fromKey("minecraft:yellow_terracotta");
 
-  @NotNull
-  public static final Block LIME_TERRACOTTA = Block.fromKey("minecraft:lime_terracotta");
+    @NotNull
+    public static final Block LIME_TERRACOTTA = Block.fromKey("minecraft:lime_terracotta");
 
-  @NotNull
-  public static final Block PINK_TERRACOTTA = Block.fromKey("minecraft:pink_terracotta");
+    @NotNull
+    public static final Block PINK_TERRACOTTA = Block.fromKey("minecraft:pink_terracotta");
 
-  @NotNull
-  public static final Block GRAY_TERRACOTTA = Block.fromKey("minecraft:gray_terracotta");
+    @NotNull
+    public static final Block GRAY_TERRACOTTA = Block.fromKey("minecraft:gray_terracotta");
 
-  @NotNull
-  public static final Block LIGHT_GRAY_TERRACOTTA = Block.fromKey("minecraft:light_gray_terracotta");
+    @NotNull
+    public static final Block LIGHT_GRAY_TERRACOTTA = Block.fromKey("minecraft:light_gray_terracotta");
 
-  @NotNull
-  public static final Block CYAN_TERRACOTTA = Block.fromKey("minecraft:cyan_terracotta");
+    @NotNull
+    public static final Block CYAN_TERRACOTTA = Block.fromKey("minecraft:cyan_terracotta");
 
-  @NotNull
-  public static final Block PURPLE_TERRACOTTA = Block.fromKey("minecraft:purple_terracotta");
+    @NotNull
+    public static final Block PURPLE_TERRACOTTA = Block.fromKey("minecraft:purple_terracotta");
 
-  @NotNull
-  public static final Block BLUE_TERRACOTTA = Block.fromKey("minecraft:blue_terracotta");
+    @NotNull
+    public static final Block BLUE_TERRACOTTA = Block.fromKey("minecraft:blue_terracotta");
 
-  @NotNull
-  public static final Block BROWN_TERRACOTTA = Block.fromKey("minecraft:brown_terracotta");
+    @NotNull
+    public static final Block BROWN_TERRACOTTA = Block.fromKey("minecraft:brown_terracotta");
 
-  @NotNull
-  public static final Block GREEN_TERRACOTTA = Block.fromKey("minecraft:green_terracotta");
+    @NotNull
+    public static final Block GREEN_TERRACOTTA = Block.fromKey("minecraft:green_terracotta");
 
-  @NotNull
-  public static final Block RED_TERRACOTTA = Block.fromKey("minecraft:red_terracotta");
+    @NotNull
+    public static final Block RED_TERRACOTTA = Block.fromKey("minecraft:red_terracotta");
 
-  @NotNull
-  public static final Block BLACK_TERRACOTTA = Block.fromKey("minecraft:black_terracotta");
+    @NotNull
+    public static final Block BLACK_TERRACOTTA = Block.fromKey("minecraft:black_terracotta");
 
-  @NotNull
-  public static final Block WHITE_STAINED_GLASS_PANE = Block.fromKey("minecraft:white_stained_glass_pane");
+    @NotNull
+    public static final Block WHITE_STAINED_GLASS_PANE = Block.fromKey("minecraft:white_stained_glass_pane");
 
-  @NotNull
-  public static final Block ORANGE_STAINED_GLASS_PANE = Block.fromKey("minecraft:orange_stained_glass_pane");
+    @NotNull
+    public static final Block ORANGE_STAINED_GLASS_PANE = Block.fromKey("minecraft:orange_stained_glass_pane");
 
-  @NotNull
-  public static final Block MAGENTA_STAINED_GLASS_PANE = Block.fromKey("minecraft:magenta_stained_glass_pane");
+    @NotNull
+    public static final Block MAGENTA_STAINED_GLASS_PANE = Block.fromKey("minecraft:magenta_stained_glass_pane");
 
-  @NotNull
-  public static final Block LIGHT_BLUE_STAINED_GLASS_PANE = Block.fromKey("minecraft:light_blue_stained_glass_pane");
+    @NotNull
+    public static final Block LIGHT_BLUE_STAINED_GLASS_PANE = Block.fromKey("minecraft:light_blue_stained_glass_pane");
 
-  @NotNull
-  public static final Block YELLOW_STAINED_GLASS_PANE = Block.fromKey("minecraft:yellow_stained_glass_pane");
+    @NotNull
+    public static final Block YELLOW_STAINED_GLASS_PANE = Block.fromKey("minecraft:yellow_stained_glass_pane");
 
-  @NotNull
-  public static final Block LIME_STAINED_GLASS_PANE = Block.fromKey("minecraft:lime_stained_glass_pane");
+    @NotNull
+    public static final Block LIME_STAINED_GLASS_PANE = Block.fromKey("minecraft:lime_stained_glass_pane");
 
-  @NotNull
-  public static final Block PINK_STAINED_GLASS_PANE = Block.fromKey("minecraft:pink_stained_glass_pane");
+    @NotNull
+    public static final Block PINK_STAINED_GLASS_PANE = Block.fromKey("minecraft:pink_stained_glass_pane");
 
-  @NotNull
-  public static final Block GRAY_STAINED_GLASS_PANE = Block.fromKey("minecraft:gray_stained_glass_pane");
+    @NotNull
+    public static final Block GRAY_STAINED_GLASS_PANE = Block.fromKey("minecraft:gray_stained_glass_pane");
 
-  @NotNull
-  public static final Block LIGHT_GRAY_STAINED_GLASS_PANE = Block.fromKey("minecraft:light_gray_stained_glass_pane");
+    @NotNull
+    public static final Block LIGHT_GRAY_STAINED_GLASS_PANE = Block.fromKey("minecraft:light_gray_stained_glass_pane");
 
-  @NotNull
-  public static final Block CYAN_STAINED_GLASS_PANE = Block.fromKey("minecraft:cyan_stained_glass_pane");
+    @NotNull
+    public static final Block CYAN_STAINED_GLASS_PANE = Block.fromKey("minecraft:cyan_stained_glass_pane");
 
-  @NotNull
-  public static final Block PURPLE_STAINED_GLASS_PANE = Block.fromKey("minecraft:purple_stained_glass_pane");
+    @NotNull
+    public static final Block PURPLE_STAINED_GLASS_PANE = Block.fromKey("minecraft:purple_stained_glass_pane");
 
-  @NotNull
-  public static final Block BLUE_STAINED_GLASS_PANE = Block.fromKey("minecraft:blue_stained_glass_pane");
+    @NotNull
+    public static final Block BLUE_STAINED_GLASS_PANE = Block.fromKey("minecraft:blue_stained_glass_pane");
 
-  @NotNull
-  public static final Block BROWN_STAINED_GLASS_PANE = Block.fromKey("minecraft:brown_stained_glass_pane");
+    @NotNull
+    public static final Block BROWN_STAINED_GLASS_PANE = Block.fromKey("minecraft:brown_stained_glass_pane");
 
-  @NotNull
-  public static final Block GREEN_STAINED_GLASS_PANE = Block.fromKey("minecraft:green_stained_glass_pane");
+    @NotNull
+    public static final Block GREEN_STAINED_GLASS_PANE = Block.fromKey("minecraft:green_stained_glass_pane");
 
-  @NotNull
-  public static final Block RED_STAINED_GLASS_PANE = Block.fromKey("minecraft:red_stained_glass_pane");
+    @NotNull
+    public static final Block RED_STAINED_GLASS_PANE = Block.fromKey("minecraft:red_stained_glass_pane");
 
-  @NotNull
-  public static final Block BLACK_STAINED_GLASS_PANE = Block.fromKey("minecraft:black_stained_glass_pane");
+    @NotNull
+    public static final Block BLACK_STAINED_GLASS_PANE = Block.fromKey("minecraft:black_stained_glass_pane");
 
-  @NotNull
-  public static final Block ACACIA_STAIRS = Block.fromKey("minecraft:acacia_stairs");
+    @NotNull
+    public static final Block ACACIA_STAIRS = Block.fromKey("minecraft:acacia_stairs");
 
-  @NotNull
-  public static final Block DARK_OAK_STAIRS = Block.fromKey("minecraft:dark_oak_stairs");
+    @NotNull
+    public static final Block DARK_OAK_STAIRS = Block.fromKey("minecraft:dark_oak_stairs");
 
-  @NotNull
-  public static final Block MANGROVE_STAIRS = Block.fromKey("minecraft:mangrove_stairs");
+    @NotNull
+    public static final Block MANGROVE_STAIRS = Block.fromKey("minecraft:mangrove_stairs");
 
-  @NotNull
-  public static final Block SLIME_BLOCK = Block.fromKey("minecraft:slime_block");
+    @NotNull
+    public static final Block SLIME_BLOCK = Block.fromKey("minecraft:slime_block");
 
-  @NotNull
-  public static final Block BARRIER = Block.fromKey("minecraft:barrier");
+    @NotNull
+    public static final Block BARRIER = Block.fromKey("minecraft:barrier");
 
-  @NotNull
-  public static final Block LIGHT = Block.fromKey("minecraft:light");
+    @NotNull
+    public static final Block LIGHT = Block.fromKey("minecraft:light");
 
-  @NotNull
-  public static final Block IRON_TRAPDOOR = Block.fromKey("minecraft:iron_trapdoor");
+    @NotNull
+    public static final Block IRON_TRAPDOOR = Block.fromKey("minecraft:iron_trapdoor");
 
-  @NotNull
-  public static final Block PRISMARINE = Block.fromKey("minecraft:prismarine");
+    @NotNull
+    public static final Block PRISMARINE = Block.fromKey("minecraft:prismarine");
 
-  @NotNull
-  public static final Block PRISMARINE_BRICKS = Block.fromKey("minecraft:prismarine_bricks");
+    @NotNull
+    public static final Block PRISMARINE_BRICKS = Block.fromKey("minecraft:prismarine_bricks");
 
-  @NotNull
-  public static final Block DARK_PRISMARINE = Block.fromKey("minecraft:dark_prismarine");
+    @NotNull
+    public static final Block DARK_PRISMARINE = Block.fromKey("minecraft:dark_prismarine");
 
-  @NotNull
-  public static final Block PRISMARINE_STAIRS = Block.fromKey("minecraft:prismarine_stairs");
+    @NotNull
+    public static final Block PRISMARINE_STAIRS = Block.fromKey("minecraft:prismarine_stairs");
 
-  @NotNull
-  public static final Block PRISMARINE_BRICK_STAIRS = Block.fromKey("minecraft:prismarine_brick_stairs");
+    @NotNull
+    public static final Block PRISMARINE_BRICK_STAIRS = Block.fromKey("minecraft:prismarine_brick_stairs");
 
-  @NotNull
-  public static final Block DARK_PRISMARINE_STAIRS = Block.fromKey("minecraft:dark_prismarine_stairs");
+    @NotNull
+    public static final Block DARK_PRISMARINE_STAIRS = Block.fromKey("minecraft:dark_prismarine_stairs");
 
-  @NotNull
-  public static final Block PRISMARINE_SLAB = Block.fromKey("minecraft:prismarine_slab");
+    @NotNull
+    public static final Block PRISMARINE_SLAB = Block.fromKey("minecraft:prismarine_slab");
 
-  @NotNull
-  public static final Block PRISMARINE_BRICK_SLAB = Block.fromKey("minecraft:prismarine_brick_slab");
+    @NotNull
+    public static final Block PRISMARINE_BRICK_SLAB = Block.fromKey("minecraft:prismarine_brick_slab");
 
-  @NotNull
-  public static final Block DARK_PRISMARINE_SLAB = Block.fromKey("minecraft:dark_prismarine_slab");
+    @NotNull
+    public static final Block DARK_PRISMARINE_SLAB = Block.fromKey("minecraft:dark_prismarine_slab");
 
-  @NotNull
-  public static final Block SEA_LANTERN = Block.fromKey("minecraft:sea_lantern");
+    @NotNull
+    public static final Block SEA_LANTERN = Block.fromKey("minecraft:sea_lantern");
 
-  @NotNull
-  public static final Block HAY_BLOCK = Block.fromKey("minecraft:hay_block");
+    @NotNull
+    public static final Block HAY_BLOCK = Block.fromKey("minecraft:hay_block");
 
-  @NotNull
-  public static final Block WHITE_CARPET = Block.fromKey("minecraft:white_carpet");
+    @NotNull
+    public static final Block WHITE_CARPET = Block.fromKey("minecraft:white_carpet");
 
-  @NotNull
-  public static final Block ORANGE_CARPET = Block.fromKey("minecraft:orange_carpet");
+    @NotNull
+    public static final Block ORANGE_CARPET = Block.fromKey("minecraft:orange_carpet");
 
-  @NotNull
-  public static final Block MAGENTA_CARPET = Block.fromKey("minecraft:magenta_carpet");
+    @NotNull
+    public static final Block MAGENTA_CARPET = Block.fromKey("minecraft:magenta_carpet");
 
-  @NotNull
-  public static final Block LIGHT_BLUE_CARPET = Block.fromKey("minecraft:light_blue_carpet");
+    @NotNull
+    public static final Block LIGHT_BLUE_CARPET = Block.fromKey("minecraft:light_blue_carpet");
 
-  @NotNull
-  public static final Block YELLOW_CARPET = Block.fromKey("minecraft:yellow_carpet");
+    @NotNull
+    public static final Block YELLOW_CARPET = Block.fromKey("minecraft:yellow_carpet");
 
-  @NotNull
-  public static final Block LIME_CARPET = Block.fromKey("minecraft:lime_carpet");
+    @NotNull
+    public static final Block LIME_CARPET = Block.fromKey("minecraft:lime_carpet");
 
-  @NotNull
-  public static final Block PINK_CARPET = Block.fromKey("minecraft:pink_carpet");
+    @NotNull
+    public static final Block PINK_CARPET = Block.fromKey("minecraft:pink_carpet");
 
-  @NotNull
-  public static final Block GRAY_CARPET = Block.fromKey("minecraft:gray_carpet");
+    @NotNull
+    public static final Block GRAY_CARPET = Block.fromKey("minecraft:gray_carpet");
 
-  @NotNull
-  public static final Block LIGHT_GRAY_CARPET = Block.fromKey("minecraft:light_gray_carpet");
+    @NotNull
+    public static final Block LIGHT_GRAY_CARPET = Block.fromKey("minecraft:light_gray_carpet");
 
-  @NotNull
-  public static final Block CYAN_CARPET = Block.fromKey("minecraft:cyan_carpet");
+    @NotNull
+    public static final Block CYAN_CARPET = Block.fromKey("minecraft:cyan_carpet");
 
-  @NotNull
-  public static final Block PURPLE_CARPET = Block.fromKey("minecraft:purple_carpet");
+    @NotNull
+    public static final Block PURPLE_CARPET = Block.fromKey("minecraft:purple_carpet");
 
-  @NotNull
-  public static final Block BLUE_CARPET = Block.fromKey("minecraft:blue_carpet");
+    @NotNull
+    public static final Block BLUE_CARPET = Block.fromKey("minecraft:blue_carpet");
 
-  @NotNull
-  public static final Block BROWN_CARPET = Block.fromKey("minecraft:brown_carpet");
+    @NotNull
+    public static final Block BROWN_CARPET = Block.fromKey("minecraft:brown_carpet");
 
-  @NotNull
-  public static final Block GREEN_CARPET = Block.fromKey("minecraft:green_carpet");
+    @NotNull
+    public static final Block GREEN_CARPET = Block.fromKey("minecraft:green_carpet");
 
-  @NotNull
-  public static final Block RED_CARPET = Block.fromKey("minecraft:red_carpet");
+    @NotNull
+    public static final Block RED_CARPET = Block.fromKey("minecraft:red_carpet");
 
-  @NotNull
-  public static final Block BLACK_CARPET = Block.fromKey("minecraft:black_carpet");
+    @NotNull
+    public static final Block BLACK_CARPET = Block.fromKey("minecraft:black_carpet");
 
-  @NotNull
-  public static final Block TERRACOTTA = Block.fromKey("minecraft:terracotta");
+    @NotNull
+    public static final Block TERRACOTTA = Block.fromKey("minecraft:terracotta");
 
-  @NotNull
-  public static final Block COAL_BLOCK = Block.fromKey("minecraft:coal_block");
+    @NotNull
+    public static final Block COAL_BLOCK = Block.fromKey("minecraft:coal_block");
 
-  @NotNull
-  public static final Block PACKED_ICE = Block.fromKey("minecraft:packed_ice");
+    @NotNull
+    public static final Block PACKED_ICE = Block.fromKey("minecraft:packed_ice");
 
-  @NotNull
-  public static final Block SUNFLOWER = Block.fromKey("minecraft:sunflower");
+    @NotNull
+    public static final Block SUNFLOWER = Block.fromKey("minecraft:sunflower");
 
-  @NotNull
-  public static final Block LILAC = Block.fromKey("minecraft:lilac");
+    @NotNull
+    public static final Block LILAC = Block.fromKey("minecraft:lilac");
 
-  @NotNull
-  public static final Block ROSE_BUSH = Block.fromKey("minecraft:rose_bush");
+    @NotNull
+    public static final Block ROSE_BUSH = Block.fromKey("minecraft:rose_bush");
 
-  @NotNull
-  public static final Block PEONY = Block.fromKey("minecraft:peony");
+    @NotNull
+    public static final Block PEONY = Block.fromKey("minecraft:peony");
 
-  @NotNull
-  public static final Block TALL_GRASS = Block.fromKey("minecraft:tall_grass");
+    @NotNull
+    public static final Block TALL_GRASS = Block.fromKey("minecraft:tall_grass");
 
-  @NotNull
-  public static final Block LARGE_FERN = Block.fromKey("minecraft:large_fern");
+    @NotNull
+    public static final Block LARGE_FERN = Block.fromKey("minecraft:large_fern");
 
-  @NotNull
-  public static final Block WHITE_BANNER = Block.fromKey("minecraft:white_banner");
+    @NotNull
+    public static final Block WHITE_BANNER = Block.fromKey("minecraft:white_banner");
 
-  @NotNull
-  public static final Block ORANGE_BANNER = Block.fromKey("minecraft:orange_banner");
+    @NotNull
+    public static final Block ORANGE_BANNER = Block.fromKey("minecraft:orange_banner");
 
-  @NotNull
-  public static final Block MAGENTA_BANNER = Block.fromKey("minecraft:magenta_banner");
+    @NotNull
+    public static final Block MAGENTA_BANNER = Block.fromKey("minecraft:magenta_banner");
 
-  @NotNull
-  public static final Block LIGHT_BLUE_BANNER = Block.fromKey("minecraft:light_blue_banner");
+    @NotNull
+    public static final Block LIGHT_BLUE_BANNER = Block.fromKey("minecraft:light_blue_banner");
 
-  @NotNull
-  public static final Block YELLOW_BANNER = Block.fromKey("minecraft:yellow_banner");
+    @NotNull
+    public static final Block YELLOW_BANNER = Block.fromKey("minecraft:yellow_banner");
 
-  @NotNull
-  public static final Block LIME_BANNER = Block.fromKey("minecraft:lime_banner");
+    @NotNull
+    public static final Block LIME_BANNER = Block.fromKey("minecraft:lime_banner");
 
-  @NotNull
-  public static final Block PINK_BANNER = Block.fromKey("minecraft:pink_banner");
+    @NotNull
+    public static final Block PINK_BANNER = Block.fromKey("minecraft:pink_banner");
 
-  @NotNull
-  public static final Block GRAY_BANNER = Block.fromKey("minecraft:gray_banner");
+    @NotNull
+    public static final Block GRAY_BANNER = Block.fromKey("minecraft:gray_banner");
 
-  @NotNull
-  public static final Block LIGHT_GRAY_BANNER = Block.fromKey("minecraft:light_gray_banner");
+    @NotNull
+    public static final Block LIGHT_GRAY_BANNER = Block.fromKey("minecraft:light_gray_banner");
 
-  @NotNull
-  public static final Block CYAN_BANNER = Block.fromKey("minecraft:cyan_banner");
+    @NotNull
+    public static final Block CYAN_BANNER = Block.fromKey("minecraft:cyan_banner");
 
-  @NotNull
-  public static final Block PURPLE_BANNER = Block.fromKey("minecraft:purple_banner");
+    @NotNull
+    public static final Block PURPLE_BANNER = Block.fromKey("minecraft:purple_banner");
 
-  @NotNull
-  public static final Block BLUE_BANNER = Block.fromKey("minecraft:blue_banner");
+    @NotNull
+    public static final Block BLUE_BANNER = Block.fromKey("minecraft:blue_banner");
 
-  @NotNull
-  public static final Block BROWN_BANNER = Block.fromKey("minecraft:brown_banner");
+    @NotNull
+    public static final Block BROWN_BANNER = Block.fromKey("minecraft:brown_banner");
 
-  @NotNull
-  public static final Block GREEN_BANNER = Block.fromKey("minecraft:green_banner");
+    @NotNull
+    public static final Block GREEN_BANNER = Block.fromKey("minecraft:green_banner");
 
-  @NotNull
-  public static final Block RED_BANNER = Block.fromKey("minecraft:red_banner");
+    @NotNull
+    public static final Block RED_BANNER = Block.fromKey("minecraft:red_banner");
 
-  @NotNull
-  public static final Block BLACK_BANNER = Block.fromKey("minecraft:black_banner");
+    @NotNull
+    public static final Block BLACK_BANNER = Block.fromKey("minecraft:black_banner");
 
-  @NotNull
-  public static final Block WHITE_WALL_BANNER = Block.fromKey("minecraft:white_wall_banner");
+    @NotNull
+    public static final Block WHITE_WALL_BANNER = Block.fromKey("minecraft:white_wall_banner");
 
-  @NotNull
-  public static final Block ORANGE_WALL_BANNER = Block.fromKey("minecraft:orange_wall_banner");
+    @NotNull
+    public static final Block ORANGE_WALL_BANNER = Block.fromKey("minecraft:orange_wall_banner");
 
-  @NotNull
-  public static final Block MAGENTA_WALL_BANNER = Block.fromKey("minecraft:magenta_wall_banner");
+    @NotNull
+    public static final Block MAGENTA_WALL_BANNER = Block.fromKey("minecraft:magenta_wall_banner");
 
-  @NotNull
-  public static final Block LIGHT_BLUE_WALL_BANNER = Block.fromKey("minecraft:light_blue_wall_banner");
+    @NotNull
+    public static final Block LIGHT_BLUE_WALL_BANNER = Block.fromKey("minecraft:light_blue_wall_banner");
 
-  @NotNull
-  public static final Block YELLOW_WALL_BANNER = Block.fromKey("minecraft:yellow_wall_banner");
+    @NotNull
+    public static final Block YELLOW_WALL_BANNER = Block.fromKey("minecraft:yellow_wall_banner");
 
-  @NotNull
-  public static final Block LIME_WALL_BANNER = Block.fromKey("minecraft:lime_wall_banner");
+    @NotNull
+    public static final Block LIME_WALL_BANNER = Block.fromKey("minecraft:lime_wall_banner");
 
-  @NotNull
-  public static final Block PINK_WALL_BANNER = Block.fromKey("minecraft:pink_wall_banner");
+    @NotNull
+    public static final Block PINK_WALL_BANNER = Block.fromKey("minecraft:pink_wall_banner");
 
-  @NotNull
-  public static final Block GRAY_WALL_BANNER = Block.fromKey("minecraft:gray_wall_banner");
+    @NotNull
+    public static final Block GRAY_WALL_BANNER = Block.fromKey("minecraft:gray_wall_banner");
 
-  @NotNull
-  public static final Block LIGHT_GRAY_WALL_BANNER = Block.fromKey("minecraft:light_gray_wall_banner");
+    @NotNull
+    public static final Block LIGHT_GRAY_WALL_BANNER = Block.fromKey("minecraft:light_gray_wall_banner");
 
-  @NotNull
-  public static final Block CYAN_WALL_BANNER = Block.fromKey("minecraft:cyan_wall_banner");
+    @NotNull
+    public static final Block CYAN_WALL_BANNER = Block.fromKey("minecraft:cyan_wall_banner");
 
-  @NotNull
-  public static final Block PURPLE_WALL_BANNER = Block.fromKey("minecraft:purple_wall_banner");
+    @NotNull
+    public static final Block PURPLE_WALL_BANNER = Block.fromKey("minecraft:purple_wall_banner");
 
-  @NotNull
-  public static final Block BLUE_WALL_BANNER = Block.fromKey("minecraft:blue_wall_banner");
+    @NotNull
+    public static final Block BLUE_WALL_BANNER = Block.fromKey("minecraft:blue_wall_banner");
 
-  @NotNull
-  public static final Block BROWN_WALL_BANNER = Block.fromKey("minecraft:brown_wall_banner");
+    @NotNull
+    public static final Block BROWN_WALL_BANNER = Block.fromKey("minecraft:brown_wall_banner");
 
-  @NotNull
-  public static final Block GREEN_WALL_BANNER = Block.fromKey("minecraft:green_wall_banner");
+    @NotNull
+    public static final Block GREEN_WALL_BANNER = Block.fromKey("minecraft:green_wall_banner");
 
-  @NotNull
-  public static final Block RED_WALL_BANNER = Block.fromKey("minecraft:red_wall_banner");
+    @NotNull
+    public static final Block RED_WALL_BANNER = Block.fromKey("minecraft:red_wall_banner");
 
-  @NotNull
-  public static final Block BLACK_WALL_BANNER = Block.fromKey("minecraft:black_wall_banner");
+    @NotNull
+    public static final Block BLACK_WALL_BANNER = Block.fromKey("minecraft:black_wall_banner");
 
-  @NotNull
-  public static final Block RED_SANDSTONE = Block.fromKey("minecraft:red_sandstone");
+    @NotNull
+    public static final Block RED_SANDSTONE = Block.fromKey("minecraft:red_sandstone");
 
-  @NotNull
-  public static final Block CHISELED_RED_SANDSTONE = Block.fromKey("minecraft:chiseled_red_sandstone");
+    @NotNull
+    public static final Block CHISELED_RED_SANDSTONE = Block.fromKey("minecraft:chiseled_red_sandstone");
 
-  @NotNull
-  public static final Block CUT_RED_SANDSTONE = Block.fromKey("minecraft:cut_red_sandstone");
+    @NotNull
+    public static final Block CUT_RED_SANDSTONE = Block.fromKey("minecraft:cut_red_sandstone");
 
-  @NotNull
-  public static final Block RED_SANDSTONE_STAIRS = Block.fromKey("minecraft:red_sandstone_stairs");
+    @NotNull
+    public static final Block RED_SANDSTONE_STAIRS = Block.fromKey("minecraft:red_sandstone_stairs");
 
-  @NotNull
-  public static final Block OAK_SLAB = Block.fromKey("minecraft:oak_slab");
+    @NotNull
+    public static final Block OAK_SLAB = Block.fromKey("minecraft:oak_slab");
 
-  @NotNull
-  public static final Block SPRUCE_SLAB = Block.fromKey("minecraft:spruce_slab");
+    @NotNull
+    public static final Block SPRUCE_SLAB = Block.fromKey("minecraft:spruce_slab");
 
-  @NotNull
-  public static final Block BIRCH_SLAB = Block.fromKey("minecraft:birch_slab");
+    @NotNull
+    public static final Block BIRCH_SLAB = Block.fromKey("minecraft:birch_slab");
 
-  @NotNull
-  public static final Block JUNGLE_SLAB = Block.fromKey("minecraft:jungle_slab");
+    @NotNull
+    public static final Block JUNGLE_SLAB = Block.fromKey("minecraft:jungle_slab");
 
-  @NotNull
-  public static final Block ACACIA_SLAB = Block.fromKey("minecraft:acacia_slab");
+    @NotNull
+    public static final Block ACACIA_SLAB = Block.fromKey("minecraft:acacia_slab");
 
-  @NotNull
-  public static final Block DARK_OAK_SLAB = Block.fromKey("minecraft:dark_oak_slab");
+    @NotNull
+    public static final Block DARK_OAK_SLAB = Block.fromKey("minecraft:dark_oak_slab");
 
-  @NotNull
-  public static final Block MANGROVE_SLAB = Block.fromKey("minecraft:mangrove_slab");
+    @NotNull
+    public static final Block MANGROVE_SLAB = Block.fromKey("minecraft:mangrove_slab");
 
-  @NotNull
-  public static final Block STONE_SLAB = Block.fromKey("minecraft:stone_slab");
+    @NotNull
+    public static final Block STONE_SLAB = Block.fromKey("minecraft:stone_slab");
 
-  @NotNull
-  public static final Block SMOOTH_STONE_SLAB = Block.fromKey("minecraft:smooth_stone_slab");
+    @NotNull
+    public static final Block SMOOTH_STONE_SLAB = Block.fromKey("minecraft:smooth_stone_slab");
 
-  @NotNull
-  public static final Block SANDSTONE_SLAB = Block.fromKey("minecraft:sandstone_slab");
+    @NotNull
+    public static final Block SANDSTONE_SLAB = Block.fromKey("minecraft:sandstone_slab");
 
-  @NotNull
-  public static final Block CUT_SANDSTONE_SLAB = Block.fromKey("minecraft:cut_sandstone_slab");
+    @NotNull
+    public static final Block CUT_SANDSTONE_SLAB = Block.fromKey("minecraft:cut_sandstone_slab");
 
-  @NotNull
-  public static final Block PETRIFIED_OAK_SLAB = Block.fromKey("minecraft:petrified_oak_slab");
+    @NotNull
+    public static final Block PETRIFIED_OAK_SLAB = Block.fromKey("minecraft:petrified_oak_slab");
 
-  @NotNull
-  public static final Block COBBLESTONE_SLAB = Block.fromKey("minecraft:cobblestone_slab");
+    @NotNull
+    public static final Block COBBLESTONE_SLAB = Block.fromKey("minecraft:cobblestone_slab");
 
-  @NotNull
-  public static final Block BRICK_SLAB = Block.fromKey("minecraft:brick_slab");
+    @NotNull
+    public static final Block BRICK_SLAB = Block.fromKey("minecraft:brick_slab");
 
-  @NotNull
-  public static final Block STONE_BRICK_SLAB = Block.fromKey("minecraft:stone_brick_slab");
+    @NotNull
+    public static final Block STONE_BRICK_SLAB = Block.fromKey("minecraft:stone_brick_slab");
 
-  @NotNull
-  public static final Block MUD_BRICK_SLAB = Block.fromKey("minecraft:mud_brick_slab");
+    @NotNull
+    public static final Block MUD_BRICK_SLAB = Block.fromKey("minecraft:mud_brick_slab");
 
-  @NotNull
-  public static final Block NETHER_BRICK_SLAB = Block.fromKey("minecraft:nether_brick_slab");
+    @NotNull
+    public static final Block NETHER_BRICK_SLAB = Block.fromKey("minecraft:nether_brick_slab");
 
-  @NotNull
-  public static final Block QUARTZ_SLAB = Block.fromKey("minecraft:quartz_slab");
+    @NotNull
+    public static final Block QUARTZ_SLAB = Block.fromKey("minecraft:quartz_slab");
 
-  @NotNull
-  public static final Block RED_SANDSTONE_SLAB = Block.fromKey("minecraft:red_sandstone_slab");
+    @NotNull
+    public static final Block RED_SANDSTONE_SLAB = Block.fromKey("minecraft:red_sandstone_slab");
 
-  @NotNull
-  public static final Block CUT_RED_SANDSTONE_SLAB = Block.fromKey("minecraft:cut_red_sandstone_slab");
+    @NotNull
+    public static final Block CUT_RED_SANDSTONE_SLAB = Block.fromKey("minecraft:cut_red_sandstone_slab");
 
-  @NotNull
-  public static final Block PURPUR_SLAB = Block.fromKey("minecraft:purpur_slab");
+    @NotNull
+    public static final Block PURPUR_SLAB = Block.fromKey("minecraft:purpur_slab");
 
-  @NotNull
-  public static final Block SMOOTH_STONE = Block.fromKey("minecraft:smooth_stone");
+    @NotNull
+    public static final Block SMOOTH_STONE = Block.fromKey("minecraft:smooth_stone");
 
-  @NotNull
-  public static final Block SMOOTH_SANDSTONE = Block.fromKey("minecraft:smooth_sandstone");
+    @NotNull
+    public static final Block SMOOTH_SANDSTONE = Block.fromKey("minecraft:smooth_sandstone");
 
-  @NotNull
-  public static final Block SMOOTH_QUARTZ = Block.fromKey("minecraft:smooth_quartz");
+    @NotNull
+    public static final Block SMOOTH_QUARTZ = Block.fromKey("minecraft:smooth_quartz");
 
-  @NotNull
-  public static final Block SMOOTH_RED_SANDSTONE = Block.fromKey("minecraft:smooth_red_sandstone");
+    @NotNull
+    public static final Block SMOOTH_RED_SANDSTONE = Block.fromKey("minecraft:smooth_red_sandstone");
 
-  @NotNull
-  public static final Block SPRUCE_FENCE_GATE = Block.fromKey("minecraft:spruce_fence_gate");
+    @NotNull
+    public static final Block SPRUCE_FENCE_GATE = Block.fromKey("minecraft:spruce_fence_gate");
 
-  @NotNull
-  public static final Block BIRCH_FENCE_GATE = Block.fromKey("minecraft:birch_fence_gate");
+    @NotNull
+    public static final Block BIRCH_FENCE_GATE = Block.fromKey("minecraft:birch_fence_gate");
 
-  @NotNull
-  public static final Block JUNGLE_FENCE_GATE = Block.fromKey("minecraft:jungle_fence_gate");
+    @NotNull
+    public static final Block JUNGLE_FENCE_GATE = Block.fromKey("minecraft:jungle_fence_gate");
 
-  @NotNull
-  public static final Block ACACIA_FENCE_GATE = Block.fromKey("minecraft:acacia_fence_gate");
+    @NotNull
+    public static final Block ACACIA_FENCE_GATE = Block.fromKey("minecraft:acacia_fence_gate");
 
-  @NotNull
-  public static final Block DARK_OAK_FENCE_GATE = Block.fromKey("minecraft:dark_oak_fence_gate");
+    @NotNull
+    public static final Block DARK_OAK_FENCE_GATE = Block.fromKey("minecraft:dark_oak_fence_gate");
 
-  @NotNull
-  public static final Block MANGROVE_FENCE_GATE = Block.fromKey("minecraft:mangrove_fence_gate");
+    @NotNull
+    public static final Block MANGROVE_FENCE_GATE = Block.fromKey("minecraft:mangrove_fence_gate");
 
-  @NotNull
-  public static final Block SPRUCE_FENCE = Block.fromKey("minecraft:spruce_fence");
+    @NotNull
+    public static final Block SPRUCE_FENCE = Block.fromKey("minecraft:spruce_fence");
 
-  @NotNull
-  public static final Block BIRCH_FENCE = Block.fromKey("minecraft:birch_fence");
+    @NotNull
+    public static final Block BIRCH_FENCE = Block.fromKey("minecraft:birch_fence");
 
-  @NotNull
-  public static final Block JUNGLE_FENCE = Block.fromKey("minecraft:jungle_fence");
+    @NotNull
+    public static final Block JUNGLE_FENCE = Block.fromKey("minecraft:jungle_fence");
 
-  @NotNull
-  public static final Block ACACIA_FENCE = Block.fromKey("minecraft:acacia_fence");
+    @NotNull
+    public static final Block ACACIA_FENCE = Block.fromKey("minecraft:acacia_fence");
 
-  @NotNull
-  public static final Block DARK_OAK_FENCE = Block.fromKey("minecraft:dark_oak_fence");
+    @NotNull
+    public static final Block DARK_OAK_FENCE = Block.fromKey("minecraft:dark_oak_fence");
 
-  @NotNull
-  public static final Block MANGROVE_FENCE = Block.fromKey("minecraft:mangrove_fence");
+    @NotNull
+    public static final Block MANGROVE_FENCE = Block.fromKey("minecraft:mangrove_fence");
 
-  @NotNull
-  public static final Block SPRUCE_DOOR = Block.fromKey("minecraft:spruce_door");
+    @NotNull
+    public static final Block SPRUCE_DOOR = Block.fromKey("minecraft:spruce_door");
 
-  @NotNull
-  public static final Block BIRCH_DOOR = Block.fromKey("minecraft:birch_door");
+    @NotNull
+    public static final Block BIRCH_DOOR = Block.fromKey("minecraft:birch_door");
 
-  @NotNull
-  public static final Block JUNGLE_DOOR = Block.fromKey("minecraft:jungle_door");
+    @NotNull
+    public static final Block JUNGLE_DOOR = Block.fromKey("minecraft:jungle_door");
 
-  @NotNull
-  public static final Block ACACIA_DOOR = Block.fromKey("minecraft:acacia_door");
+    @NotNull
+    public static final Block ACACIA_DOOR = Block.fromKey("minecraft:acacia_door");
 
-  @NotNull
-  public static final Block DARK_OAK_DOOR = Block.fromKey("minecraft:dark_oak_door");
+    @NotNull
+    public static final Block DARK_OAK_DOOR = Block.fromKey("minecraft:dark_oak_door");
 
-  @NotNull
-  public static final Block MANGROVE_DOOR = Block.fromKey("minecraft:mangrove_door");
+    @NotNull
+    public static final Block MANGROVE_DOOR = Block.fromKey("minecraft:mangrove_door");
 
-  @NotNull
-  public static final Block END_ROD = Block.fromKey("minecraft:end_rod");
+    @NotNull
+    public static final Block END_ROD = Block.fromKey("minecraft:end_rod");
 
-  @NotNull
-  public static final Block CHORUS_PLANT = Block.fromKey("minecraft:chorus_plant");
+    @NotNull
+    public static final Block CHORUS_PLANT = Block.fromKey("minecraft:chorus_plant");
 
-  @NotNull
-  public static final Block CHORUS_FLOWER = Block.fromKey("minecraft:chorus_flower");
+    @NotNull
+    public static final Block CHORUS_FLOWER = Block.fromKey("minecraft:chorus_flower");
 
-  @NotNull
-  public static final Block PURPUR_BLOCK = Block.fromKey("minecraft:purpur_block");
+    @NotNull
+    public static final Block PURPUR_BLOCK = Block.fromKey("minecraft:purpur_block");
 
-  @NotNull
-  public static final Block PURPUR_PILLAR = Block.fromKey("minecraft:purpur_pillar");
+    @NotNull
+    public static final Block PURPUR_PILLAR = Block.fromKey("minecraft:purpur_pillar");
 
-  @NotNull
-  public static final Block PURPUR_STAIRS = Block.fromKey("minecraft:purpur_stairs");
+    @NotNull
+    public static final Block PURPUR_STAIRS = Block.fromKey("minecraft:purpur_stairs");
 
-  @NotNull
-  public static final Block END_STONE_BRICKS = Block.fromKey("minecraft:end_stone_bricks");
+    @NotNull
+    public static final Block END_STONE_BRICKS = Block.fromKey("minecraft:end_stone_bricks");
 
-  @NotNull
-  public static final Block BEETROOTS = Block.fromKey("minecraft:beetroots");
+    @NotNull
+    public static final Block BEETROOTS = Block.fromKey("minecraft:beetroots");
 
-  @NotNull
-  public static final Block DIRT_PATH = Block.fromKey("minecraft:dirt_path");
+    @NotNull
+    public static final Block DIRT_PATH = Block.fromKey("minecraft:dirt_path");
 
-  @NotNull
-  public static final Block END_GATEWAY = Block.fromKey("minecraft:end_gateway");
+    @NotNull
+    public static final Block END_GATEWAY = Block.fromKey("minecraft:end_gateway");
 
-  @NotNull
-  public static final Block REPEATING_COMMAND_BLOCK = Block.fromKey("minecraft:repeating_command_block");
+    @NotNull
+    public static final Block REPEATING_COMMAND_BLOCK = Block.fromKey("minecraft:repeating_command_block");
 
-  @NotNull
-  public static final Block CHAIN_COMMAND_BLOCK = Block.fromKey("minecraft:chain_command_block");
+    @NotNull
+    public static final Block CHAIN_COMMAND_BLOCK = Block.fromKey("minecraft:chain_command_block");
 
-  @NotNull
-  public static final Block FROSTED_ICE = Block.fromKey("minecraft:frosted_ice");
+    @NotNull
+    public static final Block FROSTED_ICE = Block.fromKey("minecraft:frosted_ice");
 
-  @NotNull
-  public static final Block MAGMA_BLOCK = Block.fromKey("minecraft:magma_block");
+    @NotNull
+    public static final Block MAGMA_BLOCK = Block.fromKey("minecraft:magma_block");
 
-  @NotNull
-  public static final Block NETHER_WART_BLOCK = Block.fromKey("minecraft:nether_wart_block");
+    @NotNull
+    public static final Block NETHER_WART_BLOCK = Block.fromKey("minecraft:nether_wart_block");
 
-  @NotNull
-  public static final Block RED_NETHER_BRICKS = Block.fromKey("minecraft:red_nether_bricks");
+    @NotNull
+    public static final Block RED_NETHER_BRICKS = Block.fromKey("minecraft:red_nether_bricks");
 
-  @NotNull
-  public static final Block BONE_BLOCK = Block.fromKey("minecraft:bone_block");
+    @NotNull
+    public static final Block BONE_BLOCK = Block.fromKey("minecraft:bone_block");
 
-  @NotNull
-  public static final Block STRUCTURE_VOID = Block.fromKey("minecraft:structure_void");
+    @NotNull
+    public static final Block STRUCTURE_VOID = Block.fromKey("minecraft:structure_void");
 
-  @NotNull
-  public static final Block OBSERVER = Block.fromKey("minecraft:observer");
+    @NotNull
+    public static final Block OBSERVER = Block.fromKey("minecraft:observer");
 
-  @NotNull
-  public static final Block SHULKER_BOX = Block.fromKey("minecraft:shulker_box");
+    @NotNull
+    public static final Block SHULKER_BOX = Block.fromKey("minecraft:shulker_box");
 
-  @NotNull
-  public static final Block WHITE_SHULKER_BOX = Block.fromKey("minecraft:white_shulker_box");
+    @NotNull
+    public static final Block WHITE_SHULKER_BOX = Block.fromKey("minecraft:white_shulker_box");
 
-  @NotNull
-  public static final Block ORANGE_SHULKER_BOX = Block.fromKey("minecraft:orange_shulker_box");
+    @NotNull
+    public static final Block ORANGE_SHULKER_BOX = Block.fromKey("minecraft:orange_shulker_box");
 
-  @NotNull
-  public static final Block MAGENTA_SHULKER_BOX = Block.fromKey("minecraft:magenta_shulker_box");
+    @NotNull
+    public static final Block MAGENTA_SHULKER_BOX = Block.fromKey("minecraft:magenta_shulker_box");
 
-  @NotNull
-  public static final Block LIGHT_BLUE_SHULKER_BOX = Block.fromKey("minecraft:light_blue_shulker_box");
+    @NotNull
+    public static final Block LIGHT_BLUE_SHULKER_BOX = Block.fromKey("minecraft:light_blue_shulker_box");
 
-  @NotNull
-  public static final Block YELLOW_SHULKER_BOX = Block.fromKey("minecraft:yellow_shulker_box");
+    @NotNull
+    public static final Block YELLOW_SHULKER_BOX = Block.fromKey("minecraft:yellow_shulker_box");
 
-  @NotNull
-  public static final Block LIME_SHULKER_BOX = Block.fromKey("minecraft:lime_shulker_box");
+    @NotNull
+    public static final Block LIME_SHULKER_BOX = Block.fromKey("minecraft:lime_shulker_box");
 
-  @NotNull
-  public static final Block PINK_SHULKER_BOX = Block.fromKey("minecraft:pink_shulker_box");
+    @NotNull
+    public static final Block PINK_SHULKER_BOX = Block.fromKey("minecraft:pink_shulker_box");
 
-  @NotNull
-  public static final Block GRAY_SHULKER_BOX = Block.fromKey("minecraft:gray_shulker_box");
+    @NotNull
+    public static final Block GRAY_SHULKER_BOX = Block.fromKey("minecraft:gray_shulker_box");
 
-  @NotNull
-  public static final Block LIGHT_GRAY_SHULKER_BOX = Block.fromKey("minecraft:light_gray_shulker_box");
+    @NotNull
+    public static final Block LIGHT_GRAY_SHULKER_BOX = Block.fromKey("minecraft:light_gray_shulker_box");
 
-  @NotNull
-  public static final Block CYAN_SHULKER_BOX = Block.fromKey("minecraft:cyan_shulker_box");
+    @NotNull
+    public static final Block CYAN_SHULKER_BOX = Block.fromKey("minecraft:cyan_shulker_box");
 
-  @NotNull
-  public static final Block PURPLE_SHULKER_BOX = Block.fromKey("minecraft:purple_shulker_box");
+    @NotNull
+    public static final Block PURPLE_SHULKER_BOX = Block.fromKey("minecraft:purple_shulker_box");
 
-  @NotNull
-  public static final Block BLUE_SHULKER_BOX = Block.fromKey("minecraft:blue_shulker_box");
+    @NotNull
+    public static final Block BLUE_SHULKER_BOX = Block.fromKey("minecraft:blue_shulker_box");
 
-  @NotNull
-  public static final Block BROWN_SHULKER_BOX = Block.fromKey("minecraft:brown_shulker_box");
+    @NotNull
+    public static final Block BROWN_SHULKER_BOX = Block.fromKey("minecraft:brown_shulker_box");
 
-  @NotNull
-  public static final Block GREEN_SHULKER_BOX = Block.fromKey("minecraft:green_shulker_box");
+    @NotNull
+    public static final Block GREEN_SHULKER_BOX = Block.fromKey("minecraft:green_shulker_box");
 
-  @NotNull
-  public static final Block RED_SHULKER_BOX = Block.fromKey("minecraft:red_shulker_box");
+    @NotNull
+    public static final Block RED_SHULKER_BOX = Block.fromKey("minecraft:red_shulker_box");
 
-  @NotNull
-  public static final Block BLACK_SHULKER_BOX = Block.fromKey("minecraft:black_shulker_box");
+    @NotNull
+    public static final Block BLACK_SHULKER_BOX = Block.fromKey("minecraft:black_shulker_box");
 
-  @NotNull
-  public static final Block WHITE_GLAZED_TERRACOTTA = Block.fromKey("minecraft:white_glazed_terracotta");
+    @NotNull
+    public static final Block WHITE_GLAZED_TERRACOTTA = Block.fromKey("minecraft:white_glazed_terracotta");
 
-  @NotNull
-  public static final Block ORANGE_GLAZED_TERRACOTTA = Block.fromKey("minecraft:orange_glazed_terracotta");
+    @NotNull
+    public static final Block ORANGE_GLAZED_TERRACOTTA = Block.fromKey("minecraft:orange_glazed_terracotta");
 
-  @NotNull
-  public static final Block MAGENTA_GLAZED_TERRACOTTA = Block.fromKey("minecraft:magenta_glazed_terracotta");
+    @NotNull
+    public static final Block MAGENTA_GLAZED_TERRACOTTA = Block.fromKey("minecraft:magenta_glazed_terracotta");
 
-  @NotNull
-  public static final Block LIGHT_BLUE_GLAZED_TERRACOTTA = Block.fromKey("minecraft:light_blue_glazed_terracotta");
+    @NotNull
+    public static final Block LIGHT_BLUE_GLAZED_TERRACOTTA = Block.fromKey("minecraft:light_blue_glazed_terracotta");
 
-  @NotNull
-  public static final Block YELLOW_GLAZED_TERRACOTTA = Block.fromKey("minecraft:yellow_glazed_terracotta");
+    @NotNull
+    public static final Block YELLOW_GLAZED_TERRACOTTA = Block.fromKey("minecraft:yellow_glazed_terracotta");
 
-  @NotNull
-  public static final Block LIME_GLAZED_TERRACOTTA = Block.fromKey("minecraft:lime_glazed_terracotta");
+    @NotNull
+    public static final Block LIME_GLAZED_TERRACOTTA = Block.fromKey("minecraft:lime_glazed_terracotta");
 
-  @NotNull
-  public static final Block PINK_GLAZED_TERRACOTTA = Block.fromKey("minecraft:pink_glazed_terracotta");
+    @NotNull
+    public static final Block PINK_GLAZED_TERRACOTTA = Block.fromKey("minecraft:pink_glazed_terracotta");
 
-  @NotNull
-  public static final Block GRAY_GLAZED_TERRACOTTA = Block.fromKey("minecraft:gray_glazed_terracotta");
+    @NotNull
+    public static final Block GRAY_GLAZED_TERRACOTTA = Block.fromKey("minecraft:gray_glazed_terracotta");
 
-  @NotNull
-  public static final Block LIGHT_GRAY_GLAZED_TERRACOTTA = Block.fromKey("minecraft:light_gray_glazed_terracotta");
+    @NotNull
+    public static final Block LIGHT_GRAY_GLAZED_TERRACOTTA = Block.fromKey("minecraft:light_gray_glazed_terracotta");
 
-  @NotNull
-  public static final Block CYAN_GLAZED_TERRACOTTA = Block.fromKey("minecraft:cyan_glazed_terracotta");
+    @NotNull
+    public static final Block CYAN_GLAZED_TERRACOTTA = Block.fromKey("minecraft:cyan_glazed_terracotta");
 
-  @NotNull
-  public static final Block PURPLE_GLAZED_TERRACOTTA = Block.fromKey("minecraft:purple_glazed_terracotta");
+    @NotNull
+    public static final Block PURPLE_GLAZED_TERRACOTTA = Block.fromKey("minecraft:purple_glazed_terracotta");
 
-  @NotNull
-  public static final Block BLUE_GLAZED_TERRACOTTA = Block.fromKey("minecraft:blue_glazed_terracotta");
+    @NotNull
+    public static final Block BLUE_GLAZED_TERRACOTTA = Block.fromKey("minecraft:blue_glazed_terracotta");
 
-  @NotNull
-  public static final Block BROWN_GLAZED_TERRACOTTA = Block.fromKey("minecraft:brown_glazed_terracotta");
+    @NotNull
+    public static final Block BROWN_GLAZED_TERRACOTTA = Block.fromKey("minecraft:brown_glazed_terracotta");
 
-  @NotNull
-  public static final Block GREEN_GLAZED_TERRACOTTA = Block.fromKey("minecraft:green_glazed_terracotta");
+    @NotNull
+    public static final Block GREEN_GLAZED_TERRACOTTA = Block.fromKey("minecraft:green_glazed_terracotta");
 
-  @NotNull
-  public static final Block RED_GLAZED_TERRACOTTA = Block.fromKey("minecraft:red_glazed_terracotta");
+    @NotNull
+    public static final Block RED_GLAZED_TERRACOTTA = Block.fromKey("minecraft:red_glazed_terracotta");
 
-  @NotNull
-  public static final Block BLACK_GLAZED_TERRACOTTA = Block.fromKey("minecraft:black_glazed_terracotta");
+    @NotNull
+    public static final Block BLACK_GLAZED_TERRACOTTA = Block.fromKey("minecraft:black_glazed_terracotta");
 
-  @NotNull
-  public static final Block WHITE_CONCRETE = Block.fromKey("minecraft:white_concrete");
+    @NotNull
+    public static final Block WHITE_CONCRETE = Block.fromKey("minecraft:white_concrete");
 
-  @NotNull
-  public static final Block ORANGE_CONCRETE = Block.fromKey("minecraft:orange_concrete");
+    @NotNull
+    public static final Block ORANGE_CONCRETE = Block.fromKey("minecraft:orange_concrete");
 
-  @NotNull
-  public static final Block MAGENTA_CONCRETE = Block.fromKey("minecraft:magenta_concrete");
+    @NotNull
+    public static final Block MAGENTA_CONCRETE = Block.fromKey("minecraft:magenta_concrete");
 
-  @NotNull
-  public static final Block LIGHT_BLUE_CONCRETE = Block.fromKey("minecraft:light_blue_concrete");
+    @NotNull
+    public static final Block LIGHT_BLUE_CONCRETE = Block.fromKey("minecraft:light_blue_concrete");
 
-  @NotNull
-  public static final Block YELLOW_CONCRETE = Block.fromKey("minecraft:yellow_concrete");
+    @NotNull
+    public static final Block YELLOW_CONCRETE = Block.fromKey("minecraft:yellow_concrete");
 
-  @NotNull
-  public static final Block LIME_CONCRETE = Block.fromKey("minecraft:lime_concrete");
+    @NotNull
+    public static final Block LIME_CONCRETE = Block.fromKey("minecraft:lime_concrete");
 
-  @NotNull
-  public static final Block PINK_CONCRETE = Block.fromKey("minecraft:pink_concrete");
+    @NotNull
+    public static final Block PINK_CONCRETE = Block.fromKey("minecraft:pink_concrete");
 
-  @NotNull
-  public static final Block GRAY_CONCRETE = Block.fromKey("minecraft:gray_concrete");
+    @NotNull
+    public static final Block GRAY_CONCRETE = Block.fromKey("minecraft:gray_concrete");
 
-  @NotNull
-  public static final Block LIGHT_GRAY_CONCRETE = Block.fromKey("minecraft:light_gray_concrete");
+    @NotNull
+    public static final Block LIGHT_GRAY_CONCRETE = Block.fromKey("minecraft:light_gray_concrete");
 
-  @NotNull
-  public static final Block CYAN_CONCRETE = Block.fromKey("minecraft:cyan_concrete");
+    @NotNull
+    public static final Block CYAN_CONCRETE = Block.fromKey("minecraft:cyan_concrete");
 
-  @NotNull
-  public static final Block PURPLE_CONCRETE = Block.fromKey("minecraft:purple_concrete");
+    @NotNull
+    public static final Block PURPLE_CONCRETE = Block.fromKey("minecraft:purple_concrete");
 
-  @NotNull
-  public static final Block BLUE_CONCRETE = Block.fromKey("minecraft:blue_concrete");
+    @NotNull
+    public static final Block BLUE_CONCRETE = Block.fromKey("minecraft:blue_concrete");
 
-  @NotNull
-  public static final Block BROWN_CONCRETE = Block.fromKey("minecraft:brown_concrete");
+    @NotNull
+    public static final Block BROWN_CONCRETE = Block.fromKey("minecraft:brown_concrete");
 
-  @NotNull
-  public static final Block GREEN_CONCRETE = Block.fromKey("minecraft:green_concrete");
+    @NotNull
+    public static final Block GREEN_CONCRETE = Block.fromKey("minecraft:green_concrete");
 
-  @NotNull
-  public static final Block RED_CONCRETE = Block.fromKey("minecraft:red_concrete");
+    @NotNull
+    public static final Block RED_CONCRETE = Block.fromKey("minecraft:red_concrete");
 
-  @NotNull
-  public static final Block BLACK_CONCRETE = Block.fromKey("minecraft:black_concrete");
+    @NotNull
+    public static final Block BLACK_CONCRETE = Block.fromKey("minecraft:black_concrete");
 
-  @NotNull
-  public static final Block WHITE_CONCRETE_POWDER = Block.fromKey("minecraft:white_concrete_powder");
+    @NotNull
+    public static final Block WHITE_CONCRETE_POWDER = Block.fromKey("minecraft:white_concrete_powder");
 
-  @NotNull
-  public static final Block ORANGE_CONCRETE_POWDER = Block.fromKey("minecraft:orange_concrete_powder");
+    @NotNull
+    public static final Block ORANGE_CONCRETE_POWDER = Block.fromKey("minecraft:orange_concrete_powder");
 
-  @NotNull
-  public static final Block MAGENTA_CONCRETE_POWDER = Block.fromKey("minecraft:magenta_concrete_powder");
+    @NotNull
+    public static final Block MAGENTA_CONCRETE_POWDER = Block.fromKey("minecraft:magenta_concrete_powder");
 
-  @NotNull
-  public static final Block LIGHT_BLUE_CONCRETE_POWDER = Block.fromKey("minecraft:light_blue_concrete_powder");
+    @NotNull
+    public static final Block LIGHT_BLUE_CONCRETE_POWDER = Block.fromKey("minecraft:light_blue_concrete_powder");
 
-  @NotNull
-  public static final Block YELLOW_CONCRETE_POWDER = Block.fromKey("minecraft:yellow_concrete_powder");
+    @NotNull
+    public static final Block YELLOW_CONCRETE_POWDER = Block.fromKey("minecraft:yellow_concrete_powder");
 
-  @NotNull
-  public static final Block LIME_CONCRETE_POWDER = Block.fromKey("minecraft:lime_concrete_powder");
+    @NotNull
+    public static final Block LIME_CONCRETE_POWDER = Block.fromKey("minecraft:lime_concrete_powder");
 
-  @NotNull
-  public static final Block PINK_CONCRETE_POWDER = Block.fromKey("minecraft:pink_concrete_powder");
+    @NotNull
+    public static final Block PINK_CONCRETE_POWDER = Block.fromKey("minecraft:pink_concrete_powder");
 
-  @NotNull
-  public static final Block GRAY_CONCRETE_POWDER = Block.fromKey("minecraft:gray_concrete_powder");
+    @NotNull
+    public static final Block GRAY_CONCRETE_POWDER = Block.fromKey("minecraft:gray_concrete_powder");
 
-  @NotNull
-  public static final Block LIGHT_GRAY_CONCRETE_POWDER = Block.fromKey("minecraft:light_gray_concrete_powder");
+    @NotNull
+    public static final Block LIGHT_GRAY_CONCRETE_POWDER = Block.fromKey("minecraft:light_gray_concrete_powder");
 
-  @NotNull
-  public static final Block CYAN_CONCRETE_POWDER = Block.fromKey("minecraft:cyan_concrete_powder");
+    @NotNull
+    public static final Block CYAN_CONCRETE_POWDER = Block.fromKey("minecraft:cyan_concrete_powder");
 
-  @NotNull
-  public static final Block PURPLE_CONCRETE_POWDER = Block.fromKey("minecraft:purple_concrete_powder");
+    @NotNull
+    public static final Block PURPLE_CONCRETE_POWDER = Block.fromKey("minecraft:purple_concrete_powder");
 
-  @NotNull
-  public static final Block BLUE_CONCRETE_POWDER = Block.fromKey("minecraft:blue_concrete_powder");
+    @NotNull
+    public static final Block BLUE_CONCRETE_POWDER = Block.fromKey("minecraft:blue_concrete_powder");
 
-  @NotNull
-  public static final Block BROWN_CONCRETE_POWDER = Block.fromKey("minecraft:brown_concrete_powder");
+    @NotNull
+    public static final Block BROWN_CONCRETE_POWDER = Block.fromKey("minecraft:brown_concrete_powder");
 
-  @NotNull
-  public static final Block GREEN_CONCRETE_POWDER = Block.fromKey("minecraft:green_concrete_powder");
+    @NotNull
+    public static final Block GREEN_CONCRETE_POWDER = Block.fromKey("minecraft:green_concrete_powder");
 
-  @NotNull
-  public static final Block RED_CONCRETE_POWDER = Block.fromKey("minecraft:red_concrete_powder");
+    @NotNull
+    public static final Block RED_CONCRETE_POWDER = Block.fromKey("minecraft:red_concrete_powder");
 
-  @NotNull
-  public static final Block BLACK_CONCRETE_POWDER = Block.fromKey("minecraft:black_concrete_powder");
+    @NotNull
+    public static final Block BLACK_CONCRETE_POWDER = Block.fromKey("minecraft:black_concrete_powder");
 
-  @NotNull
-  public static final Block KELP = Block.fromKey("minecraft:kelp");
+    @NotNull
+    public static final Block KELP = Block.fromKey("minecraft:kelp");
 
-  @NotNull
-  public static final Block KELP_PLANT = Block.fromKey("minecraft:kelp_plant");
+    @NotNull
+    public static final Block KELP_PLANT = Block.fromKey("minecraft:kelp_plant");
 
-  @NotNull
-  public static final Block DRIED_KELP_BLOCK = Block.fromKey("minecraft:dried_kelp_block");
+    @NotNull
+    public static final Block DRIED_KELP_BLOCK = Block.fromKey("minecraft:dried_kelp_block");
 
-  @NotNull
-  public static final Block TURTLE_EGG = Block.fromKey("minecraft:turtle_egg");
+    @NotNull
+    public static final Block TURTLE_EGG = Block.fromKey("minecraft:turtle_egg");
 
-  @NotNull
-  public static final Block DEAD_TUBE_CORAL_BLOCK = Block.fromKey("minecraft:dead_tube_coral_block");
+    @NotNull
+    public static final Block DEAD_TUBE_CORAL_BLOCK = Block.fromKey("minecraft:dead_tube_coral_block");
 
-  @NotNull
-  public static final Block DEAD_BRAIN_CORAL_BLOCK = Block.fromKey("minecraft:dead_brain_coral_block");
+    @NotNull
+    public static final Block DEAD_BRAIN_CORAL_BLOCK = Block.fromKey("minecraft:dead_brain_coral_block");
 
-  @NotNull
-  public static final Block DEAD_BUBBLE_CORAL_BLOCK = Block.fromKey("minecraft:dead_bubble_coral_block");
+    @NotNull
+    public static final Block DEAD_BUBBLE_CORAL_BLOCK = Block.fromKey("minecraft:dead_bubble_coral_block");
 
-  @NotNull
-  public static final Block DEAD_FIRE_CORAL_BLOCK = Block.fromKey("minecraft:dead_fire_coral_block");
+    @NotNull
+    public static final Block DEAD_FIRE_CORAL_BLOCK = Block.fromKey("minecraft:dead_fire_coral_block");
 
-  @NotNull
-  public static final Block DEAD_HORN_CORAL_BLOCK = Block.fromKey("minecraft:dead_horn_coral_block");
+    @NotNull
+    public static final Block DEAD_HORN_CORAL_BLOCK = Block.fromKey("minecraft:dead_horn_coral_block");
 
-  @NotNull
-  public static final Block TUBE_CORAL_BLOCK = Block.fromKey("minecraft:tube_coral_block");
+    @NotNull
+    public static final Block TUBE_CORAL_BLOCK = Block.fromKey("minecraft:tube_coral_block");
 
-  @NotNull
-  public static final Block BRAIN_CORAL_BLOCK = Block.fromKey("minecraft:brain_coral_block");
+    @NotNull
+    public static final Block BRAIN_CORAL_BLOCK = Block.fromKey("minecraft:brain_coral_block");
 
-  @NotNull
-  public static final Block BUBBLE_CORAL_BLOCK = Block.fromKey("minecraft:bubble_coral_block");
+    @NotNull
+    public static final Block BUBBLE_CORAL_BLOCK = Block.fromKey("minecraft:bubble_coral_block");
 
-  @NotNull
-  public static final Block FIRE_CORAL_BLOCK = Block.fromKey("minecraft:fire_coral_block");
+    @NotNull
+    public static final Block FIRE_CORAL_BLOCK = Block.fromKey("minecraft:fire_coral_block");
 
-  @NotNull
-  public static final Block HORN_CORAL_BLOCK = Block.fromKey("minecraft:horn_coral_block");
+    @NotNull
+    public static final Block HORN_CORAL_BLOCK = Block.fromKey("minecraft:horn_coral_block");
 
-  @NotNull
-  public static final Block DEAD_TUBE_CORAL = Block.fromKey("minecraft:dead_tube_coral");
+    @NotNull
+    public static final Block DEAD_TUBE_CORAL = Block.fromKey("minecraft:dead_tube_coral");
 
-  @NotNull
-  public static final Block DEAD_BRAIN_CORAL = Block.fromKey("minecraft:dead_brain_coral");
+    @NotNull
+    public static final Block DEAD_BRAIN_CORAL = Block.fromKey("minecraft:dead_brain_coral");
 
-  @NotNull
-  public static final Block DEAD_BUBBLE_CORAL = Block.fromKey("minecraft:dead_bubble_coral");
+    @NotNull
+    public static final Block DEAD_BUBBLE_CORAL = Block.fromKey("minecraft:dead_bubble_coral");
 
-  @NotNull
-  public static final Block DEAD_FIRE_CORAL = Block.fromKey("minecraft:dead_fire_coral");
+    @NotNull
+    public static final Block DEAD_FIRE_CORAL = Block.fromKey("minecraft:dead_fire_coral");
 
-  @NotNull
-  public static final Block DEAD_HORN_CORAL = Block.fromKey("minecraft:dead_horn_coral");
+    @NotNull
+    public static final Block DEAD_HORN_CORAL = Block.fromKey("minecraft:dead_horn_coral");
 
-  @NotNull
-  public static final Block TUBE_CORAL = Block.fromKey("minecraft:tube_coral");
+    @NotNull
+    public static final Block TUBE_CORAL = Block.fromKey("minecraft:tube_coral");
 
-  @NotNull
-  public static final Block BRAIN_CORAL = Block.fromKey("minecraft:brain_coral");
+    @NotNull
+    public static final Block BRAIN_CORAL = Block.fromKey("minecraft:brain_coral");
 
-  @NotNull
-  public static final Block BUBBLE_CORAL = Block.fromKey("minecraft:bubble_coral");
+    @NotNull
+    public static final Block BUBBLE_CORAL = Block.fromKey("minecraft:bubble_coral");
 
-  @NotNull
-  public static final Block FIRE_CORAL = Block.fromKey("minecraft:fire_coral");
+    @NotNull
+    public static final Block FIRE_CORAL = Block.fromKey("minecraft:fire_coral");
 
-  @NotNull
-  public static final Block HORN_CORAL = Block.fromKey("minecraft:horn_coral");
+    @NotNull
+    public static final Block HORN_CORAL = Block.fromKey("minecraft:horn_coral");
 
-  @NotNull
-  public static final Block DEAD_TUBE_CORAL_FAN = Block.fromKey("minecraft:dead_tube_coral_fan");
+    @NotNull
+    public static final Block DEAD_TUBE_CORAL_FAN = Block.fromKey("minecraft:dead_tube_coral_fan");
 
-  @NotNull
-  public static final Block DEAD_BRAIN_CORAL_FAN = Block.fromKey("minecraft:dead_brain_coral_fan");
+    @NotNull
+    public static final Block DEAD_BRAIN_CORAL_FAN = Block.fromKey("minecraft:dead_brain_coral_fan");
 
-  @NotNull
-  public static final Block DEAD_BUBBLE_CORAL_FAN = Block.fromKey("minecraft:dead_bubble_coral_fan");
+    @NotNull
+    public static final Block DEAD_BUBBLE_CORAL_FAN = Block.fromKey("minecraft:dead_bubble_coral_fan");
 
-  @NotNull
-  public static final Block DEAD_FIRE_CORAL_FAN = Block.fromKey("minecraft:dead_fire_coral_fan");
+    @NotNull
+    public static final Block DEAD_FIRE_CORAL_FAN = Block.fromKey("minecraft:dead_fire_coral_fan");
 
-  @NotNull
-  public static final Block DEAD_HORN_CORAL_FAN = Block.fromKey("minecraft:dead_horn_coral_fan");
+    @NotNull
+    public static final Block DEAD_HORN_CORAL_FAN = Block.fromKey("minecraft:dead_horn_coral_fan");
 
-  @NotNull
-  public static final Block TUBE_CORAL_FAN = Block.fromKey("minecraft:tube_coral_fan");
+    @NotNull
+    public static final Block TUBE_CORAL_FAN = Block.fromKey("minecraft:tube_coral_fan");
 
-  @NotNull
-  public static final Block BRAIN_CORAL_FAN = Block.fromKey("minecraft:brain_coral_fan");
+    @NotNull
+    public static final Block BRAIN_CORAL_FAN = Block.fromKey("minecraft:brain_coral_fan");
 
-  @NotNull
-  public static final Block BUBBLE_CORAL_FAN = Block.fromKey("minecraft:bubble_coral_fan");
+    @NotNull
+    public static final Block BUBBLE_CORAL_FAN = Block.fromKey("minecraft:bubble_coral_fan");
 
-  @NotNull
-  public static final Block FIRE_CORAL_FAN = Block.fromKey("minecraft:fire_coral_fan");
+    @NotNull
+    public static final Block FIRE_CORAL_FAN = Block.fromKey("minecraft:fire_coral_fan");
 
-  @NotNull
-  public static final Block HORN_CORAL_FAN = Block.fromKey("minecraft:horn_coral_fan");
+    @NotNull
+    public static final Block HORN_CORAL_FAN = Block.fromKey("minecraft:horn_coral_fan");
 
-  @NotNull
-  public static final Block DEAD_TUBE_CORAL_WALL_FAN = Block.fromKey("minecraft:dead_tube_coral_wall_fan");
+    @NotNull
+    public static final Block DEAD_TUBE_CORAL_WALL_FAN = Block.fromKey("minecraft:dead_tube_coral_wall_fan");
 
-  @NotNull
-  public static final Block DEAD_BRAIN_CORAL_WALL_FAN = Block.fromKey("minecraft:dead_brain_coral_wall_fan");
+    @NotNull
+    public static final Block DEAD_BRAIN_CORAL_WALL_FAN = Block.fromKey("minecraft:dead_brain_coral_wall_fan");
 
-  @NotNull
-  public static final Block DEAD_BUBBLE_CORAL_WALL_FAN = Block.fromKey("minecraft:dead_bubble_coral_wall_fan");
+    @NotNull
+    public static final Block DEAD_BUBBLE_CORAL_WALL_FAN = Block.fromKey("minecraft:dead_bubble_coral_wall_fan");
 
-  @NotNull
-  public static final Block DEAD_FIRE_CORAL_WALL_FAN = Block.fromKey("minecraft:dead_fire_coral_wall_fan");
+    @NotNull
+    public static final Block DEAD_FIRE_CORAL_WALL_FAN = Block.fromKey("minecraft:dead_fire_coral_wall_fan");
 
-  @NotNull
-  public static final Block DEAD_HORN_CORAL_WALL_FAN = Block.fromKey("minecraft:dead_horn_coral_wall_fan");
+    @NotNull
+    public static final Block DEAD_HORN_CORAL_WALL_FAN = Block.fromKey("minecraft:dead_horn_coral_wall_fan");
 
-  @NotNull
-  public static final Block TUBE_CORAL_WALL_FAN = Block.fromKey("minecraft:tube_coral_wall_fan");
+    @NotNull
+    public static final Block TUBE_CORAL_WALL_FAN = Block.fromKey("minecraft:tube_coral_wall_fan");
 
-  @NotNull
-  public static final Block BRAIN_CORAL_WALL_FAN = Block.fromKey("minecraft:brain_coral_wall_fan");
+    @NotNull
+    public static final Block BRAIN_CORAL_WALL_FAN = Block.fromKey("minecraft:brain_coral_wall_fan");
 
-  @NotNull
-  public static final Block BUBBLE_CORAL_WALL_FAN = Block.fromKey("minecraft:bubble_coral_wall_fan");
+    @NotNull
+    public static final Block BUBBLE_CORAL_WALL_FAN = Block.fromKey("minecraft:bubble_coral_wall_fan");
 
-  @NotNull
-  public static final Block FIRE_CORAL_WALL_FAN = Block.fromKey("minecraft:fire_coral_wall_fan");
+    @NotNull
+    public static final Block FIRE_CORAL_WALL_FAN = Block.fromKey("minecraft:fire_coral_wall_fan");
 
-  @NotNull
-  public static final Block HORN_CORAL_WALL_FAN = Block.fromKey("minecraft:horn_coral_wall_fan");
+    @NotNull
+    public static final Block HORN_CORAL_WALL_FAN = Block.fromKey("minecraft:horn_coral_wall_fan");
 
-  @NotNull
-  public static final Block SEA_PICKLE = Block.fromKey("minecraft:sea_pickle");
+    @NotNull
+    public static final Block SEA_PICKLE = Block.fromKey("minecraft:sea_pickle");
 
-  @NotNull
-  public static final Block BLUE_ICE = Block.fromKey("minecraft:blue_ice");
+    @NotNull
+    public static final Block BLUE_ICE = Block.fromKey("minecraft:blue_ice");
 
-  @NotNull
-  public static final Block CONDUIT = Block.fromKey("minecraft:conduit");
+    @NotNull
+    public static final Block CONDUIT = Block.fromKey("minecraft:conduit");
 
-  @NotNull
-  public static final Block BAMBOO_SAPLING = Block.fromKey("minecraft:bamboo_sapling");
+    @NotNull
+    public static final Block BAMBOO_SAPLING = Block.fromKey("minecraft:bamboo_sapling");
 
-  @NotNull
-  public static final Block BAMBOO = Block.fromKey("minecraft:bamboo");
+    @NotNull
+    public static final Block BAMBOO = Block.fromKey("minecraft:bamboo");
 
-  @NotNull
-  public static final Block POTTED_BAMBOO = Block.fromKey("minecraft:potted_bamboo");
+    @NotNull
+    public static final Block POTTED_BAMBOO = Block.fromKey("minecraft:potted_bamboo");
 
-  @NotNull
-  public static final Block VOID_AIR = Block.fromKey("minecraft:void_air");
+    @NotNull
+    public static final Block VOID_AIR = Block.fromKey("minecraft:void_air");
 
-  @NotNull
-  public static final Block CAVE_AIR = Block.fromKey("minecraft:cave_air");
+    @NotNull
+    public static final Block CAVE_AIR = Block.fromKey("minecraft:cave_air");
 
-  @NotNull
-  public static final Block BUBBLE_COLUMN = Block.fromKey("minecraft:bubble_column");
+    @NotNull
+    public static final Block BUBBLE_COLUMN = Block.fromKey("minecraft:bubble_column");
 
-  @NotNull
-  public static final Block POLISHED_GRANITE_STAIRS = Block.fromKey("minecraft:polished_granite_stairs");
+    @NotNull
+    public static final Block POLISHED_GRANITE_STAIRS = Block.fromKey("minecraft:polished_granite_stairs");
 
-  @NotNull
-  public static final Block SMOOTH_RED_SANDSTONE_STAIRS = Block.fromKey("minecraft:smooth_red_sandstone_stairs");
+    @NotNull
+    public static final Block SMOOTH_RED_SANDSTONE_STAIRS = Block.fromKey("minecraft:smooth_red_sandstone_stairs");
 
-  @NotNull
-  public static final Block MOSSY_STONE_BRICK_STAIRS = Block.fromKey("minecraft:mossy_stone_brick_stairs");
+    @NotNull
+    public static final Block MOSSY_STONE_BRICK_STAIRS = Block.fromKey("minecraft:mossy_stone_brick_stairs");
 
-  @NotNull
-  public static final Block POLISHED_DIORITE_STAIRS = Block.fromKey("minecraft:polished_diorite_stairs");
+    @NotNull
+    public static final Block POLISHED_DIORITE_STAIRS = Block.fromKey("minecraft:polished_diorite_stairs");
 
-  @NotNull
-  public static final Block MOSSY_COBBLESTONE_STAIRS = Block.fromKey("minecraft:mossy_cobblestone_stairs");
+    @NotNull
+    public static final Block MOSSY_COBBLESTONE_STAIRS = Block.fromKey("minecraft:mossy_cobblestone_stairs");
 
-  @NotNull
-  public static final Block END_STONE_BRICK_STAIRS = Block.fromKey("minecraft:end_stone_brick_stairs");
+    @NotNull
+    public static final Block END_STONE_BRICK_STAIRS = Block.fromKey("minecraft:end_stone_brick_stairs");
 
-  @NotNull
-  public static final Block STONE_STAIRS = Block.fromKey("minecraft:stone_stairs");
+    @NotNull
+    public static final Block STONE_STAIRS = Block.fromKey("minecraft:stone_stairs");
 
-  @NotNull
-  public static final Block SMOOTH_SANDSTONE_STAIRS = Block.fromKey("minecraft:smooth_sandstone_stairs");
+    @NotNull
+    public static final Block SMOOTH_SANDSTONE_STAIRS = Block.fromKey("minecraft:smooth_sandstone_stairs");
 
-  @NotNull
-  public static final Block SMOOTH_QUARTZ_STAIRS = Block.fromKey("minecraft:smooth_quartz_stairs");
+    @NotNull
+    public static final Block SMOOTH_QUARTZ_STAIRS = Block.fromKey("minecraft:smooth_quartz_stairs");
 
-  @NotNull
-  public static final Block GRANITE_STAIRS = Block.fromKey("minecraft:granite_stairs");
+    @NotNull
+    public static final Block GRANITE_STAIRS = Block.fromKey("minecraft:granite_stairs");
 
-  @NotNull
-  public static final Block ANDESITE_STAIRS = Block.fromKey("minecraft:andesite_stairs");
+    @NotNull
+    public static final Block ANDESITE_STAIRS = Block.fromKey("minecraft:andesite_stairs");
 
-  @NotNull
-  public static final Block RED_NETHER_BRICK_STAIRS = Block.fromKey("minecraft:red_nether_brick_stairs");
+    @NotNull
+    public static final Block RED_NETHER_BRICK_STAIRS = Block.fromKey("minecraft:red_nether_brick_stairs");
 
-  @NotNull
-  public static final Block POLISHED_ANDESITE_STAIRS = Block.fromKey("minecraft:polished_andesite_stairs");
+    @NotNull
+    public static final Block POLISHED_ANDESITE_STAIRS = Block.fromKey("minecraft:polished_andesite_stairs");
 
-  @NotNull
-  public static final Block DIORITE_STAIRS = Block.fromKey("minecraft:diorite_stairs");
+    @NotNull
+    public static final Block DIORITE_STAIRS = Block.fromKey("minecraft:diorite_stairs");
 
-  @NotNull
-  public static final Block POLISHED_GRANITE_SLAB = Block.fromKey("minecraft:polished_granite_slab");
+    @NotNull
+    public static final Block POLISHED_GRANITE_SLAB = Block.fromKey("minecraft:polished_granite_slab");
 
-  @NotNull
-  public static final Block SMOOTH_RED_SANDSTONE_SLAB = Block.fromKey("minecraft:smooth_red_sandstone_slab");
+    @NotNull
+    public static final Block SMOOTH_RED_SANDSTONE_SLAB = Block.fromKey("minecraft:smooth_red_sandstone_slab");
 
-  @NotNull
-  public static final Block MOSSY_STONE_BRICK_SLAB = Block.fromKey("minecraft:mossy_stone_brick_slab");
+    @NotNull
+    public static final Block MOSSY_STONE_BRICK_SLAB = Block.fromKey("minecraft:mossy_stone_brick_slab");
 
-  @NotNull
-  public static final Block POLISHED_DIORITE_SLAB = Block.fromKey("minecraft:polished_diorite_slab");
+    @NotNull
+    public static final Block POLISHED_DIORITE_SLAB = Block.fromKey("minecraft:polished_diorite_slab");
 
-  @NotNull
-  public static final Block MOSSY_COBBLESTONE_SLAB = Block.fromKey("minecraft:mossy_cobblestone_slab");
+    @NotNull
+    public static final Block MOSSY_COBBLESTONE_SLAB = Block.fromKey("minecraft:mossy_cobblestone_slab");
 
-  @NotNull
-  public static final Block END_STONE_BRICK_SLAB = Block.fromKey("minecraft:end_stone_brick_slab");
+    @NotNull
+    public static final Block END_STONE_BRICK_SLAB = Block.fromKey("minecraft:end_stone_brick_slab");
 
-  @NotNull
-  public static final Block SMOOTH_SANDSTONE_SLAB = Block.fromKey("minecraft:smooth_sandstone_slab");
+    @NotNull
+    public static final Block SMOOTH_SANDSTONE_SLAB = Block.fromKey("minecraft:smooth_sandstone_slab");
 
-  @NotNull
-  public static final Block SMOOTH_QUARTZ_SLAB = Block.fromKey("minecraft:smooth_quartz_slab");
+    @NotNull
+    public static final Block SMOOTH_QUARTZ_SLAB = Block.fromKey("minecraft:smooth_quartz_slab");
 
-  @NotNull
-  public static final Block GRANITE_SLAB = Block.fromKey("minecraft:granite_slab");
+    @NotNull
+    public static final Block GRANITE_SLAB = Block.fromKey("minecraft:granite_slab");
 
-  @NotNull
-  public static final Block ANDESITE_SLAB = Block.fromKey("minecraft:andesite_slab");
+    @NotNull
+    public static final Block ANDESITE_SLAB = Block.fromKey("minecraft:andesite_slab");
 
-  @NotNull
-  public static final Block RED_NETHER_BRICK_SLAB = Block.fromKey("minecraft:red_nether_brick_slab");
+    @NotNull
+    public static final Block RED_NETHER_BRICK_SLAB = Block.fromKey("minecraft:red_nether_brick_slab");
 
-  @NotNull
-  public static final Block POLISHED_ANDESITE_SLAB = Block.fromKey("minecraft:polished_andesite_slab");
+    @NotNull
+    public static final Block POLISHED_ANDESITE_SLAB = Block.fromKey("minecraft:polished_andesite_slab");
 
-  @NotNull
-  public static final Block DIORITE_SLAB = Block.fromKey("minecraft:diorite_slab");
+    @NotNull
+    public static final Block DIORITE_SLAB = Block.fromKey("minecraft:diorite_slab");
 
-  @NotNull
-  public static final Block BRICK_WALL = Block.fromKey("minecraft:brick_wall");
+    @NotNull
+    public static final Block BRICK_WALL = Block.fromKey("minecraft:brick_wall");
 
-  @NotNull
-  public static final Block PRISMARINE_WALL = Block.fromKey("minecraft:prismarine_wall");
+    @NotNull
+    public static final Block PRISMARINE_WALL = Block.fromKey("minecraft:prismarine_wall");
 
-  @NotNull
-  public static final Block RED_SANDSTONE_WALL = Block.fromKey("minecraft:red_sandstone_wall");
+    @NotNull
+    public static final Block RED_SANDSTONE_WALL = Block.fromKey("minecraft:red_sandstone_wall");
 
-  @NotNull
-  public static final Block MOSSY_STONE_BRICK_WALL = Block.fromKey("minecraft:mossy_stone_brick_wall");
+    @NotNull
+    public static final Block MOSSY_STONE_BRICK_WALL = Block.fromKey("minecraft:mossy_stone_brick_wall");
 
-  @NotNull
-  public static final Block GRANITE_WALL = Block.fromKey("minecraft:granite_wall");
+    @NotNull
+    public static final Block GRANITE_WALL = Block.fromKey("minecraft:granite_wall");
 
-  @NotNull
-  public static final Block STONE_BRICK_WALL = Block.fromKey("minecraft:stone_brick_wall");
+    @NotNull
+    public static final Block STONE_BRICK_WALL = Block.fromKey("minecraft:stone_brick_wall");
 
-  @NotNull
-  public static final Block MUD_BRICK_WALL = Block.fromKey("minecraft:mud_brick_wall");
+    @NotNull
+    public static final Block MUD_BRICK_WALL = Block.fromKey("minecraft:mud_brick_wall");
 
-  @NotNull
-  public static final Block NETHER_BRICK_WALL = Block.fromKey("minecraft:nether_brick_wall");
+    @NotNull
+    public static final Block NETHER_BRICK_WALL = Block.fromKey("minecraft:nether_brick_wall");
 
-  @NotNull
-  public static final Block ANDESITE_WALL = Block.fromKey("minecraft:andesite_wall");
+    @NotNull
+    public static final Block ANDESITE_WALL = Block.fromKey("minecraft:andesite_wall");
 
-  @NotNull
-  public static final Block RED_NETHER_BRICK_WALL = Block.fromKey("minecraft:red_nether_brick_wall");
+    @NotNull
+    public static final Block RED_NETHER_BRICK_WALL = Block.fromKey("minecraft:red_nether_brick_wall");
 
-  @NotNull
-  public static final Block SANDSTONE_WALL = Block.fromKey("minecraft:sandstone_wall");
+    @NotNull
+    public static final Block SANDSTONE_WALL = Block.fromKey("minecraft:sandstone_wall");
 
-  @NotNull
-  public static final Block END_STONE_BRICK_WALL = Block.fromKey("minecraft:end_stone_brick_wall");
+    @NotNull
+    public static final Block END_STONE_BRICK_WALL = Block.fromKey("minecraft:end_stone_brick_wall");
 
-  @NotNull
-  public static final Block DIORITE_WALL = Block.fromKey("minecraft:diorite_wall");
+    @NotNull
+    public static final Block DIORITE_WALL = Block.fromKey("minecraft:diorite_wall");
 
-  @NotNull
-  public static final Block SCAFFOLDING = Block.fromKey("minecraft:scaffolding");
+    @NotNull
+    public static final Block SCAFFOLDING = Block.fromKey("minecraft:scaffolding");
 
-  @NotNull
-  public static final Block LOOM = Block.fromKey("minecraft:loom");
+    @NotNull
+    public static final Block LOOM = Block.fromKey("minecraft:loom");
 
-  @NotNull
-  public static final Block BARREL = Block.fromKey("minecraft:barrel");
+    @NotNull
+    public static final Block BARREL = Block.fromKey("minecraft:barrel");
 
-  @NotNull
-  public static final Block SMOKER = Block.fromKey("minecraft:smoker");
+    @NotNull
+    public static final Block SMOKER = Block.fromKey("minecraft:smoker");
 
-  @NotNull
-  public static final Block BLAST_FURNACE = Block.fromKey("minecraft:blast_furnace");
+    @NotNull
+    public static final Block BLAST_FURNACE = Block.fromKey("minecraft:blast_furnace");
 
-  @NotNull
-  public static final Block CARTOGRAPHY_TABLE = Block.fromKey("minecraft:cartography_table");
+    @NotNull
+    public static final Block CARTOGRAPHY_TABLE = Block.fromKey("minecraft:cartography_table");
 
-  @NotNull
-  public static final Block FLETCHING_TABLE = Block.fromKey("minecraft:fletching_table");
+    @NotNull
+    public static final Block FLETCHING_TABLE = Block.fromKey("minecraft:fletching_table");
 
-  @NotNull
-  public static final Block GRINDSTONE = Block.fromKey("minecraft:grindstone");
+    @NotNull
+    public static final Block GRINDSTONE = Block.fromKey("minecraft:grindstone");
 
-  @NotNull
-  public static final Block LECTERN = Block.fromKey("minecraft:lectern");
+    @NotNull
+    public static final Block LECTERN = Block.fromKey("minecraft:lectern");
 
-  @NotNull
-  public static final Block SMITHING_TABLE = Block.fromKey("minecraft:smithing_table");
+    @NotNull
+    public static final Block SMITHING_TABLE = Block.fromKey("minecraft:smithing_table");
 
-  @NotNull
-  public static final Block STONECUTTER = Block.fromKey("minecraft:stonecutter");
+    @NotNull
+    public static final Block STONECUTTER = Block.fromKey("minecraft:stonecutter");
 
-  @NotNull
-  public static final Block BELL = Block.fromKey("minecraft:bell");
+    @NotNull
+    public static final Block BELL = Block.fromKey("minecraft:bell");
 
-  @NotNull
-  public static final Block LANTERN = Block.fromKey("minecraft:lantern");
+    @NotNull
+    public static final Block LANTERN = Block.fromKey("minecraft:lantern");
 
-  @NotNull
-  public static final Block SOUL_LANTERN = Block.fromKey("minecraft:soul_lantern");
+    @NotNull
+    public static final Block SOUL_LANTERN = Block.fromKey("minecraft:soul_lantern");
 
-  @NotNull
-  public static final Block CAMPFIRE = Block.fromKey("minecraft:campfire");
+    @NotNull
+    public static final Block CAMPFIRE = Block.fromKey("minecraft:campfire");
 
-  @NotNull
-  public static final Block SOUL_CAMPFIRE = Block.fromKey("minecraft:soul_campfire");
+    @NotNull
+    public static final Block SOUL_CAMPFIRE = Block.fromKey("minecraft:soul_campfire");
 
-  @NotNull
-  public static final Block SWEET_BERRY_BUSH = Block.fromKey("minecraft:sweet_berry_bush");
+    @NotNull
+    public static final Block SWEET_BERRY_BUSH = Block.fromKey("minecraft:sweet_berry_bush");
 
-  @NotNull
-  public static final Block WARPED_STEM = Block.fromKey("minecraft:warped_stem");
+    @NotNull
+    public static final Block WARPED_STEM = Block.fromKey("minecraft:warped_stem");
 
-  @NotNull
-  public static final Block STRIPPED_WARPED_STEM = Block.fromKey("minecraft:stripped_warped_stem");
+    @NotNull
+    public static final Block STRIPPED_WARPED_STEM = Block.fromKey("minecraft:stripped_warped_stem");
 
-  @NotNull
-  public static final Block WARPED_HYPHAE = Block.fromKey("minecraft:warped_hyphae");
+    @NotNull
+    public static final Block WARPED_HYPHAE = Block.fromKey("minecraft:warped_hyphae");
 
-  @NotNull
-  public static final Block STRIPPED_WARPED_HYPHAE = Block.fromKey("minecraft:stripped_warped_hyphae");
+    @NotNull
+    public static final Block STRIPPED_WARPED_HYPHAE = Block.fromKey("minecraft:stripped_warped_hyphae");
 
-  @NotNull
-  public static final Block WARPED_NYLIUM = Block.fromKey("minecraft:warped_nylium");
+    @NotNull
+    public static final Block WARPED_NYLIUM = Block.fromKey("minecraft:warped_nylium");
 
-  @NotNull
-  public static final Block WARPED_FUNGUS = Block.fromKey("minecraft:warped_fungus");
+    @NotNull
+    public static final Block WARPED_FUNGUS = Block.fromKey("minecraft:warped_fungus");
 
-  @NotNull
-  public static final Block WARPED_WART_BLOCK = Block.fromKey("minecraft:warped_wart_block");
+    @NotNull
+    public static final Block WARPED_WART_BLOCK = Block.fromKey("minecraft:warped_wart_block");
 
-  @NotNull
-  public static final Block WARPED_ROOTS = Block.fromKey("minecraft:warped_roots");
+    @NotNull
+    public static final Block WARPED_ROOTS = Block.fromKey("minecraft:warped_roots");
 
-  @NotNull
-  public static final Block NETHER_SPROUTS = Block.fromKey("minecraft:nether_sprouts");
+    @NotNull
+    public static final Block NETHER_SPROUTS = Block.fromKey("minecraft:nether_sprouts");
 
-  @NotNull
-  public static final Block CRIMSON_STEM = Block.fromKey("minecraft:crimson_stem");
+    @NotNull
+    public static final Block CRIMSON_STEM = Block.fromKey("minecraft:crimson_stem");
 
-  @NotNull
-  public static final Block STRIPPED_CRIMSON_STEM = Block.fromKey("minecraft:stripped_crimson_stem");
+    @NotNull
+    public static final Block STRIPPED_CRIMSON_STEM = Block.fromKey("minecraft:stripped_crimson_stem");
 
-  @NotNull
-  public static final Block CRIMSON_HYPHAE = Block.fromKey("minecraft:crimson_hyphae");
+    @NotNull
+    public static final Block CRIMSON_HYPHAE = Block.fromKey("minecraft:crimson_hyphae");
 
-  @NotNull
-  public static final Block STRIPPED_CRIMSON_HYPHAE = Block.fromKey("minecraft:stripped_crimson_hyphae");
+    @NotNull
+    public static final Block STRIPPED_CRIMSON_HYPHAE = Block.fromKey("minecraft:stripped_crimson_hyphae");
 
-  @NotNull
-  public static final Block CRIMSON_NYLIUM = Block.fromKey("minecraft:crimson_nylium");
+    @NotNull
+    public static final Block CRIMSON_NYLIUM = Block.fromKey("minecraft:crimson_nylium");
 
-  @NotNull
-  public static final Block CRIMSON_FUNGUS = Block.fromKey("minecraft:crimson_fungus");
+    @NotNull
+    public static final Block CRIMSON_FUNGUS = Block.fromKey("minecraft:crimson_fungus");
 
-  @NotNull
-  public static final Block SHROOMLIGHT = Block.fromKey("minecraft:shroomlight");
+    @NotNull
+    public static final Block SHROOMLIGHT = Block.fromKey("minecraft:shroomlight");
 
-  @NotNull
-  public static final Block WEEPING_VINES = Block.fromKey("minecraft:weeping_vines");
+    @NotNull
+    public static final Block WEEPING_VINES = Block.fromKey("minecraft:weeping_vines");
 
-  @NotNull
-  public static final Block WEEPING_VINES_PLANT = Block.fromKey("minecraft:weeping_vines_plant");
+    @NotNull
+    public static final Block WEEPING_VINES_PLANT = Block.fromKey("minecraft:weeping_vines_plant");
 
-  @NotNull
-  public static final Block TWISTING_VINES = Block.fromKey("minecraft:twisting_vines");
+    @NotNull
+    public static final Block TWISTING_VINES = Block.fromKey("minecraft:twisting_vines");
 
-  @NotNull
-  public static final Block TWISTING_VINES_PLANT = Block.fromKey("minecraft:twisting_vines_plant");
+    @NotNull
+    public static final Block TWISTING_VINES_PLANT = Block.fromKey("minecraft:twisting_vines_plant");
 
-  @NotNull
-  public static final Block CRIMSON_ROOTS = Block.fromKey("minecraft:crimson_roots");
+    @NotNull
+    public static final Block CRIMSON_ROOTS = Block.fromKey("minecraft:crimson_roots");
 
-  @NotNull
-  public static final Block CRIMSON_PLANKS = Block.fromKey("minecraft:crimson_planks");
+    @NotNull
+    public static final Block CRIMSON_PLANKS = Block.fromKey("minecraft:crimson_planks");
 
-  @NotNull
-  public static final Block WARPED_PLANKS = Block.fromKey("minecraft:warped_planks");
+    @NotNull
+    public static final Block WARPED_PLANKS = Block.fromKey("minecraft:warped_planks");
 
-  @NotNull
-  public static final Block CRIMSON_SLAB = Block.fromKey("minecraft:crimson_slab");
+    @NotNull
+    public static final Block CRIMSON_SLAB = Block.fromKey("minecraft:crimson_slab");
 
-  @NotNull
-  public static final Block WARPED_SLAB = Block.fromKey("minecraft:warped_slab");
+    @NotNull
+    public static final Block WARPED_SLAB = Block.fromKey("minecraft:warped_slab");
 
-  @NotNull
-  public static final Block CRIMSON_PRESSURE_PLATE = Block.fromKey("minecraft:crimson_pressure_plate");
+    @NotNull
+    public static final Block CRIMSON_PRESSURE_PLATE = Block.fromKey("minecraft:crimson_pressure_plate");
 
-  @NotNull
-  public static final Block WARPED_PRESSURE_PLATE = Block.fromKey("minecraft:warped_pressure_plate");
+    @NotNull
+    public static final Block WARPED_PRESSURE_PLATE = Block.fromKey("minecraft:warped_pressure_plate");
 
-  @NotNull
-  public static final Block CRIMSON_FENCE = Block.fromKey("minecraft:crimson_fence");
+    @NotNull
+    public static final Block CRIMSON_FENCE = Block.fromKey("minecraft:crimson_fence");
 
-  @NotNull
-  public static final Block WARPED_FENCE = Block.fromKey("minecraft:warped_fence");
+    @NotNull
+    public static final Block WARPED_FENCE = Block.fromKey("minecraft:warped_fence");
 
-  @NotNull
-  public static final Block CRIMSON_TRAPDOOR = Block.fromKey("minecraft:crimson_trapdoor");
+    @NotNull
+    public static final Block CRIMSON_TRAPDOOR = Block.fromKey("minecraft:crimson_trapdoor");
 
-  @NotNull
-  public static final Block WARPED_TRAPDOOR = Block.fromKey("minecraft:warped_trapdoor");
+    @NotNull
+    public static final Block WARPED_TRAPDOOR = Block.fromKey("minecraft:warped_trapdoor");
 
-  @NotNull
-  public static final Block CRIMSON_FENCE_GATE = Block.fromKey("minecraft:crimson_fence_gate");
+    @NotNull
+    public static final Block CRIMSON_FENCE_GATE = Block.fromKey("minecraft:crimson_fence_gate");
 
-  @NotNull
-  public static final Block WARPED_FENCE_GATE = Block.fromKey("minecraft:warped_fence_gate");
+    @NotNull
+    public static final Block WARPED_FENCE_GATE = Block.fromKey("minecraft:warped_fence_gate");
 
-  @NotNull
-  public static final Block CRIMSON_STAIRS = Block.fromKey("minecraft:crimson_stairs");
+    @NotNull
+    public static final Block CRIMSON_STAIRS = Block.fromKey("minecraft:crimson_stairs");
 
-  @NotNull
-  public static final Block WARPED_STAIRS = Block.fromKey("minecraft:warped_stairs");
+    @NotNull
+    public static final Block WARPED_STAIRS = Block.fromKey("minecraft:warped_stairs");
 
-  @NotNull
-  public static final Block CRIMSON_BUTTON = Block.fromKey("minecraft:crimson_button");
+    @NotNull
+    public static final Block CRIMSON_BUTTON = Block.fromKey("minecraft:crimson_button");
 
-  @NotNull
-  public static final Block WARPED_BUTTON = Block.fromKey("minecraft:warped_button");
+    @NotNull
+    public static final Block WARPED_BUTTON = Block.fromKey("minecraft:warped_button");
 
-  @NotNull
-  public static final Block CRIMSON_DOOR = Block.fromKey("minecraft:crimson_door");
+    @NotNull
+    public static final Block CRIMSON_DOOR = Block.fromKey("minecraft:crimson_door");
 
-  @NotNull
-  public static final Block WARPED_DOOR = Block.fromKey("minecraft:warped_door");
+    @NotNull
+    public static final Block WARPED_DOOR = Block.fromKey("minecraft:warped_door");
 
-  @NotNull
-  public static final Block CRIMSON_SIGN = Block.fromKey("minecraft:crimson_sign");
+    @NotNull
+    public static final Block CRIMSON_SIGN = Block.fromKey("minecraft:crimson_sign");
 
-  @NotNull
-  public static final Block WARPED_SIGN = Block.fromKey("minecraft:warped_sign");
+    @NotNull
+    public static final Block WARPED_SIGN = Block.fromKey("minecraft:warped_sign");
 
-  @NotNull
-  public static final Block CRIMSON_WALL_SIGN = Block.fromKey("minecraft:crimson_wall_sign");
+    @NotNull
+    public static final Block CRIMSON_WALL_SIGN = Block.fromKey("minecraft:crimson_wall_sign");
 
-  @NotNull
-  public static final Block WARPED_WALL_SIGN = Block.fromKey("minecraft:warped_wall_sign");
+    @NotNull
+    public static final Block WARPED_WALL_SIGN = Block.fromKey("minecraft:warped_wall_sign");
 
-  @NotNull
-  public static final Block STRUCTURE_BLOCK = Block.fromKey("minecraft:structure_block");
+    @NotNull
+    public static final Block STRUCTURE_BLOCK = Block.fromKey("minecraft:structure_block");
 
-  @NotNull
-  public static final Block JIGSAW = Block.fromKey("minecraft:jigsaw");
+    @NotNull
+    public static final Block JIGSAW = Block.fromKey("minecraft:jigsaw");
 
-  @NotNull
-  public static final Block COMPOSTER = Block.fromKey("minecraft:composter");
+    @NotNull
+    public static final Block COMPOSTER = Block.fromKey("minecraft:composter");
 
-  @NotNull
-  public static final Block TARGET = Block.fromKey("minecraft:target");
+    @NotNull
+    public static final Block TARGET = Block.fromKey("minecraft:target");
 
-  @NotNull
-  public static final Block BEE_NEST = Block.fromKey("minecraft:bee_nest");
+    @NotNull
+    public static final Block BEE_NEST = Block.fromKey("minecraft:bee_nest");
 
-  @NotNull
-  public static final Block BEEHIVE = Block.fromKey("minecraft:beehive");
+    @NotNull
+    public static final Block BEEHIVE = Block.fromKey("minecraft:beehive");
 
-  @NotNull
-  public static final Block HONEY_BLOCK = Block.fromKey("minecraft:honey_block");
+    @NotNull
+    public static final Block HONEY_BLOCK = Block.fromKey("minecraft:honey_block");
 
-  @NotNull
-  public static final Block HONEYCOMB_BLOCK = Block.fromKey("minecraft:honeycomb_block");
+    @NotNull
+    public static final Block HONEYCOMB_BLOCK = Block.fromKey("minecraft:honeycomb_block");
 
-  @NotNull
-  public static final Block NETHERITE_BLOCK = Block.fromKey("minecraft:netherite_block");
+    @NotNull
+    public static final Block NETHERITE_BLOCK = Block.fromKey("minecraft:netherite_block");
 
-  @NotNull
-  public static final Block ANCIENT_DEBRIS = Block.fromKey("minecraft:ancient_debris");
+    @NotNull
+    public static final Block ANCIENT_DEBRIS = Block.fromKey("minecraft:ancient_debris");
 
-  @NotNull
-  public static final Block CRYING_OBSIDIAN = Block.fromKey("minecraft:crying_obsidian");
+    @NotNull
+    public static final Block CRYING_OBSIDIAN = Block.fromKey("minecraft:crying_obsidian");
 
-  @NotNull
-  public static final Block RESPAWN_ANCHOR = Block.fromKey("minecraft:respawn_anchor");
+    @NotNull
+    public static final Block RESPAWN_ANCHOR = Block.fromKey("minecraft:respawn_anchor");
 
-  @NotNull
-  public static final Block POTTED_CRIMSON_FUNGUS = Block.fromKey("minecraft:potted_crimson_fungus");
+    @NotNull
+    public static final Block POTTED_CRIMSON_FUNGUS = Block.fromKey("minecraft:potted_crimson_fungus");
 
-  @NotNull
-  public static final Block POTTED_WARPED_FUNGUS = Block.fromKey("minecraft:potted_warped_fungus");
+    @NotNull
+    public static final Block POTTED_WARPED_FUNGUS = Block.fromKey("minecraft:potted_warped_fungus");
 
-  @NotNull
-  public static final Block POTTED_CRIMSON_ROOTS = Block.fromKey("minecraft:potted_crimson_roots");
+    @NotNull
+    public static final Block POTTED_CRIMSON_ROOTS = Block.fromKey("minecraft:potted_crimson_roots");
 
-  @NotNull
-  public static final Block POTTED_WARPED_ROOTS = Block.fromKey("minecraft:potted_warped_roots");
+    @NotNull
+    public static final Block POTTED_WARPED_ROOTS = Block.fromKey("minecraft:potted_warped_roots");
 
-  @NotNull
-  public static final Block LODESTONE = Block.fromKey("minecraft:lodestone");
+    @NotNull
+    public static final Block LODESTONE = Block.fromKey("minecraft:lodestone");
 
-  @NotNull
-  public static final Block BLACKSTONE = Block.fromKey("minecraft:blackstone");
+    @NotNull
+    public static final Block BLACKSTONE = Block.fromKey("minecraft:blackstone");
 
-  @NotNull
-  public static final Block BLACKSTONE_STAIRS = Block.fromKey("minecraft:blackstone_stairs");
+    @NotNull
+    public static final Block BLACKSTONE_STAIRS = Block.fromKey("minecraft:blackstone_stairs");
 
-  @NotNull
-  public static final Block BLACKSTONE_WALL = Block.fromKey("minecraft:blackstone_wall");
+    @NotNull
+    public static final Block BLACKSTONE_WALL = Block.fromKey("minecraft:blackstone_wall");
 
-  @NotNull
-  public static final Block BLACKSTONE_SLAB = Block.fromKey("minecraft:blackstone_slab");
+    @NotNull
+    public static final Block BLACKSTONE_SLAB = Block.fromKey("minecraft:blackstone_slab");
 
-  @NotNull
-  public static final Block POLISHED_BLACKSTONE = Block.fromKey("minecraft:polished_blackstone");
+    @NotNull
+    public static final Block POLISHED_BLACKSTONE = Block.fromKey("minecraft:polished_blackstone");
 
-  @NotNull
-  public static final Block POLISHED_BLACKSTONE_BRICKS = Block.fromKey("minecraft:polished_blackstone_bricks");
+    @NotNull
+    public static final Block POLISHED_BLACKSTONE_BRICKS = Block.fromKey("minecraft:polished_blackstone_bricks");
 
-  @NotNull
-  public static final Block CRACKED_POLISHED_BLACKSTONE_BRICKS = Block.fromKey("minecraft:cracked_polished_blackstone_bricks");
+    @NotNull
+    public static final Block CRACKED_POLISHED_BLACKSTONE_BRICKS = Block.fromKey("minecraft:cracked_polished_blackstone_bricks");
 
-  @NotNull
-  public static final Block CHISELED_POLISHED_BLACKSTONE = Block.fromKey("minecraft:chiseled_polished_blackstone");
+    @NotNull
+    public static final Block CHISELED_POLISHED_BLACKSTONE = Block.fromKey("minecraft:chiseled_polished_blackstone");
 
-  @NotNull
-  public static final Block POLISHED_BLACKSTONE_BRICK_SLAB = Block.fromKey("minecraft:polished_blackstone_brick_slab");
+    @NotNull
+    public static final Block POLISHED_BLACKSTONE_BRICK_SLAB = Block.fromKey("minecraft:polished_blackstone_brick_slab");
 
-  @NotNull
-  public static final Block POLISHED_BLACKSTONE_BRICK_STAIRS = Block.fromKey("minecraft:polished_blackstone_brick_stairs");
+    @NotNull
+    public static final Block POLISHED_BLACKSTONE_BRICK_STAIRS = Block.fromKey("minecraft:polished_blackstone_brick_stairs");
 
-  @NotNull
-  public static final Block POLISHED_BLACKSTONE_BRICK_WALL = Block.fromKey("minecraft:polished_blackstone_brick_wall");
+    @NotNull
+    public static final Block POLISHED_BLACKSTONE_BRICK_WALL = Block.fromKey("minecraft:polished_blackstone_brick_wall");
 
-  @NotNull
-  public static final Block GILDED_BLACKSTONE = Block.fromKey("minecraft:gilded_blackstone");
+    @NotNull
+    public static final Block GILDED_BLACKSTONE = Block.fromKey("minecraft:gilded_blackstone");
 
-  @NotNull
-  public static final Block POLISHED_BLACKSTONE_STAIRS = Block.fromKey("minecraft:polished_blackstone_stairs");
+    @NotNull
+    public static final Block POLISHED_BLACKSTONE_STAIRS = Block.fromKey("minecraft:polished_blackstone_stairs");
 
-  @NotNull
-  public static final Block POLISHED_BLACKSTONE_SLAB = Block.fromKey("minecraft:polished_blackstone_slab");
+    @NotNull
+    public static final Block POLISHED_BLACKSTONE_SLAB = Block.fromKey("minecraft:polished_blackstone_slab");
 
-  @NotNull
-  public static final Block POLISHED_BLACKSTONE_PRESSURE_PLATE = Block.fromKey("minecraft:polished_blackstone_pressure_plate");
+    @NotNull
+    public static final Block POLISHED_BLACKSTONE_PRESSURE_PLATE = Block.fromKey("minecraft:polished_blackstone_pressure_plate");
 
-  @NotNull
-  public static final Block POLISHED_BLACKSTONE_BUTTON = Block.fromKey("minecraft:polished_blackstone_button");
+    @NotNull
+    public static final Block POLISHED_BLACKSTONE_BUTTON = Block.fromKey("minecraft:polished_blackstone_button");
 
-  @NotNull
-  public static final Block POLISHED_BLACKSTONE_WALL = Block.fromKey("minecraft:polished_blackstone_wall");
+    @NotNull
+    public static final Block POLISHED_BLACKSTONE_WALL = Block.fromKey("minecraft:polished_blackstone_wall");
 
-  @NotNull
-  public static final Block CHISELED_NETHER_BRICKS = Block.fromKey("minecraft:chiseled_nether_bricks");
+    @NotNull
+    public static final Block CHISELED_NETHER_BRICKS = Block.fromKey("minecraft:chiseled_nether_bricks");
 
-  @NotNull
-  public static final Block CRACKED_NETHER_BRICKS = Block.fromKey("minecraft:cracked_nether_bricks");
+    @NotNull
+    public static final Block CRACKED_NETHER_BRICKS = Block.fromKey("minecraft:cracked_nether_bricks");
 
-  @NotNull
-  public static final Block QUARTZ_BRICKS = Block.fromKey("minecraft:quartz_bricks");
+    @NotNull
+    public static final Block QUARTZ_BRICKS = Block.fromKey("minecraft:quartz_bricks");
 
-  @NotNull
-  public static final Block CANDLE = Block.fromKey("minecraft:candle");
+    @NotNull
+    public static final Block CANDLE = Block.fromKey("minecraft:candle");
 
-  @NotNull
-  public static final Block WHITE_CANDLE = Block.fromKey("minecraft:white_candle");
+    @NotNull
+    public static final Block WHITE_CANDLE = Block.fromKey("minecraft:white_candle");
 
-  @NotNull
-  public static final Block ORANGE_CANDLE = Block.fromKey("minecraft:orange_candle");
+    @NotNull
+    public static final Block ORANGE_CANDLE = Block.fromKey("minecraft:orange_candle");
 
-  @NotNull
-  public static final Block MAGENTA_CANDLE = Block.fromKey("minecraft:magenta_candle");
+    @NotNull
+    public static final Block MAGENTA_CANDLE = Block.fromKey("minecraft:magenta_candle");
 
-  @NotNull
-  public static final Block LIGHT_BLUE_CANDLE = Block.fromKey("minecraft:light_blue_candle");
+    @NotNull
+    public static final Block LIGHT_BLUE_CANDLE = Block.fromKey("minecraft:light_blue_candle");
 
-  @NotNull
-  public static final Block YELLOW_CANDLE = Block.fromKey("minecraft:yellow_candle");
+    @NotNull
+    public static final Block YELLOW_CANDLE = Block.fromKey("minecraft:yellow_candle");
 
-  @NotNull
-  public static final Block LIME_CANDLE = Block.fromKey("minecraft:lime_candle");
+    @NotNull
+    public static final Block LIME_CANDLE = Block.fromKey("minecraft:lime_candle");
 
-  @NotNull
-  public static final Block PINK_CANDLE = Block.fromKey("minecraft:pink_candle");
+    @NotNull
+    public static final Block PINK_CANDLE = Block.fromKey("minecraft:pink_candle");
 
-  @NotNull
-  public static final Block GRAY_CANDLE = Block.fromKey("minecraft:gray_candle");
+    @NotNull
+    public static final Block GRAY_CANDLE = Block.fromKey("minecraft:gray_candle");
 
-  @NotNull
-  public static final Block LIGHT_GRAY_CANDLE = Block.fromKey("minecraft:light_gray_candle");
+    @NotNull
+    public static final Block LIGHT_GRAY_CANDLE = Block.fromKey("minecraft:light_gray_candle");
 
-  @NotNull
-  public static final Block CYAN_CANDLE = Block.fromKey("minecraft:cyan_candle");
+    @NotNull
+    public static final Block CYAN_CANDLE = Block.fromKey("minecraft:cyan_candle");
 
-  @NotNull
-  public static final Block PURPLE_CANDLE = Block.fromKey("minecraft:purple_candle");
+    @NotNull
+    public static final Block PURPLE_CANDLE = Block.fromKey("minecraft:purple_candle");
 
-  @NotNull
-  public static final Block BLUE_CANDLE = Block.fromKey("minecraft:blue_candle");
+    @NotNull
+    public static final Block BLUE_CANDLE = Block.fromKey("minecraft:blue_candle");
 
-  @NotNull
-  public static final Block BROWN_CANDLE = Block.fromKey("minecraft:brown_candle");
+    @NotNull
+    public static final Block BROWN_CANDLE = Block.fromKey("minecraft:brown_candle");
 
-  @NotNull
-  public static final Block GREEN_CANDLE = Block.fromKey("minecraft:green_candle");
+    @NotNull
+    public static final Block GREEN_CANDLE = Block.fromKey("minecraft:green_candle");
 
-  @NotNull
-  public static final Block RED_CANDLE = Block.fromKey("minecraft:red_candle");
+    @NotNull
+    public static final Block RED_CANDLE = Block.fromKey("minecraft:red_candle");
 
-  @NotNull
-  public static final Block BLACK_CANDLE = Block.fromKey("minecraft:black_candle");
+    @NotNull
+    public static final Block BLACK_CANDLE = Block.fromKey("minecraft:black_candle");
 
-  @NotNull
-  public static final Block CANDLE_CAKE = Block.fromKey("minecraft:candle_cake");
+    @NotNull
+    public static final Block CANDLE_CAKE = Block.fromKey("minecraft:candle_cake");
 
-  @NotNull
-  public static final Block WHITE_CANDLE_CAKE = Block.fromKey("minecraft:white_candle_cake");
+    @NotNull
+    public static final Block WHITE_CANDLE_CAKE = Block.fromKey("minecraft:white_candle_cake");
 
-  @NotNull
-  public static final Block ORANGE_CANDLE_CAKE = Block.fromKey("minecraft:orange_candle_cake");
+    @NotNull
+    public static final Block ORANGE_CANDLE_CAKE = Block.fromKey("minecraft:orange_candle_cake");
 
-  @NotNull
-  public static final Block MAGENTA_CANDLE_CAKE = Block.fromKey("minecraft:magenta_candle_cake");
+    @NotNull
+    public static final Block MAGENTA_CANDLE_CAKE = Block.fromKey("minecraft:magenta_candle_cake");
 
-  @NotNull
-  public static final Block LIGHT_BLUE_CANDLE_CAKE = Block.fromKey("minecraft:light_blue_candle_cake");
+    @NotNull
+    public static final Block LIGHT_BLUE_CANDLE_CAKE = Block.fromKey("minecraft:light_blue_candle_cake");
 
-  @NotNull
-  public static final Block YELLOW_CANDLE_CAKE = Block.fromKey("minecraft:yellow_candle_cake");
+    @NotNull
+    public static final Block YELLOW_CANDLE_CAKE = Block.fromKey("minecraft:yellow_candle_cake");
 
-  @NotNull
-  public static final Block LIME_CANDLE_CAKE = Block.fromKey("minecraft:lime_candle_cake");
+    @NotNull
+    public static final Block LIME_CANDLE_CAKE = Block.fromKey("minecraft:lime_candle_cake");
 
-  @NotNull
-  public static final Block PINK_CANDLE_CAKE = Block.fromKey("minecraft:pink_candle_cake");
+    @NotNull
+    public static final Block PINK_CANDLE_CAKE = Block.fromKey("minecraft:pink_candle_cake");
 
-  @NotNull
-  public static final Block GRAY_CANDLE_CAKE = Block.fromKey("minecraft:gray_candle_cake");
+    @NotNull
+    public static final Block GRAY_CANDLE_CAKE = Block.fromKey("minecraft:gray_candle_cake");
 
-  @NotNull
-  public static final Block LIGHT_GRAY_CANDLE_CAKE = Block.fromKey("minecraft:light_gray_candle_cake");
+    @NotNull
+    public static final Block LIGHT_GRAY_CANDLE_CAKE = Block.fromKey("minecraft:light_gray_candle_cake");
 
-  @NotNull
-  public static final Block CYAN_CANDLE_CAKE = Block.fromKey("minecraft:cyan_candle_cake");
+    @NotNull
+    public static final Block CYAN_CANDLE_CAKE = Block.fromKey("minecraft:cyan_candle_cake");
 
-  @NotNull
-  public static final Block PURPLE_CANDLE_CAKE = Block.fromKey("minecraft:purple_candle_cake");
+    @NotNull
+    public static final Block PURPLE_CANDLE_CAKE = Block.fromKey("minecraft:purple_candle_cake");
 
-  @NotNull
-  public static final Block BLUE_CANDLE_CAKE = Block.fromKey("minecraft:blue_candle_cake");
+    @NotNull
+    public static final Block BLUE_CANDLE_CAKE = Block.fromKey("minecraft:blue_candle_cake");
 
-  @NotNull
-  public static final Block BROWN_CANDLE_CAKE = Block.fromKey("minecraft:brown_candle_cake");
+    @NotNull
+    public static final Block BROWN_CANDLE_CAKE = Block.fromKey("minecraft:brown_candle_cake");
 
-  @NotNull
-  public static final Block GREEN_CANDLE_CAKE = Block.fromKey("minecraft:green_candle_cake");
+    @NotNull
+    public static final Block GREEN_CANDLE_CAKE = Block.fromKey("minecraft:green_candle_cake");
 
-  @NotNull
-  public static final Block RED_CANDLE_CAKE = Block.fromKey("minecraft:red_candle_cake");
+    @NotNull
+    public static final Block RED_CANDLE_CAKE = Block.fromKey("minecraft:red_candle_cake");
 
-  @NotNull
-  public static final Block BLACK_CANDLE_CAKE = Block.fromKey("minecraft:black_candle_cake");
+    @NotNull
+    public static final Block BLACK_CANDLE_CAKE = Block.fromKey("minecraft:black_candle_cake");
 
-  @NotNull
-  public static final Block AMETHYST_BLOCK = Block.fromKey("minecraft:amethyst_block");
+    @NotNull
+    public static final Block AMETHYST_BLOCK = Block.fromKey("minecraft:amethyst_block");
 
-  @NotNull
-  public static final Block BUDDING_AMETHYST = Block.fromKey("minecraft:budding_amethyst");
+    @NotNull
+    public static final Block BUDDING_AMETHYST = Block.fromKey("minecraft:budding_amethyst");
 
-  @NotNull
-  public static final Block AMETHYST_CLUSTER = Block.fromKey("minecraft:amethyst_cluster");
+    @NotNull
+    public static final Block AMETHYST_CLUSTER = Block.fromKey("minecraft:amethyst_cluster");
 
-  @NotNull
-  public static final Block LARGE_AMETHYST_BUD = Block.fromKey("minecraft:large_amethyst_bud");
+    @NotNull
+    public static final Block LARGE_AMETHYST_BUD = Block.fromKey("minecraft:large_amethyst_bud");
 
-  @NotNull
-  public static final Block MEDIUM_AMETHYST_BUD = Block.fromKey("minecraft:medium_amethyst_bud");
+    @NotNull
+    public static final Block MEDIUM_AMETHYST_BUD = Block.fromKey("minecraft:medium_amethyst_bud");
 
-  @NotNull
-  public static final Block SMALL_AMETHYST_BUD = Block.fromKey("minecraft:small_amethyst_bud");
+    @NotNull
+    public static final Block SMALL_AMETHYST_BUD = Block.fromKey("minecraft:small_amethyst_bud");
 
-  @NotNull
-  public static final Block TUFF = Block.fromKey("minecraft:tuff");
+    @NotNull
+    public static final Block TUFF = Block.fromKey("minecraft:tuff");
 
-  @NotNull
-  public static final Block CALCITE = Block.fromKey("minecraft:calcite");
+    @NotNull
+    public static final Block CALCITE = Block.fromKey("minecraft:calcite");
 
-  @NotNull
-  public static final Block TINTED_GLASS = Block.fromKey("minecraft:tinted_glass");
+    @NotNull
+    public static final Block TINTED_GLASS = Block.fromKey("minecraft:tinted_glass");
 
-  @NotNull
-  public static final Block POWDER_SNOW = Block.fromKey("minecraft:powder_snow");
+    @NotNull
+    public static final Block POWDER_SNOW = Block.fromKey("minecraft:powder_snow");
 
-  @NotNull
-  public static final Block SCULK_SENSOR = Block.fromKey("minecraft:sculk_sensor");
+    @NotNull
+    public static final Block SCULK_SENSOR = Block.fromKey("minecraft:sculk_sensor");
 
-  @NotNull
-  public static final Block SCULK = Block.fromKey("minecraft:sculk");
+    @NotNull
+    public static final Block SCULK = Block.fromKey("minecraft:sculk");
 
-  @NotNull
-  public static final Block SCULK_VEIN = Block.fromKey("minecraft:sculk_vein");
+    @NotNull
+    public static final Block SCULK_VEIN = Block.fromKey("minecraft:sculk_vein");
 
-  @NotNull
-  public static final Block SCULK_CATALYST = Block.fromKey("minecraft:sculk_catalyst");
+    @NotNull
+    public static final Block SCULK_CATALYST = Block.fromKey("minecraft:sculk_catalyst");
 
-  @NotNull
-  public static final Block SCULK_SHRIEKER = Block.fromKey("minecraft:sculk_shrieker");
+    @NotNull
+    public static final Block SCULK_SHRIEKER = Block.fromKey("minecraft:sculk_shrieker");
 
-  @NotNull
-  public static final Block OXIDIZED_COPPER = Block.fromKey("minecraft:oxidized_copper");
+    @NotNull
+    public static final Block OXIDIZED_COPPER = Block.fromKey("minecraft:oxidized_copper");
 
-  @NotNull
-  public static final Block WEATHERED_COPPER = Block.fromKey("minecraft:weathered_copper");
+    @NotNull
+    public static final Block WEATHERED_COPPER = Block.fromKey("minecraft:weathered_copper");
 
-  @NotNull
-  public static final Block EXPOSED_COPPER = Block.fromKey("minecraft:exposed_copper");
+    @NotNull
+    public static final Block EXPOSED_COPPER = Block.fromKey("minecraft:exposed_copper");
 
-  @NotNull
-  public static final Block COPPER_BLOCK = Block.fromKey("minecraft:copper_block");
+    @NotNull
+    public static final Block COPPER_BLOCK = Block.fromKey("minecraft:copper_block");
 
-  @NotNull
-  public static final Block COPPER_ORE = Block.fromKey("minecraft:copper_ore");
+    @NotNull
+    public static final Block COPPER_ORE = Block.fromKey("minecraft:copper_ore");
 
-  @NotNull
-  public static final Block DEEPSLATE_COPPER_ORE = Block.fromKey("minecraft:deepslate_copper_ore");
+    @NotNull
+    public static final Block DEEPSLATE_COPPER_ORE = Block.fromKey("minecraft:deepslate_copper_ore");
 
-  @NotNull
-  public static final Block OXIDIZED_CUT_COPPER = Block.fromKey("minecraft:oxidized_cut_copper");
+    @NotNull
+    public static final Block OXIDIZED_CUT_COPPER = Block.fromKey("minecraft:oxidized_cut_copper");
 
-  @NotNull
-  public static final Block WEATHERED_CUT_COPPER = Block.fromKey("minecraft:weathered_cut_copper");
+    @NotNull
+    public static final Block WEATHERED_CUT_COPPER = Block.fromKey("minecraft:weathered_cut_copper");
 
-  @NotNull
-  public static final Block EXPOSED_CUT_COPPER = Block.fromKey("minecraft:exposed_cut_copper");
+    @NotNull
+    public static final Block EXPOSED_CUT_COPPER = Block.fromKey("minecraft:exposed_cut_copper");
 
-  @NotNull
-  public static final Block CUT_COPPER = Block.fromKey("minecraft:cut_copper");
+    @NotNull
+    public static final Block CUT_COPPER = Block.fromKey("minecraft:cut_copper");
 
-  @NotNull
-  public static final Block OXIDIZED_CUT_COPPER_STAIRS = Block.fromKey("minecraft:oxidized_cut_copper_stairs");
+    @NotNull
+    public static final Block OXIDIZED_CUT_COPPER_STAIRS = Block.fromKey("minecraft:oxidized_cut_copper_stairs");
 
-  @NotNull
-  public static final Block WEATHERED_CUT_COPPER_STAIRS = Block.fromKey("minecraft:weathered_cut_copper_stairs");
+    @NotNull
+    public static final Block WEATHERED_CUT_COPPER_STAIRS = Block.fromKey("minecraft:weathered_cut_copper_stairs");
 
-  @NotNull
-  public static final Block EXPOSED_CUT_COPPER_STAIRS = Block.fromKey("minecraft:exposed_cut_copper_stairs");
+    @NotNull
+    public static final Block EXPOSED_CUT_COPPER_STAIRS = Block.fromKey("minecraft:exposed_cut_copper_stairs");
 
-  @NotNull
-  public static final Block CUT_COPPER_STAIRS = Block.fromKey("minecraft:cut_copper_stairs");
+    @NotNull
+    public static final Block CUT_COPPER_STAIRS = Block.fromKey("minecraft:cut_copper_stairs");
 
-  @NotNull
-  public static final Block OXIDIZED_CUT_COPPER_SLAB = Block.fromKey("minecraft:oxidized_cut_copper_slab");
+    @NotNull
+    public static final Block OXIDIZED_CUT_COPPER_SLAB = Block.fromKey("minecraft:oxidized_cut_copper_slab");
 
-  @NotNull
-  public static final Block WEATHERED_CUT_COPPER_SLAB = Block.fromKey("minecraft:weathered_cut_copper_slab");
+    @NotNull
+    public static final Block WEATHERED_CUT_COPPER_SLAB = Block.fromKey("minecraft:weathered_cut_copper_slab");
 
-  @NotNull
-  public static final Block EXPOSED_CUT_COPPER_SLAB = Block.fromKey("minecraft:exposed_cut_copper_slab");
+    @NotNull
+    public static final Block EXPOSED_CUT_COPPER_SLAB = Block.fromKey("minecraft:exposed_cut_copper_slab");
 
-  @NotNull
-  public static final Block CUT_COPPER_SLAB = Block.fromKey("minecraft:cut_copper_slab");
+    @NotNull
+    public static final Block CUT_COPPER_SLAB = Block.fromKey("minecraft:cut_copper_slab");
 
-  @NotNull
-  public static final Block WAXED_COPPER_BLOCK = Block.fromKey("minecraft:waxed_copper_block");
+    @NotNull
+    public static final Block WAXED_COPPER_BLOCK = Block.fromKey("minecraft:waxed_copper_block");
 
-  @NotNull
-  public static final Block WAXED_WEATHERED_COPPER = Block.fromKey("minecraft:waxed_weathered_copper");
+    @NotNull
+    public static final Block WAXED_WEATHERED_COPPER = Block.fromKey("minecraft:waxed_weathered_copper");
 
-  @NotNull
-  public static final Block WAXED_EXPOSED_COPPER = Block.fromKey("minecraft:waxed_exposed_copper");
+    @NotNull
+    public static final Block WAXED_EXPOSED_COPPER = Block.fromKey("minecraft:waxed_exposed_copper");
 
-  @NotNull
-  public static final Block WAXED_OXIDIZED_COPPER = Block.fromKey("minecraft:waxed_oxidized_copper");
+    @NotNull
+    public static final Block WAXED_OXIDIZED_COPPER = Block.fromKey("minecraft:waxed_oxidized_copper");
 
-  @NotNull
-  public static final Block WAXED_OXIDIZED_CUT_COPPER = Block.fromKey("minecraft:waxed_oxidized_cut_copper");
+    @NotNull
+    public static final Block WAXED_OXIDIZED_CUT_COPPER = Block.fromKey("minecraft:waxed_oxidized_cut_copper");
 
-  @NotNull
-  public static final Block WAXED_WEATHERED_CUT_COPPER = Block.fromKey("minecraft:waxed_weathered_cut_copper");
+    @NotNull
+    public static final Block WAXED_WEATHERED_CUT_COPPER = Block.fromKey("minecraft:waxed_weathered_cut_copper");
 
-  @NotNull
-  public static final Block WAXED_EXPOSED_CUT_COPPER = Block.fromKey("minecraft:waxed_exposed_cut_copper");
+    @NotNull
+    public static final Block WAXED_EXPOSED_CUT_COPPER = Block.fromKey("minecraft:waxed_exposed_cut_copper");
 
-  @NotNull
-  public static final Block WAXED_CUT_COPPER = Block.fromKey("minecraft:waxed_cut_copper");
+    @NotNull
+    public static final Block WAXED_CUT_COPPER = Block.fromKey("minecraft:waxed_cut_copper");
 
-  @NotNull
-  public static final Block WAXED_OXIDIZED_CUT_COPPER_STAIRS = Block.fromKey("minecraft:waxed_oxidized_cut_copper_stairs");
+    @NotNull
+    public static final Block WAXED_OXIDIZED_CUT_COPPER_STAIRS = Block.fromKey("minecraft:waxed_oxidized_cut_copper_stairs");
 
-  @NotNull
-  public static final Block WAXED_WEATHERED_CUT_COPPER_STAIRS = Block.fromKey("minecraft:waxed_weathered_cut_copper_stairs");
+    @NotNull
+    public static final Block WAXED_WEATHERED_CUT_COPPER_STAIRS = Block.fromKey("minecraft:waxed_weathered_cut_copper_stairs");
 
-  @NotNull
-  public static final Block WAXED_EXPOSED_CUT_COPPER_STAIRS = Block.fromKey("minecraft:waxed_exposed_cut_copper_stairs");
+    @NotNull
+    public static final Block WAXED_EXPOSED_CUT_COPPER_STAIRS = Block.fromKey("minecraft:waxed_exposed_cut_copper_stairs");
 
-  @NotNull
-  public static final Block WAXED_CUT_COPPER_STAIRS = Block.fromKey("minecraft:waxed_cut_copper_stairs");
+    @NotNull
+    public static final Block WAXED_CUT_COPPER_STAIRS = Block.fromKey("minecraft:waxed_cut_copper_stairs");
 
-  @NotNull
-  public static final Block WAXED_OXIDIZED_CUT_COPPER_SLAB = Block.fromKey("minecraft:waxed_oxidized_cut_copper_slab");
+    @NotNull
+    public static final Block WAXED_OXIDIZED_CUT_COPPER_SLAB = Block.fromKey("minecraft:waxed_oxidized_cut_copper_slab");
 
-  @NotNull
-  public static final Block WAXED_WEATHERED_CUT_COPPER_SLAB = Block.fromKey("minecraft:waxed_weathered_cut_copper_slab");
+    @NotNull
+    public static final Block WAXED_WEATHERED_CUT_COPPER_SLAB = Block.fromKey("minecraft:waxed_weathered_cut_copper_slab");
 
-  @NotNull
-  public static final Block WAXED_EXPOSED_CUT_COPPER_SLAB = Block.fromKey("minecraft:waxed_exposed_cut_copper_slab");
+    @NotNull
+    public static final Block WAXED_EXPOSED_CUT_COPPER_SLAB = Block.fromKey("minecraft:waxed_exposed_cut_copper_slab");
 
-  @NotNull
-  public static final Block WAXED_CUT_COPPER_SLAB = Block.fromKey("minecraft:waxed_cut_copper_slab");
+    @NotNull
+    public static final Block WAXED_CUT_COPPER_SLAB = Block.fromKey("minecraft:waxed_cut_copper_slab");
 
-  @NotNull
-  public static final Block LIGHTNING_ROD = Block.fromKey("minecraft:lightning_rod");
+    @NotNull
+    public static final Block LIGHTNING_ROD = Block.fromKey("minecraft:lightning_rod");
 
-  @NotNull
-  public static final Block POINTED_DRIPSTONE = Block.fromKey("minecraft:pointed_dripstone");
+    @NotNull
+    public static final Block POINTED_DRIPSTONE = Block.fromKey("minecraft:pointed_dripstone");
 
-  @NotNull
-  public static final Block DRIPSTONE_BLOCK = Block.fromKey("minecraft:dripstone_block");
+    @NotNull
+    public static final Block DRIPSTONE_BLOCK = Block.fromKey("minecraft:dripstone_block");
 
-  @NotNull
-  public static final Block CAVE_VINES = Block.fromKey("minecraft:cave_vines");
+    @NotNull
+    public static final Block CAVE_VINES = Block.fromKey("minecraft:cave_vines");
 
-  @NotNull
-  public static final Block CAVE_VINES_PLANT = Block.fromKey("minecraft:cave_vines_plant");
+    @NotNull
+    public static final Block CAVE_VINES_PLANT = Block.fromKey("minecraft:cave_vines_plant");
 
-  @NotNull
-  public static final Block SPORE_BLOSSOM = Block.fromKey("minecraft:spore_blossom");
+    @NotNull
+    public static final Block SPORE_BLOSSOM = Block.fromKey("minecraft:spore_blossom");
 
-  @NotNull
-  public static final Block AZALEA = Block.fromKey("minecraft:azalea");
+    @NotNull
+    public static final Block AZALEA = Block.fromKey("minecraft:azalea");
 
-  @NotNull
-  public static final Block FLOWERING_AZALEA = Block.fromKey("minecraft:flowering_azalea");
+    @NotNull
+    public static final Block FLOWERING_AZALEA = Block.fromKey("minecraft:flowering_azalea");
 
-  @NotNull
-  public static final Block MOSS_CARPET = Block.fromKey("minecraft:moss_carpet");
+    @NotNull
+    public static final Block MOSS_CARPET = Block.fromKey("minecraft:moss_carpet");
 
-  @NotNull
-  public static final Block MOSS_BLOCK = Block.fromKey("minecraft:moss_block");
+    @NotNull
+    public static final Block MOSS_BLOCK = Block.fromKey("minecraft:moss_block");
 
-  @NotNull
-  public static final Block BIG_DRIPLEAF = Block.fromKey("minecraft:big_dripleaf");
+    @NotNull
+    public static final Block BIG_DRIPLEAF = Block.fromKey("minecraft:big_dripleaf");
 
-  @NotNull
-  public static final Block BIG_DRIPLEAF_STEM = Block.fromKey("minecraft:big_dripleaf_stem");
+    @NotNull
+    public static final Block BIG_DRIPLEAF_STEM = Block.fromKey("minecraft:big_dripleaf_stem");
 
-  @NotNull
-  public static final Block SMALL_DRIPLEAF = Block.fromKey("minecraft:small_dripleaf");
+    @NotNull
+    public static final Block SMALL_DRIPLEAF = Block.fromKey("minecraft:small_dripleaf");
 
-  @NotNull
-  public static final Block HANGING_ROOTS = Block.fromKey("minecraft:hanging_roots");
+    @NotNull
+    public static final Block HANGING_ROOTS = Block.fromKey("minecraft:hanging_roots");
 
-  @NotNull
-  public static final Block ROOTED_DIRT = Block.fromKey("minecraft:rooted_dirt");
+    @NotNull
+    public static final Block ROOTED_DIRT = Block.fromKey("minecraft:rooted_dirt");
 
-  @NotNull
-  public static final Block MUD = Block.fromKey("minecraft:mud");
+    @NotNull
+    public static final Block MUD = Block.fromKey("minecraft:mud");
 
-  @NotNull
-  public static final Block DEEPSLATE = Block.fromKey("minecraft:deepslate");
+    @NotNull
+    public static final Block DEEPSLATE = Block.fromKey("minecraft:deepslate");
 
-  @NotNull
-  public static final Block COBBLED_DEEPSLATE = Block.fromKey("minecraft:cobbled_deepslate");
+    @NotNull
+    public static final Block COBBLED_DEEPSLATE = Block.fromKey("minecraft:cobbled_deepslate");
 
-  @NotNull
-  public static final Block COBBLED_DEEPSLATE_STAIRS = Block.fromKey("minecraft:cobbled_deepslate_stairs");
+    @NotNull
+    public static final Block COBBLED_DEEPSLATE_STAIRS = Block.fromKey("minecraft:cobbled_deepslate_stairs");
 
-  @NotNull
-  public static final Block COBBLED_DEEPSLATE_SLAB = Block.fromKey("minecraft:cobbled_deepslate_slab");
+    @NotNull
+    public static final Block COBBLED_DEEPSLATE_SLAB = Block.fromKey("minecraft:cobbled_deepslate_slab");
 
-  @NotNull
-  public static final Block COBBLED_DEEPSLATE_WALL = Block.fromKey("minecraft:cobbled_deepslate_wall");
+    @NotNull
+    public static final Block COBBLED_DEEPSLATE_WALL = Block.fromKey("minecraft:cobbled_deepslate_wall");
 
-  @NotNull
-  public static final Block POLISHED_DEEPSLATE = Block.fromKey("minecraft:polished_deepslate");
+    @NotNull
+    public static final Block POLISHED_DEEPSLATE = Block.fromKey("minecraft:polished_deepslate");
 
-  @NotNull
-  public static final Block POLISHED_DEEPSLATE_STAIRS = Block.fromKey("minecraft:polished_deepslate_stairs");
+    @NotNull
+    public static final Block POLISHED_DEEPSLATE_STAIRS = Block.fromKey("minecraft:polished_deepslate_stairs");
 
-  @NotNull
-  public static final Block POLISHED_DEEPSLATE_SLAB = Block.fromKey("minecraft:polished_deepslate_slab");
+    @NotNull
+    public static final Block POLISHED_DEEPSLATE_SLAB = Block.fromKey("minecraft:polished_deepslate_slab");
 
-  @NotNull
-  public static final Block POLISHED_DEEPSLATE_WALL = Block.fromKey("minecraft:polished_deepslate_wall");
+    @NotNull
+    public static final Block POLISHED_DEEPSLATE_WALL = Block.fromKey("minecraft:polished_deepslate_wall");
 
-  @NotNull
-  public static final Block DEEPSLATE_TILES = Block.fromKey("minecraft:deepslate_tiles");
+    @NotNull
+    public static final Block DEEPSLATE_TILES = Block.fromKey("minecraft:deepslate_tiles");
 
-  @NotNull
-  public static final Block DEEPSLATE_TILE_STAIRS = Block.fromKey("minecraft:deepslate_tile_stairs");
+    @NotNull
+    public static final Block DEEPSLATE_TILE_STAIRS = Block.fromKey("minecraft:deepslate_tile_stairs");
 
-  @NotNull
-  public static final Block DEEPSLATE_TILE_SLAB = Block.fromKey("minecraft:deepslate_tile_slab");
+    @NotNull
+    public static final Block DEEPSLATE_TILE_SLAB = Block.fromKey("minecraft:deepslate_tile_slab");
 
-  @NotNull
-  public static final Block DEEPSLATE_TILE_WALL = Block.fromKey("minecraft:deepslate_tile_wall");
+    @NotNull
+    public static final Block DEEPSLATE_TILE_WALL = Block.fromKey("minecraft:deepslate_tile_wall");
 
-  @NotNull
-  public static final Block DEEPSLATE_BRICKS = Block.fromKey("minecraft:deepslate_bricks");
+    @NotNull
+    public static final Block DEEPSLATE_BRICKS = Block.fromKey("minecraft:deepslate_bricks");
 
-  @NotNull
-  public static final Block DEEPSLATE_BRICK_STAIRS = Block.fromKey("minecraft:deepslate_brick_stairs");
+    @NotNull
+    public static final Block DEEPSLATE_BRICK_STAIRS = Block.fromKey("minecraft:deepslate_brick_stairs");
 
-  @NotNull
-  public static final Block DEEPSLATE_BRICK_SLAB = Block.fromKey("minecraft:deepslate_brick_slab");
+    @NotNull
+    public static final Block DEEPSLATE_BRICK_SLAB = Block.fromKey("minecraft:deepslate_brick_slab");
 
-  @NotNull
-  public static final Block DEEPSLATE_BRICK_WALL = Block.fromKey("minecraft:deepslate_brick_wall");
+    @NotNull
+    public static final Block DEEPSLATE_BRICK_WALL = Block.fromKey("minecraft:deepslate_brick_wall");
 
-  @NotNull
-  public static final Block CHISELED_DEEPSLATE = Block.fromKey("minecraft:chiseled_deepslate");
+    @NotNull
+    public static final Block CHISELED_DEEPSLATE = Block.fromKey("minecraft:chiseled_deepslate");
 
-  @NotNull
-  public static final Block CRACKED_DEEPSLATE_BRICKS = Block.fromKey("minecraft:cracked_deepslate_bricks");
+    @NotNull
+    public static final Block CRACKED_DEEPSLATE_BRICKS = Block.fromKey("minecraft:cracked_deepslate_bricks");
 
-  @NotNull
-  public static final Block CRACKED_DEEPSLATE_TILES = Block.fromKey("minecraft:cracked_deepslate_tiles");
+    @NotNull
+    public static final Block CRACKED_DEEPSLATE_TILES = Block.fromKey("minecraft:cracked_deepslate_tiles");
 
-  @NotNull
-  public static final Block INFESTED_DEEPSLATE = Block.fromKey("minecraft:infested_deepslate");
+    @NotNull
+    public static final Block INFESTED_DEEPSLATE = Block.fromKey("minecraft:infested_deepslate");
 
-  @NotNull
-  public static final Block SMOOTH_BASALT = Block.fromKey("minecraft:smooth_basalt");
+    @NotNull
+    public static final Block SMOOTH_BASALT = Block.fromKey("minecraft:smooth_basalt");
 
-  @NotNull
-  public static final Block RAW_IRON_BLOCK = Block.fromKey("minecraft:raw_iron_block");
+    @NotNull
+    public static final Block RAW_IRON_BLOCK = Block.fromKey("minecraft:raw_iron_block");
 
-  @NotNull
-  public static final Block RAW_COPPER_BLOCK = Block.fromKey("minecraft:raw_copper_block");
+    @NotNull
+    public static final Block RAW_COPPER_BLOCK = Block.fromKey("minecraft:raw_copper_block");
 
-  @NotNull
-  public static final Block RAW_GOLD_BLOCK = Block.fromKey("minecraft:raw_gold_block");
+    @NotNull
+    public static final Block RAW_GOLD_BLOCK = Block.fromKey("minecraft:raw_gold_block");
 
-  @NotNull
-  public static final Block POTTED_AZALEA = Block.fromKey("minecraft:potted_azalea_bush");
+    @NotNull
+    public static final Block POTTED_AZALEA = Block.fromKey("minecraft:potted_azalea_bush");
 
-  @NotNull
-  public static final Block POTTED_FLOWERING_AZALEA = Block.fromKey("minecraft:potted_flowering_azalea_bush");
+    @NotNull
+    public static final Block POTTED_FLOWERING_AZALEA = Block.fromKey("minecraft:potted_flowering_azalea_bush");
 
-  @NotNull
-  public static final Block OCHRE_FROGLIGHT = Block.fromKey("minecraft:ochre_froglight");
+    @NotNull
+    public static final Block OCHRE_FROGLIGHT = Block.fromKey("minecraft:ochre_froglight");
 
-  @NotNull
-  public static final Block VERDANT_FROGLIGHT = Block.fromKey("minecraft:verdant_froglight");
+    @NotNull
+    public static final Block VERDANT_FROGLIGHT = Block.fromKey("minecraft:verdant_froglight");
 
-  @NotNull
-  public static final Block PEARLESCENT_FROGLIGHT = Block.fromKey("minecraft:pearlescent_froglight");
+    @NotNull
+    public static final Block PEARLESCENT_FROGLIGHT = Block.fromKey("minecraft:pearlescent_froglight");
 
-  @NotNull
-  public static final Block FROGSPAWN = Block.fromKey("minecraft:frogspawn");
+    @NotNull
+    public static final Block FROGSPAWN = Block.fromKey("minecraft:frogspawn");
 
-  @NotNull
-  public static final Block REINFORCED_DEEPSLATE = Block.fromKey("minecraft:reinforced_deepslate");
+    @NotNull
+    public static final Block REINFORCED_DEEPSLATE = Block.fromKey("minecraft:reinforced_deepslate");
 }

@@ -59,24 +59,23 @@ import java.util.Locale;
 /**
  * An utilities class for converting Core types to NMS/PaperAPI types.
  *
- * @since 0.3-Alpha
  * @author Jake Nijssen
+ * @since 0.3-Alpha
  */
 @API(status = API.Status.INTERNAL, since = "0.3-Alpha")
 public final class ConversionUtils {
 
     private static final PaperPlatform PLATFORM;
-
-    static {
-        // Lazily load the platform instance.
-        PLATFORM = OrbisPlugin.getPlatform();
-    }
+    private static final ImmutableBiMap<Property<?>, net.minecraft.world.level.block.state.properties.Property<?>> PROPERTY_BI_MAP;
 
     //
     // Property conversions
     //
 
-    private static final ImmutableBiMap<Property<?>, net.minecraft.world.level.block.state.properties.Property<?>> PROPERTY_BI_MAP;
+    static {
+        // Lazily load the platform instance.
+        PLATFORM = OrbisPlugin.getPlatform();
+    }
 
     static {
         // Cursed way of finding each NMS property and map them to ours,
@@ -143,7 +142,7 @@ public final class ConversionUtils {
                         }
                     }
                     if (directionProperty == null) {
-                        Orbis.getLogger().error("Couldn't find a direction property match for {}", nativeDirectionProperty.toString());
+                        Orbis.getLogger().error("Couldn't find a direction property match for {}", nativeDirectionProperty);
                     } else {
                         propertyBuilder.put(directionProperty, nativeDirectionProperty);
                     }
@@ -172,7 +171,7 @@ public final class ConversionUtils {
                         }
                     }
                     if (enumProperty == null) {
-                        Orbis.getLogger().error("Couldn't find an enum property match for {}", nativeEnumProperty.toString());
+                        Orbis.getLogger().error("Couldn't find an enum property match for {}", nativeEnumProperty);
                     } else {
                         propertyBuilder.put(enumProperty, nativeEnumProperty);
                     }
@@ -239,7 +238,7 @@ public final class ConversionUtils {
      */
     @Contract(pure = true)
     public static @NotNull Material toPaper(@NotNull Block block) {
-        return ((PaperBlock)block).material();
+        return ((PaperBlock) block).material();
     }
 
     /**
@@ -261,18 +260,18 @@ public final class ConversionUtils {
      */
     @Contract(pure = true)
     public static @NotNull net.minecraft.world.level.block.Block toNative(@NotNull Block block) {
-        return ((PaperBlock)block).handle();
+        return ((PaperBlock) block).handle();
     }
 
 
     @Contract(pure = true)
     public static @NotNull BlockState fromPaper(@NotNull BlockData data) {
-        return BlockRegistry.fromStateId(net.minecraft.world.level.block.Block.getId(((CraftBlockData)data).getState()));
+        return BlockRegistry.fromStateId(net.minecraft.world.level.block.Block.getId(((CraftBlockData) data).getState()));
     }
 
     @Contract("_ -> new")
     public static @NotNull BlockData toPaper(@NotNull BlockState state) {
-        return ((PaperBlockState)state).createBlockData();
+        return ((PaperBlockState) state).createBlockData();
     }
 
     @Contract(pure = true)
@@ -282,7 +281,7 @@ public final class ConversionUtils {
 
     @Contract(pure = true)
     public static @NotNull net.minecraft.world.level.block.state.BlockState toNative(@NotNull BlockState state) {
-        return ((PaperBlockState)state).handle();
+        return ((PaperBlockState) state).handle();
     }
 
     //

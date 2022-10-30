@@ -36,8 +36,8 @@ import java.util.UUID;
 /**
  * The entry point for everything that is implemented on the platform.
  *
- * @since 0.3-Alpha
  * @author Jake Nijssen
+ * @since 0.3-Alpha
  */
 @API(status = API.Status.STABLE, since = "0.3-Alpha")
 public interface Platform {
@@ -47,16 +47,19 @@ public interface Platform {
      *
      * @return The platform adaptation name.
      */
-    @NotNull String adaptation();
+    @NotNull
+    String adaptation();
 
-    @NotNull Logger logger();
+    @NotNull
+    Logger logger();
 
     /**
      * Get the directory where Orbis is located.
      *
      * @return The orbis root directory.
      */
-    @NotNull File directory();
+    @NotNull
+    File directory();
 
     /**
      * Get the instance of the platform {@link Scheduler}.
@@ -64,26 +67,37 @@ public interface Platform {
      * @return The platform scheduler.
      * @since 0.3-Alpha
      */
-    @NotNull Scheduler scheduler();
+    @NotNull
+    Scheduler scheduler();
 
-    @Nullable World getWorld(@NotNull String name);
+    @Nullable
+    World getWorld(@NotNull String name);
 
-    @NotNull ImmutableSet<World> worlds();
+    @NotNull
+    ImmutableSet<World> worlds();
 
-    @Nullable WorldAccess getWorldAccess(@NotNull String name);
+    @Nullable
+    WorldAccess getWorldAccess(@NotNull String name);
 
-    @NotNull ImmutableSet<WorldAccess> worldAccesses();
+    @NotNull
+    ImmutableSet<WorldAccess> worldAccesses();
 
-    @NotNull StudioWorld createStudioWorld(@NotNull Project project);
+    @NotNull
+    StudioWorld createStudioWorld(@NotNull Project project);
 
-    @Nullable Player getPlayer(@NotNull UUID uuid);
+    @Nullable
+    Player getPlayer(@NotNull UUID uuid);
 
-    @NotNull ImmutableSet<Player> getPlayers();
+    @NotNull
+    ImmutableSet<Player> getPlayers();
 
-    @Nullable Class<?> mainClass();
+    @Nullable
+    Class<?> mainClass();
 
-    @NotNull Class<? extends Settings> settingsClass();
+    @NotNull
+    Class<? extends Settings> settingsClass();
 
-    @NotNull Settings defaultSettings();
+    @NotNull
+    Settings defaultSettings();
 
 }

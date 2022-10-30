@@ -31,8 +31,10 @@ public interface BlockEntity extends Keyed {
 
     int z();
 
-    @NotNull BlockPos blockPos();
+    @NotNull
+    BlockPos blockPos();
 
-    @NotNull CompoundBinaryTag toNBT();
+    @NotNull
+    CompoundBinaryTag toNBT();
 
 }

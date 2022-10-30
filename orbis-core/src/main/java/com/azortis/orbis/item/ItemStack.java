@@ -34,12 +34,15 @@ public interface ItemStack extends Cloneable {
 
     boolean hasItemMeta();
 
-    @NotNull ItemMeta getItemMeta();
+    @NotNull
+    ItemMeta getItemMeta();
 
     void setItemMeta(@Nullable ItemMeta meta);
 
-    @NotNull ItemStack clone();
+    @NotNull
+    ItemStack clone();
 
-    @NotNull CompoundBinaryTag toNBT();
+    @NotNull
+    CompoundBinaryTag toNBT();
 
 }

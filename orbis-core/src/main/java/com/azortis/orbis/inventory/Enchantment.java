@@ -16,10 +16,22 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-/**
- * <p>Everything that has to do with {@link com.azortis.orbis.block.Block} & {@link com.azortis.orbis.block.BlockState}</p>
- *
- * @author Jake Nijssen
- * @since 0.3-Alpha
- */
-package com.azortis.orbis.block;
+package com.azortis.orbis.inventory;
+
+import net.kyori.adventure.key.Key;
+import net.kyori.adventure.key.Keyed;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+
+public interface Enchantment extends Keyed {
+
+    @Contract(pure = true)
+    static @NotNull Enchantment fromKey(@NotNull Key key) {
+        return null;
+    }
+
+    static @NotNull Enchantment fromKey(@NotNull String key) {
+        return null;
+    }
+
+}

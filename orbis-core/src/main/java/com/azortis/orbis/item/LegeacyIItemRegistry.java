@@ -24,8 +24,10 @@ import org.jetbrains.annotations.NotNull;
 @Deprecated
 public interface LegeacyIItemRegistry {
 
-    @NotNull ItemStack createItemStack(@NotNull LegacyItem legacyItem);
+    @NotNull
+    ItemStack createItemStack(@NotNull LegacyItem legacyItem);
 
-    @NotNull ItemStack createItemStack(@NotNull CompoundBinaryTag compound);
+    @NotNull
+    ItemStack createItemStack(@NotNull CompoundBinaryTag compound);
 
 }

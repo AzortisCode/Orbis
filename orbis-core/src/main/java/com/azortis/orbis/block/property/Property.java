@@ -28,10 +28,10 @@ import java.util.Set;
 /**
  * Represents a property that exists on Blocks which alter the looks of that legacyBlock.
  *
+ * @param <T> The type of property.
  * @author Jake Nijssen
  * @see <a href="https://minecraft.fandom.com/wiki/Block_states#:~:text=Block%20states%20(also%20known%20as,Metadata)%20to%20define%20a%20block.">Properties</a> for more information.
  * @since 0.3-Alpha
- * @param <T> The type of property.
  */
 @API(status = API.Status.STABLE, since = "0.3-Alpha")
 public sealed abstract class Property<T extends Comparable<T>> permits BooleanProperty,
@@ -44,8 +44,8 @@ public sealed abstract class Property<T extends Comparable<T>> permits BooleanPr
     /**
      * Constructs a property with specified key, type and values.
      *
-     * @param key The key of the property.
-     * @param type The type of the property.
+     * @param key    The key of the property.
+     * @param type   The type of the property.
      * @param values The possible values of the property.
      * @since 0.3-Alpha
      */

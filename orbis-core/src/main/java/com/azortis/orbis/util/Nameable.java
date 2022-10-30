@@ -25,8 +25,8 @@ import org.jetbrains.annotations.NotNull;
 /**
  * An interface that marks an object that has a specific serialized name string.
  *
- * @since 0.3-Alpha
  * @author Jake Nijssen
+ * @since 0.3-Alpha
  */
 @API(status = API.Status.STABLE, since = "0.3-Alpha")
 public interface Nameable {
@@ -39,5 +39,6 @@ public interface Nameable {
      */
     @Contract(pure = true)
     @API(status = API.Status.STABLE, since = "0.3-Alpha")
-    @NotNull String serializedName();
+    @NotNull
+    String serializedName();
 }

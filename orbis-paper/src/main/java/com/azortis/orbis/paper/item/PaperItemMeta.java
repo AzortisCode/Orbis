@@ -18,7 +18,7 @@
 
 package com.azortis.orbis.paper.item;
 
-import com.azortis.orbis.item.ItemFlag;
+import com.azortis.orbis.inventory.ItemFlag;
 import com.azortis.orbis.item.LegacyEnchantment;
 import com.azortis.orbis.item.meta.ItemMeta;
 import net.kyori.adventure.text.Component;

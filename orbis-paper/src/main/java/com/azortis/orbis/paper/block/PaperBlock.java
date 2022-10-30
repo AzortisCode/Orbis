@@ -40,8 +40,8 @@ import java.util.Objects;
 /**
  * Platform representation of a Block, which will directly interact with NMS blocks, Circumventing the PaperAPI.
  *
- * @since 0.3-Alpha
  * @author Jake Nijssen
+ * @since 0.3-Alpha
  */
 @API(status = API.Status.INTERNAL, since = "0.3-Alpha", consumers = "com.azortis.orbis.paper")
 public final class PaperBlock implements Block {
@@ -182,11 +182,11 @@ public final class PaperBlock implements Block {
     /**
      * Unsafely casts a string value to the undefined type of the given native property.
      *
-     * @param property The native property to cast to.
+     * @param property    The native property to cast to.
      * @param valueString The string of the value.
+     * @param <T>         The type of the property.
      * @return A cast value for the undefined property.
      * @since 0.3-Alpha
-     * @param <T> The type of the property.
      */
     @SuppressWarnings("unchecked")
     private <T> T castPropertyValue(@NotNull net.minecraft.world.level.block.state.properties.Property<?> property, String valueString) {
@@ -213,7 +213,7 @@ public final class PaperBlock implements Block {
      * @since 0.3-Alpha
      */
     @Contract(pure = true)
-    public @NotNull net.minecraft.world.level.block.Block handle(){
+    public @NotNull net.minecraft.world.level.block.Block handle() {
         return handle;
     }
 
@@ -248,7 +248,7 @@ public final class PaperBlock implements Block {
      * @since 0.3-Alpha
      */
     public @NotNull net.minecraft.world.level.block.state.BlockState toNativeState(@NotNull BlockState blockState) {
-        return ((PaperBlockState)blockState).handle();
+        return ((PaperBlockState) blockState).handle();
     }
 
 }

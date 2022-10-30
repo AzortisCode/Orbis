@@ -25,8 +25,8 @@ import java.lang.annotation.*;
 /**
  * Marks non-transient fields to be excluded from the generated json schema.
  *
- * @since 0.3-Alpha
  * @author Jake Nijssen
+ * @since 0.3-Alpha
  */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)

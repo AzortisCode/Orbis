@@ -16,7 +16,7 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.util;
+package com.azortis.orbis.pack;
 
 import java.lang.annotation.*;
 import java.util.ArrayList;
@@ -27,8 +27,8 @@ import java.util.Collection;
  * and fields to inject instances in the {@link com.azortis.orbis.generator.Dimension} object tree.
  * Subclasses will inherit this annotation.
  *
- * @since 0.3-Alpha
  * @author Jake Nijssen
+ * @since 0.3-Alpha
  */
 @Inherited
 @Retention(RetentionPolicy.RUNTIME)
@@ -53,11 +53,12 @@ public @interface Inject {
     String fieldName() default "";
 
     /**
-     * The implementation of a {@link Collection} that should be used when initializing
+     * <p>The implementation of a {@link Collection} that should be used when initializing
      * this {@link java.lang.reflect.Field}. Only works on fields that also have a fieldName that refers to a field
-     * that has a {@link Collection} of parameterized type {@link String}.
-     * Note the implementation must be a mutable one, if you need an immutable view use {@link Invoke} to change
-     * the implementation after injection has taken place!
+     * that has a {@link Collection} of parameterized type {@link String}.</p>
+     *
+     * <p><b>NOTE</b> the implementation must be a mutable one, if you need an immutable view use {@link Invoke} to change
+     * the implementation after injection has taken place!</p>
      *
      * @return The implementation type of {@link Collection} that should be used to initialize the field
      */

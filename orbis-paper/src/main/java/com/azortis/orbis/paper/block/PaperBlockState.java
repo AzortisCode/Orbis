@@ -42,8 +42,8 @@ import java.util.Optional;
  * Platform representation of a BlockState, that wraps around the internal NMS
  * {@link net.minecraft.world.level.block.state.BlockState}. See {@link PaperBlock}
  *
- * @since 0.3-Alpha
  * @author Jake Nijssen
+ * @since 0.3-Alpha
  */
 @API(status = API.Status.INTERNAL, since = "0.3-Alpha", consumers = "com.azortis.orbis.paper")
 public final class PaperBlockState implements BlockState {
@@ -62,7 +62,7 @@ public final class PaperBlockState implements BlockState {
      * Constructs a PaperBlockState from a NMS state, and the parent NMS block wrapper.
      *
      * @param handle The NMS handle for this state.
-     * @param block The parent block of this state.
+     * @param block  The parent block of this state.
      * @since 0.3-Alpha
      */
     PaperBlockState(@NotNull net.minecraft.world.level.block.state.BlockState handle, @NotNull PaperBlock block) {
@@ -237,7 +237,7 @@ public final class PaperBlockState implements BlockState {
      * This is to make sure it will check out, even with NMS property enums whose serialized names are uppercase.
      *
      * @param nativeProperty The enum property to check against.
-     * @param lowerCaseName The lowercase serialized name.
+     * @param lowerCaseName  The lowercase serialized name.
      * @return The right lower case or uppercase string value of the property.
      */
     private String getEnumName(@NotNull EnumProperty<?> nativeProperty,

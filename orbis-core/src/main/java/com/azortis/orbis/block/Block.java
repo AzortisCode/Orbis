@@ -32,78 +32,11 @@ import java.util.Map;
  * A representation of a Block that contains a {@link BlockState} for each property/value combination.
  * In order to get an instance of a block refer to {@link Blocks} or {@link BlockRegistry}
  *
- * @since 0.3-Alpha
  * @author Jake Nijssen
+ * @since 0.3-Alpha
  */
 @API(status = API.Status.STABLE, since = "0.3-Alpha")
 public non-sealed interface Block extends ConfiguredBlock {
-
-    /**
-     * Get the properties this legacyBlock has.
-     *
-     * @return Immutable set view of the block properties.
-     * @since 0.3-Alpha
-     */
-    @Contract(pure = true)
-    @NotNull ImmutableSet<Property<?>> properties();
-
-    /**
-     * Checks if the {@link Block} has said property that can be modified.
-     *
-     * @param property The {@link Property} to check.
-     * @return If the block contains this property.
-     * @since 0.3-Alpha
-     */
-    @Contract(pure = true)
-    boolean hasProperty(@NotNull Property<?> property);
-
-    /**
-     * Get an immutable view of property names and their {@link Property}.
-     *
-     * @return An immutable propertyName/Property view.
-     * @since 0.3-Alpha
-     */
-    @Contract(pure = true)
-    @NotNull ImmutableMap<String, Property<?>> propertyMap();
-
-    /**
-     * Get the default {@link BlockState} of this block.
-     *
-     * @return The default state of this block.
-     * @since 0.3-Alpha
-     */
-    @Contract(pure = true)
-    @NotNull BlockState defaultState();
-
-    /**
-     * Get an immutable view of the possible {@link BlockState}'s.
-     * This set always contains at least one state.
-     *
-     * @return Immutable view of the possible states.
-     * @since 0.3-Alpha
-     */
-    @Contract(pure = true)
-    @NotNull ImmutableSet<BlockState> states();
-
-    /**
-     * Get the {@link BlockState} of this block for the specified properties.
-     *
-     * @param properties The properties of the state.
-     * @return The BlockState of given properties.
-     * @since 0.3-Alpha
-     */
-    @Contract(pure = true)
-    @NotNull BlockState with(@NotNull Map<String, String> properties);
-
-    /**
-     * Check if this block also contains a {@link com.azortis.orbis.block.entity.BlockEntity}
-     *
-     * @return If the block has an entity.
-     * @since 0.3-Alpha
-     */
-    @API(status = API.Status.EXPERIMENTAL, since = "0.3-Alpha")
-    @Contract(pure = true)
-    boolean hasEntity();
 
     /**
      * Gets a block from specified {@link Key}.
@@ -128,5 +61,77 @@ public non-sealed interface Block extends ConfiguredBlock {
     static @NotNull Block fromKey(@NotNull String key) {
         return BlockRegistry.fromKey(key);
     }
+
+    /**
+     * Get the properties this legacyBlock has.
+     *
+     * @return Immutable set view of the block properties.
+     * @since 0.3-Alpha
+     */
+    @Contract(pure = true)
+    @NotNull
+    ImmutableSet<Property<?>> properties();
+
+    /**
+     * Checks if the {@link Block} has said property that can be modified.
+     *
+     * @param property The {@link Property} to check.
+     * @return If the block contains this property.
+     * @since 0.3-Alpha
+     */
+    @Contract(pure = true)
+    boolean hasProperty(@NotNull Property<?> property);
+
+    /**
+     * Get an immutable view of property names and their {@link Property}.
+     *
+     * @return An immutable propertyName/Property view.
+     * @since 0.3-Alpha
+     */
+    @Contract(pure = true)
+    @NotNull
+    ImmutableMap<String, Property<?>> propertyMap();
+
+    /**
+     * Get the default {@link BlockState} of this block.
+     *
+     * @return The default state of this block.
+     * @since 0.3-Alpha
+     */
+    @Contract(pure = true)
+    @NotNull
+    BlockState defaultState();
+
+    /**
+     * Get an immutable view of the possible {@link BlockState}'s.
+     * This set always contains at least one state.
+     *
+     * @return Immutable view of the possible states.
+     * @since 0.3-Alpha
+     */
+    @Contract(pure = true)
+    @NotNull
+    ImmutableSet<BlockState> states();
+
+    /**
+     * Get the {@link BlockState} of this block for the specified properties.
+     *
+     * @param properties The properties of the state.
+     * @return The BlockState of given properties.
+     * @since 0.3-Alpha
+     */
+    @Contract(pure = true)
+    @NotNull
+    BlockState with(@NotNull Map<String, String> properties);
+
+    /**
+     * Check if this block also contains a {@link com.azortis.orbis.block.entity.BlockEntity}
+     *
+     * @return If the block has an entity.
+     * @since 0.3-Alpha
+     */
+    @API(status = API.Status.EXPERIMENTAL, since = "0.3-Alpha")
+    @Contract(pure = true)
+    boolean hasEntity();
 
 }

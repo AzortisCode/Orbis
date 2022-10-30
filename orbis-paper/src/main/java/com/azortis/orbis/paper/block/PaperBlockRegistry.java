@@ -36,8 +36,8 @@ import java.util.Objects;
 /**
  * The PaperMC platform implementation of {@link IBlockRegistry}
  *
- * @since 0.3-Alpha
  * @author Jake Nijssen
+ * @since 0.3-Alpha
  */
 @API(status = API.Status.INTERNAL, since = "0.3-Alpha", consumers = "com.azortis.orbis.paper")
 public final class PaperBlockRegistry implements IBlockRegistry {
@@ -50,7 +50,7 @@ public final class PaperBlockRegistry implements IBlockRegistry {
      * Initializes the Paper internal block registry.
      */
     @SuppressWarnings("PatternValidation")
-    public PaperBlockRegistry(){
+    public PaperBlockRegistry() {
         ImmutableMap.Builder<Key, Block> builder = ImmutableMap.builder();
         for (net.minecraft.world.level.block.Block nativeBlock : Registry.BLOCK) {
             Block block = new PaperBlock(nativeBlock);

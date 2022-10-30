@@ -18,7 +18,7 @@
 
 package com.azortis.orbis.item.meta;
 
-import com.azortis.orbis.item.ItemFlag;
+import com.azortis.orbis.inventory.ItemFlag;
 import com.azortis.orbis.item.LegacyEnchantment;
 import net.kyori.adventure.text.Component;
 import org.jetbrains.annotations.NotNull;
@@ -33,11 +33,13 @@ public interface ItemMeta {
 
     boolean hasDisplayName();
 
-    @Nullable Component getDisplayName();
+    @Nullable
+    Component getDisplayName();
 
     void setDisplayName(@Nullable Component displayName);
 
-    @NotNull List<Component> getLore();
+    @NotNull
+    List<Component> getLore();
 
     void setLore(@NotNull List<Component> lore);
 
@@ -53,7 +55,8 @@ public interface ItemMeta {
 
     int getEnchantLevel(@NotNull LegacyEnchantment legacyEnchantment);
 
-    @NotNull Map<LegacyEnchantment, Integer> getEnchants();
+    @NotNull
+    Map<LegacyEnchantment, Integer> getEnchants();
 
     boolean addEnchant(@NotNull LegacyEnchantment legacyEnchantment, int level, boolean ignoreLevelRestriction);
 
@@ -75,7 +78,8 @@ public interface ItemMeta {
 
     void removeItemFlags(@NotNull ItemFlag... itemFlags);
 
-    @NotNull Set<ItemFlag> getItemFlags();
+    @NotNull
+    Set<ItemFlag> getItemFlags();
 
     boolean hasItemFlag(@NotNull ItemFlag itemFlag);
 

@@ -49,8 +49,8 @@ import java.util.stream.Stream;
  * with the type of files it contains i.e. /biomes/ will map to {@link com.azortis.orbis.generator.biome.Biome}
  * and /generator/terrain/ will map to {@link com.azortis.orbis.generator.terrain.Terrain}.
  *
- * @since 0.3-Alpha
  * @author Jake Nijssen
+ * @since 0.3-Alpha
  */
 @API(status = API.Status.INTERNAL, since = "0.3-Alpha")
 public final class StudioDataAccess extends DirectoryDataAccess {
@@ -78,7 +78,7 @@ public final class StudioDataAccess extends DirectoryDataAccess {
      * @param directory The path of the directory.
      * @return The corresponding class type found in said directory.
      * @throws IllegalArgumentException If the specified Path is not a directory, not absolute {@link Path#isAbsolute()} or
-     * if the directory doesn't have a class type mapped to it.
+     *                                  if the directory doesn't have a class type mapped to it.
      * @since 0.3-Alpha
      */
     @Contract(pure = true)
@@ -106,7 +106,7 @@ public final class StudioDataAccess extends DirectoryDataAccess {
         // Simple mapping for data types that do not support Components.
         for (Map.Entry<Class<?>, String> entry : DATA_TYPES.entrySet()) {
             // If the dataPath ends with ** it means that all the subdirectories should be assigned to this type as well.
-            if(entry.getValue().endsWith("**")) {
+            if (entry.getValue().endsWith("**")) {
                 Path dataPath = Path.of(dataDirectory.toPath() + entry.getValue().replace("**", "").trim());
                 Preconditions.checkState(dataPath.isAbsolute(), "Path is not absolute for "
                         + entry.getKey().getSimpleName());
@@ -139,7 +139,7 @@ public final class StudioDataAccess extends DirectoryDataAccess {
 
                                 // Make sure the config file for the component actually exists, otherwise throw an error
                                 // informing the user of this "compilation" error.
-                                if(Files.exists(componentFile, LinkOption.NOFOLLOW_LINKS) &&
+                                if (Files.exists(componentFile, LinkOption.NOFOLLOW_LINKS) &&
                                         Files.isRegularFile(componentFile, LinkOption.NOFOLLOW_LINKS)) {
                                     try {
                                         // Read a representation of the config file itself, to check to which implementation
@@ -206,7 +206,7 @@ public final class StudioDataAccess extends DirectoryDataAccess {
      * Recursively register specified directory and all its subdirectories as specified type.
      *
      * @param rootPath The directory path to register type with, and search for subdirectories.
-     * @param type The type to mark the directory and subdirectories as.
+     * @param type     The type to mark the directory and subdirectories as.
      * @throws IllegalArgumentException If given path is not a directory.
      * @since 0.3-Alpha
      */
@@ -214,7 +214,7 @@ public final class StudioDataAccess extends DirectoryDataAccess {
     private void searchSubDirectories(@NotNull Path rootPath, @NotNull final Class<?> type) throws IllegalArgumentException {
         Preconditions.checkArgument(Files.isDirectory(rootPath, LinkOption.NOFOLLOW_LINKS), "Path must be a directory");
         directoryTypeMap.put(rootPath, type);
-        if(Files.exists(rootPath, LinkOption.NOFOLLOW_LINKS)) {
+        if (Files.exists(rootPath, LinkOption.NOFOLLOW_LINKS)) {
             try (Stream<Path> dataPaths = Files.list(rootPath)) {
                 dataPaths.filter(path -> Files.isDirectory(path, LinkOption.NOFOLLOW_LINKS))
                         .forEach(path -> searchSubDirectories(path, type));
@@ -229,25 +229,25 @@ public final class StudioDataAccess extends DirectoryDataAccess {
      * Maps all the directories for a component to the types registered in the {@link ComponentAccess}.
      *
      * @param componentPath The path of the component instance its directory.
-     * @param access The ComponentAccess instance of the component.
+     * @param access        The ComponentAccess instance of the component.
      * @throws IllegalStateException If given path is not absolute, meaning something up in the chain went wrong.
      */
     @Contract(pure = true)
     private void searchComponentDirectory(@NotNull Path componentPath, @NotNull ComponentAccess access) throws IllegalStateException {
         for (Class<?> dataType : access.dataTypes()) {
             if (access.getDataPath(dataType).equals("/**")) {
-                if(access.dataTypes().size() == 1) {
+                if (access.dataTypes().size() == 1) {
                     directoryTypeMap.put(componentPath, dataType);
                     break;
                 }
                 Orbis.getLogger().error("ComponentAccess class {} has mapped a type to \"/**\", but has more then one type!",
                         access.getClass().getSimpleName());
-            } else if(access.getDataPath(dataType).equals("/") && directoryTypeMap.putIfAbsent(componentPath, dataType) != null) {
+            } else if (access.getDataPath(dataType).equals("/") && directoryTypeMap.putIfAbsent(componentPath, dataType) != null) {
                 Orbis.getLogger().error("ComponentAccess class {} has mapped two or more types to \"/\"!",
                         access.getClass().getSimpleName());
                 continue;
             }
-            if(access.getDataPath(dataType).endsWith("**")) {
+            if (access.getDataPath(dataType).endsWith("**")) {
                 final Path dataPath = Path.of(componentPath + access.getDataPath(dataType).replace("**", "").trim());
                 Preconditions.checkState(dataPath.isAbsolute(), "Path is not absolute for "
                         + dataType.getSimpleName());

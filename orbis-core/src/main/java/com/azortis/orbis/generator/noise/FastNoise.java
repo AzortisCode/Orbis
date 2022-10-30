@@ -29,10 +29,10 @@ import org.apiguardian.api.API;
 /**
  * An utilities class for generating noise for the generator to use.
  *
- * @since 0.3-Alpha
- * @see <a href="https://github.com/Auburn/FastNoiseLite">FastNoise Github</a>
  * @author Auburn
  * @version 1.0.1
+ * @see <a href="https://github.com/Auburn/FastNoiseLite">FastNoise Github</a>
+ * @since 0.3-Alpha
  */
 @SuppressWarnings("all")
 @API(status = API.Status.INTERNAL, since = "0.3-Alpha", consumers = "com.azortis.orbis.generator.noise")
@@ -632,7 +632,8 @@ public final class FastNoise {
                 break;
             default:
                 switch (mDomainWarpType) {
-                    case OpenSimplex2, OpenSimplex2Reduced -> mWarpTransformType3D = TransformType3D.DefaultOpenSimplex2;
+                    case OpenSimplex2, OpenSimplex2Reduced ->
+                            mWarpTransformType3D = TransformType3D.DefaultOpenSimplex2;
                     default -> mWarpTransformType3D = TransformType3D.None;
                 }
                 break;

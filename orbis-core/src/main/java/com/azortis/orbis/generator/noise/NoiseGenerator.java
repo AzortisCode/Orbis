@@ -18,9 +18,9 @@
 
 package com.azortis.orbis.generator.noise;
 
+import com.azortis.orbis.pack.Inject;
 import com.azortis.orbis.pack.studio.annotations.SupportAnonymous;
 import com.azortis.orbis.pack.studio.annotations.Typed;
-import com.azortis.orbis.util.Inject;
 import com.azortis.orbis.world.World;
 import net.kyori.adventure.key.Key;
 import org.jetbrains.annotations.NotNull;

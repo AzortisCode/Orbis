@@ -45,7 +45,7 @@ public final class SchemaManager {
         this.project = project;
         this.schemasDir = new File(project.settingsDir() + "/.orbis/schemas/");
 
-        if(!schemasDir.exists() && !schemasDir.mkdirs()) Orbis.getLogger().error("Failed to create schemas folder!");
+        if (!schemasDir.exists() && !schemasDir.mkdirs()) Orbis.getLogger().error("Failed to create schemas folder!");
 
         // Definitions.
         // Global definitions

@@ -28,8 +28,8 @@ import java.lang.ref.WeakReference;
  * Settings class which may be extended by platforms for some basic
  * global settings that are not world/dimension dependent.
  *
- * @since 0.3-Alpha
  * @author Jake Nijssen
+ * @since 0.3-Alpha
  */
 @SuppressWarnings("all")
 @API(status = API.Status.EXPERIMENTAL, since = "0.3-Alpha")
@@ -50,6 +50,10 @@ public class Settings {
         this.studio = studio;
     }
 
+    public static Settings defaultSettings() {
+        return new Settings(Studio.defaultStudioSettings());
+    }
+
     public Studio studio() {
         return studio;
     }
@@ -63,6 +67,10 @@ public class Settings {
             this.fallBackLocation = fallBackLocation;
         }
 
+        public static Studio defaultStudioSettings() {
+            return new Studio(false, new Location(0, 0, 0, 0f, 0f, new WeakReference<>(null)));
+        }
+
         public boolean openVSCode() {
             return openVSCode;
         }
@@ -70,14 +78,6 @@ public class Settings {
         public @NotNull Location fallBackLocation() {
             return fallBackLocation;
         }
-
-        public static Studio defaultStudioSettings() {
-            return new Studio(false, new Location(0, 0, 0, 0f, 0f, new WeakReference<>(null)));
-        }
-    }
-
-    public static Settings defaultSettings() {
-        return new Settings(Studio.defaultStudioSettings());
     }
 
 }

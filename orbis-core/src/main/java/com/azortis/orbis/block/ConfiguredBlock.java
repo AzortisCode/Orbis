@@ -27,8 +27,8 @@ import org.jetbrains.annotations.NotNull;
  * Represents a captured block(state) configured in a dimension object json datafile.
  * This is (de)serialized by {@link com.azortis.orbis.pack.adapter.BlockAdapter}
  *
- * @since 0.3-Alpha
  * @author Jake Nijssen
+ * @since 0.3-Alpha
  */
 @API(status = API.Status.STABLE, since = "0.3-Alpha")
 public sealed interface ConfiguredBlock extends Keyed permits Block, BlockState {
@@ -50,7 +50,8 @@ public sealed interface ConfiguredBlock extends Keyed permits Block, BlockState 
      * @since 0.3-Alpha
      */
     @Contract(pure = true)
-    @NotNull Block block();
+    @NotNull
+    Block block();
 
     /**
      * <p>Gets the internal stateId of the platform for the blockState.</p>
@@ -70,6 +71,7 @@ public sealed interface ConfiguredBlock extends Keyed permits Block, BlockState 
      * @since 0.3-Alpha
      */
     @Contract(pure = true)
-    @NotNull BlockState state();
+    @NotNull
+    BlockState state();
 
 }

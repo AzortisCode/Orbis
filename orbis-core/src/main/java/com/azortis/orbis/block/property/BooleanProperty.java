@@ -27,8 +27,8 @@ import java.util.Set;
 /**
  * A {@link Property} that can be either true or false.
  *
- * @since 0.3-Alpha
  * @author Jake Nijssen
+ * @since 0.3-Alpha
  */
 @API(status = API.Status.STABLE, since = "0.3-Alpha")
 public final class BooleanProperty extends Property<Boolean> {

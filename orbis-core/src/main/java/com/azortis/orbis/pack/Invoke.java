@@ -16,7 +16,7 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.util;
+package com.azortis.orbis.pack;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -27,8 +27,8 @@ import java.lang.annotation.Target;
  * Used to annotate a method in a {@link Class} that has been annotated with {@link Inject}
  * this method will be called before depending on {@link Order}
  *
- * @since 0.3-Alpha
  * @author Jake Nijssen
+ * @since 0.3-Alpha
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)

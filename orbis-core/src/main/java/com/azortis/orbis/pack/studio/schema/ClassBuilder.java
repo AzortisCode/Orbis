@@ -32,7 +32,7 @@ public final class ClassBuilder extends SchemaBuilder {
     private final boolean typed;
 
     ClassBuilder(@NotNull Project project, @NotNull DataAccess data,
-                        @NotNull File schemaFile, @NotNull Class<?> type) {
+                 @NotNull File schemaFile, @NotNull Class<?> type) {
         super(project, data, schemaFile);
         this.type = type;
         this.typed = type.isAnnotationPresent(Typed.class);

@@ -18,14 +18,18 @@
 
 package com.azortis.orbis.world;
 
-import com.google.common.collect.ImmutableSet;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.UnmodifiableView;
+
+import java.util.Set;
 
 /**
  * An interface, best javadoc ever :O
  */
 public interface RegionAccess {
 
-    @NotNull ImmutableSet<ChunkAccess> chunks();
+    @Contract(pure = true)
+    @NotNull @UnmodifiableView Set<ChunkAccess> chunks();
 
 }

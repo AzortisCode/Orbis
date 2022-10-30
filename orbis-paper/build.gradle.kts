@@ -23,7 +23,7 @@ plugins {
 }
 
 group = "com.azortis"
-version = project(":orbis-core").version;
+version = project(":orbis-core").version
 
 repositories {
     mavenCentral()
@@ -66,7 +66,7 @@ tasks {
     processResources {
         filteringCharset = Charsets.UTF_8.name()
         filesMatching("plugin.yml") {
-            expand(Pair("pluginVersion", project.version))
+            expand(Pair("version", project.version))
         }
     }
 }

@@ -22,9 +22,9 @@ import com.azortis.orbis.generator.Dimension;
 import com.azortis.orbis.generator.biome.Biome;
 import com.azortis.orbis.generator.biome.complex.modifier.Modifier;
 import com.azortis.orbis.generator.biome.complex.requirement.Requirement;
+import com.azortis.orbis.pack.Inject;
+import com.azortis.orbis.pack.Invoke;
 import com.azortis.orbis.pack.studio.annotations.Entries;
-import com.azortis.orbis.util.Inject;
-import com.azortis.orbis.util.Invoke;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Set;

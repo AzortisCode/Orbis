@@ -40,16 +40,14 @@ import java.util.Set;
 public abstract class StudioWorld extends World {
 
     protected final Project project;
-
-    /**
-     * If the world should render, or just create void chunks.
-     */
-    private volatile boolean shouldRender = false;
-
     /**
      * Players viewing this world, with their last known location before entering it.
      */
     protected final Map<Player, Location> viewers = new HashMap<>();
+    /**
+     * If the world should render, or just create void chunks.
+     */
+    private final boolean shouldRender = false;
 
     public StudioWorld(String name, File folder, Project project) {
         super(name, folder, project);
@@ -138,19 +136,19 @@ public abstract class StudioWorld extends World {
         }
     }
 
+    @Override
+    public Dimension getDimension() {
+        if (!shouldRender) return null;
+        return super.getDimension();
+    }
+
     synchronized void setDimension(@NotNull Dimension dimension) {
         this.dimension = dimension;
     }
 
     @Override
-    public Dimension getDimension() {
-        if(!shouldRender) return null;
-        return super.getDimension();
-    }
-
-    @Override
     public Engine getEngine() {
-        if(!shouldRender) return null;
+        if (!shouldRender) return null;
         return super.getEngine();
     }
 

@@ -29,8 +29,8 @@ import java.lang.annotation.*;
  * Classes annotated with this cannot access component {@link Entries} for any of its fields, as it is unknown
  * at schema generation if a global definition is used in a {@link com.azortis.orbis.pack.data.Component} environment or not.
  *
- * @since 0.3-Alpha
  * @author Jake Nijssen
+ * @since 0.3-Alpha
  */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)

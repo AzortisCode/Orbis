@@ -22,8 +22,6 @@ import com.azortis.orbis.Orbis;
 import com.azortis.orbis.generator.Dimension;
 import com.azortis.orbis.pack.data.Component;
 import com.azortis.orbis.pack.data.DataAccess;
-import com.azortis.orbis.util.Inject;
-import com.azortis.orbis.util.Invoke;
 import com.azortis.orbis.world.World;
 import com.azortis.orbis.world.WorldInfo;
 import org.apache.commons.io.FilenameUtils;

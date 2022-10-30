@@ -35,8 +35,8 @@ import static java.nio.file.StandardWatchEventKinds.*;
  * A file event watcher that posts all external file changes to the {@link Project} for it
  * to process them, i.e. re-indexing all the files to point the right schema's to it.
  *
- * @since 0.3-Alpha
  * @author Jake Nijssen
+ * @since 0.3-Alpha
  */
 @API(status = API.Status.INTERNAL, since = "0.3-Alpha", consumers = "com.azortis.orbis.pack.studio")
 public final class ProjectWatcher {
@@ -58,8 +58,13 @@ public final class ProjectWatcher {
         this.watcherTask = Orbis.getPlatform().scheduler().runTaskAsync(this::processEvents);
     }
 
-    private void processEvents(){
-        while(continueLoop) {
+    @SuppressWarnings("unchecked")
+    private static <T> WatchEvent<T> cast(WatchEvent<?> event) {
+        return (WatchEvent<T>) event;
+    }
+
+    private void processEvents() {
+        while (continueLoop) {
             WatchKey key;
             try {
                 key = watcher.take();
@@ -69,7 +74,7 @@ public final class ProjectWatcher {
             }
 
             Path dir = keys.get(key);
-            if(dir == null) {
+            if (dir == null) {
                 Orbis.getLogger().error("WatchKey not recognized!");
                 continue;
             }
@@ -106,10 +111,10 @@ public final class ProjectWatcher {
             }
 
             boolean valid = key.reset();
-            if(!valid) {
+            if (!valid) {
                 keys.remove(key);
 
-                if(keys.isEmpty()) {
+                if (keys.isEmpty()) {
                     terminate();
                     break;
                 }
@@ -118,11 +123,11 @@ public final class ProjectWatcher {
     }
 
     synchronized void terminate() {
-        if(!continueLoop) {
+        if (!continueLoop) {
             try {
                 continueLoop = false;
                 watcher.close();
-                if(watcherTask.isRunning())watcherTask.cancel();
+                if (watcherTask.isRunning()) watcherTask.cancel();
             } catch (IOException ex) {
                 Orbis.getLogger().error("Failed to cancel ProjectWatcher!", ex);
             }
@@ -133,10 +138,10 @@ public final class ProjectWatcher {
         WatchKey key = null;
         try {
             key = dir.register(watcher, ENTRY_CREATE, ENTRY_DELETE, ENTRY_MODIFY);
-        } catch (IOException ex){
+        } catch (IOException ex) {
             Orbis.getLogger().error("Failed to register directory with the watcher!", ex);
         }
-        if(key != null)keys.put(key, dir);
+        if (key != null) keys.put(key, dir);
     }
 
     private void registerAll(@NotNull Path start) {
@@ -146,7 +151,7 @@ public final class ProjectWatcher {
                 public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) throws IOException {
                     // We don't want to register the /.orbis/ directory since that dir is updated
                     // by events that happen in this watcher.
-                    if(Files.isSameFile(project.settingsDir().toPath(), dir)) {
+                    if (Files.isSameFile(project.settingsDir().toPath(), dir)) {
                         return FileVisitResult.SKIP_SUBTREE;
                     }
                     register(dir);
@@ -156,11 +161,6 @@ public final class ProjectWatcher {
         } catch (IOException ex) {
             Orbis.getLogger().error("Failed to register directory tree with watcher!", ex);
         }
-    }
-
-    @SuppressWarnings("unchecked")
-    private static <T> WatchEvent<T> cast(WatchEvent<?> event) {
-        return (WatchEvent<T>)event;
     }
 
 }

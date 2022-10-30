@@ -31,9 +31,9 @@ import java.util.stream.Collectors;
 /**
  * A {@link Property} that can be either one of the given enums.
  *
+ * @param <T> The type of enum for this property.
  * @author Jake Nijssen
  * @since 0.3-Alpha
- * @param <T> The type of enum for this property.
  */
 @API(status = API.Status.STABLE, since = "0.3-Alpha")
 public final class EnumProperty<T extends Enum<T> & Nameable> extends Property<T> {

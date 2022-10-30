@@ -66,10 +66,10 @@ public class StudioCommands {
 
     @CommandDescription("Forces the loaded chunks to regenerate")
     @CommandMethod(value = "regen")
-    public void forceRegen(final @NotNull CommandSender sender){
-        if(projectCheck(sender)) {
+    public void forceRegen(final @NotNull CommandSender sender) {
+        if (projectCheck(sender)) {
             assert projectManager.getActiveProject() != null;
-            if(projectManager.getActiveProject().studioWorld().shouldRender()) {
+            if (projectManager.getActiveProject().studioWorld().shouldRender()) {
                 //projectManager.getActiveProject().studioWorld().hotReload();
                 // TODO schedule a hot reload.
             } else {

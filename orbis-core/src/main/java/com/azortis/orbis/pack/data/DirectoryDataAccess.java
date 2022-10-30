@@ -30,8 +30,8 @@ import java.util.stream.Collectors;
 /**
  * A directory based {@link DataAccess}, which uses local directories and its data root.
  *
- * @since 0.3-Alpha
  * @author Jake Nijssen
+ * @since 0.3-Alpha
  */
 @API(status = API.Status.INTERNAL, since = "0.3-Alpha", consumers = "com.azortis.orbis.pack")
 public class DirectoryDataAccess extends DataAccess {

@@ -18,11 +18,11 @@
 
 package com.azortis.orbis.generator.biome;
 
+import com.azortis.orbis.pack.Inject;
+import com.azortis.orbis.pack.Invoke;
 import com.azortis.orbis.pack.data.DataAccess;
 import com.azortis.orbis.pack.studio.annotations.Entries;
 import com.azortis.orbis.pack.studio.annotations.Typed;
-import com.azortis.orbis.util.Inject;
-import com.azortis.orbis.util.Invoke;
 import com.azortis.orbis.world.World;
 import com.google.gson.annotations.SerializedName;
 import net.kyori.adventure.key.Key;

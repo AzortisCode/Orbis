@@ -28,10 +28,12 @@ import java.util.Set;
  */
 public interface WorldAccess {
 
-    @NotNull String name();
+    @NotNull
+    String name();
 
     boolean isWorldLoaded();
 
-    @NotNull Set<Player> getPlayers();
+    @NotNull
+    Set<Player> getPlayers();
 
 }

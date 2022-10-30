@@ -20,7 +20,7 @@ package com.azortis.orbis.generator.terrain.defaults;
 
 import com.azortis.orbis.generator.noise.NoiseGenerator;
 import com.azortis.orbis.generator.terrain.Terrain;
-import com.azortis.orbis.util.Inject;
+import com.azortis.orbis.pack.Inject;
 import com.google.gson.annotations.SerializedName;
 import net.kyori.adventure.key.Key;
 

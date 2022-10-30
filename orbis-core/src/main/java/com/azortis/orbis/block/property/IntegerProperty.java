@@ -26,8 +26,8 @@ import org.jetbrains.annotations.NotNull;
 /**
  * A {@link Property} that can be a value between given integers.
  *
- * @since 0.3-Alpha
  * @author Jake Nijssen
+ * @since 0.3-Alpha
  */
 @API(status = API.Status.STABLE, since = "0.3-Alpha")
 public final class IntegerProperty extends Property<Integer> {

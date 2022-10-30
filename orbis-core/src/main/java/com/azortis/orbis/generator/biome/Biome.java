@@ -20,7 +20,7 @@ package com.azortis.orbis.generator.biome;
 
 import com.azortis.orbis.block.ConfiguredBlock;
 import com.azortis.orbis.generator.terrain.Terrain;
-import com.azortis.orbis.util.Inject;
+import com.azortis.orbis.pack.Inject;
 import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
 import lombok.experimental.Accessors;

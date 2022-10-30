@@ -25,8 +25,8 @@ import java.lang.annotation.*;
 /**
  * Used to mark a {@link java.lang.reflect.Field} as required in the generated json-schema.
  *
- * @since 0.3-Alpha
  * @author Jake Nijssen
+ * @since 0.3-Alpha
  */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)

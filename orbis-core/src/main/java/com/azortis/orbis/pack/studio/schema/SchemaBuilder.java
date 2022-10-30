@@ -35,9 +35,9 @@ import java.nio.file.StandardOpenOption;
  * Abstract utility class for building JsonSchema's that can be used for
  * config tab-completion/validation in VSCode.
  *
- * @since 0.3-Alpha
- * @see <a href="https://json-schema.org/">Json-Schema website.</a>
  * @author Jake Nijssen
+ * @see <a href="https://json-schema.org/">Json-Schema website.</a>
+ * @since 0.3-Alpha
  */
 public sealed abstract class SchemaBuilder permits ClassBuilder, BlockBuilder, EntriesBuilder {
 
@@ -51,9 +51,23 @@ public sealed abstract class SchemaBuilder permits ClassBuilder, BlockBuilder, E
         this.schemaFile = schemaFile;
     }
 
+    static void generateBlocks(@NotNull Project project, @NotNull File blocksFile) {
+        new BlockBuilder(project, project.studioWorld().data(), blocksFile).saveSchema();
+    }
+
+    static void generateEntries(@NotNull Project project, @NotNull File entriesFile,
+                                @NotNull Class<?> type, @Nullable String name) {
+        new EntriesBuilder(project, project.studioWorld().data(), entriesFile, type, name).saveSchema();
+    }
+
+    static void generateClassSchema(@NotNull Project project, @NotNull File schemaFile,
+                                    @NotNull Class<?> type) {
+        new ClassBuilder(project, project.studioWorld().data(), schemaFile, type).saveSchema();
+    }
+
     public void saveSchema() {
         try {
-            if(!schemaFile.exists() && !schemaFile.createNewFile()) {
+            if (!schemaFile.exists() && !schemaFile.createNewFile()) {
                 Orbis.getLogger().error("Failed to create schema file!");
             }
             final String json = Orbis.getGson().toJson(generateSchema());
@@ -77,19 +91,5 @@ public sealed abstract class SchemaBuilder permits ClassBuilder, BlockBuilder, E
     protected String getSchemaReference(@NotNull File referencedSchemaFile) {
         Preconditions.checkArgument(referencedSchemaFile.isFile(), "Referenced schema file must be a file not a directory!");
         return schemaFile.toPath().relativize(referencedSchemaFile.toPath()).toString();
-    }
-
-    static void generateBlocks(@NotNull Project project, @NotNull File blocksFile) {
-        new BlockBuilder(project, project.studioWorld().data(), blocksFile).saveSchema();
-    }
-
-    static void generateEntries(@NotNull Project project, @NotNull File entriesFile,
-                                @NotNull Class<?> type, @Nullable String name){
-        new EntriesBuilder(project, project.studioWorld().data(), entriesFile, type, name).saveSchema();
-    }
-
-    static void generateClassSchema(@NotNull Project project, @NotNull File schemaFile,
-                                    @NotNull Class<?> type) {
-        new ClassBuilder(project, project.studioWorld().data(), schemaFile, type).saveSchema();
     }
 }

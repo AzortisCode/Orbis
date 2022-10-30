@@ -25,8 +25,8 @@ import org.jetbrains.annotations.NotNull;
 /**
  * Interface for scheduling operations using the platforms in-house scheduler.
  *
- * @since 0.3-Alpha
  * @author Jake Nijssen
+ * @since 0.3-Alpha
  */
 @API(status = API.Status.STABLE, since = "0.3-Alpha")
 public interface Scheduler {
@@ -38,9 +38,9 @@ public interface Scheduler {
      * @return An instance of {@link Task} for the queued task.
      * @since 0.3-Alpha
      */
-
     @Contract("_ -> new")
-    @NotNull Task runTask(@NotNull Runnable task);
+    @NotNull
+    Task runTask(@NotNull Runnable task);
 
     /**
      * Runs a task asynchronously on the platform's scheduler.
@@ -50,13 +50,14 @@ public interface Scheduler {
      * @since 0.3-Alpha
      */
     @Contract("_ -> new")
-    @NotNull Task runTaskAsync(@NotNull Runnable task);
+    @NotNull
+    Task runTaskAsync(@NotNull Runnable task);
 
     /**
      * A representation of a queued or running task, which can be cancelled.
      *
-     * @since 0.3-Alpha
      * @author Jake Nijssen
+     * @since 0.3-Alpha
      */
     interface Task {
 

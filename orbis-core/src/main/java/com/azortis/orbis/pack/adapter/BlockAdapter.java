@@ -53,12 +53,12 @@ public final class BlockAdapter implements JsonSerializer<ConfiguredBlock>, Json
         blockObject.add("type", context.serialize(configuredBlock.key()));
         JsonObject propertiesObject = new JsonObject();
         for (Map.Entry<Property<?>, Comparable<?>> entry : configuredBlock.state().values().entrySet()) {
-            if(entry.getKey() instanceof BooleanProperty) {
+            if (entry.getKey() instanceof BooleanProperty) {
                 propertiesObject.addProperty(entry.getKey().key(), (Boolean) entry.getValue());
             } else if (entry.getKey() instanceof IntegerProperty) {
                 propertiesObject.addProperty(entry.getKey().key(), (Integer) entry.getValue());
             } else if (entry.getKey() instanceof EnumProperty<?>) {
-                propertiesObject.addProperty(entry.getKey().key(), ((Nameable)entry.getValue()).serializedName());
+                propertiesObject.addProperty(entry.getKey().key(), ((Nameable) entry.getValue()).serializedName());
             }
         }
         blockObject.add("properties", propertiesObject);

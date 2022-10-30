@@ -48,8 +48,8 @@ import java.util.stream.Stream;
 /**
  * Class representation of VSCode its *.code-workspace config file.
  *
- * @since 0.3-Alpha
  * @author Jake Nijssen
+ * @since 0.3-Alpha
  */
 @API(status = API.Status.INTERNAL, since = "0.3-Alpha", consumers = "com.azortis.orbis.pack.studio")
 public final class WorkspaceConfig {
@@ -90,12 +90,11 @@ public final class WorkspaceConfig {
     }
 
     private final JsonArray folders = FOLDERS_ARRAY;
-    private JsonObject settings;
-
     private transient final File workspaceFile;
     private transient final Path directoryPath;
     private transient final ImmutableMap<Class<?>, SchemaMatcher> schemaMatchers;
     private transient final ImmutableMap<Class<?>, Map<String, SchemaMatcher>> componentSchemaMatchers;
+    private JsonObject settings;
 
     public WorkspaceConfig(@NotNull JsonObject settings, @NotNull Project project, @NotNull File workspaceFile) throws IOException {
         this.settings = settings.deepCopy();
@@ -118,7 +117,7 @@ public final class WorkspaceConfig {
         try (Stream<Path> files = Files.list(directoryPath)) {
             files.filter(path -> Files.isRegularFile(path, LinkOption.NOFOLLOW_LINKS)).forEach(path -> {
                 Path filePath = directoryPath.relativize(path);
-                if(!filePath.endsWith("pack.json")) {
+                if (!filePath.endsWith("pack.json")) {
                     dimensionMatcher.matchingRules.put(filePath, filePath.toString());
                 }
             });
@@ -135,7 +134,7 @@ public final class WorkspaceConfig {
             builder.put(rootType, new SchemaMatcher(directoryPath.relativize(schemaManager.getSchema(rootType).toPath()).toString()));
 
             for (Class<?> type : Registry.getRegistry(rootType).getTypes()) {
-                if(type.isAnnotationPresent(Component.class)) {
+                if (type.isAnnotationPresent(Component.class)) {
                     try {
                         Class<? extends ComponentAccess> componentAccessType = type.getAnnotation(Component.class).value();
                         ComponentAccess access = componentAccessType.getConstructor(String.class, DataAccess.class).newInstance(null, null);
@@ -159,7 +158,7 @@ public final class WorkspaceConfig {
         save();
     }
 
-    void resetMatchers(){
+    void resetMatchers() {
 
     }
 
@@ -204,7 +203,7 @@ public final class WorkspaceConfig {
         private void addDirectory(@NotNull Path directory) throws IllegalArgumentException {
             Preconditions.checkArgument(Files.isDirectory(directory, LinkOption.NOFOLLOW_LINKS));
 
-            if(matchingRules.putIfAbsent(directory, directory + "/*.json") != null) {
+            if (matchingRules.putIfAbsent(directory, directory + "/*.json") != null) {
                 Orbis.getLogger().error("Directory matching rule {} for {} already exists!", matchingRules.get(directory), directory);
             }
         }
@@ -212,7 +211,7 @@ public final class WorkspaceConfig {
         private void removeDirectory(@NotNull Path directory) throws IllegalArgumentException {
             Preconditions.checkArgument(Files.isDirectory(directory, LinkOption.NOFOLLOW_LINKS));
 
-            if(matchingRules.containsKey(directory)) {
+            if (matchingRules.containsKey(directory)) {
                 matchingRules.remove(directory);
                 return;
             }

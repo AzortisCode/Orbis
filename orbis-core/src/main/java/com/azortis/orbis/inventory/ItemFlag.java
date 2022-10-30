@@ -16,29 +16,14 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.block.property;
+package com.azortis.orbis.inventory;
 
-import com.azortis.orbis.util.Nameable;
-import org.jetbrains.annotations.NotNull;
-
-public enum Axis implements Nameable {
-    X("x"),
-    Y("y"),
-    Z("z");
-
-    private final String name;
-
-    Axis(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return this.name;
-    }
-
-    @Override
-    public @NotNull String serializedName() {
-        return this.name;
-    }
+public enum ItemFlag {
+    HIDE_ENCHANTS,
+    HIDE_ATTRIBUTES,
+    HIDE_UNBREAKABLE,
+    HIDE_CAN_DESTROY,
+    HIDE_CAN_PLACE,
+    HIDE_MISCELLANEOUS,
+    HIDE_DYE
 }

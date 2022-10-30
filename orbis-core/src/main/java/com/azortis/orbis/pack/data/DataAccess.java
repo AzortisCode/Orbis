@@ -40,8 +40,8 @@ import java.util.Set;
  * It uses a {@link String} based system for data paths, which specify where a resource of said {@link Class} type
  * is located. Refer to {@link ComponentAccess} on how to register your own data paths.
  *
- * @since 0.3-Alpha
  * @author Jake Nijssen
+ * @since 0.3-Alpha
  */
 public abstract class DataAccess {
 

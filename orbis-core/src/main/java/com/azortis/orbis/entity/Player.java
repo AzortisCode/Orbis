@@ -31,8 +31,8 @@ import java.util.concurrent.CompletableFuture;
 /**
  * A representation of a Player on the server.
  *
- * @since 0.3-Alpha
  * @author Jake Nijssen
+ * @since 0.3-Alpha
  */
 @API(status = API.Status.EXPERIMENTAL, since = "0.3-Alpha")
 public interface Player extends CommandSender {
@@ -82,7 +82,8 @@ public interface Player extends CommandSender {
      * @since 0.3-Alpha
      */
     @Contract("_ -> new")
-    @NotNull CompletableFuture<Boolean> teleportAsync(@NotNull Location location);
+    @NotNull
+    CompletableFuture<Boolean> teleportAsync(@NotNull Location location);
 
     /**
      * Get the current {@link GameMode} pf the player.
@@ -91,7 +92,8 @@ public interface Player extends CommandSender {
      * @since 0.3-Alpha
      */
     @Contract(pure = true)
-    @NotNull GameMode getGameMode();
+    @NotNull
+    GameMode getGameMode();
 
     /**
      * Sets the player their game mode.
@@ -127,7 +129,8 @@ public interface Player extends CommandSender {
      * @since 0.3-Alpha
      */
     @Contract(" -> new")
-    @NotNull Location getLocation();
+    @NotNull
+    Location getLocation();
 
     /**
      * Get the {@link WorldAccess} instance of the world the player currently resides in.
@@ -136,13 +139,14 @@ public interface Player extends CommandSender {
      * @since 0.3-Alpha
      */
     @Contract(pure = true)
-    @NotNull WorldAccess getWorld();
+    @NotNull
+    WorldAccess getWorld();
 
     /**
      * Represents the 4 game mode states the player can be in.
      *
-     * @since 0.3-Alpha
      * @author Jake Nijssen
+     * @since 0.3-Alpha
      */
     enum GameMode {
         /**
@@ -164,7 +168,7 @@ public interface Player extends CommandSender {
         /**
          * GameMode where the player is invisible to the rest of the server, and can fly & clip around freely.
          */
-        SPECTATOR;
+        SPECTATOR
     }
 
 }

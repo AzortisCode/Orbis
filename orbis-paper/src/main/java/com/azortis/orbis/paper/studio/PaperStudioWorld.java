@@ -146,7 +146,7 @@ public final class PaperStudioWorld extends StudioWorld implements Listener {
 
     private CompletableFuture<Boolean> regenChunk(@NotNull final Chunk chunk) {
         return CompletableFuture.supplyAsync(() -> {
-            ChunkAccess access = ((CraftWorld)nativeWorld).getHandle().getChunk(chunk.getX(), chunk.getZ());
+            ChunkAccess access = ((CraftWorld) nativeWorld).getHandle().getChunk(chunk.getX(), chunk.getZ());
 
             // Set all blocks in chunk to air and reset the biome
             for (int cx = 0; cx <= 15; cx++) {
@@ -156,7 +156,7 @@ public final class PaperStudioWorld extends StudioWorld implements Listener {
                                 access.getPos().getMinBlockZ() + cz);
                         int x = access.getPos().getMinBlockX() + cx;
                         int z = access.getPos().getMinBlockZ() + cz;
-                        access.setBiome(x >> 2, y >> 2, z >> 2, access.getNoiseBiome(x,y,z));
+                        access.setBiome(x >> 2, y >> 2, z >> 2, access.getNoiseBiome(x, y, z));
                         access.setBlockState(blockPos, Block.stateById(Blocks.AIR.stateId()), false);
                     }
                 }
@@ -188,7 +188,7 @@ public final class PaperStudioWorld extends StudioWorld implements Listener {
 
     @EventHandler(priority = EventPriority.LOWEST)
     private void onChunkLoad(ChunkLoadEvent event) {
-        if(event.getWorld() == nativeWorld && !event.isNewChunk()) {
+        if (event.getWorld() == nativeWorld && !event.isNewChunk()) {
             // Regenerate each chunk that gets loaded, in case something changed
             regenChunk(event.getChunk());
         }
@@ -196,7 +196,7 @@ public final class PaperStudioWorld extends StudioWorld implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST)
     private void onChunkUnload(ChunkUnloadEvent event) {
-        if(event.getWorld() == nativeWorld) {
+        if (event.getWorld() == nativeWorld) {
             // Don't bother saving chunks, since they won't stay anyway.
             event.setSaveChunk(false);
         }

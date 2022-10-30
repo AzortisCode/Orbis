@@ -20,6 +20,7 @@ package com.azortis.orbis.codegen.block;
 
 import com.azortis.orbis.block.property.*;
 import com.azortis.orbis.codegen.OrbisCodeGenerator;
+import com.azortis.orbis.util.Axis;
 import com.azortis.orbis.util.Direction;
 import com.google.common.collect.ImmutableMap;
 import com.google.gson.JsonArray;

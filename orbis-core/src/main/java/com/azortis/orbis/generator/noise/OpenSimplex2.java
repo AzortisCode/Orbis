@@ -18,7 +18,7 @@
 
 package com.azortis.orbis.generator.noise;
 
-import com.azortis.orbis.util.Invoke;
+import com.azortis.orbis.pack.Invoke;
 import net.kyori.adventure.key.Key;
 import org.jetbrains.annotations.Nullable;
 

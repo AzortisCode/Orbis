@@ -29,8 +29,8 @@ import java.lang.reflect.Field;
  * A registry that keeps track of all {@link Property} in {@link Properties} and
  * the original Mojang name associated with it, if changed.
  *
- * @since 0.3-Alpha
  * @author Jake Nijssen
+ * @since 0.3-Alpha
  */
 @API(status = API.Status.STABLE, since = "0.3-Alpha")
 public final class PropertyRegistry {
@@ -69,10 +69,12 @@ public final class PropertyRegistry {
      *
      * @param name The name of the property.
      * @return The corresponding property.
+     * @throws IllegalArgumentException If property name is invalid.
      * @since 0.3-Alpha
      */
+    @SuppressWarnings("ConstantConditions")
     @API(status = API.Status.STABLE, since = "0.3-Alpha")
-    public static @NotNull Property<?> getByName(@NotNull String name) {
+    public static @NotNull Property<?> getByName(@NotNull String name) throws IllegalArgumentException {
         Preconditions.checkArgument(PROPERTIES.containsKey(name), "Invalid property name!");
         return PROPERTIES.get(name);
     }
@@ -82,10 +84,12 @@ public final class PropertyRegistry {
      *
      * @param mojangName The mojang name of the property.
      * @return The corresponding property.
+     * @throws IllegalArgumentException If property name is invalid.
      * @since 0.3-Alpha
      */
+    @SuppressWarnings("ConstantConditions")
     @API(status = API.Status.STABLE, since = "0.3-Alpha")
-    public static @NotNull Property<?> getByMojangName(@NotNull String mojangName) {
+    public static @NotNull Property<?> getByMojangName(@NotNull String mojangName) throws IllegalArgumentException {
         Preconditions.checkArgument(PROPERTIES.containsKey(NAME_REWRITES.getOrDefault(mojangName, mojangName)),
                 "Invalid mojang property name!");
         return PROPERTIES.get(NAME_REWRITES.getOrDefault(mojangName, mojangName));
