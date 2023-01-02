@@ -18,5 +18,28 @@
 
 package com.azortis.orbis.world;
 
+import com.azortis.orbis.block.BlockState;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.Range;
+
 public interface ChunkAccess {
+
+    /**
+     * Checks if the underlying Chunk instance is loaded, if not any reference
+     * to this instance should be discarded.
+     *
+     * @return If the underlying Chunk is loaded.
+     */
+    boolean isLoaded();
+
+    /**
+     * Unloads this Chunk if it was force loaded, won't do anything if the Chunk got loaded naturally.
+     */
+    void unload();
+
+    @NotNull BlockState getState(@Range(from = 0, to = 15) int x, int y, @Range(from = 0, to = 15) int z);
+
+    void setState(@Range(from = 0, to = 15) int x, int y, @Range(from = 0, to = 15) int z, @Nullable BlockState state);
+
 }

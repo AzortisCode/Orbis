@@ -34,9 +34,11 @@ import java.io.IOException;
 
 public final class OrbisPlugin extends JavaPlugin {
 
+    private boolean loaded = false;
+
     private static OrbisPlugin plugin;
+
     private static PaperPlatform platform;
-    private Metrics metrics;
 
     public static OrbisPlugin getPlugin() {
         return plugin;
@@ -53,7 +55,6 @@ public final class OrbisPlugin extends JavaPlugin {
             return;
         }
         plugin = this;
-        this.metrics = new Metrics(this, 10874);
 
         File studioWorldDir = new File(Bukkit.getWorldContainer() + "/orbis_studio/");
         if (studioWorldDir.exists()) {
@@ -79,20 +80,26 @@ public final class OrbisPlugin extends JavaPlugin {
             return;
         }
         Orbis.initialize(platform);
+        loaded = true;
     }
 
     @Override
     public void onEnable() {
-        platform.loadCommands();
+        if (loaded) {
+            platform.loadCommands();
+        }
     }
 
     @Override
     public void onDisable() {
-        Orbis.shutdown();
+        if (loaded) {
+            Orbis.shutdown();
+        }
     }
 
     @Override
     public @Nullable ChunkGenerator getDefaultWorldGenerator(@NotNull String worldName, @Nullable String packName) {
+        if (!loaded) super.getDefaultWorldGenerator(worldName, packName);
         if (packName != null) {
             Pack pack = Orbis.getPackManager().getPack(packName);
             if (pack != null) {

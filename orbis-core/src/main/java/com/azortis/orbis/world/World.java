@@ -27,6 +27,8 @@ import com.azortis.orbis.pack.PackLoader;
 import com.azortis.orbis.pack.data.DataAccess;
 import com.azortis.orbis.pack.data.DirectoryDataAccess;
 import com.azortis.orbis.pack.studio.Project;
+import net.kyori.adventure.nbt.BinaryTagIO;
+import net.kyori.adventure.nbt.CompoundBinaryTag;
 import org.apiguardian.api.API;
 import org.jetbrains.annotations.NotNull;
 
@@ -133,9 +135,7 @@ public abstract class World implements WorldAccess {
             if (!worldInfoFile.exists() && !worldInfoFile.createNewFile()) {
                 Orbis.getLogger().error("Failed to save world-info.dat file for world {}", name);
             }
-            /*NBTWriter writer = new NBTWriter(worldInfoFile, CompressedProcesser.GZIP);
-            writer.writeNamed("", worldInfo.serialize());
-            writer.close();*/
+            BinaryTagIO.writer().write(worldInfo.toNBT(), worldInfoFile.toPath(), BinaryTagIO.Compression.GZIP);
         } catch (IOException ex) {
             Orbis.getLogger().error("Failed to save world-info.dat file for world {}", name);
         }
@@ -143,13 +143,12 @@ public abstract class World implements WorldAccess {
 
     public void reloadWorldInfo() {
         Orbis.getLogger().info("Loading world-info for {}", name);
-        /*try {
-            NBTReader reader = new NBTReader(worldInfoFile, CompressedProcesser.GZIP);
-            worldInfo = new WorldInfo((NBTCompound) reader.read());
-            reader.close();
-        } catch (IOException | NBTException e) {
+        try {
+            CompoundBinaryTag tag = BinaryTagIO.reader().read(worldInfoFile.toPath(), BinaryTagIO.Compression.GZIP);
+            worldInfo = new WorldInfo(tag);
+        } catch (IOException ex) {
             Orbis.getLogger().error("Failed to load word-info for world {}", name);
-        }*/
+        }
     }
 
     public boolean isLoaded() {

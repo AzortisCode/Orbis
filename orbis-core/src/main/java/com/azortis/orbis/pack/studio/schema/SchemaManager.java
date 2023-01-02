@@ -21,7 +21,6 @@ package com.azortis.orbis.pack.studio.schema;
 import com.azortis.orbis.Orbis;
 import com.azortis.orbis.generator.Dimension;
 import com.azortis.orbis.pack.Pack;
-import com.azortis.orbis.pack.data.ComponentAccess;
 import com.azortis.orbis.pack.data.DataAccess;
 import com.azortis.orbis.pack.studio.Project;
 import org.jetbrains.annotations.NotNull;
@@ -62,14 +61,33 @@ public final class SchemaManager {
 
         // Generate all data schema's
         for (Class<?> dataType : DataAccess.DATA_TYPES.keySet()) {
-            File schema = new File(schemasDir, dataType.getSimpleName().toLowerCase(Locale.ENGLISH) + "-schema.json");
-            SchemaBuilder.generateClassSchema(project, schema, dataType);
+            File schemaFile = new File(schemasDir, dataType.getSimpleName().toLowerCase(Locale.ENGLISH) + "-schema.json");
+            SchemaBuilder.generateClassSchema(project, schemaFile, dataType);
         }
+
+        for (Class<?> generatorType : DataAccess.GENERATOR_TYPES.keySet()) {
+            File generatorDir = new File(schemasDir + "/" + generatorType.getSimpleName().toLowerCase(Locale.ENGLISH) + "/");
+            if (!generatorDir.exists() && !generatorDir.mkdirs()) {
+                Orbis.getLogger().error("Failed to create schema directory for {}", generatorType.getSimpleName().toLowerCase(Locale.ENGLISH));
+                return;
+            }
+            File schemaFile = new File(generatorDir, generatorType.getSimpleName().toLowerCase(Locale.ENGLISH) + "-schema.json");
+            SchemaBuilder.generateClassSchema(project, schemaFile, generatorType);
+        }
+
+    }
+
+    public void resetComponents() {
+
+    }
+
+    public void createComponent(@NotNull Class<?> type, @NotNull String name) {
+
     }
 
     public @NotNull File blocksSchema() {
         return blocksSchema;
-    }
+    }  // TODO remove this reference.
 
     public @NotNull File packSchema() {
         return packSchema;
@@ -79,12 +97,8 @@ public final class SchemaManager {
         return dimensionSchema;
     }
 
-    public void generateComponentSchemas(@NotNull Class<?> type, @NotNull ComponentAccess access) {
-
-    }
-
     public @NotNull File getSchema(@NotNull Class<?> type) {
-        return null; // TODO do this lol
+        return null;
     }
 
 }

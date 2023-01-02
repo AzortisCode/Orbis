@@ -59,16 +59,15 @@ public final class PackManager {
     }
 
     public void extractPack(File destinationFolder, Pack pack) {
-        try {
-            new ZipFile(loadedPacks.get(pack)).extractAll(destinationFolder.getPath());
+        try (ZipFile zipFile = new ZipFile(loadedPacks.get(pack))) {
+            zipFile.extractAll(destinationFolder.getPath());
         } catch (IOException ex) {
             Orbis.getLogger().error("Failed to extract pack.");
         }
     }
 
     private void loadPack(File packFile) {
-        try {
-            ZipFile zipFile = new ZipFile(packFile);
+        try (ZipFile zipFile = new ZipFile(packFile)) {
             if (zipFile.isValidZipFile()) {
                 InputStream inputStream = zipFile.getInputStream(zipFile.getFileHeader("pack.json"));
                 byte[] buffer = ByteStreams.toByteArray(inputStream);

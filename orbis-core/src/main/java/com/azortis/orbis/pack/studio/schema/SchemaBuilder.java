@@ -62,7 +62,12 @@ public sealed abstract class SchemaBuilder permits ClassBuilder, BlockBuilder, E
 
     static void generateClassSchema(@NotNull Project project, @NotNull File schemaFile,
                                     @NotNull Class<?> type) {
-        new ClassBuilder(project, project.studioWorld().data(), schemaFile, type).saveSchema();
+        generateClassSchema(project, schemaFile, type, null);
+    }
+
+    static void generateClassSchema(@NotNull Project project, @NotNull File schemaFile,
+                                    @NotNull Class<?> type, @Nullable String name) {
+        new ClassBuilder(project, project.studioWorld().data(), schemaFile, type, name).saveSchema();
     }
 
     public void saveSchema() {

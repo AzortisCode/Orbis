@@ -36,14 +36,19 @@ import java.util.Set;
 
 /**
  * A world interface that is used to visualize settings when working on a project.
+ *
+ * @author Jake Nijssen
+ * @since 0.3-Alpha
  */
 public abstract class StudioWorld extends World {
 
     protected final Project project;
+
     /**
      * Players viewing this world, with their last known location before entering it.
      */
     protected final Map<Player, Location> viewers = new HashMap<>();
+
     /**
      * If the world should render, or just create void chunks.
      */

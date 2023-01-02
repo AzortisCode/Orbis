@@ -151,6 +151,9 @@ public final class Project {
         // We have to re-index the entirety of the DataAccess, but not WorkspaceConfig
         // This is because created directories do not influence existing matching rules.
         dataAccess.reset();
+        Path dataPath = directory.toPath().relativize(path);
+        Class<?> type = dataAccess.getType(dataPath);
+
 
         doHotReload();
         lock.release();
@@ -174,6 +177,8 @@ public final class Project {
         // We have to re-index the entirety of DataAccess and WorkspaceConfig,
         // because we do not know how many directories or files were deleted.
         dataAccess.reset();
+        schemaManager.resetComponents();
+        workspaceConfig.resetMatchers();
 
         doHotReload();
         lock.release();

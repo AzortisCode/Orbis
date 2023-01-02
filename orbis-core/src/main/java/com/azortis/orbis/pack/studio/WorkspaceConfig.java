@@ -23,7 +23,6 @@ import com.azortis.orbis.Registry;
 import com.azortis.orbis.generator.Dimension;
 import com.azortis.orbis.pack.Pack;
 import com.azortis.orbis.pack.data.Component;
-import com.azortis.orbis.pack.data.ComponentAccess;
 import com.azortis.orbis.pack.data.DataAccess;
 import com.azortis.orbis.pack.studio.schema.SchemaManager;
 import com.google.common.base.Preconditions;
@@ -36,13 +35,14 @@ import org.jetbrains.annotations.NotNull;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.nio.file.Files;
 import java.nio.file.LinkOption;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Stream;
 
 /**
@@ -92,7 +92,17 @@ public final class WorkspaceConfig {
     private final JsonArray folders = FOLDERS_ARRAY;
     private transient final File workspaceFile;
     private transient final Path directoryPath;
+
+    /**
+     * Store a reference for each data object to a schema matcher object that specifies which directories the
+     * schema should be pointed at.
+     */
     private transient final ImmutableMap<Class<?>, SchemaMatcher> schemaMatchers;
+
+    /**
+     * Component schema matchers(For data types used in components) are seperated from the normal schema matchers,
+     * as they will have different rules due to them being isolated to themselves.
+     */
     private transient final ImmutableMap<Class<?>, Map<String, SchemaMatcher>> componentSchemaMatchers;
     private JsonObject settings;
 
@@ -133,20 +143,14 @@ public final class WorkspaceConfig {
         for (Class<?> rootType : DataAccess.GENERATOR_TYPES.keySet()) {
             builder.put(rootType, new SchemaMatcher(directoryPath.relativize(schemaManager.getSchema(rootType).toPath()).toString()));
 
-            for (Class<?> type : Registry.getRegistry(rootType).getTypes()) {
-                if (type.isAnnotationPresent(Component.class)) {
-                    try {
-                        Class<? extends ComponentAccess> componentAccessType = type.getAnnotation(Component.class).value();
-                        ComponentAccess access = componentAccessType.getConstructor(String.class, DataAccess.class).newInstance(null, null);
-                        schemaManager.generateComponentSchemas(type, access);
-
-                        for (Class<?> dataType : access.dataTypes()) {
-                            //builder.put(dataType, new SchemaMatcher(directoryPath.relativize(schemaManager.getSchema(dataType).toPath()).toString()));
-                        }
-
-                    } catch (InvocationTargetException | InstantiationException | IllegalAccessException |
-                             NoSuchMethodException e) {
-                        throw new RuntimeException(e);
+            Registry<?> rootRegistry = Registry.getRegistry(rootType);
+            for (Class<?> type : rootRegistry.getTypes()) {
+                if (type.isAnnotationPresent(Component.class) && rootRegistry.hasDataTypes(type)) {
+                    for (Class<?> dataType : rootRegistry.getDataTypes(type)) {
+                        // We don't know how many component implementations are(i.e. configs using a component type)
+                        // since every "implementation" has its own schema's generated in order to isolate them from
+                        // each other, we just set a mutable hashmap that gets updated during the session.
+                        componentBuilder.put(dataType, new HashMap<>());
                     }
                 }
             }
@@ -174,7 +178,11 @@ public final class WorkspaceConfig {
 
         // Write to json schema's
         JsonArray jsonSchemas = new JsonArray();
-        for (SchemaMatcher schemaMatcher : schemaMatchers.values()) {
+        Set<SchemaMatcher> schemaMatcherSet = new HashSet<>(schemaMatchers.values());
+        for (Map<String, SchemaMatcher> componentMatcher : componentSchemaMatchers.values()) {
+            schemaMatcherSet.addAll(componentMatcher.values());
+        }
+        for (SchemaMatcher schemaMatcher : schemaMatcherSet) {
             JsonObject matcherObject = new JsonObject();
             JsonArray fileMatch = new JsonArray();
 

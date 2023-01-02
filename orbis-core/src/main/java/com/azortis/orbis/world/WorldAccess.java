@@ -20,6 +20,7 @@ package com.azortis.orbis.world;
 
 import com.azortis.orbis.entity.Player;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.UnmodifiableView;
 
 import java.util.Set;
 
@@ -33,7 +34,16 @@ public interface WorldAccess {
 
     boolean isWorldLoaded();
 
+    int minHeight();
+
+    int maxHeight();
+
     @NotNull
-    Set<Player> getPlayers();
+    @UnmodifiableView Set<Player> getPlayers();
+
+    boolean isChunkLoaded(int chunkX, int chunkZ);
+
+    @NotNull ChunkAccess getChunk(int chunkX, int chunkZ);
+
 
 }

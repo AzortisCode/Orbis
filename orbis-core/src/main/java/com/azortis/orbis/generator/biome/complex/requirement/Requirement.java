@@ -30,7 +30,7 @@ import java.util.Map;
 @GlobalDefinition("complex-distributor-requirement")
 public abstract class Requirement {
 
-    public static final Registry<Requirement> REGISTRY = new Registry<>(Map.of(
+    public static final Registry<Requirement> REGISTRY = new Registry<>(Requirement.class, Map.of(
             Key.key("complex:max-strength"), MaxStrength.class,
             Key.key("complex:min-strength"), MinStrength.class,
             Key.key("complex:noise-ranges"), NoiseRanges.class

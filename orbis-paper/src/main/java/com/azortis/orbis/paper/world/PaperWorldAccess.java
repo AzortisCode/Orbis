@@ -21,16 +21,18 @@ package com.azortis.orbis.paper.world;
 import com.azortis.orbis.entity.Player;
 import com.azortis.orbis.paper.OrbisPlugin;
 import com.azortis.orbis.paper.PaperPlatform;
+import com.azortis.orbis.world.ChunkAccess;
 import com.azortis.orbis.world.WorldAccess;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
+import org.bukkit.event.Listener;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashSet;
 import java.util.Set;
 
 @SuppressWarnings("ClassCanBeRecord")
-public final class PaperWorldAccess implements WorldAccess {
+public final class PaperWorldAccess implements WorldAccess, Listener {
 
     private static final PaperPlatform platform = OrbisPlugin.getPlatform();
     private final World handle;
@@ -54,11 +56,31 @@ public final class PaperWorldAccess implements WorldAccess {
     }
 
     @Override
+    public int minHeight() {
+        return handle.getMinHeight();
+    }
+
+    @Override
+    public int maxHeight() {
+        return handle.getMaxHeight();
+    }
+
+    @Override
     public @NotNull Set<Player> getPlayers() {
         Set<Player> players = new HashSet<>();
         for (org.bukkit.entity.Player bukkitPlayer : handle.getPlayers()) {
             players.add(platform.getPlayer(bukkitPlayer.getUniqueId()));
         }
         return players;
+    }
+
+    @Override
+    public boolean isChunkLoaded(int chunkX, int chunkZ) {
+        return handle.isChunkLoaded(chunkX, chunkZ);
+    }
+
+    @Override
+    public @NotNull ChunkAccess getChunk(int chunkX, int chunkZ) {
+        return null;
     }
 }

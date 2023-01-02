@@ -27,6 +27,7 @@ import com.azortis.orbis.generator.noise.OpenSimplex2S;
 import com.azortis.orbis.generator.terrain.Terrain;
 import com.azortis.orbis.generator.terrain.defaults.ConfigTerrain;
 import com.azortis.orbis.generator.terrain.defaults.PlainsTerrain;
+import com.azortis.orbis.pack.data.DataAccess;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
@@ -35,16 +36,17 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public final class Registry<T> {
 
-    public static final Registry<NoiseGenerator> NOISE_GENERATOR = new Registry<>(Map.of(
+    public static final Registry<NoiseGenerator> NOISE_GENERATOR = new Registry<>(NoiseGenerator.class, Map.of(
             Key.key("fastnoise:opensimplex2"), OpenSimplex2.class, Key.key("fastnoise:opensimplex2s"), OpenSimplex2S.class
     ));
-    public static final Registry<Distributor> DISTRIBUTOR = new Registry<>(Map.of(
+    public static final Registry<Distributor> DISTRIBUTOR = new Registry<>(Distributor.class, Map.of(
             Key.key("orbis:single"), SingleDistributor.class, Key.key("orbis:complex"), ComplexDistributor.class
     ));
-    public static final Registry<Terrain> TERRAIN = new Registry<>(Map.of(
+    public static final Registry<Terrain> TERRAIN = new Registry<>(Terrain.class, Map.of(
             Key.key("orbis:config"), ConfigTerrain.class, Key.key("orbis:plains"), PlainsTerrain.class
     ));
     private static final Map<Class<?>, Registry<?>> registries = new HashMap<>();
@@ -55,11 +57,18 @@ public final class Registry<T> {
         addRegistry(Terrain.class, TERRAIN);
     }
 
+    private final Class<T> type;
     private final Map<Key, Class<? extends T>> typeClasses = new HashMap<>();
+    private final Map<Class<?>, ImmutableSet<Class<?>>> dataTypeClasses = new HashMap<>();
 
-    public Registry(Map<Key, Class<? extends T>> defaultTypes) {
+    public Registry(Class<T> type, Map<Key, Class<? extends T>> defaultTypes) {
+        this.type = type;
         typeClasses.putAll(defaultTypes);
     }
+
+    //
+    // Type
+    //
 
     @SuppressWarnings("unchecked")
     public static <K> Registry<K> getRegistry(@NotNull Class<K> type) {
@@ -72,6 +81,10 @@ public final class Registry<T> {
 
     public static ImmutableMap<Class<?>, Registry<?>> getRegistries() {
         return ImmutableMap.copyOf(registries);
+    }
+
+    public Class<T> type() {
+        return type;
     }
 
     public boolean hasType(@NotNull Key key) {
@@ -93,7 +106,11 @@ public final class Registry<T> {
         return typeClasses.get(Key.key(key));
     }
 
-    public @NotNull ImmutableSet<Class<?>> getTypes() {
+    public @NotNull ImmutableMap<Key, Class<? extends T>> getTypeMap() {
+        return ImmutableMap.copyOf(typeClasses);
+    }
+
+    public @NotNull ImmutableSet<Class<? extends T>> getTypes() {
         return ImmutableSet.copyOf(typeClasses.values());
     }
 
@@ -103,6 +120,33 @@ public final class Registry<T> {
         } else {
             throw new IllegalArgumentException("A type by " + key + " has already been registered in " + this);
         }
+    }
+
+    //
+    // Data type
+    //
+
+    public boolean supportsDataTypes() {
+        return DataAccess.GENERATOR_TYPES.containsKey(type);
+    }
+
+    public boolean hasDataTypes(Class<?> implementation) {
+        return dataTypeClasses.containsKey(implementation) && !dataTypeClasses.get(implementation).isEmpty();
+    }
+
+    public @NotNull ImmutableSet<Class<?>> getDataTypes(Class<?> implementation) {
+        if (!hasDataTypes(implementation)) return ImmutableSet.of();
+        return dataTypeClasses.get(implementation);
+    }
+
+    public void registerDataTypes(Class<?> implementation, Set<Class<?>> dataTypes) {
+        if (typeClasses.containsValue(implementation)) {
+            dataTypeClasses.put(implementation, ImmutableSet.copyOf(dataTypes));
+        }
+    }
+
+    public void clearDataTypes() {
+        dataTypeClasses.clear();
     }
 
 }

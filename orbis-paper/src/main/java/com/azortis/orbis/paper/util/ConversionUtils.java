@@ -66,11 +66,12 @@ import java.util.Locale;
 public final class ConversionUtils {
 
     private static final PaperPlatform PLATFORM;
-    private static final ImmutableBiMap<Property<?>, net.minecraft.world.level.block.state.properties.Property<?>> PROPERTY_BI_MAP;
 
     //
     // Property conversions
     //
+
+    private static final ImmutableBiMap<Property<?>, net.minecraft.world.level.block.state.properties.Property<?>> PROPERTY_BI_MAP;
 
     static {
         // Lazily load the platform instance.

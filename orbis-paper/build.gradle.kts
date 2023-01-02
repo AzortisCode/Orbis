@@ -40,7 +40,7 @@ repositories {
 
 dependencies {
     implementation(project(":orbis-core"))
-    paperDevBundle("1.19.2-R0.1-SNAPSHOT")
+    paperDevBundle("1.19.3-R0.1-SNAPSHOT")
 
     // Compile
     compileOnly("net.kyori:adventure-nbt:4.11.0")

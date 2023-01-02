@@ -45,7 +45,7 @@ import java.util.stream.Stream;
 
 /**
  * DataAccess meant for a {@link Project} to be able to independently index all the {@link ComponentAccess} so that a compilation
- * error won't result in config suggestions to malfunction. As an added benefit it will also map each directory's {@link Path}
+ * error will not result in config suggestions to malfunction. As an added benefit it will also map each directory's {@link Path}
  * with the type of files it contains i.e. /biomes/ will map to {@link com.azortis.orbis.generator.biome.Biome}
  * and /generator/terrain/ will map to {@link com.azortis.orbis.generator.terrain.Terrain}.
  *
@@ -190,7 +190,7 @@ public final class StudioDataAccess extends DirectoryDataAccess {
                                         throw new RuntimeException(e);
                                     }
                                 } else {
-                                    Orbis.getLogger().error("Component {} of type {} doesn't have a {}.json file present!",
+                                    Orbis.getLogger().error("Component {} of generator type {} doesn't have a {}.json file present!",
                                             componentName, entry.getKey().getSimpleName(), componentName);
                                 }
                             });

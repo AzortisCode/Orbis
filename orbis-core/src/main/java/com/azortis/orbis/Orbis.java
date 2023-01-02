@@ -82,7 +82,7 @@ public final class Orbis {
 
     public static final String VERSION = "0.3-Alpha";
     public static final String SETTINGS_VERSION = "1";
-    public static final String MC_VERSION = "1_19_2";
+    public static final String MC_VERSION = "1_19_3";
     private static final String DOWNLOAD_URL = "https://raw.githubusercontent.com/Articdive/ArticData/" +
             MC_VERSION.replace("_", ".") + "/";
 
@@ -167,7 +167,8 @@ public final class Orbis {
 
     /**
      * Registers all the {@link JsonDeserializer} of each {@link DataAccess#GENERATOR_TYPES} its implementation
-     * {@link ComponentAccess} with the global {@link Gson} instance.
+     * {@link ComponentAccess} with the global {@link Gson} instance. Will also index all the data types with the
+     * generator type its {@link Registry}.
      *
      * @return A collection containing each class type and associated JsonDeserializer.
      * @since 0.3-Alpha
@@ -179,6 +180,7 @@ public final class Orbis {
         Registry.getRegistries().forEach((type, registry) -> {
             // skip anything that does not support components
             if (DataAccess.GENERATOR_TYPES.containsKey(type)) {
+                registry.clearDataTypes();
                 for (Class<?> implementationType : registry.getTypes()) {
                     if (implementationType.isAnnotationPresent(com.azortis.orbis.pack.data.Component.class)) {
                         Class<?> accessClass = implementationType.getAnnotation(com.azortis.orbis.pack.data.Component.class).value();
@@ -194,6 +196,9 @@ public final class Orbis {
 
                             // Add all adapters to the list
                             entryList.addAll(componentAccess.adapters().entrySet());
+
+                            // Register all data types
+                            registry.registerDataTypes(implementationType, componentAccess.dataTypes());
                         } catch (NoSuchMethodException e) {
                             logger.error("Class " + accessClass.getTypeName() + " does not implement the public constructor (String.class, DataAccess.class) and its adapters cannot be retrieved");
                             e.printStackTrace();

@@ -18,8 +18,20 @@
 
 package com.azortis.orbis.world;
 
+import net.kyori.adventure.nbt.CompoundBinaryTag;
+import net.kyori.adventure.nbt.IntBinaryTag;
+import net.kyori.adventure.nbt.LongBinaryTag;
+import net.kyori.adventure.nbt.StringBinaryTag;
+import org.apiguardian.api.API;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Stored information for a World using Orbis.
+ *
+ * @author Jake Nijssen
+ * @since 0.3-Alpha
+ */
+@API(status = API.Status.EXPERIMENTAL, since = "0.3-Alpha")
 public final class WorldInfo {
 
     public static int DATA_VERSION = 1;
@@ -29,6 +41,7 @@ public final class WorldInfo {
     private final String dimensionFile;
     private final long seed;
 
+    @API(status = API.Status.INTERNAL, since = "0.3-Alpha", consumers = {"com.azortis.orbis.world", "com.azortis.orbis.pack.studio"})
     public WorldInfo(@NotNull String packName, @NotNull String dimensionFile, long seed) {
         this.dataVersion = DATA_VERSION;
         this.packName = packName;
@@ -36,12 +49,13 @@ public final class WorldInfo {
         this.seed = seed;
     }
 
-    /*WorldInfo(@NotNull NBTCompound tag) {
+    @API(status = API.Status.INTERNAL, since = "0.3-Alpha", consumers = "com.azortis.orbis.world")
+    WorldInfo(@NotNull CompoundBinaryTag tag) {
         this.dataVersion = tag.getInt("dataVersion");
         this.packName = tag.getString("packName");
         this.dimensionFile = tag.getString("dimensionFile");
         this.seed = tag.getLong("seed");
-    }*/
+    }
 
     public int dataVersion() {
         return dataVersion;
@@ -63,13 +77,14 @@ public final class WorldInfo {
         return new WorldInfo(packName, dimensionFile, seed);
     }
 
-    /*NBTCompound serialize() {
-        MutableNBTCompound tag = new MutableNBTCompound();
-        tag.set("dataVersion", NBT.Int(dataVersion));
-        tag.set("packName", NBT.String(packName));
-        tag.set("dimensionFile", NBT.String(dimensionFile));
-        tag.set("seed", NBT.Long(seed));
-        return tag.toCompound();
-    }*/
+    @API(status = API.Status.INTERNAL, since = "0.3-Alpha", consumers = "com.azortis.orbis.world")
+    CompoundBinaryTag toNBT() {
+        return CompoundBinaryTag.builder()
+                .put("dataVersion", IntBinaryTag.of(dataVersion))
+                .put("packName", StringBinaryTag.of(packName))
+                .put("dimensionFile", StringBinaryTag.of(dimensionFile))
+                .put("seed", LongBinaryTag.of(seed))
+                .build();
+    }
 
 }

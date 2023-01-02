@@ -21,8 +21,10 @@ package com.azortis.orbis.pack.studio.schema;
 import com.azortis.orbis.pack.data.DataAccess;
 import com.azortis.orbis.pack.studio.Project;
 import com.azortis.orbis.pack.studio.annotations.Typed;
+import com.google.common.base.Preconditions;
 import com.google.gson.JsonObject;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
 
@@ -30,12 +32,19 @@ public final class ClassBuilder extends SchemaBuilder {
 
     private final Class<?> type;
     private final boolean typed;
+    private final String name;
 
     ClassBuilder(@NotNull Project project, @NotNull DataAccess data,
-                 @NotNull File schemaFile, @NotNull Class<?> type) {
+                 @NotNull File schemaFile, @NotNull Class<?> type, @Nullable String name) {
         super(project, data, schemaFile);
         this.type = type;
         this.typed = type.isAnnotationPresent(Typed.class);
+        if (data.isComponentType(type)) {
+            Preconditions.checkNotNull(name, "Type is a component data type, but no instance name has been provided");
+            this.name = name;
+        } else {
+            this.name = null;
+        }
     }
 
     @Override

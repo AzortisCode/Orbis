@@ -19,6 +19,7 @@
 package com.azortis.orbis.paper.world;
 
 import com.azortis.orbis.entity.Player;
+import com.azortis.orbis.world.ChunkAccess;
 import com.azortis.orbis.world.World;
 import com.azortis.orbis.world.WorldAccess;
 import com.google.common.base.Preconditions;
@@ -70,11 +71,31 @@ public final class PaperWorld extends World {
         return worldAccess.isWorldLoaded();
     }
 
+    @Override
+    public int minHeight() {
+        return worldAccess.minHeight();
+    }
+
+    @Override
+    public int maxHeight() {
+        return worldAccess.maxHeight();
+    }
+
     /**
      * {@inheritDoc}
      */
     @Override
     public @NotNull Set<Player> getPlayers() {
         return worldAccess.getPlayers();
+    }
+
+    @Override
+    public boolean isChunkLoaded(int chunkX, int chunkZ) {
+        return worldAccess.isChunkLoaded(chunkX, chunkZ);
+    }
+
+    @Override
+    public @NotNull ChunkAccess getChunk(int chunkX, int chunkZ) {
+        return worldAccess.getChunk(chunkX, chunkZ);
     }
 }
