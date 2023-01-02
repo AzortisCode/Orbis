@@ -26,11 +26,11 @@ import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import net.kyori.adventure.key.Key;
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.EntityBlock;
 import org.apiguardian.api.API;
 import org.bukkit.Material;
-import org.bukkit.craftbukkit.v1_19_R1.util.CraftMagicNumbers;
+import org.bukkit.craftbukkit.v1_19_R2.util.CraftMagicNumbers;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
@@ -70,7 +70,7 @@ public final class PaperBlock implements Block {
     @SuppressWarnings("PatternValidation")
     PaperBlock(@NotNull net.minecraft.world.level.block.Block handle) {
         this.handle = handle;
-        this.key = Key.key(Registry.BLOCK.getKey(handle).toString());
+        this.key = Key.key(BuiltInRegistries.BLOCK.getKey(handle).toString());
 
         // Populate the legacyBlock states.
         ImmutableMap.Builder<net.minecraft.world.level.block.state.BlockState, BlockState> stateBuilder = ImmutableMap.builder();
@@ -93,7 +93,7 @@ public final class PaperBlock implements Block {
      */
     @Override
     public int id() {
-        return Registry.BLOCK.getId(handle);
+        return BuiltInRegistries.BLOCK.getId(handle);
     }
 
     /**

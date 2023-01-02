@@ -45,6 +45,7 @@ public final class ProjectWatcher {
     private final Map<WatchKey, Path> keys = new HashMap<>();
     private final Project project;
 
+    private final Scheduler scheduler;
     private final Scheduler.Task watcherTask;
     private volatile boolean continueLoop = true;
 
@@ -55,7 +56,8 @@ public final class ProjectWatcher {
         Path rootDir = project.directory().toPath();
         registerAll(rootDir);
 
-        this.watcherTask = Orbis.getPlatform().scheduler().runTaskAsync(this::processEvents);
+        this.scheduler = Orbis.getPlatform().scheduler();
+        this.watcherTask = scheduler.runTaskAsync(this::processEvents);
     }
 
     @SuppressWarnings("unchecked")
@@ -86,27 +88,23 @@ public final class ProjectWatcher {
                 Path name = pathEvent.context();
                 Path child = dir.resolve(name);
 
-                try {
-                    if (kind == ENTRY_CREATE) {
-                        if (Files.isDirectory(child, LinkOption.NOFOLLOW_LINKS)) {
-                            registerAll(child);
-                            project.onDirectoryCreate(child);
-                        } else {
-                            project.onFileCreate(child);
-                        }
-                    } else if (kind == ENTRY_MODIFY) {
-                        if (Files.isRegularFile(child, LinkOption.NOFOLLOW_LINKS)) {
-                            project.onFileModify(child);
-                        }
-                    } else if (kind == ENTRY_DELETE) {
-                        if (Files.isDirectory(child, LinkOption.NOFOLLOW_LINKS)) {
-                            project.onDirectoryDelete(child);
-                        } else {
-                            project.onFileDelete(child);
-                        }
+                if (kind == ENTRY_CREATE) {
+                    if (Files.isDirectory(child, LinkOption.NOFOLLOW_LINKS)) {
+                        registerAll(child);
+                        scheduler.runTaskAsync(() -> project.onDirectoryCreate(child));
+                    } else {
+                        scheduler.runTaskAsync(() -> project.onFileCreate(child));
                     }
-                } catch (InterruptedException ex) {
-                    Orbis.getLogger().error("Got interrupted while processing file event!", ex);
+                } else if (kind == ENTRY_MODIFY) {
+                    if (Files.isRegularFile(child, LinkOption.NOFOLLOW_LINKS)) {
+                        scheduler.runTaskAsync(() -> project.onFileModify(child));
+                    }
+                } else if (kind == ENTRY_DELETE) {
+                    if (Files.isDirectory(child, LinkOption.NOFOLLOW_LINKS)) {
+                        scheduler.runTaskAsync(project::onDirectoryDelete);
+                    } else {
+                        scheduler.runTaskAsync(() -> project.onFileDelete(child));
+                    }
                 }
             }
 

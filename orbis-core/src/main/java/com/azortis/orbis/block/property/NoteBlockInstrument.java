@@ -37,7 +37,14 @@ public enum NoteBlockInstrument implements Nameable {
     DIDGERIDOO("didgeridoo"),
     BIT("bit"),
     BANJO("banjo"),
-    PLING("pling");
+    PLING("pling"),
+    ZOMBIE("zombie"),
+    SKELETON("skeleton"),
+    CREEPER("creeper"),
+    DRAGON("dragon"),
+    WITHER_SKELETON("wither_skeleton"),
+    PIGLIN("piglin"),
+    CUSTOM_HEAD("custom_head");
 
     private final String name;
 

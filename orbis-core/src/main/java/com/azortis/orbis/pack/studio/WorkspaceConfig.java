@@ -39,10 +39,7 @@ import java.nio.file.Files;
 import java.nio.file.LinkOption;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Stream;
 
 /**
@@ -91,7 +88,9 @@ public final class WorkspaceConfig {
 
     private final JsonArray folders = FOLDERS_ARRAY;
     private transient final File workspaceFile;
-    private transient final Path directoryPath;
+    private transient final SchemaManager schemaManager;
+    private transient final StudioDataAccess dataAccess;
+    private transient final Path rootDirectory;
 
     /**
      * Store a reference for each data object to a schema matcher object that specifies which directories the
@@ -106,27 +105,29 @@ public final class WorkspaceConfig {
     private transient final ImmutableMap<Class<?>, Map<String, SchemaMatcher>> componentSchemaMatchers;
     private JsonObject settings;
 
-    public WorkspaceConfig(@NotNull JsonObject settings, @NotNull Project project, @NotNull File workspaceFile) throws IOException {
+    public WorkspaceConfig(@NotNull JsonObject settings, @NotNull Project project,
+                           @NotNull File workspaceFile) throws IOException {
         this.settings = settings.deepCopy();
         this.workspaceFile = workspaceFile;
-
-        // Add the special Pack and Dimension matching rules.
-        this.directoryPath = project.directory().toPath();
-        SchemaManager schemaManager = project.schemaManager();
+        this.schemaManager = project.schemaManager();
+        this.dataAccess = project.dataAccess();
+        this.rootDirectory = project.directory().toPath();
 
         // The pack schema should only be pointed at pack.json
         ImmutableMap.Builder<Class<?>, SchemaMatcher> builder = ImmutableMap.builder();
 
-        SchemaMatcher packMatcher = new SchemaMatcher(directoryPath.relativize(schemaManager.packSchema().toPath()).toString());
+        SchemaMatcher packMatcher = new SchemaMatcher(rootDirectory
+                .relativize(schemaManager.packSchema().toPath()).toString());
         Path packPath = Path.of("pack.json");
         packMatcher.matchingRules.put(packPath, "pack.json");
         builder.put(Pack.class, packMatcher);
 
         // The dimension schema should be pointed at all json files except for the pack.json
-        SchemaMatcher dimensionMatcher = new SchemaMatcher(directoryPath.relativize(schemaManager.dimensionSchema().toPath()).toString());
-        try (Stream<Path> files = Files.list(directoryPath)) {
+        SchemaMatcher dimensionMatcher = new SchemaMatcher(rootDirectory
+                .relativize(schemaManager.dimensionSchema().toPath()).toString());
+        try (Stream<Path> files = Files.list(rootDirectory)) {
             files.filter(path -> Files.isRegularFile(path, LinkOption.NOFOLLOW_LINKS)).forEach(path -> {
-                Path filePath = directoryPath.relativize(path);
+                Path filePath = rootDirectory.relativize(path);
                 if (!filePath.endsWith("pack.json")) {
                     dimensionMatcher.matchingRules.put(filePath, filePath.toString());
                 }
@@ -136,12 +137,14 @@ public final class WorkspaceConfig {
 
         // Create schema matchers for each type possible.
         for (Class<?> dataType : DataAccess.DATA_TYPES.keySet()) {
-            builder.put(dataType, new SchemaMatcher(directoryPath.relativize(schemaManager.getSchema(dataType).toPath()).toString()));
+            builder.put(dataType, new SchemaMatcher(rootDirectory.relativize(schemaManager
+                    .getSchema(dataType).toPath()).toString()));
         }
 
         ImmutableMap.Builder<Class<?>, Map<String, SchemaMatcher>> componentBuilder = ImmutableMap.builder();
         for (Class<?> rootType : DataAccess.GENERATOR_TYPES.keySet()) {
-            builder.put(rootType, new SchemaMatcher(directoryPath.relativize(schemaManager.getSchema(rootType).toPath()).toString()));
+            builder.put(rootType, new SchemaMatcher(rootDirectory.relativize(schemaManager
+                    .getSchema(rootType).toPath()).toString()));
 
             Registry<?> rootRegistry = Registry.getRegistry(rootType);
             for (Class<?> type : rootRegistry.getTypes()) {
@@ -158,45 +161,113 @@ public final class WorkspaceConfig {
 
         schemaMatchers = builder.build();
         componentSchemaMatchers = componentBuilder.build();
-        resetMatchers();
+        reset();
         save();
     }
 
-    void resetMatchers() {
-
+    void reset() {
+        schemaMatchers.values().forEach(SchemaMatcher::clear);
+        for (Map.Entry<Class<?>, SchemaMatcher> entry : schemaMatchers.entrySet()) {
+            dataAccess.getDirectories(entry.getKey()).forEach((path) -> entry.getValue().addDirectory(path));
+        }
+        resetComponents();
     }
 
-    private void save() throws IOException {
-        if (!workspaceFile.exists() && !workspaceFile.createNewFile()) {
-            Orbis.getLogger().error("Failed to create new *.code-workspace file!");
-            return;
+    void resetComponents() {
+        componentSchemaMatchers.values().forEach(Map::clear);
+        for (Path root : dataAccess.getComponentRoots()) {
+            Class<?> generatorType = dataAccess.getType(root.getParent());
+            String name = dataAccess.getComponentName(root);
+            registerComponent(generatorType, root, name);
         }
-        // Load any changed settings
-        JsonObject existingWorkspace = Orbis.getGson().fromJson(new FileReader(workspaceFile), JsonObject.class);
-        settings = existingWorkspace.getAsJsonObject("settings");
-        settings.remove("json.schemas");
+    }
 
-        // Write to json schema's
-        JsonArray jsonSchemas = new JsonArray();
-        Set<SchemaMatcher> schemaMatcherSet = new HashSet<>(schemaMatchers.values());
-        for (Map<String, SchemaMatcher> componentMatcher : componentSchemaMatchers.values()) {
-            schemaMatcherSet.addAll(componentMatcher.values());
-        }
-        for (SchemaMatcher schemaMatcher : schemaMatcherSet) {
-            JsonObject matcherObject = new JsonObject();
-            JsonArray fileMatch = new JsonArray();
+    void registerComponent(@NotNull Class<?> generatorType, @NotNull Path componentRoot,
+                           @NotNull String name) throws IllegalArgumentException {
+        Preconditions.checkArgument(Files.isDirectory(componentRoot, LinkOption.NOFOLLOW_LINKS),
+                "Component root be a directory!");
+        Preconditions.checkArgument(componentRoot.isAbsolute(), "Component root must be absolute!");
 
-            for (String matchingRule : schemaMatcher.matchingRules.values()) {
-                fileMatch.add(matchingRule);
+        Class<?> componentType = dataAccess.getComponentType(componentRoot);
+        Set<Class<?>> componentDataTypes = Registry.getRegistry(generatorType).getDataTypes(componentType);
+
+        for (Class<?> type : componentDataTypes) {
+            Preconditions.checkArgument(componentSchemaMatchers.containsKey(type),
+                    "Type " + type.getCanonicalName() + " isn't a registered component data type");
+            Map<String, SchemaMatcher> componentMatchers = componentSchemaMatchers.get(type);
+            assert componentMatchers != null;
+
+            if (!componentMatchers.containsKey(name)) {
+                SchemaMatcher matcher = new SchemaMatcher(this.rootDirectory.relativize(
+                        schemaManager.getComponentSchema(type, name)).toString());
+                componentMatchers.put(name, matcher);
+                dataAccess.getDirectories(type, name).forEach(matcher::addDirectory);
+            } else {
+                Orbis.getLogger().error("Component with name {} already registered for implementation {}",
+                        name, componentType.getCanonicalName());
             }
-
-            matcherObject.add("fileMatch", fileMatch);
-            matcherObject.addProperty("url", schemaMatcher.schema);
         }
-        settings.add("json.schemas", jsonSchemas);
+    }
 
-        final String json = Orbis.getGson().toJson(this);
-        Files.writeString(workspaceFile.toPath(), json, StandardOpenOption.WRITE, StandardOpenOption.TRUNCATE_EXISTING);
+    void addDirectory(@NotNull Class<?> type, @NotNull Path directory) throws IllegalArgumentException {
+        Preconditions.checkArgument(Files.isDirectory(directory,
+                LinkOption.NOFOLLOW_LINKS), "Must be a directory!");
+        Preconditions.checkArgument(directory.isAbsolute(), "Directory must be absolute!");
+        Preconditions.checkArgument(schemaMatchers.containsKey(type), "Type isn't a registered data type");
+        Objects.requireNonNull(schemaMatchers.get(type)).addDirectory(this.rootDirectory.relativize(directory));
+    }
+
+    void addDirectory(@NotNull Class<?> type, @NotNull String componentName,
+                      @NotNull Path directory) throws IllegalArgumentException {
+        Preconditions.checkArgument(Files.isDirectory(directory, LinkOption.NOFOLLOW_LINKS),
+                "Must be a directory!");
+        Preconditions.checkArgument(directory.isAbsolute(), "Directory must be absolute!");
+        Preconditions.checkArgument(componentSchemaMatchers.containsKey(type),
+                "Type isn't a registered component data type");
+        Map<String, SchemaMatcher> componentMatchers = componentSchemaMatchers.get(type);
+        assert componentMatchers != null;
+        Preconditions.checkArgument(componentMatchers.containsKey(componentName), "Component " + componentName
+                + " not registered for type " + type.getCanonicalName());
+
+        componentMatchers.get(componentName).addDirectory(this.rootDirectory.relativize(directory));
+    }
+
+    void save() {
+        try {
+            if (!workspaceFile.exists() && !workspaceFile.createNewFile()) {
+                Orbis.getLogger().error("Failed to create new *.code-workspace file!");
+                return;
+            }
+            // Load any changed settings
+            JsonObject existingWorkspace = Orbis.getGson().fromJson(new FileReader(workspaceFile), JsonObject.class);
+            settings = existingWorkspace.getAsJsonObject("settings");
+            settings.remove("json.schemas");
+
+            // Write to json schema's
+            JsonArray jsonSchemas = new JsonArray();
+            Set<SchemaMatcher> schemaMatcherSet = new HashSet<>(schemaMatchers.values());
+            for (Map<String, SchemaMatcher> componentMatcher : componentSchemaMatchers.values()) {
+                schemaMatcherSet.addAll(componentMatcher.values());
+            }
+            for (SchemaMatcher schemaMatcher : schemaMatcherSet) {
+                JsonObject matcherObject = new JsonObject();
+                JsonArray fileMatch = new JsonArray();
+
+                for (String matchingRule : schemaMatcher.matchingRules.values()) {
+                    fileMatch.add(matchingRule);
+                }
+
+                matcherObject.add("fileMatch", fileMatch);
+                matcherObject.addProperty("url", schemaMatcher.schema);
+            }
+            settings.add("json.schemas", jsonSchemas);
+
+            final String json = Orbis.getGson().toJson(this);
+            Files.writeString(workspaceFile.toPath(), json, StandardOpenOption.WRITE,
+                    StandardOpenOption.TRUNCATE_EXISTING);
+        } catch (IOException ex) {
+            Orbis.getLogger().error("Failed to save workspace file!");
+        }
     }
 
     private final static class SchemaMatcher {
@@ -212,18 +283,13 @@ public final class WorkspaceConfig {
             Preconditions.checkArgument(Files.isDirectory(directory, LinkOption.NOFOLLOW_LINKS));
 
             if (matchingRules.putIfAbsent(directory, directory + "/*.json") != null) {
-                Orbis.getLogger().error("Directory matching rule {} for {} already exists!", matchingRules.get(directory), directory);
+                Orbis.getLogger().error("Directory matching rule {} for {} already exists!",
+                        matchingRules.get(directory), directory);
             }
         }
 
-        private void removeDirectory(@NotNull Path directory) throws IllegalArgumentException {
-            Preconditions.checkArgument(Files.isDirectory(directory, LinkOption.NOFOLLOW_LINKS));
-
-            if (matchingRules.containsKey(directory)) {
-                matchingRules.remove(directory);
-                return;
-            }
-            Orbis.getLogger().error("Directory matching rule for {} never existed!", directory);
+        private void clear() {
+            matchingRules.clear();
         }
 
     }

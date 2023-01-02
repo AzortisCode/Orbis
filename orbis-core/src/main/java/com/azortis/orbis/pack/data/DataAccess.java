@@ -27,6 +27,7 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Table;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Unmodifiable;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -99,10 +100,17 @@ public abstract class DataAccess {
         throw new IllegalArgumentException("Unsupported datatype " + type);
     }
 
-    public String getComponentDataPath(@NotNull Class<?> type, @NotNull String name) {
-        return getComponent(getComponentType(type), name).getDataPath(type);
+    public String getDataPath(@NotNull Class<?> type, @NotNull String name) {
+        return getComponentAccess(getAccessType(type), name).getDataPath(type);
     }
 
+    /**
+     * Registers a component with the data access.
+     *
+     * @param type The access type.
+     * @param name The name of the component instance.
+     * @since 0.3-Alpha
+     */
     public void registerComponent(@NotNull Class<? extends ComponentAccess> type, @NotNull String name)
             throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         ComponentAccess componentAccess = type.getConstructor(String.class, DataAccess.class).newInstance(name, this);
@@ -119,19 +127,42 @@ public abstract class DataAccess {
         throw new IllegalArgumentException(componentAccess.parentType + " isn't a supported parent type.");
     }
 
-    public ComponentAccess getComponent(@NotNull Class<? extends ComponentAccess> type, String name) throws IllegalArgumentException {
+    /**
+     * Gets the {@link ComponentAccess} instance for the given component type and name.
+     *
+     * @param type The access type.
+     * @param name The name of the component instance.
+     * @return The access instance for given component.
+     * @throws IllegalArgumentException If no component is registered for given type and name.
+     */
+    public ComponentAccess getComponentAccess(@NotNull Class<? extends ComponentAccess> type, String name)
+            throws IllegalArgumentException {
         ComponentAccess componentAccess = componentAccessTable.get(type, name);
         if (componentAccess != null) return componentAccess;
         throw new IllegalArgumentException("Component of type " + type + " doesn't have an instance by name " + name);
     }
 
-    public Class<? extends ComponentAccess> getComponentType(@NotNull Class<?> type) throws IllegalArgumentException {
+    /**
+     * Gets the {@link ComponentAccess} type for the given data type.
+     *
+     * @param type The data type that the component manages.
+     * @return The corresponding component type.
+     * @throws IllegalArgumentException If the data type isn't part of a component access.
+     */
+    public Class<? extends ComponentAccess> getAccessType(@NotNull Class<?> type) throws IllegalArgumentException {
         for (ImmutableSet<Class<?>> set : componentTypes.keySet()) {
             if (set.contains(type)) return componentTypes.get(set);
         }
-        throw new IllegalArgumentException(type + " isn't a component type");
+        throw new IllegalArgumentException(type + " isn't a component data type");
     }
 
+    /**
+     * Checks if given datatype is part of a component.
+     * For reference see {@link ComponentAccess#dataTypes()}
+     *
+     * @param type The data type.
+     * @return If it is part of a component.
+     */
     public boolean isComponentType(@NotNull Class<?> type) {
         for (ImmutableSet<Class<?>> set : componentTypes.keySet()) {
             if (set.contains(type)) return true;
@@ -146,10 +177,10 @@ public abstract class DataAccess {
     }
 
     @NotNull
-    public File getComponentDataFile(@NotNull Class<?> type, @NotNull String name, @NotNull String entry)
+    public File getDataFile(@NotNull Class<?> type, @NotNull String name, @NotNull String entry)
             throws FileNotFoundException, IllegalArgumentException {
         if (isComponentType(type)) {
-            return getFile(getComponentDataPath(type, name), entry);
+            return getFile(getDataPath(type, name), entry);
         } else {
             throw new IllegalArgumentException("Type " + type + " isn't a valid component type");
         }
@@ -161,9 +192,9 @@ public abstract class DataAccess {
     }
 
     @NotNull
-    public Set<File> getComponentDataFiles(@NotNull Class<?> type, @NotNull String name) throws IllegalArgumentException {
+    public Set<File> getDataFiles(@NotNull Class<?> type, @NotNull String name) throws IllegalArgumentException {
         if (isComponentType(type)) {
-            return getFiles(getComponentDataPath(type, name));
+            return getFiles(getDataPath(type, name));
         } else {
             throw new IllegalArgumentException("Type " + type + " isn't a valid component type");
         }
@@ -175,9 +206,9 @@ public abstract class DataAccess {
     }
 
     @NotNull
-    public Set<String> getComponentDataEntries(@NotNull Class<?> type, @NotNull String name) throws IllegalArgumentException {
+    public Set<String> getDataEntries(@NotNull Class<?> type, @NotNull String name) throws IllegalArgumentException {
         if (isComponentType(type)) {
-            return getEntries(getComponentDataPath(type, name));
+            return getEntries(getDataPath(type, name));
         } else {
             throw new IllegalArgumentException("Type " + type + " isn't a valid component type");
         }
@@ -190,8 +221,8 @@ public abstract class DataAccess {
 
     protected abstract @NotNull File getFile(@NotNull String dataPath, @NotNull String entryName) throws FileNotFoundException;
 
-    protected abstract @NotNull Set<File> getFiles(@NotNull String dataPath);
+    protected abstract @NotNull @Unmodifiable Set<File> getFiles(@NotNull String dataPath);
 
-    protected abstract @NotNull Set<String> getEntries(@NotNull String dataPath);
+    protected abstract @NotNull @Unmodifiable Set<String> getEntries(@NotNull String dataPath);
 
 }

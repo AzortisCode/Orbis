@@ -157,8 +157,16 @@ public class PropertiesGenerator extends OrbisCodeGenerator {
 
                 List<String> enumValues = new ArrayList<>();
                 for (JsonElement element : values) {
-                    enumValues.add(element.getAsString());
+                    String enumValue = element.getAsString();
+                    enumValues.add(enumValue);
+                    try {
+                        Enum.valueOf(castEnumClass(enumClass), enumValue);
+                    } catch (IllegalArgumentException ex) {
+                        LOGGER.error("Orbis enumClass {} doesn't have the constant {} that is used in property {}",
+                                enumClass.getCanonicalName(), enumValue, propertyName);
+                    }
                 }
+
                 CodeBlock.Builder builder = CodeBlock.builder();
                 builder.add("$T.create($S, $T.class", enumProperty, key, enumClassName);
                 // If size of values > 60% of the possible enum constants then we use a predicate
@@ -190,6 +198,11 @@ public class PropertiesGenerator extends OrbisCodeGenerator {
         }
         JavaFile propertiesFile = JavaFile.builder("com.azortis.orbis.block.property", propertiesClass.build()).build();
         writeFiles(List.of(propertiesFile));
+    }
+
+    @SuppressWarnings("unchecked")
+    private <T> Class<T> castEnumClass(Class<? extends Enum<?>> clazz) {
+        return (Class<T>) clazz;
     }
 
     private List<String> getEnumValues(Class<? extends Enum<?>> enumClass) {

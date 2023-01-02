@@ -71,7 +71,9 @@ public final class Registry<T> {
     //
 
     @SuppressWarnings("unchecked")
-    public static <K> Registry<K> getRegistry(@NotNull Class<K> type) {
+    public static <K> @NotNull Registry<K> getRegistry(@NotNull Class<K> type) throws IllegalArgumentException {
+        Preconditions.checkArgument(registries.containsKey(type),
+                "Type " + type.getSimpleName() + "does not have a registry registered!");
         return (Registry<K>) registries.get(type);
     }
 
@@ -97,7 +99,7 @@ public final class Registry<T> {
     }
 
     public @NotNull Class<? extends T> getType(@NotNull Key key) {
-        Preconditions.checkArgument(typeClasses.containsKey(key), "Registry doesnt contain " + key.asString());
+        Preconditions.checkArgument(typeClasses.containsKey(key), "Registry doesn't contain " + key.asString());
         return typeClasses.get(key);
     }
 

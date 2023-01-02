@@ -18,11 +18,14 @@
 
 package com.azortis.orbis.pack.data;
 
-import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import com.google.gson.JsonDeserializer;
 import org.apiguardian.api.API;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Unmodifiable;
+
+import java.util.Map;
+import java.util.Set;
 
 /**
  * A class that manages implementation specific data types that aren't used globally.
@@ -95,7 +98,7 @@ public abstract class ComponentAccess {
      * @return A {@link ImmutableSet} of classes that are handled in this {@link ComponentAccess}
      * @since 0.3-Alpha
      */
-    public abstract @NotNull ImmutableSet<Class<?>> dataTypes();
+    public abstract @NotNull @Unmodifiable Set<Class<?>> dataTypes();
 
     /**
      * A map of {@link JsonDeserializer} that need to be added to support typed based objects
@@ -104,6 +107,6 @@ public abstract class ComponentAccess {
      * @return A map with the {@link Class} key as the type deserialized by the specified JsonDeserializer.
      * @since 0.3-Alpha
      */
-    public abstract @NotNull ImmutableMap<Class<?>, JsonDeserializer<?>> adapters();
+    public abstract @NotNull @Unmodifiable Map<Class<?>, JsonDeserializer<?>> adapters();
 
 }

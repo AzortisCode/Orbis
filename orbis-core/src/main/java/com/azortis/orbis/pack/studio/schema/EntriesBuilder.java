@@ -52,7 +52,7 @@ public final class EntriesBuilder extends SchemaBuilder {
             data.getDataEntries(type).forEach(entries::add);
         } else {
             // For components make sure to append the component name
-            data.getComponentDataEntries(type, name).forEach(entries::add);
+            data.getDataEntries(type, name).forEach(entries::add);
         }
         schema.add("enum", entries);
         return schema;

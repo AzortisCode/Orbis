@@ -94,7 +94,8 @@ public sealed abstract class SchemaBuilder permits ClassBuilder, BlockBuilder, E
      * @return A reference string that VSCode accepts.
      */
     protected String getSchemaReference(@NotNull File referencedSchemaFile) {
-        Preconditions.checkArgument(referencedSchemaFile.isFile(), "Referenced schema file must be a file not a directory!");
+        Preconditions.checkArgument(referencedSchemaFile.isFile(),
+                "Referenced schema file must be a file not a directory!");
         return schemaFile.toPath().relativize(referencedSchemaFile.toPath()).toString();
     }
 }

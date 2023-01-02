@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -84,6 +84,12 @@ public final class Blocks {
 
     @NotNull
     public static final Block MANGROVE_PLANKS = Block.fromKey("minecraft:mangrove_planks");
+
+    @NotNull
+    public static final Block BAMBOO_PLANKS = Block.fromKey("minecraft:bamboo_planks");
+
+    @NotNull
+    public static final Block BAMBOO_MOSAIC = Block.fromKey("minecraft:bamboo_mosaic");
 
     @NotNull
     public static final Block OAK_SAPLING = Block.fromKey("minecraft:oak_sapling");
@@ -173,6 +179,9 @@ public final class Blocks {
     public static final Block MUDDY_MANGROVE_ROOTS = Block.fromKey("minecraft:muddy_mangrove_roots");
 
     @NotNull
+    public static final Block BAMBOO_BLOCK = Block.fromKey("minecraft:bamboo_block");
+
+    @NotNull
     public static final Block STRIPPED_SPRUCE_LOG = Block.fromKey("minecraft:stripped_spruce_log");
 
     @NotNull
@@ -192,6 +201,9 @@ public final class Blocks {
 
     @NotNull
     public static final Block STRIPPED_MANGROVE_LOG = Block.fromKey("minecraft:stripped_mangrove_log");
+
+    @NotNull
+    public static final Block STRIPPED_BAMBOO_BLOCK = Block.fromKey("minecraft:stripped_bamboo_block");
 
     @NotNull
     public static final Block OAK_WOOD = Block.fromKey("minecraft:oak_wood");
@@ -488,6 +500,9 @@ public final class Blocks {
     public static final Block BOOKSHELF = Block.fromKey("minecraft:bookshelf");
 
     @NotNull
+    public static final Block CHISELED_BOOKSHELF = Block.fromKey("minecraft:chiseled_bookshelf");
+
+    @NotNull
     public static final Block MOSSY_COBBLESTONE = Block.fromKey("minecraft:mossy_cobblestone");
 
     @NotNull
@@ -560,6 +575,9 @@ public final class Blocks {
     public static final Block MANGROVE_SIGN = Block.fromKey("minecraft:mangrove_sign");
 
     @NotNull
+    public static final Block BAMBOO_SIGN = Block.fromKey("minecraft:bamboo_sign");
+
+    @NotNull
     public static final Block OAK_DOOR = Block.fromKey("minecraft:oak_door");
 
     @NotNull
@@ -593,6 +611,69 @@ public final class Blocks {
     public static final Block MANGROVE_WALL_SIGN = Block.fromKey("minecraft:mangrove_wall_sign");
 
     @NotNull
+    public static final Block BAMBOO_WALL_SIGN = Block.fromKey("minecraft:bamboo_wall_sign");
+
+    @NotNull
+    public static final Block OAK_HANGING_SIGN = Block.fromKey("minecraft:oak_hanging_sign");
+
+    @NotNull
+    public static final Block SPRUCE_HANGING_SIGN = Block.fromKey("minecraft:spruce_hanging_sign");
+
+    @NotNull
+    public static final Block BIRCH_HANGING_SIGN = Block.fromKey("minecraft:birch_hanging_sign");
+
+    @NotNull
+    public static final Block ACACIA_HANGING_SIGN = Block.fromKey("minecraft:acacia_hanging_sign");
+
+    @NotNull
+    public static final Block JUNGLE_HANGING_SIGN = Block.fromKey("minecraft:jungle_hanging_sign");
+
+    @NotNull
+    public static final Block DARK_OAK_HANGING_SIGN = Block.fromKey("minecraft:dark_oak_hanging_sign");
+
+    @NotNull
+    public static final Block CRIMSON_HANGING_SIGN = Block.fromKey("minecraft:crimson_hanging_sign");
+
+    @NotNull
+    public static final Block WARPED_HANGING_SIGN = Block.fromKey("minecraft:warped_hanging_sign");
+
+    @NotNull
+    public static final Block MANGROVE_HANGING_SIGN = Block.fromKey("minecraft:mangrove_hanging_sign");
+
+    @NotNull
+    public static final Block BAMBOO_HANGING_SIGN = Block.fromKey("minecraft:bamboo_hanging_sign");
+
+    @NotNull
+    public static final Block OAK_WALL_HANGING_SIGN = Block.fromKey("minecraft:oak_wall_hanging_sign");
+
+    @NotNull
+    public static final Block SPRUCE_WALL_HANGING_SIGN = Block.fromKey("minecraft:spruce_wall_hanging_sign");
+
+    @NotNull
+    public static final Block BIRCH_WALL_HANGING_SIGN = Block.fromKey("minecraft:birch_wall_hanging_sign");
+
+    @NotNull
+    public static final Block ACACIA_WALL_HANGING_SIGN = Block.fromKey("minecraft:acacia_wall_hanging_sign");
+
+    @NotNull
+    public static final Block JUNGLE_WALL_HANGING_SIGN = Block.fromKey("minecraft:jungle_wall_hanging_sign");
+
+    @NotNull
+    public static final Block DARK_OAK_WALL_HANGING_SIGN = Block.fromKey("minecraft:dark_oak_wall_hanging_sign");
+
+    @NotNull
+    public static final Block MANGROVE_WALL_HANGING_SIGN = Block.fromKey("minecraft:mangrove_wall_hanging_sign");
+
+    @NotNull
+    public static final Block CRIMSON_WALL_HANGING_SIGN = Block.fromKey("minecraft:crimson_wall_hanging_sign");
+
+    @NotNull
+    public static final Block WARPED_WALL_HANGING_SIGN = Block.fromKey("minecraft:warped_wall_hanging_sign");
+
+    @NotNull
+    public static final Block BAMBOO_WALL_HANGING_SIGN = Block.fromKey("minecraft:bamboo_wall_hanging_sign");
+
+    @NotNull
     public static final Block LEVER = Block.fromKey("minecraft:lever");
 
     @NotNull
@@ -621,6 +702,9 @@ public final class Blocks {
 
     @NotNull
     public static final Block MANGROVE_PRESSURE_PLATE = Block.fromKey("minecraft:mangrove_pressure_plate");
+
+    @NotNull
+    public static final Block BAMBOO_PRESSURE_PLATE = Block.fromKey("minecraft:bamboo_pressure_plate");
 
     @NotNull
     public static final Block REDSTONE_ORE = Block.fromKey("minecraft:redstone_ore");
@@ -771,6 +855,9 @@ public final class Blocks {
 
     @NotNull
     public static final Block MANGROVE_TRAPDOOR = Block.fromKey("minecraft:mangrove_trapdoor");
+
+    @NotNull
+    public static final Block BAMBOO_TRAPDOOR = Block.fromKey("minecraft:bamboo_trapdoor");
 
     @NotNull
     public static final Block STONE_BRICKS = Block.fromKey("minecraft:stone_bricks");
@@ -1061,6 +1148,9 @@ public final class Blocks {
     public static final Block MANGROVE_BUTTON = Block.fromKey("minecraft:mangrove_button");
 
     @NotNull
+    public static final Block BAMBOO_BUTTON = Block.fromKey("minecraft:bamboo_button");
+
+    @NotNull
     public static final Block SKELETON_SKULL = Block.fromKey("minecraft:skeleton_skull");
 
     @NotNull
@@ -1095,6 +1185,12 @@ public final class Blocks {
 
     @NotNull
     public static final Block DRAGON_WALL_HEAD = Block.fromKey("minecraft:dragon_wall_head");
+
+    @NotNull
+    public static final Block PIGLIN_HEAD = Block.fromKey("minecraft:piglin_head");
+
+    @NotNull
+    public static final Block PIGLIN_WALL_HEAD = Block.fromKey("minecraft:piglin_wall_head");
 
     @NotNull
     public static final Block ANVIL = Block.fromKey("minecraft:anvil");
@@ -1251,6 +1347,12 @@ public final class Blocks {
 
     @NotNull
     public static final Block MANGROVE_STAIRS = Block.fromKey("minecraft:mangrove_stairs");
+
+    @NotNull
+    public static final Block BAMBOO_STAIRS = Block.fromKey("minecraft:bamboo_stairs");
+
+    @NotNull
+    public static final Block BAMBOO_MOSAIC_STAIRS = Block.fromKey("minecraft:bamboo_mosaic_stairs");
 
     @NotNull
     public static final Block SLIME_BLOCK = Block.fromKey("minecraft:slime_block");
@@ -1502,6 +1604,12 @@ public final class Blocks {
     public static final Block MANGROVE_SLAB = Block.fromKey("minecraft:mangrove_slab");
 
     @NotNull
+    public static final Block BAMBOO_SLAB = Block.fromKey("minecraft:bamboo_slab");
+
+    @NotNull
+    public static final Block BAMBOO_MOSAIC_SLAB = Block.fromKey("minecraft:bamboo_mosaic_slab");
+
+    @NotNull
     public static final Block STONE_SLAB = Block.fromKey("minecraft:stone_slab");
 
     @NotNull
@@ -1574,6 +1682,9 @@ public final class Blocks {
     public static final Block MANGROVE_FENCE_GATE = Block.fromKey("minecraft:mangrove_fence_gate");
 
     @NotNull
+    public static final Block BAMBOO_FENCE_GATE = Block.fromKey("minecraft:bamboo_fence_gate");
+
+    @NotNull
     public static final Block SPRUCE_FENCE = Block.fromKey("minecraft:spruce_fence");
 
     @NotNull
@@ -1592,6 +1703,9 @@ public final class Blocks {
     public static final Block MANGROVE_FENCE = Block.fromKey("minecraft:mangrove_fence");
 
     @NotNull
+    public static final Block BAMBOO_FENCE = Block.fromKey("minecraft:bamboo_fence");
+
+    @NotNull
     public static final Block SPRUCE_DOOR = Block.fromKey("minecraft:spruce_door");
 
     @NotNull
@@ -1608,6 +1722,9 @@ public final class Blocks {
 
     @NotNull
     public static final Block MANGROVE_DOOR = Block.fromKey("minecraft:mangrove_door");
+
+    @NotNull
+    public static final Block BAMBOO_DOOR = Block.fromKey("minecraft:bamboo_door");
 
     @NotNull
     public static final Block END_ROD = Block.fromKey("minecraft:end_rod");

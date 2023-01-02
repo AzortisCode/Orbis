@@ -49,6 +49,14 @@ public final class PaperScheduler implements Scheduler {
     }
 
     /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Scheduler.Task runDelayedTaskAsync(@NotNull Runnable task, long ticks) {
+        return new Task(Bukkit.getScheduler().runTaskLaterAsynchronously(OrbisPlugin.getPlugin(), task, ticks).getTaskId());
+    }
+
+    /**
      * The Paper platform implementation for {@link Scheduler.Task}.
      *
      * @author Jake Nijssen
@@ -81,6 +89,14 @@ public final class PaperScheduler implements Scheduler {
         @Override
         public boolean isRunning() {
             return Bukkit.getScheduler().isCurrentlyRunning(id);
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public boolean isQueued() {
+            return Bukkit.getScheduler().isQueued(id);
         }
     }
 

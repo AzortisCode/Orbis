@@ -32,7 +32,7 @@ import com.azortis.orbis.world.WorldAccess;
 import com.google.common.base.Preconditions;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeSource;
@@ -43,9 +43,9 @@ import org.bukkit.Bukkit;
 import org.bukkit.Chunk;
 import org.bukkit.World;
 import org.bukkit.WorldCreator;
-import org.bukkit.craftbukkit.v1_19_R1.CraftWorld;
-import org.bukkit.craftbukkit.v1_19_R1.block.CraftBlock;
-import org.bukkit.craftbukkit.v1_19_R1.generator.CraftChunkData;
+import org.bukkit.craftbukkit.v1_19_R2.CraftWorld;
+import org.bukkit.craftbukkit.v1_19_R2.block.CraftBlock;
+import org.bukkit.craftbukkit.v1_19_R2.generator.CraftChunkData;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.HandlerList;
@@ -97,7 +97,7 @@ public final class PaperStudioWorld extends StudioWorld implements Listener {
             Set<Holder<Biome>> possibleBiomes = (Set<Holder<Biome>>) biomesField.get(biomesField);
             possibleBiomes.clear();
             for (org.bukkit.block.Biome paperBiome : Objects.requireNonNull(nativeWorld.getBiomeProvider()).getBiomes(nativeWorld)) {
-                possibleBiomes.add(CraftBlock.biomeToBiomeBase(level.getServer().registryHolder.registryOrThrow(Registry.BIOME_REGISTRY), paperBiome));
+                possibleBiomes.add(CraftBlock.biomeToBiomeBase(level.getServer().registries().compositeAccess().registryOrThrow(Registries.BIOME), paperBiome));
             }
             biomesField.set(biomeSource, possibleBiomes);
             biomesField.setAccessible(false);
@@ -178,8 +178,28 @@ public final class PaperStudioWorld extends StudioWorld implements Listener {
     }
 
     @Override
+    public int minHeight() {
+        return worldAccess.minHeight();
+    }
+
+    @Override
+    public int maxHeight() {
+        return worldAccess.maxHeight();
+    }
+
+    @Override
     public @NotNull Set<Player> getPlayers() {
         return worldAccess.getPlayers();
+    }
+
+    @Override
+    public boolean isChunkLoaded(int chunkX, int chunkZ) {
+        return worldAccess.isChunkLoaded(chunkX, chunkZ);
+    }
+
+    @Override
+    public com.azortis.orbis.world.@NotNull ChunkAccess getChunk(int chunkX, int chunkZ) {
+        return worldAccess.getChunk(chunkX, chunkZ);
     }
 
     //

@@ -21,6 +21,7 @@ package com.azortis.orbis.pack.data;
 import org.apache.commons.io.FilenameUtils;
 import org.apiguardian.api.API;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Unmodifiable;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -50,7 +51,7 @@ public class DirectoryDataAccess extends DataAccess {
     }
 
     @Override
-    public @NotNull Set<File> getFiles(@NotNull String dataPath) {
+    public @NotNull @Unmodifiable Set<File> getFiles(@NotNull String dataPath) {
         File directory;
         boolean searchSubDirs = dataPath.endsWith("**");
         if (searchSubDirs) {
@@ -62,7 +63,7 @@ public class DirectoryDataAccess extends DataAccess {
             if (!searchSubDirs) {
                 File[] files = directory.listFiles(File::isFile);
                 if (files != null) {
-                    return new HashSet<>(Arrays.asList(files));
+                    return Set.of(files);
                 }
             } else {
                 File[] rootFiles = directory.listFiles(File::isFile);
@@ -88,23 +89,24 @@ public class DirectoryDataAccess extends DataAccess {
                         }
                     }
                 }
-                return files;
+                return Set.copyOf(files);
             }
         }
         return Collections.emptySet();
     }
 
     @Override
-    public @NotNull Set<String> getEntries(@NotNull String dataPath) {
+    public @NotNull @Unmodifiable Set<String> getEntries(@NotNull String dataPath) {
         Set<File> files = getFiles(dataPath);
         if (!files.isEmpty()) {
             if (!dataPath.endsWith("**")) {
-                return files.stream().map(File::getName).map(FilenameUtils::removeExtension).collect(Collectors.toSet());
+                return files.stream().map(File::getName).map(FilenameUtils::removeExtension)
+                        .collect(Collectors.toUnmodifiableSet());
             } else {
                 final String trimmedDataPath = dataPath.replace("**", "").trim();
                 return files.stream().map(File::getPath)
                         .map(entry -> entry.substring(entry.indexOf(entry.indexOf(trimmedDataPath))))
-                        .map(FilenameUtils::removeExtension).collect(Collectors.toSet());
+                        .map(FilenameUtils::removeExtension).collect(Collectors.toUnmodifiableSet());
             }
         }
         return Collections.emptySet();

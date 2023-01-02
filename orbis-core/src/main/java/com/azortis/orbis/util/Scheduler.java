@@ -54,6 +54,16 @@ public interface Scheduler {
     Task runTaskAsync(@NotNull Runnable task);
 
     /**
+     * Runs a task asynchronously on the platform's scheduler after set delay.
+     *
+     * @param task  The task to perform.
+     * @param ticks The delay in ticks.
+     * @return An instance of {@link Task} for the queued task.
+     * @since 0.3-Alpha
+     */
+    Task runDelayedTaskAsync(@NotNull Runnable task, long ticks);
+
+    /**
      * A representation of a queued or running task, which can be cancelled.
      *
      * @author Jake Nijssen
@@ -74,6 +84,13 @@ public interface Scheduler {
          */
         @Contract(pure = true)
         boolean isRunning();
+
+        /**
+         * Checks if the task is queued for later.
+         *
+         * @return If the task is queued for later.
+         */
+        boolean isQueued();
     }
 
 }

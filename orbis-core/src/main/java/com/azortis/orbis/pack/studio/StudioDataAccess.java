@@ -30,6 +30,8 @@ import net.kyori.adventure.key.Key;
 import org.apiguardian.api.API;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.Unmodifiable;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -41,24 +43,47 @@ import java.nio.file.LinkOption;
 import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- * DataAccess meant for a {@link Project} to be able to independently index all the {@link ComponentAccess} so that a compilation
- * error will not result in config suggestions to malfunction. As an added benefit it will also map each directory's {@link Path}
- * with the type of files it contains i.e. /biomes/ will map to {@link com.azortis.orbis.generator.biome.Biome}
+ * DataAccess meant for a {@link Project} that can independently index all the {@link ComponentAccess} so that a
+ * compilation error will not result in config suggestions to malfunction. As an added benefit it will also map each
+ * directory's {@link Path} with the type of files it contains i.e. /biomes/ will map to {@link com.azortis.orbis.generator.biome.Biome}
  * and /generator/terrain/ will map to {@link com.azortis.orbis.generator.terrain.Terrain}.
  *
  * @author Jake Nijssen
  * @since 0.3-Alpha
  */
-@API(status = API.Status.INTERNAL, since = "0.3-Alpha")
+@API(status = API.Status.INTERNAL, since = "0.3-Alpha", consumers = "com.azortis.orbis.pack.studio")
 public final class StudioDataAccess extends DirectoryDataAccess {
 
     /**
      * The Map, that maps all the directories to their respective object type.
      */
     private final Map<Path, Class<?>> directoryTypeMap = new HashMap<>();
+
+    /**
+     * A map that maps all component root and subdirectories to the name of the component instance.
+     */
+    private final Map<Path, String> directoryComponentMap = new HashMap<>();
+
+    /**
+     * A map that maps each absolute component root path to the type being used.
+     * i.e. a directory with the component name of "overworld" in distributor could map to the
+     * class {@link com.azortis.orbis.generator.biome.complex.ComplexDistributor}
+     * <br>
+     * A directory is only considered a component if a file with the same name is located in the same
+     * {@link DataAccess#GENERATOR_TYPES} directory.
+     */
+    private final Map<Path, Class<?>> componentRootTypeMap = new HashMap<>();
+
+    /**
+     * A Map that keeps track of File paths that are a component and which type, they will only be registered if the file
+     * has a corresponding component directory present with the same name.
+     */
+    private final Map<Path, Key> componentFiles = new HashMap<>();
 
     /**
      * Constructs a StudioDataAccess for a {@link Project} to actively reset and reindex to provide
@@ -75,18 +100,175 @@ public final class StudioDataAccess extends DirectoryDataAccess {
     /**
      * Get the {@link Class} type associated with specified directory {@link Path}.
      *
-     * @param directory The path of the directory.
+     * @param directory The absolute path of the directory.
      * @return The corresponding class type found in said directory.
-     * @throws IllegalArgumentException If the specified Path is not a directory, not absolute {@link Path#isAbsolute()} or
-     *                                  if the directory doesn't have a class type mapped to it.
+     * @throws IllegalArgumentException If the specified Path is not a directory, not absolute {@link Path#isAbsolute()}
+     *                                  or if the directory doesn't have a class type mapped to it.
      * @since 0.3-Alpha
      */
     @Contract(pure = true)
     public @NotNull Class<?> getType(@NotNull Path directory) throws IllegalArgumentException {
-        Preconditions.checkArgument(Files.isDirectory(directory, LinkOption.NOFOLLOW_LINKS), "Must be a directory!");
+        Preconditions.checkArgument(Files.isDirectory(directory, LinkOption.NOFOLLOW_LINKS),
+                "Must be a directory!");
         Preconditions.checkArgument(directory.isAbsolute(), "Directory must be absolute!");
-        Preconditions.checkArgument(directoryTypeMap.containsKey(directory), "Directory does not have type registered!");
+        Preconditions.checkArgument(directoryTypeMap.containsKey(directory),
+                "Directory does not have type registered!");
         return directoryTypeMap.get(directory);
+    }
+
+    /**
+     * Check if the given directory {@link Path} has a type associated with it.
+     *
+     * @param directory The absolute path of the directory.
+     * @return If the given directory has a type mapped to it.
+     * @throws IllegalArgumentException If the specified Path is not a directory or not absolute {@link Path#isAbsolute()}
+     * @since 0.3-Alpha
+     */
+    @Contract(pure = true)
+    public boolean hasType(@NotNull Path directory) throws IllegalArgumentException {
+        Preconditions.checkArgument(Files.isDirectory(directory, LinkOption.NOFOLLOW_LINKS),
+                "Must be a directory!");
+        Preconditions.checkArgument(directory.isAbsolute(), "Directory must be absolute!");
+        return directoryTypeMap.containsKey(directory);
+    }
+
+    /**
+     * Get all the directories mapped to given type.
+     *
+     * @param type The data type to get the directory paths for.
+     * @return An unmodifiable set of directories mapped to given type.
+     * @since 0.3-Alpha
+     */
+    @Contract(pure = true)
+    public @NotNull @Unmodifiable Set<Path> getDirectories(@NotNull Class<?> type) {
+        return directoryTypeMap.entrySet().parallelStream().filter(entry -> !entry.getValue().equals(type))
+                .map(Map.Entry::getKey).collect(Collectors.toUnmodifiableSet());
+    }
+
+    /**
+     * Get all the directories mapped to a given type and component instance.
+     *
+     * @param type The data type to get the directory paths for.
+     * @param name The name of the component instance.
+     * @return An unmodifiable set of directories mapped to given type and component instance.
+     * @since 0.3-Alpha
+     */
+    @Contract(pure = true)
+    public Set<Path> getDirectories(@NotNull Class<?> type, @NotNull String name) {
+        return directoryTypeMap.entrySet().parallelStream().filter(entry -> !entry.getValue().equals(type))
+                .filter(entry -> !directoryComponentMap.get(entry.getKey()).equalsIgnoreCase(name))
+                .map(Map.Entry::getKey).collect(Collectors.toSet());
+    }
+
+    /**
+     * Checks if a directory is the root or a subdirectory of a component.
+     *
+     * @param directory The directory to check.
+     * @return If it is part of a component.
+     * @throws IllegalArgumentException If the specified Path is not a directory or not absolute {@link Path#isAbsolute()}
+     * @since 0.3-Alpha
+     */
+    @Contract(pure = true)
+    public boolean isComponentDirectory(@NotNull Path directory) throws IllegalArgumentException {
+        Preconditions.checkArgument(Files.isDirectory(directory, LinkOption.NOFOLLOW_LINKS),
+                "Must be a directory!");
+        Preconditions.checkArgument(directory.isAbsolute(), "Directory must be absolute!");
+        return directoryComponentMap.containsKey(directory);
+    }
+
+    /**
+     * Get the component instance nam the given directory is mapped to.
+     *
+     * @param directory The directory part of the component to get the name of.
+     * @return The name of the component the directory is mapped to.
+     * @throws IllegalArgumentException If the specified Path is not a directory, not absolute {@link Path#isAbsolute()}
+     *                                  or if the directory is not part of a component.
+     * @since 0.3-Alpha
+     */
+    @Contract(pure = true)
+    public @NotNull String getComponentName(@NotNull Path directory) throws IllegalArgumentException {
+        Preconditions.checkArgument(Files.isDirectory(directory, LinkOption.NOFOLLOW_LINKS),
+                "Must be a directory!");
+        Preconditions.checkArgument(directory.isAbsolute(), "Directory must be absolute!");
+        Preconditions.checkArgument(directoryTypeMap.containsKey(directory),
+                "Directory is not a component directory!");
+        return directoryComponentMap.get(directory);
+    }
+
+    /**
+     * Get the implementation class of the generator of the given component root directory.
+     *
+     * @param componentRoot The absolute root directory of the component.
+     * @return The type of the component assigned to the directory.
+     * @throws IllegalArgumentException If the specified Path is not a directory, not absolute {@link Path#isAbsolute()}
+     *                                  or if the directory is not a component root.
+     * @since 0.3-Alpha
+     */
+    @Contract(pure = true)
+    public @NotNull Class<?> getComponentType(@NotNull Path componentRoot) throws IllegalArgumentException {
+        Preconditions.checkArgument(Files.isDirectory(componentRoot, LinkOption.NOFOLLOW_LINKS),
+                "Component root must be a directory!");
+        Preconditions.checkArgument(componentRoot.isAbsolute(), "Directory must be absolute!");
+        Preconditions.checkArgument(directoryTypeMap.containsKey(componentRoot),
+                "Directory is not a component root!");
+        return componentRootTypeMap.get(componentRoot);
+    }
+
+    /**
+     * Check if a given directory is the root of a component.
+     *
+     * @param directory The absolute directory to check.
+     * @return If it is a component root directory.
+     * @throws IllegalArgumentException If the specified Path is not a directory or not absolute {@link Path#isAbsolute()}
+     * @since 0.3-Alpha
+     */
+    @Contract(pure = true)
+    public boolean isComponentRoot(@NotNull Path directory) throws IllegalArgumentException {
+        Preconditions.checkArgument(Files.isDirectory(directory, LinkOption.NOFOLLOW_LINKS),
+                "Must be a directory!");
+        Preconditions.checkArgument(directory.isAbsolute(), "Directory must be absolute!");
+        return componentRootTypeMap.containsKey(directory);
+    }
+
+    /**
+     * Get all the component root directories that have been mapped.
+     *
+     * @return An unmodifiable set of component root directories.
+     * @since 0.3-Alpha
+     */
+    @Contract(pure = true)
+    public @NotNull @Unmodifiable Set<Path> getComponentRoots() {
+        return Set.copyOf(componentRootTypeMap.keySet());
+    }
+
+    /**
+     * Check if a given configuration file is a component file and thus have a component
+     * root directory assigned to it.
+     *
+     * @param file The absolute file to check.
+     * @return If the file is a component file.
+     * @throws IllegalArgumentException If the specified Path is not a file or not absolute {@link Path#isAbsolute()}
+     * @since 0.3-Alpha
+     */
+    @Contract(pure = true)
+    public boolean isComponentFile(@NotNull Path file) throws IllegalArgumentException {
+        Preconditions.checkArgument(Files.isRegularFile(file, LinkOption.NOFOLLOW_LINKS), "Must be a file!");
+        Preconditions.checkArgument(file.isAbsolute(), "File must be absolute!");
+        return componentFiles.containsKey(file);
+    }
+
+    /**
+     * Get the {@link Key} of the component file that has a component type mapped to it in {@link Registry}.
+     *
+     * @param file The absolute component file.
+     * @return The type key of the component.
+     * @throws IllegalArgumentException If the specified Path is not a file or not absolute {@link Path#isAbsolute()}
+     * @since 0.3-Alpha
+     */
+    public @NotNull Key getComponentKey(@NotNull Path file) throws IllegalArgumentException {
+        Preconditions.checkArgument(Files.isRegularFile(file, LinkOption.NOFOLLOW_LINKS), "Must be a file!");
+        Preconditions.checkArgument(file.isAbsolute(), "File must be absolute!");
+        return componentFiles.get(file);
     }
 
     /**
@@ -102,15 +284,18 @@ public final class StudioDataAccess extends DirectoryDataAccess {
         // Make sure the parent class clears out their component registry.
         super.reset();
         directoryTypeMap.clear();
+        componentRootTypeMap.clear();
+        componentFiles.clear();
 
         // Simple mapping for data types that do not support Components.
         for (Map.Entry<Class<?>, String> entry : DATA_TYPES.entrySet()) {
             // If the dataPath ends with ** it means that all the subdirectories should be assigned to this type as well.
             if (entry.getValue().endsWith("**")) {
-                Path dataPath = Path.of(dataDirectory.toPath() + entry.getValue().replace("**", "").trim());
+                Path dataPath = Path.of(dataDirectory.toPath() + entry.getValue()
+                        .replace("**", "").trim());
                 Preconditions.checkState(dataPath.isAbsolute(), "Path is not absolute for "
                         + entry.getKey().getSimpleName());
-                searchSubDirectories(dataPath, entry.getKey());
+                searchSubDirectories(dataPath, entry.getKey(), null);
                 continue;
             }
             Path dataPath = Path.of(dataDirectory.toPath() + entry.getValue().trim());
@@ -133,7 +318,8 @@ public final class StudioDataAccess extends DirectoryDataAccess {
                     // Get all the directories.
                     dataPaths.filter(path -> Files.isDirectory(path, LinkOption.NOFOLLOW_LINKS))
                             .forEach(path -> {
-                                String componentName = path.getFileName().toString().replaceAll("/", "").trim();
+                                String componentName = path.getFileName().toString()
+                                        .replaceAll("/", "").trim();
                                 // Create a Path for the corresponding config file this component folder belongs to.
                                 Path componentFile = Path.of(dataPath + componentName + ".json");
 
@@ -152,45 +338,52 @@ public final class StudioDataAccess extends DirectoryDataAccess {
                                         if (componentObject.has("type")) {
                                             Key key = Key.key(componentObject.get("type").getAsString());
 
-                                            // Get the associated registry for the ROOT_TYPE and get the implementation type
-                                            // of this component.
+                                            // Get the associated registry for the ROOT_TYPE and get
+                                            // the implementation type of this component.
                                             Registry<?> typeRegistry = Registry.getRegistry(entry.getKey());
                                             if (typeRegistry.hasType(key)) {
                                                 Class<?> type = typeRegistry.getType(key);
 
-                                                // Make sure the type actually uses the Component system, otherwise inform the user.
+                                                // Make sure the type actually uses the Component system, otherwise
+                                                // inform the user.
                                                 if (type.isAnnotationPresent(Component.class)) {
                                                     // Construct a component access instance and add it to the registry
                                                     Class<? extends ComponentAccess> componentAccessClass = type
                                                             .getAnnotation(Component.class).value();
-                                                    ComponentAccess access = componentAccessClass
-                                                            .getConstructor(String.class, DataAccess.class)
-                                                            .newInstance(componentName, this);
                                                     registerComponent(componentAccessClass, componentName);
+                                                    componentRootTypeMap.put(path, type);
+                                                    componentFiles.put(componentFile, key);
                                                     // Register all the subdirectories for the component.
-                                                    searchComponentDirectory(path, access);
+                                                    searchComponentDirectory(path,
+                                                            getComponentAccess(componentAccessClass, componentName),
+                                                            componentName);
                                                 } else {
                                                     Orbis.getLogger().error("Type {} is not a component type!", key);
                                                 }
                                             } else {
-                                                Orbis.getLogger().error("Type {} not found in registry for {}!", key.asString(),
+                                                Orbis.getLogger().error("Type {} not found in registry for {}!",
+                                                        key.asString(),
                                                         entry.getKey().getSimpleName());
                                             }
                                         } else {
-                                            Orbis.getLogger().error("The datafile for component folder {} doesn't have a type specified!", componentName);
+                                            Orbis.getLogger().error("The datafile for component folder {} " +
+                                                    "doesn't have a type specified!", componentName);
                                         }
                                     } catch (FileNotFoundException ignored) {
+                                        // Should be impossible to reach
                                         Orbis.getLogger().error("Data file for component folder {} for type {} not found!",
                                                 componentName, entry.getKey().getSimpleName());
                                     } catch (InvocationTargetException | InstantiationException |
                                              IllegalAccessException |
                                              NoSuchMethodException e) {
                                         // This is definitely a programming error, and thus should throw an error.
-                                        Orbis.getLogger().error("Something went wrong when trying to load component access.");
+                                        Orbis.getLogger().error("Something went wrong when trying to " +
+                                                "load component access.");
                                         throw new RuntimeException(e);
                                     }
                                 } else {
-                                    Orbis.getLogger().error("Component {} of generator type {} doesn't have a {}.json file present!",
+                                    Orbis.getLogger().error("Component {} of generator type {} doesn't have a {}.json " +
+                                                    "config file present!",
                                             componentName, entry.getKey().getSimpleName(), componentName);
                                 }
                             });
@@ -205,19 +398,23 @@ public final class StudioDataAccess extends DirectoryDataAccess {
     /**
      * Recursively register specified directory and all its subdirectories as specified type.
      *
-     * @param rootPath The directory path to register type with, and search for subdirectories.
-     * @param type     The type to mark the directory and subdirectories as.
+     * @param rootPath      The directory path to register type with, and search for subdirectories.
+     * @param type          The type to mark the directory and subdirectories as.
+     * @param componentName The name of the component of the root and subdirectories, null if not part of component.
      * @throws IllegalArgumentException If given path is not a directory.
      * @since 0.3-Alpha
      */
     @Contract(pure = true)
-    private void searchSubDirectories(@NotNull Path rootPath, @NotNull final Class<?> type) throws IllegalArgumentException {
-        Preconditions.checkArgument(Files.isDirectory(rootPath, LinkOption.NOFOLLOW_LINKS), "Path must be a directory");
+    private void searchSubDirectories(@NotNull Path rootPath, @NotNull final Class<?> type,
+                                      @Nullable String componentName) throws IllegalArgumentException {
+        Preconditions.checkArgument(Files.isDirectory(rootPath, LinkOption.NOFOLLOW_LINKS),
+                "Path must be a directory");
         directoryTypeMap.put(rootPath, type);
+        if (componentName != null) directoryComponentMap.put(rootPath, componentName);
         if (Files.exists(rootPath, LinkOption.NOFOLLOW_LINKS)) {
             try (Stream<Path> dataPaths = Files.list(rootPath)) {
                 dataPaths.filter(path -> Files.isDirectory(path, LinkOption.NOFOLLOW_LINKS))
-                        .forEach(path -> searchSubDirectories(path, type));
+                        .forEach(path -> searchSubDirectories(path, type, componentName));
             } catch (IOException ex) {
                 Orbis.getLogger().error("An error occurred while trying to populate the studio data access");
                 ex.printStackTrace();
@@ -230,33 +427,44 @@ public final class StudioDataAccess extends DirectoryDataAccess {
      *
      * @param componentPath The path of the component instance its directory.
      * @param access        The ComponentAccess instance of the component.
+     * @param componentName The name of the component instance.
      * @throws IllegalStateException If given path is not absolute, meaning something up in the chain went wrong.
+     * @since 0.3-Alpha
      */
     @Contract(pure = true)
-    private void searchComponentDirectory(@NotNull Path componentPath, @NotNull ComponentAccess access) throws IllegalStateException {
+    private void searchComponentDirectory(@NotNull Path componentPath, @NotNull ComponentAccess access,
+                                          @NotNull String componentName) throws IllegalStateException {
         for (Class<?> dataType : access.dataTypes()) {
             if (access.getDataPath(dataType).equals("/**")) {
                 if (access.dataTypes().size() == 1) {
                     directoryTypeMap.put(componentPath, dataType);
+                    directoryComponentMap.put(componentPath, componentName);
                     break;
                 }
                 Orbis.getLogger().error("ComponentAccess class {} has mapped a type to \"/**\", but has more then one type!",
                         access.getClass().getSimpleName());
-            } else if (access.getDataPath(dataType).equals("/") && directoryTypeMap.putIfAbsent(componentPath, dataType) != null) {
-                Orbis.getLogger().error("ComponentAccess class {} has mapped two or more types to \"/\"!",
-                        access.getClass().getSimpleName());
+                break;
+            } else if (access.getDataPath(dataType).equals("/")) {
+                if (directoryTypeMap.putIfAbsent(componentPath, dataType) != null) {
+                    Orbis.getLogger().error("ComponentAccess class {} has mapped two or more types to \"/\"!",
+                            access.getClass().getSimpleName());
+                } else {
+                    directoryComponentMap.put(componentPath, componentName);
+                }
                 continue;
             }
             if (access.getDataPath(dataType).endsWith("**")) {
-                final Path dataPath = Path.of(componentPath + access.getDataPath(dataType).replace("**", "").trim());
+                final Path dataPath = Path.of(componentPath + access.getDataPath(dataType)
+                        .replace("**", "").trim());
                 Preconditions.checkState(dataPath.isAbsolute(), "Path is not absolute for "
                         + dataType.getSimpleName());
-                searchSubDirectories(dataPath, dataType);
+                searchSubDirectories(dataPath, dataType, componentName);
             } else {
                 final Path dataPath = Path.of(componentPath + access.getDataPath(dataType).trim());
                 Preconditions.checkState(dataPath.isAbsolute(), "Path is not absolute for "
                         + dataType.getSimpleName());
                 directoryTypeMap.put(dataPath, dataType);
+                directoryComponentMap.put(dataPath, componentName);
             }
         }
     }

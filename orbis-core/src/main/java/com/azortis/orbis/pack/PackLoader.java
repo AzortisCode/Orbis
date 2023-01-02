@@ -36,7 +36,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.*;
 
-public final class PackLoader {
+public final class PackLoader { // TODO Properly document this class, so it becomes less confusing
     private static final Map<World, Map<Method, Object>> postInjectionMethods = new HashMap<>();
 
     /**
@@ -249,7 +249,7 @@ public final class PackLoader {
             for (String dataPath : dataPaths) {
                 if (world.data().isComponentType(inject.parameterizedType())) {
                     if (componentName != null) {
-                        File dataFile = world.data().getComponentDataFile(inject.parameterizedType(), componentName, dataPath);
+                        File dataFile = world.data().getDataFile(inject.parameterizedType(), componentName, dataPath);
                         Object collectionObject = Orbis.getGson().fromJson(new FileReader(dataFile), inject.parameterizedType());
                         fieldObject.add(collectionObject);
                     } else
@@ -273,7 +273,7 @@ public final class PackLoader {
 
             if (world.data().isComponentType(field.getType())) {
                 if (componentName != null) {
-                    File dataFile = world.data().getComponentDataFile(field.getType(), componentName, dataPath);
+                    File dataFile = world.data().getDataFile(field.getType(), componentName, dataPath);
                     Object fieldObject = Orbis.getGson().fromJson(new FileReader(dataFile), field.getType());
                     setField(rootObject, field, fieldObject);
                 } else

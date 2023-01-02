@@ -41,12 +41,12 @@ import java.util.Set;
 @Component(ComplexAccess.class)
 public final class ComplexDistributor extends Distributor {
 
-    public static Registry<Requirement> REGISTRY_REQUIREMENT = new Registry<>(Map.of(
+    public static Registry<Requirement> REGISTRY_REQUIREMENT = new Registry<>(Requirement.class, Map.of(
             Key.key("complex:noise_ranges"), NoiseRanges.class,
             Key.key("complex:minimum_strength"), MinStrength.class,
             Key.key("complex:maximum_strength"), MaxStrength.class
     ));
-    public static Registry<Modifier> REGISTRY_MODIFIER = new Registry<>(Map.of(
+    public static Registry<Modifier> REGISTRY_MODIFIER = new Registry<>(Modifier.class, Map.of(
             Key.key("complex:ranged_linear"), RangedLinearModifier.class
     ));
 

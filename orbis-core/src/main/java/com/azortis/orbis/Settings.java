@@ -61,14 +61,16 @@ public class Settings {
     public static class Studio {
         private final boolean openVSCode;
         private final Location fallBackLocation;
+        private final long hotReloadDelay;
 
-        public Studio(boolean openVSCode, @NotNull Location fallBackLocation) {
+        public Studio(boolean openVSCode, @NotNull Location fallBackLocation, long hotReloadDelay) {
             this.openVSCode = openVSCode;
             this.fallBackLocation = fallBackLocation;
+            this.hotReloadDelay = hotReloadDelay;
         }
 
         public static Studio defaultStudioSettings() {
-            return new Studio(false, new Location(0, 0, 0, 0f, 0f, new WeakReference<>(null)));
+            return new Studio(false, new Location(0, 0, 0, 0f, 0f, new WeakReference<>(null)), 300L);
         }
 
         public boolean openVSCode() {
@@ -77,6 +79,10 @@ public class Settings {
 
         public @NotNull Location fallBackLocation() {
             return fallBackLocation;
+        }
+
+        public long hotReloadDelay() {
+            return hotReloadDelay;
         }
     }
 

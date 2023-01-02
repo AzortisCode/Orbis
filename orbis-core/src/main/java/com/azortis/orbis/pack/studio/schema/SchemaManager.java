@@ -26,6 +26,7 @@ import com.azortis.orbis.pack.studio.Project;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
+import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -50,7 +51,6 @@ public final class SchemaManager {
         // Global definitions
         definitionsDir = new File(schemasDir + "/definitions/");
 
-
         // Generate special schema's and Minecraft data definitions.
         this.blocksSchema = new File(definitionsDir, "blocks.json");
         SchemaBuilder.generateBlocks(project, blocksSchema);
@@ -61,33 +61,37 @@ public final class SchemaManager {
 
         // Generate all data schema's
         for (Class<?> dataType : DataAccess.DATA_TYPES.keySet()) {
-            File schemaFile = new File(schemasDir, dataType.getSimpleName().toLowerCase(Locale.ENGLISH) + "-schema.json");
+            File schemaFile = new File(schemasDir, dataType.getSimpleName()
+                    .toLowerCase(Locale.ENGLISH) + "-schema.json");
             SchemaBuilder.generateClassSchema(project, schemaFile, dataType);
         }
 
         for (Class<?> generatorType : DataAccess.GENERATOR_TYPES.keySet()) {
-            File generatorDir = new File(schemasDir + "/" + generatorType.getSimpleName().toLowerCase(Locale.ENGLISH) + "/");
+            File generatorDir = new File(schemasDir + "/" + generatorType.getSimpleName()
+                    .toLowerCase(Locale.ENGLISH) + "/");
             if (!generatorDir.exists() && !generatorDir.mkdirs()) {
-                Orbis.getLogger().error("Failed to create schema directory for {}", generatorType.getSimpleName().toLowerCase(Locale.ENGLISH));
+                Orbis.getLogger().error("Failed to create schema directory for {}", generatorType.getSimpleName()
+                        .toLowerCase(Locale.ENGLISH));
                 return;
             }
-            File schemaFile = new File(generatorDir, generatorType.getSimpleName().toLowerCase(Locale.ENGLISH) + "-schema.json");
+            File schemaFile = new File(generatorDir, generatorType.getSimpleName()
+                    .toLowerCase(Locale.ENGLISH) + "-schema.json");
             SchemaBuilder.generateClassSchema(project, schemaFile, generatorType);
         }
 
     }
 
-    public void resetComponents() {
+    public void reset() {
 
     }
 
-    public void createComponent(@NotNull Class<?> type, @NotNull String name) {
+    public void createComponentSchemas(@NotNull Class<?> type, @NotNull String name) {
 
     }
 
-    public @NotNull File blocksSchema() {
-        return blocksSchema;
-    }  // TODO remove this reference.
+    public void deleteComponentSchemas(@NotNull Class<?> generatorType, @NotNull String name) {
+
+    }
 
     public @NotNull File packSchema() {
         return packSchema;
@@ -98,6 +102,10 @@ public final class SchemaManager {
     }
 
     public @NotNull File getSchema(@NotNull Class<?> type) {
+        return null;
+    }
+
+    public @NotNull Path getComponentSchema(@NotNull Class<?> type, @NotNull String name) {
         return null;
     }
 
