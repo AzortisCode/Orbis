@@ -51,26 +51,35 @@ public sealed abstract class SchemaBuilder permits ClassBuilder, BlockBuilder, E
         this.schemaFile = schemaFile;
     }
 
-    static void generateBlocks(@NotNull Project project, @NotNull File blocksFile) {
-        new BlockBuilder(project, project.studioWorld().data(), blocksFile).saveSchema();
+    static BlockBuilder blocks(@NotNull Project project, @NotNull File blocksFile) {
+        return new BlockBuilder(project, project.dataAccess(), blocksFile);
     }
 
-    static void generateEntries(@NotNull Project project, @NotNull File entriesFile,
-                                @NotNull Class<?> type, @Nullable String name) {
-        new EntriesBuilder(project, project.studioWorld().data(), entriesFile, type, name).saveSchema();
+    static EntriesBuilder entries(@NotNull Project project, @NotNull File entriesFile,
+                                  @NotNull Class<?> type) {
+        return entries(project, entriesFile, type, null);
     }
 
-    static void generateClassSchema(@NotNull Project project, @NotNull File schemaFile,
-                                    @NotNull Class<?> type) {
-        generateClassSchema(project, schemaFile, type, null);
+    static EntriesBuilder entries(@NotNull Project project, @NotNull File entriesFile,
+                                 @NotNull Class<?> type, @Nullable String name) {
+        return new EntriesBuilder(project, project.dataAccess(), entriesFile, type, name);
     }
 
-    static void generateClassSchema(@NotNull Project project, @NotNull File schemaFile,
-                                    @NotNull Class<?> type, @Nullable String name) {
-        new ClassBuilder(project, project.studioWorld().data(), schemaFile, type, name).saveSchema();
+    static ClassBuilder clazz(@NotNull Project project, @NotNull File schemaFile,
+                      @NotNull Class<?> type) {
+        return clazz(project, schemaFile, type, null);
     }
 
-    public void saveSchema() {
+    static ClassBuilder clazz(@NotNull Project project, @NotNull File schemaFile,
+                      @NotNull Class<?> type, @Nullable String name) {
+        return new ClassBuilder(project, project.dataAccess(), schemaFile, type, name);
+    }
+
+    public File file() {
+        return schemaFile;
+    }
+
+    public void save() {
         try {
             if (!schemaFile.exists() && !schemaFile.createNewFile()) {
                 Orbis.getLogger().error("Failed to create schema file!");

@@ -20,7 +20,7 @@ package com.azortis.orbis.pack.data;
 
 import com.azortis.orbis.generator.biome.Biome;
 import com.azortis.orbis.generator.biome.Distributor;
-import com.azortis.orbis.generator.noise.NoiseGenerator;
+import com.azortis.orbis.generator.noise.Noise;
 import com.azortis.orbis.generator.terrain.Terrain;
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.ImmutableMap;
@@ -57,9 +57,9 @@ public abstract class DataAccess {
     public static final String GENERATORS_PATH = "/generators/";
 
     /**
-     * The data path for {@link NoiseGenerator}.
+     * The data path for {@link Noise}.
      */
-    public static final String NOISE_GENERATORS_PATH = GENERATORS_PATH + "noise/";
+    public static final String NOISE_PATH = GENERATORS_PATH + "noise/";
 
     /**
      * The data path for {@link Distributor}.
@@ -76,7 +76,7 @@ public abstract class DataAccess {
      * Root types never have a subdirectory wildcard(**) because those directories should be reserved for components.
      */
     public static final ImmutableMap<Class<?>, String> GENERATOR_TYPES = ImmutableMap.of(
-            NoiseGenerator.class, NOISE_GENERATORS_PATH, Distributor.class, DISTRIBUTOR_PATH,
+            Noise.class, NOISE_PATH, Distributor.class, DISTRIBUTOR_PATH,
             Terrain.class, TERRAIN_PATH);
 
     /**
@@ -90,8 +90,8 @@ public abstract class DataAccess {
     public @NotNull String getDataPath(@NotNull Class<?> type) throws IllegalArgumentException {
         if (type == Biome.class) {
             return BIOMES_PATH;
-        } else if (type == NoiseGenerator.class) {
-            return NOISE_GENERATORS_PATH;
+        } else if (type == Noise.class) {
+            return NOISE_PATH;
         } else if (type == Distributor.class) {
             return DISTRIBUTOR_PATH;
         } else if (type == Terrain.class) {

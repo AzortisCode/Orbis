@@ -18,9 +18,9 @@
 
 package com.azortis.orbis.generator.biome.complex.layer;
 
-import com.azortis.orbis.generator.noise.NoiseGenerator;
+import com.azortis.orbis.generator.noise.Noise;
 
-public record NoiseLayer(String tag, NoiseGenerator noise, int precision) {
+public record NoiseLayer(String tag, Noise noise, int precision) {
 
     public double sample(double x, double z) {
         return (double) Math.round(precision * noise.noise(x, z)) / precision;

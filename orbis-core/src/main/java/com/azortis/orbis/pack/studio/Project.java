@@ -171,7 +171,7 @@ public final class Project {
                 Class<?> generatorType = dataAccess.getType(directory.getParent());
                 Class<?> componentType = dataAccess.getComponentType(directory);
                 String componentName = directory.getFileName().toString().replaceAll("/", "").trim();
-                schemaManager.createComponentSchemas(componentType, componentName);
+                schemaManager.createComponentSchemas(componentType, generatorType, componentName);
                 workspaceConfig.registerComponent(generatorType, directory, componentName);
             } else if (dataAccess.hasType(directory)) {
                 Class<?> type = dataAccess.getType(directory);
@@ -183,7 +183,6 @@ public final class Project {
                     workspaceConfig.addDirectory(type, directory);
                 }
             }
-
             doHotReload();
             lock.release();
         } catch (InterruptedException ex) {
@@ -204,6 +203,14 @@ public final class Project {
                     workspaceConfig.resetComponents();
                     workspaceConfig.save();
                 }
+            }
+
+            // Reset the entries for the file type
+            Class<?> type = dataAccess.getType(file.getParent());
+            if(dataAccess.isComponentType(type)) {
+                schemaManager.resetEntries(type, dataAccess.getComponentName(file.getParent()));
+            } else {
+                schemaManager.resetEntries(type);
             }
             doHotReload();
             lock.release();
@@ -306,6 +313,14 @@ public final class Project {
                 schemaManager.deleteComponentSchemas(generatorType, componentName);
                 workspaceConfig.resetComponents();
                 workspaceConfig.save();
+            }
+
+            // Reset the entries for the file type
+            Class<?> type = dataAccess.getType(file.getParent());
+            if(dataAccess.isComponentType(type)) {
+                schemaManager.resetEntries(type, dataAccess.getComponentName(file.getParent()));
+            } else {
+                schemaManager.resetEntries(type);
             }
             doHotReload();
             lock.release();

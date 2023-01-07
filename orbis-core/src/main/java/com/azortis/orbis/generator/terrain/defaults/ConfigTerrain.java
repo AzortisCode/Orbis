@@ -18,7 +18,7 @@
 
 package com.azortis.orbis.generator.terrain.defaults;
 
-import com.azortis.orbis.generator.noise.NoiseGenerator;
+import com.azortis.orbis.generator.noise.Noise;
 import com.azortis.orbis.generator.terrain.Terrain;
 import com.azortis.orbis.pack.Inject;
 import com.google.gson.annotations.SerializedName;
@@ -33,7 +33,7 @@ public class ConfigTerrain extends Terrain {
     private final String noiseName;
     private final List<NoiseLayer> layers;
     @Inject(fieldName = "noiseName")
-    private transient NoiseGenerator noise;
+    private transient Noise noise;
 
     private ConfigTerrain(@NotNull String name, @NotNull Key type,
                           @NotNull String noiseName, @NotNull List<NoiseLayer> layers) {

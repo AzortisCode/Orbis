@@ -18,11 +18,25 @@
 
 package com.azortis.orbis.pack.studio.annotations;
 
+import com.azortis.orbis.Registry;
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+/**
+ * <p>Marks a class as typed, meaning it can have different implementations based on the provided
+ * type {@link net.kyori.adventure.key.Key} field. All classes using this typed based system
+ * must register a {@link com.azortis.orbis.Registry} for the class using the following method
+ * {@link com.azortis.orbis.Registry#addRegistry(Class, Registry)}</p>
+ *
+ * <p><b>Note</b> It is recommended to locate the registry statically in the class, and use a static block to
+ * register the registry.</p>
+ *
+ * @since 0.3-Alpha
+ * @author Jake Nijssen
+ */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 public @interface Typed {

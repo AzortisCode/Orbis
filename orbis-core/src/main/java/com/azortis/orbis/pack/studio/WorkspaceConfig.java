@@ -87,6 +87,7 @@ public final class WorkspaceConfig {
     }
 
     private final JsonArray folders = FOLDERS_ARRAY;
+    private JsonObject settings;
     private transient final File workspaceFile;
     private transient final SchemaManager schemaManager;
     private transient final StudioDataAccess dataAccess;
@@ -103,7 +104,6 @@ public final class WorkspaceConfig {
      * as they will have different rules due to them being isolated to themselves.
      */
     private transient final ImmutableMap<Class<?>, Map<String, SchemaMatcher>> componentSchemaMatchers;
-    private JsonObject settings;
 
     public WorkspaceConfig(@NotNull JsonObject settings, @NotNull Project project,
                            @NotNull File workspaceFile) throws IOException {
@@ -199,7 +199,7 @@ public final class WorkspaceConfig {
 
             if (!componentMatchers.containsKey(name)) {
                 SchemaMatcher matcher = new SchemaMatcher(this.rootDirectory.relativize(
-                        schemaManager.getComponentSchema(type, name)).toString());
+                        schemaManager.getSchema(type, name).toPath()).toString());
                 componentMatchers.put(name, matcher);
                 dataAccess.getDirectories(type, name).forEach(matcher::addDirectory);
             } else {

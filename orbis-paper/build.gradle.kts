@@ -19,7 +19,7 @@
 plugins {
     java
     id("com.github.johnrengelman.shadow") version "7.1.2"
-    id("io.papermc.paperweight.userdev") version "1.3.9-SNAPSHOT"
+    id("io.papermc.paperweight.userdev") version "1.4.1-SNAPSHOT"
 }
 
 group = "com.azortis"

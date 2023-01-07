@@ -22,7 +22,7 @@ import com.azortis.orbis.pack.Invoke;
 import net.kyori.adventure.key.Key;
 import org.jetbrains.annotations.Nullable;
 
-public final class OpenSimplex2 extends NoiseGenerator {
+public final class OpenSimplex2 extends Noise {
 
     private transient FastNoise noise;
 

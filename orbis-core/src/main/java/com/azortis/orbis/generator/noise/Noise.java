@@ -29,7 +29,7 @@ import org.jetbrains.annotations.Nullable;
 @Inject
 @Typed
 @SupportAnonymous
-public abstract class NoiseGenerator {
+public abstract class Noise {
 
     protected final String name;
     protected final Key type;
@@ -39,7 +39,7 @@ public abstract class NoiseGenerator {
     @Inject
     private transient World world;
 
-    protected NoiseGenerator(@Nullable String name, @NotNull Key type, long seed, double frequency) {
+    protected Noise(@Nullable String name, @NotNull Key type, long seed, double frequency) {
         this.name = name;
         this.type = type;
         this.seed = seed;

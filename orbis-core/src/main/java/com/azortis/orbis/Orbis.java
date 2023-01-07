@@ -24,7 +24,7 @@ import cloud.commandframework.meta.SimpleCommandMeta;
 import com.azortis.orbis.block.ConfiguredBlock;
 import com.azortis.orbis.command.CommandSender;
 import com.azortis.orbis.generator.biome.Distributor;
-import com.azortis.orbis.generator.noise.NoiseGenerator;
+import com.azortis.orbis.generator.noise.Noise;
 import com.azortis.orbis.generator.terrain.Terrain;
 import com.azortis.orbis.pack.PackManager;
 import com.azortis.orbis.pack.adapter.BlockAdapter;
@@ -125,7 +125,7 @@ public final class Orbis {
                     .registerTypeAdapter(Location.class, new LocationAdapter())
                     .registerTypeAdapter(Terrain.class, new TypeAdapter<>(Terrain.class))
                     .registerTypeAdapter(Distributor.class, new TypeAdapter<>(Distributor.class))
-                    .registerTypeAdapter(NoiseGenerator.class, new TypeAdapter<>(NoiseGenerator.class));
+                    .registerTypeAdapter(Noise.class, new TypeAdapter<>(Noise.class));
 
             getRegistryAdapters().forEach(entry -> builder.registerTypeAdapter(entry.getKey(), entry.getValue()));
 

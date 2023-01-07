@@ -43,7 +43,7 @@ public final class BlockBuilder extends SchemaBuilder {
         JsonObject schema = new JsonObject();
         schema.addProperty("$schema", "https://json-schema.org/draft/2020-12/schema");
 
-        // The Configured Block type is either just a string of the legacyBlock type, or one that supports a blocks properties
+        // The Configured Block type is either just a string of the block type, or one that supports a blocks properties
         JsonArray oneOf = new JsonArray();
 
         // The type object that is just purely a string, and an enum with all the possible legacyBlock keys
@@ -54,7 +54,7 @@ public final class BlockBuilder extends SchemaBuilder {
         blockKeyOnly.add("enum", blockKeys);
         oneOf.add(blockKeyOnly);
 
-        // Add an object that maps each legacyBlock key with its properties if it has one.
+        // Add an object that maps each block key with its properties if it has one.
         JsonArray requiredObject = new JsonArray();
         requiredObject.add("type");
         requiredObject.add("properties");

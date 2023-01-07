@@ -29,7 +29,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- * A directory based {@link DataAccess}, which uses local directories and its data root.
+ * A directory based {@link DataAccess}, which uses local directories as its data root.
  *
  * @author Jake Nijssen
  * @since 0.3-Alpha
