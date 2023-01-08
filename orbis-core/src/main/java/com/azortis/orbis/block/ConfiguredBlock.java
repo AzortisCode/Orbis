@@ -18,6 +18,7 @@
 
 package com.azortis.orbis.block;
 
+import com.azortis.orbis.pack.studio.annotations.GlobalDefinition;
 import net.kyori.adventure.key.Keyed;
 import org.apiguardian.api.API;
 import org.jetbrains.annotations.Contract;
@@ -30,6 +31,7 @@ import org.jetbrains.annotations.NotNull;
  * @author Jake Nijssen
  * @since 0.3-Alpha
  */
+@GlobalDefinition("blocks")
 @API(status = API.Status.STABLE, since = "0.3-Alpha")
 public sealed interface ConfiguredBlock extends Keyed permits Block, BlockState {
 

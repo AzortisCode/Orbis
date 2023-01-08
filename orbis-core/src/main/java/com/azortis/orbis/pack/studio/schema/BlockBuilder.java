@@ -24,8 +24,8 @@ import com.azortis.orbis.block.property.BooleanProperty;
 import com.azortis.orbis.block.property.EnumProperty;
 import com.azortis.orbis.block.property.IntegerProperty;
 import com.azortis.orbis.block.property.Property;
-import com.azortis.orbis.pack.data.DataAccess;
 import com.azortis.orbis.pack.studio.Project;
+import com.azortis.orbis.pack.studio.StudioDataAccess;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import org.jetbrains.annotations.NotNull;
@@ -34,14 +34,16 @@ import java.io.File;
 
 public final class BlockBuilder extends SchemaBuilder {
 
-    BlockBuilder(@NotNull Project project, @NotNull DataAccess data, @NotNull File schemaFile) {
+    BlockBuilder(@NotNull Project project, @NotNull StudioDataAccess data, @NotNull File schemaFile) {
         super(project, data, schemaFile);
     }
 
     @Override
     protected @NotNull JsonObject generateSchema() {
+        // TODO, add description values to each block property.
         JsonObject schema = new JsonObject();
         schema.addProperty("$schema", "https://json-schema.org/draft/2020-12/schema");
+        schema.addProperty("description", "Must be a valid block.");
 
         // The Configured Block type is either just a string of the block type, or one that supports a blocks properties
         JsonArray oneOf = new JsonArray();

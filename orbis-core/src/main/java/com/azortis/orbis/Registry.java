@@ -40,7 +40,7 @@ import java.util.Set;
 
 public final class Registry<T> {
 
-    public static final Registry<Noise> NOISE_GENERATOR = new Registry<>(Noise.class, Map.of(
+    public static final Registry<Noise> NOISE = new Registry<>(Noise.class, Map.of(
             Key.key("fastnoise:opensimplex2"), OpenSimplex2.class, Key.key("fastnoise:opensimplex2s"), OpenSimplex2S.class
     ));
     public static final Registry<Distributor> DISTRIBUTOR = new Registry<>(Distributor.class, Map.of(
@@ -52,7 +52,7 @@ public final class Registry<T> {
     private static final Map<Class<?>, Registry<?>> registries = new HashMap<>();
 
     static {
-        addRegistry(Noise.class, NOISE_GENERATOR);
+        addRegistry(Noise.class, NOISE);
         addRegistry(Distributor.class, DISTRIBUTOR);
         addRegistry(Terrain.class, TERRAIN);
     }

@@ -204,6 +204,7 @@ public final class SchemaManager {
 
     public @NotNull File getSchema(@NotNull Class<?> type) throws IllegalArgumentException {
         if(!typeSchemaMap.containsKey(type) && type.isAnnotationPresent(GlobalDefinition.class)) {
+            // TODO add enum support
             String definitionName = type.getAnnotation(GlobalDefinition.class).value();
             File schemaFile = new File(definitionsDir, definitionName + ".schema.json");
             SchemaBuilder schemaBuilder = SchemaBuilder.clazz(project, schemaFile, type);

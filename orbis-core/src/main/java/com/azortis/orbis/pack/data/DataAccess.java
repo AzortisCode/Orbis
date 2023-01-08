@@ -22,6 +22,7 @@ import com.azortis.orbis.generator.biome.Biome;
 import com.azortis.orbis.generator.biome.Distributor;
 import com.azortis.orbis.generator.noise.Noise;
 import com.azortis.orbis.generator.terrain.Terrain;
+import com.google.common.base.Preconditions;
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
@@ -149,11 +150,23 @@ public abstract class DataAccess {
      * @return The corresponding component type.
      * @throws IllegalArgumentException If the data type isn't part of a component access.
      */
-    public Class<? extends ComponentAccess> getAccessType(@NotNull Class<?> type) throws IllegalArgumentException {
+    public @NotNull Class<? extends ComponentAccess> getAccessType(@NotNull Class<?> type)
+            throws IllegalArgumentException {
         for (ImmutableSet<Class<?>> set : componentTypes.keySet()) {
             if (set.contains(type)) return componentTypes.get(set);
         }
         throw new IllegalArgumentException(type + " isn't a component data type");
+    }
+
+    public @Unmodifiable @NotNull Set<String> getComponentNames(@NotNull Class<?> type)
+            throws IllegalArgumentException {
+        Preconditions.checkArgument(type.isAnnotationPresent(Component.class),
+                "Given type is not a component");
+        Class<? extends ComponentAccess> accessType = type.getAnnotation(Component.class).value();
+        if (componentAccessTable.containsRow(accessType)) {
+            return Set.copyOf(componentAccessTable.row(accessType).keySet());
+        }
+        return Set.of();
     }
 
     /**

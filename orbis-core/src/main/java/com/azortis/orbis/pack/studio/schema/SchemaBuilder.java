@@ -19,8 +19,8 @@
 package com.azortis.orbis.pack.studio.schema;
 
 import com.azortis.orbis.Orbis;
-import com.azortis.orbis.pack.data.DataAccess;
 import com.azortis.orbis.pack.studio.Project;
+import com.azortis.orbis.pack.studio.StudioDataAccess;
 import com.google.common.base.Preconditions;
 import com.google.gson.JsonObject;
 import org.jetbrains.annotations.NotNull;
@@ -42,10 +42,10 @@ import java.nio.file.StandardOpenOption;
 public sealed abstract class SchemaBuilder permits ClassBuilder, BlockBuilder, EntriesBuilder {
 
     protected final Project project;
-    protected final DataAccess data;
+    protected final StudioDataAccess data;
     protected final File schemaFile;
 
-    protected SchemaBuilder(@NotNull Project project, @NotNull DataAccess data, @NotNull File schemaFile) {
+    protected SchemaBuilder(@NotNull Project project, @NotNull StudioDataAccess data, @NotNull File schemaFile) {
         this.project = project;
         this.data = data;
         this.schemaFile = schemaFile;

@@ -18,8 +18,8 @@
 
 package com.azortis.orbis.pack.studio.schema;
 
-import com.azortis.orbis.pack.data.DataAccess;
 import com.azortis.orbis.pack.studio.Project;
+import com.azortis.orbis.pack.studio.StudioDataAccess;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import org.jetbrains.annotations.NotNull;
@@ -33,7 +33,7 @@ public final class EntriesBuilder extends SchemaBuilder {
     private final Class<?> type;
     private final String name;
 
-    EntriesBuilder(@NotNull Project project, @NotNull DataAccess data,
+    EntriesBuilder(@NotNull Project project, @NotNull StudioDataAccess data,
                    @NotNull File schemaFile, @NotNull Class<?> type, @Nullable String name) {
         super(project, data, schemaFile);
         this.type = type;

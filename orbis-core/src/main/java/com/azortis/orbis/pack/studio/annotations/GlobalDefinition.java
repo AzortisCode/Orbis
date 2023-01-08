@@ -32,6 +32,7 @@ import java.lang.annotation.*;
  * @author Jake Nijssen
  * @since 0.3-Alpha
  */
+@Inherited
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)

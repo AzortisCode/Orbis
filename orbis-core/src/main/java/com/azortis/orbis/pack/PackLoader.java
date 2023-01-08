@@ -36,7 +36,9 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.*;
 
-public final class PackLoader { // TODO Properly document this class, so it becomes less confusing
+public final class PackLoader {
+
+    // TODO Document this class + make it more smart for more useful insights
     private static final Map<World, Map<Method, Object>> postInjectionMethods = new HashMap<>();
 
     /**
@@ -72,7 +74,7 @@ public final class PackLoader { // TODO Properly document this class, so it beco
                     if (!name.equalsIgnoreCase("")) {
                         Field dataPathNameField = dimension.getClass().getDeclaredField(name);
                         dataPathNameField.setAccessible(true);
-                        if (Collection.class.isAssignableFrom(field.getType())) { // TODO maybe add Array support?
+                        if (Collection.class.isAssignableFrom(field.getType())) { // TODO add Array & Map support.
                             Collection<String> dataPaths = (Collection<String>) dataPathNameField.get(dimension);
                             dataPathNameField.setAccessible(false);
                             Inject inject = field.getAnnotation(Inject.class);
