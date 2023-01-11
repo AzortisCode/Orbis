@@ -20,6 +20,7 @@ package com.azortis.orbis.pack.studio;
 
 import com.azortis.orbis.Orbis;
 import com.azortis.orbis.Registry;
+import com.azortis.orbis.generator.Dimension;
 import com.azortis.orbis.pack.data.Component;
 import com.azortis.orbis.pack.data.DataAccess;
 import com.azortis.orbis.pack.studio.schema.SchemaManager;
@@ -63,23 +64,30 @@ public final class Project {
 
     Project(String name, File directory) throws IOException {
         this.name = name;
-        this.directory = directory;
+        this.directory = directory.getAbsoluteFile();
+
+        // Create the settings folder before creating the schema manager
+        this.settingsDir = new File(this.directory + "/.orbis/");
+        if (!settingsDir.exists() && !settingsDir.mkdirs())
+            Orbis.getLogger().error("Failed to create /.orbis/ settings directory for {}", name);
+
         this.dataAccess = new StudioDataAccess(directory);
         this.schemaManager = new SchemaManager(this);
 
         // Initialize code-workspace config for VSCode completions
-        File workspaceFile = new File(directory + "/" + name + ".code-workspace");
-        if (workspaceFile.exists()) {
-            JsonObject existingWorkspace = Orbis.getGson().fromJson(new FileReader(workspaceFile), JsonObject.class);
-            this.workspaceConfig = new WorkspaceConfig(existingWorkspace.getAsJsonObject("settings"),
-                    this, workspaceFile);
-        } else {
+        File workspaceFile = new File(this.directory + "/" + name + ".code-workspace");
+        defaultWorkspace:
+        {
+            if (workspaceFile.exists()) {
+                JsonObject existingWorkspace = Orbis.getGson().fromJson(new FileReader(workspaceFile), JsonObject.class);
+                if (existingWorkspace != null) {
+                    this.workspaceConfig = new WorkspaceConfig(existingWorkspace.getAsJsonObject("settings"),
+                            this, workspaceFile);
+                    break defaultWorkspace;
+                }
+            }
             this.workspaceConfig = new WorkspaceConfig(WorkspaceConfig.DEFAULT_SETTINGS, this, workspaceFile);
         }
-
-        this.settingsDir = new File(directory + "/.orbis/");
-        if (!settingsDir.exists() && !settingsDir.mkdirs())
-            Orbis.getLogger().error("Failed to create /.orbis/ settings directory for {}", name);
 
         // Create a studio world, so we have a data access point.
         this.studioWorld = Orbis.getPlatform().createStudioWorld(this);
@@ -182,6 +190,7 @@ public final class Project {
                 } else {
                     workspaceConfig.addDirectory(type, directory);
                 }
+                workspaceConfig.save();
             }
             doHotReload();
             lock.release();
@@ -206,11 +215,16 @@ public final class Project {
             }
 
             // Reset the entries for the file type
-            Class<?> type = dataAccess.getType(file.getParent());
-            if(dataAccess.isComponentType(type)) {
-                schemaManager.resetEntries(type, dataAccess.getComponentName(file.getParent()));
-            } else {
-                schemaManager.resetEntries(type);
+            if (dataAccess.hasType(file.getParent())) {
+                Class<?> type = dataAccess.getType(file.getParent());
+                if (type == Dimension.class) {
+                    workspaceConfig.reset();
+                    workspaceConfig.save();
+                } else if (dataAccess.isComponentType(type)) {
+                    schemaManager.resetEntries(type, dataAccess.getComponentName(file.getParent()));
+                } else {
+                    schemaManager.resetEntries(type);
+                }
             }
             doHotReload();
             lock.release();
@@ -225,60 +239,62 @@ public final class Project {
         try {
             lock.acquire();
 
-            Class<?> dataType = dataAccess.getType(file.getParent());
+            if (dataAccess().hasType(file.getParent())) {
+                Class<?> dataType = dataAccess.getType(file.getParent());
 
-            // Changes made to the type of data classes that support components have to be processed properly
-            // in order for the schema's to properly match against the changed type
-            if (DataAccess.GENERATOR_TYPES.containsKey(dataType)) {
-                try {
-                    JsonObject generatorObject = Orbis.getGson().fromJson(new FileReader(file.toFile()), JsonObject.class);
+                // Changes made to the type of data classes that support components have to be processed properly
+                // in order for the schema's to properly match against the changed type
+                if (DataAccess.GENERATOR_TYPES.containsKey(dataType)) {
+                    try {
+                        JsonObject generatorObject = Orbis.getGson().fromJson(new FileReader(file.toFile()), JsonObject.class);
 
-                    // Make sure the file actually has a type specified.
-                    if (generatorObject.has("type")) {
-                        Key key = Key.key(generatorObject.get("type").getAsString());
+                        // Make sure the file actually has a type specified.
+                        if (generatorObject.has("type")) {
+                            Key key = Key.key(generatorObject.get("type").getAsString());
 
-                        // Check if the file is already registered as a component file
-                        if (dataAccess.isComponentFile(file)) {
-                            // If the stored implementation type doesn't coincide anymore with the current type
-                            // reset the system so that it can be figured out properly.
-                            if (!key.equals(dataAccess.getComponentKey(file))) {
-                                dataAccess.reset();
-                                schemaManager.reset();
-                                workspaceConfig.resetComponents();
-                                workspaceConfig.save();
+                            // Check if the file is already registered as a component file
+                            if (dataAccess.isComponentFile(file)) {
+                                // If the stored implementation type doesn't coincide anymore with the current type
+                                // reset the system so that it can be figured out properly.
+                                if (!key.equals(dataAccess.getComponentKey(file))) {
+                                    dataAccess.reset();
+                                    schemaManager.reset();
+                                    workspaceConfig.resetComponents();
+                                    workspaceConfig.save();
+                                }
+                            } else {
+                                Registry<?> registry = Registry.getRegistry(dataType);
+
+                                // If the file is not registered as a component file, but has a type with component attached
+                                // to it, we need to reset the system so that it can figure out if it matches with a
+                                // component root directory and registers it.
+                                if (registry.hasType(key) && registry.getType(key).isAnnotationPresent(Component.class)) {
+                                    dataAccess.reset();
+                                    schemaManager.reset();
+                                    workspaceConfig.resetComponents();
+                                    workspaceConfig.save();
+                                }
                             }
                         } else {
-                            Registry<?> registry = Registry.getRegistry(dataType);
-
-                            // If the file is not registered as a component file, but has a type with component attached
-                            // to it, we need to reset the system so that it can figure out if it matches with a
-                            // component root directory and registers it.
-                            if (registry.hasType(key) && registry.getType(key).isAnnotationPresent(Component.class)) {
+                            // If no type is specified anymore, but it was registered as a component file, remove the
+                            // component from the system
+                            if (dataAccess.isComponentFile(file)) {
+                                String componentName = file.getFileName().toString().replace(".json", "").trim();
                                 dataAccess.reset();
-                                schemaManager.reset();
+                                schemaManager.deleteComponentSchemas(dataType, componentName);
                                 workspaceConfig.resetComponents();
                                 workspaceConfig.save();
                             }
+                            Orbis.getLogger().error("Generator file {} of type {} doesn't have a type specified!", file,
+                                    dataType.getSimpleName().toLowerCase(Locale.ENGLISH));
                         }
-                    } else {
-                        // If no type is specified anymore, but it was registered as a component file, remove the
-                        // component from the system
-                        if (dataAccess.isComponentFile(file)) {
-                            String componentName = file.getFileName().toString().replace(".json", "").trim();
-                            dataAccess.reset();
-                            schemaManager.deleteComponentSchemas(dataType, componentName);
-                            workspaceConfig.resetComponents();
-                            workspaceConfig.save();
-                        }
-                        Orbis.getLogger().error("Generator file {} of type {} doesn't have a type specified!", file,
-                                dataType.getSimpleName().toLowerCase(Locale.ENGLISH));
-                    }
 
-                } catch (FileNotFoundException e) {
-                    throw new RuntimeException(e);
+                    } catch (FileNotFoundException e) {
+                        throw new RuntimeException(e);
+                    }
                 }
+                doHotReload();
             }
-            doHotReload();
             lock.release();
         } catch (InterruptedException ex) {
             Orbis.getLogger().error("Failed to process file modify event for {}", directory);
@@ -317,7 +333,7 @@ public final class Project {
 
             // Reset the entries for the file type
             Class<?> type = dataAccess.getType(file.getParent());
-            if(dataAccess.isComponentType(type)) {
+            if (dataAccess.isComponentType(type)) {
                 schemaManager.resetEntries(type, dataAccess.getComponentName(file.getParent()));
             } else {
                 schemaManager.resetEntries(type);
@@ -331,7 +347,7 @@ public final class Project {
     }
 
     private void doHotReload() {
-        if (lock.getQueueLength() == 0 && (hotReloadTask == null || hotReloadTask.isQueued())) {
+        if (lock.getQueueLength() == 0 && (hotReloadTask == null || !hotReloadTask.isQueued())) {
             hotReloadTask = Orbis.getPlatform().scheduler().runDelayedTaskAsync(studioWorld::hotReload,
                     Orbis.getSettings().studio().hotReloadDelay());
         }

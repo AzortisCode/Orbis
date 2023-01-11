@@ -33,14 +33,14 @@ public final class EntriesBuilder extends SchemaBuilder {
     private final Class<?> type;
     private final String name;
 
-    EntriesBuilder(@NotNull Project project, @NotNull StudioDataAccess data,
+    EntriesBuilder(@NotNull Project project, @NotNull StudioDataAccess data, @NotNull SchemaManager schemaManager,
                    @NotNull File schemaFile, @NotNull Class<?> type, @Nullable String name) {
-        super(project, data, schemaFile);
+        super(project, data, schemaManager, schemaFile);
         this.type = type;
         this.name = name;
 
         // Create initial schema
-        schema.addProperty("$schema", "https://json-schema.org/draft/2020-12/schema");
+        schema.addProperty("$schema", "http://json-schema.org/draft-07/schema");
         schema.addProperty("type", "string");
     }
 
@@ -54,6 +54,7 @@ public final class EntriesBuilder extends SchemaBuilder {
             // For components make sure to append the component name
             data.getDataEntries(type, name).forEach(entries::add);
         }
+        if (entries.isEmpty()) entries.add("NONE");
         schema.add("enum", entries);
         return schema;
     }

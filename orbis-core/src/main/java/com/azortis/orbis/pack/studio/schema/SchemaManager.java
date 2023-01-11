@@ -56,38 +56,42 @@ public final class SchemaManager {
     public SchemaManager(@NotNull Project project) {
         this.project = project;
         this.dataAccess = project.dataAccess();
-        this.schemasDir = new File(project.settingsDir() + "/.orbis/schemas/");
+        this.schemasDir = new File(project.settingsDir() + "/schemas/");
 
-        if (!schemasDir.exists() && !schemasDir.mkdirs()) Orbis.getLogger().error("Failed to create schemas folder!");
+        if (!schemasDir.exists() && !schemasDir.mkdirs())
+            Orbis.getLogger().error("Failed to create schemas directory!");
 
         // Definitions.
         // Global definitions
         this.definitionsDir = new File(schemasDir + "/definitions/");
+        if (!definitionsDir.exists() && !definitionsDir.mkdirs())
+            Orbis.getLogger().error("Failed to create definitions directory!");
 
         // Generate all the data definitions
         File blocksSchemaFile = new File(definitionsDir, "blocks.schema.json");
-        SchemaBuilder blocksSchema = SchemaBuilder.blocks(project, blocksSchemaFile);
+        SchemaBuilder blocksSchema = SchemaBuilder.blocks(project, this, blocksSchemaFile);
         typeSchemaMap.put(ConfiguredBlock.class, blocksSchema);
         blocksSchema.save();
 
         // Generate the pack & dimension schema
         this.packSchemaFile = new File(schemasDir, "pack.schema.json");
-        SchemaBuilder.clazz(project, packSchemaFile, Pack.class);
+        SchemaBuilder packBuilder = SchemaBuilder.clazz(project, this, packSchemaFile, Pack.class);
         this.dimensionSchemaFile = new File(schemasDir, "dimension.schema.json");
-        SchemaBuilder.clazz(project, dimensionSchemaFile, Dimension.class);
+        SchemaBuilder dimensionBuilder = SchemaBuilder.clazz(project, this, dimensionSchemaFile, Dimension.class);
 
         // Create the entries directory
         File entriesDir = new File(schemasDir + "/entries/");
-        if (!entriesDir.exists() && !entriesDir.mkdirs()) Orbis.getLogger().error("Failed to create entry schemas folder!");
+        if (!entriesDir.exists() && !entriesDir.mkdirs())
+            Orbis.getLogger().error("Failed to create entry schemas folder!");
 
         for (Class<?> dataType : DataAccess.DATA_TYPES.keySet()) {
             File schemaFile = new File(schemasDir, dataType.getSimpleName()
                     .toLowerCase(Locale.ENGLISH) + ".schema.json");
-            typeSchemaMap.put(dataType, SchemaBuilder.clazz(project, schemaFile, dataType));
+            typeSchemaMap.put(dataType, SchemaBuilder.clazz(project, this, schemaFile, dataType));
 
             File dataEntriesFile = new File(entriesDir, dataType.getSimpleName()
                     .toLowerCase(Locale.ENGLISH) + "-entries.schema.json");
-            SchemaBuilder dataEntriesBuilder = SchemaBuilder.entries(project, dataEntriesFile, dataType);
+            SchemaBuilder dataEntriesBuilder = SchemaBuilder.entries(project, this, dataEntriesFile, dataType);
             typeEntriesMap.put(dataType, dataEntriesBuilder);
         }
 
@@ -102,16 +106,18 @@ public final class SchemaManager {
 
             File schemaFile = new File(generatorDir, generatorType.getSimpleName()
                     .toLowerCase(Locale.ENGLISH) + ".schema.json");
-            SchemaBuilder schemaBuilder = SchemaBuilder.clazz(project, schemaFile, generatorType);
+            SchemaBuilder schemaBuilder = SchemaBuilder.clazz(project, this, schemaFile, generatorType);
             typeSchemaMap.put(generatorType, schemaBuilder);
 
             File generatorEntriesFile = new File(entriesDir, generatorType.getSimpleName()
                     .toLowerCase(Locale.ENGLISH) + "-entries.schema.json");
-            SchemaBuilder generatorEntriesBuilder = SchemaBuilder.entries(project, generatorEntriesFile, generatorType);
+            SchemaBuilder generatorEntriesBuilder = SchemaBuilder.entries(project, this, generatorEntriesFile, generatorType);
             typeEntriesMap.put(generatorType, generatorEntriesBuilder);
         }
-        typeSchemaMap.entrySet().stream().filter(entry -> DataAccess.DATA_TYPES.containsKey(entry.getKey()))
-                        .forEach(entry -> entry.getValue().save());
+        packBuilder.save();
+        dimensionBuilder.save();
+        typeEntriesMap.values().forEach(SchemaBuilder::save);
+        typeSchemaMap.values().forEach(SchemaBuilder::save);
         reset();
     }
 
@@ -148,7 +154,7 @@ public final class SchemaManager {
                                        @NotNull String name) {
         File componentDir = new File(schemasDir + "/" + generatorType.getSimpleName()
                 .toLowerCase(Locale.ENGLISH) + "/" + name + "/");
-        if(!componentDir.exists() && componentDir.mkdirs())
+        if (!componentDir.exists() && componentDir.mkdirs())
             Orbis.getLogger().error("Failed to create components directory for {}", name);
 
         File entriesDir = new File(componentDir + "/entries/");
@@ -159,11 +165,11 @@ public final class SchemaManager {
         for (Class<?> dataType : Registry.getRegistry(generatorType).getDataTypes(componentType)) {
             File schemaFile = new File(componentDir, dataType.getSimpleName()
                     .toLowerCase(Locale.ENGLISH) + ".schema.json");
-            componentTypeSchemaTable.put(dataType, name, SchemaBuilder.clazz(project, schemaFile, dataType, name));
+            componentTypeSchemaTable.put(dataType, name, SchemaBuilder.clazz(project, this, schemaFile, dataType, name));
 
             File dataEntriesFile = new File(entriesDir, dataType.getSimpleName()
                     .toLowerCase(Locale.ENGLISH) + "-entries.schema.json");
-            componentTypeEntriesTable.put(dataType, name, SchemaBuilder.entries(project, dataEntriesFile, dataType, name));
+            componentTypeEntriesTable.put(dataType, name, SchemaBuilder.entries(project, this, dataEntriesFile, dataType, name));
         }
 
         // Generate the schema's
@@ -177,19 +183,19 @@ public final class SchemaManager {
     public void deleteComponentSchemas(@NotNull Class<?> generatorType, @NotNull String name) {
         File componentDir = new File(schemasDir + "/" + generatorType.getSimpleName()
                 .toLowerCase(Locale.ENGLISH) + "/" + name + "/");
-        if(componentDir.exists() && !componentDir.delete())
+        if (componentDir.exists() && !componentDir.delete())
             Orbis.getLogger().error("Failed to delete components directory for {}", name);
     }
 
     public void resetEntries(@NotNull Class<?> type) {
-        if(typeEntriesMap.containsKey(type)) {
+        if (typeEntriesMap.containsKey(type)) {
             typeEntriesMap.get(type).save();
         }
     }
 
     @SuppressWarnings("DataFlowIssue")
     public void resetEntries(@NotNull Class<?> type, @NotNull String name) {
-        if(componentTypeEntriesTable.contains(type, name)) {
+        if (componentTypeEntriesTable.contains(type, name)) {
             componentTypeEntriesTable.get(type, name).save();
         }
     }
@@ -203,11 +209,11 @@ public final class SchemaManager {
     }
 
     public @NotNull File getSchema(@NotNull Class<?> type) throws IllegalArgumentException {
-        if(!typeSchemaMap.containsKey(type) && type.isAnnotationPresent(GlobalDefinition.class)) {
+        if (!typeSchemaMap.containsKey(type) && type.isAnnotationPresent(GlobalDefinition.class)) {
             // TODO add enum support
             String definitionName = type.getAnnotation(GlobalDefinition.class).value();
             File schemaFile = new File(definitionsDir, definitionName + ".schema.json");
-            SchemaBuilder schemaBuilder = SchemaBuilder.clazz(project, schemaFile, type);
+            SchemaBuilder schemaBuilder = SchemaBuilder.clazz(project, this, schemaFile, type);
             typeSchemaMap.put(type, schemaBuilder);
             schemaBuilder.save();
         }

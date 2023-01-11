@@ -30,7 +30,7 @@ import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import org.apiguardian.api.API;
 import org.bukkit.block.data.BlockData;
-import org.bukkit.craftbukkit.v1_19_R1.block.data.CraftBlockData;
+import org.bukkit.craftbukkit.v1_19_R2.block.data.CraftBlockData;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 

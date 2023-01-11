@@ -27,7 +27,7 @@ import com.google.common.collect.ImmutableSet;
 import it.unimi.dsi.fastutil.ints.Int2ObjectArrayMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.kyori.adventure.key.Key;
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import org.apiguardian.api.API;
 import org.jetbrains.annotations.NotNull;
 
@@ -52,9 +52,9 @@ public final class PaperBlockRegistry implements IBlockRegistry {
     @SuppressWarnings("PatternValidation")
     public PaperBlockRegistry() {
         ImmutableMap.Builder<Key, Block> builder = ImmutableMap.builder();
-        for (net.minecraft.world.level.block.Block nativeBlock : Registry.BLOCK) {
+        for (net.minecraft.world.level.block.Block nativeBlock : BuiltInRegistries.BLOCK) {
             Block block = new PaperBlock(nativeBlock);
-            builder.put(Key.key(Registry.BLOCK.getKey(nativeBlock).toString()), block);
+            builder.put(Key.key(BuiltInRegistries.BLOCK.getKey(nativeBlock).toString()), block);
             idBlockMap.put(block.id(), block);
 
             for (BlockState state : block.states()) {

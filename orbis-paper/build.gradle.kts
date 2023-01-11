@@ -43,9 +43,9 @@ dependencies {
     paperDevBundle("1.19.3-R0.1-SNAPSHOT")
 
     // Compile
-    compileOnly("net.kyori:adventure-nbt:4.11.0")
-    compileOnly("cloud.commandframework:cloud-paper:1.7.1")
-    compileOnly("cloud.commandframework:cloud-minecraft-extras:1.7.1")
+    compileOnly("net.kyori:adventure-nbt:4.12.0")
+    compileOnly("cloud.commandframework:cloud-paper:1.8.0")
+    compileOnly("cloud.commandframework:cloud-minecraft-extras:1.8.0")
 }
 
 java {

@@ -43,36 +43,49 @@ public sealed abstract class SchemaBuilder permits ClassBuilder, BlockBuilder, E
 
     protected final Project project;
     protected final StudioDataAccess data;
+    protected final SchemaManager schemaManager;
     protected final File schemaFile;
 
-    protected SchemaBuilder(@NotNull Project project, @NotNull StudioDataAccess data, @NotNull File schemaFile) {
+    protected SchemaBuilder(@NotNull Project project, @NotNull StudioDataAccess data,
+                            @NotNull SchemaManager schemaManager, @NotNull File schemaFile) {
         this.project = project;
         this.data = data;
+        this.schemaManager = schemaManager;
         this.schemaFile = schemaFile;
+
+        // Create empty dummy file, so it can be found when initializing
+        try {
+            if (!schemaFile.exists() && !schemaFile.createNewFile()) {
+                Orbis.getLogger().info("Failed to create schema dummy file {}", schemaFile.getName());
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
     }
 
-    static BlockBuilder blocks(@NotNull Project project, @NotNull File blocksFile) {
-        return new BlockBuilder(project, project.dataAccess(), blocksFile);
+    static BlockBuilder blocks(@NotNull Project project, @NotNull SchemaManager schemaManager, @NotNull File blocksFile) {
+        return new BlockBuilder(project, project.dataAccess(), schemaManager, blocksFile);
     }
 
-    static EntriesBuilder entries(@NotNull Project project, @NotNull File entriesFile,
-                                  @NotNull Class<?> type) {
-        return entries(project, entriesFile, type, null);
+    static EntriesBuilder entries(@NotNull Project project, @NotNull SchemaManager schemaManager,
+                                  @NotNull File entriesFile, @NotNull Class<?> type) {
+        return entries(project, schemaManager, entriesFile, type, null);
     }
 
-    static EntriesBuilder entries(@NotNull Project project, @NotNull File entriesFile,
-                                 @NotNull Class<?> type, @Nullable String name) {
-        return new EntriesBuilder(project, project.dataAccess(), entriesFile, type, name);
+    static EntriesBuilder entries(@NotNull Project project, @NotNull SchemaManager schemaManager,
+                                  @NotNull File entriesFile, @NotNull Class<?> type, @Nullable String name) {
+        return new EntriesBuilder(project, project.dataAccess(), schemaManager, entriesFile, type, name);
     }
 
-    static ClassBuilder clazz(@NotNull Project project, @NotNull File schemaFile,
-                      @NotNull Class<?> type) {
-        return clazz(project, schemaFile, type, null);
+    static ClassBuilder clazz(@NotNull Project project, @NotNull SchemaManager schemaManager,
+                              @NotNull File schemaFile, @NotNull Class<?> type) {
+        return clazz(project, schemaManager, schemaFile, type, null);
     }
 
-    static ClassBuilder clazz(@NotNull Project project, @NotNull File schemaFile,
-                      @NotNull Class<?> type, @Nullable String name) {
-        return new ClassBuilder(project, project.dataAccess(), schemaFile, type, name);
+    static ClassBuilder clazz(@NotNull Project project, @NotNull SchemaManager schemaManager, @NotNull File schemaFile,
+                              @NotNull Class<?> type, @Nullable String name) {
+        return new ClassBuilder(project, project.dataAccess(), schemaManager, schemaFile, type, name);
     }
 
     public File file() {
@@ -103,8 +116,11 @@ public sealed abstract class SchemaBuilder permits ClassBuilder, BlockBuilder, E
      * @return A reference string that VSCode accepts.
      */
     protected String getSchemaReference(@NotNull File referencedSchemaFile) {
+        Preconditions.checkArgument(referencedSchemaFile.exists(),
+                "Referenced schema file doesn't exist!");
         Preconditions.checkArgument(referencedSchemaFile.isFile(),
                 "Referenced schema file must be a file not a directory!");
-        return schemaFile.toPath().relativize(referencedSchemaFile.toPath()).toString();
+        return schemaFile.getParentFile().toPath().relativize(referencedSchemaFile.toPath())
+                .toString().replaceAll("\\\\", "/");
     }
 }

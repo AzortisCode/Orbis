@@ -34,15 +34,16 @@ import java.io.File;
 
 public final class BlockBuilder extends SchemaBuilder {
 
-    BlockBuilder(@NotNull Project project, @NotNull StudioDataAccess data, @NotNull File schemaFile) {
-        super(project, data, schemaFile);
+    BlockBuilder(@NotNull Project project, @NotNull StudioDataAccess data,
+                 @NotNull SchemaManager schemaManager, @NotNull File schemaFile) {
+        super(project, data, schemaManager, schemaFile);
     }
 
     @Override
     protected @NotNull JsonObject generateSchema() {
         // TODO, add description values to each block property.
         JsonObject schema = new JsonObject();
-        schema.addProperty("$schema", "https://json-schema.org/draft/2020-12/schema");
+        schema.addProperty("$schema", "http://json-schema.org/draft-07/schema");
         schema.addProperty("description", "Must be a valid block.");
 
         // The Configured Block type is either just a string of the block type, or one that supports a blocks properties

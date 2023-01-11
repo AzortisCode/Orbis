@@ -46,9 +46,9 @@ public final class ClassBuilder extends SchemaBuilder {
     private final boolean isTyped;
     private final String componentName;
 
-    ClassBuilder(@NotNull Project project, @NotNull StudioDataAccess data,
+    ClassBuilder(@NotNull Project project, @NotNull StudioDataAccess data, @NotNull SchemaManager schemaManager,
                  @NotNull File schemaFile, @NotNull Class<?> type, @Nullable String name) {
-        super(project, data, schemaFile);
+        super(project, data, schemaManager, schemaFile);
         this.type = type;
         this.isGenerator = DataAccess.GENERATOR_TYPES.containsKey(type);
         this.isTyped = type.isAnnotationPresent(Typed.class);
@@ -234,14 +234,13 @@ public final class ClassBuilder extends SchemaBuilder {
                     } else if (field.isAnnotationPresent(Entries.class)) {
                         Class<?> entryType = field.getAnnotation(Entries.class).value();
                         property.remove("type");
-                        if (project.dataAccess().isComponentType(entryType)) {
+                        if (data.isComponentType(entryType)) {
                             if (name == null)
                                 throw new NullPointerException("Field type is a component type, but no name is passed!");
-                            property.addProperty("$ref", getSchemaReference(project.schemaManager()
+                            property.addProperty("$ref", getSchemaReference(schemaManager
                                     .getSchema(entryType, name)));
                         } else {
-                            property.addProperty("$ref", getSchemaReference(project.schemaManager()
-                                    .getSchema(entryType)));
+                            property.addProperty("$ref", getSchemaReference(schemaManager.getSchema(entryType)));
                         }
                         description.append("Must be a valid ").append(entryType.getSimpleName()).append(".");
                     } else if (field.getName().equals("type") && field.getDeclaringClass()
@@ -294,22 +293,21 @@ public final class ClassBuilder extends SchemaBuilder {
                                 } else if (field.isAnnotationPresent(Entries.class)) {
                                     Class<?> entryType = field.getAnnotation(Entries.class).value();
                                     items.remove("type");
-                                    if (project.dataAccess().isComponentType(entryType)) {
+                                    if (data.isComponentType(entryType)) {
                                         if (name == null)
                                             throw new NullPointerException(
                                                     "Field type is a component type, but no name is passed!");
-                                        items.addProperty("$ref", getSchemaReference(project.schemaManager()
+                                        items.addProperty("$ref", getSchemaReference(schemaManager
                                                 .getSchema(entryType, name)));
                                     } else {
-                                        items.addProperty("$ref", getSchemaReference(project.schemaManager()
-                                                .getSchema(entryType)));
+                                        items.addProperty("$ref", getSchemaReference(schemaManager.getSchema(entryType)));
                                     }
                                     description.append("Must be valid ").append(entryType.getSimpleName()).append("'s.");
                                 }
                             }
                             case "object" -> {
                                 if (collectionType.isAnnotationPresent(GlobalDefinition.class)) {
-                                    items.addProperty("$ref", getSchemaReference(project.schemaManager()
+                                    items.addProperty("$ref", getSchemaReference(schemaManager
                                             .getSchema(collectionType)));
                                 } else {
                                     String definitionName = collectionType.getCanonicalName();
@@ -352,8 +350,7 @@ public final class ClassBuilder extends SchemaBuilder {
                 }
                 case "object" -> {
                     if (type.isAnnotationPresent(GlobalDefinition.class)) {
-                        property.addProperty("$ref", getSchemaReference(project.schemaManager()
-                                .getSchema(type)));
+                        property.addProperty("$ref", getSchemaReference(schemaManager.getSchema(type)));
                     } else {
                         String definitionName = type.getCanonicalName();
                         if (!definitions.has(definitionName)) {

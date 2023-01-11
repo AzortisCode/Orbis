@@ -39,7 +39,7 @@ public class DirectoryDataAccess extends DataAccess {
     protected final File dataDirectory;
 
     public DirectoryDataAccess(File dataDirectory) {
-        this.dataDirectory = dataDirectory;
+        this.dataDirectory = dataDirectory.getAbsoluteFile();
     }
 
     @Override
@@ -103,9 +103,11 @@ public class DirectoryDataAccess extends DataAccess {
                 return files.stream().map(File::getName).map(FilenameUtils::removeExtension)
                         .collect(Collectors.toUnmodifiableSet());
             } else {
-                final String trimmedDataPath = dataPath.replace("**", "").trim();
-                return files.stream().map(File::getPath)
-                        .map(entry -> entry.substring(entry.indexOf(entry.indexOf(trimmedDataPath))))
+                final File rootDataTypeDirectory = new File(dataDirectory +
+                        dataPath.replace("**", "").trim());
+                return files.stream().map(File::toPath)
+                        .map(entry -> rootDataTypeDirectory.toPath().relativize(entry).toString())
+                        .map(s -> s.replaceAll("\\\\", "/"))
                         .map(FilenameUtils::removeExtension).collect(Collectors.toUnmodifiableSet());
             }
         }

@@ -53,21 +53,21 @@ dependencies {
     compileOnly("com.google.guava:guava:31.0.1-jre")
     compileOnly("net.lingala.zip4j:zip4j:2.10.0")
     compileOnly("org.projectlombok:lombok:1.18.24")
-    compileOnly("cloud.commandframework:cloud-core:1.7.1")
-    compileOnly("cloud.commandframework:cloud-annotations:1.7.1")
+    compileOnly("cloud.commandframework:cloud-core:1.8.0")
+    compileOnly("cloud.commandframework:cloud-annotations:1.8.0")
 
     annotationProcessor("org.projectlombok:lombok:1.18.20")
     annotationProcessor("cloud.commandframework:cloud-annotations:1.7.1")
 
     // Adapters should determine if libraries should be downloaded, or if the platform already has them provided
-    compileOnly("net.kyori:adventure-api:4.11.0")
-    compileOnly("net.kyori:adventure-nbt:4.11.0")
-    compileOnly("net.kyori:adventure-text-minimessage:4.11.0")
+    compileOnly("net.kyori:adventure-api:4.12.0")
+    compileOnly("net.kyori:adventure-nbt:4.12.0")
+    compileOnly("net.kyori:adventure-text-minimessage:4.12.0")
     compileOnly("it.unimi.dsi:fastutil:8.5.6")
     compileOnly("com.google.code.gson:gson:2.10")
     compileOnly("org.slf4j:slf4j-api:1.7.31")
     compileOnly("commons-io:commons-io:2.8.0")
-    compileOnly("org.jetbrains:annotations:16.0.1")
+    compileOnly("org.jetbrains:annotations:23.1.0")
     compileOnly("org.apache.commons:commons-lang3:3.12.0")
 
 

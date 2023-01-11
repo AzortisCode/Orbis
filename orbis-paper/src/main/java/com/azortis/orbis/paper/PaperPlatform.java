@@ -63,13 +63,13 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-@Dependency(group = "cloud.commandframework", artifact = "cloud-paper", version = "1.7.1")
-@Dependency(group = "cloud.commandframework", artifact = "cloud-bukkit", version = "1.7.1")
-@Dependency(group = "cloud.commandframework", artifact = "cloud-paper", version = "1.7.1")
-@Dependency(group = "cloud.commandframework", artifact = "cloud-tasks", version = "1.7.1")
-@Dependency(group = "cloud.commandframework", artifact = "cloud-brigadier", version = "1.7.1")
-@Dependency(group = "cloud.commandframework", artifact = "cloud-minecraft-extras", version = "1.7.1")
-@Dependency(group = "net.kyori", artifact = "adventure-nbt", version = "4.11.0")
+@Dependency(group = "cloud.commandframework", artifact = "cloud-paper", version = "1.8.0")
+@Dependency(group = "cloud.commandframework", artifact = "cloud-bukkit", version = "1.8.0")
+@Dependency(group = "cloud.commandframework", artifact = "cloud-paper", version = "1.8.0")
+@Dependency(group = "cloud.commandframework", artifact = "cloud-tasks", version = "1.8.0")
+@Dependency(group = "cloud.commandframework", artifact = "cloud-brigadier", version = "1.8.0")
+@Dependency(group = "cloud.commandframework", artifact = "cloud-minecraft-extras", version = "1.8.0")
+@Dependency(group = "net.kyori", artifact = "adventure-nbt", version = "4.12.0")
 public class PaperPlatform implements Platform, Listener {
 
     private final OrbisPlugin plugin;
@@ -287,7 +287,7 @@ public class PaperPlatform implements Platform, Listener {
                         if (commandSender instanceof Player player) {
                             return getPlayer(player.getUniqueId());
                         } else if (commandSender instanceof ConsoleCommandSender) {
-                            return Bukkit::getConsoleSender;
+                            return (ConsoleSender) Bukkit::getConsoleSender;
                         }
                         return null;
                     }),

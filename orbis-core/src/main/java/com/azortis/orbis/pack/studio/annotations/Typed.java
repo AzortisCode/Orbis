@@ -34,8 +34,8 @@ import java.lang.annotation.Target;
  * <p><b>Note</b> It is recommended to locate the registry statically in the class, and use a static block to
  * register the registry.</p>
  *
- * @since 0.3-Alpha
  * @author Jake Nijssen
+ * @since 0.3-Alpha
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)

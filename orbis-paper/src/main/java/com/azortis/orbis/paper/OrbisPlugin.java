@@ -93,6 +93,7 @@ public final class OrbisPlugin extends JavaPlugin {
     @Override
     public void onDisable() {
         if (loaded) {
+            Bukkit.getScheduler().cancelTasks(this);
             Orbis.shutdown();
         }
     }

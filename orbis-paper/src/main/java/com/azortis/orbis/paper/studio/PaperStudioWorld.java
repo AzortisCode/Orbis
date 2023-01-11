@@ -31,11 +31,6 @@ import com.azortis.orbis.util.Location;
 import com.azortis.orbis.world.WorldAccess;
 import com.google.common.base.Preconditions;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.BiomeSource;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.chunk.ChunkAccess;
 import org.apache.commons.io.FileUtils;
@@ -44,7 +39,6 @@ import org.bukkit.Chunk;
 import org.bukkit.World;
 import org.bukkit.WorldCreator;
 import org.bukkit.craftbukkit.v1_19_R2.CraftWorld;
-import org.bukkit.craftbukkit.v1_19_R2.block.CraftBlock;
 import org.bukkit.craftbukkit.v1_19_R2.generator.CraftChunkData;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -60,8 +54,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Field;
-import java.util.Arrays;
 import java.util.Objects;
 import java.util.Random;
 import java.util.Set;
@@ -87,11 +79,13 @@ public final class PaperStudioWorld extends StudioWorld implements Listener {
     @Override
     public void hotReload() {
         // Start NMS
-        ServerLevel level = ((CraftWorld) nativeWorld).getHandle();
+        // TODO use reflection remapper to fix this
+        /*ServerLevel level = ((CraftWorld) nativeWorld).getHandle();
 
         // Update possible biomes.
         try {
             BiomeSource biomeSource = level.getChunkSource().getGenerator().getBiomeSource();
+            biomeSource.possibleBiomes();
             Field biomesField = biomeSource.getClass().getField("possibleBiomes");
             biomesField.setAccessible(true);
             Set<Holder<Biome>> possibleBiomes = (Set<Holder<Biome>>) biomesField.get(biomesField);
@@ -105,7 +99,7 @@ public final class PaperStudioWorld extends StudioWorld implements Listener {
             Orbis.getLogger().error("Failed to reset the possible biomes for studio world!", ex);
         }
         // End NMS
-        Arrays.stream(nativeWorld.getLoadedChunks()).parallel().forEach(this::regenChunk);
+        Arrays.stream(nativeWorld.getLoadedChunks()).parallel().forEach(this::regenChunk);*/
     }
 
     @Override
