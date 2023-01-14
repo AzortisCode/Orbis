@@ -28,30 +28,31 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
+@Description("The manifest of an Orbis data pack.")
 public final class Pack {
 
     @Required
-    @Description("The name of the pack")
+    @Description("The name of the pack.")
     private final String name;
 
     @Required
-    @Description("The name of the main author")
+    @Description("The name of the main author.")
     private final String author;
 
     @Required
-    @Description("The name of the dimension config file without the *.json")
+    @Description("The name of the dimension config file without the *.json.")
     @SerializedName("dimension")
     private final String dimensionFile;
 
     @Required
-    @Description("The version string version of the pack")
+    @Description("The version string version of the pack.")
     private final String packVersion;
 
     @ArrayType(Contributor.class)
-    @Description("Additional pack contributors")
+    @Description("Additional pack contributors.")
     private final List<Contributor> contributors = new ArrayList<>();
 
-    @Description("The description of the pack")
+    @Description("The description of the pack.")
     private final String description;
 
     public Pack(@NotNull String name, @NotNull String author,
@@ -87,8 +88,8 @@ public final class Pack {
         return description;
     }
 
-    public record Contributor(@Required @Description("The name of the contributor") @NotNull String name,
-                              @Description("Description of the contribution made by user") @Nullable String contribution) {
+    public record Contributor(@Required @Description("The name of the contributor.") @NotNull String name,
+                              @Description("Description of the contribution made by user.") @Nullable String contribution) {
     }
 
 }

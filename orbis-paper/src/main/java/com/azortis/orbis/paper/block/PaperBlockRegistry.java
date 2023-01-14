@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -20,7 +20,7 @@ package com.azortis.orbis.paper.block;
 
 import com.azortis.orbis.block.Block;
 import com.azortis.orbis.block.BlockState;
-import com.azortis.orbis.block.IBlockRegistry;
+import com.azortis.orbis.block.PlatformBlockRegistry;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
@@ -34,13 +34,13 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
 
 /**
- * The PaperMC platform implementation of {@link IBlockRegistry}
+ * The PaperMC platform implementation of {@link PlatformBlockRegistry}
  *
  * @author Jake Nijssen
  * @since 0.3-Alpha
  */
 @API(status = API.Status.INTERNAL, since = "0.3-Alpha", consumers = "com.azortis.orbis.paper")
-public final class PaperBlockRegistry implements IBlockRegistry {
+public final class PaperBlockRegistry implements PlatformBlockRegistry {
 
     private final ImmutableMap<Key, Block> keyBlockMap;
     private final Int2ObjectMap<Block> idBlockMap = new Int2ObjectArrayMap<>();

@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -104,7 +104,7 @@ public final class OrbisPlugin extends JavaPlugin {
         if (packName != null) {
             Pack pack = Orbis.getPackManager().getPack(packName);
             if (pack != null) {
-                return new PaperChunkGenerator(worldName, pack);
+                return new PaperChunkGenerator(pack);
             } else {
                 Orbis.getLogger().error("No pack by the fieldName {} exists!", packName);
                 return super.getDefaultWorldGenerator(worldName, packName);

@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -21,7 +21,7 @@ package com.azortis.orbis.pack.data;
 import com.azortis.orbis.generator.biome.Biome;
 import com.azortis.orbis.generator.biome.Distributor;
 import com.azortis.orbis.generator.noise.Noise;
-import com.azortis.orbis.generator.terrain.Terrain;
+import com.azortis.orbis.generator.surface.Surface;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.ImmutableMap;
@@ -68,9 +68,9 @@ public abstract class DataAccess {
     public static final String DISTRIBUTOR_PATH = GENERATORS_PATH + "distributor/";
 
     /**
-     * The data path for {@link Terrain}
+     * The data path for {@link Surface}
      */
-    public static final String TERRAIN_PATH = GENERATORS_PATH + "terrain/";
+    public static final String SURFACE_PATH = GENERATORS_PATH + "surface/";
 
     /**
      * Types that support {@link Component}'s, and can have multiple implementations.
@@ -78,7 +78,7 @@ public abstract class DataAccess {
      */
     public static final ImmutableMap<Class<?>, String> GENERATOR_TYPES = ImmutableMap.of(
             Noise.class, NOISE_PATH, Distributor.class, DISTRIBUTOR_PATH,
-            Terrain.class, TERRAIN_PATH);
+            Surface.class, SURFACE_PATH);
 
     /**
      * Types that do not support {@link Component} and have one implementation.
@@ -95,8 +95,8 @@ public abstract class DataAccess {
             return NOISE_PATH;
         } else if (type == Distributor.class) {
             return DISTRIBUTOR_PATH;
-        } else if (type == Terrain.class) {
-            return TERRAIN_PATH;
+        } else if (type == Surface.class) {
+            return SURFACE_PATH;
         }
         throw new IllegalArgumentException("Unsupported datatype " + type);
     }

@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -18,44 +18,64 @@
 
 package com.azortis.orbis.paper.generator;
 
-import com.azortis.orbis.block.BlockRegistry;
 import com.azortis.orbis.block.BlockState;
-import com.azortis.orbis.generator.ChunkData;
-import com.azortis.orbis.generator.Dimension;
+import com.azortis.orbis.block.Blocks;
+import com.azortis.orbis.paper.util.ConversionUtils;
+import com.azortis.orbis.world.ChunkAccess;
+import com.azortis.orbis.world.WorldAccess;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.chunk.ChunkAccess;
 import org.bukkit.craftbukkit.v1_19_R2.generator.CraftChunkData;
-import org.bukkit.generator.ChunkGenerator;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.Range;
 
-/**
- * More efficient ChunkData since we're skipping the whole {@link org.bukkit.block.data.BlockData} conversion,
- * and directly write using NMS its {@link net.minecraft.world.level.block.state.BlockState}
- */
-public final class PaperChunkData extends ChunkData {
+public final class PaperGeneratorChunkAccess implements ChunkAccess {
 
+    private final WorldAccess world;
     private final CraftChunkData handle;
+    private boolean loaded = true;
 
-    public PaperChunkData(Dimension dimension, ChunkGenerator.ChunkData handle) {
-        super(dimension);
-        this.handle = (CraftChunkData) handle;
+    public PaperGeneratorChunkAccess(@NotNull WorldAccess world, @NotNull CraftChunkData handle) {
+        this.world = world;
+        this.handle = handle;
     }
 
     @Override
-    public BlockState getBlock(int x, int y, int z) {
-        return BlockRegistry.fromStateId(net.minecraft.world.level.block.Block.getId(handle.getTypeId(x, y, z)));
+    public boolean isLoaded() {
+        return loaded;
+    }
+
+
+    @Override
+    public void unload() {
+        loaded = false;
     }
 
     @Override
-    protected void setBlock(int x, int y, int z, int stateId) {
-        if (x != (x & 0xf) || y < dimension.minHeight() || y >= dimension.maxHeight() || z != (z & 0xf)) {
+    public @NotNull BlockState getState(@Range(from = 0, to = 15) int x, int y, @Range(from = 0, to = 15) int z) {
+        return ConversionUtils.fromNative(handle.getHandle().getBlockState(x, y, z));
+    }
+
+    @Override
+    public void setState(@Range(from = 0, to = 15) int x, int y, @Range(from = 0, to = 15) int z,
+                         @Nullable BlockState state) {
+        if (state != null) {
+            setBlock(x, y, z, state.stateId());
+            return;
+        }
+        setBlock(x, y, z, Blocks.AIR.stateId());
+    }
+
+    private void setBlock(int x, int y, int z, int stateId) {
+        if (x != (x & 0xf) || y < world.minHeight() || y >= world.maxHeight() || z != (z & 0xf)) {
             return;
         }
 
         net.minecraft.world.level.block.state.BlockState blockState = Block.stateById(stateId);
-        ChunkAccess access = handle.getHandle();
+        net.minecraft.world.level.chunk.ChunkAccess access = handle.getHandle();
         BlockPos blockPos = new BlockPos(access.getPos().getMinBlockX() + x, y, access.getPos().getMinBlockZ() + z);
         net.minecraft.world.level.block.state.BlockState oldBlockState = access.setBlockState(blockPos, blockState, false);
 

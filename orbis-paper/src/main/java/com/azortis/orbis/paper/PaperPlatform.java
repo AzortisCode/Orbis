@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -93,7 +93,7 @@ public class PaperPlatform implements Platform, Listener {
      */
     @Override
     public @NotNull String adaptation() {
-        return "Bukkit";
+        return "Paper";
     }
 
     /**

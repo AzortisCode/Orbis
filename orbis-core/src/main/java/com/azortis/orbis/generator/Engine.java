@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -19,6 +19,7 @@
 package com.azortis.orbis.generator;
 
 import com.azortis.orbis.generator.biome.Distributor;
+import com.azortis.orbis.world.ChunkAccess;
 import com.azortis.orbis.world.World;
 import org.jetbrains.annotations.NotNull;
 
@@ -30,8 +31,7 @@ public abstract class Engine {
         this.world = world;
     }
 
-    @Deprecated
-    public abstract void generateChunk(int chunkX, int chunkZ, @NotNull ChunkData chunkData);
+    public abstract void generateChunk(int chunkX, int chunkZ, @NotNull ChunkAccess chunkAccess);
 
     public World world() {
         return world;

@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@
 package com.azortis.orbis.generator.biome;
 
 import com.azortis.orbis.block.ConfiguredBlock;
-import com.azortis.orbis.generator.terrain.Terrain;
+import com.azortis.orbis.generator.surface.Surface;
 import com.azortis.orbis.pack.Inject;
 import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
@@ -34,19 +34,19 @@ public final class Biome {
     private final String name;
     private final Key derivative;
 
-    @SerializedName("terrain")
-    private final String terrainName;
+    @SerializedName("surface")
+    private final String surfaceName;
     private final int baseHeight;
     private final ConfiguredBlock surfaceBlock;
     private final ConfiguredBlock belowSurfaceBlock;
     @Inject(fieldName = "terrainName")
-    private transient Terrain terrain;
+    private transient Surface surface;
 
-    public Biome(String name, Key derivative, String terrainName, int baseHeight, ConfiguredBlock surfaceBlock,
+    public Biome(String name, Key derivative, String surfaceName, int baseHeight, ConfiguredBlock surfaceBlock,
                  ConfiguredBlock belowSurfaceBlock) {
         this.name = name;
         this.derivative = derivative;
-        this.terrainName = terrainName;
+        this.surfaceName = surfaceName;
         this.baseHeight = baseHeight;
         this.surfaceBlock = surfaceBlock;
         this.belowSurfaceBlock = belowSurfaceBlock;

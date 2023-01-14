@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -19,7 +19,8 @@
 package com.azortis.orbis.paper.studio;
 
 import com.azortis.orbis.pack.studio.Project;
-import com.azortis.orbis.paper.generator.PaperChunkData;
+import com.azortis.orbis.paper.generator.PaperGeneratorChunkAccess;
+import org.bukkit.craftbukkit.v1_19_R2.generator.CraftChunkData;
 import org.bukkit.generator.BiomeProvider;
 import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.generator.WorldInfo;
@@ -46,12 +47,15 @@ public final class PaperStudioChunkGenerator extends ChunkGenerator {
     }
 
     @Override
-    public void generateNoise(@NotNull WorldInfo worldInfo, @NotNull Random ignored, int chunkX, int chunkZ, @NotNull ChunkData chunkData) {
+    public void generateNoise(@NotNull WorldInfo worldInfo, @NotNull Random ignored, int chunkX, int chunkZ,
+                              @NotNull ChunkData chunkData) {
         if (requiresLoading()) load(worldInfo);
         if (project.studioWorld().shouldRender() && project.studioWorld().getDimension() != null
                 && project.studioWorld().getEngine() != null) {
-            project.studioWorld().getEngine().generateChunk(chunkX, chunkZ,
-                    new PaperChunkData(project.studioWorld().getDimension(), chunkData));
+            PaperGeneratorChunkAccess chunkAccess = new PaperGeneratorChunkAccess(project.studioWorld(),
+                    (CraftChunkData) chunkData);
+            project.studioWorld().getEngine().generateChunk(chunkX, chunkZ, chunkAccess);
+            chunkAccess.unload();
         }
     }
 

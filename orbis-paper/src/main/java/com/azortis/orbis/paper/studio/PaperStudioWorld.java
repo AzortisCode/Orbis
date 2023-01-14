@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -51,6 +51,7 @@ import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.event.world.ChunkLoadEvent;
 import org.bukkit.event.world.ChunkUnloadEvent;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Unmodifiable;
 
 import java.io.File;
 import java.io.IOException;
@@ -65,7 +66,7 @@ public final class PaperStudioWorld extends StudioWorld implements Listener {
     private World nativeWorld;
     private WorldAccess worldAccess;
 
-    public PaperStudioWorld(Project project) {
+    public PaperStudioWorld(@NotNull Project project) {
         super("orbis_studio", new File(Bukkit.getWorldContainer() + "/orbis_studio/"), project);
         Bukkit.getServer().getPluginManager().registerEvents(this, OrbisPlugin.getPlugin());
     }
@@ -78,7 +79,6 @@ public final class PaperStudioWorld extends StudioWorld implements Listener {
     @SuppressWarnings("unchecked")
     @Override
     public void hotReload() {
-        // Start NMS
         // TODO use reflection remapper to fix this
         /*ServerLevel level = ((CraftWorld) nativeWorld).getHandle();
 
@@ -98,7 +98,6 @@ public final class PaperStudioWorld extends StudioWorld implements Listener {
         } catch (IllegalAccessException | NoSuchFieldException ex) {
             Orbis.getLogger().error("Failed to reset the possible biomes for studio world!", ex);
         }
-        // End NMS
         Arrays.stream(nativeWorld.getLoadedChunks()).parallel().forEach(this::regenChunk);*/
     }
 
@@ -138,8 +137,8 @@ public final class PaperStudioWorld extends StudioWorld implements Listener {
         return true;
     }
 
-    private CompletableFuture<Boolean> regenChunk(@NotNull final Chunk chunk) {
-        return CompletableFuture.supplyAsync(() -> {
+    private void regenChunk(@NotNull final Chunk chunk) {
+        CompletableFuture.runAsync(() -> {
             ChunkAccess access = ((CraftWorld) nativeWorld).getHandle().getChunk(chunk.getX(), chunk.getZ());
 
             // Set all blocks in chunk to air and reset the biome
@@ -157,8 +156,8 @@ public final class PaperStudioWorld extends StudioWorld implements Listener {
             }
             // Regenerate the chunk by passing a ChunkAccess into the generator like normal, we know which method needs to be called
             Objects.requireNonNull(nativeWorld.getGenerator())
-                    .generateNoise(nativeWorld, new Random(), chunk.getX(), chunk.getZ(), new CraftChunkData(nativeWorld, access));
-            return true;
+                    .generateNoise(nativeWorld, new Random(), chunk.getX(), chunk.getZ(),
+                            new CraftChunkData(nativeWorld, access));
         });
     }
 
@@ -187,8 +186,18 @@ public final class PaperStudioWorld extends StudioWorld implements Listener {
     }
 
     @Override
+    public boolean isChunkGenerated(int chunkX, int chunkZ) {
+        return worldAccess.isChunkGenerated(chunkX, chunkZ);
+    }
+
+    @Override
     public boolean isChunkLoaded(int chunkX, int chunkZ) {
         return worldAccess.isChunkLoaded(chunkX, chunkZ);
+    }
+
+    @Override
+    public @NotNull @Unmodifiable Set<com.azortis.orbis.world.ChunkAccess> getLoadedChunks() {
+        return worldAccess.getLoadedChunks();
     }
 
     @Override
@@ -225,13 +234,15 @@ public final class PaperStudioWorld extends StudioWorld implements Listener {
                 viewers.put(player, fallBackLocation);
                 player.setGameMode(Player.GameMode.CREATIVE);
                 player.setAllowFlying(true);
-                player.sendMessage(Orbis.getMiniMessage().deserialize("<prefix> <gray>You're currently viewing the studio world."));
+                player.sendMessage(Orbis.getMiniMessage()
+                        .deserialize("<prefix> <gray>You're currently viewing the studio world."));
             } else {
                 if (fallBackLocation.isWorldLoaded()) {
                     player.teleportAsync(fallBackLocation);
                 } else {
                     player.kick(Orbis.getMiniMessage().deserialize(
-                            "<red>Fallback location invalid, you cannot join in a studio world without the right permissions!"));
+                            "<red>Fallback location invalid, you cannot join in a " +
+                                    "studio world without the right permissions!"));
                 }
             }
         }
@@ -256,9 +267,11 @@ public final class PaperStudioWorld extends StudioWorld implements Listener {
                 viewers.put(player, ConversionUtils.fromPaper(event.getFrom()));
                 player.setGameMode(Player.GameMode.CREATIVE);
                 player.setAllowFlying(true);
-                player.sendMessage(Orbis.getMiniMessage().deserialize("<prefix> <gray>You're now viewing the studio world."));
+                player.sendMessage(Orbis.getMiniMessage()
+                        .deserialize("<prefix> <gray>You're now viewing the studio world."));
             } else {
-                player.sendMessage(Orbis.getMiniMessage().deserialize("<prefix> <red>You don't have the permission to enter the studio world!"));
+                player.sendMessage(Orbis.getMiniMessage()
+                        .deserialize("<prefix> <red>You don't have the permission to enter the studio world!"));
                 event.setCancelled(true);
             }
         }

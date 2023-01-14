@@ -66,6 +66,20 @@ public record StructureObject(int version, int dataVersion, int width, int heigh
 
     public record Block(int state, int[] pos) {
 
+        public @NotNull com.azortis.orbis.block.BlockState blockState(@NotNull List<BlockState> palette) {
+            return palette.get(state).blockState();
+        }
+
+        public @NotNull CompoundBinaryTag toNBT() {
+            CompoundBinaryTag tag = CompoundBinaryTag.empty();
+            tag = tag.putInt("state", state).putIntArray("pos", pos);
+            return tag;
+        }
+
+        public static @NotNull Block fromNBT(@NotNull CompoundBinaryTag tag) {
+            return new Block(tag.getInt("state"), tag.getIntArray("pos"));
+        }
+
         public int x() {
             return pos[0];
         }

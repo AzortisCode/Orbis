@@ -21,6 +21,7 @@ package com.azortis.orbis.pack.studio;
 import com.azortis.orbis.Orbis;
 import com.azortis.orbis.Registry;
 import com.azortis.orbis.generator.Dimension;
+import com.azortis.orbis.generator.surface.Surface;
 import com.azortis.orbis.pack.data.Component;
 import com.azortis.orbis.pack.data.ComponentAccess;
 import com.azortis.orbis.pack.data.DataAccess;
@@ -52,7 +53,7 @@ import java.util.stream.Stream;
  * DataAccess meant for a {@link Project} that can independently index all the {@link ComponentAccess} so that a
  * compilation error will not result in config suggestions to malfunction. As an added benefit it will also map each
  * directory's {@link Path} with the type of files it contains i.e. /biomes/ will map to {@link com.azortis.orbis.generator.biome.Biome}
- * and /generator/terrain/ will map to {@link com.azortis.orbis.generator.terrain.Terrain}.
+ * and /generator/terrain/ will map to {@link Surface}.
  *
  * @author Jake Nijssen
  * @since 0.3-Alpha

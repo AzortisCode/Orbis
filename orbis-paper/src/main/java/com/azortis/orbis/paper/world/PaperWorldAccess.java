@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -27,6 +27,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.event.Listener;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Unmodifiable;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -75,12 +76,23 @@ public final class PaperWorldAccess implements WorldAccess, Listener {
     }
 
     @Override
+    public boolean isChunkGenerated(int chunkX, int chunkZ) {
+        return handle.isChunkGenerated(chunkX, chunkZ);
+    }
+
+    @Override
     public boolean isChunkLoaded(int chunkX, int chunkZ) {
         return handle.isChunkLoaded(chunkX, chunkZ);
+    }
+
+    @Override
+    public @NotNull @Unmodifiable Set<ChunkAccess> getLoadedChunks() {
+        return null;
     }
 
     @Override
     public @NotNull ChunkAccess getChunk(int chunkX, int chunkZ) {
         return null;
     }
+
 }

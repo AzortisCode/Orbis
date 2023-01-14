@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -20,9 +20,10 @@ package com.azortis.orbis.world;
 
 import com.azortis.orbis.entity.Player;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.UnmodifiableView;
+import org.jetbrains.annotations.Unmodifiable;
 
 import java.util.Set;
+import java.util.concurrent.CompletableFuture;
 
 /**
  * Interface to interact with the platforms world.
@@ -38,12 +39,18 @@ public interface WorldAccess {
 
     int maxHeight();
 
-    @NotNull
-    @UnmodifiableView Set<Player> getPlayers();
+    @Unmodifiable @NotNull Set<Player> getPlayers();
+
+    boolean isChunkGenerated(int chunkX, int chunkZ);
 
     boolean isChunkLoaded(int chunkX, int chunkZ);
 
+    @NotNull @Unmodifiable Set<ChunkAccess> getLoadedChunks();
+
     @NotNull ChunkAccess getChunk(int chunkX, int chunkZ);
 
+    default @NotNull CompletableFuture<ChunkAccess> getChunkAsync(int chunkX, int chunkZ) {
+        return CompletableFuture.supplyAsync(() -> getChunk(chunkX, chunkZ));
+    }
 
 }

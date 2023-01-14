@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -57,7 +57,7 @@ public abstract class World implements WorldAccess {
     protected Engine engine;
     private boolean installed = false;
 
-    public World(String name, File directory) {
+    public World(@NotNull String name, @NotNull File directory) {
         this.name = name;
         this.directory = directory;
         this.settingsDirectory = new File(directory, "/settings/");
@@ -75,14 +75,14 @@ public abstract class World implements WorldAccess {
     }
 
     /**
-     * Constructor for the {@link com.azortis.orbis.pack.studio.StudioWorld} to use.
+     * Internal constructor for {@link com.azortis.orbis.pack.studio.StudioWorld}.
      *
      * @param name      The name of the world
      * @param directory The directory of the world
      * @param project   The project of the studio world.
      */
     @API(status = API.Status.INTERNAL, since = "0.3-Alpha", consumers = "com.azortis.orbis.pack.studio")
-    protected World(String name, File directory, Project project) {
+    protected World(@NotNull String name, @NotNull File directory, @NotNull Project project) {
         this.name = name;
         this.directory = directory;
         this.settingsDirectory = project.directory();

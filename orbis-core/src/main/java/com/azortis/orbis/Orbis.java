@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -25,7 +25,7 @@ import com.azortis.orbis.block.ConfiguredBlock;
 import com.azortis.orbis.command.CommandSender;
 import com.azortis.orbis.generator.biome.Distributor;
 import com.azortis.orbis.generator.noise.Noise;
-import com.azortis.orbis.generator.terrain.Terrain;
+import com.azortis.orbis.generator.surface.Surface;
 import com.azortis.orbis.pack.PackManager;
 import com.azortis.orbis.pack.adapter.BlockAdapter;
 import com.azortis.orbis.pack.adapter.KeyAdapter;
@@ -123,7 +123,7 @@ public final class Orbis {
                     .registerTypeAdapter(Key.class, new KeyAdapter())
                     .registerTypeAdapter(ConfiguredBlock.class, new BlockAdapter())
                     .registerTypeAdapter(Location.class, new LocationAdapter())
-                    .registerTypeAdapter(Terrain.class, new TypeAdapter<>(Terrain.class))
+                    .registerTypeAdapter(Surface.class, new TypeAdapter<>(Surface.class))
                     .registerTypeAdapter(Distributor.class, new TypeAdapter<>(Distributor.class))
                     .registerTypeAdapter(Noise.class, new TypeAdapter<>(Noise.class));
 

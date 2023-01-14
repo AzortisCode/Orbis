@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -20,6 +20,7 @@ package com.azortis.orbis.generator;
 
 import com.azortis.orbis.block.Blocks;
 import com.azortis.orbis.generator.biome.Biome;
+import com.azortis.orbis.world.ChunkAccess;
 import com.azortis.orbis.world.World;
 import org.jetbrains.annotations.NotNull;
 
@@ -30,23 +31,23 @@ public final class SimpleEngine extends Engine {
     }
 
     @Override
-    public void generateChunk(int chunkX, int chunkZ, @NotNull ChunkData chunkData) {
+    public void generateChunk(int chunkX, int chunkZ, @NotNull ChunkAccess chunkAccess) {
         for (int cx = 0; cx <= 16; cx++) {
             for (int cz = 0; cz <= 16; cz++) {
                 final int x = cx + (chunkX << 4);
                 final int z = cz + (chunkZ << 4);
 
                 Biome biome = dimension().distributor().getBiome(x, 0, z);
-                int height = (int) Math.round(biome.terrain().getTerrainHeight(x, z, 1.0d));
+                int height = (int) Math.round(biome.surface().getTerrainHeight(x, z, 1.0d));
 
                 for (int y = dimension().minHeight(); y < dimension().maxHeight(); y++) {
                     if (y == dimension().minHeight()) {
-                        chunkData.setBlock(cx, y, cz, Blocks.BEDROCK);
+                        chunkAccess.setBlock(cx, y, cz, Blocks.BEDROCK);
                     } else {
                         if (y < height) {
-                            chunkData.setBlock(cx, y, cz, biome.belowSurfaceBlock());
+                            chunkAccess.setBlock(cx, y, cz, biome.belowSurfaceBlock());
                         } else if (y == height) {
-                            chunkData.setBlock(cx, y, cz, biome.surfaceBlock());
+                            chunkAccess.setBlock(cx, y, cz, biome.surfaceBlock());
                         }
                     }
                 }

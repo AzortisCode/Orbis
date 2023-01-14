@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -18,7 +18,10 @@
 
 package com.azortis.orbis.world;
 
+import com.azortis.orbis.block.Block;
 import com.azortis.orbis.block.BlockState;
+import com.azortis.orbis.block.Blocks;
+import com.azortis.orbis.block.ConfiguredBlock;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
@@ -41,5 +44,26 @@ public interface ChunkAccess {
     @NotNull BlockState getState(@Range(from = 0, to = 15) int x, int y, @Range(from = 0, to = 15) int z);
 
     void setState(@Range(from = 0, to = 15) int x, int y, @Range(from = 0, to = 15) int z, @Nullable BlockState state);
+
+    default @NotNull Block getBlock(@Range(from = 0, to = 15) int x, int y, @Range(from = 0, to = 15) int z) {
+        return getState(x, y, z).block();
+    }
+
+    default void setBlock(@Range(from = 0, to = 15) int x, int y, @Range(from = 0, to = 15) int z, @Nullable Block block) {
+        if (block != null) {
+            setState(x, y, z, block.defaultState());
+            return;
+        }
+        setState(x, y, z, Blocks.AIR.defaultState());
+    }
+
+    default void setBlock(@Range(from = 0, to = 15) int x, int y, @Range(from = 0, to = 15) int z,
+                          @Nullable ConfiguredBlock block) {
+        if (block != null) {
+            setState(x, y, z, block.state());
+            return;
+        }
+        setState(x, y, z, Blocks.AIR.defaultState());
+    }
 
 }

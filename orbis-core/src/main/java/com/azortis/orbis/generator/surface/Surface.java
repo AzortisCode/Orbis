@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -16,7 +16,7 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.generator.terrain;
+package com.azortis.orbis.generator.surface;
 
 import com.azortis.orbis.generator.biome.Biome;
 import com.azortis.orbis.pack.Inject;
@@ -28,7 +28,7 @@ import net.kyori.adventure.key.Key;
 @Getter
 @Typed
 @Inject
-public abstract class Terrain {
+public abstract class Surface {
 
     protected final String name;
     protected final Key type;
@@ -38,7 +38,7 @@ public abstract class Terrain {
     @Inject(isChild = true)
     private transient Biome biome;
 
-    protected Terrain(String name, Key type) {
+    protected Surface(String name, Key type) {
         this.name = name;
         this.type = type;
     }

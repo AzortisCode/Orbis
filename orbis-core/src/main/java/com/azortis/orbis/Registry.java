@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -24,9 +24,9 @@ import com.azortis.orbis.generator.biome.complex.ComplexDistributor;
 import com.azortis.orbis.generator.noise.Noise;
 import com.azortis.orbis.generator.noise.OpenSimplex2;
 import com.azortis.orbis.generator.noise.OpenSimplex2S;
-import com.azortis.orbis.generator.terrain.Terrain;
-import com.azortis.orbis.generator.terrain.defaults.ConfigTerrain;
-import com.azortis.orbis.generator.terrain.defaults.PlainsTerrain;
+import com.azortis.orbis.generator.surface.Surface;
+import com.azortis.orbis.generator.surface.defaults.ConfigSurface;
+import com.azortis.orbis.generator.surface.defaults.PlainsSurface;
 import com.azortis.orbis.pack.data.DataAccess;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableMap;
@@ -46,15 +46,15 @@ public final class Registry<T> {
     public static final Registry<Distributor> DISTRIBUTOR = new Registry<>(Distributor.class, Map.of(
             Key.key("orbis:single"), SingleDistributor.class, Key.key("orbis:complex"), ComplexDistributor.class
     ));
-    public static final Registry<Terrain> TERRAIN = new Registry<>(Terrain.class, Map.of(
-            Key.key("orbis:config"), ConfigTerrain.class, Key.key("orbis:plains"), PlainsTerrain.class
+    public static final Registry<Surface> SURFACE = new Registry<>(Surface.class, Map.of(
+            Key.key("orbis:config"), ConfigSurface.class, Key.key("orbis:plains"), PlainsSurface.class
     ));
     private static final Map<Class<?>, Registry<?>> registries = new HashMap<>();
 
     static {
         addRegistry(Noise.class, NOISE);
         addRegistry(Distributor.class, DISTRIBUTOR);
-        addRegistry(Terrain.class, TERRAIN);
+        addRegistry(Surface.class, SURFACE);
     }
 
     private final Class<T> type;

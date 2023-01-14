@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -16,10 +16,10 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.generator.terrain.defaults;
+package com.azortis.orbis.generator.surface.defaults;
 
 import com.azortis.orbis.generator.noise.Noise;
-import com.azortis.orbis.generator.terrain.Terrain;
+import com.azortis.orbis.generator.surface.Surface;
 import com.azortis.orbis.pack.Inject;
 import com.google.gson.annotations.SerializedName;
 import net.kyori.adventure.key.Key;
@@ -27,7 +27,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class ConfigTerrain extends Terrain {
+public class ConfigSurface extends Surface {
 
     @SerializedName("noise")
     private final String noiseName;
@@ -35,7 +35,7 @@ public class ConfigTerrain extends Terrain {
     @Inject(fieldName = "noiseName")
     private transient Noise noise;
 
-    private ConfigTerrain(@NotNull String name, @NotNull Key type,
+    private ConfigSurface(@NotNull String name, @NotNull Key type,
                           @NotNull String noiseName, @NotNull List<NoiseLayer> layers) {
         super(name, type);
         this.noiseName = noiseName;
