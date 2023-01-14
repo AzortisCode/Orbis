@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -41,12 +41,16 @@ public class StudioCommands {
     public void enterStudio(final @NotNull Player player) {
         if (projectCheck(player)) {
             assert projectManager.getActiveProject() != null;
-            if (!projectManager.getActiveProject().studioWorld().getViewers().contains(player)) {
+            if (projectManager.getActiveProject().hasWorld()) {
                 if (!projectManager.getActiveProject().studioWorld().getViewers().contains(player)) {
-                    projectManager.getActiveProject().studioWorld().addViewer(player);
-                } else {
-                    player.sendMessage(miniMessage.deserialize("<prefix> <red>You are already in the studio world!"));
+                    if (!projectManager.getActiveProject().studioWorld().getViewers().contains(player)) {
+                        projectManager.getActiveProject().studioWorld().addViewer(player);
+                    } else {
+                        player.sendMessage(miniMessage.deserialize("<prefix> <red>You are already in the studio world!"));
+                    }
                 }
+            } else {
+                player.sendMessage(miniMessage.deserialize("<prefix> <red>The current project doesn't have a world."));
             }
         }
     }
@@ -56,10 +60,15 @@ public class StudioCommands {
     public void exitStudio(final @NotNull Player player) {
         if (projectCheck(player)) {
             assert projectManager.getActiveProject() != null;
-            if (projectManager.getActiveProject().studioWorld().getViewers().contains(player)) {
-                projectManager.getActiveProject().studioWorld().removeViewer(player);
+            if (projectManager.getActiveProject().hasWorld()) {
+                if (projectManager.getActiveProject().studioWorld().getViewers().contains(player)) {
+                    projectManager.getActiveProject().studioWorld().removeViewer(player);
+                } else {
+                    player.sendMessage(miniMessage.deserialize(
+                            "<prefix> <red>You cannot exit the studio world, since you're not in it!"));
+                }
             } else {
-                player.sendMessage(miniMessage.deserialize("<prefix> <red>You cannot exit the studio world, since you're not in it!"));
+                player.sendMessage(miniMessage.deserialize("<prefix> <red>The current project doesn't have a world."));
             }
         }
     }

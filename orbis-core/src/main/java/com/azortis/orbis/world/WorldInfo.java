@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -41,7 +41,8 @@ public final class WorldInfo {
     private final String dimensionFile;
     private final long seed;
 
-    @API(status = API.Status.INTERNAL, since = "0.3-Alpha", consumers = {"com.azortis.orbis.world", "com.azortis.orbis.pack.studio"})
+    @API(status = API.Status.INTERNAL, since = "0.3-Alpha", consumers = {"com.azortis.orbis.world",
+            "com.azortis.orbis.pack.studio"})
     public WorldInfo(@NotNull String packName, @NotNull String dimensionFile, long seed) {
         this.dataVersion = DATA_VERSION;
         this.packName = packName;

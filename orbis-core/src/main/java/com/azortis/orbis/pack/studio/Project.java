@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -25,6 +25,7 @@ import com.azortis.orbis.pack.data.Component;
 import com.azortis.orbis.pack.data.DataAccess;
 import com.azortis.orbis.pack.studio.schema.SchemaManager;
 import com.azortis.orbis.util.Scheduler;
+import com.google.common.base.Preconditions;
 import com.google.gson.JsonObject;
 import net.kyori.adventure.key.Key;
 import org.apache.commons.lang3.SystemUtils;
@@ -62,7 +63,7 @@ public final class Project {
 
     private volatile Scheduler.Task hotReloadTask = null;
 
-    Project(String name, File directory) throws IOException {
+    Project(@NotNull String name, @NotNull File directory, boolean withWorld) throws IOException {
         this.name = name;
         this.directory = directory.getAbsoluteFile();
 
@@ -90,11 +91,12 @@ public final class Project {
         }
 
         // Create a studio world, so we have a data access point.
-        this.studioWorld = Orbis.getPlatform().createStudioWorld(this);
-
-        // Read pack.json in order to get the Dimension file name, if none is specified the project is deemed invalid,
-        // and so we cannot load a Dimension tree yet, and thus not spin up a visualization.
-        this.studioWorld.initialize();
+        if (withWorld) {
+            this.studioWorld = Orbis.getPlatform().createStudioWorld(this);
+            this.studioWorld.initialize();
+        } else {
+            studioWorld = null;
+        }
 
         this.watcher = new ProjectWatcher(this);
 
@@ -133,7 +135,12 @@ public final class Project {
         return settingsDir;
     }
 
-    public StudioWorld studioWorld() {
+    public boolean hasWorld() {
+        return studioWorld != null;
+    }
+
+    public @NotNull StudioWorld studioWorld() throws IllegalStateException {
+        Preconditions.checkState(hasWorld(), "This project doesn't use a studio world!");
         return studioWorld;
     }
 
@@ -347,7 +354,7 @@ public final class Project {
     }
 
     private void doHotReload() {
-        if (lock.getQueueLength() == 0 && (hotReloadTask == null || !hotReloadTask.isQueued())) {
+        if (hasWorld() && lock.getQueueLength() == 0 && (hotReloadTask == null || !hotReloadTask.isQueued())) {
             hotReloadTask = Orbis.getPlatform().scheduler().runDelayedTaskAsync(studioWorld::hotReload,
                     Orbis.getSettings().studio().hotReloadDelay());
         }

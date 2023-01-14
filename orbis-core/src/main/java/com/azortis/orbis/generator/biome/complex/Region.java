@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -21,14 +21,23 @@ package com.azortis.orbis.generator.biome.complex;
 import com.azortis.orbis.generator.biome.complex.layer.BiomeLayer;
 import com.azortis.orbis.generator.biome.complex.layer.NoiseLayer;
 import com.azortis.orbis.generator.biome.complex.layer.RegionLayer;
+import com.azortis.orbis.pack.studio.annotations.ArrayType;
+import com.azortis.orbis.pack.studio.annotations.Required;
 
 import java.util.Set;
 
 public final class Region {
 
+    @Required
     private String name;
+
+    @ArrayType(NoiseLayer.class)
     private Set<NoiseLayer> noiseLayers;
+
+    @ArrayType(RegionLayer.class)
     private Set<RegionLayer> regions;
+
+    @ArrayType(BiomeLayer.class)
     private Set<BiomeLayer> biomes;
     private RegionLayer fallbackRegion;
     private BiomeLayer fallbackBiome;

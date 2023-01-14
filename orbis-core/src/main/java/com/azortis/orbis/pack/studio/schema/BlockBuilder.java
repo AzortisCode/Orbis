@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -58,14 +58,16 @@ public final class BlockBuilder extends SchemaBuilder {
         oneOf.add(blockKeyOnly);
 
         // Add an object that maps each block key with its properties if it has one.
-        JsonArray requiredObject = new JsonArray();
-        requiredObject.add("type");
-        requiredObject.add("properties");
         for (Block block : BlockRegistry.blocks()) {
             if (!block.properties().isEmpty()) {
                 JsonObject blockObject = new JsonObject();
                 blockObject.addProperty("type", "object");
                 JsonObject propertiesObject = new JsonObject();
+
+                JsonObject typeObject = new JsonObject();
+                typeObject.addProperty("type", "string");
+                typeObject.addProperty("const", block.key().asString());
+                propertiesObject.add("type", typeObject);
 
                 // Loop through all properties
                 for (Property<?> property : block.properties()) {
@@ -75,7 +77,7 @@ public final class BlockBuilder extends SchemaBuilder {
                         propertyObject.addProperty("minimum", integerProperty.min());
                         propertyObject.addProperty("maximum", integerProperty.max());
                     } else if (property instanceof BooleanProperty) {
-                        propertiesObject.addProperty("type", "boolean");
+                        propertyObject.addProperty("type", "boolean");
                     } else if (property instanceof EnumProperty<?> enumProperty) {
                         propertyObject.addProperty("type", "string");
                         JsonArray enumNameArray = new JsonArray();
@@ -84,6 +86,10 @@ public final class BlockBuilder extends SchemaBuilder {
                     }
                     propertiesObject.add(property.key(), propertyObject);
                 }
+                blockObject.add("properties", propertiesObject);
+
+                JsonArray requiredObject = new JsonArray();
+                requiredObject.add("type");
                 blockObject.add("required", requiredObject);
                 oneOf.add(blockObject);
             }

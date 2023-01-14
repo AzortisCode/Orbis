@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -22,6 +22,7 @@ import com.azortis.orbis.pack.Inject;
 import com.azortis.orbis.pack.Invoke;
 import com.azortis.orbis.pack.data.DataAccess;
 import com.azortis.orbis.pack.studio.annotations.Entries;
+import com.azortis.orbis.pack.studio.annotations.Required;
 import com.azortis.orbis.pack.studio.annotations.Typed;
 import com.azortis.orbis.world.World;
 import com.google.gson.annotations.SerializedName;
@@ -36,11 +37,15 @@ import java.util.Set;
 @Inject
 public abstract class Distributor {
 
+    @Required
     protected final String name;
+
+    @Required
     protected final Key type;
 
     // Every possible biome should be defined in the directory of the distributor object
     @Entries(Biome.class)
+    @Required
     @SerializedName("biomes")
     private Set<String> biomeNames;
     @Inject(fieldName = "biomeNames", collectionType = HashSet.class, parameterizedType = Biome.class)
@@ -80,6 +85,13 @@ public abstract class Distributor {
 
     public @NotNull Set<Biome> biomes() {
         return biomes;
+    }
+
+    public @NotNull Biome getBiome(@NotNull String name) throws IllegalArgumentException {
+        for (Biome biome : biomes) {
+            if (biome.name().equalsIgnoreCase(name)) return biome;
+        }
+        throw new IllegalArgumentException("Biome by name " + name + " is not registered with this distributor!");
     }
 
     public World world() {

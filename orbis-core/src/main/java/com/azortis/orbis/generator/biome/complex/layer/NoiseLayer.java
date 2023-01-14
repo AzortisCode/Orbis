@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -19,8 +19,10 @@
 package com.azortis.orbis.generator.biome.complex.layer;
 
 import com.azortis.orbis.generator.noise.Noise;
+import com.azortis.orbis.pack.studio.annotations.Min;
+import com.azortis.orbis.pack.studio.annotations.Required;
 
-public record NoiseLayer(String tag, Noise noise, int precision) {
+public record NoiseLayer(@Required String tag, @Required Noise noise, @Required @Min(1) int precision) {
 
     public double sample(double x, double z) {
         return (double) Math.round(precision * noise.noise(x, z)) / precision;

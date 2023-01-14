@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -103,17 +103,12 @@ public final class StudioDataAccess extends DirectoryDataAccess {
      *
      * @param directory The absolute path of the directory.
      * @return The corresponding class type found in said directory.
-     * @throws IllegalArgumentException If the specified Path doesn't exist, is not a directory,
-     *                                  not absolute {@link Path#isAbsolute()} or if the directory doesn't
-     *                                  have a class type mapped to it.
+     * @throws IllegalArgumentException If the specified Path isn't absolute {@link Path#isAbsolute()}.
      * @since 0.3-Alpha
      */
     @Contract(pure = true)
     public @NotNull Class<?> getType(@NotNull Path directory) throws IllegalArgumentException {
         Preconditions.checkArgument(directory.isAbsolute(), "Directory must be absolute!");
-        Preconditions.checkArgument(Files.exists(directory, LinkOption.NOFOLLOW_LINKS), "Path doesn't exist!");
-        Preconditions.checkArgument(Files.isDirectory(directory, LinkOption.NOFOLLOW_LINKS),
-                "Must be a directory!");
         Preconditions.checkArgument(directoryTypeMap.containsKey(directory),
                 "Directory does not have type registered!");
         return directoryTypeMap.get(directory);
@@ -124,16 +119,12 @@ public final class StudioDataAccess extends DirectoryDataAccess {
      *
      * @param directory The absolute path of the directory.
      * @return If the given directory has a type mapped to it.
-     * @throws IllegalArgumentException If the specified Path does not exist, is not a directory
-     *                                  or not absolute {@link Path#isAbsolute()}
+     * @throws IllegalArgumentException If the specified Path isn't absolute {@link Path#isAbsolute()}.
      * @since 0.3-Alpha
      */
     @Contract(pure = true)
     public boolean hasType(@NotNull Path directory) throws IllegalArgumentException {
         Preconditions.checkArgument(directory.isAbsolute(), "Directory must be absolute!");
-        Preconditions.checkArgument(Files.exists(directory, LinkOption.NOFOLLOW_LINKS), "Path doesn't exist!");
-        Preconditions.checkArgument(Files.isDirectory(directory, LinkOption.NOFOLLOW_LINKS),
-                "Must be a directory!");
         return directoryTypeMap.containsKey(directory);
     }
 
@@ -170,16 +161,12 @@ public final class StudioDataAccess extends DirectoryDataAccess {
      *
      * @param directory The directory to check.
      * @return If it is part of a component.
-     * @throws IllegalArgumentException If the specified Path does not exist, is not a directory
-     *                                  or not absolute {@link Path#isAbsolute()}
+     * @throws IllegalArgumentException If the specified Path is not absolute {@link Path#isAbsolute()}.
      * @since 0.3-Alpha
      */
     @Contract(pure = true)
     public boolean isComponentDirectory(@NotNull Path directory) throws IllegalArgumentException {
         Preconditions.checkArgument(directory.isAbsolute(), "Directory must be absolute!");
-        Preconditions.checkArgument(Files.exists(directory, LinkOption.NOFOLLOW_LINKS), "Path doesn't exist!");
-        Preconditions.checkArgument(Files.isDirectory(directory, LinkOption.NOFOLLOW_LINKS),
-                "Must be a directory!");
         return directoryComponentMap.containsKey(directory);
     }
 
@@ -188,17 +175,13 @@ public final class StudioDataAccess extends DirectoryDataAccess {
      *
      * @param directory The directory part of the component to get the name of.
      * @return The name of the component the directory is mapped to.
-     * @throws IllegalArgumentException If the specified Path doesn't exist, is not a directory,
-     *                                  not absolute {@link Path#isAbsolute()} or if the directory
-     *                                  is not part of a component.
-     * @since 0.3-Alpha
+     * @throws IllegalArgumentException If the specified Path isn't absolute {@link Path#isAbsolute()} or if
+     *                                  the path is not a component directory.
+     * @ since 0.3-Alpha
      */
     @Contract(pure = true)
     public @NotNull String getComponentName(@NotNull Path directory) throws IllegalArgumentException {
         Preconditions.checkArgument(directory.isAbsolute(), "Directory must be absolute!");
-        Preconditions.checkArgument(Files.exists(directory, LinkOption.NOFOLLOW_LINKS), "Path doesn't exist!");
-        Preconditions.checkArgument(Files.isDirectory(directory, LinkOption.NOFOLLOW_LINKS),
-                "Must be a directory!");
         Preconditions.checkArgument(directoryTypeMap.containsKey(directory),
                 "Directory is not a component directory!");
         return directoryComponentMap.get(directory);
@@ -209,17 +192,13 @@ public final class StudioDataAccess extends DirectoryDataAccess {
      *
      * @param componentRoot The absolute root directory of the component.
      * @return The type of the component assigned to the directory.
-     * @throws IllegalArgumentException If the specified Path doesn't exist, is not a directory,
-     *                                  not absolute {@link Path#isAbsolute()} or if the directory
-     *                                  is not a component root.
+     * @throws IllegalArgumentException If the specified Path isn't absolute {@link Path#isAbsolute()} or if
+     *                                  the path is not a component directory.
      * @since 0.3-Alpha
      */
     @Contract(pure = true)
     public @NotNull Class<?> getComponentType(@NotNull Path componentRoot) throws IllegalArgumentException {
         Preconditions.checkArgument(componentRoot.isAbsolute(), "Directory must be absolute!");
-        Preconditions.checkArgument(Files.exists(componentRoot, LinkOption.NOFOLLOW_LINKS), "Path doesn't exist!");
-        Preconditions.checkArgument(Files.isDirectory(componentRoot, LinkOption.NOFOLLOW_LINKS),
-                "Component root must be a directory!");
         Preconditions.checkArgument(directoryTypeMap.containsKey(componentRoot),
                 "Directory is not a component root!");
         return componentRootTypeMap.get(componentRoot);
@@ -230,8 +209,7 @@ public final class StudioDataAccess extends DirectoryDataAccess {
      *
      * @param directory The absolute directory to check.
      * @return If it is a component root directory.
-     * @throws IllegalArgumentException If the specified Path doesn't exist, is not a directory
-     *                                  or not absolute {@link Path#isAbsolute()}
+     * @throws IllegalArgumentException If the specified Path isn't absolute {@link Path#isAbsolute()}.
      * @since 0.3-Alpha
      */
     @Contract(pure = true)
@@ -260,15 +238,12 @@ public final class StudioDataAccess extends DirectoryDataAccess {
      *
      * @param file The absolute file to check.
      * @return If the file is a component file.
-     * @throws IllegalArgumentException If the specified Path doesn't exist is not a file
-     *                                  or not absolute {@link Path#isAbsolute()}
+     * @throws IllegalArgumentException If the specified Path isn't absolute {@link Path#isAbsolute()}
      * @since 0.3-Alpha
      */
     @Contract(pure = true)
     public boolean isComponentFile(@NotNull Path file) throws IllegalArgumentException {
         Preconditions.checkArgument(file.isAbsolute(), "File must be absolute!");
-        Preconditions.checkArgument(Files.exists(file, LinkOption.NOFOLLOW_LINKS), "Path doesn't exist!");
-        Preconditions.checkArgument(Files.isRegularFile(file, LinkOption.NOFOLLOW_LINKS), "Must be a file!");
         return componentFiles.containsKey(file);
     }
 
@@ -277,14 +252,13 @@ public final class StudioDataAccess extends DirectoryDataAccess {
      *
      * @param file The absolute component file.
      * @return The type key of the component.
-     * @throws IllegalArgumentException If the specified Path doesn't exist, is not a file
-     *                                  or not absolute {@link Path#isAbsolute()}
+     * @throws IllegalArgumentException If the specified Path isn't absolute {@link Path#isAbsolute()}
+     *                                  or not a component file.
      * @since 0.3-Alpha
      */
     public @NotNull Key getComponentKey(@NotNull Path file) throws IllegalArgumentException {
         Preconditions.checkArgument(file.isAbsolute(), "File must be absolute!");
-        Preconditions.checkArgument(Files.exists(file, LinkOption.NOFOLLOW_LINKS), "Path doesn't exist!");
-        Preconditions.checkArgument(Files.isRegularFile(file, LinkOption.NOFOLLOW_LINKS), "Must be a file!");
+        Preconditions.checkArgument(componentFiles.containsKey(file), "File is not a component file!");
         return componentFiles.get(file);
     }
 

@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -61,6 +61,8 @@ public interface Scheduler {
      * @return An instance of {@link Task} for the queued task.
      * @since 0.3-Alpha
      */
+    @Contract("_,_ -> new")
+    @NotNull
     Task runDelayedTaskAsync(@NotNull Runnable task, long ticks);
 
     /**

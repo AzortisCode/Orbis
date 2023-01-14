@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -23,7 +23,7 @@ import org.apiguardian.api.API;
 import java.lang.annotation.*;
 
 /**
- * Marks non-transient fields to be excluded from the generated json schema.
+ * Marks non-transient/static fields to be excluded from the generated json schema.
  *
  * @author Jake Nijssen
  * @since 0.3-Alpha

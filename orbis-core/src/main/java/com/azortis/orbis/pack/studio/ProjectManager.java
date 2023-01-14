@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -74,11 +74,12 @@ public final class ProjectManager {
         return activeProject;
     }
 
-    public boolean openProject(@NotNull String projectName) {
+    public boolean openProject(@NotNull String projectName, boolean withWorld) {
         if (activeProject == null) {
             if (projects.contains(projectName)) {
                 try {
-                    activeProject = new Project(projectName, new File(projectsFolder + "/" + projectName + "/"));
+                    activeProject = new Project(projectName, new File(projectsFolder + "/" + projectName + "/"),
+                            withWorld);
                 } catch (IOException ex) {
                     Orbis.getLogger().error("Something went wrong opening project {}", projectName);
                     ex.printStackTrace();
@@ -107,13 +108,13 @@ public final class ProjectManager {
         return false;
     }
 
-    public boolean createProject(@NotNull String projectName) {
+    public boolean createProject(@NotNull String projectName, boolean withWorld) {
         if (activeProject == null) {
             if (!projects.contains(projectName)) {
                 File projectFolder = new File(projectsFolder + "/" + projectName + "/");
                 if (projectFolder.mkdirs()) {
                     try {
-                        activeProject = new Project(projectName, projectFolder);
+                        activeProject = new Project(projectName, projectFolder, withWorld);
                     } catch (IOException ex) {
                         Orbis.getLogger().error("Something went wrong creating project {}", projectName);
                         ex.printStackTrace();

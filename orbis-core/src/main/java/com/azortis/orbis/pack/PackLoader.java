@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -74,7 +74,7 @@ public final class PackLoader {
                     if (!name.equalsIgnoreCase("")) {
                         Field dataPathNameField = dimension.getClass().getDeclaredField(name);
                         dataPathNameField.setAccessible(true);
-                        if (Collection.class.isAssignableFrom(field.getType())) { // TODO add Array & Map support.
+                        if (Collection.class.isAssignableFrom(field.getType())) {
                             Collection<String> dataPaths = (Collection<String>) dataPathNameField.get(dimension);
                             dataPathNameField.setAccessible(false);
                             Inject inject = field.getAnnotation(Inject.class);
@@ -83,11 +83,13 @@ public final class PackLoader {
                             boolean checkComponents = false;
                             for (String dataPath : dataPaths) {
                                 File dataFile = world.data().getDataFile(inject.parameterizedType(), dataPath);
-                                Object collectionObject = Orbis.getGson().fromJson(new FileReader(dataFile), inject.parameterizedType());
+                                Object collectionObject = Orbis.getGson().fromJson(new FileReader(dataFile),
+                                        inject.parameterizedType());
                                 fieldObject.add(collectionObject);
                                 if (collectionObject.getClass().isAnnotationPresent(Component.class)
                                         && DataAccess.GENERATOR_TYPES.containsKey(inject.parameterizedType())) {
-                                    componentNames.put(collectionObject, FilenameUtils.removeExtension(dataFile.getName()));
+                                    componentNames.put(collectionObject, FilenameUtils
+                                            .removeExtension(dataFile.getName()));
                                     checkComponents = true;
                                 }
                             }
@@ -237,7 +239,8 @@ public final class PackLoader {
     // another field
     @SuppressWarnings("unchecked")
     private static @NotNull Map<Object, String> nameInjection(@NotNull World world, @NotNull Object rootObject,
-                                                              @NotNull Field field, @NotNull String name, @Nullable String componentName)
+                                                              @NotNull Field field, @NotNull String name,
+                                                              @Nullable String componentName)
             throws NoSuchFieldException, IllegalAccessException, IOException,
             NoSuchMethodException, InvocationTargetException, InstantiationException {
         Map<Object, String> componentNames = new HashMap<>();

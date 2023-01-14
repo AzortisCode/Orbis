@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -36,8 +36,8 @@ import org.jetbrains.annotations.Nullable;
 import java.io.File;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
-import java.util.Collection;
-import java.util.Map;
+import java.lang.reflect.ParameterizedType;
+import java.util.*;
 
 public final class ClassBuilder extends SchemaBuilder {
 
@@ -119,7 +119,9 @@ public final class ClassBuilder extends SchemaBuilder {
                             // Add the matcher and corresponding sub-schema to the allOf array
                             thenAllOf.add(ifThenName);
                         }
-                        then.add("allOf", thenAllOf);
+                        if (!thenAllOf.isEmpty()) {
+                            then.add("allOf", thenAllOf);
+                        }
 
                     } else buildProperties(then, definitions, entry.getValue(), componentName);
 
@@ -127,6 +129,7 @@ public final class ClassBuilder extends SchemaBuilder {
                     ifThen.add("then", then);
                     allOf.add(ifThen);
                 }
+                schema.add("allOf", allOf);
             }
         }
 
@@ -144,7 +147,7 @@ public final class ClassBuilder extends SchemaBuilder {
         JsonObject properties = new JsonObject();
         JsonArray required = new JsonArray();
 
-        for (Field field : type.getDeclaredFields()) {
+        for (Field field : getAllFields(type)) {
             if (isProperty(field)) {
                 String propertyName = field.getName();
                 if (field.isAnnotationPresent(SerializedName.class)) {
@@ -155,20 +158,33 @@ public final class ClassBuilder extends SchemaBuilder {
                 if (property.has("!required")) {
                     if (root.has("!definition") && type.isAnnotationPresent(SupportAnonymous.class)) {
                         String anonymousName = type.getAnnotation(SupportAnonymous.class).value();
-                        if (!propertyName.equals(anonymousName)) {
-                            required.add(propertyName);
+                        if (propertyName.equals(anonymousName)) {
+                            continue; // The name property shouldn't exist at all in this case.
                         }
-                        property.remove("!required");
-                    } else {
-                        required.add(propertyName);
-                        property.remove("!required");
                     }
+                    required.add(propertyName);
                 }
+                property.remove("!required");
                 properties.add(propertyName, property);
             }
         }
         root.add("properties", properties);
         if (required.size() > 0) root.add("required", required);
+        root.remove("!definition");
+    }
+
+    private List<Field> getAllFields(final @NotNull Class<?> type) {
+        List<Field> fields = new ArrayList<>(Arrays.asList(type.getDeclaredFields()));
+        Class<?> superType = type;
+        while (superType != null) {
+            superType = superType.getSuperclass();
+            if (superType == Object.class) {
+                superType = null;
+            } else if (superType.isAnnotationPresent(InheritFields.class)) {
+                fields.addAll(new ArrayList<>(Arrays.asList(superType.getDeclaredFields())));
+            }
+        }
+        return fields;
     }
 
     private JsonObject buildProperty(@NotNull Field field, @NotNull JsonObject definitions, @Nullable String name) {
@@ -256,7 +272,7 @@ public final class ClassBuilder extends SchemaBuilder {
                             long minLength = field.getAnnotation(Min.class).value();
                             if (minLength > 0) {
                                 property.addProperty("minLength", minLength);
-                                description.append("\nMinimum length: ").append(minLength).append(".");
+                                description.append("\nMinimum text length: ").append(minLength).append(".");
                             }
                         }
 
@@ -264,21 +280,61 @@ public final class ClassBuilder extends SchemaBuilder {
                             long maxLength = field.getAnnotation(Max.class).value();
                             if (maxLength > 0) {
                                 property.addProperty("maxLength", maxLength);
-                                description.append("\nMaximum length: ").append(maxLength).append(".");
+                                description.append("\nMaximum text length: ").append(maxLength).append(".");
                             }
                         }
                     }
                 }
                 case "array" -> {
-                    // TODO Add Array support + Min & Max support for Strings/numbers/integers in the array
-                    if (field.isAnnotationPresent(CollectionType.class)) {
-                        Class<?> collectionType = field.getAnnotation(CollectionType.class).value();
+                    if (field.isAnnotationPresent(ArrayType.class)) {
+                        ParameterizedType parameterizedType = (ParameterizedType) field.getGenericType();
+                        Class<?> collectionType = (Class<?>) parameterizedType.getActualTypeArguments()[0];
                         String collectionSchemaType = getSchemaType(collectionType);
 
                         JsonObject items = new JsonObject();
                         items.addProperty("type", collectionSchemaType);
 
                         switch (collectionSchemaType) {
+                            case "integer" -> {
+                                long min = 0L;
+                                long max = 0L;
+
+                                if (collectionType.equals(byte.class) || collectionType.equals(Byte.class)) {
+                                    min = getIntegerMin(field, Byte.MIN_VALUE);
+                                    max = getIntegerMax(field, Byte.MAX_VALUE);
+                                } else if (collectionType.equals(short.class) || collectionType.equals(Short.class)) {
+                                    min = getIntegerMin(field, Short.MIN_VALUE);
+                                    max = getIntegerMax(field, Short.MAX_VALUE);
+                                } else if (collectionType.equals(int.class) || collectionType.equals(Integer.class)) {
+                                    min = getIntegerMin(field, Integer.MIN_VALUE);
+                                    max = getIntegerMax(field, Integer.MAX_VALUE);
+                                } else if (collectionType.equals(long.class) || collectionType.equals(Long.class)) {
+                                    min = getIntegerMin(field, Long.MIN_VALUE);
+                                    max = getIntegerMax(field, Long.MAX_VALUE);
+                                }
+
+                                items.addProperty("minimum", min);
+                                items.addProperty("maximum", max);
+                                description.append("\nMinimum integer values: ").append(min)
+                                        .append("\n Maximum integer values: ").append(max);
+                            }
+                            case "number" -> {
+                                double min = 0d;
+                                double max = 0d;
+
+                                if (collectionType.equals(float.class) || collectionType.equals(Float.class)) {
+                                    min = getNumberMin(field, Float.MIN_VALUE);
+                                    max = getNumberMax(field, Float.MAX_VALUE);
+                                } else if (collectionType.equals(double.class) || collectionType.equals(Double.class)) {
+                                    min = getNumberMin(field, Double.MIN_VALUE);
+                                    max = getNumberMax(field, Double.MAX_VALUE);
+                                }
+
+                                items.addProperty("minimum", min);
+                                items.addProperty("maximum", max);
+                                description.append("\nMinimum number values: ").append(min)
+                                        .append(".\n Maximum number values: ").append(max).append(".");
+                            }
                             case "string" -> {
                                 if (collectionType.isEnum()) {
                                     // TODO add enum global-definition support + description support.
@@ -303,6 +359,22 @@ public final class ClassBuilder extends SchemaBuilder {
                                         items.addProperty("$ref", getSchemaReference(schemaManager.getSchema(entryType)));
                                     }
                                     description.append("Must be valid ").append(entryType.getSimpleName()).append("'s.");
+                                } else {
+                                    if (field.isAnnotationPresent(Min.class)) {
+                                        long minLength = field.getAnnotation(Min.class).value();
+                                        if (minLength > 0) {
+                                            items.addProperty("minLength", minLength);
+                                            description.append("\nMinimum text lengths: ").append(minLength).append(".");
+                                        }
+                                    }
+
+                                    if (field.isAnnotationPresent(Max.class)) {
+                                        long maxLength = field.getAnnotation(Max.class).value();
+                                        if (maxLength > 0) {
+                                            items.addProperty("maxLength", maxLength);
+                                            description.append("\nMaximum text lengths: ").append(maxLength).append(".");
+                                        }
+                                    }
                                 }
                             }
                             case "object" -> {
@@ -325,8 +397,7 @@ public final class ClassBuilder extends SchemaBuilder {
                             }
                         }
 
-                        // TODO maybe add support for Unique items if needed?
-                        if (field.isAnnotationPresent(Min.class)) {
+                        if (field.isAnnotationPresent(MinItems.class)) {
                             long minItems = field.getAnnotation(Min.class).value();
                             if (minItems > 0) {
                                 property.addProperty("minItems", minItems);
@@ -334,7 +405,7 @@ public final class ClassBuilder extends SchemaBuilder {
                             }
                         }
 
-                        if (field.isAnnotationPresent(Max.class)) {
+                        if (field.isAnnotationPresent(MaxItems.class)) {
                             long maxItems = field.getAnnotation(Max.class).value();
                             if (maxItems > 0) {
                                 property.addProperty("maxItems", maxItems);
@@ -342,10 +413,15 @@ public final class ClassBuilder extends SchemaBuilder {
                             }
                         }
 
+                        if (field.isAnnotationPresent(Unique.class)) {
+                            property.addProperty("uniqueItems", true);
+                            description.append("\nItems must be unique.");
+                        }
+
                         property.add("items", items);
                     } else {
-                        Orbis.getLogger().error("Field {} is a derivative of a Collection but doesn't " +
-                                "have @CollectionType annotated", field.getName());
+                        Orbis.getLogger().warn("Field {} is a derivative of a Collection, but has no @ArrayType defined!",
+                                field.getName());
                     }
                 }
                 case "object" -> {
@@ -455,7 +531,7 @@ public final class ClassBuilder extends SchemaBuilder {
                 || type.equals(Short.class) || type.equals(int.class) || type.equals(Integer.class)
                 || type.equals(long.class) || type.equals(Long.class)) {
             return "integer";
-        } else if (type.isAssignableFrom(Collection.class)) {
+        } else if (Collection.class.isAssignableFrom(type)) {
             return "array";
         }
         return "object";

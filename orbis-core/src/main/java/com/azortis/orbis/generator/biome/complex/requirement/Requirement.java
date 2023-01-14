@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -19,7 +19,9 @@
 package com.azortis.orbis.generator.biome.complex.requirement;
 
 import com.azortis.orbis.Registry;
+import com.azortis.orbis.pack.studio.annotations.Description;
 import com.azortis.orbis.pack.studio.annotations.GlobalDefinition;
+import com.azortis.orbis.pack.studio.annotations.Required;
 import com.azortis.orbis.pack.studio.annotations.Typed;
 import net.kyori.adventure.key.Key;
 import org.jetbrains.annotations.NotNull;
@@ -27,6 +29,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Map;
 
 @Typed
+@Description("An object that specifies a requirement for the layer.")
 @GlobalDefinition("complex-distributor-requirement")
 public abstract class Requirement {
 
@@ -40,6 +43,8 @@ public abstract class Requirement {
         Registry.addRegistry(Requirement.class, REGISTRY);
     }
 
+    @Required
+    @Description("The type of requirement.")
     protected final Key type;
 
     protected Requirement(Key type) {

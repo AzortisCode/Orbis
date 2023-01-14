@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -20,6 +20,9 @@ package com.azortis.orbis.generator;
 
 import com.azortis.orbis.generator.biome.Distributor;
 import com.azortis.orbis.pack.Inject;
+import com.azortis.orbis.pack.studio.annotations.Description;
+import com.azortis.orbis.pack.studio.annotations.Entries;
+import com.azortis.orbis.pack.studio.annotations.Required;
 import com.azortis.orbis.world.World;
 import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
@@ -29,6 +32,8 @@ import lombok.experimental.Accessors;
 @Getter
 public final class Dimension { // No need to check this class if it contains fields that need injection
 
+    @Required
+    @Description("The name of the dimension.")
     private final String name;
     private final int minHeight; // Fair, but I mean, is this a dimension property? Answer yes.
     private final int maxHeight; // Fair, max is 1024
@@ -39,6 +44,8 @@ public final class Dimension { // No need to check this class if it contains fie
     private final transient World world;
 
     // Distribution
+    @Required
+    @Entries(Distributor.class)
     @SerializedName("distributor")
     private final String distributorName;
     @Inject(fieldName = "distributorName")

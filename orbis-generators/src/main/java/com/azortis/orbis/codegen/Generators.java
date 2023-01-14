@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -45,8 +45,6 @@ public final class Generators {
         final File outputFolder = new File(outputBuilder.toString().trim());
         new PropertiesGenerator(getInputStream("block_properties.json"), outputFolder).generate();
         new BlocksGenerator(getInputStream("blocks.json"), outputFolder).generate();
-        //new ItemsGenerator(getInputStream("items.json"), outputFolder).generate();
-        //new EnchantmentsGenerator(getInputStream("enchantments.json"), outputFolder).generate();
     }
 
     private static InputStream getInputStream(String fileName) {

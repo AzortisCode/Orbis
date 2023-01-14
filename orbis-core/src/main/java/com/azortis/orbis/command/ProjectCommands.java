@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -18,10 +18,7 @@
 
 package com.azortis.orbis.command;
 
-import cloud.commandframework.annotations.Argument;
-import cloud.commandframework.annotations.CommandDescription;
-import cloud.commandframework.annotations.CommandMethod;
-import cloud.commandframework.annotations.CommandPermission;
+import cloud.commandframework.annotations.*;
 import cloud.commandframework.annotations.processing.CommandContainer;
 import cloud.commandframework.annotations.suggestions.Suggestions;
 import cloud.commandframework.context.CommandContext;
@@ -68,13 +65,15 @@ public class ProjectCommands {
     @CommandMethod("open <project>")
     public void openProject(final @NotNull CommandSender sender,
                             final @NotNull @Argument(value = "project", suggestions = "projects",
-                                    description = "The name of the project") String project) {
+                                    description = "The name of the project") String project,
+                            final @Flag(value = "no-world",
+                                    description = "If no studio world should be loaded.") boolean noWorld) {
         if (manager.getActiveProject() == null) {
             if (manager.getProjects().contains(project)) {
                 sender.sendMessage(miniMessage.deserialize("<prefix> <grey>Opening project..."));
-                if (!manager.openProject(project)) {
+                if (!manager.openProject(project, !noWorld)) {
                     sender.sendMessage(miniMessage.deserialize("<prefix> <red>Failed to open project!"));
-                } else {
+                } else if (!noWorld) {
                     sender.sendMessage(miniMessage.deserialize("<prefix> <green>Successfully opened project!"));
                     if (sender instanceof Player player) {
                         // Adding player who opened the project as viewer.
@@ -109,19 +108,22 @@ public class ProjectCommands {
     @CommandMethod("create <projectName>")
     public void createProject(final @NotNull CommandSender sender,
                               final @NotNull @Argument(value = "projectName",
-                                      description = "The name of the project") String projectName) {
+                                      description = "The name of the project") String projectName,
+                              final @Flag(value = "no-world",
+                                      description = "If no studio world should be loaded.") boolean noWorld) {
         if (manager.getActiveProject() == null) {
             if (!manager.getProjects().contains(projectName)) {
                 sender.sendMessage(miniMessage.deserialize("<prefix> <grey>Creating and opening project..."));
-                if (!manager.createProject(projectName)) {
+                if (!manager.createProject(projectName, !noWorld)) {
                     sender.sendMessage(miniMessage.deserialize("<prefix> <red>Failed to create project!"));
-                } else {
-                    sender.sendMessage(miniMessage.deserialize("<prefix> <green>Successfully created & opened project!"));
+                    return;
+                } else if (!noWorld) {
                     if (sender instanceof Player player) {
                         // Adding player who opened the project as viewer.
                         manager.getActiveProject().studioWorld().addViewer(player);
                     }
                 }
+                sender.sendMessage(miniMessage.deserialize("<prefix> <green>Successfully created & opened project!"));
                 return;
             }
             sender.sendMessage(miniMessage.deserialize("<prefix> <red>Project by name <dark_red>" + projectName + " <red>already exists!"));

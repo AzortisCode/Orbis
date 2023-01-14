@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -18,12 +18,10 @@
 
 package com.azortis.orbis.generator.biome.complex.layer;
 
-import com.azortis.orbis.generator.Dimension;
 import com.azortis.orbis.generator.biome.complex.Region;
 import com.azortis.orbis.generator.biome.complex.modifier.Modifier;
 import com.azortis.orbis.generator.biome.complex.requirement.Requirement;
 import com.azortis.orbis.pack.Inject;
-import com.azortis.orbis.pack.Invoke;
 import com.azortis.orbis.pack.studio.annotations.Entries;
 import com.google.gson.annotations.SerializedName;
 
@@ -39,17 +37,9 @@ public final class RegionLayer extends Layer<Region> {
     @Inject(fieldName = "regionName")
     private transient Region region;
 
-    @Inject
-    private transient Dimension dimension;
-
     public RegionLayer(String regionName, Set<Requirement> requirements, boolean useDefaultModifier, Set<Modifier> modifiers) {
         super(requirements, useDefaultModifier, modifiers);
         this.regionName = regionName;
-    }
-
-    @Invoke(when = Invoke.Order.MID_INJECTION)
-    private void loadRegion() {
-
     }
 
     @Override

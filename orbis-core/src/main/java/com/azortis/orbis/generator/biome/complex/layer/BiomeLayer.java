@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -47,16 +47,16 @@ public final class BiomeLayer extends Layer<Biome> {
 
     @Invoke(when = Invoke.Order.MID_INJECTION)
     private void loadBiome() {
-
+        this.biome = dimension.distributor().getBiome(biomeName);
     }
 
     @Override
     public Class<Biome> getType() {
-        return null;
+        return Biome.class;
     }
 
     @Override
     public Biome getObject() {
-        return null;
+        return biome;
     }
 }
