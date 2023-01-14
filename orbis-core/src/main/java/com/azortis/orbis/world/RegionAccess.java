@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -20,6 +20,7 @@ package com.azortis.orbis.world;
 
 import com.azortis.orbis.block.BlockState;
 import com.azortis.orbis.util.BlockPos;
+import com.azortis.orbis.util.BoundingBox;
 import org.apiguardian.api.API;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -52,13 +53,33 @@ public interface RegionAccess {
     @Contract(pure = true)
     @NotNull @UnmodifiableView Set<ChunkAccess> chunks();
 
+    @Contract(pure = true)
+    @NotNull BoundingBox bounds();
+
     /**
      * Get the minimum position of this region.
      *
      * @return The minimum position of this region.
      */
     @Contract(pure = true)
-    @NotNull BlockPos min();
+    default @NotNull BlockPos min() {
+        return bounds().min();
+    }
+
+    @Contract(pure = true)
+    default int minX() {
+        return min().x();
+    }
+
+    @Contract(pure = true)
+    default int minY() {
+        return min().y();
+    }
+
+    @Contract(pure = true)
+    default int minZ() {
+        return min().z();
+    }
 
     /**
      * Get the maximum position of this region.
@@ -66,7 +87,40 @@ public interface RegionAccess {
      * @return The maximum position of this region.
      */
     @Contract(pure = true)
-    @NotNull BlockPos max();
+    default @NotNull BlockPos max() {
+        return bounds().max();
+    }
+
+    @Contract(pure = true)
+    default int maxX() {
+        return max().x();
+    }
+
+    @Contract(pure = true)
+    default int maxY() {
+        return max().y();
+    }
+
+    @Contract(pure = true)
+    default int maxZ() {
+        return max().z();
+    }
+
+    @Contract(pure = true)
+    default boolean checkBounds(int x, int y, int z) {
+        return bounds().checkBounds(x, y, z);
+    }
+
+    /**
+     * Check if the given position is within bounds.
+     *
+     * @param pos
+     * @return
+     */
+    @Contract(pure = true)
+    default boolean checkBounds(@NotNull BlockPos pos) {
+        return bounds().checkBounds(pos);
+    }
 
     /**
      * Get the {@link BlockState} at specified world coordinates.
@@ -93,11 +147,11 @@ public interface RegionAccess {
     /**
      * Set the {@link BlockState} at specified world coordinates.
      *
-     * @param x
-     * @param y
-     * @param z
-     * @param state
-     * @throws IllegalArgumentException
+     * @param x     The x-coord of the block.
+     * @param y     The y-coord of the block.
+     * @param z     The z-coord of the block.
+     * @param state The block state to set at specified coordinates.
+     * @throws IllegalArgumentException If the coordinates are not within the bounds of this region.
      */
     void setState(int x, int y, int z, @Nullable BlockState state) throws IllegalArgumentException;
 
