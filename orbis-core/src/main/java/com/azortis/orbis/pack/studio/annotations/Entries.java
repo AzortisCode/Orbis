@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -18,13 +18,29 @@
 
 package com.azortis.orbis.pack.studio.annotations;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import org.apiguardian.api.API;
 
+import java.lang.annotation.*;
+
+/**
+ * Forces the {@link String} value of a field or inside a {@link java.util.Collection} to be a reference
+ * to a datafile of the specified type.
+ * The names for these files are by {@link com.azortis.orbis.pack.data.DataAccess#getDataEntries(Class)},
+ * if the specified type is a component type, then it will only produce entries inside a component instance.
+ *
+ * @author Jake Nijssen
+ * @since 0.3-Alpha
+ */
+@Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
+@API(status = API.Status.STABLE, since = "0.3-Alpha")
 public @interface Entries {
+
+    /**
+     * The type to validate the data file names against.
+     *
+     * @return The entries datatype.
+     */
     Class<?> value();
 }

@@ -18,13 +18,29 @@
 
 package com.azortis.orbis.pack.studio.annotations;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import org.apiguardian.api.API;
 
+import java.lang.annotation.*;
+
+/**
+ * The {@link Class} in the {@link java.util.Collection} of the {@link java.lang.reflect.Field} annotated
+ * by this method, this is used to evaluate which schema to use by the generator.
+ * This is required due to java type erasure.
+ *
+ * @author Jake Nijssen
+ * @see <a href="https://docs.oracle.com/javase/tutorial/java/generics/erasure.html">Java type erasure</a>
+ * @since 0.3-Alpha
+ */
+@Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
+@API(status = API.Status.STABLE, since = "0.3-Alpha")
 public @interface ArrayType {
+
+    /**
+     * The class inside the annotated {@link java.util.Collection}.
+     *
+     * @return The parameterized class type.
+     */
     Class<?> value();
 }

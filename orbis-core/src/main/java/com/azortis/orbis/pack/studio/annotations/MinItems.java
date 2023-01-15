@@ -18,13 +18,24 @@
 
 package com.azortis.orbis.pack.studio.annotations;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import org.apiguardian.api.API;
 
+import java.lang.annotation.*;
+
+/**
+ * Sets the minimum amount of entries required on the annotated {@link java.util.Collection}.
+ *
+ * @author Jake Nijssen
+ * @since 0.3-Alpha
+ */
+@Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
+@API(status = API.Status.STABLE, since = "0.3-Alpha")
 public @interface MinItems {
+
+    /**
+     * @return The minimum amount of entries required. Cannot be lower than 1.
+     */
     long value() default 1;
 }

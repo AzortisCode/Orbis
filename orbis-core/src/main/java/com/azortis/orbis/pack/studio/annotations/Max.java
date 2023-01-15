@@ -18,15 +18,34 @@
 
 package com.azortis.orbis.pack.studio.annotations;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import org.apiguardian.api.API;
 
+import java.lang.annotation.*;
+
+/**
+ * Sets the maximum value an {@link Number} can be of a {@link java.lang.reflect.Field}
+ * or {@link java.util.Collection} entry.
+ *
+ * @author Jake Nijssen
+ * @since 0.3-Alpha
+ */
+@Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
+@API(status = API.Status.STABLE, since = "0.3-Alpha")
 public @interface Max {
+
+    /**
+     * The maximum value if the annotated type is an integer.
+     *
+     * @return The minimum integer value for the field/entry.
+     */
     long value() default Long.MAX_VALUE;
 
+    /**
+     * The maximum value if the annotated type is a floating point number.
+     *
+     * @return The minimum floating point value for the field/entry.
+     */
     double floating() default Double.MAX_VALUE;
 }

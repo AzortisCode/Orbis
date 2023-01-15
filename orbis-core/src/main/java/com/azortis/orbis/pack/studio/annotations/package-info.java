@@ -16,26 +16,9 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.pack.studio.annotations;
-
-import org.apiguardian.api.API;
-
-import java.lang.annotation.*;
-
 /**
- * Sets the maximum amount of entries allowed on the annotated {@link java.util.Collection}.
- *
- * @author Jake Nijssen
- * @since 0.3-Alpha
+ * Annotations used to define metadata of {@link java.lang.reflect.Field}'s and
+ * {@link java.lang.Class}es to validate the values of these fields and classes against the generated
+ * json schema's
  */
-@Documented
-@Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.FIELD)
-@API(status = API.Status.STABLE, since = "0.3-Alpha")
-public @interface MaxItems {
-
-    /**
-     * @return The maximum amount of entries required.
-     */
-    long value() default Long.MAX_VALUE;
-}
+package com.azortis.orbis.pack.studio.annotations;

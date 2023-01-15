@@ -19,10 +19,9 @@
 package com.azortis.orbis.pack.studio.annotations;
 
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import org.apiguardian.api.API;
+
+import java.lang.annotation.*;
 
 /**
  * <p>Used to mark a {@link Class} whose fields should be seen as a property
@@ -34,7 +33,9 @@ import java.lang.annotation.Target;
  * @author Jake Nijssen
  * @since 0.3-Alpha
  */
+@Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
+@API(status = API.Status.STABLE, since = "0.3-Alpha")
 public @interface InheritFields {
 }

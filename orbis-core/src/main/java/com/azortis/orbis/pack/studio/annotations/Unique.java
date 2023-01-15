@@ -18,12 +18,19 @@
 
 package com.azortis.orbis.pack.studio.annotations;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import org.apiguardian.api.API;
 
+import java.lang.annotation.*;
+
+/**
+ * Forces entries inside a {@link java.util.Collection} to be unique.
+ *
+ * @author Jake Nijssen
+ * @since 0.3-Alpha
+ */
+@Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
+@API(status = API.Status.STABLE, since = "0.3-Alpha")
 public @interface Unique {
 }

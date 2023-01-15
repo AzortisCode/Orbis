@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -19,11 +19,9 @@
 package com.azortis.orbis.pack.studio.annotations;
 
 import com.azortis.orbis.Registry;
+import org.apiguardian.api.API;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.lang.annotation.*;
 
 /**
  * <p>Marks a class as typed, meaning it can have different implementations based on the provided
@@ -37,7 +35,9 @@ import java.lang.annotation.Target;
  * @author Jake Nijssen
  * @since 0.3-Alpha
  */
+@Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
+@API(status = API.Status.STABLE, since = "0.3-Alpha")
 public @interface Typed {
 }
