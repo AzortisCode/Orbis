@@ -168,7 +168,7 @@ public abstract class Distributor {
     public @NotNull BiomeSection getSection(int x, int y, int z) {
         if (!layout().hasFullBiomes()) return getSection(x, z);
         try {
-            return sectionCache.get(new Point3i(x, y, z));
+            return sectionCache.get(new Point3i(x >> 2, y >> 2, z >> 2));
         } catch (ExecutionException ex) {
             Orbis.getLogger().error("Failed to load biome section at block coordinates [{},{},{}]", x, y, z);
             throw new RuntimeException(ex);
