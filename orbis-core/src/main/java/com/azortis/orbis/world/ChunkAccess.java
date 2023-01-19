@@ -22,6 +22,8 @@ import com.azortis.orbis.block.Block;
 import com.azortis.orbis.block.BlockState;
 import com.azortis.orbis.block.Blocks;
 import com.azortis.orbis.block.ConfiguredBlock;
+import com.azortis.orbis.util.BlockPos;
+import com.azortis.orbis.util.annotations.RelativeCoords;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
@@ -41,14 +43,44 @@ public interface ChunkAccess {
      */
     void unload();
 
+    int chunkX();
+
+    int chunkZ();
+
+    /**
+     * Checks if the given coordinates are within this chunk.
+     *
+     * @param x The x-coordinate.
+     * @param y The y-coordinate.
+     * @param z The z-coordinate.
+     * @return If the coordinates are within this chunk.
+     * @since 0.3-Alpha
+     */
+    boolean checkBounds(int x, int y, int z);
+
+    /**
+     * Check if the given {@link BlockPos} is within this chunk.
+     *
+     * @param pos The block position.
+     * @return If the position is within this chunk.
+     * @since 0.3-Alpha
+     */
+    default boolean checkBounds(@NotNull BlockPos pos) {
+        return checkBounds(pos.x(), pos.y(), pos.z());
+    }
+
+    @RelativeCoords
     @NotNull BlockState getState(@Range(from = 0, to = 15) int x, int y, @Range(from = 0, to = 15) int z);
 
+    @RelativeCoords
     void setState(@Range(from = 0, to = 15) int x, int y, @Range(from = 0, to = 15) int z, @Nullable BlockState state);
 
+    @RelativeCoords
     default @NotNull Block getBlock(@Range(from = 0, to = 15) int x, int y, @Range(from = 0, to = 15) int z) {
         return getState(x, y, z).block();
     }
 
+    @RelativeCoords
     default void setBlock(@Range(from = 0, to = 15) int x, int y, @Range(from = 0, to = 15) int z, @Nullable Block block) {
         if (block != null) {
             setState(x, y, z, block.defaultState());
@@ -57,6 +89,7 @@ public interface ChunkAccess {
         setState(x, y, z, Blocks.AIR.defaultState());
     }
 
+    @RelativeCoords
     default void setBlock(@Range(from = 0, to = 15) int x, int y, @Range(from = 0, to = 15) int z,
                           @Nullable ConfiguredBlock block) {
         if (block != null) {

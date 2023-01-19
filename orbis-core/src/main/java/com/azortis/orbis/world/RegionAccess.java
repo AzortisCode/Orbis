@@ -19,8 +19,10 @@
 package com.azortis.orbis.world;
 
 import com.azortis.orbis.block.BlockState;
+import com.azortis.orbis.exception.CoordsOutOfBoundsException;
 import com.azortis.orbis.util.BlockPos;
 import com.azortis.orbis.util.BoundingBox;
+import com.azortis.orbis.util.annotations.AbsoluteCoords;
 import org.apiguardian.api.API;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -106,6 +108,7 @@ public interface RegionAccess {
         return max().z();
     }
 
+    @AbsoluteCoords
     @Contract(pure = true)
     default boolean checkBounds(int x, int y, int z) {
         return bounds().checkBounds(x, y, z);
@@ -129,20 +132,21 @@ public interface RegionAccess {
      * @param y The y-coord of the block.
      * @param z The z-coord of the block.
      * @return The blockState at specified coordinates.
-     * @throws IllegalArgumentException If the coordinates are not within the bounds of this region.
+     * @throws CoordsOutOfBoundsException If the coordinates are not within the bounds of this region.
      */
     @Contract(pure = true)
-    @NotNull BlockState getState(int x, int y, int z) throws IllegalArgumentException;
+    @AbsoluteCoords
+    @NotNull BlockState getState(int x, int y, int z) throws CoordsOutOfBoundsException;
 
     /**
      * Get the {@link BlockState} at specified world position.
      *
      * @param pos The position of the block.
      * @return The blockState at the specified position.
-     * @throws IllegalArgumentException If the position is not within the bounds of this region.
+     * @throws CoordsOutOfBoundsException If the position is not within the bounds of this region.
      */
     @Contract(pure = true)
-    @NotNull BlockState getState(@NotNull BlockPos pos) throws IllegalArgumentException;
+    @NotNull BlockState getState(@NotNull BlockPos pos) throws CoordsOutOfBoundsException;
 
     /**
      * Set the {@link BlockState} at specified world coordinates.
@@ -151,10 +155,12 @@ public interface RegionAccess {
      * @param y     The y-coord of the block.
      * @param z     The z-coord of the block.
      * @param state The block state to set at specified coordinates.
-     * @throws IllegalArgumentException If the coordinates are not within the bounds of this region.
+     * @throws CoordsOutOfBoundsException If the coordinates are not within the bounds of this region.
      */
-    void setState(int x, int y, int z, @Nullable BlockState state) throws IllegalArgumentException;
+    @AbsoluteCoords
+    void setState(int x, int y, int z, @Nullable BlockState state) throws CoordsOutOfBoundsException;
 
-    void setState(@NotNull BlockPos pos, @Nullable BlockState state) throws IllegalArgumentException;
+    @Contract(pure = true)
+    void setState(@NotNull BlockPos pos, @Nullable BlockState state) throws CoordsOutOfBoundsException;
 
 }

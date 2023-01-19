@@ -16,33 +16,28 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.generator.biome;
+package com.azortis.orbis.util.math;
 
-import com.azortis.orbis.pack.studio.annotations.Description;
-import net.kyori.adventure.key.Key;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Collections;
+public record Point3i(int x, int y, int z) {
 
-@Description("Distributor that only distributes one biome.")
-public final class SingleDistributor extends Distributor {
+    public static final Point3i ZERO = new Point3i(0, 0, 0);
 
-    private SingleDistributor(@NotNull String name, @NotNull Key providerKey) {
-        super(name, providerKey);
+    @Contract("_ -> new")
+    public @NotNull Point3i setX(final int x) {
+        return new Point3i(x, y, z);
     }
 
-    @Override
-    protected @NotNull BiomeSection sample(int x, int z) {
-        return new BiomeSection(biomes().iterator().next(), 1.0D, Collections.emptyMap());
+    @Contract("_ -> new")
+    public @NotNull Point3i setY(final int y) {
+        return new Point3i(x, y, z);
     }
 
-    @Override
-    protected @NotNull BiomeSection sample(int x, int y, int z) {
-        throw new UnsupportedOperationException("This distributor only supports 2d biomes");
+    @Contract("_ -> new")
+    public @NotNull Point3i setZ(final int z) {
+        return new Point3i(x, y, z);
     }
 
-    @Override
-    public @NotNull BiomeLayout layout() {
-        return BiomeLayout.SURFACE;
-    }
 }

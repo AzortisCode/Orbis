@@ -40,6 +40,7 @@ public final class PackLoader {
 
     // TODO Document this class + make it more smart for more useful insights
     private static final Map<World, Map<Method, Object>> postInjectionMethods = new HashMap<>();
+    private static final Map<World, Map<Method, Object>> validationMethods = new HashMap<>();
 
     /**
      * Loads a {@link Dimension} with the context of the specified {@link World}
@@ -55,6 +56,7 @@ public final class PackLoader {
         File packFolder = world.settingsDirectory();
         WorldInfo worldInfo = world.getWorldInfo();
         postInjectionMethods.put(world, new HashMap<>());
+        validationMethods.put(world, new HashMap<>());
 
         // Load initial Dimension object
         File dimensionFile = new File(packFolder, worldInfo.dimensionFile() + ".json");
@@ -144,6 +146,10 @@ public final class PackLoader {
             invokeMethod(entry.getValue(), entry.getKey());
         }
         postInjectionMethods.remove(world);
+        for (Map.Entry<Method, Object> entry : validationMethods.get(world).entrySet()) {
+            invokeMethod(entry.getValue(), entry.getKey());
+        }
+        validationMethods.remove(world);
         return dimension;
     }
 
@@ -161,6 +167,8 @@ public final class PackLoader {
                 } else if (method.getAnnotation(Invoke.class).when() == Invoke.Order.POST_INJECTION) {
                     postInjectionMethods.get(world).put(method, rootObject);
                 }
+            } else if (method.isAnnotationPresent(Validate.class)) {
+                validationMethods.get(world).put(method, rootObject);
             }
         }
 

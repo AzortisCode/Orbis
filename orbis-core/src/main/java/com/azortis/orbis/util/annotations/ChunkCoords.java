@@ -16,23 +16,21 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.command;
+package com.azortis.orbis.util.annotations;
 
-import cloud.commandframework.annotations.CommandMethod;
-import cloud.commandframework.annotations.CommandPermission;
-import cloud.commandframework.annotations.processing.CommandContainer;
-import com.azortis.orbis.Orbis;
+import java.lang.annotation.*;
 
-@SuppressWarnings("unused")
-@CommandContainer
-@CommandPermission("orbis.admin")
-@CommandMethod(value = "orbis|o", requiredSender = CommandSender.class)
-public class BaseCommands {
-
-    @CommandMethod("info")
-    public void info(CommandSender sender) {
-        sender.sendMessage(Orbis.getMiniMessage().deserialize("<prefix> <gray>Running Orbis version: <green>"
-                + Orbis.VERSION + "<gray>."));
-    }
-
+/**
+ * <p>Marks that the {@link Integer} parameters of the annotated {@link java.lang.reflect.Constructor},
+ * {@link java.lang.reflect.Method} or record parameters should be chunk coordinates.</p>
+ *
+ * <p>To get the chunk coordinate from a block coordinate you do: {@code int blockCoord = blockCoord >> 4;}</p>
+ *
+ * @author Jake Nijssen
+ * @since 0.3-Alpha
+ */
+@Documented
+@Retention(RetentionPolicy.SOURCE)
+@Target({ElementType.TYPE, ElementType.CONSTRUCTOR, ElementType.METHOD})
+public @interface ChunkCoords {
 }

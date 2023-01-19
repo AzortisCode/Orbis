@@ -22,12 +22,8 @@ import com.azortis.orbis.block.ConfiguredBlock;
 import com.azortis.orbis.generator.surface.Surface;
 import com.azortis.orbis.pack.Inject;
 import com.google.gson.annotations.SerializedName;
-import lombok.Getter;
-import lombok.experimental.Accessors;
 import net.kyori.adventure.key.Key;
 
-@Accessors(fluent = true)
-@Getter
 @Inject
 public final class Biome {
 
@@ -52,4 +48,31 @@ public final class Biome {
         this.belowSurfaceBlock = belowSurfaceBlock;
     }
 
+    public String name() {
+        return this.name;
+    }
+
+    public Key derivative() {
+        return this.derivative;
+    }
+
+    public String surfaceName() {
+        return this.surfaceName;
+    }
+
+    public int baseHeight() {
+        return this.baseHeight;
+    }
+
+    public ConfiguredBlock surfaceBlock() {
+        return this.surfaceBlock;
+    }
+
+    public ConfiguredBlock belowSurfaceBlock() {
+        return this.belowSurfaceBlock;
+    }
+
+    public Surface surface() {
+        return this.surface;
+    }
 }

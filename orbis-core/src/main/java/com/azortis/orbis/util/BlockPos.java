@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -18,13 +18,14 @@
 
 package com.azortis.orbis.util;
 
+import com.azortis.orbis.util.annotations.AbsoluteCoords;
 import com.google.common.base.Preconditions;
 import org.apiguardian.api.API;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * A 3 dimensional integer Vector that resembles an absolute position of a block.
+ * A 3 dimensional integer point that resembles an absolute position of a block.
  *
  * @param x The x-coordinate of the position.
  * @param y The y-coordinate of the position.
@@ -32,6 +33,7 @@ import org.jetbrains.annotations.NotNull;
  * @author Jake Nijssen
  * @since 0.3-Alpha
  */
+@AbsoluteCoords
 @API(status = API.Status.STABLE, since = "0.3-Alpha")
 public record BlockPos(int x, int y, int z) {
 

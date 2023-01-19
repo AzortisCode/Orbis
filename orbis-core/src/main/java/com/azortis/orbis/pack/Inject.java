@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -18,6 +18,8 @@
 
 package com.azortis.orbis.pack;
 
+import org.apiguardian.api.API;
+
 import java.lang.annotation.*;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -33,12 +35,14 @@ import java.util.Collection;
 @Inherited
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE, ElementType.FIELD})
+@API(status = API.Status.STABLE, since = "0.3-Alpha")
 public @interface Inject {
     /**
      * If the {@link Class} of the {@link java.lang.reflect.Field} is the parent instance of this object.
      * Only works on fields!
      *
-     * @return If this field is a reference to the parent object
+     * @return If this field is a reference to the parent object.
+     * @since 0.3-Alpha
      */
     boolean isChild() default false;
 
@@ -48,7 +52,8 @@ public @interface Inject {
      * an instance of the annotated field. Only works on fields with a type
      * registered by {@link com.azortis.orbis.Registry}!
      *
-     * @return The fieldName of a {@link String} typed {@link java.lang.reflect.Field}
+     * @return The fieldName of a {@link String} typed {@link java.lang.reflect.Field}.
+     * @since 0.3-Alpha
      */
     String fieldName() default "";
 
@@ -60,7 +65,8 @@ public @interface Inject {
      * <p><b>NOTE</b> the implementation must be a mutable one, if you need an immutable view use {@link Invoke} to change
      * the implementation after injection has taken place!</p>
      *
-     * @return The implementation type of {@link Collection} that should be used to initialize the field
+     * @return The implementation type of {@link Collection} that should be used to initialize the field.
+     * @since 0.3-Alpha
      */
     Class<? extends Collection> collectionType() default ArrayList.class;
 
@@ -71,6 +77,7 @@ public @interface Inject {
      *
      * @return The parameterized type of the {@link java.lang.reflect.Field}
      * @see <a href="https://docs.oracle.com/javase/tutorial/java/generics/erasure.html">Java type erasure</a>
+     * @since 0.3-Alpha
      */
     Class<?> parameterizedType() default Object.class;
 }

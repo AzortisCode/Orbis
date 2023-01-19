@@ -16,23 +16,7 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.command;
-
-import cloud.commandframework.annotations.CommandMethod;
-import cloud.commandframework.annotations.CommandPermission;
-import cloud.commandframework.annotations.processing.CommandContainer;
-import com.azortis.orbis.Orbis;
-
-@SuppressWarnings("unused")
-@CommandContainer
-@CommandPermission("orbis.admin")
-@CommandMethod(value = "orbis|o", requiredSender = CommandSender.class)
-public class BaseCommands {
-
-    @CommandMethod("info")
-    public void info(CommandSender sender) {
-        sender.sendMessage(Orbis.getMiniMessage().deserialize("<prefix> <gray>Running Orbis version: <green>"
-                + Orbis.VERSION + "<gray>."));
-    }
-
-}
+/**
+ * Every piece of the generation pipeline responsible for the distribution and definition of biomes.
+ */
+package com.azortis.orbis.generator.biome;

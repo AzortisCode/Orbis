@@ -18,6 +18,9 @@
 
 package com.azortis.orbis.generator;
 
+import com.azortis.orbis.exception.CoordsOutOfBoundsException;
+import com.azortis.orbis.generator.biome.BiomeSection;
+import com.azortis.orbis.util.annotations.AbsoluteCoords;
 import com.azortis.orbis.world.ChunkAccess;
 import com.azortis.orbis.world.World;
 import org.jetbrains.annotations.NotNull;
@@ -35,10 +38,23 @@ public abstract class GeneratorChunkAccess implements ChunkAccess {
     protected final Dimension dimension;
     protected final Engine engine;
 
-    public GeneratorChunkAccess(@NotNull World world, @NotNull Dimension dimension, @NotNull Engine engine) {
+    private final BiomeSection[] biomeMap;
+    private final BiomeSection[] biomeSections;
+
+    protected GeneratorChunkAccess(@NotNull World world, @NotNull Dimension dimension, @NotNull Engine engine) {
         this.world = world;
         this.dimension = dimension;
         this.engine = engine;
+
+        // If the engine pipeline has a 2d biome map, then create an array for all the 4x4 biomeMap sections.
+        if (engine.biomeLayout().hasBiomeMap()) this.biomeMap = new BiomeSection[16];
+        else this.biomeMap = null;
+
+        // If the Engine pipeline uses 3d biomes in any form, then we create an array for the all the 4x4x4 biome
+        // sections supported by the vanilla client.
+        if (engine.biomeLayout().hasFullBiomes())
+            this.biomeSections = new BiomeSection[16 * (dimension.verticalSize() >> 2)];
+        else this.biomeSections = null;
     }
 
     public World world() {
@@ -52,4 +68,48 @@ public abstract class GeneratorChunkAccess implements ChunkAccess {
     public Engine engine() {
         return engine;
     }
+
+    /**
+     * Gets the {@link BiomeSection} from the stored 2D biomeMap array for this chunk.
+     *
+     * @param x The absolute block x-coordinate.
+     * @param z The absolute block z-coordinate.
+     * @return The stored biome section of given block coordinates.
+     * @throws CoordsOutOfBoundsException If the coordinates are not within this chunk.
+     */
+    @AbsoluteCoords
+    public @NotNull BiomeSection getSection(final int x, final int z) throws CoordsOutOfBoundsException {
+        if (!checkBounds(x, 0, z))
+            throw new CoordsOutOfBoundsException(x, z, this);
+        int originX = chunkX() << 4;
+        int originZ = chunkZ() << 4;
+
+        int xIndex = Math.abs(x - originX) >> 2;
+        int zIndex = Math.abs(z - originZ) >> 2;
+        return biomeMap[xIndex + zIndex * 4];
+    }
+
+    /**
+     * Gets the {@link BiomeSection} from the stored 3D biomeSections array for this chunk.
+     *
+     * @param x The absolute block x-coordinate.
+     * @param y The absolute block y-coordinate.
+     * @param z The absolute block z-coordinate.
+     * @return The stored biome section of given block coordinates.
+     * @throws CoordsOutOfBoundsException If the coordinates are not within this chunk.
+     */
+    @AbsoluteCoords
+    public @NotNull BiomeSection getSection(final int x, final int y, final int z) throws CoordsOutOfBoundsException {
+        if (!checkBounds(x, y, z)) {
+            throw new CoordsOutOfBoundsException(x, y, z, this);
+        }
+        int originX = chunkX() << 4;
+        int originZ = chunkZ() << 4;
+
+        int xIndex = Math.abs(x - originX) >> 2;
+        int yIndex = Math.abs(y - dimension.minHeight()) >> 2;
+        int zIndex = Math.abs(z - originZ) >> 2;
+        return biomeSections[xIndex + yIndex * (dimension.verticalSize() >> 2) + zIndex * 4];
+    }
+
 }

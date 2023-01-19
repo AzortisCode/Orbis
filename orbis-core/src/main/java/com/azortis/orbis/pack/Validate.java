@@ -16,23 +16,19 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.command;
+package com.azortis.orbis.pack;
 
-import cloud.commandframework.annotations.CommandMethod;
-import cloud.commandframework.annotations.CommandPermission;
-import cloud.commandframework.annotations.processing.CommandContainer;
-import com.azortis.orbis.Orbis;
+import java.lang.annotation.*;
 
-@SuppressWarnings("unused")
-@CommandContainer
-@CommandPermission("orbis.admin")
-@CommandMethod(value = "orbis|o", requiredSender = CommandSender.class)
-public class BaseCommands {
-
-    @CommandMethod("info")
-    public void info(CommandSender sender) {
-        sender.sendMessage(Orbis.getMiniMessage().deserialize("<prefix> <gray>Running Orbis version: <green>"
-                + Orbis.VERSION + "<gray>."));
-    }
-
+/**
+ * Invokes the annotated {@link java.lang.reflect.Method} once the entire {@link com.azortis.orbis.generator.Dimension}
+ * object tree is loaded. Used for validating code compatibility.
+ *
+ * @author Jake Nijssen
+ * @since 0.3-Alpha
+ */
+@Documented
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.METHOD)
+public @interface Validate {
 }

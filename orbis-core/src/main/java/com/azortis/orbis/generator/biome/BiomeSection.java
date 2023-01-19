@@ -18,31 +18,18 @@
 
 package com.azortis.orbis.generator.biome;
 
-import com.azortis.orbis.pack.studio.annotations.Description;
-import net.kyori.adventure.key.Key;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Unmodifiable;
 
-import java.util.Collections;
+import java.util.Map;
 
-@Description("Distributor that only distributes one biome.")
-public final class SingleDistributor extends Distributor {
+public record BiomeSection(@NotNull Biome biome, double biomeStrength,
+                           @Unmodifiable @NotNull Map<String, Double> strengthMap) {
 
-    private SingleDistributor(@NotNull String name, @NotNull Key providerKey) {
-        super(name, providerKey);
+    public BiomeSection(@NotNull Biome biome, double biomeStrength, @NotNull Map<String, Double> strengthMap) {
+        this.biome = biome;
+        this.biomeStrength = biomeStrength;
+        this.strengthMap = Map.copyOf(strengthMap);
     }
 
-    @Override
-    protected @NotNull BiomeSection sample(int x, int z) {
-        return new BiomeSection(biomes().iterator().next(), 1.0D, Collections.emptyMap());
-    }
-
-    @Override
-    protected @NotNull BiomeSection sample(int x, int y, int z) {
-        throw new UnsupportedOperationException("This distributor only supports 2d biomes");
-    }
-
-    @Override
-    public @NotNull BiomeLayout layout() {
-        return BiomeLayout.SURFACE;
-    }
 }

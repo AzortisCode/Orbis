@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -19,7 +19,8 @@
 package com.azortis.orbis.generator.biome.complex;
 
 import com.azortis.orbis.Registry;
-import com.azortis.orbis.generator.biome.Biome;
+import com.azortis.orbis.generator.biome.BiomeLayout;
+import com.azortis.orbis.generator.biome.BiomeSection;
 import com.azortis.orbis.generator.biome.Distributor;
 import com.azortis.orbis.generator.biome.complex.layer.NoiseLayer;
 import com.azortis.orbis.generator.biome.complex.layer.RegionLayer;
@@ -33,6 +34,7 @@ import com.azortis.orbis.pack.Inject;
 import com.azortis.orbis.pack.Invoke;
 import com.azortis.orbis.pack.data.Component;
 import net.kyori.adventure.key.Key;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
 import java.util.Set;
@@ -73,14 +75,17 @@ public final class ComplexDistributor extends Distributor {
     }
 
     @Override
-    public Biome getBiome(int x, int y, int z) {
+    protected @NotNull BiomeSection sample(int x, int z) {
         return null;
     }
 
     @Override
-    public Biome getBiome(double x, double y, double z) {
+    protected @NotNull BiomeSection sample(int x, int y, int z) {
         return null;
     }
 
-
+    @Override
+    public @NotNull BiomeLayout layout() {
+        return BiomeLayout.HYBRID;
+    }
 }

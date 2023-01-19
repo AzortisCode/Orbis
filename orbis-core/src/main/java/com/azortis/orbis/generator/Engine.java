@@ -18,6 +18,7 @@
 
 package com.azortis.orbis.generator;
 
+import com.azortis.orbis.generator.biome.BiomeLayout;
 import com.azortis.orbis.generator.biome.Distributor;
 import com.azortis.orbis.pack.Inject;
 import com.azortis.orbis.pack.studio.annotations.Description;
@@ -46,6 +47,8 @@ public abstract class Engine {
     }
 
     public abstract void generateChunk(int chunkX, int chunkZ, @NotNull GeneratorChunkAccess chunkAccess);
+
+    public abstract @NotNull BiomeLayout biomeLayout();
 
     public Key type() {
         return type;

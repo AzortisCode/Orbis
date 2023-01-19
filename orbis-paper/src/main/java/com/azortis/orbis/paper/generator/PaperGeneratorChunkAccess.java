@@ -37,12 +37,16 @@ import org.jetbrains.annotations.Range;
 public final class PaperGeneratorChunkAccess extends GeneratorChunkAccess {
 
     private final CraftChunkData handle;
+    private final int chunkX;
+    private final int chunkZ;
     private boolean loaded = true;
 
     public PaperGeneratorChunkAccess(@NotNull World world, @NotNull Dimension dimension,
-                                     @NotNull Engine engine, @NotNull CraftChunkData handle) {
+                                     @NotNull Engine engine, @NotNull CraftChunkData handle, int chunkX, int chunkZ) {
         super(world, dimension, engine);
         this.handle = handle;
+        this.chunkX = chunkX;
+        this.chunkZ = chunkZ;
     }
 
     @Override
@@ -54,6 +58,22 @@ public final class PaperGeneratorChunkAccess extends GeneratorChunkAccess {
     @Override
     public void unload() {
         loaded = false;
+    }
+
+    @Override
+    public int chunkX() {
+        return chunkX;
+    }
+
+    @Override
+    public int chunkZ() {
+        return chunkZ;
+    }
+
+    @Override
+    public boolean checkBounds(int x, int y, int z) {
+        if (!(y >= handle.getMinHeight() && y <= handle.getMaxHeight())) return false;
+        return (x >> 4) == chunkX && (z >> 4) == chunkZ;
     }
 
     @Override

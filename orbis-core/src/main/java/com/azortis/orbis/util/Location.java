@@ -19,6 +19,7 @@
 package com.azortis.orbis.util;
 
 import com.azortis.orbis.entity.Player;
+import com.azortis.orbis.util.annotations.AbsoluteCoords;
 import com.azortis.orbis.world.WorldAccess;
 import org.apiguardian.api.API;
 import org.jetbrains.annotations.Contract;
@@ -42,6 +43,7 @@ import java.lang.ref.WeakReference;
  * @author Jake Nijssen
  * @since 0.3-Alpha
  */
+@AbsoluteCoords
 @API(status = API.Status.STABLE, since = "0.3-Alpha")
 public record Location(double x, double y, double z, float yaw, float pitch,
                        @NotNull WeakReference<WorldAccess> world) {

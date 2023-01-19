@@ -65,10 +65,11 @@ public final class PaperChunkGenerator extends ChunkGenerator {
     }
 
     @Override
-    public void generateNoise(@NotNull WorldInfo worldInfo, @NotNull Random ignored, int chunkX, int chunkZ, @NotNull ChunkData chunkData) {
+    public void generateNoise(@NotNull WorldInfo worldInfo, @NotNull Random ignored, int chunkX, int chunkZ,
+                              @NotNull ChunkData chunkData) {
         if (requiresLoading()) load(worldInfo);
         PaperGeneratorChunkAccess chunkAccess = new PaperGeneratorChunkAccess(paperWorld, paperWorld.getDimension(),
-                paperWorld.getEngine(), (CraftChunkData) chunkData);
+                paperWorld.getEngine(), (CraftChunkData) chunkData, chunkX, chunkZ);
         paperWorld.getEngine().generateChunk(chunkX, chunkZ, chunkAccess);
         chunkAccess.unload(); // Make sure to let the core API know this ChunkAccess instance shouldn't be used.
     }

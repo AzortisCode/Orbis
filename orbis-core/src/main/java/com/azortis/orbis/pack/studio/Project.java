@@ -29,6 +29,7 @@ import com.google.common.base.Preconditions;
 import com.google.gson.JsonObject;
 import net.kyori.adventure.key.Key;
 import org.apache.commons.lang3.SystemUtils;
+import org.jetbrains.annotations.Blocking;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
@@ -174,6 +175,7 @@ public final class Project {
      *
      * @param directory The path of the directory.
      */
+    @Blocking
     void onDirectoryCreate(@NotNull Path directory) {
         try {
             lock.acquire();
@@ -207,6 +209,7 @@ public final class Project {
         }
     }
 
+    @Blocking
     void onFileCreate(@NotNull Path file) {
         try {
             // Only requires re-indexing of a Registry definition if the file is not applicable for component status
@@ -241,6 +244,7 @@ public final class Project {
         }
     }
 
+    @Blocking
     @SuppressWarnings("PatternValidation")
     void onFileModify(@NotNull Path file) {
         try {
@@ -309,6 +313,7 @@ public final class Project {
         }
     }
 
+    @Blocking
     void onDirectoryDelete() {
         try {
             lock.acquire();
@@ -326,6 +331,7 @@ public final class Project {
         }
     }
 
+    @Blocking
     void onFileDelete(@NotNull Path file) {
         try {
             lock.acquire(); // Only requires re-indexing of a Registry definition unless the file is a component file.

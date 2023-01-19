@@ -20,9 +20,8 @@ package com.azortis.orbis.generator;
 
 import com.azortis.orbis.generator.biome.Distributor;
 import com.azortis.orbis.pack.Inject;
-import com.azortis.orbis.pack.studio.annotations.Description;
-import com.azortis.orbis.pack.studio.annotations.Entries;
-import com.azortis.orbis.pack.studio.annotations.Required;
+import com.azortis.orbis.pack.Validate;
+import com.azortis.orbis.pack.studio.annotations.*;
 import com.azortis.orbis.world.World;
 import com.google.gson.annotations.SerializedName;
 import org.jetbrains.annotations.NotNull;
@@ -41,7 +40,6 @@ public final class Dimension {
     @Inject
     private transient World world;
 
-
     @Required
     @Entries(Distributor.class)
     @SerializedName("distributor")
@@ -49,18 +47,27 @@ public final class Dimension {
     @Inject(fieldName = "distributorName")
     private transient Distributor distributor;
 
-
-    //
-    // Deprecated fields for removal
-    //
-    @Deprecated
+    @Required
+    @Min(-1024)
+    @Max(1023)
+    @Description("The minimum build height.")
     private int minHeight;
 
-    @Deprecated
+    @Required
+    @Min(-1023)
+    @Max(1024)
+    @Description("The maximum build height")
     private int maxHeight;
 
     public Dimension(@NotNull String name) {
         this.name = name;
+    }
+
+    @Validate
+    private void validate() {
+        if (verticalSize() % 4 != 0) {
+            // TODO throw error, vertical size must be dividable by 4 due to biome maps.
+        }
     }
 
     /**
@@ -86,16 +93,35 @@ public final class Dimension {
         return engine;
     }
 
-    @Deprecated
+    /**
+     * Get the minimum build height of this dimension.
+     *
+     * @return The minimum build height.
+     * @since 0.3-Alpha
+     */
     public int minHeight() {
         return this.minHeight;
     }
 
-    @Deprecated
+    /**
+     * Get the maximum build height of this dimension.
+     *
+     * @return The maximum build height.
+     * @since 0.3-Alpha
+     */
     public int maxHeight() {
         return this.maxHeight;
     }
 
+    /**
+     * Get the vertical range of this dimension.
+     *
+     * @return The vertical block range.
+     * @since 0.3-Alpha
+     */
+    public int verticalSize() {
+        return maxHeight - minHeight + 1;
+    }
 
     public World world() {
         return this.world;

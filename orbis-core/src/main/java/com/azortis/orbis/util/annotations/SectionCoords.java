@@ -16,23 +16,24 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.command;
+package com.azortis.orbis.util.annotations;
 
-import cloud.commandframework.annotations.CommandMethod;
-import cloud.commandframework.annotations.CommandPermission;
-import cloud.commandframework.annotations.processing.CommandContainer;
-import com.azortis.orbis.Orbis;
+import java.lang.annotation.*;
 
-@SuppressWarnings("unused")
-@CommandContainer
-@CommandPermission("orbis.admin")
-@CommandMethod(value = "orbis|o", requiredSender = CommandSender.class)
-public class BaseCommands {
-
-    @CommandMethod("info")
-    public void info(CommandSender sender) {
-        sender.sendMessage(Orbis.getMiniMessage().deserialize("<prefix> <gray>Running Orbis version: <green>"
-                + Orbis.VERSION + "<gray>."));
-    }
-
+/**
+ * <p>Marks that the {@link Integer} parameters of the annotated {@link java.lang.reflect.Constructor},
+ * {@link java.lang.reflect.Method} or record parameters should be section coordinates.</p>
+ *
+ * <p>Section coordinates are basically zoomed out real coordinates. A good example that uses section
+ * coordinates are BiomeSections, since biomes are saved in 4x4x4 block sections.</p>
+ *
+ * <p>To get the section coord from a block coordinate you do: {@code int sectionCoord = blockCoord >> 2;}</p>
+ *
+ * @author Jake Nijssen
+ * @since 0.3-Alpha
+ */
+@Documented
+@Retention(RetentionPolicy.SOURCE)
+@Target({ElementType.TYPE, ElementType.CONSTRUCTOR, ElementType.METHOD})
+public @interface SectionCoords {
 }

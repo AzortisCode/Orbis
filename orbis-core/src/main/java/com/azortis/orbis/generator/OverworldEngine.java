@@ -20,6 +20,7 @@ package com.azortis.orbis.generator;
 
 import com.azortis.orbis.block.Blocks;
 import com.azortis.orbis.generator.biome.Biome;
+import com.azortis.orbis.generator.biome.BiomeLayout;
 import com.azortis.orbis.pack.studio.annotations.Description;
 import net.kyori.adventure.key.Key;
 import org.jetbrains.annotations.NotNull;
@@ -54,5 +55,10 @@ public final class OverworldEngine extends Engine {
                 }
             }
         }
+    }
+
+    @Override
+    public @NotNull BiomeLayout biomeLayout() {
+        return BiomeLayout.HYBRID;
     }
 }

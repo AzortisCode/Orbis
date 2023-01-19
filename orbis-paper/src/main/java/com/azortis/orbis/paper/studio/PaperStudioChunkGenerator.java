@@ -53,7 +53,8 @@ public final class PaperStudioChunkGenerator extends ChunkGenerator {
         if (project.studioWorld().shouldRender() && project.studioWorld().getDimension() != null
                 && project.studioWorld().getEngine() != null) {
             PaperGeneratorChunkAccess chunkAccess = new PaperGeneratorChunkAccess(project.studioWorld(),
-                    project.studioWorld().getDimension(), project.studioWorld().getEngine(), (CraftChunkData) chunkData);
+                    project.studioWorld().getDimension(), project.studioWorld().getEngine(), (CraftChunkData) chunkData,
+                    chunkX, chunkZ);
             project.studioWorld().getEngine().generateChunk(chunkX, chunkZ, chunkAccess);
             chunkAccess.unload();
         }

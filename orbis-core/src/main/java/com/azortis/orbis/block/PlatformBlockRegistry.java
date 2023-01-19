@@ -24,7 +24,8 @@ import org.apiguardian.api.API;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
-@API(status = API.Status.INTERNAL, since = "0.3-Alpha", consumers = {"com.azortis.orbis.block", "com.azortis.orbis.paper.block"})
+@API(status = API.Status.INTERNAL, since = "0.3-Alpha", consumers = {"com.azortis.orbis.block",
+        "com.azortis.orbis.paper.block"})
 public interface PlatformBlockRegistry {
 
     /**
