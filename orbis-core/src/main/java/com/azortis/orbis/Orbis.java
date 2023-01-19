@@ -45,7 +45,6 @@ import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.Tag;
 import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import net.kyori.adventure.text.minimessage.tag.standard.StandardTags;
-import org.apache.commons.io.FileUtils;
 import org.apiguardian.api.API;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
@@ -56,7 +55,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
@@ -256,31 +254,6 @@ public final class Orbis {
                 e.printStackTrace();
             }
         }
-    }
-
-    @Deprecated
-    public static File getDataFile(String dateFileName) {
-        if (initialized) {
-            try {
-                File dataFolder = new File(platform.directory() + "/data/");
-                if (!dataFolder.exists() && !dataFolder.mkdirs()) {
-                    throw new IllegalStateException("Failed to create data directory");
-                } else {
-                    dateFileName = MC_VERSION + "_" + dateFileName;
-                    File dataFile = new File(dataFolder, dateFileName);
-                    if (!dataFile.exists()) {
-                        URL downloadUrl = new URL(DOWNLOAD_URL + dateFileName);
-                        FileUtils.copyURLToFile(downloadUrl, dataFile);
-                    }
-                    return dataFile;
-                }
-            } catch (IOException ex) {
-                logger.error("Failed to download {}", dateFileName);
-            }
-        } else {
-            throw new IllegalStateException("Orbis hasn't yet been initialized!");
-        }
-        return null;
     }
 
     @API(status = API.Status.STABLE, since = "0.3-Alpha")

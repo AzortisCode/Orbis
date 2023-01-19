@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -24,7 +24,6 @@ import com.azortis.orbis.block.BlockRegistry;
 import com.azortis.orbis.block.BlockState;
 import com.azortis.orbis.block.property.*;
 import com.azortis.orbis.entity.Player;
-import com.azortis.orbis.item.LegacyItem;
 import com.azortis.orbis.paper.OrbisPlugin;
 import com.azortis.orbis.paper.PaperPlatform;
 import com.azortis.orbis.paper.block.PaperBlock;
@@ -38,7 +37,6 @@ import com.azortis.orbis.world.WorldAccess;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableBiMap;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
@@ -47,7 +45,6 @@ import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.block.data.BlockData;
 import org.bukkit.craftbukkit.v1_19_R2.block.data.CraftBlockData;
-import org.bukkit.craftbukkit.v1_19_R2.util.CraftMagicNumbers;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
@@ -283,22 +280,6 @@ public final class ConversionUtils {
     @Contract(pure = true)
     public static @NotNull net.minecraft.world.level.block.state.BlockState toNative(@NotNull BlockState state) {
         return ((PaperBlockState) state).handle();
-    }
-
-    //
-    // Deprecated
-    //
-
-    @Deprecated
-    public static Material getMaterial(@NotNull LegacyItem legacyItem) {
-        return CraftMagicNumbers.getMaterial(BuiltInRegistries.ITEM.get(ResourceLocation.tryParse(legacyItem.key().asString())));
-    }
-
-    @Deprecated
-    public static LegacyItem getItem(@NotNull Material material) {
-        // TODO fix this registry bs
-        //return LegacyItem.fromKey(Registry.ITEM.getKey(CraftMagicNumbers.getItem(material)).toString());
-        return null;
     }
 
     //

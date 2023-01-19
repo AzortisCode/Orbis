@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -19,21 +19,11 @@
 package com.azortis.orbis.codegen.item;
 
 import com.azortis.orbis.codegen.OrbisCodeGenerator;
-import com.azortis.orbis.item.LegacyEnchantment;
-import com.azortis.orbis.item.LegacyItemRegistry;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.squareup.javapoet.*;
-import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.lang.model.element.Modifier;
 import java.io.File;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.List;
-import java.util.Map;
 
 public class EnchantmentsGenerator extends OrbisCodeGenerator {
     private static final Logger LOGGER = LoggerFactory.getLogger(EnchantmentsGenerator.class);
@@ -44,7 +34,7 @@ public class EnchantmentsGenerator extends OrbisCodeGenerator {
 
     @Override
     public void generate() {
-        if (this.inputStream == null) {
+        /*if (this.inputStream == null) {
             LOGGER.error("Failed to find blocks data file");
             return;
         }
@@ -78,6 +68,6 @@ public class EnchantmentsGenerator extends OrbisCodeGenerator {
                             .build());
         }
         JavaFile itemsFile = JavaFile.builder("com.azortis.orbis.item", enchantmentsClass.build()).build();
-        writeFiles(List.of(itemsFile));
+        writeFiles(List.of(itemsFile));*/
     }
 }
