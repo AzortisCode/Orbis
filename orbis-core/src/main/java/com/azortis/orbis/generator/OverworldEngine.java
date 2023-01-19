@@ -20,25 +20,26 @@ package com.azortis.orbis.generator;
 
 import com.azortis.orbis.block.Blocks;
 import com.azortis.orbis.generator.biome.Biome;
-import com.azortis.orbis.world.ChunkAccess;
-import com.azortis.orbis.world.World;
+import com.azortis.orbis.pack.studio.annotations.Description;
+import net.kyori.adventure.key.Key;
 import org.jetbrains.annotations.NotNull;
 
-public final class SimpleEngine extends Engine {
+@Description("A generation engine best suited for situations where the main world consists of a single surface.")
+public final class OverworldEngine extends Engine {
 
-    public SimpleEngine(World world) {
-        super(world);
+    public OverworldEngine(@NotNull Key type) {
+        super(type);
     }
 
     @Override
-    public void generateChunk(int chunkX, int chunkZ, @NotNull ChunkAccess chunkAccess) {
+    public void generateChunk(int chunkX, int chunkZ, @NotNull GeneratorChunkAccess chunkAccess) {
         for (int cx = 0; cx <= 16; cx++) {
             for (int cz = 0; cz <= 16; cz++) {
                 final int x = cx + (chunkX << 4);
                 final int z = cz + (chunkZ << 4);
 
                 Biome biome = dimension().distributor().getBiome(x, 0, z);
-                int height = (int) Math.round(biome.surface().getTerrainHeight(x, z, 1.0d));
+                int height = (int) Math.round(biome.surface().getSurfaceHeight(x, z, 1.0d));
 
                 for (int y = dimension().minHeight(); y < dimension().maxHeight(); y++) {
                     if (y == dimension().minHeight()) {

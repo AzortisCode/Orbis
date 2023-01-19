@@ -18,6 +18,8 @@
 
 package com.azortis.orbis;
 
+import com.azortis.orbis.generator.Engine;
+import com.azortis.orbis.generator.OverworldEngine;
 import com.azortis.orbis.generator.biome.Distributor;
 import com.azortis.orbis.generator.biome.SingleDistributor;
 import com.azortis.orbis.generator.biome.complex.ComplexDistributor;
@@ -40,6 +42,9 @@ import java.util.Set;
 
 public final class Registry<T> {
 
+    public static final Registry<Engine> ENGINE = new Registry<>(Engine.class, Map.of(
+            Key.key("orbis:overworld"), OverworldEngine.class
+    ));
     public static final Registry<Noise> NOISE = new Registry<>(Noise.class, Map.of(
             Key.key("fastnoise:opensimplex2"), OpenSimplex2.class, Key.key("fastnoise:opensimplex2s"), OpenSimplex2S.class
     ));
@@ -52,6 +57,7 @@ public final class Registry<T> {
     private static final Map<Class<?>, Registry<?>> registries = new HashMap<>();
 
     static {
+        addRegistry(Engine.class, ENGINE);
         addRegistry(Noise.class, NOISE);
         addRegistry(Distributor.class, DISTRIBUTOR);
         addRegistry(Surface.class, SURFACE);

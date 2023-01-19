@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -139,7 +139,7 @@ public non-sealed interface BlockState extends ConfiguredBlock {
      * @param value    The value of the property.
      * @param <T>      The type of the property.
      * @param <V>      The type of the value.
-     * @return The BlockState for the legacyBlock after you set this value.
+     * @return The BlockState for the block after you set this value.
      * @since 0.3-Alpha
      */
     @Contract(pure = true)
@@ -152,7 +152,7 @@ public non-sealed interface BlockState extends ConfiguredBlock {
      *
      * @param property The property to change.
      * @param value    A string representation of the property value.
-     * @return The BlockState for the legacyBlock after you set this value.
+     * @return The BlockState for the block after you set this value.
      * @since 0.3-Alpha
      */
     @Contract(pure = true)

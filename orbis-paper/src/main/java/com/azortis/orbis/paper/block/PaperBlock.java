@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -72,7 +72,7 @@ public final class PaperBlock implements Block {
         this.handle = handle;
         this.key = Key.key(BuiltInRegistries.BLOCK.getKey(handle).toString());
 
-        // Populate the legacyBlock states.
+        // Populate the block states.
         ImmutableMap.Builder<net.minecraft.world.level.block.state.BlockState, BlockState> stateBuilder = ImmutableMap.builder();
         for (net.minecraft.world.level.block.state.BlockState nativeState : handle.getStateDefinition().getPossibleStates()) {
             stateBuilder.put(nativeState, new PaperBlockState(nativeState, this));
@@ -207,9 +207,9 @@ public final class PaperBlock implements Block {
     //
 
     /**
-     * Gets the NMS legacyBlock handle associated with this legacyBlock.
+     * Gets the NMS block handle associated with this block.
      *
-     * @return The NMS Block handle for this legacyBlock.
+     * @return The NMS Block handle for this block.
      * @since 0.3-Alpha
      */
     @Contract(pure = true)

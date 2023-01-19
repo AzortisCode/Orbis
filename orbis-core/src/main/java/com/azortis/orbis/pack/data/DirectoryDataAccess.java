@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -36,12 +36,24 @@ import java.util.stream.Collectors;
  */
 @API(status = API.Status.INTERNAL, since = "0.3-Alpha", consumers = "com.azortis.orbis.pack")
 public class DirectoryDataAccess extends DataAccess {
+
+    /**
+     * The root directory of the data access.
+     */
     protected final File dataDirectory;
 
-    public DirectoryDataAccess(File dataDirectory) {
+    /**
+     * Constructs a directory based {@link DataAccess} with the specified directory {@link File} as root.
+     *
+     * @param dataDirectory The root directory file.
+     */
+    public DirectoryDataAccess(@NotNull File dataDirectory) {
         this.dataDirectory = dataDirectory.getAbsoluteFile();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     protected @NotNull File getFile(@NotNull String dataPath, @NotNull String entryName) throws FileNotFoundException {
         String trimmedDataPath = dataPath.replace("**", "").trim();
@@ -50,6 +62,9 @@ public class DirectoryDataAccess extends DataAccess {
         throw new FileNotFoundException("File: " + file.getPath() + " doesn't exist!");
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public @NotNull @Unmodifiable Set<File> getFiles(@NotNull String dataPath) {
         File directory;
@@ -95,6 +110,9 @@ public class DirectoryDataAccess extends DataAccess {
         return Collections.emptySet();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public @NotNull @Unmodifiable Set<String> getEntries(@NotNull String dataPath) {
         Set<File> files = getFiles(dataPath);

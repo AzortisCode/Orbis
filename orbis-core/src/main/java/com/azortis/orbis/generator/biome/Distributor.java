@@ -20,7 +20,7 @@ package com.azortis.orbis.generator.biome;
 
 import com.azortis.orbis.pack.Inject;
 import com.azortis.orbis.pack.Invoke;
-import com.azortis.orbis.pack.data.DataAccess;
+import com.azortis.orbis.pack.studio.annotations.Description;
 import com.azortis.orbis.pack.studio.annotations.Entries;
 import com.azortis.orbis.pack.studio.annotations.Required;
 import com.azortis.orbis.pack.studio.annotations.Typed;
@@ -28,62 +28,63 @@ import com.azortis.orbis.world.World;
 import com.google.gson.annotations.SerializedName;
 import net.kyori.adventure.key.Key;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Unmodifiable;
 
-import java.io.File;
 import java.util.HashSet;
 import java.util.Set;
 
 @Typed
 @Inject
+@Description("Generator object that handles with the distribution of biomes.")
 public abstract class Distributor {
 
     @Required
+    @Description("The name of the distributor instance, must be same as file name without the *.json suffix.")
     protected final String name;
 
     @Required
+    @Description("The type of distributor algorithm to use.")
     protected final Key type;
 
-    // Every possible biome should be defined in the directory of the distributor object
-    @Entries(Biome.class)
+
     @Required
+    @Entries(Biome.class)
     @SerializedName("biomes")
+    @Description("All the possible biomes from this distributor.")
     private Set<String> biomeNames;
+
+    // Biomes are separate files, so we inject them here.
     @Inject(fieldName = "biomeNames", collectionType = HashSet.class, parameterizedType = Biome.class)
     private transient Set<Biome> biomes;
 
     @Inject
     private transient World world;
-    private transient File settingsFolder;
 
-    protected Distributor(String name, Key type) {
+    protected Distributor(@NotNull String name, @NotNull Key type) {
         this.name = name;
         this.type = type;
     }
 
     @Invoke(when = Invoke.Order.MID_INJECTION)
     private void setup() {
-        // Set up the settings folder so that Distributor implementations can load their datafiles before injection
-        this.settingsFolder = new File(world.settingsDirectory() +
-                DataAccess.DISTRIBUTOR_PATH + "/" + name + "/");
-
         // Make sets immutable
         this.biomeNames = Set.copyOf(biomeNames);
         this.biomes = Set.copyOf(biomes);
     }
 
-    public String name() {
+    public @NotNull String name() {
         return name;
     }
 
-    public Key type() {
+    public @NotNull Key type() {
         return type;
     }
 
-    public @NotNull Set<String> biomeNames() {
+    public @Unmodifiable @NotNull Set<String> biomeNames() {
         return biomeNames;
     }
 
-    public @NotNull Set<Biome> biomes() {
+    public @Unmodifiable @NotNull Set<Biome> biomes() {
         return biomes;
     }
 
@@ -94,12 +95,8 @@ public abstract class Distributor {
         throw new IllegalArgumentException("Biome by name " + name + " is not registered with this distributor!");
     }
 
-    public World world() {
+    public @NotNull World world() {
         return world;
-    }
-
-    public File settingsFolder() {
-        return settingsFolder;
     }
 
     public abstract Biome getBiome(int x, int y, int z);

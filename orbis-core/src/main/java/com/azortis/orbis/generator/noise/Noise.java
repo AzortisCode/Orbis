@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -19,8 +19,7 @@
 package com.azortis.orbis.generator.noise;
 
 import com.azortis.orbis.pack.Inject;
-import com.azortis.orbis.pack.studio.annotations.SupportAnonymous;
-import com.azortis.orbis.pack.studio.annotations.Typed;
+import com.azortis.orbis.pack.studio.annotations.*;
 import com.azortis.orbis.world.World;
 import net.kyori.adventure.key.Key;
 import org.jetbrains.annotations.NotNull;
@@ -29,11 +28,24 @@ import org.jetbrains.annotations.Nullable;
 @Inject
 @Typed
 @SupportAnonymous
+@Description("A source for procedural noise that is used for various algorithms.")
 public abstract class Noise {
 
+    @Required
+    @Description("The name of the noise instance, must be same as file name without the *.json suffix.")
     protected final String name;
+
+    @Required
+    @Description("The type of noise algorithm to use.")
     protected final Key type;
+
+    @Required
+    @Description("The unique seed for the noise algorithm, will be mixed with world seed.")
     protected final long seed;
+
+    @Required
+    @Min(floating = 0d)
+    @Description("The frequency to sample the noise from, used to smooth out the results.")
     protected final double frequency;
 
     @Inject
@@ -51,6 +63,7 @@ public abstract class Noise {
      * hence why name is an optional value.
      *
      * @return The name of the noise generator
+     * @since 0.3-Alpha
      */
     public boolean hasName() {
         return name != null;

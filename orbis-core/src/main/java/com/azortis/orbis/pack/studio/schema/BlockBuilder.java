@@ -49,7 +49,7 @@ public final class BlockBuilder extends SchemaBuilder {
         // The Configured Block type is either just a string of the block type, or one that supports a blocks properties
         JsonArray oneOf = new JsonArray();
 
-        // The type object that is just purely a string, and an enum with all the possible legacyBlock keys
+        // The type object that is just purely a string, and an enum with all the possible block keys
         JsonObject blockKeyOnly = new JsonObject();
         blockKeyOnly.addProperty("type", "string");
         JsonArray blockKeys = new JsonArray();

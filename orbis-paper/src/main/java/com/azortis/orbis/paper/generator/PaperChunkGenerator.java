@@ -67,7 +67,8 @@ public final class PaperChunkGenerator extends ChunkGenerator {
     @Override
     public void generateNoise(@NotNull WorldInfo worldInfo, @NotNull Random ignored, int chunkX, int chunkZ, @NotNull ChunkData chunkData) {
         if (requiresLoading()) load(worldInfo);
-        PaperGeneratorChunkAccess chunkAccess = new PaperGeneratorChunkAccess(paperWorld, (CraftChunkData) chunkData);
+        PaperGeneratorChunkAccess chunkAccess = new PaperGeneratorChunkAccess(paperWorld, paperWorld.getDimension(),
+                paperWorld.getEngine(), (CraftChunkData) chunkData);
         paperWorld.getEngine().generateChunk(chunkX, chunkZ, chunkAccess);
         chunkAccess.unload(); // Make sure to let the core API know this ChunkAccess instance shouldn't be used.
     }
@@ -84,12 +85,12 @@ public final class PaperChunkGenerator extends ChunkGenerator {
 
     @Override
     public boolean shouldGenerateCaves() {
-        return true;
+        return false;
     }
 
     @Override
     public boolean shouldGenerateDecorations() {
-        return true;
+        return false;
     }
 
 }

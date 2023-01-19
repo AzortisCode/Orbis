@@ -20,9 +20,11 @@ package com.azortis.orbis.paper.generator;
 
 import com.azortis.orbis.block.BlockState;
 import com.azortis.orbis.block.Blocks;
+import com.azortis.orbis.generator.Dimension;
+import com.azortis.orbis.generator.Engine;
+import com.azortis.orbis.generator.GeneratorChunkAccess;
 import com.azortis.orbis.paper.util.ConversionUtils;
-import com.azortis.orbis.world.ChunkAccess;
-import com.azortis.orbis.world.WorldAccess;
+import com.azortis.orbis.world.World;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
@@ -32,14 +34,14 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 
-public final class PaperGeneratorChunkAccess implements ChunkAccess {
+public final class PaperGeneratorChunkAccess extends GeneratorChunkAccess {
 
-    private final WorldAccess world;
     private final CraftChunkData handle;
     private boolean loaded = true;
 
-    public PaperGeneratorChunkAccess(@NotNull WorldAccess world, @NotNull CraftChunkData handle) {
-        this.world = world;
+    public PaperGeneratorChunkAccess(@NotNull World world, @NotNull Dimension dimension,
+                                     @NotNull Engine engine, @NotNull CraftChunkData handle) {
+        super(world, dimension, engine);
         this.handle = handle;
     }
 

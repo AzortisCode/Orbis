@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -18,11 +18,14 @@
 
 package com.azortis.orbis.generator.biome;
 
+import com.azortis.orbis.pack.studio.annotations.Description;
 import net.kyori.adventure.key.Key;
+import org.jetbrains.annotations.NotNull;
 
+@Description("Distributor that only has one biome.")
 public final class SingleDistributor extends Distributor {
 
-    private SingleDistributor(String name, Key providerKey) {
+    private SingleDistributor(@NotNull String name, @NotNull Key providerKey) {
         super(name, providerKey);
     }
 

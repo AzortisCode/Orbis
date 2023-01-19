@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -30,6 +30,9 @@ import java.lang.annotation.Target;
  * Only works on classes that are implementations of specified types defined in {@link DataAccess#GENERATOR_TYPES}.
  * <p>
  * It will also be used when looking for types to create a json schema for.
+ *
+ * @author Jake Nijssen
+ * @since 0.3-Alpha
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)

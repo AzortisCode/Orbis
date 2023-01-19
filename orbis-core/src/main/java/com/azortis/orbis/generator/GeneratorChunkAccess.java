@@ -16,50 +16,40 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.generator.surface;
+package com.azortis.orbis.generator;
 
-import com.azortis.orbis.generator.biome.Biome;
-import com.azortis.orbis.pack.Inject;
-import com.azortis.orbis.pack.studio.annotations.Typed;
+import com.azortis.orbis.world.ChunkAccess;
 import com.azortis.orbis.world.World;
-import lombok.Getter;
-import net.kyori.adventure.key.Key;
 import org.jetbrains.annotations.NotNull;
 
-@Getter
-@Typed
-@Inject
-public abstract class Surface {
+/**
+ * A chunk access in the context of generation, will store vital information about generation context
+ * that can be passed from one part of the generator to the other.
+ *
+ * @author Jake Nijssen
+ * @since 0.3-Alpha
+ */
+public abstract class GeneratorChunkAccess implements ChunkAccess {
 
-    protected final String name;
-    protected final Key type;
+    protected final World world;
+    protected final Dimension dimension;
+    protected final Engine engine;
 
-    @Inject
-    private transient World world;
-    @Inject(isChild = true)
-    private transient Biome biome;
-
-    protected Surface(@NotNull String name, @NotNull Key type) {
-        this.name = name;
-        this.type = type;
-    }
-
-    public abstract double getSurfaceHeight(final int x, final int z, double biomeWeight);
-
-    public String name() {
-        return name;
-    }
-
-    public Key type() {
-        return type;
+    public GeneratorChunkAccess(@NotNull World world, @NotNull Dimension dimension, @NotNull Engine engine) {
+        this.world = world;
+        this.dimension = dimension;
+        this.engine = engine;
     }
 
     public World world() {
         return world;
     }
 
-    public Biome biome() {
-        return biome;
+    public Dimension dimension() {
+        return dimension;
     }
 
+    public Engine engine() {
+        return engine;
+    }
 }

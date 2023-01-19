@@ -38,7 +38,7 @@ public class PlainsSurface extends Surface {
     }
 
     @Override
-    public double getTerrainHeight(int x, int z, double biomeWeight) {
+    public double getSurfaceHeight(int x, int z, double biomeWeight) {
         double height = noise.noise(x / 400f, z / 400f) * 30;
         height += noise.noise(x / 50f, z / 50f) * 3;
         height += Math.abs(noise.noise(x / 12f, z / 12f) * 1);

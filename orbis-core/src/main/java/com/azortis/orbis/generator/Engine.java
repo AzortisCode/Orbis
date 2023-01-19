@@ -19,26 +19,44 @@
 package com.azortis.orbis.generator;
 
 import com.azortis.orbis.generator.biome.Distributor;
-import com.azortis.orbis.world.ChunkAccess;
+import com.azortis.orbis.pack.Inject;
+import com.azortis.orbis.pack.studio.annotations.Description;
+import com.azortis.orbis.pack.studio.annotations.Required;
+import com.azortis.orbis.pack.studio.annotations.Typed;
 import com.azortis.orbis.world.World;
+import net.kyori.adventure.key.Key;
 import org.jetbrains.annotations.NotNull;
 
+@Typed
+@Description("The foundation of the generator, that organizes the generation pipeline.")
 public abstract class Engine {
 
-    protected final World world;
+    @Required
+    @Description("The type of generator engine to use for this dimension.")
+    private final Key type;
 
-    public Engine(World world) {
-        this.world = world;
+    @Inject
+    protected transient World world;
+
+    @Inject
+    protected transient Dimension dimension;
+
+    protected Engine(@NotNull Key type) {
+        this.type = type;
     }
 
-    public abstract void generateChunk(int chunkX, int chunkZ, @NotNull ChunkAccess chunkAccess);
+    public abstract void generateChunk(int chunkX, int chunkZ, @NotNull GeneratorChunkAccess chunkAccess);
+
+    public Key type() {
+        return type;
+    }
 
     public World world() {
         return world;
     }
 
     public Dimension dimension() {
-        return world.getDimension();
+        return dimension;
     }
 
     public Distributor distributor() {

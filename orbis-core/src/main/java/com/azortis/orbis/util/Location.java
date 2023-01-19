@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -164,7 +164,7 @@ public record Location(double x, double y, double z, float yaw, float pitch,
     }
 
     /**
-     * Get the x-legacyBlock position of this {@link Location}.
+     * Get the x-block position of this {@link Location}.
      *
      * @return A floored x-coord.
      */
@@ -174,7 +174,7 @@ public record Location(double x, double y, double z, float yaw, float pitch,
     }
 
     /**
-     * Get the y-legacyBlock position of this {@link Location}.
+     * Get the y-block position of this {@link Location}.
      *
      * @return A floored y-coord.
      */
@@ -184,7 +184,7 @@ public record Location(double x, double y, double z, float yaw, float pitch,
     }
 
     /**
-     * Get the z-legacyBlock position of this {@link Location}.
+     * Get the z-block position of this {@link Location}.
      *
      * @return A floored z-coord.
      */
@@ -194,9 +194,9 @@ public record Location(double x, double y, double z, float yaw, float pitch,
     }
 
     /**
-     * Get the legacyBlock position of this {@link Location}.
+     * Get the block position of this {@link Location}.
      *
-     * @return Floored coordinates that resembles a legacyBlock position.
+     * @return Floored coordinates that resembles a block position.
      */
     @Contract(" -> new")
     public @NotNull BlockPos blockPos() {

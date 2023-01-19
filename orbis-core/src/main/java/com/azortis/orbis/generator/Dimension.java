@@ -25,42 +25,42 @@ import com.azortis.orbis.pack.studio.annotations.Entries;
 import com.azortis.orbis.pack.studio.annotations.Required;
 import com.azortis.orbis.world.World;
 import com.google.gson.annotations.SerializedName;
-import lombok.Getter;
-import lombok.experimental.Accessors;
+import org.jetbrains.annotations.NotNull;
 
-@Accessors(fluent = true)
-@Getter
-public final class Dimension { // No need to check this class if it contains fields that need injection
+@Description("The dimension object which sets the foundational blueprint for a world.")
+public final class Dimension {
 
     @Required
     @Description("The name of the dimension.")
     private final String name;
-    private final int minHeight; // Fair, but I mean, is this a dimension property? Answer yes.
-    private final int maxHeight; // Fair, max is 1024
-    private final int fluidHeight;
-    private final int interpolationRadius; // Pretty much bullshit but hey!
+
+    @Required
+    @Description("The engine to use for this dimension.")
+    private Engine engine;
 
     @Inject
-    private final transient World world;
+    private transient World world;
 
-    // Distribution
+
     @Required
     @Entries(Distributor.class)
     @SerializedName("distributor")
-    private final String distributorName;
+    private String distributorName;
     @Inject(fieldName = "distributorName")
-    private final transient Distributor distributor;
+    private transient Distributor distributor;
 
-    public Dimension(String name, int minHeight, int maxHeight, int fluidHeight, int interpolationRadius, World world,
-                     String distributorName, Distributor distributor) {
+
+    //
+    // Deprecated fields for removal
+    //
+    @Deprecated
+    private int minHeight;
+
+    @Deprecated
+    private int maxHeight;
+
+    public Dimension(@NotNull String name) {
         this.name = name;
-        this.minHeight = minHeight;
-        this.maxHeight = maxHeight;
-        this.fluidHeight = fluidHeight;
-        this.interpolationRadius = interpolationRadius;
-        this.world = world;
-        this.distributorName = distributorName;
-        this.distributor = distributor;
     }
 
     /**
@@ -72,4 +72,36 @@ public final class Dimension { // No need to check this class if it contains fie
         return world == null || distributor == null;
     }
 
+    public String name() {
+        return this.name;
+    }
+
+    /**
+     * Get the {@link Engine} this {@link Dimension} uses for its generation pipeline.
+     *
+     * @return The engine being used.
+     * @since 0.3-Alpha
+     */
+    public Engine engine() {
+        return engine;
+    }
+
+    @Deprecated
+    public int minHeight() {
+        return this.minHeight;
+    }
+
+    @Deprecated
+    public int maxHeight() {
+        return this.maxHeight;
+    }
+
+
+    public World world() {
+        return this.world;
+    }
+
+    public Distributor distributor() {
+        return this.distributor;
+    }
 }

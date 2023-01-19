@@ -27,6 +27,7 @@ import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Table;
+import org.apiguardian.api.API;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Unmodifiable;
 
@@ -45,7 +46,12 @@ import java.util.Set;
  * @author Jake Nijssen
  * @since 0.3-Alpha
  */
+@API(status = API.Status.STABLE, since = "0.3-Alpha")
 public abstract class DataAccess {
+
+    //
+    // Core Orbis data types.
+    //
 
     /**
      * The data path for {@link Biome}.
@@ -85,9 +91,27 @@ public abstract class DataAccess {
      */
     public static final ImmutableMap<Class<?>, String> DATA_TYPES = ImmutableMap.of(Biome.class, BIOMES_PATH);
 
+    //
+    // Component data types.
+    //
+
+    /**
+     * Maps all component data type classes to the {@link ComponentAccess} type.
+     */
     private final Map<ImmutableSet<Class<?>>, Class<? extends ComponentAccess>> componentTypes = new HashMap<>();
+
+    /**
+     * Maps each {@link ComponentAccess} type to a component name and access instance.
+     */
     private final Table<Class<? extends ComponentAccess>, String, ComponentAccess> componentAccessTable = HashBasedTable.create();
 
+    /**
+     * Gets the data path for a core Orbis type.
+     *
+     * @param type The data type.
+     * @return The corresponding data path.
+     * @throws IllegalArgumentException If the given type is not a core data type.
+     */
     public @NotNull String getDataPath(@NotNull Class<?> type) throws IllegalArgumentException {
         if (type == Biome.class) {
             return BIOMES_PATH;
@@ -101,7 +125,17 @@ public abstract class DataAccess {
         throw new IllegalArgumentException("Unsupported datatype " + type);
     }
 
-    public String getDataPath(@NotNull Class<?> type, @NotNull String name) {
+    /**
+     * Gets the data path for a component type registered with this access.
+     *
+     * @param type The data type.
+     * @param name The name of the component instance.
+     * @return The corresponding data path.
+     * @throws IllegalArgumentException If given type is not a registered component type.
+     *                                  See {@link DataAccess#isComponentType(Class)}
+     */
+    public @NotNull String getDataPath(@NotNull Class<?> type, @NotNull String name) throws IllegalArgumentException {
+        Preconditions.checkArgument(isComponentType(type), "Given type is not registered as component type!");
         return getComponentAccess(getAccessType(type), name).getDataPath(type);
     }
 

@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -63,7 +63,7 @@ public non-sealed interface Block extends ConfiguredBlock {
     }
 
     /**
-     * Get the properties this legacyBlock has.
+     * Get the properties this block has.
      *
      * @return Immutable set view of the block properties.
      * @since 0.3-Alpha

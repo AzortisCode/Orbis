@@ -43,7 +43,7 @@ public class ConfigSurface extends Surface {
     }
 
     @Override
-    public double getTerrainHeight(int x, int z, double biomeWeight) {
+    public double getSurfaceHeight(int x, int z, double biomeWeight) {
         double height = 0;
         for (NoiseLayer layer : layers) {
             height += (noise.noise(x / layer.zoom, z / layer.zoom) * layer.coefficient);

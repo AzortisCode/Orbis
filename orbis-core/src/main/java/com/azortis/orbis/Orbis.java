@@ -183,16 +183,20 @@ public final class Orbis {
                 registry.clearDataTypes();
                 for (Class<?> implementationType : registry.getTypes()) {
                     if (implementationType.isAnnotationPresent(com.azortis.orbis.pack.data.Component.class)) {
-                        Class<?> accessClass = implementationType.getAnnotation(com.azortis.orbis.pack.data.Component.class).value();
+                        Class<?> accessClass = implementationType
+                                .getAnnotation(com.azortis.orbis.pack.data.Component.class).value();
                         try {
                             // Suppress the warning for unchecked cast of constructor, we checked it in the if statement.
                             @SuppressWarnings("unchecked")
                             // Get the constructor with parameters (String, DataAccess)
-                            Constructor<? extends ComponentAccess> constructor = (Constructor<? extends ComponentAccess>) accessClass.getConstructor(String.class, DataAccess.class);
+                            Constructor<? extends ComponentAccess> constructor =
+                                    (Constructor<? extends ComponentAccess>)
+                                            accessClass.getConstructor(String.class, DataAccess.class);
 
-                            // Get the component access class, but due to generics we must cast the access type to the instance to get the correct class
-                            // and then upcast it to component access object.
-                            ComponentAccess componentAccess = (ComponentAccess) (accessClass.cast(constructor.newInstance(null, null)));
+                            // Get the component access class, but due to generics we must cast the access type to
+                            // the instance to get the correct class and then upcast it to component access object.
+                            ComponentAccess componentAccess = (ComponentAccess)
+                                    (accessClass.cast(constructor.newInstance(null, null)));
 
                             // Add all adapters to the list
                             entryList.addAll(componentAccess.adapters().entrySet());
@@ -200,19 +204,25 @@ public final class Orbis {
                             // Register all data types
                             registry.registerDataTypes(implementationType, componentAccess.dataTypes());
                         } catch (NoSuchMethodException e) {
-                            logger.error("Class " + accessClass.getTypeName() + " does not implement the public constructor (String.class, DataAccess.class) and its adapters cannot be retrieved");
+                            logger.error("Class " + accessClass.getTypeName() +
+                                    " does not implement the public constructor (String.class, DataAccess.class) " +
+                                    "and its adapters cannot be retrieved");
                             e.printStackTrace();
                         } catch (SecurityException e) {
-                            logger.error("Unable to access class " + accessClass.getTypeName() + " for adapter retrieval");
+                            logger.error("Unable to access class " + accessClass.getTypeName() +
+                                    " for adapter retrieval");
                             e.printStackTrace();
                         } catch (InvocationTargetException e) {
-                            logger.error("Class " + accessClass.getTypeName() + " threw an error during initialization for adapter retrieval");
+                            logger.error("Class " + accessClass.getTypeName() + " threw an error during" +
+                                    " initialization for adapter retrieval");
                             e.printStackTrace();
                         } catch (InstantiationException e) {
-                            logger.error("Class " + accessClass.getTypeName() + " is abstract and adapters cannot be retrieved.");
+                            logger.error("Class " + accessClass.getTypeName() + " is abstract and adapters " +
+                                    "cannot be retrieved.");
                             e.printStackTrace();
                         } catch (IllegalAccessException e) {
-                            logger.error("Class " + accessClass.getTypeName() + " could not be accessed during adapter retrieval.");
+                            logger.error("Class " + accessClass.getTypeName() + " could not be accessed " +
+                                    "during adapter retrieval.");
                             e.printStackTrace();
                         }
 
