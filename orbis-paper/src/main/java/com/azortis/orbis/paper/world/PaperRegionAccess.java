@@ -18,5 +18,63 @@
 
 package com.azortis.orbis.paper.world;
 
-public final class PaperRegionAccess {
+import com.azortis.orbis.block.BlockState;
+import com.azortis.orbis.block.Blocks;
+import com.azortis.orbis.exception.CoordsOutOfBoundsException;
+import com.azortis.orbis.paper.util.ConversionUtils;
+import com.azortis.orbis.util.BoundingBox;
+import com.azortis.orbis.world.ChunkAccess;
+import com.azortis.orbis.world.RegionAccess;
+import com.azortis.orbis.world.WorldAccess;
+import org.bukkit.block.data.BlockData;
+import org.bukkit.generator.LimitedRegion;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.UnmodifiableView;
+
+import java.util.Set;
+
+public final class PaperRegionAccess implements RegionAccess {
+
+    private final LimitedRegion handle;
+
+    public PaperRegionAccess(final LimitedRegion handle) {
+        this.handle = handle;
+    }
+
+    @Override
+    public @NotNull WorldAccess world() {
+        return new PaperWorldAccess(handle.getWorld());
+    }
+
+    @Override
+    public boolean isLoaded() {
+        return true;
+    }
+
+    @Override
+    public void unload() {
+    }
+
+    @Override
+    public @NotNull @UnmodifiableView Set<ChunkAccess> chunks() {
+        return Set.of();
+    }
+
+    @Override
+    public @NotNull BoundingBox bounds() {
+        // TODO: There isn't really a good way to get the bounds of a region.
+        return null;
+    }
+
+    @Override
+    public @NotNull BlockState getState(int x, int y, int z) throws CoordsOutOfBoundsException {
+        return ConversionUtils.fromPaper(handle.getBlockData(x, y, z));
+    }
+
+    @Override
+    public void setState(int x, int y, int z, @Nullable BlockState state) throws CoordsOutOfBoundsException {
+        final BlockData data = state == null ? ConversionUtils.toPaper(Blocks.AIR.defaultState()) : ConversionUtils.toPaper(state);
+        handle.setBlockData(x, y, z, data);
+    }
 }

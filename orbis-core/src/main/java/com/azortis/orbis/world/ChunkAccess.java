@@ -73,7 +73,7 @@ public interface ChunkAccess {
     @NotNull BlockState getState(@Range(from = 0, to = 15) int x, int y, @Range(from = 0, to = 15) int z);
 
     @RelativeCoords
-    void setState(@Range(from = 0, to = 15) int x, int y, @Range(from = 0, to = 15) int z, @Nullable BlockState state);
+    void setState(@Range(from = 0, to = 15) int x, int y, @Range(from = 0, to = 15) int z, @NotNull BlockState state);
 
     @RelativeCoords
     default @NotNull Block getBlock(@Range(from = 0, to = 15) int x, int y, @Range(from = 0, to = 15) int z) {

@@ -43,6 +43,7 @@ public interface RegionAccess {
     @Contract(pure = true)
     @NotNull WorldAccess world();
 
+    // TODO: Do these even mean anything in this context?
     boolean isLoaded();
 
     void unload();
@@ -52,6 +53,7 @@ public interface RegionAccess {
      *
      * @return An immutable set of {@link ChunkAccess} in this region.
      */
+    // TODO: This is quite difficult to implement for regions. Do we really need this?
     @Contract(pure = true)
     @NotNull @UnmodifiableView Set<ChunkAccess> chunks();
 
@@ -146,7 +148,9 @@ public interface RegionAccess {
      * @throws CoordsOutOfBoundsException If the position is not within the bounds of this region.
      */
     @Contract(pure = true)
-    @NotNull BlockState getState(@NotNull BlockPos pos) throws CoordsOutOfBoundsException;
+    default @NotNull BlockState getState(@NotNull BlockPos pos) throws CoordsOutOfBoundsException {
+        return getState(pos.x(), pos.y(), pos.z());
+    }
 
     /**
      * Set the {@link BlockState} at specified world coordinates.
@@ -161,6 +165,8 @@ public interface RegionAccess {
     void setState(int x, int y, int z, @Nullable BlockState state) throws CoordsOutOfBoundsException;
 
     @Contract(pure = true)
-    void setState(@NotNull BlockPos pos, @Nullable BlockState state) throws CoordsOutOfBoundsException;
+    default void setState(@NotNull BlockPos pos, @Nullable BlockState state) throws CoordsOutOfBoundsException {
+        setState(pos.x(), pos.y(), pos.z(), state);
+    }
 
 }

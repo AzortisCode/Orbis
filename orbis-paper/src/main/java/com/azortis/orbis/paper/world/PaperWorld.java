@@ -18,6 +18,7 @@
 
 package com.azortis.orbis.paper.world;
 
+import com.azortis.orbis.block.BlockState;
 import com.azortis.orbis.entity.Player;
 import com.azortis.orbis.world.ChunkAccess;
 import com.azortis.orbis.world.World;
@@ -27,6 +28,7 @@ import org.apiguardian.api.API;
 import org.bukkit.Bukkit;
 import org.bukkit.generator.WorldInfo;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
 import java.io.File;
@@ -106,7 +108,17 @@ public final class PaperWorld extends World {
     }
 
     @Override
-    public @NotNull ChunkAccess getChunk(int chunkX, int chunkZ) {
+    public @Nullable ChunkAccess getChunk(int chunkX, int chunkZ) {
         return worldAccess.getChunk(chunkX, chunkZ);
+    }
+
+    @Override
+    public @NotNull BlockState getBlockState(int x, int y, int z) {
+        return worldAccess.getBlockState(x, y, z);
+    }
+
+    @Override
+    public void setBlockState(int x, int y, int z, @NotNull BlockState blockState) {
+        worldAccess.setBlockState(x, y, z, blockState);
     }
 }

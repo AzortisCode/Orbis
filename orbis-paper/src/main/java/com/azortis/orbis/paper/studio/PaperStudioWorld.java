@@ -19,6 +19,7 @@
 package com.azortis.orbis.paper.studio;
 
 import com.azortis.orbis.Orbis;
+import com.azortis.orbis.block.BlockState;
 import com.azortis.orbis.block.Blocks;
 import com.azortis.orbis.entity.Player;
 import com.azortis.orbis.pack.studio.Project;
@@ -51,6 +52,7 @@ import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.event.world.ChunkLoadEvent;
 import org.bukkit.event.world.ChunkUnloadEvent;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
 import java.io.File;
@@ -201,8 +203,18 @@ public final class PaperStudioWorld extends StudioWorld implements Listener {
     }
 
     @Override
-    public com.azortis.orbis.world.@NotNull ChunkAccess getChunk(int chunkX, int chunkZ) {
+    public com.azortis.orbis.world.@Nullable ChunkAccess getChunk(int chunkX, int chunkZ) {
         return worldAccess.getChunk(chunkX, chunkZ);
+    }
+
+    @Override
+    public @NotNull BlockState getBlockState(int x, int y, int z) {
+        return worldAccess.getBlockState(x, y, z);
+    }
+
+    @Override
+    public void setBlockState(int x, int y, int z, @NotNull BlockState blockState) {
+        worldAccess.setBlockState(x, y, z, blockState);
     }
 
     //

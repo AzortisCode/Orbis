@@ -18,8 +18,10 @@
 
 package com.azortis.orbis.world;
 
+import com.azortis.orbis.block.BlockState;
 import com.azortis.orbis.entity.Player;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
 import java.util.Set;
@@ -47,10 +49,13 @@ public interface WorldAccess {
 
     @NotNull @Unmodifiable Set<ChunkAccess> getLoadedChunks();
 
-    @NotNull ChunkAccess getChunk(int chunkX, int chunkZ);
+    @Nullable ChunkAccess getChunk(int chunkX, int chunkZ);
 
     default @NotNull CompletableFuture<ChunkAccess> getChunkAsync(int chunkX, int chunkZ) {
         return CompletableFuture.supplyAsync(() -> getChunk(chunkX, chunkZ));
     }
 
+    @NotNull BlockState getBlockState(int x, int y, int z);
+
+    void setBlockState(int x, int y, int z, @NotNull BlockState blockState);
 }
