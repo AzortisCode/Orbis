@@ -263,13 +263,16 @@ public final class PackLoader {
                 if (world.data().isComponentType(inject.parameterizedType())) {
                     if (componentName != null) {
                         File dataFile = world.data().getDataFile(inject.parameterizedType(), componentName, dataPath);
-                        Object collectionObject = Orbis.getGson().fromJson(new FileReader(dataFile), inject.parameterizedType());
+                        Object collectionObject = Orbis.getGson().fromJson(new FileReader(dataFile),
+                                inject.parameterizedType());
                         fieldObject.add(collectionObject);
                     } else
-                        throw new IllegalStateException("Parameterized type is a component type, but a name hasn't been passed down");
+                        throw new IllegalStateException("Parameterized type is a component type, " +
+                                "but a name hasn't been passed down");
                 } else {
                     File dataFile = world.data().getDataFile(inject.parameterizedType(), dataPath);
-                    Object collectionObject = Orbis.getGson().fromJson(new FileReader(dataFile), inject.parameterizedType());
+                    Object collectionObject = Orbis.getGson().fromJson(new FileReader(dataFile),
+                            inject.parameterizedType());
                     fieldObject.add(collectionObject);
 
                     if (collectionObject.getClass().isAnnotationPresent(Component.class)
@@ -322,7 +325,8 @@ public final class PackLoader {
     private static boolean shouldInject(final @NotNull Class<?> type) {
         boolean inject = type.isAnnotationPresent(Inject.class);
         if (inject)
-            return true; // TODO check if searching superclasses is still necessary since @Inject has been annotated with @Inherited
+            return true;
+        // TODO check if searching superclasses is still necessary since @Inject has been annotated with @Inherited
         Class<?> superType = type;
         while (superType != null) {
             superType = superType.getSuperclass();

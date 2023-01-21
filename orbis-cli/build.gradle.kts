@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -16,32 +16,28 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.minestom;
+plugins {
+    java
+    application
+}
 
-import net.minestom.server.instance.ChunkGenerator;
-import net.minestom.server.instance.ChunkPopulator;
-import net.minestom.server.instance.batch.ChunkBatch;
-import net.minestom.server.world.biomes.Biome;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+group = "com.azortis"
+version = project(":orbis-core").version;
 
-import java.util.List;
+application {
+    mainClass.set("com.azortis.orbis.cli.OrbisCLI")
+}
 
-public class MinestomChunkGenerator implements ChunkGenerator {
+repositories {
+    mavenCentral()
+}
 
-    @Override
-    public void generateChunkData(@NotNull ChunkBatch chunkBatch, int chunkX, int chunkZ) {
+dependencies {
+    implementation(project(":orbis-core"))
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.1")
+}
 
-    }
-
-    @Override
-    public void fillBiomes(@NotNull Biome[] biomes, int chunkX, int chunkZ) {
-
-    }
-
-    @Nullable
-    @Override
-    public List<ChunkPopulator> getPopulators() {
-        return null;
-    }
+tasks.getByName<Test>("test") {
+    useJUnitPlatform()
 }

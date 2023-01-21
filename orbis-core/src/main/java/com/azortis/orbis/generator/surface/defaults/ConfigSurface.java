@@ -18,6 +18,7 @@
 
 package com.azortis.orbis.generator.surface.defaults;
 
+import com.azortis.orbis.generator.ChunkSnapshot;
 import com.azortis.orbis.generator.noise.Noise;
 import com.azortis.orbis.generator.surface.Surface;
 import com.azortis.orbis.pack.Inject;
@@ -43,7 +44,7 @@ public class ConfigSurface extends Surface {
     }
 
     @Override
-    public double getSurfaceHeight(int x, int z, double biomeWeight) {
+    public double getSurfaceHeight(int x, int z, @NotNull ChunkSnapshot snapshot) {
         double height = 0;
         for (NoiseLayer layer : layers) {
             height += (noise.noise(x / layer.zoom, z / layer.zoom) * layer.coefficient);

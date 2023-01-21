@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -24,6 +24,7 @@ include("orbis-core")
 include("orbis-paper")
 include("orbis-minestom")
 include("orbis-generators")
+include("orbis-cli")
 
 pluginManagement {
     repositories {

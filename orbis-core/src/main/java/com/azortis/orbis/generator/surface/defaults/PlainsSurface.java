@@ -18,11 +18,13 @@
 
 package com.azortis.orbis.generator.surface.defaults;
 
+import com.azortis.orbis.generator.ChunkSnapshot;
 import com.azortis.orbis.generator.noise.Noise;
 import com.azortis.orbis.generator.surface.Surface;
 import com.azortis.orbis.pack.Inject;
 import com.google.gson.annotations.SerializedName;
 import net.kyori.adventure.key.Key;
+import org.jetbrains.annotations.NotNull;
 
 public class PlainsSurface extends Surface {
 
@@ -38,7 +40,7 @@ public class PlainsSurface extends Surface {
     }
 
     @Override
-    public double getSurfaceHeight(int x, int z, double biomeWeight) {
+    public double getSurfaceHeight(int x, int z, @NotNull ChunkSnapshot snapshot) {
         double height = noise.noise(x / 400f, z / 400f) * 30;
         height += noise.noise(x / 50f, z / 50f) * 3;
         height += Math.abs(noise.noise(x / 12f, z / 12f) * 1);

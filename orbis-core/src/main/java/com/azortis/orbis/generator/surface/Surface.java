@@ -18,6 +18,7 @@
 
 package com.azortis.orbis.generator.surface;
 
+import com.azortis.orbis.generator.ChunkSnapshot;
 import com.azortis.orbis.generator.biome.Biome;
 import com.azortis.orbis.pack.Inject;
 import com.azortis.orbis.pack.studio.annotations.Typed;
@@ -44,7 +45,7 @@ public abstract class Surface {
         this.type = type;
     }
 
-    public abstract double getSurfaceHeight(final int x, final int z, double biomeWeight);
+    public abstract double getSurfaceHeight(final int x, final int z, @NotNull ChunkSnapshot snapshot);
 
     public String name() {
         return name;

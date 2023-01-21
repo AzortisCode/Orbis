@@ -46,7 +46,7 @@ public abstract class Engine {
         this.type = type;
     }
 
-    public abstract void generateChunk(int chunkX, int chunkZ, @NotNull GeneratorChunkAccess chunkAccess);
+    public abstract void generateChunk(int chunkX, int chunkZ, @NotNull ChunkSnapshot chunkAccess);
 
     public abstract @NotNull BiomeLayout biomeLayout();
 

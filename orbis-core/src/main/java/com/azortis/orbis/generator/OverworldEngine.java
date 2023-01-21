@@ -33,23 +33,37 @@ public final class OverworldEngine extends Engine {
     }
 
     @Override
-    public void generateChunk(int chunkX, int chunkZ, @NotNull GeneratorChunkAccess chunkAccess) {
+    public void generateChunk(int chunkX, int chunkZ, @NotNull ChunkSnapshot snapshot) {
+        // Populate the ChunkSnapshot with all the biomes sections.
+        int sectionOriginX = chunkX << 2;
+        int sectionOriginZ = chunkZ << 2;
+        for (int csx = 0; csx <= 4; csx++) {
+            int sx = csx + sectionOriginX;
+            for (int csz = 0; csz <= 4; csz++) {
+                int sz = csz + sectionOriginZ;
+                snapshot.setSection(sx, sz, distributor().getSection(sx << 2, sz << 2));
+                for (int sy = dimension.minHeight() >> 2; sy <= (dimension.maxHeight() >> 2); sy++) {
+                    snapshot.setSection(sx, sy, sz, distributor().getSection(sx << 2, sy << 2, sz << 2));
+                }
+            }
+        }
+
         for (int cx = 0; cx <= 16; cx++) {
             for (int cz = 0; cz <= 16; cz++) {
                 final int x = cx + (chunkX << 4);
                 final int z = cz + (chunkZ << 4);
 
-                Biome biome = dimension().distributor().getBiome(x, 0, z);
-                int height = (int) Math.round(biome.surface().getSurfaceHeight(x, z, 1.0d));
+                Biome biome = snapshot.getSection(x, z).biome();
+                int height = (int) Math.round(biome.surface().getSurfaceHeight(x, z, snapshot));
 
                 for (int y = dimension().minHeight(); y < dimension().maxHeight(); y++) {
                     if (y == dimension().minHeight()) {
-                        chunkAccess.setBlock(cx, y, cz, Blocks.BEDROCK);
+                        snapshot.setBlock(cx, y, cz, Blocks.BEDROCK);
                     } else {
                         if (y < height) {
-                            chunkAccess.setBlock(cx, y, cz, biome.belowSurfaceBlock());
+                            snapshot.setBlock(cx, y, cz, biome.belowSurfaceBlock());
                         } else if (y == height) {
-                            chunkAccess.setBlock(cx, y, cz, biome.surfaceBlock());
+                            snapshot.setBlock(cx, y, cz, biome.surfaceBlock());
                         }
                     }
                 }

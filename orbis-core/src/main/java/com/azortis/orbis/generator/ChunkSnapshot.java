@@ -21,18 +21,19 @@ package com.azortis.orbis.generator;
 import com.azortis.orbis.exception.CoordsOutOfBoundsException;
 import com.azortis.orbis.generator.biome.BiomeSection;
 import com.azortis.orbis.util.annotations.AbsoluteCoords;
+import com.azortis.orbis.util.annotations.SectionCoords;
 import com.azortis.orbis.world.ChunkAccess;
 import com.azortis.orbis.world.World;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * A chunk access in the context of generation, will store vital information about generation context
+ * A snapshot of a chunk being generated, will store vital information about generation context
  * that can be passed from one part of the generator to the other.
  *
  * @author Jake Nijssen
  * @since 0.3-Alpha
  */
-public abstract class GeneratorChunkAccess implements ChunkAccess {
+public abstract class ChunkSnapshot implements ChunkAccess {
 
     protected final World world;
     protected final Dimension dimension;
@@ -41,7 +42,7 @@ public abstract class GeneratorChunkAccess implements ChunkAccess {
     private final BiomeSection[] biomeMap;
     private final BiomeSection[] biomeSections;
 
-    protected GeneratorChunkAccess(@NotNull World world, @NotNull Dimension dimension, @NotNull Engine engine) {
+    protected ChunkSnapshot(@NotNull World world, @NotNull Dimension dimension, @NotNull Engine engine) {
         this.world = world;
         this.dimension = dimension;
         this.engine = engine;
@@ -86,7 +87,26 @@ public abstract class GeneratorChunkAccess implements ChunkAccess {
 
         int xIndex = Math.abs(x - originX) >> 2;
         int zIndex = Math.abs(z - originZ) >> 2;
-        return biomeMap[xIndex + zIndex * 4];
+        return biomeMap[xIndex + (zIndex << 2)];
+    }
+
+    @SectionCoords
+    public void setSection(final int x, final int z, @NotNull BiomeSection section) throws CoordsOutOfBoundsException,
+            IllegalStateException {
+        if (!checkBounds(x, 0, z))
+            throw new CoordsOutOfBoundsException(x, z, this);
+        int originX = chunkX() << 2;
+        int originZ = chunkZ() << 2;
+
+        int xIndex = Math.abs(x - originX);
+        int zIndex = Math.abs(z - originZ);
+        int index = xIndex + (zIndex << 2);
+        if (biomeMap[index] == null) {
+            biomeMap[index] = section;
+            return;
+        }
+        throw new IllegalStateException(String.format("The section index of %s of the biomeMap for chunk [%s,%s] " +
+                "has already been populated", index, chunkX(), chunkZ()));
     }
 
     /**
@@ -109,7 +129,28 @@ public abstract class GeneratorChunkAccess implements ChunkAccess {
         int xIndex = Math.abs(x - originX) >> 2;
         int yIndex = Math.abs(y - dimension.minHeight()) >> 2;
         int zIndex = Math.abs(z - originZ) >> 2;
-        return biomeSections[xIndex + yIndex * (dimension.verticalSize() >> 2) + zIndex * 4];
+        return biomeSections[xIndex + yIndex * (dimension.verticalSize() >> 2) + (zIndex << 2)];
+    }
+
+    @SectionCoords
+    public void setSection(final int x, final int y, final int z, @NotNull BiomeSection section)
+            throws CoordsOutOfBoundsException, IllegalStateException {
+        if (!checkBounds(x, y, z)) {
+            throw new CoordsOutOfBoundsException(x, y, z, this);
+        }
+        int originX = chunkX() << 2;
+        int originZ = chunkZ() << 2;
+
+        int xIndex = Math.abs(x - originX);
+        int yIndex = Math.abs(y - (dimension.minHeight() >> 2));
+        int zIndex = Math.abs(z - originZ);
+        int index = xIndex + yIndex * (dimension.verticalSize() >> 2) + (zIndex << 2);
+        if (biomeSections[index] == null) {
+            biomeSections[index] = section;
+            return;
+        }
+        throw new IllegalStateException(String.format("The section index of %s of the biomeSections for " +
+                "chunk [%s,%s] has already been populated", index, chunkX(), chunkZ()));
     }
 
 }

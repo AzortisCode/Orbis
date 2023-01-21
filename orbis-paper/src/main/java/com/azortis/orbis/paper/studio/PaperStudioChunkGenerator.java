@@ -19,7 +19,7 @@
 package com.azortis.orbis.paper.studio;
 
 import com.azortis.orbis.pack.studio.Project;
-import com.azortis.orbis.paper.generator.PaperGeneratorChunkAccess;
+import com.azortis.orbis.paper.generator.PaperChunkSnapshot;
 import org.bukkit.craftbukkit.v1_19_R2.generator.CraftChunkData;
 import org.bukkit.generator.BiomeProvider;
 import org.bukkit.generator.ChunkGenerator;
@@ -52,7 +52,7 @@ public final class PaperStudioChunkGenerator extends ChunkGenerator {
         if (requiresLoading()) load(worldInfo);
         if (project.studioWorld().shouldRender() && project.studioWorld().getDimension() != null
                 && project.studioWorld().getEngine() != null) {
-            PaperGeneratorChunkAccess chunkAccess = new PaperGeneratorChunkAccess(project.studioWorld(),
+            PaperChunkSnapshot chunkAccess = new PaperChunkSnapshot(project.studioWorld(),
                     project.studioWorld().getDimension(), project.studioWorld().getEngine(), (CraftChunkData) chunkData,
                     chunkX, chunkZ);
             project.studioWorld().getEngine().generateChunk(chunkX, chunkZ, chunkAccess);
