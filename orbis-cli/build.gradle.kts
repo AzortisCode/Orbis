@@ -19,6 +19,7 @@
 plugins {
     java
     application
+    id("com.github.johnrengelman.shadow") version "7.1.2"
 }
 
 group = "com.azortis"
@@ -34,10 +35,11 @@ repositories {
 
 dependencies {
     implementation(project(":orbis-core"))
+
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.1")
 }
 
-tasks.getByName<Test>("test") {
-    useJUnitPlatform()
+java {
+    toolchain.languageVersion.set(JavaLanguageVersion.of(17))
 }

@@ -16,25 +16,33 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.generator;
+package com.azortis.orbis.generator.framework;
 
-import com.azortis.orbis.block.Blocks;
-import com.azortis.orbis.generator.biome.Biome;
+import com.azortis.orbis.generator.Dimension;
 import com.azortis.orbis.generator.biome.BiomeLayout;
-import com.azortis.orbis.pack.studio.annotations.Description;
-import net.kyori.adventure.key.Key;
+import com.azortis.orbis.generator.biome.Distributor;
+import com.azortis.orbis.world.World;
 import org.jetbrains.annotations.NotNull;
 
-@Description("A generation engine best suited for situations where the main world consists of a single surface.")
-public final class OverworldEngine extends Engine {
+@SuppressWarnings("ClassCanBeRecord")
+public final class Engine {
 
-    public OverworldEngine(@NotNull Key type) {
-        super(type);
+    private final World world;
+
+    private final Dimension dimension;
+
+    public Engine(@NotNull World world, @NotNull Dimension dimension) {
+        this.world = world;
+        this.dimension = dimension;
     }
 
-    @Override
-    public void generateChunk(int chunkX, int chunkZ, @NotNull ChunkSnapshot snapshot) {
+    public void generateChunk(@NotNull ChunkSnapshot snapshot) {
+        final int chunkX = snapshot.chunkX();
+        final int chunkZ = snapshot.chunkZ();
+
         // Populate the ChunkSnapshot with all the biomes sections.
+        // This stage is *always* executed as the platform will already have read this data from
+        // the distributor, and thus is already finalized.
         int sectionOriginX = chunkX << 2;
         int sectionOriginZ = chunkZ << 2;
         for (int csx = 0; csx <= 4; csx++) {
@@ -47,32 +55,22 @@ public final class OverworldEngine extends Engine {
                 }
             }
         }
-
-        for (int cx = 0; cx <= 16; cx++) {
-            for (int cz = 0; cz <= 16; cz++) {
-                final int x = cx + (chunkX << 4);
-                final int z = cz + (chunkZ << 4);
-
-                Biome biome = snapshot.getSection(x, z).biome();
-                int height = (int) Math.round(biome.surface().getSurfaceHeight(x, z, snapshot));
-
-                for (int y = dimension().minHeight(); y < dimension().maxHeight(); y++) {
-                    if (y == dimension().minHeight()) {
-                        snapshot.setBlock(cx, y, cz, Blocks.BEDROCK);
-                    } else {
-                        if (y < height) {
-                            snapshot.setBlock(cx, y, cz, biome.belowSurfaceBlock());
-                        } else if (y == height) {
-                            snapshot.setBlock(cx, y, cz, biome.surfaceBlock());
-                        }
-                    }
-                }
-            }
-        }
     }
 
-    @Override
+    public @NotNull World world() {
+        return world;
+    }
+
+    public @NotNull Dimension dimension() {
+        return dimension;
+    }
+
+    public @NotNull Distributor distributor() {
+        return world.getDimension().distributor();
+    }
+
     public @NotNull BiomeLayout biomeLayout() {
-        return BiomeLayout.HYBRID;
+        return distributor().layout(); // TODO determine this from the configured stages in dimension
     }
+
 }

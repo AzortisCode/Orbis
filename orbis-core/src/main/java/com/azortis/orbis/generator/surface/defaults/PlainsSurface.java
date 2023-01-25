@@ -18,7 +18,7 @@
 
 package com.azortis.orbis.generator.surface.defaults;
 
-import com.azortis.orbis.generator.ChunkSnapshot;
+import com.azortis.orbis.generator.framework.ChunkSnapshot;
 import com.azortis.orbis.generator.noise.Noise;
 import com.azortis.orbis.generator.surface.Surface;
 import com.azortis.orbis.pack.Inject;

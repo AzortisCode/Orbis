@@ -24,6 +24,8 @@ import cloud.commandframework.meta.SimpleCommandMeta;
 import com.azortis.orbis.block.ConfiguredBlock;
 import com.azortis.orbis.command.CommandSender;
 import com.azortis.orbis.generator.biome.Distributor;
+import com.azortis.orbis.generator.framework.ChunkStage;
+import com.azortis.orbis.generator.framework.WorldStage;
 import com.azortis.orbis.generator.noise.Noise;
 import com.azortis.orbis.generator.surface.Surface;
 import com.azortis.orbis.pack.PackManager;
@@ -121,9 +123,11 @@ public final class Orbis {
                     .registerTypeAdapter(Key.class, new KeyAdapter())
                     .registerTypeAdapter(ConfiguredBlock.class, new BlockAdapter())
                     .registerTypeAdapter(Location.class, new LocationAdapter())
-                    .registerTypeAdapter(Surface.class, new TypeAdapter<>(Surface.class))
+                    .registerTypeAdapter(ChunkStage.class, new TypeAdapter<>(ChunkStage.class))
+                    .registerTypeAdapter(WorldStage.class, new TypeAdapter<>(WorldStage.class))
+                    .registerTypeAdapter(Noise.class, new TypeAdapter<>(Noise.class))
                     .registerTypeAdapter(Distributor.class, new TypeAdapter<>(Distributor.class))
-                    .registerTypeAdapter(Noise.class, new TypeAdapter<>(Noise.class));
+                    .registerTypeAdapter(Surface.class, new TypeAdapter<>(Surface.class));
 
             getRegistryAdapters().forEach(entry -> builder.registerTypeAdapter(entry.getKey(), entry.getValue()));
 

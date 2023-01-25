@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -21,7 +21,7 @@ package com.azortis.orbis.pack.studio;
 import com.azortis.orbis.Orbis;
 import com.azortis.orbis.entity.Player;
 import com.azortis.orbis.generator.Dimension;
-import com.azortis.orbis.generator.Engine;
+import com.azortis.orbis.generator.framework.Engine;
 import com.azortis.orbis.pack.Pack;
 import com.azortis.orbis.util.Location;
 import com.azortis.orbis.world.World;

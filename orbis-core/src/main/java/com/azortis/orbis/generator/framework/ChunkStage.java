@@ -16,54 +16,26 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.generator;
+package com.azortis.orbis.generator.framework;
 
-import com.azortis.orbis.generator.biome.BiomeLayout;
-import com.azortis.orbis.generator.biome.Distributor;
-import com.azortis.orbis.pack.Inject;
-import com.azortis.orbis.pack.studio.annotations.Description;
 import com.azortis.orbis.pack.studio.annotations.Required;
 import com.azortis.orbis.pack.studio.annotations.Typed;
-import com.azortis.orbis.world.World;
 import net.kyori.adventure.key.Key;
 import org.jetbrains.annotations.NotNull;
 
 @Typed
-@Description("The foundation of the generator, that organizes the generation pipeline.")
-public abstract class Engine {
+public abstract class ChunkStage {
 
     @Required
-    @Description("The type of generator engine to use for this dimension.")
     private final Key type;
 
-    @Inject
-    protected transient World world;
-
-    @Inject
-    protected transient Dimension dimension;
-
-    protected Engine(@NotNull Key type) {
+    public ChunkStage(@NotNull Key type) {
         this.type = type;
     }
 
-    public abstract void generateChunk(int chunkX, int chunkZ, @NotNull ChunkSnapshot chunkAccess);
+    public abstract void apply(@NotNull ChunkSnapshot snapshot);
 
-    public abstract @NotNull BiomeLayout biomeLayout();
-
-    public Key type() {
+    public @NotNull Key type() {
         return type;
     }
-
-    public World world() {
-        return world;
-    }
-
-    public Dimension dimension() {
-        return dimension;
-    }
-
-    public Distributor distributor() {
-        return world.getDimension().distributor();
-    }
-
 }

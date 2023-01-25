@@ -20,7 +20,7 @@ package com.azortis.orbis.world;
 
 import com.azortis.orbis.Orbis;
 import com.azortis.orbis.generator.Dimension;
-import com.azortis.orbis.generator.Engine;
+import com.azortis.orbis.generator.framework.Engine;
 import com.azortis.orbis.pack.Pack;
 import com.azortis.orbis.pack.PackLoader;
 import com.azortis.orbis.pack.data.DataAccess;
@@ -99,7 +99,7 @@ public abstract class World implements WorldAccess {
             try {
                 Orbis.getLogger().info("Loading pack {} for {}, this may take some time...", worldInfo.packName(), name);
                 dimension = PackLoader.loadDimension(this);
-                engine = dimension.engine();
+                engine = new Engine(this, dimension);
                 loaded = true;
             } catch (IOException | NoSuchFieldException | IllegalAccessException | InvocationTargetException |
                      NoSuchMethodException | InstantiationException e) {

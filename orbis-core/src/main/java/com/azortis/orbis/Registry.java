@@ -18,11 +18,11 @@
 
 package com.azortis.orbis;
 
-import com.azortis.orbis.generator.Engine;
-import com.azortis.orbis.generator.OverworldEngine;
 import com.azortis.orbis.generator.biome.Distributor;
 import com.azortis.orbis.generator.biome.SingleDistributor;
 import com.azortis.orbis.generator.biome.complex.ComplexDistributor;
+import com.azortis.orbis.generator.framework.ChunkStage;
+import com.azortis.orbis.generator.framework.WorldStage;
 import com.azortis.orbis.generator.noise.Noise;
 import com.azortis.orbis.generator.noise.OpenSimplex2;
 import com.azortis.orbis.generator.noise.OpenSimplex2S;
@@ -42,9 +42,8 @@ import java.util.Set;
 
 public final class Registry<T> {
 
-    public static final Registry<Engine> ENGINE = new Registry<>(Engine.class, Map.of(
-            Key.key("orbis:overworld"), OverworldEngine.class
-    ));
+    public static final Registry<ChunkStage> CHUNK_STAGE = new Registry<>(ChunkStage.class, Map.of());
+    public static final Registry<WorldStage> WORLD_STAGE = new Registry<>(WorldStage.class, Map.of());
     public static final Registry<Noise> NOISE = new Registry<>(Noise.class, Map.of(
             Key.key("fastnoise:opensimplex2"), OpenSimplex2.class, Key.key("fastnoise:opensimplex2s"), OpenSimplex2S.class
     ));
@@ -57,7 +56,8 @@ public final class Registry<T> {
     private static final Map<Class<?>, Registry<?>> registries = new HashMap<>();
 
     static {
-        addRegistry(Engine.class, ENGINE);
+        addRegistry(ChunkStage.class, CHUNK_STAGE);
+        addRegistry(WorldStage.class, WORLD_STAGE);
         addRegistry(Noise.class, NOISE);
         addRegistry(Distributor.class, DISTRIBUTOR);
         addRegistry(Surface.class, SURFACE);

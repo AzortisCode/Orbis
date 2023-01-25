@@ -20,9 +20,9 @@ package com.azortis.orbis.paper.generator;
 
 import com.azortis.orbis.block.BlockState;
 import com.azortis.orbis.block.Blocks;
-import com.azortis.orbis.generator.ChunkSnapshot;
 import com.azortis.orbis.generator.Dimension;
-import com.azortis.orbis.generator.Engine;
+import com.azortis.orbis.generator.framework.ChunkSnapshot;
+import com.azortis.orbis.generator.framework.Engine;
 import com.azortis.orbis.paper.util.ConversionUtils;
 import com.azortis.orbis.world.World;
 import net.minecraft.core.BlockPos;
@@ -47,6 +47,11 @@ public final class PaperChunkSnapshot extends ChunkSnapshot {
         this.handle = handle;
         this.chunkX = chunkX;
         this.chunkZ = chunkZ;
+    }
+
+    @Override
+    public boolean isFinished() {
+        return !loaded;
     }
 
     @Override

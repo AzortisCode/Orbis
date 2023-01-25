@@ -47,6 +47,10 @@ public interface ChunkAccess {
 
     int chunkZ();
 
+    default boolean checkBounds(int x, int z) {
+        return (x >> 4) == chunkX() && (z >> 4) == chunkZ();
+    }
+
     /**
      * Checks if the given coordinates are within this chunk.
      *

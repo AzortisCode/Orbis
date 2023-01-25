@@ -16,51 +16,26 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.generator.surface;
+package com.azortis.orbis.generator.framework;
 
-import com.azortis.orbis.generator.biome.Biome;
-import com.azortis.orbis.generator.framework.ChunkSnapshot;
-import com.azortis.orbis.pack.Inject;
+import com.azortis.orbis.pack.studio.annotations.Required;
 import com.azortis.orbis.pack.studio.annotations.Typed;
-import com.azortis.orbis.world.World;
-import lombok.Getter;
 import net.kyori.adventure.key.Key;
 import org.jetbrains.annotations.NotNull;
 
-@Getter
 @Typed
-@Inject
-public abstract class Surface {
+public abstract class WorldStage {
 
-    protected final String name;
-    protected final Key type;
+    @Required
+    private final Key type;
 
-    @Inject
-    private transient World world;
-    @Inject(isChild = true)
-    private transient Biome biome;
-
-    protected Surface(@NotNull String name, @NotNull Key type) {
-        this.name = name;
+    public WorldStage(@NotNull Key type) {
         this.type = type;
     }
 
-    public abstract double getSurfaceHeight(final int x, final int z, @NotNull ChunkSnapshot snapshot);
+    public abstract void apply(@NotNull ChunkSnapshot context, @NotNull WorldSnapshot snapshot);
 
-    public String name() {
-        return name;
-    }
-
-    public Key type() {
+    public @NotNull Key type() {
         return type;
     }
-
-    public World world() {
-        return world;
-    }
-
-    public Biome biome() {
-        return biome;
-    }
-
 }

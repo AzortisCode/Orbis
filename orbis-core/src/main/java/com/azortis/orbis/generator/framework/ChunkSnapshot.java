@@ -16,9 +16,11 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.generator;
+package com.azortis.orbis.generator.framework;
 
 import com.azortis.orbis.exception.CoordsOutOfBoundsException;
+import com.azortis.orbis.generator.Dimension;
+import com.azortis.orbis.generator.biome.BiomeLayout;
 import com.azortis.orbis.generator.biome.BiomeSection;
 import com.azortis.orbis.util.annotations.AbsoluteCoords;
 import com.azortis.orbis.util.annotations.SectionCoords;
@@ -27,13 +29,18 @@ import com.azortis.orbis.world.World;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * A snapshot of a chunk being generated, will store vital information about generation context
- * that can be passed from one part of the generator to the other.
+ * <p>A snapshot of a chunk being generated, will store vital information about generation context
+ * that can be passed from/to {@link ChunkStage} & {@link WorldStage}'s.</p>
+ *
+ * <p>During {@link ChunkStage}'s the snapshot supports reading/writing chunk data, during this
+ * it should be assumed that {@link ChunkSnapshot#isFinished()} returns false. The snapshot object is still
+ * used in {@link WorldStage}'s but can no longer read/write chunk data, all the context functionality is still
+ * supported however. During these stages a {@link WorldSnapshot} should be used instead.</p>
  *
  * @author Jake Nijssen
  * @since 0.3-Alpha
  */
-public abstract class ChunkSnapshot implements ChunkAccess {
+public abstract class ChunkSnapshot implements ChunkAccess { // TODO detach this from chunk access
 
     protected final World world;
     protected final Dimension dimension;
@@ -72,16 +79,21 @@ public abstract class ChunkSnapshot implements ChunkAccess {
 
     /**
      * Gets the {@link BiomeSection} from the stored 2D biomeMap array for this chunk.
+     * Or refers to the {@link com.azortis.orbis.generator.biome.Distributor} if coords are out of
+     * this chunk.
      *
      * @param x The absolute block x-coordinate.
      * @param z The absolute block z-coordinate.
-     * @return The stored biome section of given block coordinates.
-     * @throws CoordsOutOfBoundsException If the coordinates are not within this chunk.
+     * @return The biome section of given block coordinates.
+     * @throws IllegalStateException If the pipeline doesn't have surface biomes.
+     * @since 0.3-Alpha
      */
     @AbsoluteCoords
-    public @NotNull BiomeSection getSection(final int x, final int z) throws CoordsOutOfBoundsException {
-        if (!checkBounds(x, 0, z))
-            throw new CoordsOutOfBoundsException(x, z, this);
+    public @NotNull BiomeSection getSection(final int x, final int z) throws IllegalStateException {
+        if (engine.biomeLayout() == BiomeLayout.FULL) {
+            throw new IllegalStateException("The engine only has 3d biomes");
+        } else if (!checkBounds(x, z))
+            return dimension.distributor().getSection(x, z);
         int originX = chunkX() << 4;
         int originZ = chunkZ() << 4;
 
@@ -91,7 +103,7 @@ public abstract class ChunkSnapshot implements ChunkAccess {
     }
 
     @SectionCoords
-    public void setSection(final int x, final int z, @NotNull BiomeSection section) throws CoordsOutOfBoundsException,
+    void setSection(final int x, final int z, @NotNull BiomeSection section) throws CoordsOutOfBoundsException,
             IllegalStateException {
         if (!checkBounds(x, 0, z))
             throw new CoordsOutOfBoundsException(x, z, this);
@@ -111,18 +123,20 @@ public abstract class ChunkSnapshot implements ChunkAccess {
 
     /**
      * Gets the {@link BiomeSection} from the stored 3D biomeSections array for this chunk.
+     * Or refers to the {@link com.azortis.orbis.generator.biome.Distributor} if coords are out of
+     * this chunk. If the biome layout is {@link BiomeLayout#SURFACE} then it refers to the 2d map.
      *
      * @param x The absolute block x-coordinate.
      * @param y The absolute block y-coordinate.
      * @param z The absolute block z-coordinate.
-     * @return The stored biome section of given block coordinates.
-     * @throws CoordsOutOfBoundsException If the coordinates are not within this chunk.
+     * @return The biome section of given block coordinates.
      */
     @AbsoluteCoords
-    public @NotNull BiomeSection getSection(final int x, final int y, final int z) throws CoordsOutOfBoundsException {
-        if (!checkBounds(x, y, z)) {
-            throw new CoordsOutOfBoundsException(x, y, z, this);
-        }
+    public @NotNull BiomeSection getSection(final int x, final int y, final int z) {
+        if (engine.biomeLayout() == BiomeLayout.SURFACE) {
+            return getSection(x, z);
+        } else if (!checkBounds(x, y, z))
+            return dimension.distributor().getSection(x, y, z);
         int originX = chunkX() << 4;
         int originZ = chunkZ() << 4;
 
@@ -133,7 +147,7 @@ public abstract class ChunkSnapshot implements ChunkAccess {
     }
 
     @SectionCoords
-    public void setSection(final int x, final int y, final int z, @NotNull BiomeSection section)
+    void setSection(final int x, final int y, final int z, @NotNull BiomeSection section)
             throws CoordsOutOfBoundsException, IllegalStateException {
         if (!checkBounds(x, y, z)) {
             throw new CoordsOutOfBoundsException(x, y, z, this);
@@ -152,5 +166,16 @@ public abstract class ChunkSnapshot implements ChunkAccess {
         throw new IllegalStateException(String.format("The section index of %s of the biomeSections for " +
                 "chunk [%s,%s] has already been populated", index, chunkX(), chunkZ()));
     }
+
+    /**
+     * If the snapshot is finished, meaning reading & writing chunk information no longer works
+     * and will throw a {@link IllegalStateException}. The snapshot object will purely act as a context object
+     * for {@link WorldStage}'s where some information about the generated biomes & heightmaps may still be of use.
+     *
+     * @return If the snapshot is finished, meaning some operations
+     * no longer work and throw an {@link IllegalStateException}
+     * @since 0.3-Alpha
+     */
+    public abstract boolean isFinished();
 
 }
