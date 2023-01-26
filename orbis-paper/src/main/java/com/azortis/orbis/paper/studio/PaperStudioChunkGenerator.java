@@ -55,8 +55,8 @@ public final class PaperStudioChunkGenerator extends ChunkGenerator {
             PaperChunkSnapshot chunkSnapshot = new PaperChunkSnapshot(project.studioWorld(),
                     project.studioWorld().getDimension(), project.studioWorld().getEngine(), (CraftChunkData) chunkData,
                     chunkX, chunkZ);
-            project.studioWorld().getEngine().generateChunk(chunkSnapshot);
-            chunkSnapshot.unload();
+            project.studioWorld().getEngine().generateChunk(chunkSnapshot, null);
+            chunkSnapshot.finish();
         }
     }
 

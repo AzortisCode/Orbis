@@ -23,6 +23,8 @@ import com.azortis.orbis.pack.studio.annotations.Typed;
 import net.kyori.adventure.key.Key;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.random.RandomGenerator;
+
 @Typed
 public abstract class ChunkStage {
 
@@ -33,7 +35,7 @@ public abstract class ChunkStage {
         this.type = type;
     }
 
-    public abstract void apply(@NotNull ChunkSnapshot snapshot);
+    public abstract void apply(@NotNull ChunkSnapshot snapshot, @NotNull RandomGenerator random);
 
     public @NotNull Key type() {
         return type;

@@ -130,7 +130,7 @@ public final class PaperStudioWorld extends StudioWorld implements Listener {
                 return false;
             }
         } else {
-            Orbis.getLogger().error("Failed to unload studio world! Shutting down server for safety...");
+            Orbis.getLogger().error("Failed to finish studio world! Shutting down server for safety...");
             Bukkit.getServer().shutdown();
             return false;
         }

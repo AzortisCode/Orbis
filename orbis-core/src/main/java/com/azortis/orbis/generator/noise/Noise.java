@@ -40,8 +40,8 @@ public abstract class Noise {
     protected final Key type;
 
     @Required
-    @Description("The unique seed for the noise algorithm, will be mixed with world seed.")
-    protected final long seed;
+    @Description("The unique salt for the noise algorithm, will be mixed with world seed.")
+    protected final long salt;
 
     @Required
     @Min(floating = 0d)
@@ -51,10 +51,10 @@ public abstract class Noise {
     @Inject
     private transient World world;
 
-    protected Noise(@Nullable String name, @NotNull Key type, long seed, double frequency) {
+    protected Noise(@Nullable String name, @NotNull Key type, long salt, double frequency) {
         this.name = name;
         this.type = type;
-        this.seed = seed;
+        this.salt = salt;
         this.frequency = frequency;
     }
 
@@ -77,10 +77,6 @@ public abstract class Noise {
         return type;
     }
 
-    public long seed() {
-        return seed;
-    }
-
     public abstract double noise(double x);
 
     public abstract double noise(double x, double z);
@@ -88,7 +84,7 @@ public abstract class Noise {
     public abstract double noise(double x, double y, double z);
 
     protected long getNoiseSeed() {
-        return ((world.getWorldInfo().seed()) << 16) & (seed << 32); // Really just a fancy way to mix 2 seeds
+        return ((world.getWorldInfo().seed()) << 16) & (salt << 32);
     }
 
 }

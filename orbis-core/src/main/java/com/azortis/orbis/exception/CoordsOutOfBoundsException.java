@@ -18,7 +18,9 @@
 
 package com.azortis.orbis.exception;
 
+import com.azortis.orbis.generator.framework.ChunkSnapshot;
 import com.azortis.orbis.util.BlockPos;
+import com.azortis.orbis.util.annotations.AbsoluteCoords;
 import com.azortis.orbis.world.ChunkAccess;
 import com.azortis.orbis.world.RegionAccess;
 import org.jetbrains.annotations.NotNull;
@@ -40,24 +42,40 @@ public class CoordsOutOfBoundsException extends RuntimeException {
         super(message);
     }
 
+    @AbsoluteCoords
     public CoordsOutOfBoundsException(int y, int minY, int maxY) {
         super(String.format("Y-coordinate %s is not withing the bounds of %s to %s", y, minY, maxY));
     }
 
+    @AbsoluteCoords
     public CoordsOutOfBoundsException(int x, int z, @NotNull ChunkAccess chunk) {
         super(String.format("Coordinate [%s,%s] is not within the bounds of chunk [%s,%s]",
                 x, z, chunk.chunkX(), chunk.chunkZ()));
     }
 
+    @AbsoluteCoords
+    public CoordsOutOfBoundsException(int x, int z, @NotNull ChunkSnapshot snapshot) {
+        super(String.format("Coordinate [%s,%s] is not within the bounds of chunk [%s,%s]",
+                x, z, snapshot.chunkX(), snapshot.chunkZ()));
+    }
+
+    @AbsoluteCoords
     public CoordsOutOfBoundsException(int x, int y, int z, @NotNull ChunkAccess chunk) {
         super(String.format("Coordinate [%s,%s,%s] is not within the bounds of chunk [%s,%s]",
                 x, y, z, chunk.chunkX(), chunk.chunkZ()));
+    }
+
+    @AbsoluteCoords
+    public CoordsOutOfBoundsException(int x, int y, int z, @NotNull ChunkSnapshot snapshot) {
+        super(String.format("Coordinate [%s,%s,%s] is not within the bounds of chunk [%s,%s]",
+                x, y, z, snapshot.chunkX(), snapshot.chunkZ()));
     }
 
     public CoordsOutOfBoundsException(@NotNull BlockPos pos, @NotNull ChunkAccess chunk) {
         this(pos.x(), pos.y(), pos.z(), chunk);
     }
 
+    @AbsoluteCoords
     public CoordsOutOfBoundsException(int x, int y, int z, @NotNull RegionAccess region) {
         super(String.format("Coordinate [%s,%s,%s] is not within the bounds of region min=[%s,%s,%s], max=[%s,%s,%s]",
                 x, y, z, region.min().x(), region.min().y(), region.min().z(),

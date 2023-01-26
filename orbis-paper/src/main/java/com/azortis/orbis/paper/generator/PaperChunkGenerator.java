@@ -70,8 +70,8 @@ public final class PaperChunkGenerator extends ChunkGenerator {
         if (requiresLoading()) load(worldInfo);
         PaperChunkSnapshot chunkSnapshot = new PaperChunkSnapshot(paperWorld, paperWorld.getDimension(),
                 paperWorld.getEngine(), (CraftChunkData) chunkData, chunkX, chunkZ);
-        paperWorld.getEngine().generateChunk(chunkSnapshot);
-        chunkSnapshot.unload(); // Make sure to let the core API know this ChunkAccess instance shouldn't be used.
+        paperWorld.getEngine().generateChunk(chunkSnapshot, null);
+        chunkSnapshot.finish(); // Make sure to let the core API know this ChunkAccess instance shouldn't be used.
     }
 
     @Override

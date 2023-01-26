@@ -18,15 +18,20 @@
 
 package com.azortis.orbis.generator.framework;
 
-import com.azortis.orbis.exception.CoordsOutOfBoundsException;
+import com.azortis.orbis.block.Block;
+import com.azortis.orbis.block.BlockState;
+import com.azortis.orbis.block.Blocks;
+import com.azortis.orbis.exception.SectionCoordsOutOfBoundsException;
 import com.azortis.orbis.generator.Dimension;
 import com.azortis.orbis.generator.biome.BiomeLayout;
 import com.azortis.orbis.generator.biome.BiomeSection;
 import com.azortis.orbis.util.annotations.AbsoluteCoords;
+import com.azortis.orbis.util.annotations.RelativeCoords;
 import com.azortis.orbis.util.annotations.SectionCoords;
-import com.azortis.orbis.world.ChunkAccess;
 import com.azortis.orbis.world.World;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.Range;
 
 /**
  * <p>A snapshot of a chunk being generated, will store vital information about generation context
@@ -40,7 +45,7 @@ import org.jetbrains.annotations.NotNull;
  * @author Jake Nijssen
  * @since 0.3-Alpha
  */
-public abstract class ChunkSnapshot implements ChunkAccess { // TODO detach this from chunk access
+public abstract class ChunkSnapshot {
 
     protected final World world;
     protected final Dimension dimension;
@@ -77,6 +82,10 @@ public abstract class ChunkSnapshot implements ChunkAccess { // TODO detach this
         return engine;
     }
 
+    //
+    // Generation context
+    //
+
     /**
      * Gets the {@link BiomeSection} from the stored 2D biomeMap array for this chunk.
      * Or refers to the {@link com.azortis.orbis.generator.biome.Distributor} if coords are out of
@@ -103,10 +112,10 @@ public abstract class ChunkSnapshot implements ChunkAccess { // TODO detach this
     }
 
     @SectionCoords
-    void setSection(final int x, final int z, @NotNull BiomeSection section) throws CoordsOutOfBoundsException,
+    void setSection(final int x, final int z, @NotNull BiomeSection section) throws SectionCoordsOutOfBoundsException,
             IllegalStateException {
-        if (!checkBounds(x, 0, z))
-            throw new CoordsOutOfBoundsException(x, z, this);
+        if (!checkSectionBounds(x, z))
+            throw new SectionCoordsOutOfBoundsException(x, z, this);
         int originX = chunkX() << 2;
         int originZ = chunkZ() << 2;
 
@@ -148,9 +157,9 @@ public abstract class ChunkSnapshot implements ChunkAccess { // TODO detach this
 
     @SectionCoords
     void setSection(final int x, final int y, final int z, @NotNull BiomeSection section)
-            throws CoordsOutOfBoundsException, IllegalStateException {
-        if (!checkBounds(x, y, z)) {
-            throw new CoordsOutOfBoundsException(x, y, z, this);
+            throws SectionCoordsOutOfBoundsException, IllegalStateException {
+        if (!checkSectionBounds(x, y, z)) {
+            throw new SectionCoordsOutOfBoundsException(x, y, z, this);
         }
         int originX = chunkX() << 2;
         int originZ = chunkZ() << 2;
@@ -167,6 +176,41 @@ public abstract class ChunkSnapshot implements ChunkAccess { // TODO detach this
                 "chunk [%s,%s] has already been populated", index, chunkX(), chunkZ()));
     }
 
+    //
+    // Chunk info
+    //
+
+    public abstract int chunkX();
+
+    public abstract int chunkZ();
+
+    public long chunkKey() {
+        return (((long) chunkX()) << 32) | (chunkZ() & 0xffffffffL);
+    }
+
+    @AbsoluteCoords
+    public boolean checkBounds(int x, int z) {
+        return (x >> 4) == chunkX() && (z >> 4) == chunkZ();
+    }
+
+    @SectionCoords
+    public boolean checkSectionBounds(int x, int z) {
+        return (x >> 2) == chunkX() && (z >> 2) == chunkZ();
+    }
+
+    @AbsoluteCoords
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
+    public boolean checkBounds(int x, int y, int z) {
+        if (y < world.minHeight() || y > world.maxHeight()) return false;
+        return checkBounds(x, z);
+    }
+
+    @SectionCoords
+    public boolean checkSectionBounds(int x, int y, int z) {
+        if ((y >> 2) < world.minHeight() || (y >> 2) > world.maxHeight()) return false;
+        return checkSectionBounds(x, z);
+    }
+
     /**
      * If the snapshot is finished, meaning reading & writing chunk information no longer works
      * and will throw a {@link IllegalStateException}. The snapshot object will purely act as a context object
@@ -177,5 +221,54 @@ public abstract class ChunkSnapshot implements ChunkAccess { // TODO detach this
      * @since 0.3-Alpha
      */
     public abstract boolean isFinished();
+
+    //
+    // Reading/writing methods
+    //
+
+    /**
+     * Sets the given {@link BlockState} at specified relative chunk coords.
+     *
+     * @param x     The x-coordinate, must be between 0 and 15.
+     * @param y     The y-coordinate.
+     * @param z     The z-coordinate, must be between 0 and 15.
+     * @param state The state to set the block to.
+     * @throws IllegalArgumentException If the given coordinates are not valid relative chunk coordinates.
+     * @throws IllegalStateException    If the {@link ChunkSnapshot#isFinished()}
+     * @since 0.3-Alpha
+     */
+    @RelativeCoords
+    public abstract void setState(@Range(from = 0, to = 15) int x, int y, @Range(from = 0, to = 15) int z,
+                                  @Nullable BlockState state) throws IllegalArgumentException, IllegalStateException;
+
+    @RelativeCoords
+    public abstract @NotNull BlockState getState(@Range(from = 0, to = 15) int x, int y, @Range(from = 0, to = 15) int z)
+            throws IllegalArgumentException, IllegalStateException;
+
+    /**
+     * Sets the given {@link Block} at specified relative chunk coords.
+     *
+     * @param x     The x-coordinate, must be between 0 and 15.
+     * @param y     The y-coordinate.
+     * @param z     The z-coordinate, must be between 0 and 15.
+     * @param block The block type to set the block to.
+     * @throws IllegalArgumentException If the given coordinates are not valid relative chunk coordinates.
+     * @throws IllegalStateException    If the {@link ChunkSnapshot#isFinished()}
+     * @since 0.3-Alpha
+     */
+    public void setBlock(@Range(from = 0, to = 15) int x, int y, @Range(from = 0, to = 15) int z,
+                         @Nullable Block block) throws IllegalArgumentException, IllegalStateException {
+        if (block == null) {
+            setState(x, y, z, Blocks.AIR.state());
+            return;
+        }
+        setState(x, y, z, block.state());
+    }
+
+    @RelativeCoords
+    public @NotNull Block getBlock(@Range(from = 0, to = 15) int x, int y, @Range(from = 0, to = 15) int z)
+            throws IllegalArgumentException, IllegalStateException {
+        return getState(x, y, z).block();
+    }
 
 }

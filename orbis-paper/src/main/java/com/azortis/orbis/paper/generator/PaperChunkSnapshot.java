@@ -39,7 +39,7 @@ public final class PaperChunkSnapshot extends ChunkSnapshot {
     private final CraftChunkData handle;
     private final int chunkX;
     private final int chunkZ;
-    private boolean loaded = true;
+    private boolean finished = false;
 
     public PaperChunkSnapshot(@NotNull World world, @NotNull Dimension dimension,
                               @NotNull Engine engine, @NotNull CraftChunkData handle, int chunkX, int chunkZ) {
@@ -51,18 +51,11 @@ public final class PaperChunkSnapshot extends ChunkSnapshot {
 
     @Override
     public boolean isFinished() {
-        return !loaded;
+        return finished;
     }
 
-    @Override
-    public boolean isLoaded() {
-        return loaded;
-    }
-
-
-    @Override
-    public void unload() {
-        loaded = false;
+    public void finish() {
+        finished = true;
     }
 
     @Override
@@ -76,19 +69,18 @@ public final class PaperChunkSnapshot extends ChunkSnapshot {
     }
 
     @Override
-    public boolean checkBounds(int x, int y, int z) {
-        if (!(y >= handle.getMinHeight() && y <= handle.getMaxHeight())) return false;
-        return (x >> 4) == chunkX && (z >> 4) == chunkZ;
-    }
-
-    @Override
-    public @NotNull BlockState getState(@Range(from = 0, to = 15) int x, int y, @Range(from = 0, to = 15) int z) {
+    public @NotNull BlockState getState(@Range(from = 0, to = 15) int x, int y, @Range(from = 0, to = 15) int z)
+            throws IllegalArgumentException, IllegalStateException {
+        if (isFinished()) throw new IllegalStateException(String.format("ChunkSnapshot [%s,%s] is finished",
+                chunkX, chunkZ));
         return ConversionUtils.fromNative(handle.getHandle().getBlockState(x, y, z));
     }
 
     @Override
     public void setState(@Range(from = 0, to = 15) int x, int y, @Range(from = 0, to = 15) int z,
-                         @Nullable BlockState state) {
+                         @Nullable BlockState state) throws IllegalArgumentException, IllegalStateException {
+        if (isFinished()) throw new IllegalStateException(String.format("ChunkSnapshot [%s,%s] is finished",
+                chunkX, chunkZ));
         if (state != null) {
             setBlock(x, y, z, state.stateId());
             return;
@@ -96,9 +88,10 @@ public final class PaperChunkSnapshot extends ChunkSnapshot {
         setBlock(x, y, z, Blocks.AIR.stateId());
     }
 
-    private void setBlock(int x, int y, int z, int stateId) {
+    private void setBlock(int x, int y, int z, int stateId) throws IllegalArgumentException {
         if (x != (x & 0xf) || y < world.minHeight() || y >= world.maxHeight() || z != (z & 0xf)) {
-            return;
+            throw new IllegalArgumentException(String.format("Illegal relative block coordinates for chunk [%s,%s,%s]",
+                    x, y, z));
         }
 
         net.minecraft.world.level.block.state.BlockState blockState = Block.stateById(stateId);

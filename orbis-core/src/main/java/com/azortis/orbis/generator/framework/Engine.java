@@ -18,11 +18,15 @@
 
 package com.azortis.orbis.generator.framework;
 
+import com.azortis.orbis.Orbis;
 import com.azortis.orbis.generator.Dimension;
 import com.azortis.orbis.generator.biome.BiomeLayout;
 import com.azortis.orbis.generator.biome.Distributor;
 import com.azortis.orbis.world.World;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.random.RandomGenerator;
+import java.util.random.RandomGeneratorFactory;
 
 @SuppressWarnings("ClassCanBeRecord")
 public final class Engine {
@@ -36,9 +40,9 @@ public final class Engine {
         this.dimension = dimension;
     }
 
-    public void generateChunk(@NotNull ChunkSnapshot snapshot) {
-        final int chunkX = snapshot.chunkX();
-        final int chunkZ = snapshot.chunkZ();
+    public void generateChunk(@NotNull ChunkSnapshot chunkSnapshot, @NotNull WorldSnapshot worldSnapshot) {
+        final int chunkX = chunkSnapshot.chunkX();
+        final int chunkZ = chunkSnapshot.chunkZ();
 
         // Populate the ChunkSnapshot with all the biomes sections.
         // This stage is *always* executed as the platform will already have read this data from
@@ -49,12 +53,28 @@ public final class Engine {
             int sx = csx + sectionOriginX;
             for (int csz = 0; csz <= 4; csz++) {
                 int sz = csz + sectionOriginZ;
-                snapshot.setSection(sx, sz, distributor().getSection(sx << 2, sz << 2));
+                chunkSnapshot.setSection(sx, sz, distributor().getSection(sx << 2, sz << 2));
                 for (int sy = dimension.minHeight() >> 2; sy <= (dimension.maxHeight() >> 2); sy++) {
-                    snapshot.setSection(sx, sy, sz, distributor().getSection(sx << 2, sy << 2, sz << 2));
+                    chunkSnapshot.setSection(sx, sy, sz, distributor().getSection(sx << 2, sy << 2, sz << 2));
                 }
             }
         }
+
+        // Create a random generator for chunk
+        RandomGenerator random = RandomGeneratorFactory.of("Xoshiro256PlusPlus").create(world.getWorldInfo().seed());
+
+        // Apply chunk stages sequentially
+        dimension.chunkStages().forEach((chunkStage) -> chunkStage.apply(chunkSnapshot, random));
+
+        // Schedule an async task for world stages.
+        Orbis.getPlatform().scheduler().runTaskAsync(() -> {
+            while (true) {
+                if (chunkSnapshot.isFinished()) {
+                    break;
+                }
+            }
+            dimension.worldStages().forEach((worldStage -> worldStage.apply(chunkSnapshot, worldSnapshot, random)));
+        });
     }
 
     public @NotNull World world() {
