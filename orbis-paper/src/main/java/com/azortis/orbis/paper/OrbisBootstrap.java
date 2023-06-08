@@ -16,23 +16,17 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.generator.biome;
+package com.azortis.orbis.paper;
 
+import io.papermc.paper.plugin.bootstrap.PluginBootstrap;
+import io.papermc.paper.plugin.bootstrap.PluginProviderContext;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Unmodifiable;
 
-import java.util.Map;
+@SuppressWarnings("UnstableApiUsage")
+public final class OrbisBootstrap implements PluginBootstrap {
 
-public record BiomeSection(@NotNull Biome biome, double biomeStrength,
-                           @Unmodifiable @NotNull Map<Biome, Double> biomeStrengths,
-                           @Unmodifiable @NotNull Map<String, Double> strengthMap) {
+    @Override
+    public void bootstrap(@NotNull PluginProviderContext context) {
 
-    public BiomeSection(@NotNull Biome biome, double biomeStrength,
-                        @NotNull Map<Biome, Double> biomeStrengths, @NotNull Map<String, Double> strengthMap) {
-        this.biome = biome;
-        this.biomeStrength = biomeStrength;
-        this.biomeStrengths = Map.copyOf(biomeStrengths);
-        this.strengthMap = Map.copyOf(strengthMap);
     }
-
 }

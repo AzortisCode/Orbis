@@ -24,12 +24,14 @@ import com.azortis.orbis.generator.Dimension;
 import com.azortis.orbis.generator.framework.ChunkSnapshot;
 import com.azortis.orbis.generator.framework.Engine;
 import com.azortis.orbis.paper.util.ConversionUtils;
+import com.azortis.orbis.paper.world.PaperNativeHeightMap;
+import com.azortis.orbis.world.Heightmap;
 import com.azortis.orbis.world.World;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import org.bukkit.craftbukkit.v1_19_R2.generator.CraftChunkData;
+import org.bukkit.craftbukkit.v1_19_R3.generator.CraftChunkData;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
@@ -47,6 +49,14 @@ public final class PaperChunkSnapshot extends ChunkSnapshot {
         this.handle = handle;
         this.chunkX = chunkX;
         this.chunkZ = chunkZ;
+
+        // We make use of vanilla their default heightmaps for surface and ocean floor to prevent duplication
+        addHeightMap(Heightmap.WG_SURFACE, new PaperNativeHeightMap(Heightmap.WG_SURFACE,
+                handle.getHandle().getOrCreateHeightmapUnprimed
+                        (net.minecraft.world.level.levelgen.Heightmap.Types.WORLD_SURFACE_WG), chunkX, chunkZ));
+        addHeightMap(Heightmap.WG_OCEAN_FLOOR, new PaperNativeHeightMap(Heightmap.WG_OCEAN_FLOOR,
+                handle.getHandle().getOrCreateHeightmapUnprimed
+                        (net.minecraft.world.level.levelgen.Heightmap.Types.OCEAN_FLOOR_WG), chunkX, chunkZ));
     }
 
     @Override
@@ -102,7 +112,7 @@ public final class PaperChunkSnapshot extends ChunkSnapshot {
         if (blockState.hasBlockEntity()) {
             BlockEntity blockEntity = ((EntityBlock) blockState.getBlock()).newBlockEntity(blockPos, blockState);
 
-            // createTile can return null, currently only the case with material MOVING_PISTON
+            // newBlockEntity can return null, currently only the case with material MOVING_PISTON
             if (blockEntity == null) {
                 access.removeBlockEntity(blockPos);
             } else {

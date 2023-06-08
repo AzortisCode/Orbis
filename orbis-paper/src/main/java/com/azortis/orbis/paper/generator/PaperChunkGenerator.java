@@ -18,80 +18,107 @@
 
 package com.azortis.orbis.paper.generator;
 
-import com.azortis.orbis.pack.Pack;
-import com.azortis.orbis.paper.OrbisPlugin;
 import com.azortis.orbis.paper.world.PaperWorld;
-import org.bukkit.craftbukkit.v1_19_R2.generator.CraftChunkData;
-import org.bukkit.generator.BiomeProvider;
-import org.bukkit.generator.ChunkGenerator;
-import org.bukkit.generator.WorldInfo;
+import com.mojang.serialization.Codec;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.WorldGenRegion;
+import net.minecraft.world.level.LevelHeightAccessor;
+import net.minecraft.world.level.NoiseColumn;
+import net.minecraft.world.level.StructureManager;
+import net.minecraft.world.level.WorldGenLevel;
+import net.minecraft.world.level.biome.BiomeManager;
+import net.minecraft.world.level.biome.BiomeSource;
+import net.minecraft.world.level.chunk.ChunkAccess;
+import net.minecraft.world.level.chunk.ChunkGenerator;
+import net.minecraft.world.level.levelgen.GenerationStep;
+import net.minecraft.world.level.levelgen.Heightmap;
+import net.minecraft.world.level.levelgen.RandomState;
+import net.minecraft.world.level.levelgen.blending.Blender;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Random;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 
 public final class PaperChunkGenerator extends ChunkGenerator {
 
-    private final Pack pack;
+    private final PaperWorld world;
+    private final ChunkGenerator delegate;
 
-    private boolean loaded = false;
-    private PaperWorld paperWorld;
-
-    public PaperChunkGenerator(Pack pack) {
-        this.pack = pack;
-    }
-
-    // If the world got initialized through the normal Bukkit configs then the ChunkGenerator gets made before the world
-    // can be registered with orbis, so this is our bypass
-    synchronized void load(@NotNull WorldInfo worldInfo) {
-        if (!loaded) {
-            paperWorld = OrbisPlugin.getPlatform().getWorld(worldInfo);
-            if (paperWorld != null) {
-                if (paperWorld.isLoaded()) {
-                    paperWorld.load(worldInfo.getSeed());
-                }
-            } else {
-                paperWorld = OrbisPlugin.getPlatform().loadWorld(worldInfo, pack);
-            }
-            loaded = true;
-        }
-    }
-
-    boolean requiresLoading() {
-        return !loaded;
-    }
-
-    public PaperWorld getWorld() {
-        return paperWorld;
+    public PaperChunkGenerator(@NotNull BiomeSource biomeSource, @NotNull PaperWorld world,
+                               @NotNull ChunkGenerator delegate) {
+        super(biomeSource);
+        this.world = world;
+        this.delegate = delegate;
     }
 
     @Override
-    public void generateNoise(@NotNull WorldInfo worldInfo, @NotNull Random ignored, int chunkX, int chunkZ,
-                              @NotNull ChunkData chunkData) {
-        if (requiresLoading()) load(worldInfo);
-        PaperChunkSnapshot chunkSnapshot = new PaperChunkSnapshot(paperWorld, paperWorld.getDimension(),
-                paperWorld.getEngine(), (CraftChunkData) chunkData, chunkX, chunkZ);
-        paperWorld.getEngine().generateChunk(chunkSnapshot, null);
-        chunkSnapshot.finish(); // Make sure to let the core API know this ChunkAccess instance shouldn't be used.
+    public @NotNull CompletableFuture<ChunkAccess> fillFromNoise(@NotNull Executor executor, @NotNull Blender blender,
+                                                                 @NotNull RandomState noiseConfig,
+                                                                 @NotNull StructureManager structureAccessor,
+                                                                 @NotNull ChunkAccess chunk) {
+        return null;
     }
 
     @Override
-    public @NotNull BiomeProvider getDefaultBiomeProvider(@NotNull WorldInfo worldInfo) {
-        return new PaperBiomeProvider(this);
+    public void applyBiomeDecoration(@NotNull WorldGenLevel world, @NotNull ChunkAccess chunk,
+                                     @NotNull StructureManager structureAccessor) {
+
     }
 
     @Override
-    public boolean shouldGenerateMobs() {
-        return true;
+    public void spawnOriginalMobs(@NotNull WorldGenRegion region) {
+        this.delegate.spawnOriginalMobs(region);
     }
 
     @Override
-    public boolean shouldGenerateCaves() {
-        return false;
+    public void applyCarvers(@NotNull WorldGenRegion chunkRegion, long seed, @NotNull RandomState noiseConfig,
+                             @NotNull BiomeManager biomeAccess, @NotNull StructureManager structureAccessor,
+                             @NotNull ChunkAccess chunk, GenerationStep.@NotNull Carving carverStep) {
+        // no-op
     }
 
     @Override
-    public boolean shouldGenerateDecorations() {
-        return false;
+    public void buildSurface(@NotNull WorldGenRegion region, @NotNull StructureManager structures,
+                             @NotNull RandomState noiseConfig, @NotNull ChunkAccess chunk) {
+        // no-op
+    }
+
+    @Override
+    public int getGenDepth() {
+        return delegate.getGenDepth();
+    }
+
+    @Override
+    public int getSeaLevel() {
+        return delegate.getSeaLevel();
+    }
+
+    @Override
+    public int getMinY() {
+        return world.minHeight();
+    }
+
+    @Override
+    public int getBaseHeight(int x, int z, @NotNull Heightmap.Types heightmap, @NotNull LevelHeightAccessor world,
+                             @NotNull RandomState noiseConfig) {
+        return this.delegate.getBaseHeight(x, z, heightmap, world, noiseConfig);
+    }
+
+    @Override
+    public @NotNull NoiseColumn getBaseColumn(int x, int z, @NotNull LevelHeightAccessor world,
+                                              @NotNull RandomState noiseConfig) {
+        return delegate.getBaseColumn(x, z, world, noiseConfig);
+    }
+
+    @Override
+    public void addDebugScreenInfo(@NotNull List<String> text, @NotNull RandomState noiseConfig, @NotNull BlockPos pos) {
+        this.delegate.addDebugScreenInfo(text, noiseConfig, pos);
+    }
+
+    @Override
+    protected @NotNull Codec<? extends ChunkGenerator> codec() {
+        return Codec.unit(null);
     }
 
 }

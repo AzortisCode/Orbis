@@ -16,23 +16,23 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.generator.biome;
+package com.azortis.orbis.paper.generator;
 
+import com.azortis.orbis.generator.Dimension;
+import com.azortis.orbis.generator.framework.Engine;
+import com.azortis.orbis.generator.framework.WorldSnapshot;
+import com.azortis.orbis.world.World;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Unmodifiable;
 
-import java.util.Map;
+public final class PaperWorldSnapshot extends WorldSnapshot {
 
-public record BiomeSection(@NotNull Biome biome, double biomeStrength,
-                           @Unmodifiable @NotNull Map<Biome, Double> biomeStrengths,
-                           @Unmodifiable @NotNull Map<String, Double> strengthMap) {
+    private final org.bukkit.World handle;
 
-    public BiomeSection(@NotNull Biome biome, double biomeStrength,
-                        @NotNull Map<Biome, Double> biomeStrengths, @NotNull Map<String, Double> strengthMap) {
-        this.biome = biome;
-        this.biomeStrength = biomeStrength;
-        this.biomeStrengths = Map.copyOf(biomeStrengths);
-        this.strengthMap = Map.copyOf(strengthMap);
+    public PaperWorldSnapshot(@NotNull World world, @NotNull Dimension dimension,
+                              @NotNull Engine engine, @NotNull org.bukkit.World handle) {
+        super(world, dimension, engine);
+        this.handle = handle;
     }
+
 
 }

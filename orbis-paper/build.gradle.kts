@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@
 plugins {
     java
     id("com.github.johnrengelman.shadow") version "7.1.2"
-    id("io.papermc.paperweight.userdev") version "1.4.1-SNAPSHOT"
+    id("io.papermc.paperweight.userdev") version "1.5.1"
 }
 
 group = "com.azortis"
@@ -40,12 +40,12 @@ repositories {
 
 dependencies {
     implementation(project(":orbis-core"))
-    paperDevBundle("1.19.3-R0.1-SNAPSHOT")
+    paperweight.paperDevBundle("1.19.4-R0.1-SNAPSHOT")
 
     // Compile
     compileOnly("net.kyori:adventure-nbt:4.12.0")
-    compileOnly("cloud.commandframework:cloud-paper:1.8.0")
-    compileOnly("cloud.commandframework:cloud-minecraft-extras:1.8.0")
+    compileOnly("cloud.commandframework:cloud-paper:1.8.2")
+    compileOnly("cloud.commandframework:cloud-minecraft-extras:1.8.2")
 }
 
 java {
@@ -65,7 +65,7 @@ tasks {
     }
     processResources {
         filteringCharset = Charsets.UTF_8.name()
-        filesMatching("plugin.yml") {
+        filesMatching("paper-plugin.yml") {
             expand(Pair("version", project.version))
         }
     }

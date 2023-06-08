@@ -45,10 +45,12 @@ public final class Registry<T> {
     public static final Registry<ChunkStage> CHUNK_STAGE = new Registry<>(ChunkStage.class, Map.of());
     public static final Registry<WorldStage> WORLD_STAGE = new Registry<>(WorldStage.class, Map.of());
     public static final Registry<Noise> NOISE = new Registry<>(Noise.class, Map.of(
-            Key.key("fastnoise:opensimplex2"), OpenSimplex2.class, Key.key("fastnoise:opensimplex2s"), OpenSimplex2S.class
+            Key.key("fastnoise:opensimplex2"), OpenSimplex2.class,
+            Key.key("fastnoise:opensimplex2s"), OpenSimplex2S.class
     ));
     public static final Registry<Distributor> DISTRIBUTOR = new Registry<>(Distributor.class, Map.of(
-            Key.key("orbis:single"), SingleDistributor.class, Key.key("orbis:complex"), ComplexDistributor.class
+            Key.key("orbis:single"), SingleDistributor.class,
+            Key.key("orbis:complex"), ComplexDistributor.class
     ));
     public static final Registry<Surface> SURFACE = new Registry<>(Surface.class, Map.of(
             Key.key("orbis:config"), ConfigSurface.class, Key.key("orbis:plains"), PlainsSurface.class
@@ -122,7 +124,7 @@ public final class Registry<T> {
         return ImmutableSet.copyOf(typeClasses.values());
     }
 
-    public void registerType(Key key, Class<? extends T> type) {
+    public void registerType(Key key, Class<? extends T> type) throws IllegalArgumentException {
         if (!typeClasses.containsKey(key)) {
             typeClasses.put(key, type);
         } else {

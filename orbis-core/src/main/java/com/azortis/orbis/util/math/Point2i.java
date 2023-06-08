@@ -35,4 +35,14 @@ public record Point2i(int x, int z) {
         return new Point2i(x, z);
     }
 
+    @Contract(pure = true)
+    public double distanceSq(@NotNull Point2i point) {
+        return Math.pow(x - point.x, 2) + Math.pow(z - point.z, 2);
+    }
+
+    @Contract(pure = true)
+    public double distance(@NotNull Point2i point) {
+        return Math.sqrt(distanceSq(point));
+    }
+
 }

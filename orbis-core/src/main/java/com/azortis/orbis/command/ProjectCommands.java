@@ -37,7 +37,7 @@ import java.util.List;
 @CommandContainer
 @CommandPermission("orbis.admin")
 @CommandMethod(value = "orbis|o project", requiredSender = CommandSender.class)
-public class ProjectCommands {
+public final class ProjectCommands {
 
     private final ProjectManager manager = Orbis.getProjectManager();
     private final MiniMessage miniMessage = Orbis.getMiniMessage();

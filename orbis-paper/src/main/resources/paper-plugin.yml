@@ -1,0 +1,7 @@
+name: Orbis
+version: '${version}'
+api-version: '1.19'
+author: YourPalJake
+description: Data driven world generation that enhances the gameplay of your server.
+main: com.azortis.orbis.paper.OrbisPlugin
+bootstrapper: com.azortis.orbis.paper.OrbisBootstrap

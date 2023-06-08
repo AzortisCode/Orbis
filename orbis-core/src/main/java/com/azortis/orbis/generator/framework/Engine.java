@@ -18,7 +18,6 @@
 
 package com.azortis.orbis.generator.framework;
 
-import com.azortis.orbis.Orbis;
 import com.azortis.orbis.generator.Dimension;
 import com.azortis.orbis.generator.biome.BiomeLayout;
 import com.azortis.orbis.generator.biome.Distributor;
@@ -40,7 +39,7 @@ public final class Engine {
         this.dimension = dimension;
     }
 
-    public void generateChunk(@NotNull ChunkSnapshot chunkSnapshot, @NotNull WorldSnapshot worldSnapshot) {
+    public void applyChunkStages(@NotNull ChunkSnapshot chunkSnapshot) {
         final int chunkX = chunkSnapshot.chunkX();
         final int chunkZ = chunkSnapshot.chunkZ();
 
@@ -61,20 +60,25 @@ public final class Engine {
         }
 
         // Create a random generator for chunk
-        RandomGenerator random = RandomGeneratorFactory.of("Xoshiro256PlusPlus").create(world.getWorldInfo().seed());
+        RandomGenerator random = RandomGeneratorFactory.of("Xoshiro256PlusPlus")
+                .create(getChunkSeed(world.getWorldInfo().seed(), chunkX, chunkZ));
 
         // Apply chunk stages sequentially
         dimension.chunkStages().forEach((chunkStage) -> chunkStage.apply(chunkSnapshot, random));
+    }
 
-        // Schedule an async task for world stages.
-        Orbis.getPlatform().scheduler().runTaskAsync(() -> {
-            while (true) {
-                if (chunkSnapshot.isFinished()) {
-                    break;
-                }
-            }
-            dimension.worldStages().forEach((worldStage -> worldStage.apply(chunkSnapshot, worldSnapshot, random)));
-        });
+    public void applyWorldStages(int chunkX, int chunkZ, @NotNull WorldSnapshot snapshot) {
+
+    }
+
+    private long getChunkSeed(long seed, int x, int z) {
+        long result = seed;
+        result = result ^ (x * 0x9e3779b97f4a7c15L);
+        result = result ^ (z * 0xbf58476d1ce4e5b9L);
+        result = (result ^ (result >>> 30)) * 0x94d049bb133111ebL;
+        result = (result ^ (result >>> 27)) * 0x9e3779b97f4a7c15L;
+        result = result ^ (result >>> 31);
+        return result;
     }
 
     public @NotNull World world() {

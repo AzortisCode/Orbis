@@ -16,23 +16,24 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.generator.biome;
+package com.azortis.orbis.generator.framework.biome;
 
+import com.azortis.orbis.generator.framework.ChunkSnapshot;
+import com.azortis.orbis.generator.framework.ChunkStage;
+import net.kyori.adventure.key.Key;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Unmodifiable;
 
-import java.util.Map;
+import java.util.random.RandomGenerator;
 
-public record BiomeSection(@NotNull Biome biome, double biomeStrength,
-                           @Unmodifiable @NotNull Map<Biome, Double> biomeStrengths,
-                           @Unmodifiable @NotNull Map<String, Double> strengthMap) {
+public final class BiomeSurfaceStage extends ChunkStage {
 
-    public BiomeSection(@NotNull Biome biome, double biomeStrength,
-                        @NotNull Map<Biome, Double> biomeStrengths, @NotNull Map<String, Double> strengthMap) {
-        this.biome = biome;
-        this.biomeStrength = biomeStrength;
-        this.biomeStrengths = Map.copyOf(biomeStrengths);
-        this.strengthMap = Map.copyOf(strengthMap);
+    public BiomeSurfaceStage(@NotNull Key type) {
+        super(type);
+    }
+
+    @Override
+    public void apply(@NotNull ChunkSnapshot snapshot, @NotNull RandomGenerator random) {
+
     }
 
 }

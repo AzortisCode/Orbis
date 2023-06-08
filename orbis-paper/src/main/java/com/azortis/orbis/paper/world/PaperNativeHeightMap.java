@@ -16,23 +16,27 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.generator.biome;
+package com.azortis.orbis.paper.world;
 
+import com.azortis.orbis.world.Heightmap;
+import net.kyori.adventure.key.Key;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Unmodifiable;
 
-import java.util.Map;
+public record PaperNativeHeightMap(@NotNull Key type, @NotNull net.minecraft.world.level.levelgen.Heightmap handle,
+                                   int chunkX, int chunkZ) implements Heightmap {
 
-public record BiomeSection(@NotNull Biome biome, double biomeStrength,
-                           @Unmodifiable @NotNull Map<Biome, Double> biomeStrengths,
-                           @Unmodifiable @NotNull Map<String, Double> strengthMap) {
-
-    public BiomeSection(@NotNull Biome biome, double biomeStrength,
-                        @NotNull Map<Biome, Double> biomeStrengths, @NotNull Map<String, Double> strengthMap) {
-        this.biome = biome;
-        this.biomeStrength = biomeStrength;
-        this.biomeStrengths = Map.copyOf(biomeStrengths);
-        this.strengthMap = Map.copyOf(strengthMap);
+    @Override
+    public boolean isPersistent() {
+        return false; // These are persisted any way.
     }
 
+    @Override
+    public int getFirstAvailable(int x, int z) {
+        return handle.getFirstAvailable(x, z);
+    }
+
+    @Override
+    public int getHighestTaken(int x, int z) {
+        return handle.getHighestTaken(x, z);
+    }
 }

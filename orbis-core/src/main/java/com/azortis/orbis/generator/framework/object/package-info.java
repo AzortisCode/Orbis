@@ -16,23 +16,9 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.orbis.generator.biome;
-
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Unmodifiable;
-
-import java.util.Map;
-
-public record BiomeSection(@NotNull Biome biome, double biomeStrength,
-                           @Unmodifiable @NotNull Map<Biome, Double> biomeStrengths,
-                           @Unmodifiable @NotNull Map<String, Double> strengthMap) {
-
-    public BiomeSection(@NotNull Biome biome, double biomeStrength,
-                        @NotNull Map<Biome, Double> biomeStrengths, @NotNull Map<String, Double> strengthMap) {
-        this.biome = biome;
-        this.biomeStrength = biomeStrength;
-        this.biomeStrengths = Map.copyOf(biomeStrengths);
-        this.strengthMap = Map.copyOf(strengthMap);
-    }
-
-}
+/**
+ * A collection of utilities that assist with generating objects/features/structures.
+ * Primarily focused on the concept that each platform does not or have limited support
+ * for cross chunk object generation.
+ */
+package com.azortis.orbis.generator.framework.object;

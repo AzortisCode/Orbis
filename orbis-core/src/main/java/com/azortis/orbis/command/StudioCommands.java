@@ -31,7 +31,7 @@ import org.jetbrains.annotations.NotNull;
 @CommandContainer
 @CommandPermission("orbis.admin")
 @CommandMethod(value = "orbis|o studio", requiredSender = CommandSender.class)
-public class StudioCommands {
+public final class StudioCommands {
 
     private final ProjectManager projectManager = Orbis.getProjectManager();
     private final MiniMessage miniMessage = Orbis.getMiniMessage();

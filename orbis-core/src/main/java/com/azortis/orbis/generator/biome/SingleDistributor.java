@@ -23,6 +23,7 @@ import net.kyori.adventure.key.Key;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collections;
+import java.util.Map;
 
 @Description("Distributor that only distributes one biome.")
 public final class SingleDistributor extends Distributor {
@@ -33,7 +34,8 @@ public final class SingleDistributor extends Distributor {
 
     @Override
     protected @NotNull BiomeSection sample(int x, int z) {
-        return new BiomeSection(biomes().iterator().next(), 1.0D, Collections.emptyMap());
+        return new BiomeSection(biomes().iterator().next(), 1.0D,
+                Map.of(biomes().iterator().next(), 1.0D), Collections.emptyMap());
     }
 
     @Override

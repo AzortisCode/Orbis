@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -30,9 +30,9 @@ import java.util.stream.Collectors;
 
 public final class PaperBiomeProvider extends BiomeProvider {
 
-    private final PaperChunkGenerator chunkGenerator;
+    private final NoOpPaperChunkGenerator chunkGenerator;
 
-    public PaperBiomeProvider(PaperChunkGenerator chunkGenerator) {
+    public PaperBiomeProvider(NoOpPaperChunkGenerator chunkGenerator) {
         this.chunkGenerator = chunkGenerator;
     }
 

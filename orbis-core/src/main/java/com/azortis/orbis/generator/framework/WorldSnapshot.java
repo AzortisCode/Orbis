@@ -29,11 +29,11 @@ import org.jetbrains.annotations.NotNull;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- * Provides a thread safe snapshot of a world where any chunk can be accessed generated or not.
+ * <p>Provides a thread safe snapshot of a world where any chunk can be accessed generated or not.
  * This is needed for cross-chunk generation access for example when generating large features or structure objects.
  * {@link WorldStage}'s must first acquire a lock using {@link WorldSnapshot#acquire(int, int)} to gain access to the
  * chunk for this running thread, and once done release it using {@link WorldSnapshot#release(int, int)}. This must be
- * done for all chunks, even the one that initiated the generating task to ensure write safety.
+ * done for all chunks, even the one that initiated the generating task to ensure write safety.</p>
  *
  * @author Jake Nijssen
  * @since 0.3-Alpha

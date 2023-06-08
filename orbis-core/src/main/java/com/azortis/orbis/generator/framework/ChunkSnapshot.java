@@ -21,6 +21,7 @@ package com.azortis.orbis.generator.framework;
 import com.azortis.orbis.block.Block;
 import com.azortis.orbis.block.BlockState;
 import com.azortis.orbis.block.Blocks;
+import com.azortis.orbis.exception.CoordsOutOfBoundsException;
 import com.azortis.orbis.exception.SectionCoordsOutOfBoundsException;
 import com.azortis.orbis.generator.Dimension;
 import com.azortis.orbis.generator.biome.BiomeLayout;
@@ -28,10 +29,16 @@ import com.azortis.orbis.generator.biome.BiomeSection;
 import com.azortis.orbis.util.annotations.AbsoluteCoords;
 import com.azortis.orbis.util.annotations.RelativeCoords;
 import com.azortis.orbis.util.annotations.SectionCoords;
+import com.azortis.orbis.world.Heightmap;
 import com.azortis.orbis.world.World;
+import com.google.common.base.Preconditions;
+import net.kyori.adventure.key.Key;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * <p>A snapshot of a chunk being generated, will store vital information about generation context
@@ -53,6 +60,8 @@ public abstract class ChunkSnapshot {
 
     private final BiomeSection[] biomeMap;
     private final BiomeSection[] biomeSections;
+
+    private final Map<Key, Heightmap> heightMaps = new HashMap<>();
 
     protected ChunkSnapshot(@NotNull World world, @NotNull Dimension dimension, @NotNull Engine engine) {
         this.world = world;
@@ -174,6 +183,33 @@ public abstract class ChunkSnapshot {
         }
         throw new IllegalStateException(String.format("The section index of %s of the biomeSections for " +
                 "chunk [%s,%s] has already been populated", index, chunkX(), chunkZ()));
+    }
+
+    public void addHeightMap(@NotNull Key type, @NotNull Heightmap heightmap) throws IllegalArgumentException {
+        Preconditions.checkArgument(!heightMaps.containsKey(type), "Heightmap for type " + type.asString() +
+                " is already present!");
+        heightMaps.put(type, heightmap);
+    }
+
+    public boolean hasHeightMap(@NotNull Key type) {
+        return heightMaps.containsKey(type);
+    }
+
+    public @NotNull Heightmap getHeightMap(@NotNull Key type) throws IllegalArgumentException {
+        Preconditions.checkArgument(heightMaps.containsKey(type), "Heightmap of type " + type.asString() +
+                " is not present!");
+        return heightMaps.get(type);
+    }
+
+    @RelativeCoords
+    public int getHeight(@NotNull Key type, int x, int z) throws IllegalArgumentException, CoordsOutOfBoundsException {
+        Preconditions.checkArgument(heightMaps.containsKey(type), "Heightmap of type " + type.asString() +
+                " is not present!");
+        if (!(x >= 0 && x < 16 && z >= 0 && z < 16)) {
+            throw new CoordsOutOfBoundsException(String.format("Coordinates [%s,%s] are not relative chunk coordinates!",
+                    x, z));
+        }
+        return heightMaps.get(type).getHighestTaken(x, z);
     }
 
     //

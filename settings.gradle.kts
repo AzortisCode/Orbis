@@ -22,13 +22,5 @@
 rootProject.name = "Orbis"
 include("orbis-core")
 include("orbis-paper")
-include("orbis-minestom")
 include("orbis-generators")
 include("orbis-cli")
-
-pluginManagement {
-    repositories {
-        gradlePluginPortal()
-        maven("https://papermc.io/repo/repository/maven-public/")
-    }
-}

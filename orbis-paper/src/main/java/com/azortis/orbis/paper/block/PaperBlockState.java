@@ -1,6 +1,6 @@
 /*
  * A dynamic data-driven world generator plugin/library for Minecraft servers.
- *     Copyright (C) 2022 Azortis
+ *     Copyright (C) 2023 Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -30,7 +30,7 @@ import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import org.apiguardian.api.API;
 import org.bukkit.block.data.BlockData;
-import org.bukkit.craftbukkit.v1_19_R2.block.data.CraftBlockData;
+import org.bukkit.craftbukkit.v1_19_R3.block.data.CraftBlockData;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 

@@ -24,7 +24,7 @@ import java.lang.annotation.*;
  * <p>Marks that the {@link Integer} parameters of the annotated {@link java.lang.reflect.Constructor},
  * {@link java.lang.reflect.Method} or record parameters should be chunk coordinates.</p>
  *
- * <p>To get the chunk coordinate from a block coordinate you do: {@code int blockCoord = blockCoord >> 4;}</p>
+ * <p>To get the chunk coordinate from a block coordinate you do: {@code int chunkCoord = blockCoord >> 4;}</p>
  *
  * @author Jake Nijssen
  * @since 0.3-Alpha
