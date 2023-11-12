@@ -19,7 +19,7 @@
 plugins {
     java
     id("com.github.johnrengelman.shadow") version "7.1.2"
-    id("io.papermc.paperweight.userdev") version "1.5.1"
+    id("io.papermc.paperweight.userdev") version "1.5.9"
 }
 
 group = "com.azortis"
@@ -40,12 +40,12 @@ repositories {
 
 dependencies {
     implementation(project(":orbis-core"))
-    paperweight.paperDevBundle("1.19.4-R0.1-SNAPSHOT")
+    paperweight.paperDevBundle("1.20.2-R0.1-SNAPSHOT")
 
     // Compile
-    compileOnly("net.kyori:adventure-nbt:4.12.0")
-    compileOnly("cloud.commandframework:cloud-paper:1.8.2")
-    compileOnly("cloud.commandframework:cloud-minecraft-extras:1.8.2")
+    compileOnly("net.kyori:adventure-nbt:4.14.0")
+    compileOnly("cloud.commandframework:cloud-paper:1.8.4")
+    compileOnly("cloud.commandframework:cloud-minecraft-extras:1.8.4")
 }
 
 java {

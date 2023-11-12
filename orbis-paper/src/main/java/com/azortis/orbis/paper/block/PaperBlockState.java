@@ -30,7 +30,7 @@ import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import org.apiguardian.api.API;
 import org.bukkit.block.data.BlockData;
-import org.bukkit.craftbukkit.v1_19_R3.block.data.CraftBlockData;
+import org.bukkit.craftbukkit.v1_20_R2.block.data.CraftBlockData;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
@@ -118,45 +118,6 @@ public final class PaperBlockState implements BlockState {
         return handle.isAir();
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public boolean isFlammable() {
-        return handle.getMaterial().isFlammable();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public boolean isLiquid() {
-        return handle.getMaterial().isLiquid();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public boolean isReplaceable() {
-        return handle.getMaterial().isReplaceable();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public boolean isSolid() {
-        return handle.getMaterial().isSolid();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public boolean isColliding() {
-        return block.handle().hasCollision;
-    }
 
     /**
      * {@inheritDoc}

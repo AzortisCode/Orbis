@@ -81,10 +81,10 @@ public final class WorldInfo {
     @API(status = API.Status.INTERNAL, since = "0.3-Alpha", consumers = "com.azortis.orbis.world")
     CompoundBinaryTag toNBT() {
         return CompoundBinaryTag.builder()
-                .put("dataVersion", IntBinaryTag.of(dataVersion))
-                .put("packName", StringBinaryTag.of(packName))
-                .put("dimensionFile", StringBinaryTag.of(dimensionFile))
-                .put("seed", LongBinaryTag.of(seed))
+                .put("dataVersion", IntBinaryTag.intBinaryTag(dataVersion))
+                .put("packName", StringBinaryTag.stringBinaryTag(packName))
+                .put("dimensionFile", StringBinaryTag.stringBinaryTag(dimensionFile))
+                .put("seed", LongBinaryTag.longBinaryTag(seed))
                 .build();
     }
 

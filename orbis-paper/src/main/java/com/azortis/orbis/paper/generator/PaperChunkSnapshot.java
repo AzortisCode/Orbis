@@ -31,7 +31,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import org.bukkit.craftbukkit.v1_19_R3.generator.CraftChunkData;
+import org.bukkit.craftbukkit.v1_20_R2.generator.CraftChunkData;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;

@@ -63,12 +63,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-@Dependency(group = "cloud.commandframework", artifact = "cloud-paper", version = "1.8.0")
-@Dependency(group = "cloud.commandframework", artifact = "cloud-bukkit", version = "1.8.0")
-@Dependency(group = "cloud.commandframework", artifact = "cloud-paper", version = "1.8.0")
-@Dependency(group = "cloud.commandframework", artifact = "cloud-tasks", version = "1.8.0")
-@Dependency(group = "cloud.commandframework", artifact = "cloud-brigadier", version = "1.8.0")
-@Dependency(group = "cloud.commandframework", artifact = "cloud-minecraft-extras", version = "1.8.0")
+@Dependency(group = "cloud.commandframework", artifact = "cloud-paper", version = "1.8.4")
+@Dependency(group = "cloud.commandframework", artifact = "cloud-bukkit", version = "1.8.4")
+@Dependency(group = "cloud.commandframework", artifact = "cloud-paper", version = "1.8.4")
+@Dependency(group = "cloud.commandframework", artifact = "cloud-tasks", version = "1.8.4")
+@Dependency(group = "cloud.commandframework", artifact = "cloud-brigadier", version = "1.8.4")
+@Dependency(group = "cloud.commandframework", artifact = "cloud-minecraft-extras", version = "1.8.4")
 @Dependency(group = "net.kyori", artifact = "adventure-nbt", version = "4.12.0")
 public class PaperPlatform implements Platform, Listener {
 

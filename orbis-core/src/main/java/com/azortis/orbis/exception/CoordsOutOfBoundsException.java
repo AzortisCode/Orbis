@@ -26,7 +26,7 @@ import com.azortis.orbis.world.RegionAccess;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Thrown to indicate that coordinates(2 dimensional or 3 dimensional) are not within
+ * Thrown to indicate that coordinates(2-dimensional or 3-dimensional) are not within
  * the bounds of given range.
  *
  * @author Jake Nijssen

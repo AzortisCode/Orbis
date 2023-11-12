@@ -72,9 +72,9 @@ import java.util.Map;
 @Dependency(group = "com.google.guava", artifact = "guava", version = "31.0.1-jre")
 @Dependency(group = "net.lingala.zip4j", artifact = "zip4j", version = "2.10.0")
 @Dependency(group = "org.projectlombok", artifact = "lombok", version = "1.18.24")
-@Dependency(group = "cloud.commandframework", artifact = "cloud-core", version = "1.8.0")
-@Dependency(group = "cloud.commandframework", artifact = "cloud-annotations", version = "1.8.0")
-@Dependency(group = "cloud.commandframework", artifact = "cloud-services", version = "1.8.0")
+@Dependency(group = "cloud.commandframework", artifact = "cloud-core", version = "1.8.4")
+@Dependency(group = "cloud.commandframework", artifact = "cloud-annotations", version = "1.8.4")
+@Dependency(group = "cloud.commandframework", artifact = "cloud-services", version = "1.8.4")
 @Dependency(group = "io.leangen.geantyref", artifact = "geantyref", version = "1.3.13")
 @Dependency(group = "org.apache.commons", artifact = "commons-lang3", version = "3.12.0")
 @API(status = API.Status.MAINTAINED, since = "0.3-Alpha")
@@ -82,7 +82,7 @@ public final class Orbis {
 
     public static final String VERSION = "0.3-Alpha";
     public static final String SETTINGS_VERSION = "1";
-    public static final String MC_VERSION = "1_19_3";
+    public static final String MC_VERSION = "1_20_1";
     private static final String DOWNLOAD_URL = "https://raw.githubusercontent.com/Articdive/ArticData/" +
             MC_VERSION.replace("_", ".") + "/";
 
@@ -318,4 +318,5 @@ public final class Orbis {
     public static ProjectManager getProjectManager() {
         return projectManager;
     }
+
 }

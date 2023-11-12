@@ -18,6 +18,7 @@
 
 package com.azortis.orbis.paper;
 
+import io.papermc.paper.plugin.bootstrap.BootstrapContext;
 import io.papermc.paper.plugin.bootstrap.PluginBootstrap;
 import io.papermc.paper.plugin.bootstrap.PluginProviderContext;
 import org.jetbrains.annotations.NotNull;
@@ -26,7 +27,7 @@ import org.jetbrains.annotations.NotNull;
 public final class OrbisBootstrap implements PluginBootstrap {
 
     @Override
-    public void bootstrap(@NotNull PluginProviderContext context) {
+    public void bootstrap(@NotNull BootstrapContext context) {
 
     }
 }

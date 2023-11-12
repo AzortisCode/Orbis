@@ -54,16 +54,16 @@ dependencies {
     api("com.google.guava:guava:31.0.1-jre")
     api("net.lingala.zip4j:zip4j:2.10.0")
     api("org.projectlombok:lombok:1.18.24")
-    api("cloud.commandframework:cloud-core:1.8.2")
-    api("cloud.commandframework:cloud-annotations:1.8.2")
+    api("cloud.commandframework:cloud-core:1.8.4")
+    api("cloud.commandframework:cloud-annotations:1.8.4")
 
     annotationProcessor("org.projectlombok:lombok:1.18.20")
-    annotationProcessor("cloud.commandframework:cloud-annotations:1.8.2")
+    annotationProcessor("cloud.commandframework:cloud-annotations:1.8.4")
 
     // Adapters should determine if libraries should be downloaded, or if the platform already has them provided
-    api("net.kyori:adventure-api:4.12.0")
-    api("net.kyori:adventure-nbt:4.12.0")
-    api("net.kyori:adventure-text-minimessage:4.12.0")
+    api("net.kyori:adventure-api:4.14.0")
+    api("net.kyori:adventure-nbt:4.14.0")
+    api("net.kyori:adventure-text-minimessage:4.14.0")
     api("it.unimi.dsi:fastutil:8.5.6")
     api("com.google.code.gson:gson:2.10")
     api("org.slf4j:slf4j-api:1.7.31")

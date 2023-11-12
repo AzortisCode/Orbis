@@ -156,12 +156,20 @@ public class PropertiesGenerator extends OrbisCodeGenerator {
                 }
 
                 List<String> enumValues = new ArrayList<>();
+                Object[] enumObjects = enumClass.getEnumConstants();
                 for (JsonElement element : values) {
                     String enumValue = element.getAsString();
                     enumValues.add(enumValue);
-                    try {
-                        Enum.valueOf(castEnumClass(enumClass), enumValue);
-                    } catch (IllegalArgumentException ex) {
+
+                    boolean containsValue = false;
+                    for (Object enumObject : enumObjects) {
+                        if (((Enum<?>) enumObject).name().equals(enumValue)) {
+                            containsValue = true;
+                            break;
+                        }
+                    }
+
+                    if (!containsValue) {
                         LOGGER.error("Orbis enumClass {} doesn't have the constant {} that is used in property {}",
                                 enumClass.getCanonicalName(), enumValue, propertyName);
                     }
@@ -172,7 +180,8 @@ public class PropertiesGenerator extends OrbisCodeGenerator {
                 // If size of values > 60% of the possible enum constants then we use a predicate
                 if (values.size() >= Math.round(0.60D * enumClass.getEnumConstants().length)) {
                     builder.add(", (" + key + ") -> ");
-                    List<String> enumsToFilter = getEnumValues(enumClass).stream().filter(s -> !enumValues.contains(s)).toList();
+                    List<String> enumsToFilter = getEnumValues(enumClass).stream().filter(s -> !enumValues.contains(s))
+                            .toList();
                     boolean isFirst = true;
                     for (String enumName : enumsToFilter) {
                         if (isFirst) {
@@ -196,13 +205,9 @@ public class PropertiesGenerator extends OrbisCodeGenerator {
                                 .build());
             }
         }
-        JavaFile propertiesFile = JavaFile.builder("com.azortis.orbis.block.property", propertiesClass.build()).build();
+        JavaFile propertiesFile = JavaFile.builder("com.azortis.orbis.block.property", propertiesClass
+                .build()).build();
         writeFiles(List.of(propertiesFile));
-    }
-
-    @SuppressWarnings("unchecked")
-    private <T> Class<T> castEnumClass(Class<? extends Enum<?>> clazz) {
-        return (Class<T>) clazz;
     }
 
     private List<String> getEnumValues(Class<? extends Enum<?>> enumClass) {

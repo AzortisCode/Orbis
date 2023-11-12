@@ -51,51 +51,6 @@ public non-sealed interface BlockState extends ConfiguredBlock {
     boolean isAir();
 
     /**
-     * Check if this state is flammable.
-     *
-     * @return If the state is flammable.
-     * @since 0.3-Alpha
-     */
-    @Contract(pure = true)
-    boolean isFlammable();
-
-    /**
-     * Check if this state is liquid.
-     *
-     * @return If the state is liquid.
-     * @since 0.3-Alpha
-     */
-    @Contract(pure = true)
-    boolean isLiquid();
-
-    /**
-     * Check if this state is replaceable.
-     *
-     * @return If the state is replaceable.
-     * @since 0.3-Alpha
-     */
-    @Contract(pure = true)
-    boolean isReplaceable();
-
-    /**
-     * Check if the state is solid.
-     *
-     * @return If the state is solid.
-     * @since 0.3-Alpha
-     */
-    @Contract(pure = true)
-    boolean isSolid();
-
-    /**
-     * Check if the state is colliding.
-     *
-     * @return If the state is colliding.
-     * @since 0.3-Alpha
-     */
-    @Contract(pure = true)
-    boolean isColliding();
-
-    /**
      * Get the values of this state for the {@link Block} its {@link Property}'s
      *
      * @return An immutable view of the properties and its values for this state.

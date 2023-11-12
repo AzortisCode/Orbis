@@ -20,7 +20,7 @@ package com.azortis.orbis.paper.studio;
 
 import com.azortis.orbis.pack.studio.Project;
 import com.azortis.orbis.paper.generator.PaperChunkSnapshot;
-import org.bukkit.craftbukkit.v1_19_R3.generator.CraftChunkData;
+import org.bukkit.craftbukkit.v1_20_R2.generator.CraftChunkData;
 import org.bukkit.generator.BiomeProvider;
 import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.generator.WorldInfo;

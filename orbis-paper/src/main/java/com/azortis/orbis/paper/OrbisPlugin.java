@@ -21,6 +21,7 @@ package com.azortis.orbis.paper;
 import com.azortis.orbis.Orbis;
 import com.azortis.orbis.pack.Pack;
 import com.azortis.orbis.paper.generator.NoOpPaperChunkGenerator;
+import com.azortis.orbis.paper.generator.PaperChunkGenerator;
 import com.azortis.orbis.util.maven.DependencyLoader;
 import org.apache.commons.io.FileUtils;
 import org.bukkit.Bukkit;
@@ -104,7 +105,7 @@ public final class OrbisPlugin extends JavaPlugin {
         if (packName != null) {
             Pack pack = Orbis.getPackManager().getPack(packName);
             if (pack != null) {
-                return new NoOpPaperChunkGenerator(pack);
+                //return new PaperChunkGenerator(pack);
             } else {
                 Orbis.getLogger().error("No pack by the fieldName {} exists!", packName);
                 return super.getDefaultWorldGenerator(worldName, packName);

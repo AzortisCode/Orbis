@@ -30,13 +30,25 @@ import java.util.stream.Collectors;
 
 public final class PaperBiomeProvider extends BiomeProvider {
 
-    private final NoOpPaperChunkGenerator chunkGenerator;
+    private final PaperChunkGenerator chunkGenerator;
 
-    public PaperBiomeProvider(NoOpPaperChunkGenerator chunkGenerator) {
+    public PaperBiomeProvider(PaperChunkGenerator chunkGenerator) {
         this.chunkGenerator = chunkGenerator;
     }
 
     @Override
+    public @NotNull Biome getBiome(@NotNull WorldInfo worldInfo, int x, int y, int z) {
+        return null;
+    }
+
+    @Override
+    public @NotNull List<Biome> getBiomes(@NotNull WorldInfo worldInfo) {
+        return null;
+    }
+
+
+
+    /*@Override
     public @NotNull Biome getBiome(@NotNull WorldInfo worldInfo, int x, int y, int z) {
         if (chunkGenerator.requiresLoading()) chunkGenerator.load(worldInfo);
         return Biome.valueOf(chunkGenerator.getWorld().getDimension().distributor()
@@ -49,5 +61,5 @@ public final class PaperBiomeProvider extends BiomeProvider {
         return chunkGenerator.getWorld().getDimension().distributor().biomes()
                 .stream().map(com.azortis.orbis.generator.biome.Biome::derivative).map(Key::value)
                 .map(String::toUpperCase).map(Biome::valueOf).collect(Collectors.toList());
-    }
+    }*/
 }
